@@ -7,19 +7,20 @@
       class="hidden-md-and-up"
       clipped
       fixed
+      width="100%"
       app
     >
       <v-list>
         <v-list-item
-          v-for="(item, i) in drawer_store"
+          v-for="(item, i) in navigation.data"
           :key="i"
           :to="item.to"
           router
           exact
         >
-          <v-list-item-action>
+          <!-- <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
+          </v-list-item-action> -->
           <v-list-item-content>
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
