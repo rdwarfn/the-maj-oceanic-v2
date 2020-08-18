@@ -1,0 +1,35 @@
+@font-face {
+  font-family: 'Sentinel Semibold';
+  font-style: normal;
+  src: local('SentinelSemibold'),
+    local('Sentinel Semibold'),
+    local('Sentinel-Semibold'),
+    url('~assets/fonts/Sentinel/Sentinel-Semibold.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Verlag Bold';
+  font-style: normal;
+  src: local('VerlagBold'),
+    local('Verlag Bold'),
+    local('Verlag-Bold'),
+    url('~assets/fonts/Verlag/Verlag-Bold.ttf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ideal Sans Light';
+  font-style: normal;
+  src: local('IdealSansLightPro'),
+    local('Ideal Sans Light Pro'),
+    local('Ideal-Sans-Light-Pro'),
+    url('~assets/fonts/Ideal_Sans/IdealSans-Light-Pro.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  src: local('FontAwesome'),
+    local('Font Awesome'),
+    local('Font-Awesome'),
+    url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf');
+  font-display: swap;
+}

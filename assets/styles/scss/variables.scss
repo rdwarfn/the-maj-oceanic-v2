@@ -1,0 +1,78 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+// $font-size-root: 20px;
+
+$body-font-family: 'Ideal Sans Light', sans-serif;
+$heading-font-family: 'Sentinel Semibold', serif;
+
+$headings: (
+  'h1': (
+    // 48px
+    'size': 3rem,
+    'weight': 700,
+    // 50px
+    'line-height': 3.125rem,
+    // normal / 0px
+    'letter-spacing': 0.025em,
+    'font-family': $heading-font-family,
+    'text-transform': false
+  ),
+  'h2': (
+    // 36px
+    'size': 2.25rem,
+    'weight': 700,
+    // 38px
+    'line-height': 2.375rem,
+    // normal / 0px
+    'letter-spacing': 0.025em,
+    'font-family': $heading-font-family,
+    'text-transform': false
+  ),
+  'h3': (
+    // 34px
+    'size': 2.125rem,
+    'weight': 700,
+    // 36px
+    'line-height': 2.25rem,
+    // normal / 0px
+    'letter-spacing': .0073529412em,
+    'font-family': $heading-font-family,
+    'text-transform': false
+  ),
+  'h4': (
+    // 22px
+    'size': 1.375rem,
+    'weight': 700,
+    // 26px
+    'line-height': 1.625rem,
+    // normal / 0px
+    'letter-spacing': 0.025em,
+    'font-family': $heading-font-family,
+    'text-transform': false
+  ),
+  'h5': (
+    // 14px
+    'size': 0.875rem,
+    'weight': 700,
+    // 16px
+    'line-height': 1rem,
+    // 3px
+    'letter-spacing': 0.188em,
+    'font-family': ('Verlag Bold', sans-serif),
+    'text-transform': uppercase
+  ),
+  'h6': (
+    // 11px
+    'size': 0.6875rem,
+    'weight': 700,
+    // 13px
+    'line-height': 0.8125rem,
+    // 3px
+    'letter-spacing': 0.188em,
+    'font-family': ('Verlag Bold', sans-serif),
+    'text-transform': uppercase
+  )
+);
+
+@import '~vuetify/src/styles/styles.sass'

@@ -1,0 +1,72 @@
+[
+  {
+    "heading": "The future of travel, on the traditions of the past",
+    "text": "One of our missions is to preserve and introduce to the world the glory of the Indonesian maritime history.\n The MAJ Oceanic is hand built and handcrafted in Bira, Sulawesi based on the heritage of ancestral knowledge.",
+    "image": "large/1.jpg",
+    "card_three_image": {
+      "caption": "the cabins",
+      "heading": "Be inspired by the ancient seamen",
+      "data": [{
+          "id": 0,
+          "image": "card/three/1.jpg",
+          "heading": "Zheng He",
+          "to": "#"
+        },{
+          "id": 1,
+          "image": "card/three/2.jpg",
+          "heading": "Christopher Columbus",
+          "to": "#"
+        },{
+          "id": 2,
+          "image": "card/three/3.jpg",
+          "heading": "Ibn Battuta",
+          "to": "#"
+        }
+      ]
+    },
+    "carousel_card": [
+      {
+        "id": 1,
+        "caption": "Spesification",
+        "heading": "Lorem Ipsum",
+        "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
+        "list": "Lorem ipsum dolor sit amet\nLaboris lar aliquip\nLorem ipsum dolor sit amet\nLaboris lar aliquip",
+        "image": "carousel/card/2.jpg",
+        "to": "#"
+      },
+      {
+        "id": 2,
+        "caption": "Spesification",
+        "heading": "Lorem Ipsum",
+        "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
+        "list": "Lorem ipsum dolor sit amet\nLaboris lar aliquip\nLorem ipsum dolor sit amet\nLaboris lar aliquip",
+        "image": "carousel/card/2.jpg",
+        "to": "#"
+      },
+      {
+        "id": 3,
+        "caption": "Spesification",
+        "heading": "Lorem Ipsum",
+        "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis.",
+        "list": "Lorem ipsum dolor sit amet\nLaboris lar aliquip\nLorem ipsum dolor sit amet\nLaboris lar aliquip",
+        "image": "carousel/card/2.jpg",
+        "to": "#"
+      }
+    ],
+    "card_text_image": [
+      {
+        "caption": "dining",
+        "heading": "Lorem Ipsum dolor",
+        "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
+        "image": "1.jpg",
+        "to": "#"
+      },{
+        "caption": "occasions",
+        "heading": "Lorem Ipsum dolor",
+        "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
+        "image": "2.jpg",
+        "to": "#"
+      }
+    ]
+  }
+]

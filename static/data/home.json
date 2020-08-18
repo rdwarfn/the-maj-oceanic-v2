@@ -1,0 +1,76 @@
+[
+  {
+    "heading": "Traces of the ancient maritime glory with touches of modern-day comfort",
+    "text": "The MAJ Oceanic is a traditional hand-crafted two-masted Phinisi yacht with 7 resort-standard suites outfitted with modern design and technology.\n\n Learn, feel, understand, taste, and touch new things while awakening your inner explorer. Get up close with the world's largest lizard species. Huddle together along the railings to spot nature's great displays. Enjoy seafood the Jack Sparrow way. Or practice yoga to the sound of waves\n\n. If to travel is to live, then this might be the life you never knew existed.",
+    "image": "carousel/banner/4.png",
+    "carousel_card": [
+      {
+        "id": 1,
+        "caption": "The Vessel",
+        "heading": "Craftmanship lives on",
+        "text": "Sailing on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity. 1",
+        "image": "carousel/card/1.jpg",
+        "to": "#"
+      },
+      {
+        "id": 2,
+        "caption": "The Vessel",
+        "heading": "Craftmanship lives on",
+        "text": "Sailing on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity. 2",
+        "image": "carousel/card/1.jpg",
+        "to": "#"
+      }
+    ],
+    "tabs":{
+      "heading": "Voyages",
+      "text": "Exercitation nostrud ex elit qui eiusmod pariatur. Non cillum adipisicing duis ullamco esse et velit sint. Consectetur consequat sint ex est eiusmod deserunt nulla officia.",
+      "data": [{
+        "id": 0,
+        "label": "Flores Sea",
+        "data": {
+          "title": "Explore Flores Sea",
+          "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
+          "image": "1.jpg",
+          "to": "#"
+        }
+      },{
+        "id": 1,
+        "label": "Raja Ampat",
+        "data": {
+          "title": "Explore Raja Ampat",
+          "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
+          "image": "1.jpg",
+          "to": "#"
+        }
+      }]
+    },
+    "card_text_image": [
+      {
+        "caption": "dining",
+        "heading": "Lorem Ipsum dolor",
+        "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
+        "image": "1.jpg",
+        "to": "#"
+      },{
+        "caption": "occasions",
+        "heading": "Lorem Ipsum dolor",
+        "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
+        "image": "2.jpg",
+        "to": "#"
+      }
+    ],
+    "card_text_image_small": [
+      {
+        "heading": "Raja Ampat",
+        "text": "The lair of the world-famous Komodo dragons. Swim in pristine lakes and waterfalls, dive at one of the 50 spectacular dive sites, go kayaking among craggy coasts and mangrove shores, explore mysterious caves and be warmly welcomed by the island’s people in their rituals, dances and daily life.",
+        "image": "3.jpg",
+        "to": "#"
+      },{
+        "heading": "Flores Sea",
+        "text": "Find wonders above and beyond waters, as well as on land and amidst the thick jungles in an archipelago comprising over 1,500 small islands, cays, and shoals surrounding the four main islands of Waigeo, Batanta, Salawati, and Misool.",
+        "image": "4.jpg",
+        "to": "#"
+      }
+    ]
+  }
+]
