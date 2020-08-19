@@ -1,12 +1,9 @@
 <template>
-  <div>
-    <template
-      v-for="(data, index) of store"
-      :class="sectionPading"
-    >
+  <div :class="sectionPading">
+    <div v-for="(data, index) of store" v-bind:key="index">
     <template name="intro">
-      <v-container class="my-sm-16 intro" tag="section" v-bind:key="index">
-        <tHeading
+      <v-container class="mb-sm-16 intro" tag="section">
+        <t-heading
           class="mx-auto"
           heading-justify="center"
           heading-class="text-center"
@@ -28,8 +25,8 @@
     </template>
 
     <template name="the vessel">
-      <v-container class="px-0 my-sm-16 overflow-visible" tag="section" v-bind:key="index">
-        <tCarousel
+      <v-container class="px-0 my-sm-16 overflow-visible" tag="section">
+        <t-carousel
           card-class="__hm_carousel_card"
           :data="data.carousel_card"
           button-class="pl-4"
@@ -48,33 +45,35 @@
               </v-img>
             </div>
           </template>
-        </tCarousel>
+        </t-carousel>
       </v-container>
     </template>
 
     <template name="voyages">
-      <v-container class="my-sm-16" tag="section" v-bind:key="index">
-        <div
-          class="mx-auto text-center mb-5"
-          style="width: 65.765765766%"
-        >
-          <v-row align="center" justify="center">
-            <v-tooltip bottom>
-              <template v-slot:activator="{on, attrs}">
-              <div
-                class="text-h4 text-sm-h3"
-                v-bind="attrs"
-                v-on="on"
-                v-text="data.tabs.heading"
-              />
-              </template>
-              <span v-text="data.tabs.heading" />
-            </v-tooltip>
-            <p class="mt-8 mt-md-3 mt-sm-5">
-              {{ data.tabs.text }}
-            </p>
-          </v-row>
-        </div>
+      <v-container class="my-sm-16" tag="section">
+        <client-only>
+          <div
+            class="mx-auto text-center mb-5"
+            style="width: 65.765765766%"
+          >
+            <v-row align="center" justify="center">
+              <v-tooltip bottom>
+                <template v-slot:activator="{on, attrs}">
+                <div
+                  class="text-h4 text-sm-h3"
+                  v-bind="attrs"
+                  v-on="on"
+                  v-text="data.tabs.heading"
+                />
+                </template>
+                <span v-text="data.tabs.heading" />
+              </v-tooltip>
+              <p class="mt-8 mt-md-3 mt-sm-5">
+                {{ data.tabs.text }}
+              </p>
+            </v-row>
+          </div>
+        </client-only>
         <tTabs
           button-text="learn more"
           :data="data.tabs.data"
@@ -84,7 +83,7 @@
     </template>
 
     <template name="dining">
-      <v-container class="my-sm-16" tag="section" v-bind:key="index">
+      <v-container class="my-sm-16" tag="section">
         <t-card-text-image
           v-bind:data="data.card_text_image[0]"
           v-bind:button-props="{
@@ -100,7 +99,7 @@
     </template>
 
     <template name="occasions">
-      <v-container class="my-sm-16" tag="section" v-bind:key="index">
+      <v-container class="my-sm-16" tag="section">
         <t-card-text-image
           :data="data.card_text_image[1]"
           v-bind:button-props="{
@@ -114,9 +113,9 @@
     </template>
 
     <template name="destination">
-      <t-divider data="The Destinations" v-bind:key="index" />
+      <t-divider data="The Destinations" />
 
-      <v-container class="my-sm-16" tag="section" v-bind:key="index">
+      <v-container class="my-sm-16" tag="section">
         <t-card-text-image
           v-bind:data="data.card_text_image_small[0]"
           v-bind:button-props="{
@@ -129,7 +128,7 @@
         />
       </v-container>
 
-      <v-container class="my-sm-16" tag="section" v-bind:key="index">
+      <v-container class="my-sm-16" tag="section">
         <t-card-text-image
           v-bind:data="data.card_text_image_small[1]"
           v-bind:button-props="{
@@ -144,21 +143,23 @@
         />
       </v-container>
 
-      <v-row align="center" justify="center" class="mt-5 mt-sm-8 mt-md-10 mt-lg-14" v-bind:key="index">
-        <t-button
-          class="btn-l"
-          v-text="'read more stories'"
-          :props="{
-            outlined: true,
-            tile: true,
-            color: 'primary',
-            width: 'auto',
-            to: '#'
-          }"
-        />
-      </v-row>
+      <client-only>
+        <v-row align="center" justify="center" class="mt-5 mt-sm-8 mt-md-10 mt-lg-14">
+          <t-button
+            class="btn-l"
+            v-text="'read more stories'"
+            :props="{
+              outlined: true,
+              tile: true,
+              color: 'primary',
+              width: 'auto',
+              to: '#'
+            }"
+          />
+        </v-row>
+      </client-only>
     </template>
-    </template>
+    </div>
   </div>
 </template>
 
@@ -241,7 +242,7 @@ export default {
   .__img_stamp_brown {
     display: none;
 
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       display: inline-block;
       position: absolute;
       top: -3.532rem;
@@ -259,9 +260,9 @@ export default {
   }
 
   ::v-deep .__hm_carousel_card {
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       padding: 35px 13px 36px !important;
-      top: 0 !important;
+      top: 10% !important;
       right: 0;
       z-index: 5;
       max-width: 47.135416667%;
@@ -269,7 +270,7 @@ export default {
 
     @media (min-width: 960px) {
       padding: 35px 13px 36px !important;
-      top: 0 !important;
+      top: 15% !important;
       right: 0;
       z-index: 5;
       max-width: 40.09009009%;
@@ -278,17 +279,11 @@ export default {
     @media (min-width: 1264px) {
       padding: 38px 34px 62px !important;
       // top: -450px !important;
-      top: 0 !important;
+      top: 15% !important;
       right: 0;
       z-index: 5;
-    }
-
-    @media (min-width: 1904px) {
-      // top: -600px !important;
-      top: 0 !important;
-      place-self: start !important;
     }
   }
 </style>
 
-<style module src="~/assets/styles/css/_utilities.module.css" />
+<style module src="~/assets/styles/css/_utilities.module.css"></style>

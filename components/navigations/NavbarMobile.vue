@@ -1,6 +1,5 @@
 <template>
   <v-app-bar
-    z-in
     class="hidden-md-and-up"
     clipped-left
     fixed

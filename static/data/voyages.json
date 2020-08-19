@@ -1,0 +1,30 @@
+{
+  "tabs":{
+    "data": [
+      {
+        "id": 0,
+        "label": "Main Deck",
+        "data": {
+          "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
+          "image": "tabs/layout-deck-1.png"
+        }
+      },
+      {
+        "id": 1,
+        "label": "Lower Deck",
+        "data": {
+          "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
+          "image": "tabs/layout-deck-2.png"
+        }
+      },
+      {
+        "id": 2,
+        "label": "Bridge Deck",
+        "data": {
+          "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
+          "image": "tabs/layout-deck-3.png"
+        }
+      }
+    ]
+  }
+}

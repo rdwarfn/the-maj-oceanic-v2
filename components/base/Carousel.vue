@@ -1,9 +1,8 @@
 <template>
   <div
-    class="__carousel align-center d-flex relative static"
+    class="__carousel align-center d-flex static"
     :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
   >
-    <!-- <client-only> -->
     <swiper
       ref="swiper"
       class="swiper"
@@ -24,24 +23,13 @@
           class="__carousel--img static"
           :class="cardImageClass"
         />
-          <!-- :width="getWidthImg" -->
-        <!-- <v-img
-          v-bind:src="staticImage
-            ? require(`~/assets/images/${item.image}`)
-            : item.image"
-          v-bind:lazy-src="staticImage
-            ? require(`~/assets/images/${item.image}`)
-            : item.image"
-          v-bind:aspect-ratio="16/9"
-          class="__carousel--img"
-        ></v-img> -->
-          <!-- v-bind:max-width="getWidthImg" -->
       </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
       <v-btn
         fab
+        absolute
         x-small
-        class="button--left"
+        class="button--left swiper-button-prev"
         color="white"
         slot="button-prev"
       >
@@ -49,150 +37,119 @@
       </v-btn>
       <v-btn
         fab
+        absolute
         x-small
-        class="button--right"
+        class="button--right swiper-button-next"
         color="white"
         slot="button-next"
       >
         <v-icon color="primary">mdi-chevron-right</v-icon>
       </v-btn>
     </swiper>
-    <!-- </client-only> -->
 
     <client-only>
-    <v-card
-      elevation="3"
-      v-if="Object.keys(dataActive).length"
-      class="__carousel--card static"
-      v-bind:class="cardClass"
-      v-bind:rounded="false"
-      v-bind:height="cardHeight"
-      v-bind:width="cardWidth"
-      v-bind:max-height="cardMaxHeight"
-    >
-      <slot v-if="!isXs" name="image-extra"></slot>
-      <v-tooltip right>
-      <template v-slot:activator="{on, attrs}">
-
-        <v-card-subtitle
-          v-if="dataActive.caption"
-          v-bind="attrs"
-          v-on="on"
-          class="text-h6 __txt_primary static"
-          :class="captionClass"
-        >
-          {{ dataActive.caption }}
-        </v-card-subtitle>
-
-      </template>
-      <span>{{ dataActive.caption }}</span>
-      </v-tooltip>
-
-      <v-tooltip right>
-      <template v-slot:activator="{on, attrs}">
-
-        <v-card-title
-          v-bind="attrs"
-          v-on="on"
-          class="text-h4 text-md-h3 font-weight-bold text-truncate static"
-          :class="headingClass"
-        >
-          {{ dataActive.heading }}
-        </v-card-title>
-
-      </template>
-      <span>{{ dataActive.heading }}</span>
-      </v-tooltip>
-
-      <v-card-text
-        class="__txt_base static"
-        :class="textClass"
+      <v-card
+        elevation="3"
+        v-if="Object.keys(dataActive).length"
+        class="__carousel--card static"
+        v-bind:class="cardClass"
+        v-bind:rounded="false"
+        v-bind:height="cardHeight"
+        v-bind:width="cardWidth"
+        v-bind:max-height="cardMaxHeight"
       >
-        {{ dataActive.text }}
+        <slot v-if="!isXs" name="image-extra"></slot>
+        <v-tooltip bttom>
+        <template v-slot:activator="{on, attrs}">
 
-        <ul class="__carousel--card-list" v-if="dataActive.list">
-          <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
-            {{i}}
-          </li>
-        </ul>
-      </v-card-text>
-
-      <v-card-actions :class="buttonClass">
-        <v-hover
-          v-slot:default="{hover}"
-        >
-          <v-btn
-            v-bind:outlined="!hover"
-            color="primary"
-            class="btn-l"
-            elevation="0"
-            nuxt
+          <v-card-subtitle
+            v-if="dataActive.caption"
+            v-bind="attrs"
+            v-on="on"
+            class="text-h6 __txt_primary static"
+            :class="captionClass"
           >
-            {{ buttonText }}
-          </v-btn>
-        </v-hover>
-      </v-card-actions>
-    </v-card>
+            {{ dataActive.caption }}
+          </v-card-subtitle>
+
+        </template>
+        <span>{{ dataActive.caption }}</span>
+        </v-tooltip>
+
+        <v-tooltip bottom>
+        <template v-slot:activator="{on, attrs}">
+
+          <v-card-title
+            v-bind="attrs"
+            v-on="on"
+            class="text-h4 text-md-h3 text-truncate static"
+            :class="headingClass"
+          >
+            {{ dataActive.heading }}
+          </v-card-title>
+
+        </template>
+        <span>{{ dataActive.heading }}</span>
+        </v-tooltip>
+
+        <v-card-text
+          class="__txt_base static"
+          :class="textClass"
+        >
+          {{ dataActive.text }}
+
+          <ul class="__carousel--card-list" v-if="dataActive.list">
+            <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
+              {{i}}
+            </li>
+          </ul>
+        </v-card-text>
+
+        <v-card-actions :class="buttonClass">
+          <t-button
+            class="btn-l"
+            v-bind:props="{
+              color: 'primary',
+              outlined: true,
+              to: dataActive.to,
+              ...buttonProps
+            }"
+            v-text="buttonText"
+          />
+        </v-card-actions>
+      </v-card>
     </client-only>
   </div>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import tButton from '@/components/base/Button.vue';
 const components = {
   Swiper,
-  SwiperSlide
+  SwiperSlide,
+  tButton
 }
 
 export default {
   name: 'Carousel',
 
   props: {
-    data: {
-      type: Array
-    },
-    staticImage: {
-      type: Boolean,
-      default: false
-    },
-    maxHeight: {
-      type: String,
-      default: '446'
-    },
-    cardClass: {
-      type: String
-    },
-    cardHeight: {
-      type: String,
-    },
-    cardWidth: {
-      type: String
-    },
-    cardMaxHeight: {
-      type: String
-    },
-    cardImageClass: {
-      type: String
-    },
-    captionClass: {
-      type: String
-    },
-    headingClass: {
-      type: String
-    },
-    textClass: {
-      type: String
-    },
-    buttonClass: {
-      type: String
-    },
-    buttonText: {
-      type: String
-    },
-    reverse: {
-      type: Boolean,
-      default: false
-    }
+    data: { type: Array },
+    staticImage: { type: Boolean, default: false },
+    maxHeight: { type: String, default: '446'},
+    cardClass: { type: String },
+    cardHeight: { type: String },
+    cardWidth: { type: String },
+    cardMaxHeight: { type: String },
+    cardImageClass: { type: String },
+    captionClass: { type: String },
+    headingClass: { type: String },
+    textClass: { type: String },
+    buttonClass: { type: String },
+    buttonText: { type: String },
+    buttonProps: { type: Object },
+    reverse: { type: Boolean }
   },
 
   components,
@@ -244,16 +201,6 @@ export default {
       return this.$vuetify.breakpoint.xs;
     },
 
-    getWidthImg () {
-      switch (this.$vuetify.breakpoint.name) {
-        case "xs": return '100%';
-        case "sm": return '71.354166667%';
-        case "md": return '65.765765766%';
-        case "lg": return '65.765765766%';
-        default: return '65.765765766%';
-      }
-    },
-
     debug () {
       return this.$vuetify.breakpoint.name;
     }
@@ -276,9 +223,6 @@ export default {
   $transition-time-normal: .5s;
   $white: #ffffff;
 
-  .relative {
-    position: relative;
-  }
   .__txt_primary {
     color: $primary !important;
   }
@@ -295,11 +239,12 @@ export default {
   }
 
   .__carousel {
+    position: relative;
     margin: {
       top: auto !important;
       bottom: auto !important;
     }
-    @media (min-width: 767px) {
+    @media (min-width: 600px) {
       margin-bottom: 50px !important;
     }
 
@@ -311,19 +256,25 @@ export default {
       right: 0;
       margin: {
         top: 40px !important;
+        right: auto !important;
+        left: auto !important;
         bottom: 0 !important;
       }
 
       .reversed & {
         margin: {
           top: 0 !important;
+          right: auto !important;
+          left: auto !important;
           bottom: 40px !important;
         }
       }
 
-      @media (min-width: 768px)  {
+      @media (min-width: 600px)  {
         margin: {
           top: 0 !important;
+          right: 0 !important;
+          left: 0 !important;
           bottom: 0 !important;
         }
         position: absolute;
@@ -332,6 +283,8 @@ export default {
       @media (min-width: 960px) {
         margin: {
           top: 0 !important;
+          right: 0 !important;
+          left: 0 !important;
           bottom: 0 !important;
         }
         position: absolute;
@@ -344,13 +297,37 @@ export default {
           margin-bottom: 11px !important;
         }
       }
+
+      ::v-deep a.v-btn {
+        font-weight: bold !important;
+        &.primary {
+          color: white !important;
+          caret-color: white !important;
+          &:hover {
+            color: $primary !important;
+            caret-color: $primary !important;
+            border: thin solid $primary !important;
+            background-color: white !important;
+          }
+        }
+
+        &--outlined {
+          &.primary--text {
+            &:hover {
+              color: white !important;
+              background-color: $primary !important;
+              border-color: $primary !important;
+            }
+          }
+        }
+      }
     }
 
     &--img {
       width: 100%;
       height: auto;
 
-      @media (min-width: 768px) {
+      @media (min-width: 600px) {
         max-width: 71.354166667%;
       }
 
@@ -360,21 +337,16 @@ export default {
     }
 
     .swiper {
-      .button--left, .button--right {
-        display: none !important;
-        @media (min-width: 768px) {
-          display: inline-block !important;
-        }
-      }
+      padding-bottom: 30px !important;
       .swiper-zoom-container {
         height: 664px !important;
         justify-content: flex-start;
       }
       .swiper-pagination-bullets {
-        bottom: 0px;
+        bottom: -5px;
         width: 100%;
 
-        @media (min-width: 768px) {
+        @media (min-width: 600px) {
           max-width: 71.354166667%;
         }
 
@@ -402,16 +374,6 @@ export default {
         }
       }
       ::v-deep .v-btn {
-        bottom: 50px;
-        z-index: 4;
-
-        &.button--left {
-          left: 24px;
-        }
-
-        &.button--right {
-          left: 48px;
-        }
 
         &:hover {
           background-color: $primary !important;
@@ -432,6 +394,31 @@ export default {
             background-color: transparent !important;
           }
         }
+      }
+
+      .button--left, .button--right {
+        display: none !important;
+        top: 80% !important;
+        @media (min-width: 600px) {
+          display: inline-block !important;
+        }
+      }
+
+      .swiper-button-next, .swiper-button-prev {
+        opacity: 1 !important;
+        &::after {
+          content: none !important;
+        }
+      }
+
+      .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+        left: 24px !important;
+        right: auto;
+      }
+
+      .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+        left: 80px !important;
+        right: auto;
       }
     }
   }

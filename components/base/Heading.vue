@@ -1,52 +1,54 @@
 <template>
   <div class="container">
-    <v-row v-if="data.caption" align="center" :justify="captionJustify" class="mb-3">
-      <div
-        class="text-h5 static"
-        :class="captionClass"
-        v-text="data.caption"
-      />
-    </v-row>
-    <v-row align="center" :justify="headingJustify" class="fill-height mb-3">
-      <v-skeleton-loader
-        type="heading"
-        :loading="loading"
-        :transition="transition"
-        max-width="100%"
-      >
+    <client-only>
+      <v-row v-if="data.caption" align="center" :justify="captionJustify" class="mb-3">
         <div
-          :title="data.heading"
-          v-text="data.heading"
-          class="text-h4 text-md-h3 font-weight-bold static"
-          :class="headingClass"
+          class="text-h5 static"
+          :class="captionClass"
+          v-text="data.caption"
         />
-      </v-skeleton-loader>
-    </v-row>
-    <v-row v-if="data.text" align="center" :justify="textJustify" class="fill-height">
-      <v-skeleton-loader
-        type="paragraph"
-        :loading="loading"
-        :transition="transition"
-        max-width="100%"
-      >
-        <p
-          :class="[textClass, $style.whitespace_pre_line]"
-          :title="data.text"
+      </v-row>
+      <v-row align="center" :justify="headingJustify" class="fill-height mb-3">
+        <v-skeleton-loader
+          type="heading"
+          :loading="loading"
+          :transition="transition"
+          max-width="100%"
         >
-          {{ data.text }}
-        </p>
-      </v-skeleton-loader>
-    </v-row>
-    <v-row v-if="data.list">
-      <ul :class="listClass">
-        <li
-          v-for="(item, index) in data.list.split('\n')"
-          :key="index"
-          :title="item"
-          v-text="item"
-        />
-      </ul>
-    </v-row>
+          <div
+            :title="data.heading"
+            v-text="data.heading"
+            class="text-h4 text-md-h3 font-weight-medium static"
+            :class="headingClass"
+          />
+        </v-skeleton-loader>
+      </v-row>
+      <v-row v-if="data.text" align="center" :justify="textJustify" class="fill-height">
+        <v-skeleton-loader
+          type="paragraph"
+          :loading="loading"
+          :transition="transition"
+          max-width="100%"
+        >
+          <p
+            class="text--primary"
+            :class="[textClass, $style.whitespace_pre_line]"
+          >
+            {{ data.text }}
+          </p>
+        </v-skeleton-loader>
+      </v-row>
+      <v-row v-if="data.list">
+        <ul :class="listClass">
+          <li
+            v-for="(item, index) in data.list.split('\n')"
+            :key="index"
+            :title="item"
+            v-text="item"
+          />
+        </ul>
+      </v-row>
+    </client-only>
   </div>
 </template>
 

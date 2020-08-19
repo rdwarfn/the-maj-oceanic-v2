@@ -35,6 +35,11 @@ export default {
   /*
   ** Global CSS
   */
+  styleResources: {
+    scss: [
+      './assets/styles/scss/_poly-fluid-sizing.scss'
+    ]
+  },
   css: [
     '@/assets/styles/css/main.css',
   ],
@@ -62,6 +67,7 @@ export default {
   */
   buildModules: [
     '@nuxtjs/vuetify',
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Nuxt.js modules
@@ -102,37 +108,37 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-    loader: {
-      cssModules: {
-        modules: {
-          compileType: 'module',
-          mode: 'local',
-          auto: true,
-          exportOnlyLocals: true,
-          localIndentName: '[path][name]__[local]--[hash:base64:5]'
-        }
-      }
-    },
-    cssSourceMap: true,
-    postcss: {
-      plugins: {
-        'postcss-url': {},
-        'postcss-import': {},
-        'postcss-nesting': {}
-      }
-    },
-    extractCSS: true,
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    }
+    // loader: {
+    //   cssModules: {
+    //     modules: {
+    //       compileType: 'module',
+    //       mode: 'local',
+    //       auto: true,
+    //       exportOnlyLocals: true,
+    //       localIndentName: '[path][name]__[local]--[hash:base64:5]'
+    //     }
+    //   }
+    // },
+    // cssSourceMap: true,
+    // postcss: {
+    //   plugins: {
+    //     'postcss-url': {},
+    //     'postcss-import': {},
+    //     'postcss-nesting': {}
+    //   }
+    // },
+    // extractCSS: true,
+    // optimization: {
+    //   splitChunks: {
+    //     cacheGroups: {
+    //       styles: {
+    //         name: 'styles',
+    //         test: /\.(css|vue)$/,
+    //         chunks: 'all',
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // }
   }
 }

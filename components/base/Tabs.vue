@@ -1,6 +1,10 @@
 <template>
   <v-row class="__tab" ref="tabsRef">
-    <v-tabs v-bind:centered="tabsCenter ? tabsCenter : isSmDown">
+    <v-tabs
+      background-color="transparent"
+      v-bind:centered="tabsCenter ? tabsCenter : isSmDown"
+      :light="false"
+    >
       <v-tabs-slider color="primary"></v-tabs-slider>
         <v-tab
           v-for="item in data"
@@ -26,52 +30,56 @@
         v-bind:key="item.label"
         class="mt-7"
       >
-        <v-card flat>
-          <div
-            class="d-flex justify-space-between align-center __tab-item static"
-            v-bind:class="{reversed: reverse}"
-          >
-            <v-img
-              class="__tab--img"
-              v-bind:src="staticImage ? require(`~/assets/images/tabs/${item.data.image}`) : item.data.image"
-              v-bind:lazy-src="staticImage ? require(`~/assets/images/tabs/${item.data.image}`) : item.data.image"
-              v-bind:aspect-ratio="16/9"
-            ></v-img>
-            <div class="__tab--content">
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                <v-card-title
-                  class="text-h4 text-capitalize"
-                  v-text="item.data.title"
-                  v-bind="attrs"
-                  v-on="on"
-                />
-                </template>
-                <span class="text-capitalize" v-text="item.data.title" />
-              </v-tooltip>
+        <slot v-bind:data-tab="item.data">
+          <client-only>
+            <v-card flat>
+              <div
+                class="d-flex justify-space-between align-center __tab-item static"
+                v-bind:class="{reversed: reverse}"
+              >
+                <v-img
+                  class="__tab--img"
+                  v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
+                  v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
+                  v-bind:aspect-ratio="16/9"
+                ></v-img>
+                <div class="__tab--content">
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{on, attrs}">
+                    <v-card-title
+                      class="text-h4 text-capitalize"
+                      v-text="item.data.title"
+                      v-bind="attrs"
+                      v-on="on"
+                    />
+                    </template>
+                    <span class="text-capitalize" v-text="item.data.title" />
+                  </v-tooltip>
 
-              <v-card-text>
-                {{ item.data.text }}
-              </v-card-text>
+                  <v-card-text>
+                    {{ item.data.text }}
+                  </v-card-text>
 
-              <v-card-actions v-bind:class="buttonClass">
-                <v-hover v-slot:default="{hover}">
-                  <v-btn
-                    v-bind:outlined="!hover"
-                    v-bind:to="item.data.to"
-                    class="btn-l"
-                    color="primary"
-                    tile
-                    depressed
-                    nuxt
-                  >
-                    {{ buttonText }}
-                  </v-btn>
-                </v-hover>
-              </v-card-actions>
-            </div>
-          </div>
-        </v-card>
+                  <v-card-actions v-bind:class="buttonClass">
+                    <v-hover v-slot:default="{hover}">
+                      <v-btn
+                        v-bind:outlined="!hover"
+                        v-bind:to="item.data.to"
+                        class="btn-l"
+                        color="primary"
+                        tile
+                        depressed
+                        nuxt
+                      >
+                        {{ buttonText }}
+                      </v-btn>
+                    </v-hover>
+                  </v-card-actions>
+                </div>
+              </div>
+            </v-card>
+          </client-only>
+        </slot>
       </v-tab-item>
     </v-tabs>
   </v-row>
@@ -100,6 +108,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+::v-deep .theme--light.v-tabs-items {
+  background-color: transparent !important;
+}
 .__tab {
   clear: both !important;
   ::v-deep .v-tabs {
@@ -122,21 +133,21 @@ export default {
   &-item {
     flex-direction: row;
     flex-wrap: wrap;
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       flex-wrap: unset;
     }
 
     &.reversed {
       flex-direction: row-reverse;
       flex-wrap: wrap-reverse;
-      @media (min-width: 768px) {
+      @media (min-width: 600px) {
         flex-wrap: unset;
       }
 
       .__tab--content {
         margin-top: unset !important;
         margin-bottom: 16px;
-        @media (min-width: 768px) {
+        @media (min-width: 600px) {
           margin-left: unset;
           margin: {
             right: 10.22px !important;
@@ -162,7 +173,7 @@ export default {
         }
       }
       margin-top: 16px;
-      @media (min-width: 768px) {
+      @media (min-width: 600px) {
         margin: {
           top: 0 !important;
           left: 10.22px !important;
@@ -180,7 +191,7 @@ export default {
       width: 100%;
       height: auto;
       max-width: unset;
-      @media (min-width: 768px) {
+      @media (min-width: 600px) {
         // max-width: 51.351351351%;
         max-width: 50%;
         max-height: 100%;

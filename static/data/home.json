@@ -30,7 +30,7 @@
         "data": {
           "title": "Explore Flores Sea",
           "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
-          "image": "1.jpg",
+          "image": "tabs/1.jpg",
           "to": "#"
         }
       },{
@@ -39,7 +39,7 @@
         "data": {
           "title": "Explore Raja Ampat",
           "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
-          "image": "1.jpg",
+          "image": "tabs/1.jpg",
           "to": "#"
         }
       }]
@@ -49,13 +49,13 @@
         "caption": "dining",
         "heading": "Lorem Ipsum dolor",
         "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
-        "image": "1.jpg",
+        "image": "card/1.jpg",
         "to": "#"
       },{
         "caption": "occasions",
         "heading": "Lorem Ipsum dolor",
         "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
-        "image": "2.jpg",
+        "image": "card/2.jpg",
         "to": "#"
       }
     ],
@@ -63,12 +63,12 @@
       {
         "heading": "Raja Ampat",
         "text": "The lair of the world-famous Komodo dragons. Swim in pristine lakes and waterfalls, dive at one of the 50 spectacular dive sites, go kayaking among craggy coasts and mangrove shores, explore mysterious caves and be warmly welcomed by the island’s people in their rituals, dances and daily life.",
-        "image": "3.jpg",
+        "image": "card/3.jpg",
         "to": "#"
       },{
         "heading": "Flores Sea",
         "text": "Find wonders above and beyond waters, as well as on land and amidst the thick jungles in an archipelago comprising over 1,500 small islands, cays, and shoals surrounding the four main islands of Waigeo, Batanta, Salawati, and Misool.",
-        "image": "4.jpg",
+        "image": "card/4.jpg",
         "to": "#"
       }
     ]

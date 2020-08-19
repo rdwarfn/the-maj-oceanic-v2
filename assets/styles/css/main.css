@@ -17,45 +17,55 @@ label {
   font-size: 13px !important;
 }
 
-button {
-  font-family: 'Verlag Bold', sans-serif !important;
+button.v-btn {
+  font-size: 13px !important;
   font-weight: bold !important;
-  font-size: 17px;
-
-  &.btn-s {
-    font-size: 13px !important;
-  }
-
-  &.btn-l {
-    font-size: 12px !important;
-    letter-spacing: 2px;
-    width: 160px;
-  }
+  line-height: 18px !important;
+  font-family: 'Verlag Bold', sans-serif !important;
+}
+button.btn-s {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  line-height: 18px !important;
+  font-family: 'Verlag Bold', sans-serif !important;
+}
+button.btn-l {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  line-height: 18px !important;
+  font-family: 'Verlag Bold', sans-serif !important;
 }
 
 a {
-  text-decoration: none;
+  text-decoration: none !important;
   color: inherit !important;
-  &::before {
-    background-color: unset !important;
-  }
-  &.v-btn {
-    font-size: 12px !important;
-    letter-spacing: 2px;
+  -webkit-user-drag: none !important;
+  user-drag: none;
+}
+a::before {
+  background-color: unset !important;
+}
+a.v-btn {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  line-height: 18px !important;
+  font-family: 'Verlag Bold', sans-serif !important;
+}
+a.btn-s {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  line-height: 18px !important;
+  font-family: 'Verlag Bold', sans-serif !important;
+}
+a.btn-l {
+  font-size: 12px !important;
+  font-weight: bold !important;
+  line-height: 18px !important;
+}
 
-    &.btn-s {
-      font-size: 13px !important;
-    }
-
-    &.btn-l {
-      font-family: 'Verlag Bold', sans-serif !important;
-      font-weight: bold !important;
-      font-size: 12px !important;
-      letter-spacing: 2px;
-      min-width: 160px !important;
-      color: unset;
-    }
-  }
+ul {
+  padding-left: inherit !important;
+  list-style: none !important;
 }
 
 .page-enter-active, .page-leave-active {

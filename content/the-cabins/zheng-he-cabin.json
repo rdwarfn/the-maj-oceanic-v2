@@ -1,0 +1,40 @@
+{
+  "caption": "Presidential suite",
+  "heading": "Lorem Dulur sit Amit",
+  "text": "Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit. ",
+  "image": "large/2.jpg",
+  "card_text_image": [
+    {
+      "heading": "Duis commodo",
+      "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
+      "image": "card/6.jpg",
+      "to": "/#"
+    },{
+      "heading": "Duis commodo",
+      "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
+      "image": "card/7.jpg",
+      "to": "/#"
+    }
+  ],
+  "carousel_three_image": {
+    "caption": "the cabins",
+    "heading": "Be inspired by the ancient seamen",
+    "data": [{
+        "id": 0,
+        "image": "card/three/1.jpg",
+        "heading": "Zheng He",
+        "to": "#"
+      },{
+        "id": 1,
+        "image": "card/three/2.jpg",
+        "heading": "Christopher Columbus",
+        "to": "#"
+      },{
+        "id": 2,
+        "image": "card/three/3.jpg",
+        "heading": "Ibn Battuta",
+        "to": "#"
+      }
+    ]
+  }
+}

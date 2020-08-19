@@ -8,7 +8,6 @@
       <swiper-slide
         v-for="item in data"
         v-bind:key="item.id"
-        keep-alive
       >
         <div class="d-flex flex-column text-center">
           <v-img
@@ -20,20 +19,21 @@
               : item.image"
             class="__carousel-three--img"
           ></v-img>
-          <!-- <img
-            :src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            :alt="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-          > -->
           <tHeading
             class="__carousel-three--head"
-            heading-class=""
+            :heading-class="headingClass"
             heading-justify="center"
             text-justify="center"
             :data="item"
+          />
+          <t-button
+            v-if="buttonText"
+            v-bind:class="buttonClass"
+            v-text="buttonText"
+            v-bind:props="{
+              to: item.to,
+              ...buttonProps
+            }"
           />
         </div>
       </swiper-slide>
@@ -65,10 +65,12 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import tHeading from '@/components/base/Heading.vue';
+import tButton from '@/components/base/Button.vue';
 const components = {
   Swiper,
   SwiperSlide,
-  tHeading
+  tHeading,
+  tButton
 }
 export default {
   name: 'CarouselThree',
@@ -76,35 +78,20 @@ export default {
   components,
 
   props: {
-    "static-image": {
-      type: Boolean,
-      default: true
-    }
+    headingClass: { type: String },
+    buttonText: { type: String },
+    buttonClass: { type: String },
+    buttonProps: { type: Object },
+    data: {
+      type: Array
+    },
+    staticImage: {
+      type: Boolean
+    },
   },
 
   data () {
     return {
-      data: [{
-        "id": 0,
-        "image": "carousel/card/3.jpg",
-        "heading": "Christophe Beltrando",
-        "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
-      },{
-        "id": 1,
-        "image": "carousel/card/4.jpg",
-        "heading": "Mohammad Arief",
-        "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
-      },{
-        "id": 2,
-        "image": "carousel/card/5.jpg",
-        "heading": "Syamsudin",
-        "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
-      },{
-        "id": 3,
-        "image": "carousel/card/3.jpg",
-        "heading": "Christophe Beltrando",
-        "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
-      }],
       swiperOption: {
         lazy: true,
         pagination: {
@@ -125,7 +112,7 @@ export default {
           spaceBetween: 20
         },
         // when window width is >= 480px
-        768: {
+        600: {
           slidesPerView: 3,
           spaceBetween: 30
         }
@@ -137,74 +124,98 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~/assets/styles/scss/_poly-fluid-sizing.scss';
-$primary:#208CB2;
-$size: 12px;
-$secondary: #4E5E79;
-$white: #ffffff;
+  $primary:#208CB2;
+  $size: 12px;
+  $secondary: #4E5E79;
+  $white: #ffffff;
 
-.__carousel-three {
-  &--head {
-    margin-top: 24px !important;
-    @include poly-fluid-sizing('max-width', (768px:233px, 1204px:350px));
-  }
+  .__carousel-three {
+    &--head {
+      margin-top: 24px !important;
+      @include poly-fluid-sizing('max-width', (600px:233px, 1204px:350px));
+    }
 
-  &--img {
-    margin-left: auto;
-    margin-right: auto;
-
-    @include poly-fluid-sizing('max-width', (320px: 86.66666666666667%, 768px:100%));
-  }
-}
-.swiper {
-  padding-bottom: 30px !important;
-  .button--left, .button--right {
-    display: none !important;
-    top: 35%;
-    @media (min-width: 768px) {
-      display: flex !important;
-      z-index: 10 !important;
+    &--img {
+      margin-left: auto;
+      margin-right: auto;
+      // @include poly-fluid-sizing('max-width', (320px:325px, 600px:233px, 960px:350px));
     }
   }
 
-  .swiper-pagination-bullets {
-    bottom: -5px;
-  }
-  ::v-deep .swiper-pagination-bullet-custom {
-    width: $size !important;
-    height: $size !important;
-    line-height: $size !important;
-    text-align: center;
-    color: $secondary;
-    opacity: 0.25;
-    background: $secondary;
-
-    &:hover {
-      opacity: 1;
+  .swiper {
+    padding-bottom: 30px !important;
+    .button--left, .button--right {
+      display: none !important;
+      top: 35%;
+      @media (min-width: 600px) {
+        display: flex !important;
+        z-index: 10 !important;
+      }
     }
 
-    &.swiper-pagination-bullet-active {
-      opacity: 1;
-      color: $white;
-      background: $primary;
+    .swiper-pagination-bullets {
+      bottom: -5px;
     }
-  }
-  ::v-deep .v-btn {
+    ::v-deep .swiper-pagination-bullet-custom {
+      width: $size !important;
+      height: $size !important;
+      line-height: $size !important;
+      text-align: center;
+      color: $secondary;
+      opacity: 0.25;
+      background: $secondary;
 
-    &:hover {
-      background-color: $white !important;
-      border-color: $white !important;
-      .v-icon {
-        color: $primary !important;
-        caret-color: $primary !important;
+      &:hover {
+        opacity: 1;
+      }
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        color: $white;
+        background: $primary;
+      }
+    }
+
+    ::v-deep .v-btn {
+      &:hover {
+        background-color: $white !important;
+        border-color: $white !important;
+        .v-icon {
+          color: $primary !important;
+          caret-color: $primary !important;
+        }
+      }
+    }
+
+    ::v-deep a.v-btn {
+      font-weight: bold !important;
+      &.primary {
+        color: white !important;
+        caret-color: white !important;
+        &:hover {
+          color: $primary !important;
+          caret-color: $primary !important;
+          border: thin solid $primary !important;
+          background-color: white !important;
+        }
+      }
+
+      &--outlined {
+        &.primary--text {
+          &:hover {
+            color: white !important;
+            background-color: $primary !important;
+            border-color: $primary !important;
+          }
+        }
+      }
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      opacity: 1 !important;
+      &::after {
+        content: none;
       }
     }
   }
-  .swiper-button-next, .swiper-button-prev {
-    opacity: 1 !important;
-    &::after {
-      content: none;
-    }
-  }
-}
 </style>

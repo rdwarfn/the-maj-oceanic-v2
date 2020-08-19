@@ -1,12 +1,18 @@
 <template>
   <v-app>
+    <tNavigationMobile>
+      <template v-slot:button-nav-icon>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      </template>
+    </tNavigationMobile>
     <v-navigation-drawer
       title="navigation drawer"
       v-model="drawer"
       :mini-variant="false"
       class="hidden-md-and-up"
-      clipped
-      fixed
+      style="z-index: 20"
+      color="#EFE1DC"
+      temporary
       width="100%"
       app
     >
@@ -14,6 +20,7 @@
         <v-list-item
           v-for="(item, i) in navigation.data"
           :key="i"
+          v-on:click.prevent="drawer = false"
           :to="item.to"
           router
           exact
@@ -34,21 +41,13 @@
       :loading="false"
     />
 
-    <tNavigationMobile>
-      <template v-slot:button-nav-icon>
-        <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      </template>
-    </tNavigationMobile>
-
     <t-carousel-banner
       :data="carouselBanner.data"
       :loading="false"
       static-image
     ></t-carousel-banner>
 
-    <main
-      class="justify-center py-10 clearfix"
-      style="border: 1px solid black"
+    <main class="justify-center py-10 mb-4"
       v-intersect="{
         handler: onIntersect,
         options: {
@@ -89,18 +88,6 @@ export default {
       isIntersecting: false,
       mini_variant: false,
       drawer: false,
-      drawer_store: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
-        },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
       navigation: {
         data: [],
         isLoaded: false
@@ -142,14 +129,6 @@ export default {
 </script>
 
 <style scoped>
-.clearfix:after{
-  content:".";
-  display:block;
-  height:0;
-  clear:both;
-  visibility:hidden;
-}
-
 ::v-deep .v-app-bar.v-app-bar--fixed {
   z-index: 10 !important;
 }

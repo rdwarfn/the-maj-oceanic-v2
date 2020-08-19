@@ -53,19 +53,35 @@
         "to": "#"
       }
     ],
+    "carousel_three": [{
+      "id": 0,
+      "image": "carousel/card/3.jpg",
+      "heading": "Christophe Beltrando",
+      "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
+    },{
+      "id": 1,
+      "image": "carousel/card/4.jpg",
+      "heading": "Mohammad Arief",
+      "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
+    },{
+      "id": 2,
+      "image": "carousel/card/5.jpg",
+      "heading": "Syamsudin",
+      "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
+    },{
+      "id": 3,
+      "image": "carousel/card/3.jpg",
+      "heading": "Christophe Beltrando",
+      "text": "Hemmed by jungle and lulled by the lap of the Indian Ocean, the hotel is rich in island spirit "
+    }],
     "card_text_image": [
       {
-        "caption": "dining",
+        "caption": "Sustainability",
         "heading": "Lorem Ipsum dolor",
-        "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
-        "image": "1.jpg",
-        "to": "#"
-      },{
-        "caption": "occasions",
-        "heading": "Lorem Ipsum dolor",
-        "text": "Reprehenderit enim exercitation eu laboris ea deserunt sunt proident. Ut officia aliqua voluptate commodo magna officia Lorem dolor consectetur eiusmod do enim est exercitation.",
-        "image": "2.jpg",
-        "to": "#"
+        "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. Proident irure proident eiusmod voluptate velit aliquip velit est minim cillum consequat excepteur aliquip esse. Quis adipisicing commodo voluptate esse culpa.",
+        "image": "card/5.jpg",
+        "list": "Lorem ipsum dolor sit amet\nLaboris lar aliquip\nLorem ipsum dolor sit amet\nLaboris lar aliquip",
+        "to": "/#"
       }
     ]
   }

@@ -15,13 +15,13 @@
     </v-row>
     <v-row justify="center" class="mt-16">
       <template
-        v-for="(item) in data.data"
+        v-for="(item, index) in data.data"
       >
         <v-col
           cols="12"
           sm="4"
           md="4"
-          v-bind:key="item"
+          v-bind:key="index"
           class="text-center"
         >
           <v-img
@@ -75,7 +75,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~/assets/styles/scss/_poly-fluid-sizing.scss';
   $primary: #208cb2;
   $secondary: #EFE1DC;
   ::v-deep .text-h5 {
