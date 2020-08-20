@@ -47,7 +47,7 @@
       static-image
     ></t-carousel-banner>
 
-    <main class="justify-center py-10 mb-4"
+    <v-main
       v-intersect="{
         handler: onIntersect,
         options: {
@@ -56,9 +56,9 @@
       }"
     >
       <nuxt />
-    </main>
+    </v-main>
 
-    <!-- <t-footer /> -->
+    <t-footer />
   </v-app>
 </template>
 

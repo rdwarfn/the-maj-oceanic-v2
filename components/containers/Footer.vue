@@ -1,6 +1,11 @@
 <template>
-  <v-footer dark color="#232323" class="justify-center" absolute max-width="100vw" app>
-    <v-container class="py-10">
+    <v-footer
+      dark
+      tile
+      background-color="#232323"
+      class="py-10"
+    >
+    <v-container>
       <v-row align="start" justify="space-between">
         <v-col class="col--1" cols="12" sm="3" md="2" lg="auto">
           <div class="mb-6">
@@ -168,7 +173,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-footer>
+    </v-footer>
 </template>
 
 <script>
