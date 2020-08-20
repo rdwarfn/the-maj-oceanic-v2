@@ -29,7 +29,7 @@
               height="36"
               :loading="loading"
             >
-            <form style="max-width: 150px" title="Search">
+            <form style="max-width: 150px">
               <v-container class="px-0 py-0">
                 <v-text-field
                   background-color="transparent"
@@ -38,12 +38,7 @@
                   placeholder="SEARCH"
                   prepend-icon="$search"
                   v-model="search_input"
-                  dark
-                  dense
-                  clearable
-                  flat
-                  single-line
-                  solo
+                  dark dense clearable flat single-line solo
                   style="max-height: 32px"
                 >
                 </v-text-field>
@@ -59,15 +54,21 @@
             min-width="123"
             :loading="loading"
           >
-            <v-btn
-              title="The Maj Group"
-              class="btn-s"
-              dark
-              depressed
-              text
-            >
-              the maj group
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{on, attrs}">
+                <v-btn
+                  to="/#"
+                  v-bind="attrs"
+                  v-on="on"
+                  color="white"
+                  depressed text tile
+                  class="btn-s font-md-12"
+                >
+                  the maj group
+                </v-btn>
+              </template>
+              <span>The Maj Group</span>
+            </v-tooltip>
           </v-skeleton-loader>
           </v-col>
         </v-row>
@@ -85,7 +86,7 @@
         max-width="350"
         :loading="loading"
       >
-        <nuxt-link class="mx-auto" to="/" title="The Maj Oceanic">
+        <nuxt-link class="mx-auto" to="/">
           <v-img
             :lazy-src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
             :src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
@@ -121,14 +122,21 @@
             type="button"
             :loading="loading"
           >
-            <v-btn
-              title="Login"
-              class="btn-s"
-              dark
-              text
-            >
-              login
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{on, attrs}">
+                <v-btn
+                  to="#"
+                  v-bind="attrs"
+                  v-on="on"
+                  text nuxt
+                  color="white"
+                  class="btn-s font-md-12"
+                >
+                  login
+                </v-btn>
+              </template>
+              <span>Login</span>
+            </v-tooltip>
           </v-skeleton-loader>
           </v-col>
 
@@ -139,16 +147,21 @@
               height="36"
               :loading="loading"
             >
-            <v-btn
-              title="Iquire Now"
-              class="btn-s __btn_inquire"
-              dark
-              depressed
-              tile
-              outlined
-            >
-              inquire now
-            </v-btn>
+            <v-tooltip bottom>
+              <template v-slot:activator="{on, attrs}">
+                <v-btn
+                  to="#"
+                  v-bind="attrs"
+                  v-on="on"
+                  color="white"
+                  depressed tile outlined nuxt
+                  class="btn-s __btn_inquire font-md-12"
+                >
+                  inquire now
+                </v-btn>
+              </template>
+              <span>Inquire Now</span>
+            </v-tooltip>
             </v-skeleton-loader>
           </v-col>
         </v-row>
@@ -230,7 +243,7 @@
         <v-col cols="auto" v-if="isIntersecting">
           <v-btn
             title="Book Now"
-            class="btn-s"
+            class="btn-s font-md-12"
             depressed
             tile
             outlined
@@ -286,19 +299,55 @@ export default {
   .v-input__slot {
     padding: 0 !important;
   }
-
-  input::placeholder {
-    font-family: 'Verlag Bold', sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    opacity: 1;
-    letter-spacing: 2px !important;
-    text-transform: uppercase !important;
-  }
 </style>
 
 <style lang="scss" scoped>
 $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+@media (max-width: 1264px) {
+  .font-md-12 {
+    font-size: 12px !important;
+  }
+}
+
+::v-deep .v-input {
+  ::placeholder {
+    font-family: 'Verlag Bold', sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    opacity: 1 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+
+    @media (max-width: 1264px) {
+      font-size: 12px !important;
+    }
+  }
+
+  &.theme--dark {
+    ::placeholder {
+      color: #FFFFFF !important;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #FFFFFF  !important;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: #FFFFFF ;
+    }
+  }
+
+  &.theme--light {
+    ::placeholder {
+      color: #232323 !important;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10-11 */
+      color: #232323 !important;
+    }
+    ::-ms-input-placeholder { /* Microsoft Edge */
+      color: #232323 !important;
+    }
+  }
+}
 .__nav_bar {
   z-index: 10 !important;
   @media (min-width: 0px) and (max-width: 959px) {
