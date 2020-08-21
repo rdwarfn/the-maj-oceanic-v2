@@ -18,8 +18,8 @@ export default {
   ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    titleTemplate: process.env.npm_package_name,
-    title: process.env.npm_package_name || '',
+    titleTemplate: 'The Maj Oceanic',
+    title: 'The Maj Oceanic' || '',
     htmlAttrs: {
       lang: 'id'
     },
@@ -96,9 +96,9 @@ export default {
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
-    // options: {
-    //   customProperties: true
-    // },
+    options: {
+      customProperties: true
+    },
     treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js',
@@ -108,37 +108,37 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
-    // loader: {
-    //   cssModules: {
-    //     modules: {
-    //       compileType: 'module',
-    //       mode: 'local',
-    //       auto: true,
-    //       exportOnlyLocals: true,
-    //       localIndentName: '[path][name]__[local]--[hash:base64:5]'
-    //     }
-    //   }
-    // },
-    // cssSourceMap: true,
-    // postcss: {
-    //   plugins: {
-    //     'postcss-url': {},
-    //     'postcss-import': {},
-    //     'postcss-nesting': {}
-    //   }
-    // },
-    // extractCSS: true,
-    // optimization: {
-    //   splitChunks: {
-    //     cacheGroups: {
-    //       styles: {
-    //         name: 'styles',
-    //         test: /\.(css|vue)$/,
-    //         chunks: 'all',
-    //         enforce: true
-    //       }
-    //     }
-    //   }
-    // }
+    loader: {
+      cssModules: {
+        modules: {
+          compileType: 'module',
+          mode: 'local',
+          auto: true,
+          exportOnlyLocals: true,
+          localIndentName: '[path][name]__[local]--[hash:base64:5]'
+        }
+      }
+    },
+    cssSourceMap: true,
+    postcss: {
+      plugins: {
+        'postcss-url': {},
+        'postcss-import': {},
+        'postcss-nesting': {}
+      }
+    },
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    }
   }
 }

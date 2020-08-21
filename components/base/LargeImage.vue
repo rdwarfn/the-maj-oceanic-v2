@@ -1,5 +1,5 @@
 <template>
-  <v-row align="center" justify="center">
+  <v-row no-gutters class="container px-0" align="center" justify="center">
     <client-only>
       <v-img
         :src="staticImage ? require(`~/assets/images/${data}`) : data"

@@ -1,10 +1,11 @@
 <template>
   <v-app>
-    <tNavigationMobile>
+    <t-navigation-mobile>
       <template v-slot:button-nav-icon>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       </template>
-    </tNavigationMobile>
+    </t-navigation-mobile>
+
     <v-navigation-drawer
       title="navigation drawer"
       v-model="drawer"
@@ -15,7 +16,7 @@
       temporary
       app
     >
-      <v-list>
+      <v-list rounded>
         <v-list-item
           v-for="(item, i) in navigation.data"
           :key="i"
@@ -34,7 +35,7 @@
       </v-list>
     </v-navigation-drawer>
 
-    <tNavigation
+    <t-navigation
       :is-intersecting="isIntersecting"
       :source-nav="navigation.data"
       :loading="false"
@@ -45,7 +46,7 @@
       static-image
     ></t-carousel-banner>
 
-    <v-container class="px-0">
+    <v-container class="px-sm-0">
       <v-breadcrumbs
         v-bind:items="getBreadcrumb"
         large v-show="getBreadcrumb.length > 1"

@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.1.11",
-    "@nuxtjs/vuetify": "^1.11.2",
-    "pug-plain-loader": "^1.0.0"
+    "@nuxtjs/vuetify": "^1.11.2"
   }
 }
