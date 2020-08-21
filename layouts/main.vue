@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <t-navigation-mobile>
+    <t-navigation-mobile v-bind:isIntersecting="isIntersecting">
       <template v-slot:button-nav-icon>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       </template>
@@ -32,6 +32,20 @@
             <v-list-item-title v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
+
+        <!-- <v-list-group
+          no-action
+          sub-group
+          value="true"
+        >
+          <template v-slot:activator>
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.title }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </template>
+        </v-list-group> -->
       </v-list>
     </v-navigation-drawer>
 
@@ -64,11 +78,11 @@
       </v-breadcrumbs>
     </v-container>
 
-    <v-main
+    <v-main id="main"
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: '-150px 0px'
+          rootMargin: '-350px 0px 0px 0px'
         }
       }"
     >
@@ -162,6 +176,19 @@ $primary--disabled: #C7E2EC;
     }
     & a.v-breadcrumbs__item--disabled {
       color: $primary--disabled !important;
+    }
+  }
+}
+.v-app-bar {
+  &--hide-shadow {
+    .v-btn__content .v-icon, .mdi-menu {
+      color: #FFFFFF !important;
+    }
+  }
+
+  &--is-scrolled {
+    .v-btn__content .v-icon, .mdi-menu {
+      color: #232323 !important;
     }
   }
 }

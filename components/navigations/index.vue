@@ -130,7 +130,7 @@
                   v-on="on"
                   text nuxt
                   color="white"
-                  class="btn-s font-md-12"
+                  class="btn-s __btn font-md-12"
                 >
                   login
                 </v-btn>
@@ -155,7 +155,7 @@
                   v-on="on"
                   color="white"
                   depressed tile outlined nuxt
-                  class="btn-s __btn_inquire font-md-12"
+                  class="btn-s __btn __btn--inquire font-md-12"
                 >
                   inquire now
                 </v-btn>
@@ -243,10 +243,12 @@
         <v-col cols="auto" v-if="isIntersecting">
           <v-btn
             title="Book Now"
-            class="btn-s font-md-12"
+            class="btn-s __btn __btn--book font-md-12"
             depressed
             tile
             outlined
+            nuxt
+            to="#"
           >
             book now
           </v-btn>
@@ -296,6 +298,8 @@ export default {
 
 <style lang="scss" scoped>
 $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$primary: #208CB2;
+$secondary: #232323;
 
 @media (max-width: 1264px) {
   .font-md-12 {
@@ -407,11 +411,27 @@ $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
     }
 
-    .__btn_inquire {
-      transition: background-color .3s ease-in-out;
+    a.__btn {
+      transition:
+        color .3s ease-out,
+        background-color .3s ease-out,
+        border .3s ease-out;
       &:hover {
         border-color: transparent;
-        background-color: #208CB2;
+        background-color: $primary !important;
+      }
+
+      &--inquire {
+        &:hover {
+          background-color: $primary !important;
+        }
+      }
+
+      &--book {
+        &:hover {
+          color: white !important;
+          background-color: $secondary !important;
+        }
       }
     }
   }
