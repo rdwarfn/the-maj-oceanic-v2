@@ -199,7 +199,7 @@ export default {
       default: false
     },
     NavList: {
-      type: Array,
+      type: [Array, Object],
       default: function () { return [] }
     }
   },

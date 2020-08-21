@@ -67,7 +67,7 @@
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: '-150px 0px 0px 0px'
+          rootMargin: '-150px 0px'
         }
       }"
     >
@@ -91,10 +91,6 @@ const components = {
   tFooter,
 }
 
-const getNavs = () =>
-  import('~/static/data/navs.json')
-  .then(m => m.default || m);
-
 export default {
   data () {
     return {
@@ -112,7 +108,7 @@ export default {
   components,
 
   async fetch () {
-    this.navigation.data = await getNavs();
+    this.navigation.data = await this.$content('navs').fetch();
     this.navigation.isLoaded = true;
   },
 
@@ -122,7 +118,6 @@ export default {
 
       setTimeout(() => this.$nuxt.$loading.finish(), 1000)
     });
-    console.log(this.$store.state.breadcrumbs)
   },
 
   computed: {

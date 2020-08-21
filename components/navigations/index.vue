@@ -268,8 +268,7 @@ export default {
       default: false
     },
     sourceNav: {
-      type: Array,
-      default: () => []
+      type: [Array, Object]
     },
     loading: {
       type: Boolean,
@@ -284,12 +283,6 @@ export default {
   data () {
     return {
       search_input: ''
-    }
-  },
-
-  computed: {
-    listCount () {
-      return this.sourceNav.length
     }
   }
 }

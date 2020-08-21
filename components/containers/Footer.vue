@@ -168,7 +168,7 @@
         </v-col>
       </v-row>
     </v-container>
-  </v-footer>
+    </v-footer>
 </template>
 
 <script>
