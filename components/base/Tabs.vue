@@ -61,19 +61,18 @@
                   </v-card-text>
 
                   <v-card-actions v-bind:class="buttonClass">
-                    <v-hover v-slot:default="{hover}">
-                      <v-btn
-                        v-bind:outlined="!hover"
-                        v-bind:to="item.data.to"
+                    <!-- <v-hover v-slot:default="{hover}"> -->
+                      <t-button
                         class="btn-l"
-                        color="primary"
-                        tile
-                        depressed
-                        nuxt
-                      >
-                        {{ buttonText }}
-                      </v-btn>
-                    </v-hover>
+                        v-bind:props="{
+                          color: 'primary',
+                          to: item.data.to,
+                          outlined: true,
+                          ...buttonProps
+                        }"
+                        v-text="buttonText"
+                      />
+                    <!-- </v-hover> -->
                   </v-card-actions>
                 </div>
               </div>
@@ -87,6 +86,9 @@
 
 <script>
 const primary = "#208CB2";
+const components = {
+  tButton: () => import('@/components/base/Button.vue')
+};
 export default {
   name: 'Tabs',
 
@@ -94,10 +96,13 @@ export default {
     data: { type: Array },
     buttonClass: { type: String, default: "pl-4" },
     buttonText: { type: String },
+    buttonProps: { type: Object },
     tabsCenter: { type: Boolean, defult: false  },
     staticImage: { type: Boolean, default: false },
     reverse: { type: Boolean, default: false }
   },
+
+  components,
 
   computed: {
     isSmDown () {
@@ -118,7 +123,6 @@ export default {
       font-family: 'Verlag Bold', sans-serif;
       font-size: 1.375rem;
       letter-spacing: 0;
-      font-weight: bold;
       text-transform: capitalize !important;
       &:not(.v-tab--active) {
         color: #232323 !important;
@@ -167,11 +171,6 @@ export default {
     }
 
     .__tab--content {
-      a {
-        &:hover {
-          color: white !important;
-        }
-      }
       margin-top: 16px;
       @media (min-width: 600px) {
         margin: {

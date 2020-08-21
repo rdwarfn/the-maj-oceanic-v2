@@ -105,7 +105,7 @@
           </ul>
         </v-card-text>
 
-        <v-card-actions :class="buttonClass">
+        <v-card-actions v-if="buttonText" v-bind:class="buttonClass">
           <t-button
             class="btn-l"
             v-bind:props="{
@@ -298,29 +298,29 @@ export default {
         }
       }
 
-      ::v-deep a.v-btn {
-        font-weight: bold !important;
-        &.primary {
-          color: white !important;
-          caret-color: white !important;
-          &:hover {
-            color: $primary !important;
-            caret-color: $primary !important;
-            border: thin solid $primary !important;
-            background-color: white !important;
-          }
-        }
+      // ::v-deep a.v-btn {
+      //   font-weight: bold !important;
+      //   &.primary {
+      //     color: white !important;
+      //     caret-color: white !important;
+      //     &:hover {
+      //       color: $primary !important;
+      //       caret-color: $primary !important;
+      //       border: thin solid $primary !important;
+      //       background-color: white !important;
+      //     }
+      //   }
 
-        &--outlined {
-          &.primary--text {
-            &:hover {
-              color: white !important;
-              background-color: $primary !important;
-              border-color: $primary !important;
-            }
-          }
-        }
-      }
+      //   &--outlined {
+      //     &.primary--text {
+      //       &:hover {
+      //         color: white !important;
+      //         background-color: $primary !important;
+      //         border-color: $primary !important;
+      //       }
+      //     }
+      //   }
+      // }
     }
 
     &--img {

@@ -1,8 +1,8 @@
 <template>
-  <v-footer dark color="#232323" class="justify-center" absolute max-width="100vw" app>
-    <v-container class="py-10">
-      <v-row align="start" justify="space-between">
-        <v-col class="col--1" cols="12" sm="3" md="2" lg="auto">
+  <v-footer dark tile inset background-color="#232323">
+    <v-container>
+      <v-row no-gutters align="start" justify="space-between">
+        <v-col class="col--1" cols="12" sm="4" lg="4">
           <div class="mb-6">
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
@@ -17,7 +17,7 @@
                 v-for="(data, index) in sosmed"
                 v-bind:key="index"
                 v-bind:href="data.link"
-                fab depressed text nuxt
+                fab depressed text nuxt tile
               >
                 <v-icon>mdi-{{data.icon}}</v-icon>
               </v-btn>
@@ -42,7 +42,7 @@
           </div>
         </v-col>
 
-        <v-col class="col--2 px-sm-1" cols="12" sm="2" md="2" lg="auto">
+        <v-col class="col--2 px-sm-1" cols="12" sm="2">
           <v-tooltip bottom>
             <template v-slot:activator="{on, attrs}">
               <div v-bind="attrs" v-on="on" class="text-caption text-truncate mb-4 text-uppercase font-weight-bold letter--3">
@@ -73,7 +73,7 @@
           </v-list>
         </v-col>
 
-        <v-col class="col--3 px-sm-1" cols="12" sm="2" md="3" lg="auto">
+        <v-col class="col--3 px-sm-1" cols="12" sm="2">
           <v-tooltip bottom>
             <template v-slot:activator="{on, attrs}">
               <div v-bind="attrs" v-on="on" class="text-caption text-truncate mb-4 text-uppercase font-weight-bold letter--3">
@@ -104,7 +104,7 @@
           </v-list>
         </v-col>
 
-        <v-col class="col--4" cols="12" sm="5" md="5">
+        <v-col class="col--4" cols="12" sm="4">
           <v-tooltip bottom>
             <template v-slot:activator="{on, attrs}">
               <div v-bind="attrs" v-on="on" class="text-caption text-truncate mb-4 text-uppercase font-weight-bold letter--3">

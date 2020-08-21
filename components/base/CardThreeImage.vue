@@ -24,19 +24,27 @@
           v-bind:key="index"
           class="text-center"
         >
-          <v-img
-            class="__card-three--img mx-auto"
-            v-bind:src="staticImage
-              ? require(`~/assets/images/${item.image}`) : item.image"
-            v-bind:lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`) : item.image"
-          ></v-img>
-          <nuxt-link
-            v-ripple
-            class="__card-three--heading text-h4 text--primary"
-            v-text="item.heading"
-            v-bind:to="item.to"
-          />
+          <v-card
+            :loading="loading"
+            hover flat ripple
+          >
+            <v-img
+              class="__card-three--img mx-auto"
+              v-bind:src="staticImage
+                ? require(`~/assets/images/${item.image}`) : item.image"
+              v-bind:lazy-src="staticImage
+                ? require(`~/assets/images/${item.image}`) : item.image"
+            ></v-img>
+            <v-card-actions class="text-center">
+              <v-btn
+                text nuxt depressed tile
+                v-bind:to="item.to"
+                class="__card-three--heading font-weight-medium text-capitalize mx-auto text-h4 text--primary"
+              >
+                {{ item.heading }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
         </v-col>
         <!-- <div
           v-bind:key="index"
@@ -60,6 +68,18 @@ export default {
     "static-image": {
       type: Boolean
     }
+  },
+
+  data () {
+    return {
+      loading: true,
+    }
+  },
+
+  mounted () {
+    setTimeout(() => {
+      this.loading = false
+    }, 2500)
   },
 
   components: {

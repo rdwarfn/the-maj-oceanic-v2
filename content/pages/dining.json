@@ -1,0 +1,45 @@
+{
+
+  "carousel_banner": [
+    {
+      "id": 0,
+      "text": "Dining",
+      "image": "carousel_header/9.png"
+    },
+    {
+      "id": 1,
+      "text": "Dining",
+      "image": "carousel_header/9.png"
+    }
+  ],
+  "heading": "lorem ipsum dolor sit amet",
+  "paragraph": "Exercitation cupidatat laboris ea pariatur irure tempor consectetur duis. Id excepteur nisi consequat labore aliqua pariatur ad dolor. Exercitation proident Lorem non proident incididunt sit. ",
+  "image": "large/5.jpg",
+  "card_text_image": [
+    {
+      "id": 0,
+      "heading": "Lorem Ipsum doloer sit",
+      "text": "Sunt excepteur laborum reprehenderit duis sunt fugiat eu dolore. Laborum mollit nostrud quis proident esse cillum sint laboris in deserunt eu consectetur ad adipisicing. Mollit nulla in quis nisi elit occaecat eu dolore aliquip.",
+      "image": "card/1.jpg",
+      "to": "/#"
+    }
+  ],
+  "carousel_card": [
+    {
+      "id": 1,
+      "heading": "Lorem ipsum dolor",
+      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis. 1",
+      "list": "Lorem ipsum dolor sit amet\nLaboris lar aliquip\nLorem ipsum dolor sit amet\nLaboris lar aliquip",
+      "image": "carousel/card/9.jpg",
+      "to": "#"
+    },
+    {
+      "id": 2,
+      "heading": "Lorem ipsum dolor",
+      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis. 2",
+      "list": "Lorem ipsum dolor sit amet\nLaboris lar aliquip\nLorem ipsum dolor sit amet\nLaboris lar aliquip",
+      "image": "carousel/card/9.jpg",
+      "to": "#"
+    }
+  ]
+}

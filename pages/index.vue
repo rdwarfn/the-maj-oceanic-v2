@@ -1,62 +1,74 @@
 <template>
-  <div :class="sectionPading">
-    <div v-for="(data, index) of store" v-bind:key="index">
-    <template name="intro">
-      <v-container class="mb-sm-16 intro" tag="section">
-        <t-heading
-          class="mx-auto"
-          heading-justify="center"
-          heading-class="text-center"
-          text-class="text-center"
-          :loading="$fetchState.pending"
-          :data="{
-            heading: data.heading,
-            text: data.text,
-            list: data.list
-          }"
-          style="max-width: 560px"
-        />
-        <tLargeImage
-          class="mt-3"
-          static-image
-          :data="data.image"
-        />
-      </v-container>
-    </template>
+  <div>
+    <v-skeleton-loader
+      v-if="!data"
+      :loading="!data"
+      type="article"
+    >
+    </v-skeleton-loader>
+    <v-container
+      v-else
+      class="mb-sm-16 intro static"
+      v-bind:class="sectionPading"
+      tag="section"
+    >
+      <t-heading
+        class="mx-auto mt-16"
+        heading-justify="center"
+        heading-class="text-center"
+        text-class="text-center"
+        :data="{
+          heading: data.heading,
+          text: data.text
+        }"
+        style="max-width: 560px"
+      />
+      <tLargeImage
+        class="mt-3"
+        static-image
+        :data="data.image"
+      />
+    </v-container>
 
-    <template name="the vessel">
-      <v-container class="px-0 my-sm-16 overflow-visible" tag="section">
-        <t-carousel
-          card-class="__hm_carousel_card"
-          :data="data.carousel_card"
-          button-class="pl-4"
-          button-text="discover"
-          heading-class="pt-0 mb-1"
-          text-class="mb-3 pr-lg-6"
-          static-image
-        >
-          <template v-slot:image-extra>
-            <div class="__img_stamp_brown">
-              <v-img
-                :lazy-src="require('~/assets/images/tmo_stamp_brown.png')"
-                :src="require('~/assets/images/tmo_stamp_brown.png')"
-                max-width="183"
-              >
-              </v-img>
-            </div>
-          </template>
-        </t-carousel>
-      </v-container>
-    </template>
+    <v-container
+      class="px-0 my-sm-16 overflow-visible static"
+      v-bind:class="sectionPading"
+      tag="section"
+    >
+      <t-carousel
+        card-class="__hm_carousel_card"
+        :data="data.carousel_card"
+        button-class="pl-4"
+        button-text="discover"
+        heading-class="pt-0 mb-1"
+        text-class="mb-3 pr-lg-6"
+        static-image
+      >
+        <!-- <template v-slot:image-extra>
+          <div class="__img_stamp_brown">
+            <v-img
+              :lazy-src="require('~/assets/images/tmo_stamp_brown.png')"
+              :src="require('~/assets/images/tmo_stamp_brown.png')"
+              max-width="183"
+            >
+            </v-img>
+          </div>
+        </template> -->
+      </t-carousel>
+    </v-container>
 
-    <template name="voyages">
-      <v-container class="my-sm-16" tag="section">
+    <v-sheet color="#EFE1DC" class="py-6">
+      <v-container
+        class="my-sm-16 static"
+        v-bind:class="sectionPading"
+        tag="section"
+      >
         <client-only>
           <div
             class="mx-auto text-center mb-5"
             style="width: 65.765765766%"
           >
-            <v-row align="center" justify="center">
+            <v-row align="center" justify="center" style="">
               <v-tooltip bottom>
                 <template v-slot:activator="{on, attrs}">
                 <div
@@ -74,98 +86,54 @@
             </v-row>
           </div>
         </client-only>
-        <tTabs
+        <t-tabs
           button-text="learn more"
-          :data="data.tabs.data"
+          v-bind:data="data.tabs.data"
           static-image
         />
       </v-container>
-    </template>
+    </v-sheet>
 
-    <template name="dining">
-      <v-container class="my-sm-16" tag="section">
-        <t-card-text-image
-          v-bind:data="data.card_text_image[0]"
-          v-bind:button-props="{
-            outlined: true
-          }"
-          button-text="learn more"
-          button-class="btn-l"
-          content-right
-          static-image
-          reverse
-        />
-      </v-container>
-    </template>
+    <v-container
+      class="my-sm-16 static"
+      v-bind:class="sectionPading"
+      tag="section"
+    >
+      <t-card-text-image
+        v-bind:data="data.card_text_image[0]"
+        v-bind:button-props="{
+          outlined: true
+        }"
+        button-text="learn more"
+        button-class="btn-l"
+        content-right
+        static-image
+        reverse
+      />
+    </v-container>
 
-    <template name="occasions">
-      <v-container class="my-sm-16" tag="section">
-        <t-card-text-image
-          :data="data.card_text_image[1]"
-          v-bind:button-props="{
-            outlined: true
-          }"
-          button-text="learn more"
-          button-class="btn-l"
-          static-image
-        />
-      </v-container>
-    </template>
-
-    <template name="destination">
-      <t-divider data="The Destinations" />
-
-      <v-container class="my-sm-16" tag="section">
-        <t-card-text-image
-          v-bind:data="data.card_text_image_small[0]"
-          v-bind:button-props="{
-            text: true,
-            width: 'auto'
-          }"
-          button-text="read more"
-          button-class="justify-start"
-          static-image
-        />
-      </v-container>
-
-      <v-container class="my-sm-16" tag="section">
-        <t-card-text-image
-          v-bind:data="data.card_text_image_small[1]"
-          v-bind:button-props="{
-            text: true,
-            width: 'auto'
-          }"
-          button-text="read more"
-          button-class="justify-end"
-          content-right
-          reverse
-          static-image
-        />
-      </v-container>
-
-      <client-only>
-        <v-row align="center" justify="center" class="mt-5 mt-sm-8 mt-md-10 mt-lg-14">
-          <t-button
-            class="btn-l"
-            v-text="'read more stories'"
-            :props="{
-              outlined: true,
-              tile: true,
-              color: 'primary',
-              width: 'auto',
-              to: '#'
-            }"
-          />
-        </v-row>
-      </client-only>
-    </template>
-    </div>
+    <v-container
+      class="my-sm-16 static"
+      v-bind:class="sectionPading"
+      tag="section"
+    >
+      <t-card-text-image
+        :data="data.card_text_image[1]"
+        v-bind:button-props="{
+          outlined: true
+        }"
+        button-text="learn more"
+        button-class="btn-l"
+        static-image
+      />
+    </v-container>
   </div>
 </template>
 
 <script>
-const getHome = () => import('~/static/data/home.json').then(m => m.default || m);
+import { mapMutations } from 'vuex';
 const components = {
+  tCarouselBanner: () => import('@/components/containers/CarouselBanner.vue'),
   tHeading: () => import('@/components/base/Heading.vue'),
   tCarousel: () => import('@/components/base/Carousel.vue'),
   tLargeImage: () => import('@/components/base/LargeImage.vue'),
@@ -174,22 +142,27 @@ const components = {
   tDivider: () => import('@/components/Divider.vue'),
   tButton: () => import('@/components/base/Button.vue')
 }
-
+// home
 export default {
   layout: 'main',
 
-  data () {
-    return {
-      store: {},
-      style: 'border: 2px solid blue;'
-    }
-  },
+  name: 'home',
 
   components,
 
-  async fetch () {
-    const data = await getHome();
-    this.store = data;
+  async asyncData ({ $content }) {
+    const data = await $content('pages/home').fetch();
+    return { data }
+  },
+
+  mounted () {
+    if (this.$data.data && this.$data.data.carousel_banner) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.carousel_banner })
+      this.addBreadcrumb ({
+        text: 'home',
+        href: this.$route.path
+      })
+    }
   },
 
   computed: {
@@ -206,6 +179,23 @@ export default {
       if (!v) return
       let height = v <= 768 ? '100%' : '581px';
       return height
+    },
+
+    heros () {
+      return this.$store.state.heros;
+    }
+  },
+
+  methods: {
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', {
+        page_key, data
+      })
+    },
+    addBreadcrumb ({ text, href }) {
+      this.$store.commit('breadcrumbs/add', {
+        text, href
+      })
     }
   }
 }
@@ -223,6 +213,12 @@ export default {
   section.the-vessel {
     @media (min-width: 1204px) {
       height: 662px !important;
+    }
+  }
+
+  ::v-deep .v-tabs-items {
+    .theme--light.v-card {
+      background-color: transparent !important;
     }
   }
 

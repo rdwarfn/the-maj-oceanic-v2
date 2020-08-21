@@ -1,70 +1,67 @@
 <template>
   <div :class="sectionPading">
-    <div v-for="(data, index) in store" :key="index">
-      <v-container tag="section" class="mb-16">
-        <tHeading
-          class="mx-auto"
-          heading-justify="center"
-          heading-class="text-center"
-          text-justify="center"
-          text-class="text-center"
-          v-bind:data="{
-            heading: data.heading,
-            text: data.text,
-            list: data.list
-          }"
-        />
-          <tLargeImage
-            class="mt-8"
-            static-image
-            :data="data.image"
-          />
-      </v-container>
+    <v-container tag="section" class="mb-16">
+      <t-heading
+        class="mx-auto"
+        heading-justify="center"
+        heading-class="text-center"
+        text-justify="center"
+        text-class="text-center"
+        v-bind:data="{
+          heading: data.heading,
+          text: data.text
+        }"
+      />
+      <t-large-image
+        class="mt-8"
+        static-image
+        :data="data.image"
+      />
+    </v-container>
 
-      <v-container tag="section" class="my-16">
-        <tCardThree
-          v-bind:data="data.card_three_image"
-          static-image
-        />
-      </v-container>
+    <v-container tag="section" class="my-16">
+      <t-card-three
+        v-bind:data="data.card_three_image"
+        static-image
+      />
+    </v-container>
 
-      <v-container tag="section" class="my-16">
-        <tCarousel
-          class="__carousel"
-          v-bind:data="data.carousel_card"
-          card-class="__carousel_card"
-          button-class="pl-4"
-          button-text="discover"
-          heading-class="pt-0 mb-1"
-          text-class="mb-3 pr-lg-6"
-          static-image
-        >
-        </tCarousel>
-      </v-container>
+    <!-- <v-container tag="section" class="my-16">
+      <t-carousel
+        class="__carousel"
+        v-bind:data="data.carousel_card"
+        card-class="__carousel_card"
+        button-class="pl-4"
+        button-text="discover"
+        heading-class="pt-0 mb-1"
+        text-class="mb-3 pr-lg-6"
+        static-image
+      >
+      </t-carousel>
+    </v-container>
 
-      <v-container tag="section" class="my-16">
-        <tCarouselThree
-          v-bind:data="data.carousel_three"
-          static-image
-        />
-      </v-container>
+    <v-container tag="section" class="my-16">
+      <t-carousel-three
+        v-bind:data="data.carousel_three"
+        static-image
+      />
+    </v-container>
 
-      <v-container tag="section" class="my-16">
-        <t-card-text-image
-          :data="data.card_text_image[0]"
-          v-bind:button-props="{
-            outlined: true
-          }"
-          card-content-class=""
-          v-bind:img-aspect-ratio="null"
-          button-text="learn more"
-          button-class="btn-l"
-          card-img-class="__card_text_img--img"
-          static-image
-          reverse
-        />
-      </v-container>
-    </div>
+    <v-container tag="section" class="my-16">
+      <t-card-text-image
+        :data="data.card_text_image[0]"
+        v-bind:button-props="{
+          outlined: true
+        }"
+        card-content-class=""
+        v-bind:img-aspect-ratio="null"
+        button-text="learn more"
+        button-class="btn-l"
+        card-img-class="__card_text_img--img"
+        static-image
+        reverse
+      />
+    </v-container> -->
   </div>
 </template>
 
@@ -81,17 +78,27 @@ const components = {
 export default {
   layout: 'main',
 
+  name: 'the-vessel',
+
   components,
 
-  data () {
-    return {
-      store: [],
+  async asyncData ({ $content }) {
+    const data = await $content('pages/vessel').fetch();
+    return { data }
+  },
+
+  mounted () {
+    if (this.$data && this.$data.data.carousel_banner) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.carousel_banner });
+      this.addBreadcrumb ({
+        text: 'the vessel',
+        href: this.$route.path
+      });
     }
   },
 
-  async fetch () {
-    const data = await getTheVessel();
-    this.store = data;
+  destroyed () {
+    this.removeBreadcrumb('the vessel');
   },
 
   computed: {
@@ -102,6 +109,21 @@ export default {
         default: break;
       }
     },
+  },
+
+  methods: {
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', { page_key, data });
+    },
+    addBreadcrumb ({ text, href }) {
+      this.$store.commit('breadcrumbs/add', {
+        text, href
+      });
+    },
+    removeBreadcrumb(params) {
+      const callback = (args) => args.text === params;
+      this.$store.commit('breadcrumbs/remove', callback);
+    }
   }
 }
 </script>

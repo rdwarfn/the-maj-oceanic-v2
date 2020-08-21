@@ -22,7 +22,7 @@
           v-for="(item,i) in data"
           :key="i"
           :src="staticImage
-            ? require(`~/assets/images/carousel/banner/${item.image}`)
+            ? require(`~/assets/images/${item.image}`)
             : item.image"
           reverse-transition="fade-transition"
           transition="fade-transition"

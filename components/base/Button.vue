@@ -1,8 +1,6 @@
 <template>
   <v-btn
-    nuxt
-    tile
-    depressed
+    nuxt tile depressed dark
     v-bind="props"
   ></v-btn>
 </template>
@@ -18,3 +16,18 @@ export default {
   inheritAttrs: false
 }
 </script>
+
+<style lang="scss" scoped>
+  .v-btn {
+    min-width: 132px !important;
+  }
+
+  a .v-btn--outlined, .primary--text {
+    &:hover {
+      color: #ffffff !important;
+      background-color: #208cb2 !important;
+      border-color: #208cb2 !important;
+    }
+  }
+
+</style>

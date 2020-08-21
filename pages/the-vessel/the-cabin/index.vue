@@ -74,6 +74,8 @@ export default {
 
   components,
 
+  name: 'the-cabin',
+
   data () {
     return {
       store: [],

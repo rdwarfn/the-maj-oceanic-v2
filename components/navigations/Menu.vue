@@ -1,26 +1,99 @@
 <template>
   <v-row no-gutters align="center" justify="space-around">
     <template v-for="data in NavList">
-      <v-col
-        v-ripple
+      <v-col cols="auto"
         class="rounded"
         v-if="data.id < 3"
         :key="data.id"
       >
-        <nuxt-link
-          :title="data.title"
-          :to="data.to"
-          class="__link_appbar"
-          v-text="data.title"
-        />
+        <v-menu
+          bottom right
+          transition="slide-x-transition"
+          open-on-hover
+          v-bind:close-on-click="false"
+          v-bind:close-on-content-click="false"
+          tile
+        >
+          <template v-slot:activator="{ on: menu, attrs }">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on: tooltip }">
+                <v-btn
+                  v-if="data.items.length"
+                  v-bind="attrs"
+                  v-on="{ ...tooltip, ...menu }"
+                  text x-small
+                  v-bind:dark="isIntersecting"
+                  class="px-0 font-md-12"
+                >
+                  {{ data.title }}
+                </v-btn>
+                <v-btn
+                  v-else
+                  to="#"
+                  v-bind="attrs"
+                  v-on="{ ...tooltip, ...menu}"
+                  text x-small
+                  v-bind:dark="isIntersecting"
+                  class="px-0 font-md-12"
+                >
+                  {{ data.title }}
+                </v-btn>
+              </template>
+              <span>{{ data.title }}</span>
+            </v-tooltip>
+          </template>
+          <v-list
+            v-if="data.items.length"
+            flat subheader dense tile
+            max-width="150"
+          >
+            <v-list-group no-action value="true">
+              <template v-slot:activator>
+                <v-list-item-content>
+                  <v-tooltip bottom>
+                    <template v-slot:activator="{on, attrs}">
+                      <v-list-item-title
+                        v-bind="attrs"
+                        v-on="on"
+                        class="text-uppercase text-no-wrap font-md-12"
+                      >
+                        <nuxt-link v-bind:to="data.to">{{ data.title }}</nuxt-link>
+                      </v-list-item-title>
+                    </template>
+                    <span class="text-capitalize">{{ data.title }}</span>
+                  </v-tooltip>
+                </v-list-item-content>
+              </template>
+
+              <v-list-item
+                v-for="(item, index) in data.items"
+                v-bind:key="index"
+                v-bind:to="item.to"
+                dense nuxt
+              >
+                <v-tooltip bottom>
+                  <template v-slot:activator="{on, attrs}">
+                    <v-list-item-title
+                      v-bind="attrs"
+                      v-on="on"
+                      class="text-uppercase font-md-12"
+                    >
+                      {{ item.title }}
+                    </v-list-item-title>
+                  </template>
+                  <span class="text-capitalize">{{ item.title }}</span>
+                </v-tooltip>
+              </v-list-item>
+            </v-list-group>
+          </v-list>
+        </v-menu>
       </v-col>
     </template>
 
-    <v-col
+    <v-col cols="auto"
       v-if="!isIntersecting"
       class="text-center rounded py-1 px-3 mx-2 static"
       :class="$style.place_self_center"
-      style=""
       v-ripple
     >
       <nuxt-link class="mx-auto d-flex" to="/">
@@ -49,33 +122,68 @@
     </v-col>
 
     <template v-for="data in NavList">
-      <v-col
-        v-ripple
-        class="rounded"
+      <v-col cols="auto"
         v-if="data.id >= 3"
-        :key="data.id"
+        v-bind:key="data.id"
+        class="text-center"
       >
-        <nuxt-link
-          :title="data.title"
-          :to="data.to"
-          class="__link_appbar"
-          v-text="data.title"
-        />
+        <v-menu bottom>
+          <template v-slot:activator="{ on: menu, attrs }">
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on: tooltip }">
+                <v-btn
+                  v-if="data.items.length"
+                  v-bind="attrs"
+                  v-on="{ ...tooltip, ...menu }"
+                  text x-small
+                  v-bind:dark="isIntersecting"
+                  class="px-0 font-md-12"
+                >
+                  {{ data.title }}
+                </v-btn>
+                <v-btn
+                  v-else
+                  to="#"
+                  v-bind="attrs"
+                  v-on="{ ...tooltip, ...menu}"
+                  text x-small
+                  v-bind:dark="isIntersecting"
+                  class="px-0 font-md-12"
+                >
+                  {{ data.title }}
+                </v-btn>
+              </template>
+              <span>{{ data.title }}</span>
+            </v-tooltip>
+          </template>
+          <v-list v-if="data.items.length">
+            <v-list-item
+              v-for="(item, index) in data.items"
+              v-bind:key="index"
+            >
+              <v-list-item-title>
+                {{ item.title }}
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
       </v-col>
     </template>
 
-    <v-col
-      v-ripple
-      class="rounded mr-2"
-      v-if="!isIntersecting"
-    >
-      <nuxt-link
-        title="Login"
-        :to="'#'"
-        class="__link_appbar"
-      >
-        login
-      </nuxt-link>
+    <v-col cols="auto" class="rounded mr-2" v-if="!isIntersecting">
+      <v-tooltip bottom>
+        <template v-slot:activator="{on, attrs}">
+          <v-btn
+            v-bind="attrs"
+            v-on="on"
+            to="#"
+            text x-small nuxt
+            class="px-0 font-md-12"
+          >
+            login
+          </v-btn>
+        </template>
+      </v-tooltip>
     </v-col>
   </v-row>
 </template>
@@ -99,19 +207,25 @@ export default {
   methods: {
     isLG: function () {
       return this.$vuetify.breakpoint.lg
-    }
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .__link_appbar {
-    font-family: 'Verlag Bold', sans-serif;
-    padding: 0 4px;
-    font-size: 13px;
-    font-weight: bold;
-    text-transform: uppercase;
-    white-space: nowrap !important;
+  ::v-deep .v-list-group--no-action > .v-list-group__items > .v-list-item{
+    padding-left: 30px !important;
+  }
+  ::v-deep .v-list-item__title, .v-list-group__items {
+    a {
+      font-family: 'Verlag Bold', sans-serif !important;
+      font-weight: 600 !important;
+    }
+  }
+  @media (max-width: 1264px) {
+    .font-md-12 {
+      font-size: 12px !important;
+    }
   }
 </style>
 
