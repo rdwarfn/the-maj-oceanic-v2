@@ -114,6 +114,7 @@ export default {
           color: white !important;
           background-color: $secondary !important;
           &:hover {
+            color: $secondary !important;
             background-color: transparent !important;
             border: thin solid $secondary !important;
           }
