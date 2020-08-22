@@ -241,17 +241,23 @@
         </v-col>
 
         <v-col cols="auto" v-if="isIntersecting">
-          <v-btn
-            title="Book Now"
-            class="btn-s __btn __btn--book font-md-12"
-            depressed
-            tile
-            outlined
-            nuxt
-            to="#"
-          >
-            book now
-          </v-btn>
+          <v-tooltip bottom>
+            <template v-slot:activator="{on, attrs}">
+              <v-btn
+                v-bind="attrs"
+                v-on="on"
+                class="btn-s __btn __btn--book font-md-12"
+                depressed
+                tile
+                outlined
+                nuxt
+                to="#"
+              >
+                book now
+              </v-btn>
+            </template>
+            <span>Book Now</span>
+          </v-tooltip>
         </v-col>
       </v-row>
     </v-flex>

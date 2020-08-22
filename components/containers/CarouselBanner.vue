@@ -1,5 +1,7 @@
 <template>
-  <v-sheet :height="objHeight">
+  <v-sheet
+  >
+    <!-- :height="objHeight" -->
     <component
       v-bind:is="'div'"
       hide-on-leave
@@ -9,15 +11,15 @@
         v-if="loading"
         :boilerplate="objType !== 2"
         :type="'image@' + objType"
-        :max-height="objHeight"
       >
+        <!-- :max-height="objHeight" -->
       </v-skeleton-loader>
       <v-carousel
         v-else
         hide-delimiters
         :show-arrows="false"
-        :height="objHeight"
       >
+        <!-- :height="objHeight" -->
         <v-carousel-item
           v-for="(item,i) in data"
           :key="i"
@@ -26,17 +28,19 @@
             : item.image"
           reverse-transition="fade-transition"
           transition="fade-transition"
+          class="align-center _carousel--item"
         >
-          <v-sheet height="100%" color="transparent">
-            <v-row class="fill-height" align="end" justify="center">
+          <!-- <v-sheet color="transparent"> -->
+            <v-row no-gutters align="center" justify="center" class="fill-height _head--container">
+              <v-spacer />
               <div
-                class="text-h3 text-sm-h2 text-md-h1 text-center static"
-                :class="$style.whitespace_pre_line"
-                style="margin-bottom: 15%"
                 v-text="item.text"
+                class="_head--text text-sm-h2 text-md-h1 text-center static"
+                :class="$style.whitespace_pre_line"
               />
+              <v-spacer/>
             </v-row>
-          </v-sheet>
+          <!-- </v-sheet> -->
         </v-carousel-item>
       </v-carousel>
     </component>
@@ -62,7 +66,14 @@ export default {
     }
   },
 
+  created () {
+    console.log(this.vb)
+  },
+
   computed: {
+    vb () {
+      return this.$vuetify.breakpoint
+    },
     objHeight () {
       return this.helper().height();
     },
@@ -73,19 +84,19 @@ export default {
 
   methods: {
     helper: function () {
-      const v = this.$vuetify.breakpoint.name;
+      const v = this.$vuetify.breakpoint.width;
       return {
         height: function () {
           switch (v) {
-            case "xs":
-              return '332px';
-            case "sm":
-              return '332px';
-            case "md":
-              return '700px';
-            case "lg":
-              return '700px';
-            default:
+            case (600):
+              return '670px';
+            case (v < 960):
+              return '347px';
+            // case "md":
+            //   return '700px';
+            // case "lg":
+            //   return '700px';
+            // default:
               return '100%';
           }
         },
@@ -104,6 +115,40 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+
+._head--text {
+  position: relative;
+  font-family: "Sentinel Semibold", serif !important;
+  font-size: 24px;
+}
+
+._head--container {
+  display: grid;
+}
+
+._carousel--item {
+  @media (max-width: 600px) {
+    height: 670px !important;
+    place-items: center !important;
+    ::v-deep .v-responsive__content {
+      // align-items: center !important;
+      // place-content: center !important;;
+
+      height: 670px !important;
+    }
+  }
+
+  @media (min-width: 600px) {
+    height: 347px !important;
+  }
+
+  @media (min-width: 960px) {
+    height: 700px !important;
+  }
+}
+</style>
 
 <style module src="~/assets/styles/css/_utilities.module.css">
 </style>

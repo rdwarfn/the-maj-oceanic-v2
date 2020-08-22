@@ -92,11 +92,11 @@
 
     <v-col cols="auto"
       v-if="!isIntersecting"
-      class="text-center rounded py-1 px-3 mx-2 static"
+      class="text-center rounded py-1 px-3 mx-2 _img--main-center static"
       :class="$style.place_self_center"
       v-ripple
     >
-      <nuxt-link class="mx-auto d-flex" to="/">
+      <nuxt-link draggable="false" class="mx-auto d-flex" to="/">
         <v-img
           :lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
@@ -183,6 +183,7 @@
             login
           </v-btn>
         </template>
+        <span>Login</span>
       </v-tooltip>
     </v-col>
   </v-row>
@@ -226,6 +227,9 @@ export default {
     .font-md-12 {
       font-size: 12px !important;
     }
+  }
+  ::v-deep ._img--main-center {
+    width: 300px !important; height: auto !important;
   }
 </style>
 

@@ -7,31 +7,70 @@
     </t-navigation-mobile>
 
     <v-navigation-drawer
-      title="navigation drawer"
       v-model="drawer"
       :mini-variant="false"
       class="hidden-md-and-up"
       style="z-index: 20"
       color="#EFE1DC"
+      width="80vw"
       temporary
       app
     >
-      <v-list rounded>
-        <v-list-item
-          v-for="(item, i) in navigation.data"
-          :key="i"
-          v-on:click.prevent="drawer = false"
-          :to="item.to"
-          router
-          exact
-        >
-          <!-- <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action> -->
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
+      <v-list>
+        <v-list-item dense>
+          <!-- <v-row no-gutters align="center" justify="space-between"> -->
+            <v-spacer />
+            <!-- <v-col cols="8" class="text-center"> -->
+              <v-list-item-avatar class="mx-auto" tile width="50%" min-height="67" height="auto">
+                <v-img
+                  v-bind:src="require('~/assets/images/drawer-logo-tmo.png')"
+                  v-bind:lazy-src="require('~/assets/images/drawer-logo-tmo.png')"
+                ></v-img>
+              </v-list-item-avatar>
+              <v-spacer />
+            <!-- </v-col> -->
+            <!-- <v-col cols="2" class="text-center"> -->
+              <v-list-item-action>
+                <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
+                  <v-icon>mdi-close</v-icon>
+                </v-btn>
+              </v-list-item-action>
+            <!-- </v-col> -->
+          <!-- </v-row> -->
         </v-list-item>
+      </v-list>
+      <v-divider />
+      <v-list-item dense>
+        <v-list-item-content>
+          <v-text-field
+            prepend-icon="$search"
+            label="SEARCH"
+            clearable
+            flat
+          ></v-text-field>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider />
+      <v-list nav shaped>
+        <v-list-item-group color="primary">
+          <v-list-item
+            v-for="(item, i) in navigation.data"
+            v-bind:key="i"
+            v-on:click.prevent="drawer = false"
+            v-bind:to="item.to"
+            color="primary"
+            selectable
+            exact
+            ripple
+          >
+            <!-- <v-list-item-action>
+              <v-icon>{{ item.icon }}</v-icon>
+            </v-list-item-action> -->
+            <v-list-item-content class="_nav--item">
+              <v-list-item-title v-text="item.title" />
+            </v-list-item-content>
+          </v-list-item>
+        </v-list-item-group>
 
         <!-- <v-list-group
           no-action
@@ -79,15 +118,17 @@
     </v-container>
 
     <v-main id="main"
+      style="border: 1px solid black"
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: '-350px 0px 0px 0px'
+          rootMargin: '0px 0px -600px 0px'
         }
       }"
     >
       <nuxt />
     </v-main>
+    <!-- <div id="mark">viewport intersection observer</div> -->
 
     <t-footer />
   </v-app>
@@ -109,6 +150,7 @@ const components = {
 export default {
   data () {
     return {
+      selected_item: 1,
       isIntersecting: false,
       mini_variant: false,
       drawer: false,
@@ -116,7 +158,8 @@ export default {
         data: [],
         isLoaded: false
       },
-      isLoadedHeros: false
+      isLoadedHeros: false,
+      intersec: null
     }
   },
 
@@ -146,12 +189,16 @@ export default {
     },
     routeName () {
       return JSON.stringify(this.$route)
+    },
+    showIntersec () {
+      return JSON.stringify(this.intersec)
     }
   },
 
   methods: {
     onIntersect: function (entries, observer) {
       this.isIntersecting = entries[0].isIntersecting;
+      this.intersec = entries[0]
     }
   }
 }
@@ -160,6 +207,24 @@ export default {
 <style lang="scss" scoped>
 $primary: #208CB2;
 $primary--disabled: #C7E2EC;
+
+#mark{
+  width: 100%;
+  position: fixed; bottom: 600px;
+  font-size: 16pt;
+  border-bottom: dashed 2px currentColor;
+  text-shadow: 0 0 10px black;
+}
+._nav--item {
+  .v-list-item__title {
+    font-family: 'Verlag Bold', sans-serif !important;
+    font-size: 16px !important;
+    line-height: 22px !important;
+    letter-spacing: 3px !important;
+    text-transform: uppercase !important;
+  }
+    // color: #363636 !important;
+}
 ::v-deep .v-app-bar.v-app-bar--fixed {
   z-index: 10 !important;
 }
