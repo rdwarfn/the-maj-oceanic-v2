@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters tag="div" align="center" justify="center">
+  <v-row no-gutters align="center" justify="center" class="mx-auto">
     <client-only>
       <v-card flat v-if="data">
         <div
@@ -13,8 +13,7 @@
             {{ data.heading }}
           </v-card-title>
           <v-img
-            class="__card--image"
-            v-bind:class="cardImgClass"
+            v-bind:class="cardImgClass ? cardImgClass : '__card--image'"
             v-bind:src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
             v-bind:lazy-src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
             v-bind:aspect-ratio="imgAspectRatio"
@@ -147,8 +146,7 @@ export default {
     buttonContainerClass: { type: String },
     reverse: { type: Boolean },
     imgAspectRatio: {
-      type: [String, Number],
-      default: 16/9
+      type: [String, Number]
     },
     staticImage: { type: Boolean }
   },

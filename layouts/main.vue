@@ -118,6 +118,7 @@
     </v-container>
 
     <v-main id="main"
+      class="justify-center"
       v-intersect="{
         handler: onIntersect,
         options: {

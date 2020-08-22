@@ -92,7 +92,7 @@
     </v-sheet>
 
     <v-container
-      class="d-inline-block mb-7 my-sm-16 static"
+      class="pb-7 py-sm-16 static"
       v-bind:class="sectionPading"
       tag="section"
     >
@@ -101,6 +101,7 @@
         v-bind:button-props="{
           outlined: true
         }"
+        card-img-class="_card-img-class"
         button-text="learn more"
         button-class="btn-l"
         content-right
@@ -110,15 +111,16 @@
     </v-container>
 
     <v-container
-      class="d-inline-block mb-10 my-sm-16 static"
+      class="pb-10 py-sm-16 static"
       v-bind:class="sectionPading"
       tag="section"
     >
       <t-card-text-image
-        :data="data.card_text_image[1]"
+        v-bind:data="data.card_text_image[1]"
         v-bind:button-props="{
           outlined: true
         }"
+        card-img-class="_card-img-class"
         button-text="learn more"
         button-class="btn-l"
         static-image
@@ -229,6 +231,12 @@ export default {
         width: 720px !important;
       }
     }
+  }
+
+  ::v-deep ._card-img-class {
+    margin: 0 auto;
+    @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
+    @include poly-fluid-sizing ('height', (374px:181px, 768px:350px))
   }
 
   section.the-vessel {
