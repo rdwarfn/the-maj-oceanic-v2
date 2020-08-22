@@ -8,35 +8,34 @@
     </v-skeleton-loader>
     <v-container
       v-else
-      class="mb-sm-16 intro static"
+      class="mb-12 mb-sm-16 intro static"
       v-bind:class="sectionPading"
       tag="section"
     >
-      <t-heading
-        class="mx-auto mt-16"
-        heading-justify="center"
-        heading-class="text-center"
-        text-class="text-center"
-        :data="{
-          heading: data.heading,
-          text: data.text
-        }"
-        style="max-width: 560px"
+      <div
+        class="intro--head text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
+        v-text="data.heading"
       />
+        <!-- style="max-width: 560px" -->
       <tLargeImage
-        class="mt-3"
         static-image
         :data="data.image"
       />
+      <div class="intro--paragraph">
+        <p class="text-sm-center">
+          {{ data.paragraph }}
+        </p>
+      </div>
     </v-container>
 
     <v-container
-      class="px-0 my-sm-16 overflow-visible static"
+      class="px-0 my-12 my-sm-16 overflow-visible static"
       v-bind:class="sectionPading"
       tag="section"
     >
       <t-carousel
-        card-class="__hm_carousel_card"
+        class="_carousel"
+        card-class="_carousel--card"
         :data="data.carousel_card"
         button-class="pl-4"
         button-text="discover"
@@ -57,9 +56,10 @@
       </t-carousel>
     </v-container>
 
+    <!-- Voyages -->
     <v-sheet color="#EFE1DC" class="py-6">
       <v-container
-        class="my-sm-16 static"
+        class="my-sm-16 voyages static"
         v-bind:class="sectionPading"
         tag="section"
       >
@@ -90,7 +90,8 @@
           button-text="learn more"
           v-bind:data="data.tabs.data"
           static-image
-        />
+        >
+        </t-tabs>
       </v-container>
     </v-sheet>
 
@@ -204,9 +205,22 @@ export default {
 <style lang="scss" scoped>
   $primary: #208cb2;
 
-  section.intro {
+  .intro {
     @media (min-width: 1204px) {
       height: 900px !important;
+    }
+
+    &--head {
+      @media (max-width: 600px) {
+        width: 100% !important;
+      }
+      @include poly-fluid-sizing('width', (768px:596px, 1204px: 560px))
+    }
+
+    &--paragraph {
+      p {
+        white-space: pre-line !important;
+      }
     }
   }
 
@@ -255,29 +269,35 @@ export default {
     }
   }
 
-  ::v-deep .__hm_carousel_card {
-    @media (min-width: 600px) {
-      padding: 35px 13px 36px !important;
-      top: 10% !important;
-      right: 0;
-      z-index: 5;
-      max-width: 47.135416667%;
-    }
+  ::v-deep ._carousel {
+    // @include poly-fluid-sizing('margin-bottom', (600px))
 
-    @media (min-width: 960px) {
-      padding: 35px 13px 36px !important;
-      top: 15% !important;
-      right: 0;
-      z-index: 5;
-      max-width: 40.09009009%;
-    }
+    &--card {
+      // @include poly-fluid-sizing ('padding-top', (600px:35px, ))
+      // @include poly-fluid-sizing('padding', (600px:35px 13px 36px, 1204px:38px 50px 73px));
+      @media (min-width: 600px) {
+        padding: 35px 13px 36px !important;
+        top: 10% !important;
+        right: 0;
+        z-index: 5;
+        max-width: 47.135416667%;
+      }
 
-    @media (min-width: 1264px) {
-      padding: 38px 34px 62px !important;
-      // top: -450px !important;
-      top: 15% !important;
-      right: 0;
-      z-index: 5;
+      @media (min-width: 960px) {
+        padding: 35px 13px 36px !important;
+        top: 15% !important;
+        right: 0;
+        z-index: 5;
+        max-width: 40.09009009%;
+      }
+
+      @media (min-width: 1264px) {
+        padding: 38px 34px 62px !important;
+        // top: -450px !important;
+        top: 15% !important;
+        right: 0;
+        z-index: 5;
+      }
     }
   }
 </style>

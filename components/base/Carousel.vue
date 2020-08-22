@@ -12,17 +12,41 @@
         v-for="item in data"
         v-bind:key="item.id"
       >
-        <img
-          :src="staticImage
-            ? require(`~/assets/images/${item.image}`)
-            : item.image"
-          :srcset="staticImage
-            ? require(`~/assets/images/${item.image}`)
-            : item.image"
-          :alt="item.image"
-          class="__carousel--img static"
-          :class="cardImageClass"
-        />
+        <v-card flat tile hover>
+          <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
+            {{ item.caption }}
+          </v-card-subtitle>
+          <v-card-title class="hidden-sm-and-up mb-4">
+            <div class="text-h4 text-md-h3 mx-auto">
+              {{ item.heading }}
+            </div>
+          </v-card-title>
+          <v-img
+            :src="staticImage
+              ? require(`~/assets/images/${item.image}`)
+              : item.image"
+            :lazy-src="staticImage
+              ? require(`~/assets/images/${item.image}`)
+              : item.image"
+            class="__carousel--img static"
+            :class="cardImageClass"
+          />
+          <v-card-text class="hidden-sm-and-up text-justify overflow-visible px-0 mt-4">
+            <p class="text--primary">{{ item.text }}</p>
+          </v-card-text>
+          <v-card-actions class="hidden-sm-and-up mt-5 mb-3">
+            <t-button
+              class="btn-l mx-auto"
+              v-bind:props="{
+                color: 'primary',
+                outlined: true,
+                to: dataActive.to,
+                ...buttonProps
+              }"
+              v-text="buttonText"
+            />
+          </v-card-actions>
+        </v-card>
       </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
       <v-btn
@@ -49,9 +73,8 @@
 
     <client-only>
       <v-card
-        elevation="3"
         v-if="Object.keys(dataActive).length"
-        class="__carousel--card static"
+        class="__carousel--card hidden-xs-only static"
         v-bind:class="cardClass"
         v-bind:rounded="false"
         v-bind:height="cardHeight"
@@ -222,6 +245,19 @@ export default {
   $secondary: #4E5E79;
   $transition-time-normal: .5s;
   $white: #ffffff;
+
+  ::v-deep .v-card {
+    .v-card__subtitle {
+      color: $primary !important;
+      font-weight: bold !important;
+    }
+
+    .v-card__text {
+      p {
+        font-size: 16px !important;
+      }
+    }
+  }
 
   .__txt_primary {
     color: $primary !important;

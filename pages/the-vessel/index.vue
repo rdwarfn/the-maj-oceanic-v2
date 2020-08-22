@@ -26,28 +26,38 @@
       />
     </v-container>
 
-    <!-- <v-container tag="section" class="my-16">
-      <t-carousel
-        class="__carousel"
-        v-bind:data="data.carousel_card"
-        card-class="__carousel_card"
-        button-class="pl-4"
-        button-text="discover"
-        heading-class="pt-0 mb-1"
-        text-class="mb-3 pr-lg-6"
-        static-image
+    <v-container tag="section" class="my-16">
+      <component
+        v-bind:is="'div'"
+        hide-on-leave
       >
-      </t-carousel>
+        <v-skeleton-loader
+          v-if="!data.carousel_card"
+          type="image"
+        ></v-skeleton-loader>
+        <t-carousel
+          v-else
+          class="__carousel"
+          v-bind:data="data.carousel_card"
+          card-class="__carousel_card"
+          button-class="pl-4"
+          button-text="discover"
+          heading-class="pt-0 mb-1"
+          text-class="mb-3 pr-lg-6"
+          static-image
+        >
+        </t-carousel>
+      </component>
     </v-container>
 
-    <v-container tag="section" class="my-16">
+    <!-- <v-container tag="section" class="my-16">
       <t-carousel-three
         v-bind:data="data.carousel_three"
         static-image
       />
-    </v-container>
+    </v-container> -->
 
-    <v-container tag="section" class="my-16">
+    <!-- <v-container tag="section" class="my-16">
       <t-card-text-image
         :data="data.card_text_image[0]"
         v-bind:button-props="{

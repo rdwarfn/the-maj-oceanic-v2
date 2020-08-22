@@ -5,7 +5,7 @@
         :src="staticImage ? require(`~/assets/images/${data}`) : data"
         :lazy-src="staticImage ? require(`~/assets/images/${data}`) : data"
         :aspect-ratio="16/9"
-        max-height="461px"
+        max-height="347"
       >
         <template v-slot:placeholder>
           <v-row

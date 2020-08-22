@@ -46,33 +46,35 @@
                 <div class="__tab--content">
                   <v-tooltip bottom>
                     <template v-slot:activator="{on, attrs}">
-                    <v-card-title
-                      class="text-h4 text-capitalize"
-                      v-text="item.data.title"
-                      v-bind="attrs"
-                      v-on="on"
-                    />
+                      <v-card-title
+                        v-bind="attrs"
+                        v-on="on"
+                      >
+                        <div class="text-h4 text-capitalize mx-auto mx-sm-0">
+                          {{ item.data.title }}
+                        </div>
+                      </v-card-title>
                     </template>
                     <span class="text-capitalize" v-text="item.data.title" />
                   </v-tooltip>
 
                   <v-card-text>
-                    {{ item.data.text }}
+                    <p class="text-justify">
+                      {{ item.data.text }}
+                    </p>
                   </v-card-text>
 
                   <v-card-actions v-bind:class="buttonClass">
-                    <!-- <v-hover v-slot:default="{hover}"> -->
-                      <t-button
-                        class="btn-l"
-                        v-bind:props="{
-                          color: 'primary',
-                          to: item.data.to,
-                          outlined: true,
-                          ...buttonProps
-                        }"
-                        v-text="buttonText"
-                      />
-                    <!-- </v-hover> -->
+                    <t-button
+                      class="btn-l mx-auto mx-sm-0"
+                      v-bind:props="{
+                        color: 'primary',
+                        to: item.data.to,
+                        outlined: true,
+                        ...buttonProps
+                      }"
+                      v-text="buttonText"
+                    />
                   </v-card-actions>
                 </div>
               </div>
@@ -151,6 +153,9 @@ export default {
       .__tab--content {
         margin-top: unset !important;
         margin-bottom: 16px;
+        @media (max-width: 600px) {
+          text-align: center !important;
+        }
         @media (min-width: 600px) {
           margin-left: unset;
           margin: {
