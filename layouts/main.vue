@@ -99,10 +99,10 @@
       static-image
     ></t-carousel-banner>
 
-    <v-container class="px-sm-0">
+    <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0">
       <v-breadcrumbs
         v-bind:items="getBreadcrumb"
-        large v-show="getBreadcrumb.length > 1"
+        large
       >
         <template v-slot:item="{item}">
           <v-breadcrumbs-item

@@ -1,11 +1,17 @@
 <template>
-  <v-row tag="div" align="center" justify="center">
+  <v-row no-gutters tag="div" align="center" justify="center">
     <client-only>
       <v-card flat v-if="data">
         <div
-          class="__card d-flex align-center static"
+          class="__card d-sm-flex align-center static"
           v-bind:class="{reversed: reverse}"
         >
+          <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold pb-0">
+            {{ data.caption }}
+          </v-card-subtitle>
+          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center mb-5">
+            {{ data.heading }}
+          </v-card-title>
           <v-img
             class="__card--image"
             v-bind:class="cardImgClass"
@@ -23,17 +29,37 @@
               </v-row>
             </template>
           </v-img>
+          <v-card-text class="hidden-sm-and-up px-0 mt-5 text-justify">
+            {{ data.text }}
+          </v-card-text>
+          <v-card-actions
+            v-if="buttonText"
+            class="hidden-sm-and-up px-0 mt-9"
+          >
+            <t-button
+              class="mx-auto"
+              v-bind:class="buttonClass"
+              v-bind:props="{
+                color: 'primary',
+                depressed: true,
+                tile: true,
+                to: data.to,
+                ...buttonProps
+              }"
+              v-text="buttonText"
+            ></t-button>
+          </v-card-actions>
 
           <client-only>
-            <div class="__card--content" v-bind:class="cardContentClass">
+            <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
               <v-tooltip bottom>
                 <template v-slot:activator="{on, attrs}">
                 <v-card-subtitle
                   v-if="data.caption"
-                  class="text-h6 pb-0 static"
+                  class="text-h6 font-weight-bold pb-0 static"
                   v-bind:class="contentRight ? 'text-right' : null"
-                  v-bind="attrs"
                   v-text="data.caption"
+                  v-bind="attrs"
                   v-on="on"
                 />
                 </template>
@@ -45,8 +71,8 @@
                 <v-card-title
                   class="text-h4 static"
                   v-bind:class="contentRight ? 'justify-end' : null"
-                  v-bind="attrs"
                   v-text="data.heading"
+                  v-bind="attrs"
                   v-on="on"
                 />
                 </template>
@@ -69,6 +95,7 @@
 
               <v-card-actions
                 v-if="buttonText"
+                class="px-4 static"
                 v-bind:class="[
                   buttonContainerClass,
                   contentRight ? 'justify-end' : null
@@ -137,9 +164,18 @@ export default {
   .bdr {
     border: 1px solid black;
   }
+
+  .v-card__text {
+    font-size: 16px !important;
+  }
+
   .__card {
     flex-wrap: wrap !important;
     flex-direction: row !important;
+
+    .text-h6 {
+      color: $primary !important;
+    }
 
     @media (min-width: 600px) {
       flex-wrap: unset !important;
@@ -162,10 +198,6 @@ export default {
     }
 
     &--content {
-      .text-h6 {
-        color: $primary !important;
-      }
-
       ul {
         padding-left: inherit !important;
         padding-top: 30px !important;
@@ -174,8 +206,7 @@ export default {
         }
       }
 
-      ::v-deep a.v-btn {
-        font-weight: bold !important;
+      a.v-btn {
         &--contained {
           &.primary {
             color: white !important;
@@ -200,11 +231,6 @@ export default {
         }
       }
 
-      margin: {
-        top: 40px !important;
-        bottom: 0 !important;
-      }
-
       @media (min-width: 600px) {
         margin: {
           top: 0 !important;
@@ -224,10 +250,6 @@ export default {
       }
 
       .reversed & {
-        margin: {
-          top: 0 !important;
-          bottom: 40px !important;
-        }
 
         @media (min-width: 600px) {
           margin: {

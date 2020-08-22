@@ -57,34 +57,30 @@
     </v-container>
 
     <!-- Voyages -->
-    <v-sheet color="#EFE1DC" class="py-6">
+    <v-sheet color="#EFE1DC" class="py-6 my-12 my-sm-16">
       <v-container
-        class="my-sm-16 voyages static"
+        class="voyages static"
         v-bind:class="sectionPading"
         tag="section"
       >
         <client-only>
-          <div
-            class="mx-auto text-center mb-5"
-            style="width: 65.765765766%"
-          >
-            <v-row align="center" justify="center" style="">
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                <div
-                  class="text-h4 text-sm-h3"
-                  v-bind="attrs"
-                  v-on="on"
-                  v-text="data.tabs.heading"
-                />
-                </template>
-                <span v-text="data.tabs.heading" />
-              </v-tooltip>
-              <p class="mt-8 mt-md-3 mt-sm-5">
-                {{ data.tabs.text }}
-              </p>
-            </v-row>
-          </div>
+        <!-- style="width: 65.765765766%" -->
+        <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
+          <v-tooltip bottom>
+            <template v-slot:activator="{on, attrs}">
+            <div
+              class="text-h4 text-sm-h3 mb-8"
+              v-bind="attrs"
+              v-on="on"
+              v-text="data.tabs.heading"
+            />
+            </template>
+            <span v-text="data.tabs.heading" />
+          </v-tooltip>
+          <p>
+            {{ data.tabs.text }}
+          </p>
+        </v-row>
         </client-only>
         <t-tabs
           button-text="learn more"
@@ -96,7 +92,7 @@
     </v-sheet>
 
     <v-container
-      class="my-sm-16 static"
+      class="d-inline-block mb-7 my-sm-16 static"
       v-bind:class="sectionPading"
       tag="section"
     >
@@ -114,7 +110,7 @@
     </v-container>
 
     <v-container
-      class="my-sm-16 static"
+      class="d-inline-block mb-10 my-sm-16 static"
       v-bind:class="sectionPading"
       tag="section"
     >
@@ -224,6 +220,17 @@ export default {
     }
   }
 
+  ::v-deep .voyages {
+    &--headline {
+      @media (max-width: 768px) {
+        width: auto !important;
+      }
+      @media (min-width: 769px) {
+        width: 720px !important;
+      }
+    }
+  }
+
   section.the-vessel {
     @media (min-width: 1204px) {
       height: 662px !important;
@@ -236,8 +243,7 @@ export default {
     }
   }
 
-  ::v-deep a.v-btn {
-    font-weight: bold !important;
+  a.v-btn {
     &--outlined {
       &.primary--text {
         &:hover {

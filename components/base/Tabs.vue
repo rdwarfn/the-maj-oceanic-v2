@@ -1,5 +1,5 @@
 <template>
-  <v-row class="__tab" ref="tabsRef">
+  <v-row no-gutters class="__tab" ref="tabsRef">
     <v-tabs
       background-color="transparent"
       v-bind:centered="tabsCenter ? tabsCenter : isSmDown"
@@ -16,6 +16,7 @@
         >
           <template v-slot:activator="{on, attrs}">
           <div
+            class="__tab--label"
             v-bind="attrs"
             v-on="on"
             v-text="item.label"
@@ -47,10 +48,11 @@
                   <v-tooltip bottom>
                     <template v-slot:activator="{on, attrs}">
                       <v-card-title
+                        class="px-0"
                         v-bind="attrs"
                         v-on="on"
                       >
-                        <div class="text-h4 text-capitalize mx-auto mx-sm-0">
+                        <div class="text-h4 text-capitalize mx-auto mx-md-0">
                           {{ item.data.title }}
                         </div>
                       </v-card-title>
@@ -58,15 +60,15 @@
                     <span class="text-capitalize" v-text="item.data.title" />
                   </v-tooltip>
 
-                  <v-card-text>
-                    <p class="text-justify">
+                  <v-card-text class="__tab--content-text px-0">
+                    <p class="text-justify text-sm-center text-md-left">
                       {{ item.data.text }}
                     </p>
                   </v-card-text>
 
-                  <v-card-actions v-bind:class="buttonClass">
+                  <v-card-actions class="px-0" v-bind:class="buttonClass">
                     <t-button
-                      class="btn-l mx-auto mx-sm-0"
+                      class="btn-l mx-auto mx-md-0"
                       v-bind:props="{
                         color: 'primary',
                         to: item.data.to,
@@ -96,7 +98,7 @@ export default {
 
   props: {
     data: { type: Array },
-    buttonClass: { type: String, default: "pl-4" },
+    buttonClass: { type: String },
     buttonText: { type: String },
     buttonProps: { type: Object },
     tabsCenter: { type: Boolean, defult: false  },
@@ -122,80 +124,82 @@ export default {
   clear: both !important;
   ::v-deep .v-tabs {
     .v-tab {
-      font-family: 'Verlag Bold', sans-serif;
-      font-size: 1.375rem;
       letter-spacing: 0;
       text-transform: capitalize !important;
       &:not(.v-tab--active) {
         color: #232323 !important;
       }
-
-      @media (max-width: 600px) {
-        font-size: 1.125rem;
-      }
     }
+  }
+
+  &--label {
+    font-family: 'Verlag Bold', sans-serif !important;
+    @include poly-fluid-sizing ('font-size', (320px:16px, 600px:22px))
   }
 
   &-item {
     flex-direction: row;
     flex-wrap: wrap;
-    @media (min-width: 600px) {
+    @media (min-width: 960px) {
       flex-wrap: unset;
     }
 
-    &.reversed {
-      flex-direction: row-reverse;
-      flex-wrap: wrap-reverse;
-      @media (min-width: 600px) {
-        flex-wrap: unset;
-      }
+    // &.reversed {
+    //   flex-direction: row-reverse;
+    //   flex-wrap: wrap-reverse;
+    //   @media (min-width: 960px) {
+    //     flex-wrap: unset;
+    //   }
 
-      .__tab--content {
-        margin-top: unset !important;
-        margin-bottom: 16px;
-        @media (max-width: 600px) {
-          text-align: center !important;
-        }
-        @media (min-width: 600px) {
-          margin-left: unset;
-          margin: {
-            right: 10.22px !important;
-            bottom: 0 !important;
-            left: 0 !important;
-          }
-        }
-        @media (min-width: 960px) {
-          margin-left: unset;
-          margin: {
-            right: 33px !important;
-            bottom: 0 !important;
-            left: 0 !important;
-          }
-        }
-      }
-    }
+    //   .__tab--content {
+    //     margin-top: unset !important;
+    //     margin-bottom: 16px;
+    //     @media (max-width: 600px) {
+    //       text-align: center !important;
+    //     }
+    //     @media (min-width: 600px) {
+    //       margin-left: unset;
+    //       margin: {
+    //         right: 10.22px !important;
+    //         bottom: 0 !important;
+    //         left: 0 !important;
+    //       }
+    //     }
+    //     @media (min-width: 960px) {
+    //       margin-left: unset;
+    //       margin: {
+    //         right: 33px !important;
+    //         bottom: 0 !important;
+    //         left: 0 !important;
+    //       }
+    //     }
+    //   }
+    // }
 
     .__tab--content {
-      margin-top: 16px;
-      @media (min-width: 600px) {
+      @media (max-width: 960px) {
         margin: {
-          top: 0 !important;
-          left: 10.22px !important;
+          left: auto !important;
+          right: auto !important;
         }
       }
-      @media (min-width: 960px) {
-        margin: {
-          top: 0 !important;
-          left: 33px !important;
-        }
+      @include poly-fluid-sizing ('margin-top', (375px:39px, 768px:45px, 960px:0px));
+      @include poly-fluid-sizing ('margin-left', (960px:33px, 1440px:65px));
+
+      &-text {
+        @media (max-width: 768px) {
+          width: auto !important;
+        };
+        @include poly-fluid-sizing ('max-width', (768px:427px, 1440px:475px));
       }
     }
 
     .__tab--img {
       width: 100%;
-      height: auto;
       max-width: unset;
-      @media (min-width: 600px) {
+      @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:350px));
+
+      @media (min-width: 960px) {
         // max-width: 51.351351351%;
         max-width: 50%;
         max-height: 100%;
