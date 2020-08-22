@@ -118,7 +118,6 @@
     </v-container>
 
     <v-main id="main"
-      style="border: 1px solid black"
       v-intersect="{
         handler: onIntersect,
         options: {
@@ -223,7 +222,6 @@ $primary--disabled: #C7E2EC;
     letter-spacing: 3px !important;
     text-transform: uppercase !important;
   }
-    // color: #363636 !important;
 }
 ::v-deep .v-app-bar.v-app-bar--fixed {
   z-index: 10 !important;
