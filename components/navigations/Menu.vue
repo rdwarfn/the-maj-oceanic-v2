@@ -2,8 +2,11 @@
   <v-row no-gutters align="center" justify="space-around">
     <template v-for="data in NavList">
       <v-col cols="auto"
-        class="rounded"
-        v-if="data.id < 3"
+        :class="[
+          'rounded',
+          !isIntersecting && data.id < 3 ? 'mr-5 mr-lg-10' : ''
+        ]"
+        v-if="data.id < 4"
         :key="data.id"
       >
         <v-menu
@@ -89,21 +92,19 @@
         </v-menu>
       </v-col>
     </template>
-
-    <v-col cols="auto"
+    <v-spacer v-if="!isIntersecting" />
+    <v-col
       v-if="!isIntersecting"
-      class="text-center rounded py-1 px-3 mx-2 _img--main-center static"
-      :class="$style.place_self_center"
+      class="text-center rounded py-1 px-2"
       v-ripple
     >
-      <nuxt-link draggable="false" class="mx-auto d-flex" to="/">
+      <nuxt-link draggable="false" class="mx-auto" to="/">
         <v-img
           :lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-          max-width="186"
-          max-height="33"
-          :aspect-ratio="16/9"
           class="mx-auto"
+          max-width="200"
+          max-height="auto"
         >
         <template v-slot:placeholder>
           <v-row
@@ -120,12 +121,15 @@
         </v-img>
       </nuxt-link>
     </v-col>
-
+    <v-spacer v-if="!isIntersecting" />
     <template v-for="data in NavList">
       <v-col cols="auto"
-        v-if="data.id >= 3"
+        v-if="data.id >= 4"
         v-bind:key="data.id"
-        class="text-center"
+        v-bind:class="[
+          'text-center',
+          !isIntersecting && data.id == 4 ? 'mr-5 mr-lg-10' : ''
+        ]"
       >
         <v-menu bottom>
           <template v-slot:activator="{ on: menu, attrs }">
@@ -169,23 +173,6 @@
         </v-menu>
       </v-col>
     </template>
-
-    <v-col cols="auto" class="rounded mr-2" v-if="!isIntersecting">
-      <v-tooltip bottom>
-        <template v-slot:activator="{on, attrs}">
-          <v-btn
-            v-bind="attrs"
-            v-on="on"
-            to="#"
-            text x-small nuxt
-            class="px-0 font-md-12"
-          >
-            login
-          </v-btn>
-        </template>
-        <span>Login</span>
-      </v-tooltip>
-    </v-col>
   </v-row>
 </template>
 

@@ -11,32 +11,26 @@
       :mini-variant="false"
       class="hidden-md-and-up"
       style="z-index: 20"
-      color="#EFE1DC"
-      width="80vw"
+      color="#FBF7F6"
+      width="100vw"
       temporary
       app
     >
       <v-list>
         <v-list-item dense>
-          <!-- <v-row no-gutters align="center" justify="space-between"> -->
-            <v-spacer />
-            <!-- <v-col cols="8" class="text-center"> -->
-              <v-list-item-avatar class="mx-auto" tile width="50%" min-height="67" height="auto">
-                <v-img
-                  v-bind:src="require('~/assets/images/drawer-logo-tmo.png')"
-                  v-bind:lazy-src="require('~/assets/images/drawer-logo-tmo.png')"
-                ></v-img>
-              </v-list-item-avatar>
-              <v-spacer />
-            <!-- </v-col> -->
-            <!-- <v-col cols="2" class="text-center"> -->
-              <v-list-item-action>
-                <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
-                  <v-icon>mdi-close</v-icon>
-                </v-btn>
-              </v-list-item-action>
-            <!-- </v-col> -->
-          <!-- </v-row> -->
+          <v-spacer />
+          <v-list-item-avatar class="mx-auto" tile width="auto" min-height="67" height="auto">
+            <v-img
+              v-bind:src="require('~/assets/images/drawer-logo-tmo.png')"
+              v-bind:lazy-src="require('~/assets/images/drawer-logo-tmo.png')"
+            ></v-img>
+          </v-list-item-avatar>
+          <v-spacer />
+          <v-list-item-action>
+            <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-list-item-action>
         </v-list-item>
       </v-list>
       <v-divider />
@@ -102,7 +96,7 @@
     <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0">
       <v-breadcrumbs
         v-bind:items="getBreadcrumb"
-        large
+        large v-show="getBreadcrumb.length > 1"
       >
         <template v-slot:item="{item}">
           <v-breadcrumbs-item
@@ -118,7 +112,6 @@
     </v-container>
 
     <v-main id="main"
-      class="justify-center"
       v-intersect="{
         handler: onIntersect,
         options: {
@@ -190,15 +183,14 @@ export default {
     routeName () {
       return JSON.stringify(this.$route)
     },
-    showIntersec () {
-      return JSON.stringify(this.intersec)
+    listenIntersecting () {
+      return this.isIntersecting;
     }
   },
 
   methods: {
     onIntersect: function (entries, observer) {
       this.isIntersecting = entries[0].isIntersecting;
-      this.intersec = entries[0]
     }
   }
 }

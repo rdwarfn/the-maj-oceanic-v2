@@ -23,37 +23,31 @@
           justify="start"
         >
             <v-col cols="4" class="mr-md-3">
-            <v-skeleton-loader
-              type="image"
-              width="102"
-              height="36"
-              :loading="loading"
-            >
-            <form style="max-width: 150px">
-              <v-container class="px-0 py-0">
-                <v-text-field
-                  background-color="transparent"
-                  class="text-uppercase"
-                  label="search"
-                  placeholder="SEARCH"
-                  prepend-icon="$search"
-                  v-model="search_input"
-                  dark dense clearable flat single-line solo
-                  style="max-height: 32px"
-                >
-                </v-text-field>
-              </v-container>
-            </form>
-          </v-skeleton-loader>
+              <v-skeleton-loader
+                type="image"
+                width="102"
+                height="36"
+                :loading="loading"
+              >
+              <form style="max-width: 150px">
+                <v-container class="px-0 py-0">
+                  <v-text-field
+                    background-color="transparent"
+                    class="text-uppercase"
+                    label="search"
+                    placeholder="SEARCH"
+                    prepend-icon="$search"
+                    v-model="search_input"
+                    dark dense clearable flat single-line solo
+                    style="max-height: 32px"
+                  >
+                  </v-text-field>
+                </v-container>
+              </form>
+            </v-skeleton-loader>
           </v-col>
 
           <v-col cols="auto">
-          <v-skeleton-loader
-            class="mt-2"
-            type="text"
-            min-width="123"
-            :loading="loading"
-          >
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
                 <v-btn
@@ -69,7 +63,6 @@
               </template>
               <span>The Maj Group</span>
             </v-tooltip>
-          </v-skeleton-loader>
           </v-col>
         </v-row>
       </v-col>
@@ -79,12 +72,6 @@
         md="3"
         class="text-center rounded py-2 px-3 mx-2"
         v-ripple
-      >
-      <v-skeleton-loader
-        type="image"
-        max-height="52"
-        max-width="350"
-        :loading="loading"
       >
         <nuxt-link class="mx-auto" to="/">
           <v-img
@@ -108,7 +95,6 @@
           </template>
           </v-img>
         </nuxt-link>
-      </v-skeleton-loader>
       </v-col>
 
       <v-col cols="3" offset="1">
@@ -118,10 +104,6 @@
           justify="space-around"
         >
           <v-col cols="auto">
-          <v-skeleton-loader
-            type="button"
-            :loading="loading"
-          >
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
                 <v-btn
@@ -137,16 +119,9 @@
               </template>
               <span>Login</span>
             </v-tooltip>
-          </v-skeleton-loader>
           </v-col>
 
           <v-col cols="auto">
-            <v-skeleton-loader
-              type="image"
-              width="137"
-              height="36"
-              :loading="loading"
-            >
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
                 <v-btn
@@ -162,42 +137,15 @@
               </template>
               <span>Inquire Now</span>
             </v-tooltip>
-            </v-skeleton-loader>
           </v-col>
         </v-row>
       </v-col>
     </v-row>
 
   <!-- row list  -->
-  <component
-    v-bind:is="'div'"
-  >
-    <v-row
-      v-if="loading"
-      align="center"
-      justify="center"
-      style="align-self: flex-end !important"
-    >
-      <v-skeleton-loader
-        :loading="loading"
-        type="divider"
-        width="90%"
-        class="px-3"
-      >
-      </v-skeleton-loader>
-      <v-skeleton-loader
-        :loading="loading"
-        :types="{'table-row': 'table-cell@5'}"
-        type="table-row"
-        width="100%"
-        max-width="80%"
-        class="px-5"
-      ></v-skeleton-loader>
-    </v-row>
 
     <v-flex
-      v-else
-      class="nav_row--list d-flex mx-auto px-3 static"
+      class="nav_row--list d-flex mx-auto px-12 static"
       :class="[$style.place_items_center, {
         animated: isIntersecting
       }]"
@@ -207,37 +155,27 @@
         align="center"
         justify="space-around"
       >
-        <v-col cols="auto"
-          v-if="isIntersecting"
-        >
-          <form class="__form_appbar_second" title="Search">
-            <v-container class="pr-0">
-              <v-text-field
-                prepend-icon="$search"
-                title="Search"
-                class="__input_nav_bar my-auto"
-                color="black"
-                label="Search"
-                placeholder="SEARCH"
-                v-model="search_input"
-                background-color="transparent"
-                solo
-                flat
-                clearable
-                single-line
-              >
-              </v-text-field>
-            </v-container>
-          </form>
-        </v-col>
 
-        <v-col class="text-center">
-          <div>
-            <t-navigation-menu
-              :isIntersecting="!isIntersecting"
-              :nav-list="sourceNav"
-            />
-          </div>
+        <t-navigation-menu
+          :isIntersecting="!isIntersecting"
+          :nav-list="sourceNav"
+        />
+
+        <v-col cols="auto" class="rounded mr-8 mr-lg-10" v-if="isIntersecting">
+          <v-tooltip bottom>
+            <template v-slot:activator="{on, attrs}">
+              <v-btn
+                v-bind="attrs"
+                v-on="on"
+                to="#"
+                text x-small nuxt
+                class="px-0 font-md-12"
+              >
+                login
+              </v-btn>
+            </template>
+            <span>Login</span>
+          </v-tooltip>
         </v-col>
 
         <v-col cols="auto" v-if="isIntersecting">
@@ -253,15 +191,14 @@
                 nuxt
                 to="#"
               >
-                book now
+                Inquire Now
               </v-btn>
             </template>
-            <span>Book Now</span>
+            <span>Inquire Now</span>
           </v-tooltip>
         </v-col>
       </v-row>
     </v-flex>
-  </component>
   </v-layout>
 </template>
 
@@ -296,12 +233,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-  .v-input__slot {
-    padding: 0 !important;
-  }
-</style>
-
 <style lang="scss" scoped>
 $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $primary: #208CB2;
@@ -314,6 +245,9 @@ $secondary: #232323;
 }
 
 ::v-deep .v-input {
+  .v-input__slot {
+    padding: 0 !important;
+  }
   ::placeholder {
     font-family: 'Verlag Bold', sans-serif;
     font-size: 13px;
@@ -404,8 +338,6 @@ $secondary: #232323;
         transition:
           background-color .8s ease-in-out,
           color .8s linear,
-          display .1s linear,
-          position .8s linear,
           height .8s linear,
           width .8s $cubic;
         &.animated {
@@ -446,13 +378,6 @@ $secondary: #232323;
     place-self: center;
     max-height: 42px !important;
     text-transform: uppercase;
-  }
-
-  .__form_appbar_second {
-    max-width: 125px;
-    @media (min-width: 1264px) {
-      max-width: 140px !important;
-    }
   }
 
   .__link_appbar {

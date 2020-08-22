@@ -60,10 +60,6 @@ export default {
     return {
       drawer: this.isDrawerOpen,
     }
-  },
-
-  mounted () {
-    console.log(this.$vuetify.breakpoint.sm)
   }
 }
 </script>
@@ -75,17 +71,17 @@ export default {
 
   .v-app-bar {
     -webkit-transition:
-      background-color 5s ease-out !important,
-      display 5s ease-out !important,
-      color 5s ease-out !important;
+      background-color .8s ease-out !important,
+      display .8s ease-out !important,
+      color .8s ease-out !important;
     -moz-transition:
-      background-color 5s ease-out !important,
-      display 5s ease-out !important,
-      color 5s ease-out !important;
+      background-color .8s ease-out !important,
+      display .8s ease-out !important,
+      color .8s ease-out !important;
     transition:
-      background-color 5s ease-out !important,
-      display 5s ease-out !important,
-      color 5s ease-out !important;
+      background-color .8s ease-out !important,
+      display .8s ease-out !important,
+      color .8s ease-out !important;
 
     ._img--white { display: none !important; }
     ._img--black { display: $secondary !important; }
@@ -108,6 +104,7 @@ export default {
     }
 
     &--is-scrolled {
+      background-color: #ffffff !important;
       a._inquire {
         color: $secondary !important;
         @media (max-width: 599px) {

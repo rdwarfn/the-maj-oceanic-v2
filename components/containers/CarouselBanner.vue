@@ -66,14 +66,7 @@ export default {
     }
   },
 
-  created () {
-    console.log(this.vb)
-  },
-
   computed: {
-    vb () {
-      return this.$vuetify.breakpoint
-    },
     objHeight () {
       return this.helper().height();
     },
