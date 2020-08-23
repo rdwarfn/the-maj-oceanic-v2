@@ -53,12 +53,6 @@ export default {
         grabCursor: true,
         lazy: true,
         slidesPerView: 1,
-        cubeEffect: {
-          shadow: true,
-          slideShadows: true,
-          shadowOffset: 20,
-          shadowScale: 0.94
-        }
       }
     }
   },
@@ -83,7 +77,9 @@ export default {
     position: relative !important;
     white-space: pre-line !important;
     font-family: "Sentinel Semibold", serif !important;
-    font-size: 24px !important;
+    @media (max-width: 600px) {
+      font-size: 24px !important;
+    }
   }
   ::v-deep ._hero--img {
     width: 100vw;
