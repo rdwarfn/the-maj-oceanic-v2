@@ -88,10 +88,11 @@
       :loading="false"
     />
 
-    <t-carousel-banner
-      :data="getHerosByRouteName"
+    <t-hero-banner
+      v-if="JSON.parse(routeName).name !== 'contact-us'"
       static-image
-    ></t-carousel-banner>
+      v-bind:data="getHerosByRouteName"
+    />
 
     <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0">
       <v-breadcrumbs
@@ -115,7 +116,7 @@
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: '0px 0px -600px 0px'
+          rootMargin: JSON.parse(routeName).name !== 'contact-us' ? '0px 0px -600px 0px' : '0px'
         }
       }"
     >
@@ -131,12 +132,14 @@
 import tNavigation from '@/components/navigations/index.vue';
 import tNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tCarouselBanner from '@/components/containers/CarouselBanner.vue';
+import tHeroBanner from '@/components/containers/HeroBanner.vue';
 import tFooter from '@/components/containers/Footer.vue';
 
 const components = {
   tNavigation,
   tNavigationMobile,
   tCarouselBanner,
+  tHeroBanner,
   tFooter,
 }
 
@@ -206,6 +209,11 @@ $primary--disabled: #C7E2EC;
   font-size: 16pt;
   border-bottom: dashed 2px currentColor;
   text-shadow: 0 0 10px black;
+}
+#main {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 ._nav--item {
   .v-list-item__title {
