@@ -204,6 +204,7 @@ $primary: #208CB2;
 $primary--disabled: #C7E2EC;
 
 #mark{
+  z-index: 20;
   width: 100%;
   position: fixed; bottom: 600px;
   font-size: 16pt;
@@ -214,6 +215,7 @@ $primary--disabled: #C7E2EC;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: #FAFAFA !important;
 }
 ._nav--item {
   .v-list-item__title {

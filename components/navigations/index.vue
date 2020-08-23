@@ -125,7 +125,7 @@
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
                 <v-btn
-                  to="#"
+                  to="/contact-us"
                   v-bind="attrs"
                   v-on="on"
                   color="white"
@@ -189,7 +189,7 @@
                 tile
                 outlined
                 nuxt
-                to="#"
+                to="/contact-us"
               >
                 Inquire Now
               </v-btn>
