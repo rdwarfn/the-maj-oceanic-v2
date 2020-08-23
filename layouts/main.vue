@@ -89,7 +89,7 @@
     />
 
     <t-hero-banner
-      v-if="JSON.parse(routeName).name !== 'contact-us'"
+      v-if="routeNameContactUs"
       static-image
       v-bind:data="getHerosByRouteName"
     />
@@ -116,7 +116,7 @@
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: JSON.parse(routeName).name !== 'contact-us' ? '0px 0px -600px 0px' : '0px'
+          rootMargin: routeNameContactUs ? '0px 0px -600px 0px' : '0px'
         }
       }"
     >
@@ -183,8 +183,8 @@ export default {
     getBreadcrumb () {
       return this.$store.state.breadcrumbs.items
     },
-    routeName () {
-      return JSON.stringify(this.$route)
+    routeNameContactUs () {
+      return this.$route.name === 'contact-us'
     },
     listenIntersecting () {
       return this.isIntersecting;
