@@ -145,6 +145,7 @@ const components = {
 }
 
 export default {
+  layout: 'empty',
   data () {
     return {
       selected_item: 1,
@@ -211,9 +212,6 @@ $primary--disabled: #C7E2EC;
   text-shadow: 0 0 10px black;
 }
 #main {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   background: #FAFAFA !important;
 }
 ._nav--item {
@@ -256,5 +254,8 @@ $primary--disabled: #C7E2EC;
       color: #232323 !important;
     }
   }
+}
+::v-deep .v-main__wrap {
+  background-color: #FAFAFA !important;;
 }
 </style>

@@ -90,3 +90,6 @@ sw.*
 *.swp
 
 .vercel
+
+pages/develop/
+pages/develop.vue

@@ -1,6 +1,13 @@
 <template>
   <v-sheet height="1000" class="my-16">
-    <t-footer />
+    <h1>testing</h1>
+    <ul>
+      <li><nuxt-link to="/develop/foo">foo</nuxt-link></li>
+      <li><nuxt-link to="/develop/bar">bar</nuxt-link></li>
+    </ul>
+    <div>
+      <nuxt-child />
+    </div>
   </v-sheet>
 </template>
 

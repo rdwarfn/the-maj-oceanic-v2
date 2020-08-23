@@ -1,7 +1,7 @@
 <template>
-  <v-row no-gutters align="center" justify="center" class="mx-auto">
+  <v-row no-gutters align="center" justify="center" class="mx-auto px-0">
     <client-only>
-      <v-card flat v-if="data">
+      <v-card flat v-if="data" class="pt-6 pb-10" color="transparent">
         <div
           class="__card d-sm-flex align-center static"
           v-bind:class="{reversed: reverse}"
@@ -9,7 +9,7 @@
           <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold pb-0">
             {{ data.caption }}
           </v-card-subtitle>
-          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center mb-5">
+          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-truncate text-center mb-5">
             {{ data.heading }}
           </v-card-title>
           <v-img
@@ -36,7 +36,7 @@
             class="hidden-sm-and-up px-0 mt-9"
           >
             <t-button
-              class="mx-auto"
+              class="mx-auto __card--btn"
               v-bind:class="buttonClass"
               v-bind:props="{
                 color: 'primary',
@@ -170,6 +170,10 @@ export default {
   .__card {
     flex-wrap: wrap !important;
     flex-direction: row !important;
+
+    &--btn {
+      width: 151px !important;
+    }
 
     .text-h6 {
       color: $primary !important;

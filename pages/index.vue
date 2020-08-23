@@ -1,35 +1,53 @@
 <template>
   <div>
-    <v-skeleton-loader
-      v-if="!data"
-      :loading="!data"
-      type="article"
-    >
-    </v-skeleton-loader>
     <v-container
-      v-else
       class="mb-12 mb-sm-16 intro static"
       v-bind:class="sectionPading"
       tag="section"
     >
+      <v-skeleton-loader
+        v-if="loading"
+        type="text@2"
+        class="intro--head mb-6 mx-auto"
+      >
+      </v-skeleton-loader>
       <div
+        v-else
         class="intro--head text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
         v-text="data.heading"
       />
-        <!-- style="max-width: 560px" -->
+
+      <v-skeleton-loader
+        v-if="loading"
+        type="image@2"
+        class="mx-auto"
+      ></v-skeleton-loader>
       <tLargeImage
+        v-else
         static-image
         :data="data.image"
       />
-      <div class="intro--paragraph">
+
+      <v-skeleton-loader
+        v-if="loading"
+        type="paragraph@3"
+        max-width="70%"
+        class="text-center mx-auto mt-10 intro--paragraph"
+      ></v-skeleton-loader>
+      <div v-else class="intro--paragraph">
         <p class="text-sm-center">
           {{ data.paragraph }}
         </p>
       </div>
     </v-container>
 
+    <!-- <v-container v-if="loading">
+      <tSkeletonCarousel
+      ></tSkeletonCarousel>
+    </v-container> -->
+      <!-- v-else -->
     <v-container
-      class="px-0 my-12 my-sm-16 overflow-visible static"
+      class="px-0 my-12 my-sm-16 static"
       v-bind:class="sectionPading"
       tag="section"
     >
@@ -43,21 +61,11 @@
         text-class="mb-3 pr-lg-6"
         static-image
       >
-        <!-- <template v-slot:image-extra>
-          <div class="__img_stamp_brown">
-            <v-img
-              :lazy-src="require('~/assets/images/tmo_stamp_brown.png')"
-              :src="require('~/assets/images/tmo_stamp_brown.png')"
-              max-width="183"
-            >
-            </v-img>
-          </div>
-        </template> -->
       </t-carousel>
     </v-container>
 
     <!-- Voyages -->
-    <v-sheet color="#EFE1DC" class="py-6 my-12 my-sm-16">
+    <v-sheet color="#EFE1DC" class="pt-10 pb-6 mt-12 my-sm-16">
       <v-container
         class="voyages static"
         v-bind:class="sectionPading"
@@ -111,7 +119,7 @@
     </v-container>
 
     <v-container
-      class="pb-10 py-sm-16 static"
+      class="pb-5 py-sm-16 static"
       v-bind:class="sectionPading"
       tag="section"
     >
@@ -131,6 +139,8 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import tSkeletonCarousel from '@/components/skeletons/SkeletonCarousel.vue';
+
 const components = {
   tCarouselBanner: () => import('@/components/containers/CarouselBanner.vue'),
   tHeading: () => import('@/components/base/Heading.vue'),
@@ -139,7 +149,9 @@ const components = {
   tCardTextImage: () => import('@/components/base/CardTextImage.vue'),
   tTabs: () => import('@/components/base/Tabs.vue'),
   tDivider: () => import('@/components/Divider.vue'),
-  tButton: () => import('@/components/base/Button.vue')
+  tButton: () => import('@/components/base/Button.vue'),
+
+  tSkeletonCarousel
 }
 // home
 export default {
@@ -148,6 +160,12 @@ export default {
   name: 'home',
 
   components,
+
+  data () {
+    return {
+      loading: false
+    }
+  },
 
   async asyncData ({ $content }) {
     const data = await $content('pages/home').fetch();

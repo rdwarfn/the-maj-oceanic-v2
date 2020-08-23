@@ -27,34 +27,49 @@
         </div>
         <v-form
           class="my-8 py-8 px-5 _form hidden-xs-only"
-          ref="form"
+          ref="form2"
           v-model="valid"
           @submit.prevent="validate"
           @keyup.enter.prevent="validate"
           lazy-validation
         >
+          <v-row align="center" justify="space-between">
+            <v-col cols="6">
+              <v-text-field
+                ref="name"
+                label="Name"
+                v-model="name"
+                v-bind:rules="[
+                  rules.required,
+                  rules.countMin4
+                ]"
+                type="text"
+                validate-on-blur
+                hide-details="auto"
+                background-color="#fafafa"
+                filled clearable flat dense required
+              ></v-text-field>
+            </v-col>
+            <v-col cols="6">
+              <v-select
+                ref="destination"
+                label="Destination"
+                v-model="destination"
+                v-bind:items="destinationData"
+                v-bind:rules="[
+                  rules.required
+                ]"
+                validate-on-blur
+                hide-details="auto"
+                background-color="#fafafa"
+                filled dense flat required
+              ></v-select>
+            </v-col>
+          </v-row>
           <v-row align="end">
             <v-col cols="6" align-self="start">
               <v-row no-gutters style="height: 138px">
-                <v-col cols="12">
-                  <v-text-field
-                    ref="name"
-                    label="Name"
-                    v-model="name"
-                    v-bind:rules="[
-                      rules.required,
-                      rules.countMin4,
-                      rules.countMax20
-                    ]"
-                    type="text"
-                    counter="20"
-                    validate-on-blur
-                    hide-details="auto"
-                    background-color="#fafafa"
-                    filled clearable flat dense required
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" align-self="end">
+                <v-col cols="12" align-self="start">
                   <v-text-field
                     ref="email"
                     label="Email"
@@ -68,6 +83,21 @@
                     hide-details="auto"
                     background-color="#fafafa"
                     filled clearable flat dense required
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" align-self="end">
+                  <v-text-field
+                    ref="phone"
+                    label="Phone"
+                    v-model="phone"
+                    v-bind:rules="[
+                      rules.required
+                    ]"
+                    type="tel"
+                    validate-on-blur
+                    hide-details="auto"
+                    background-color="#fafafa"
+                    filled clearable flat dense
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -92,24 +122,8 @@
             </v-col>
           </v-row>
 
-          <v-row align="end" justify="space-between" style="height: 59px">
-            <v-col cols="6">
-              <v-text-field
-                ref="phone"
-                label="Phone"
-                v-model="phone"
-                v-bind:rules="[
-                  rules.required
-                ]"
-                type="tel"
-                validate-on-blur
-                hide-details="auto"
-                background-color="#fafafa"
-                hint="format: +6281234567890 / 081234567890"
-                filled clearable flat dense
-              ></v-text-field>
-            </v-col>
-            <v-col cols="4" class="text-right">
+          <v-row align="center" justify="end" class="text-right">
+            <v-col>
               <v-slide-x-reverse-transition>
                 <v-tooltip
                   v-if="!valid"
@@ -118,9 +132,9 @@
                   <template v-slot:activator="{ on, attrs }">
                     <v-btn
                       icon
-                      class="my-0"
+                      class="my-0 d-inline"
                       v-bind="attrs"
-                      @click.prevent="reset"
+                      @click.prevent="reset2"
                       v-on="on"
                     >
                       <v-icon>mdi-refresh</v-icon>
@@ -158,11 +172,9 @@
                 v-model="name"
                 v-bind:rules="[
                   rules.required,
-                  rules.countMin4,
-                  rules.countMax20
+                  rules.countMin4
                 ]"
                 type="text"
-                counter="20"
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
@@ -197,9 +209,21 @@
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
-                hint="format: +6281234567890 / 081234567890"
-                filled clearable flat dense
+                filled clearable flat dense required
               ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-select
+                ref="destination"
+                label="Destination"
+                v-model="destination"
+                v-bind:items="destinationData"
+                v-bind:rules="[
+                  rules.required
+                ]"
+                background-color="#fafafa"
+                filled dense required
+              ></v-select>
             </v-col>
             <v-col cols="12">
               <v-textarea
@@ -216,7 +240,7 @@
                 hide-details="auto"
                 background-color="#fafafa"
                 rows="4"
-                filled clearable flat denserequired
+                filled clearable flat dense
               ></v-textarea>
             </v-col>
             <v-col cols="12" class="text-center">
@@ -266,10 +290,11 @@ export default {
       email: '',
       message: '',
       phone: '',
+      destination: '',
+      destinationData: ['Komodo National Park (May - October 2020)', 'Raja Ampat (November 2020 - April 2021'],
       rules: {
         required: v => !!v || 'This field is required.',
         countMin4: v => (v && v.length >= 4) || 'Min 4 characters.',
-        countMax20: v => (v && v.length <= 20) || 'Max 20 characters.',
         countMin50: v => (v && v.length >= 50) || 'Min 50 characters.',
         email: v => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -289,8 +314,9 @@ export default {
       return {
         name: this.name,
         email: this.email,
+        phone: this.phone,
+        destination: this.destination,
         message: this.message,
-        phone: this.phone
       }
     }
   },
@@ -298,14 +324,19 @@ export default {
   methods: {
     validate () {
       const res = this.$refs.form.validate()
-      if (res) {
+      const res2 = this.$refs.form2.validate()
+      if (res && res2) {
         console.log(this.form)
         this.reset();
+        this.reset2();
       }
     },
     reset () {
       this.$refs.form.reset()
-    }
+    },
+    reset2 () {
+      this.$refs.form2.reset()
+    },
   }
 }
 </script>

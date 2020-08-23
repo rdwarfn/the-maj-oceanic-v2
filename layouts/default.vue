@@ -10,7 +10,6 @@
 
 <script>
 export default {
-  transitions: 'debounce',
   components: {
     TmoFooter: () =>
       import('@/components/containers/Footer.vue')
@@ -31,5 +30,6 @@ export default {
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: #FAFAFA !important;
 }
 </style>

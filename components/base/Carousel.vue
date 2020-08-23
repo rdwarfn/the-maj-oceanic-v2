@@ -12,7 +12,7 @@
         v-for="item in data"
         v-bind:key="item.id"
       >
-        <v-card flat tile hover>
+        <v-card flat tile hover color="transparent">
           <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
             {{ item.caption }}
           </v-card-subtitle>
@@ -31,22 +31,29 @@
             class="__carousel--img static"
             :class="cardImageClass"
           />
-          <v-card-text class="hidden-sm-and-up text-justify overflow-visible px-0 mt-4">
-            <p class="text--primary">{{ item.text }}</p>
-          </v-card-text>
-          <v-card-actions class="hidden-sm-and-up mt-5 mb-3">
-            <t-button
-              class="btn-l mx-auto"
-              v-bind:props="{
-                color: 'primary',
-                outlined: true,
-                to: dataActive.to,
-                ...buttonProps
-              }"
-              v-text="buttonText"
-            />
-          </v-card-actions>
         </v-card>
+        <client-only>
+          <v-card
+            flat tile width="90%"
+            class="_card--relative mx-auto pb-13"
+          >
+            <v-card-text class="hidden-sm-and-up text-justify px-0 pt-5">
+              <p class="text--primary px-5">{{ dataActive.text }}</p>
+            </v-card-text>
+            <v-card-actions class="hidden-sm-and-up pa-0 mt-4">
+              <t-button
+                class="btn-l mx-auto"
+                v-bind:props="{
+                  color: 'primary',
+                  outlined: true,
+                  to: dataActive.to,
+                  ...buttonProps
+                }"
+                v-text="buttonText"
+              />
+            </v-card-actions>
+          </v-card>
+        </client-only>
       </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
       <v-btn
@@ -245,6 +252,10 @@ export default {
   $secondary: #4E5E79;
   $transition-time-normal: .5s;
   $white: #ffffff;
+
+  ._card--relative {
+    position: relative !important; top: -25px !important; z-index: 3 !important;
+  }
 
   ::v-deep .v-card {
     .v-card__subtitle {

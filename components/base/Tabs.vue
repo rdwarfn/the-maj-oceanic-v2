@@ -52,12 +52,12 @@
                         v-bind="attrs"
                         v-on="on"
                       >
-                        <div class="text-h4 text-capitalize mx-auto mx-md-0">
+                        <div class="text-h4 mx-auto mx-md-0">
                           {{ item.data.title }}
                         </div>
                       </v-card-title>
                     </template>
-                    <span class="text-capitalize" v-text="item.data.title" />
+                    <span v-text="item.data.title" />
                   </v-tooltip>
 
                   <v-card-text class="__tab--content-text px-0">
@@ -68,7 +68,7 @@
 
                   <v-card-actions class="px-0" v-bind:class="buttonClass">
                     <t-button
-                      class="btn-l mx-auto mx-md-0"
+                      class="btn-l mx-auto mx-md-0 __tab--btn"
                       v-bind:props="{
                         color: 'primary',
                         to: item.data.to,
@@ -130,6 +130,10 @@ export default {
         color: #232323 !important;
       }
     }
+  }
+
+  &--btn {
+    width: 151px !important;
   }
 
   &--label {

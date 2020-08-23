@@ -151,7 +151,7 @@
             </v-row>
             <v-row no-gutters>
               <v-btn class="btn-s" light depressed tile type="submit" v-on:click.prevent="validate">
-                Default
+                sign me up
               </v-btn>
             </v-row>
           </form>
