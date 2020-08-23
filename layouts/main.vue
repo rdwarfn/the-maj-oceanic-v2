@@ -88,10 +88,11 @@
       :loading="false"
     />
 
+      <!-- v-if="!routeNameContactUs" -->
     <t-hero-banner
-      v-if="!routeNameContactUs"
-      static-image
+      v-if="getHerosByRouteName && getHerosByRouteName.length"
       v-bind:data="getHerosByRouteName"
+      static-image
     />
 
     <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0">
@@ -116,7 +117,7 @@
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: !routeNameContactUs ? '0px 0px -600px 0px' : '0px'
+          rootMargin: '0px 0px -600px 0px'
         }
       }"
     >
@@ -178,13 +179,11 @@ export default {
     getHerosByRouteName () {
       const res = this.$store.state.heros.list.find(v => v.page_key === this.$route.name)
       this.isLoadedHeros = true;
+      console.log(res && res.data)
       return res && res.data
     },
     getBreadcrumb () {
       return this.$store.state.breadcrumbs.items
-    },
-    routeNameContactUs () {
-      return this.$route.name === 'contact-us'
     },
     listenIntersecting () {
       return this.isIntersecting;

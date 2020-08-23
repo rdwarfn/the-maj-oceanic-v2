@@ -210,6 +210,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  ._img--black {
+    min-width: 200px !important;
+  }
   ::v-deep .v-list-group--no-action > .v-list-group__items > .v-list-item{
     padding-left: 30px !important;
   }
