@@ -89,7 +89,7 @@
     />
 
     <t-hero-banner
-      v-if="routeNameContactUs"
+      v-if="!routeNameContactUs"
       static-image
       v-bind:data="getHerosByRouteName"
     />
@@ -116,7 +116,7 @@
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: routeNameContactUs ? '0px 0px -600px 0px' : '0px'
+          rootMargin: !routeNameContactUs ? '0px 0px -600px 0px' : '0px'
         }
       }"
     >

@@ -32,7 +32,6 @@
           width="156px"
           height="auto"
         />
-        <div class="_img"></div>
       </nuxt-link>
       <nuxt-link v-ripple :to="$vuetify.breakpoint.xs ? '/contact-us' : '#'" class="text-wrap _inquire _inquire--primary"
       >

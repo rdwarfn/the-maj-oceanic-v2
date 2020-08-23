@@ -99,7 +99,7 @@
       v-ripple
     >
       <nuxt-link draggable="false" class="mx-auto" to="/">
-        <v-img
+        <!-- <v-img
           :lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           class="mx-auto"
@@ -118,7 +118,16 @@
             ></v-progress-circular>
           </v-row>
         </template>
-        </v-img>
+        </v-img> -->
+
+        <img
+          class="mx-auto _img--black"
+          draggable="false"
+          v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+          alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
+          width="auto"
+          height="auto"
+        />
       </nuxt-link>
     </v-col>
     <v-spacer v-if="!isIntersecting" />
