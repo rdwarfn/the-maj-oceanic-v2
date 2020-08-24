@@ -57,44 +57,24 @@
             exact
             ripple
           >
-            <!-- <v-list-item-action>
-              <v-icon>{{ item.icon }}</v-icon>
-            </v-list-item-action> -->
             <v-list-item-content class="_nav--item">
               <v-list-item-title v-text="data.title" />
             </v-list-item-content>
           </v-list-item>
-          <v-list-item>
-            <v-list-item-action>
-              <!-- <nuxt-link v-ripple :to="$vuetify.breakpoint.xs ? '/contact-us' : '#'" class="text-wrap _inquire _inquire--primary"
-              >
-              {{ $vuetify.breakpoint.xs ? 'inquire now' : 'book' }}
-              </nuxt-link> -->
-              <v-btn
-                class="btn-l"
-                nuxt
-                color="primary"
-                to="/contact-us"
-              >
-                Inquire Now
-              </v-btn>
-            </v-list-item-action>
-          </v-list-item>
         </v-list-item-group>
 
-        <!-- <v-list-group
-          no-action
-          sub-group
-          value="true"
-        >
-          <template v-slot:activator>
-            <v-list-item-content>
-              <v-list-item-title>
-                {{ item.title }}
-              </v-list-item-title>
-            </v-list-item-content>
-          </template>
-        </v-list-group> -->
+        <v-list-item>
+          <v-list-item-action>
+            <v-btn
+              class="btn-l"
+              nuxt
+              color="primary"
+              to="/contact-us"
+            >
+              Inquire Now
+            </v-btn>
+          </v-list-item-action>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -152,6 +132,8 @@ import tCarouselBanner from '@/components/containers/CarouselBanner.vue';
 import tHeroBanner from '@/components/containers/HeroBanner.vue';
 import tFooter from '@/components/containers/Footer.vue';
 
+const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v);
+
 const components = {
   tNavigation,
   tNavigationMobile,
@@ -181,8 +163,10 @@ export default {
   components,
 
   async fetch () {
-    this.navigation.data = await this.$content('navs').fetch();
-    this.navigation.isLoaded = true;
+    const navs= await getNavs();
+    this.navigation.data  = navs
+    this.navigation.isLoaded = true
+    console.log(navs)
   },
 
   mounted() {
