@@ -106,7 +106,6 @@
 
       <!-- v-if="!routeNameContactUs" -->
     <t-hero-banner
-      v-if="getHerosByRouteName && getHerosByRouteName.length"
       v-bind:data="getHerosByRouteName"
       static-image
     />
