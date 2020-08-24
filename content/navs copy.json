@@ -3,19 +3,37 @@
     "id": 0,
     "title": "the vessel",
     "to": "/the-vessel",
-    "items": []
+    "items": [
+      {
+        "id": 0,
+        "title": "the cabin",
+        "to": "/the-vessel/the-cabin"
+      }
+    ]
   },
   {
     "id": 1,
     "title": "voyages",
     "to": "/voyages",
-    "items": []
+    "items": [
+      {
+        "id": 0,
+        "title": "detail",
+        "to": "#voyages-detail"
+      }
+    ]
   },
   {
     "id": 2,
     "title": "dining",
     "to": "/dining",
-    "items": []
+    "items": [
+      {
+        "id": 0,
+        "title": "detail",
+        "to": "#dining-detail"
+      }
+    ]
   },
   {
     "id": 3,

@@ -35,12 +35,12 @@
         <client-only>
           <v-card
             flat tile width="90%"
-            class="_card--relative mx-auto pb-13"
+            class="_card--relative hidden-sm-and-up mx-auto pb-13"
           >
-            <v-card-text class="hidden-sm-and-up text-justify px-0 pt-5">
+            <v-card-text class="text-justify px-0 pt-5">
               <p class="text--primary px-5">{{ dataActive.text }}</p>
             </v-card-text>
-            <v-card-actions class="hidden-sm-and-up pa-0 mt-4">
+            <v-card-actions class="pa-0 mt-4">
               <t-button
                 class="btn-l mx-auto"
                 v-bind:props="{

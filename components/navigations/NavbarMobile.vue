@@ -10,6 +10,7 @@
     <v-row no-gutters align="center" justify="space-between" class="mt-5 flex-nowrap">
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
       <slot name="button-nav-icon"></slot>
+      <v-spacer />
       <nuxt-link
         to="/"
         v-ripple
@@ -33,10 +34,12 @@
           height="auto"
         />
       </nuxt-link>
-      <nuxt-link v-ripple :to="$vuetify.breakpoint.xs ? '/contact-us' : '#'" class="text-wrap _inquire _inquire--primary"
+      <v-spacer />
+      <v-spacer />
+      <!-- <nuxt-link v-ripple :to="$vuetify.breakpoint.xs ? '/contact-us' : '#'" class="text-wrap _inquire _inquire--primary"
       >
       {{ $vuetify.breakpoint.xs ? 'inquire now' : 'book' }}
-      </nuxt-link>
+      </nuxt-link> -->
     </v-row>
   </v-app-bar>
 </template>

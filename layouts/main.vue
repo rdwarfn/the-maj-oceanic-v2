@@ -45,13 +45,13 @@
         </v-list-item-content>
       </v-list-item>
       <v-divider />
-      <v-list nav shaped>
+      <v-list>
         <v-list-item-group color="primary">
           <v-list-item
-            v-for="(item, i) in navigation.data"
+            v-for="(data, i) in navigation.data"
             v-bind:key="i"
             v-on:click.prevent="drawer = false"
-            v-bind:to="item.to"
+            v-bind:to="data.to"
             color="primary"
             selectable
             exact
@@ -61,8 +61,24 @@
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action> -->
             <v-list-item-content class="_nav--item">
-              <v-list-item-title v-text="item.title" />
+              <v-list-item-title v-text="data.title" />
             </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-action>
+              <!-- <nuxt-link v-ripple :to="$vuetify.breakpoint.xs ? '/contact-us' : '#'" class="text-wrap _inquire _inquire--primary"
+              >
+              {{ $vuetify.breakpoint.xs ? 'inquire now' : 'book' }}
+              </nuxt-link> -->
+              <v-btn
+                class="btn-l"
+                nuxt
+                color="primary"
+                to="/contact-us"
+              >
+                Inquire Now
+              </v-btn>
+            </v-list-item-action>
           </v-list-item>
         </v-list-item-group>
 
@@ -157,7 +173,8 @@ export default {
         isLoaded: false
       },
       isLoadedHeros: false,
-      intersec: null
+      intersec: null,
+      showHero: true,
     }
   },
 
@@ -180,7 +197,6 @@ export default {
     getHerosByRouteName () {
       const res = this.$store.state.heros.list.find(v => v.page_key === this.$route.name)
       this.isLoadedHeros = true;
-      console.log(res && res.data)
       return res && res.data
     },
     getBreadcrumb () {
@@ -188,12 +204,20 @@ export default {
     },
     listenIntersecting () {
       return this.isIntersecting;
+    },
+    computedRoute () {
+      return JSON.stringify(this.$route)
     }
   },
 
   methods: {
     onIntersect: function (entries, observer) {
       this.isIntersecting = entries[0].isIntersecting;
+    },
+    initial () {
+      console.log(this.$route.name)
+      this.$route.name === 'contact-us'
+      ? this.showHero = false : null
     }
   }
 }
@@ -213,6 +237,13 @@ $primary--disabled: #C7E2EC;
 }
 #main {
   background: #FAFAFA !important;
+}
+::v-deep .v-list-item__action {
+  .v-btn--contained {
+    .v-btn__content {
+      color: white !important;
+    }
+  }
 }
 ._nav--item {
   .v-list-item__title {
