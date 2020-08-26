@@ -29,8 +29,8 @@
               <v-img
                 v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
                 v-bind:lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-                min-width="192"
-                min-height="33.72"
+                width="192"
+                height="33.72"
                 class="mx-auto"
               ></v-img>
             </v-btn>
