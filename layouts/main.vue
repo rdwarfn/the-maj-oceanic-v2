@@ -117,7 +117,7 @@
       v-intersect="{
         handler: onIntersect,
         options: {
-          rootMargin: '0px 0px -600px 0px'
+          rootMargin: '0px 0px -800px 0px'
         }
       }"
     >

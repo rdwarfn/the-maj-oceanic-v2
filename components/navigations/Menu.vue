@@ -2,6 +2,7 @@
   <v-row no-gutters align="center" justify="space-around">
     <template v-for="data in NavList">
       <v-col cols="auto"
+        class="text-center"
         :class="[
           'rounded',
           !isIntersecting && data.id < 3 ? 'mr-5 mr-lg-10' : ''
@@ -10,11 +11,13 @@
         :key="data.id"
       >
         <v-menu
+          background-color="transparent"
           bottom right
           transition="slide-x-transition"
           open-on-hover
           v-bind:close-on-click="false"
           v-bind:close-on-content-click="false"
+          offset-y
           tile
         >
           <template v-slot:activator="{ on: menu, attrs }">
@@ -48,46 +51,31 @@
           <v-list
             v-if="data.items.length"
             flat subheader dense tile
-            max-width="150"
+            min-width="190"
+            color="transparent"
+            auto
+            dark
+            elevation="0"
           >
-            <v-list-group no-action value="true">
-              <template v-slot:activator>
-                <v-list-item-content>
-                  <v-tooltip bottom>
-                    <template v-slot:activator="{on, attrs}">
-                      <v-list-item-title
-                        v-bind="attrs"
-                        v-on="on"
-                        class="text-uppercase text-no-wrap font-md-12"
-                      >
-                        <nuxt-link v-bind:to="data.to">{{ data.title }}</nuxt-link>
-                      </v-list-item-title>
-                    </template>
-                    <span class="text-capitalize">{{ data.title }}</span>
-                  </v-tooltip>
-                </v-list-item-content>
-              </template>
-
-              <v-list-item
-                v-for="(item, index) in data.items"
-                v-bind:key="index"
-                v-bind:to="item.to"
-                dense nuxt
-              >
-                <v-tooltip bottom>
-                  <template v-slot:activator="{on, attrs}">
-                    <v-list-item-title
-                      v-bind="attrs"
-                      v-on="on"
-                      class="text-uppercase font-md-12"
-                    >
-                      {{ item.title }}
-                    </v-list-item-title>
-                  </template>
-                  <span class="text-capitalize">{{ item.title }}</span>
-                </v-tooltip>
-              </v-list-item>
-            </v-list-group>
+            <v-list-item
+              v-for="(item, index) in data.items"
+              v-bind:key="index"
+              v-bind:to="item.to"
+              dense nuxt tile eleveation="0"
+            >
+              <v-tooltip bottom>
+                <template v-slot:activator="{on, attrs}">
+                  <v-list-item-title
+                    v-bind="attrs"
+                    v-on="on"
+                    class="text-uppercase font-weight-bold font-md-12"
+                  >
+                    {{ item.title }}
+                  </v-list-item-title>
+                </template>
+                <span class="text-capitalize">{{ item.title }}</span>
+              </v-tooltip>
+            </v-list-item>
           </v-list>
         </v-menu>
       </v-col>
@@ -140,7 +128,7 @@
           !isIntersecting && data.id == 4 ? 'mr-5 mr-lg-10' : ''
         ]"
       >
-        <v-menu bottom>
+        <v-menu bottom offset-y>
           <template v-slot:activator="{ on: menu, attrs }">
             <v-tooltip bottom>
               <template v-slot:activator="{ on: tooltip }">
