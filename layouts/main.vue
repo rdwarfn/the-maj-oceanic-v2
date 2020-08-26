@@ -16,66 +16,70 @@
       temporary
       app
     >
-      <v-list>
-        <v-list-item dense>
-          <v-spacer />
-          <v-list-item-avatar class="mx-auto" tile width="auto" min-height="67" height="auto">
-            <v-img
-              v-bind:src="require('~/assets/images/drawer-logo-tmo.png')"
-              v-bind:lazy-src="require('~/assets/images/drawer-logo-tmo.png')"
-            ></v-img>
-          </v-list-item-avatar>
-          <v-spacer />
-          <v-list-item-action>
-            <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list>
-      <v-divider />
-      <v-list-item dense>
-        <v-list-item-content>
-          <v-text-field
-            prepend-icon="$search"
-            label="SEARCH"
-            clearable
-            flat
-          ></v-text-field>
-        </v-list-item-content>
-      </v-list-item>
-      <v-divider />
-      <v-list>
-        <v-list-item-group color="primary">
-          <v-list-item
-            v-for="(data, i) in navigation.data"
-            v-bind:key="i"
-            v-on:click.prevent="drawer = false"
-            v-bind:to="data.to"
-            color="primary"
-            selectable
-            exact
-            ripple
-          >
-            <v-list-item-content class="_nav--item">
-              <v-list-item-title v-text="data.title" />
-            </v-list-item-content>
+      <v-container grid-list-xs>
+        <v-list>
+          <v-list-item dense>
+            <v-spacer />
+            <v-list-item-avatar class="mx-auto" tile width="auto" min-height="67" height="auto">
+              <v-img
+                v-bind:src="require('~/assets/images/drawer-logo-tmo.png')"
+                v-bind:lazy-src="require('~/assets/images/drawer-logo-tmo.png')"
+                max-width="192"
+              ></v-img>
+            </v-list-item-avatar>
+            <v-spacer />
+            <v-list-item-action>
+              <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-list-item-action>
           </v-list-item>
-        </v-list-item-group>
-
-        <v-list-item>
-          <v-list-item-action>
-            <v-btn
-              class="btn-l"
-              nuxt
-              color="primary"
-              to="/contact-us"
-            >
-              Inquire Now
-            </v-btn>
-          </v-list-item-action>
+        </v-list>
+        <v-divider />
+        <v-list-item dense>
+          <v-list-item-content>
+            <v-text-field
+              prepend-icon="$search"
+              label="SEARCH"
+              clearable
+              flat
+            ></v-text-field>
+          </v-list-item-content>
         </v-list-item>
-      </v-list>
+        <v-divider />
+        <v-list>
+          <v-list-item-group color="primary">
+            <v-list-item
+              v-for="(data, i) in navigation.data"
+              v-bind:key="i"
+              v-on:click.prevent="drawer = false"
+              v-bind:to="data.to"
+              color="primary"
+              selectable
+              exact
+              ripple
+            >
+              <v-list-item-content class="_nav--item">
+                <v-list-item-title v-text="data.title" />
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+
+          <v-list-item>
+            <v-list-item-action>
+              <t-btn
+                class="btn-l"
+                v-bind:props="{
+                  color: 'primary',
+                  to: '/contact-us'
+                }"
+              >
+                Inquire Now
+              </t-btn>
+            </v-list-item-action>
+          </v-list-item>
+        </v-list>
+      </v-container>
     </v-navigation-drawer>
 
     <t-navigation
@@ -131,6 +135,7 @@ import tNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tCarouselBanner from '@/components/containers/CarouselBanner.vue';
 import tHeroBanner from '@/components/containers/HeroBanner.vue';
 import tFooter from '@/components/containers/Footer.vue';
+import tBtn from '@/components/base/Button.vue';
 
 const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v);
 
@@ -140,6 +145,7 @@ const components = {
   tCarouselBanner,
   tHeroBanner,
   tFooter,
+  tBtn,
 }
 
 export default {
@@ -222,6 +228,14 @@ $primary--disabled: #C7E2EC;
 #main {
   background: #FAFAFA !important;
 }
+::v-deep a.btn-l.primary {
+  span.v-btn__content {
+    color: #ffffff;
+  }
+}
+::v-deep .v-list {
+  padding-left: 45px !important;
+}
 ::v-deep .v-list-item__action {
   .v-btn--contained {
     .v-btn__content {
@@ -232,10 +246,11 @@ $primary--disabled: #C7E2EC;
 ._nav--item {
   .v-list-item__title {
     font-family: 'Verlag Bold', sans-serif !important;
-    font-size: 16px !important;
     line-height: 22px !important;
     letter-spacing: 3px !important;
     text-transform: uppercase !important;
+
+    @include poly-fluid-sizing ('font-size', (375px:13px, 768px:16px))
   }
 }
 ::v-deep .v-app-bar.v-app-bar--fixed {

@@ -11,7 +11,7 @@
       "image": "carousel/banner/hero-4.jpg"
     }
   ],
-  "heading": "Traces of the ancient maritime glory with touches of modern-day comfort",
+  "heading": "Traces of the ancient maritime glory\n with touches of modern-day comfort",
   "paragraph": "The MAJ Oceanic is a traditional handcrafted two-masted Phinisi ecoyacht with 6+1\n resort-standard suites, outfitted with modern design and technology.\n\nLearn, feel, understand, taste, and touch new things while awakening your inner explorer. Get up close with the world's largest lizard species. Huddle together along the railings to spot nature's great displays. Enjoy seafood the Jack Sparrow way. Or practice yoga to the sound of waves.\n\nIf to travel is to live, then a voyage aboard The MAJ Oceanic\nmight be the life you never knew existed.",
   "image": "large/7.jpg",
   "carousel_card": [
@@ -32,6 +32,13 @@
       "to": "#"
     }
   ],
+  "image_card": {
+    "caption": "The Vessel",
+    "heading": "Craftmanship lives on",
+    "text": "Sailing on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity. 1",
+    "image": "carousel/card/10.jpg",
+    "to": "#"
+  },
   "tabs":{
     "heading": "Voyages",
     "text": "Whether you are interested in culture, history, ecology or wildlife, Indonesia's eastern archipelago presents a fantastic range of land-based experiences, including those only reached by sea.",

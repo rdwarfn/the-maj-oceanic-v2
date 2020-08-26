@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.1.11",
-    "@nuxtjs/vuetify": "^1.11.2"
+    "@nuxtjs/vuetify": "^1.11.2",
+    "vue-smooth-reflow": "^0.1.12"
   }
 }

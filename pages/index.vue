@@ -1,8 +1,7 @@
 <template>
   <div>
     <v-container
-      class="mb-12 mb-sm-16 intro static"
-      v-bind:class="sectionPading"
+      class="px-0 mb-12 mb-sm-16 intro"
       tag="section"
     >
       <v-skeleton-loader
@@ -11,11 +10,12 @@
         class="intro--head mb-6 mx-auto"
       >
       </v-skeleton-loader>
-      <div
-        v-else
-        class="intro--head text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
-        v-text="data.heading"
-      />
+      <div v-else class="px-6">
+        <h1
+          class="intro--head text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
+          v-text="data.heading"
+        />
+      </div>
 
       <v-skeleton-loader
         v-if="loading"
@@ -24,6 +24,7 @@
       ></v-skeleton-loader>
       <tLargeImage
         v-else
+        class="px-sm-6"
         static-image
         :data="data.image"
       />
@@ -34,24 +35,16 @@
         max-width="70%"
         class="text-center mx-auto mt-10 intro--paragraph"
       ></v-skeleton-loader>
-      <div v-else class="intro--paragraph">
-        <p class="text-sm-center">
+      <div v-else class="intro--paragraph px-6">
+        <p class="mx-auto text-justify text-sm-center">
           {{ data.paragraph }}
         </p>
       </div>
     </v-container>
 
-    <!-- <v-container v-if="loading">
-      <tSkeletonCarousel
-      ></tSkeletonCarousel>
-    </v-container> -->
-      <!-- v-else -->
-    <v-container
-      class="px-0 my-12 my-sm-16 static"
-      v-bind:class="sectionPading"
-      tag="section"
-    >
-      <t-carousel
+    <v-container class="my-12 my-sm-16 px-6" tag="section">
+      <tSkeletonCarousel />
+      <!-- <t-carousel
         class="_carousel"
         card-class="_carousel--card"
         :data="data.carousel_card"
@@ -61,34 +54,33 @@
         text-class="mb-3 pr-lg-6"
         static-image
       >
-      </t-carousel>
+      </t-carousel> -->
+        <!-- v-bind:data="data.image_card" -->
+      <!-- <t-img-card
+        static-image
+      /> -->
     </v-container>
 
     <!-- Voyages -->
-    <v-sheet color="#EFE1DC" class="pt-10 pb-6 mt-12 my-sm-16">
-      <v-container
-        class="voyages static"
-        v-bind:class="sectionPading"
-        tag="section"
-      >
+    <v-sheet color="#EFE1DC" class="pt-10 pb-6 pb-sm-16 px-6 mt-12 my-sm-16">
+      <v-container class="voyages px-0" tag="section">
         <client-only>
-        <!-- style="width: 65.765765766%" -->
-        <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-            <div
-              class="text-h4 text-sm-h3 mb-8"
-              v-bind="attrs"
-              v-on="on"
-              v-text="data.tabs.heading"
-            />
-            </template>
-            <span v-text="data.tabs.heading" />
-          </v-tooltip>
-          <p>
-            {{ data.tabs.text }}
-          </p>
-        </v-row>
+          <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
+            <v-tooltip bottom>
+              <template v-slot:activator="{on, attrs}">
+              <div
+                class="text-h4 text-sm-h3 mb-8"
+                v-bind="attrs"
+                v-on="on"
+                v-text="data.tabs.heading"
+              />
+              </template>
+              <span v-text="data.tabs.heading" />
+            </v-tooltip>
+            <p>
+              {{ data.tabs.text }}
+            </p>
+          </v-row>
         </client-only>
         <t-tabs
           button-text="learn more"
@@ -99,11 +91,7 @@
       </v-container>
     </v-sheet>
 
-    <v-container
-      class="pb-7 py-sm-16 static"
-      v-bind:class="sectionPading"
-      tag="section"
-    >
+    <v-container class="pb-7 py-sm-16 px-6" tag="section">
       <t-card-text-image
         v-bind:data="data.card_text_image[0]"
         v-bind:button-props="{
@@ -118,11 +106,7 @@
       />
     </v-container>
 
-    <v-container
-      class="pb-5 py-sm-16 static"
-      v-bind:class="sectionPading"
-      tag="section"
-    >
+    <v-container class="pb-5 py-sm-16 px-6" tag="section">
       <t-card-text-image
         v-bind:data="data.card_text_image[1]"
         v-bind:button-props="{
@@ -157,8 +141,6 @@ const components = {
 export default {
   layout: 'main',
 
-  name: 'home',
-
   components,
 
   data () {
@@ -183,14 +165,6 @@ export default {
   },
 
   computed: {
-    sectionPading () {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 'px-7';
-        case 'sm': return 'px-4';
-        default: break;
-      }
-    },
-
     carouselHeight () {
       const v = this.$vuetify.breakpoint.width;
       if (!v) return
@@ -227,15 +201,17 @@ export default {
     }
 
     &--head {
-      @media (max-width: 600px) {
-        width: 100% !important;
-      }
-      @include poly-fluid-sizing('width', (768px:596px, 1204px: 560px))
+      white-space: pre-line;
+      // @media (max-width: 600px) {
+      //   width: 100% !important;
+      // }
+      // @include poly-fluid-sizing('width', (768px:596px, 1204px: 570px));
     }
 
     &--paragraph {
       p {
         white-space: pre-line !important;
+        @include poly-fluid-sizing('max-width', (768px:596px, 1204px:644px));
       }
     }
   }

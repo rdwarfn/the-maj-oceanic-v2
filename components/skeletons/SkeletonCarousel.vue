@@ -9,7 +9,7 @@
 
 <template>
   <content-loader
-    :width="1232"
+    width="1232"
     :height="714"
     :speed="2"
     primaryColor="#dcdcdc"

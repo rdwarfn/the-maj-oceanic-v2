@@ -19,7 +19,7 @@
       <v-col cols="4">
         <v-row
           no-gutters
-          align="center"
+          align="end"
           justify="start"
         >
             <v-col cols="4" class="mr-md-3">
@@ -38,8 +38,8 @@
                     placeholder="SEARCH"
                     prepend-icon="$search"
                     v-model="search_input"
+                    hide-details
                     dark dense clearable flat single-line solo
-                    style="max-height: 32px"
                   >
                   </v-text-field>
                 </v-container>
@@ -100,7 +100,7 @@
       <v-col cols="3" offset="1">
         <v-row
           no-gutters
-          align="center"
+          align="end"
           justify="space-around"
         >
           <v-col cols="auto">
@@ -128,9 +128,9 @@
                   to="/contact-us"
                   v-bind="attrs"
                   v-on="on"
-                  color="white"
-                  depressed tile outlined nuxt
-                  class="btn-s __btn __btn--inquire font-md-12"
+                  color="primary"
+                  class="btn-s font-md-12"
+                  depressed tile nuxt
                 >
                   inquire now
                 </v-btn>
@@ -145,7 +145,7 @@
   <!-- row list  -->
 
     <v-flex
-      class="nav_row--list d-flex mx-auto px-12 static"
+      class="nav_row--list d-flex mx-auto static"
       :class="[$style.place_items_center, {
         animated: isIntersecting
       }]"
@@ -184,11 +184,8 @@
               <v-btn
                 v-bind="attrs"
                 v-on="on"
-                class="btn-s __btn __btn--book font-md-12"
-                depressed
-                tile
-                outlined
-                nuxt
+                class="btn-s font-md-12"
+                depressed tile nuxt dark
                 to="/contact-us"
               >
                 Inquire Now
@@ -285,6 +282,17 @@ $secondary: #232323;
     }
   }
 }
+
+::v-deep a.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined):not(.primary) {
+  background-color: $secondary !important;
+  color: #ffffff !important;
+}
+
+::v-deep a.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined).primary {
+  color: #ffffff !important;
+}
+
+
 .__nav_bar {
   z-index: 10 !important;
   @media (min-width: 0px) and (max-width: 959px) {
@@ -295,7 +303,7 @@ $secondary: #232323;
     display: grid;
     position: fixed !important;
     align-items: flex-end;
-    max-height: 325px;
+    max-height: 192px;
     min-height: 100px;
     background-color: rgba(47, 46, 46, 0.35) !important;
     height: 30%;
@@ -305,7 +313,8 @@ $secondary: #232323;
       transform .8s ease-in-out,
       box-shadow .8s ease-in-out;
     &.animated {
-      transform: translateY(-60%);
+      // transform: translateY(-60%); //1280
+      transform: translateY(-65%); //1440
       box-shadow:
         0 3px 5px -1px rgba(0,0,0,.2),
         0 6px 10px 0 rgba(0,0,0,.14),
@@ -335,6 +344,7 @@ $secondary: #232323;
         color: white;
         height: 44px;
         top: unset;
+        padding: 0 10rem;
         transition:
           background-color .8s ease-in-out,
           color .8s linear,
@@ -345,6 +355,7 @@ $secondary: #232323;
           color: #232323;
           height: 100px;
           width: 100%;
+          padding: 0 48px !important;
         }
       }
     }
@@ -362,13 +373,6 @@ $secondary: #232323;
       &--inquire {
         &:hover {
           background-color: $primary !important;
-        }
-      }
-
-      &--book {
-        &:hover {
-          color: white !important;
-          background-color: $secondary !important;
         }
       }
     }

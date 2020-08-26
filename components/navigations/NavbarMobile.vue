@@ -8,38 +8,37 @@
     class="hidden-md-and-up flex-nowrap"
   >
     <v-row no-gutters align="center" justify="space-between" class="mt-5 flex-nowrap">
+      <v-col sm="4">
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
       <slot name="button-nav-icon"></slot>
+      </v-col>
+      <v-col sm="4" class="text-center">
+        <v-btn
+          to="/"
+          v-ripple
+          :draggable="false"
+          class="text-center align-center"
+          depressed text nuxt
+        >
+          <img
+            class="mx-auto _img--white"
+            :draggable="false"
+            v-bind:src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
+            alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
+            width="156px"
+            height="auto"
+          />
+          <img
+            class="mx-auto _img--black"
+            :draggable="false"
+            v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+            alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
+            width="156px"
+            height="auto"
+          />
+        </v-btn>
+      </v-col>
       <v-spacer />
-      <nuxt-link
-        to="/"
-        v-ripple
-        draggable="false"
-        class="text-center align-center rounded"
-      >
-        <img
-          class="mx-auto _img--white"
-          draggable="false"
-          v-bind:src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
-          alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
-          width="156px"
-          height="auto"
-        />
-        <img
-          class="mx-auto _img--black"
-          draggable="false"
-          v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-          alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
-          width="156px"
-          height="auto"
-        />
-      </nuxt-link>
-      <v-spacer />
-      <v-spacer />
-      <!-- <nuxt-link v-ripple :to="$vuetify.breakpoint.xs ? '/contact-us' : '#'" class="text-wrap _inquire _inquire--primary"
-      >
-      {{ $vuetify.breakpoint.xs ? 'inquire now' : 'book' }}
-      </nuxt-link> -->
     </v-row>
   </v-app-bar>
 </template>

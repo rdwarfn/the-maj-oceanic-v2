@@ -121,7 +121,7 @@
         </v-img> -->
 
         <img
-          class="mx-auto _img--black"
+          class="mx-auto mr-7 _img--black"
           draggable="false"
           v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
@@ -199,19 +199,13 @@ export default {
       type: [Array, Object],
       default: function () { return [] }
     }
-  },
-
-  methods: {
-    isLG: function () {
-      return this.$vuetify.breakpoint.lg
-    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
   ._img--black {
-    min-width: 200px !important;
+    min-width: 170.19px !important;
   }
   ::v-deep .v-list-group--no-action > .v-list-group__items > .v-list-item{
     padding-left: 30px !important;

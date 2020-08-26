@@ -1,27 +1,36 @@
 <template>
   <v-container tag="section" class="px-7 px-sm-6">
-    <v-row no-gutters align="center" justify="center" class="py-16" style="background-color: transparent">
-      <v-col cols="12" sm="4" class="pb-10 pr-2 pb-sm-0 text-sm-left">
+    <v-row no-gutters align="start" justify="space-between" class="py-16" style="background-color: transparent">
+      <v-col cols="12" sm="4" class="pt-sm-15 pb-md-0 pb-10 pr-sm-6 pr-md-2 pb-sm-0 text-sm-left">
         <div class="text-h3 mb-15">
           Contact Us
         </div>
         <div class="mb-10">
-          <p>For more information, enquiries or bookings, contact The Maj Oceanic here</p>
+          <p>Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!</p>
         </div>
+
         <div class="mb-8">
           <div class="text-h6 mb-3">
-            Call Center
+            Whatsapp
           </div>
-          <a href="telp:+62512683129">+62 5126 83129</a>
+          <a href="telp:+628113898419">+62 811 3898 419</a>
         </div>
+
+        <div class="mb-8">
+          <div class="text-h6 mb-3">
+            booking inquiries
+          </div>
+          <a href="mailto:info@themajoceanic.com">info@themajoceanic.com</a>
+        </div>
+
         <div>
           <div class="text-h6 mb-3">
-            Email
+            press & PARTNERSHIPS
           </div>
-          <a href="href:oceanic@themajgroup.com">oceanic@themajgroup.com</a>
+          <a href="mailto:marketing@themajoceanic.com">marketing@themajoceanic.com</a>
         </div>
       </v-col>
-      <v-col cols="12" sm="8" class="pt-15 pb-16">
+      <v-col cols="12" sm="7" md="8" class="pt-15 pb-16">
         <div class="_form--headline">
           make an enquiry
         </div>
