@@ -18,24 +18,15 @@
           v-bind:close-on-click="false"
           v-bind:close-on-content-click="false"
           offset-y
+          auto
           tile
+          v-bind:rounded="false"
         >
           <template v-slot:activator="{ on: menu, attrs }">
             <v-tooltip bottom>
               <template v-slot:activator="{ on: tooltip }">
                 <v-btn
-                  v-if="data.items.length"
-                  v-bind="attrs"
-                  v-on="{ ...tooltip, ...menu }"
-                  text x-small
-                  v-bind:dark="isIntersecting"
-                  class="px-0 font-md-12"
-                >
-                  {{ data.title }}
-                </v-btn>
-                <v-btn
-                  v-else
-                  to="#"
+                  v-bind:to="data.to"
                   v-bind="attrs"
                   v-on="{ ...tooltip, ...menu}"
                   text x-small
@@ -54,14 +45,14 @@
             min-width="190"
             color="transparent"
             auto
-            dark
-            elevation="0"
+            v-bind:dark="isIntersecting"
           >
             <v-list-item
               v-for="(item, index) in data.items"
               v-bind:key="index"
               v-bind:to="item.to"
-              dense nuxt tile eleveation="0"
+              v-bind:disabled="item.disabled"
+              dense nuxt tile
             >
               <v-tooltip bottom>
                 <template v-slot:activator="{on, attrs}">
@@ -133,20 +124,9 @@
             <v-tooltip bottom>
               <template v-slot:activator="{ on: tooltip }">
                 <v-btn
-                  v-if="data.items.length"
+                  v-bind:to="data.to"
                   v-bind="attrs"
                   v-on="{ ...tooltip, ...menu }"
-                  text x-small
-                  v-bind:dark="isIntersecting"
-                  class="px-0 font-md-12"
-                >
-                  {{ data.title }}
-                </v-btn>
-                <v-btn
-                  v-else
-                  to="#"
-                  v-bind="attrs"
-                  v-on="{ ...tooltip, ...menu}"
                   text x-small
                   v-bind:dark="isIntersecting"
                   class="px-0 font-md-12"
@@ -157,14 +137,33 @@
               <span>{{ data.title }}</span>
             </v-tooltip>
           </template>
-          <v-list v-if="data.items.length">
+          <v-list
+            v-if="data.items.length"
+            flat subheader dense tile
+            min-width="190"
+            color="transparent"
+            auto
+            v-bind:dark="isIntersecting"
+          >
             <v-list-item
               v-for="(item, index) in data.items"
               v-bind:key="index"
+              v-bind:to="item.to"
+              v-bind:disabled="item.disabled"
+              dense nuxt tile
             >
-              <v-list-item-title>
-                {{ item.title }}
-              </v-list-item-title>
+              <v-tooltip bottom>
+                <template v-slot:activator="{on, attrs}">
+                  <v-list-item-title
+                    v-bind="attrs"
+                    v-on="on"
+                    class="text-uppercase font-weight-bold font-md-12"
+                  >
+                    {{ item.title }}
+                  </v-list-item-title>
+                </template>
+                <span class="text-capitalize">{{ item.title }}</span>
+              </v-tooltip>
             </v-list-item>
           </v-list>
         </v-menu>

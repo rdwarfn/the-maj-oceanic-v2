@@ -26,9 +26,10 @@
         >
           <v-card
             :loading="loading"
-            hover flat ripple
+            flat
           >
             <v-img
+              v-ripple
               class="__card-three--img mx-auto"
               v-bind:src="staticImage
                 ? require(`~/assets/images/${item.image}`) : item.image"
@@ -36,13 +37,20 @@
                 ? require(`~/assets/images/${item.image}`) : item.image"
             ></v-img>
             <v-card-actions class="text-center">
-              <v-btn
-                text nuxt depressed tile
-                v-bind:to="item.to"
-                class="__card-three--heading font-weight-medium text-capitalize mx-auto text-h4 text--primary"
-              >
-                {{ item.heading }}
-              </v-btn>
+              <v-tooltip bottom>
+                <template v-slot:activator="{on, attrs}">
+                  <v-btn
+                    v-on="on"
+                    v-bind="attrs"
+                    text nuxt depressed tile
+                    v-bind:to="item.to"
+                    class="__card-three--heading font-weight-medium text-capitalize mx-auto text-h4 text--primary"
+                  >
+                    {{ item.heading }}
+                  </v-btn>
+                </template>
+                <span>{{ item.heading }}</span>
+              </v-tooltip>
             </v-card-actions>
           </v-card>
         </v-col>

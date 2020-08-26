@@ -27,16 +27,7 @@
     </v-container>
 
     <v-container tag="section" class="my-16">
-      <component
-        v-bind:is="'div'"
-        hide-on-leave
-      >
-        <v-skeleton-loader
-          v-if="!data.carousel_card"
-          type="image"
-        ></v-skeleton-loader>
-        <t-carousel
-          v-else
+        <!-- <t-carousel
           class="__carousel"
           v-bind:data="data.carousel_card"
           card-class="__carousel_card"
@@ -46,8 +37,10 @@
           text-class="mb-3 pr-lg-6"
           static-image
         >
-        </t-carousel>
-      </component>
+        </t-carousel> -->
+      <client-only>
+      <tSkeletonCarousel />
+      </client-only>
     </v-container>
 
     <!-- <v-container tag="section" class="my-16">
@@ -77,6 +70,7 @@
 
 <script>
 const getTheVessel = () => import('~/static/data/the-vessel.json').then(m => m.default || m);
+import tSkeletonCarousel from '@/components/skeletons/SkeletonCarousel.vue';
 const components = {
   tHeading: () => import('@/components/base/Heading.vue'),
   tLargeImage: () => import('@/components/base/LargeImage.vue'),
@@ -84,6 +78,7 @@ const components = {
   tCarousel: () => import('@/components/base/Carousel.vue'),
   tCarouselThree: () => import('@/components/base/CarouselThree.vue'),
   tCardTextImage: () => import('@/components/base/CardTextImage.vue'),
+  tSkeletonCarousel
 }
 export default {
   layout: 'main',

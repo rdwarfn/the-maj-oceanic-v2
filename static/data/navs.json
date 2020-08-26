@@ -7,44 +7,34 @@
       {
         "id": 0,
         "title": "the cabin",
-        "to": "/the-vessel/the-cabin"
+        "to": "/the-vessel/the-cabin",
+        "disabled": true
       }
     ]
   },
   {
     "id": 1,
     "title": "voyages",
-    "to": "/voyages",
-    "items": [
-      {
-        "id": 0,
-        "title": "detail",
-        "to": "#voyages-detail"
-      }
-    ]
+    "to": "/#",
+    "items": []
   },
   {
     "id": 2,
     "title": "dining",
-    "to": "/dining",
-    "items": [
-      {
-        "id": 0,
-        "title": "detail",
-        "to": "#dining-detail"
-      }
-    ]
+    "to": "/#",
+    "items": []
   },
   {
     "id": 3,
     "title": "occasions",
-    "to": "#",
+    "to": "/#",
     "items": []
   },
   {
     "id": 4,
     "title": "destination",
-    "to": "#destination",
+    "to": "/#",
+    "disabled": true,
     "items": []
   }
 ]

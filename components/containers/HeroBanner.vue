@@ -76,6 +76,7 @@ export default {
     color: #FFFFFF !important;
     position: relative !important;
     white-space: pre-line !important;
+    width: auto;
     font-family: "Sentinel Semibold", serif !important;
     @media (max-width: 600px) {
       font-size: 24px !important;
