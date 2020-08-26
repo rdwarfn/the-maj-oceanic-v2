@@ -43,7 +43,9 @@
     </v-container>
 
     <v-container class="my-12 my-sm-16 px-6" tag="section">
+      <client-only>
       <tSkeletonCarousel />
+      </client-only>
       <!-- <t-carousel
         class="_carousel"
         card-class="_carousel--card"
