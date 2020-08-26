@@ -233,7 +233,7 @@ $primary--disabled: #C7E2EC;
     color: #ffffff;
   }
 }
-::v-deep .v-list {
+::v-deep .v-navigation-drawer .v-list {
   padding-left: 45px !important;
 }
 ::v-deep .v-list-item__action {

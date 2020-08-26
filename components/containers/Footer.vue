@@ -163,12 +163,12 @@
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col class="mb-md-4" sm="3" md="auto">
+              <v-col class="mb-4 mb-md-4" sm="3" md="auto">
               <v-btn class="btn-s" light depressed tile type="submit" v-on:click.prevent="validate">
                 sign me up
               </v-btn>
               </v-col>
-              <v-col sm="9" md="12">
+              <v-col cols="12" sm="9" md="12">
                 <span>
                   By entering your details you consent to be contacted via email
                   by the Maj group with offers and updates. To opt out, use the
