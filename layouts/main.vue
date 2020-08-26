@@ -16,70 +16,81 @@
       temporary
       app
     >
-      <v-container grid-list-xs>
-        <v-list>
-          <v-list-item dense>
-            <v-spacer />
-            <v-list-item-avatar class="mx-auto" tile width="auto" min-height="67" height="auto">
-              <v-img
-                v-bind:src="require('~/assets/images/drawer-logo-tmo.png')"
-                v-bind:lazy-src="require('~/assets/images/drawer-logo-tmo.png')"
-                max-width="192"
-              ></v-img>
-            </v-list-item-avatar>
-            <v-spacer />
-            <v-list-item-action>
-              <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-            </v-list-item-action>
-          </v-list-item>
-        </v-list>
-        <v-divider />
+      <v-list flat tile class="_img-logo--mobile text-center">
         <v-list-item dense>
-          <v-list-item-content>
-            <v-text-field
-              prepend-icon="$search"
-              label="SEARCH"
-              clearable
-              flat
-            ></v-text-field>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider />
-        <v-list>
-          <v-list-item-group color="primary">
-            <v-list-item
-              v-for="(data, i) in navigation.data"
-              v-bind:key="i"
-              v-on:click.prevent="drawer = false"
-              v-bind:to="data.to"
-              color="primary"
-              selectable
-              exact
-              ripple
+          <v-row no-gutters class="flex-nowrap" align="center" justify="space-between">
+          <v-spacer class="hidden-sm-and-up" />
+          <v-col sm="4">
+          <v-list-item-avatar tile width="auto" min-height="67" height="auto" class="mr-0">
+            <v-btn
+              nuxt text tile depressed
+              to="/"
             >
-              <v-list-item-content class="_nav--item">
-                <v-list-item-title v-text="data.title" />
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-
-          <v-list-item>
-            <v-list-item-action>
-              <t-btn
-                class="btn-l"
-                v-bind:props="{
-                  color: 'primary',
-                  to: '/contact-us'
-                }"
-              >
-                Inquire Now
-              </t-btn>
-            </v-list-item-action>
+              <v-img
+                v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+                v-bind:lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+                min-width="192"
+                min-height="33.72"
+                class="mx-auto"
+              ></v-img>
+            </v-btn>
+          </v-list-item-avatar>
+          </v-col>
+          <!-- <v-spacer class="hidden-sm-and-up" /> -->
+          <v-col sm="4">
+          <v-list-item-action class="mr-0">
+            <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </v-list-item-action>
+          </v-col>
+          </v-row>
+        </v-list-item>
+      </v-list>
+      <v-divider />
+      <v-list-item dense>
+        <v-list-item-content>
+          <v-text-field
+            prepend-icon="$search"
+            label="SEARCH"
+            clearable
+            flat
+          ></v-text-field>
+        </v-list-item-content>
+      </v-list-item>
+      <v-divider />
+      <v-list>
+        <v-list-item-group color="primary">
+          <v-list-item
+            v-for="(data, i) in navigation.data"
+            v-bind:key="i"
+            v-on:click.prevent="drawer = false"
+            v-bind:to="data.to"
+            color="primary"
+            selectable
+            exact
+            ripple
+          >
+            <v-list-item-content class="_nav--item">
+              <v-list-item-title v-text="data.title" />
+            </v-list-item-content>
           </v-list-item>
-        </v-list>
-      </v-container>
+        </v-list-item-group>
+
+        <v-list-item>
+          <v-list-item-action>
+            <t-btn
+              class="btn-l"
+              v-bind:props="{
+                color: 'primary',
+                to: '/contact-us'
+              }"
+            >
+              Inquire Now
+            </t-btn>
+          </v-list-item-action>
+        </v-list-item>
+      </v-list>
     </v-navigation-drawer>
 
     <t-navigation
@@ -233,7 +244,7 @@ $primary--disabled: #C7E2EC;
     color: #ffffff;
   }
 }
-::v-deep .v-navigation-drawer .v-list {
+::v-deep .v-navigation-drawer .v-list:not(._img-logo--mobile) {
   padding-left: 45px !important;
 }
 ::v-deep .v-list-item__action {
