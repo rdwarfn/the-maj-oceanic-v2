@@ -36,7 +36,6 @@
             </v-btn>
           </v-list-item-avatar>
           </v-col>
-          <!-- <v-spacer class="hidden-sm-and-up" /> -->
           <v-col sm="4">
           <v-list-item-action class="mr-0">
             <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
@@ -183,7 +182,6 @@ export default {
     const navs= await getNavs();
     this.navigation.data  = navs
     this.navigation.isLoaded = true
-    console.log(navs)
   },
 
   mounted() {
@@ -214,11 +212,6 @@ export default {
   methods: {
     onIntersect: function (entries, observer) {
       this.isIntersecting = entries[0].isIntersecting;
-    },
-    initial () {
-      console.log(this.$route.name)
-      this.$route.name === 'contact-us'
-      ? this.showHero = false : null
     }
   }
 }
