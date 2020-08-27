@@ -124,6 +124,7 @@
     </v-container>
 
     <v-main id="main"
+      v-bind:class="{'pt-0': !getHerosByRouteName}"
       v-intersect="{
         handler: onIntersect,
         options: {

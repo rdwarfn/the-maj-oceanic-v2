@@ -1,12 +1,12 @@
 <template>
-  <v-footer dark tile inset background-color="#232323">
-    <v-container>
-      <v-row no-gutters class="mb-6" align="start" justify="space-between">
-        <v-col class="col--1" cols="12" sm="auto">
+  <v-footer id="footer" dark tile inset background-color="#232323">
+    <v-container class="px-6">
+      <v-row class="mb-6" align="start" justify="space-between">
+        <v-col class="col--1" cols="12" sm="4" md="mb-4" lg="3">
           <div class="mb-6">
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
-                <div v-bind="attrs" v-on="on" class="text-caption mb-2 text-truncate text-uppercase font-weight-bold">
+                <div v-bind="attrs" v-on="on" class="text-caption mb-2 text-uppercase font-weight-bold">
                   the maj oceanic
                 </div>
               </template>
@@ -26,6 +26,7 @@
           <div class="mb-5">
             <div class="text-uppercase mb-3 __part-of">part of</div>
             <v-row no-gutters align="center" justify="start">
+              <v-col cols="6">
               <v-img
                 v-bind:src="require('~/assets/images/svg/the_maj_experience.svg?data')"
                 v-bind:lazy-src="require('~/assets/images/svg/the_maj_experience.svg?data')"
@@ -33,13 +34,16 @@
                 max-width="76"
                 class="mr-14"
               ></v-img>
+              </v-col>
+              <v-col cols="6">
               <v-img
                 v-bind:src="require('~/assets/images/svg/the_maj_group.svg?data')"
                 v-bind:lazy-src="require('~/assets/images/svg/the_maj_group.svg?data')"
                 min-width="75"
                 max-width="91.91"
               ></v-img>
-              <v-spacer/>
+              </v-col>
+              <!-- <v-spacer/> -->
             </v-row>
           </div>
           <div>
@@ -54,72 +58,76 @@
           </div>
         </v-col>
 
-        <v-col class="col--2 px-sm-1" cols="12" sm="auto" md="2">
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <div v-bind="attrs" v-on="on" class="text-caption text-truncate mb-4 text-uppercase font-weight-bold">
-                join our family
-              </div>
-            </template>
-            <span class="text-capitalize">join our family</span>
-          </v-tooltip>
-          <v-list class="__list" color="transparent" dense flat tile>
-            <v-list-item-group no-action>
-              <v-list-item
-                v-for="(data, index) in joins"
-                v-bind:key="index"
-                nuxt v-bind:to="data.to"
-                class="px-0 fill-height"
-              >
-                <v-tooltip bottom>
-                  <template v-slot:activator="{on, attrs}">
-                    <v-list-item-content v-bind="attrs" v-on="on">
-                      <v-list-item-title v-text="data.title">
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </template>
-                  <span>{{ data.title }}</span>
-                </v-tooltip>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
+        <v-col class="col--2 px-0" sm="auto" md="6" lg="4">
+          <v-row no-gutters align="start" justify-sm="space-between">
+            <v-col class="col--2a px-sm-1" cols="12" sm="auto">
+              <v-tooltip bottom>
+                <template v-slot:activator="{on, attrs}">
+                  <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
+                    join our family
+                  </div>
+                </template>
+                <span class="text-capitalize">join our family</span>
+              </v-tooltip>
+              <v-list class="__list" color="transparent" dense flat tile>
+                <v-list-item-group no-action>
+                  <v-list-item
+                    v-for="(data, index) in joins"
+                    v-bind:key="index"
+                    nuxt v-bind:to="data.to"
+                    class="px-0 fill-height"
+                  >
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{on, attrs}">
+                        <v-list-item-content v-bind="attrs" v-on="on">
+                          <v-list-item-title v-text="data.title">
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                      <span>{{ data.title }}</span>
+                    </v-tooltip>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-col>
+
+            <v-col class="px-sm-1" cols="12" sm="auto">
+              <v-tooltip bottom>
+                <template v-slot:activator="{on, attrs}">
+                  <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
+                    explore our World
+                  </div>
+                </template>
+                <span class="text-capitalize">explore our World</span>
+              </v-tooltip>
+              <v-list class="__list" color="transparent" dense flat tile>
+                <v-list-item-group no-action>
+                  <v-list-item
+                    v-for="(data, index) in explore"
+                    v-bind:key="index"
+                    nuxt v-bind:to="data.to"
+                    class="px-0 fill-height"
+                  >
+                    <v-tooltip bottom>
+                      <template v-slot:activator="{on, attrs}">
+                        <v-list-item-content v-bind="attrs" v-on="on">
+                          <v-list-item-title class="text-wrap" v-text="data.title">
+                          </v-list-item-title>
+                        </v-list-item-content>
+                      </template>
+                      <span>{{ data.title }}</span>
+                    </v-tooltip>
+                  </v-list-item>
+                </v-list-item-group>
+              </v-list>
+            </v-col>
+          </v-row>
         </v-col>
 
-        <v-col class="col--3 px-sm-1" cols="12" sm="auto" md="2">
+        <v-col class="col--3" cols="12" lg="4" offset-lg="1">
           <v-tooltip bottom>
             <template v-slot:activator="{on, attrs}">
-              <div v-bind="attrs" v-on="on" class="text-caption text-truncate mb-4 text-uppercase font-weight-bold">
-                explore our World
-              </div>
-            </template>
-            <span class="text-capitalize">explore our World</span>
-          </v-tooltip>
-          <v-list class="__list" color="transparent" dense flat tile>
-            <v-list-item-group no-action>
-              <v-list-item
-                v-for="(data, index) in explore"
-                v-bind:key="index"
-                nuxt v-bind:to="data.to"
-                class="px-0 fill-height"
-              >
-                <v-tooltip bottom>
-                  <template v-slot:activator="{on, attrs}">
-                    <v-list-item-content v-bind="attrs" v-on="on">
-                      <v-list-item-title v-text="data.title">
-                      </v-list-item-title>
-                    </v-list-item-content>
-                  </template>
-                  <span>{{ data.title }}</span>
-                </v-tooltip>
-              </v-list-item>
-            </v-list-item-group>
-          </v-list>
-        </v-col>
-
-        <v-col class="col--4" cols="12" md="4">
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <div v-bind="attrs" v-on="on" class="text-caption text-truncate mb-4 text-uppercase font-weight-bold">
+              <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
                 Sign up for Exclusive news & Offers
               </div>
             </template>
@@ -128,7 +136,7 @@
           <v-row no-gutters>
           <form ref="form" v-on:submit.prevent="validate">
             <v-row>
-              <v-col cols="4" sm="2" md="4">
+              <v-col cols="4" sm="2" lg="4">
                 <v-select
                   v-model="forms.select.data"
                   v-bind:items="forms.select.items"
@@ -139,7 +147,7 @@
                   required
                 ></v-select>
               </v-col>
-              <v-col cols="8" sm="5" md="8" class="pl-md-0">
+              <v-col cols="8" sm="5" lg="8" class="pl-md-0">
                 <v-text-field
                   v-model="forms.fullname.data"
                   v-bind:rules="forms.fullname.rules"
@@ -150,7 +158,7 @@
                   required
                 ></v-text-field>
               </v-col>
-              <v-col cols="12" sm="5" md="12" class="mb-3" no-gutters>
+              <v-col cols="12" sm="5" lg="12" class="mb-3" no-gutters>
                 <v-text-field
                   v-model="forms.email.data"
                   v-bind:rules="forms.email.rules"
@@ -163,12 +171,12 @@
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col class="mb-4 mb-md-4" sm="3" md="auto">
+              <v-col class="mb-4 mb-md-4" sm="3" lg="auto">
               <v-btn class="btn-s" light depressed tile type="submit" v-on:click.prevent="validate">
                 sign me up
               </v-btn>
               </v-col>
-              <v-col cols="12" sm="9" md="12">
+              <v-col cols="12" sm="9" lg="12">
                 <span>
                   By entering your details you consent to be contacted via email
                   by the Maj group with offers and updates. To opt out, use the
@@ -180,9 +188,9 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row no-gutters align="center text-center">
+      <v-row no-gutters align="center" class="text-sm-center mt-sm-5 mt-lg-0">
         <v-col>
-          <span>Copyright {{ new Date().getFullYear() }} All right reserved</span>
+          <span class="">Copyright {{ new Date().getFullYear() }} All right reserved</span>
         </v-col>
       </v-row>
     </v-container>
@@ -293,6 +301,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  #footer {
+    @include poly-fluid-sizing ('padding-top', (375px:38px, 768px:55px, 1440px:90px));
+    @include poly-fluid-sizing ('padding-bottom', (375px:58, 768px:38px, 1440px:38px));
+  }
   span {
     font-size: 13px !important;
     font-weight: normal !important;
@@ -306,7 +318,7 @@ export default {
   .col {
     &--1 {
       @media (max-width: 600px) {
-        border-bottom: 2px solid white !important;
+        border-bottom: thin solid white !important;
         padding-bottom: 40px !important;
         margin-bottom: 41px !important;
       }
@@ -318,15 +330,15 @@ export default {
       }
     }
 
-    &--3 {
+    &--2a {
       @media (max-width: 600px) {
         margin-bottom: 36px !important;
       }
     }
 
-    &--4 {
-      @media (min-width: 600px) and (max-width: 960px) {
-        border-top: 2px solid #ffffff !important;
+    &--3 {
+      @media (min-width: 600px) and (max-width: 1264px) {
+        border-top: thin solid #ffffff !important;
         padding-top: 34px !important;
         margin-top: 37px !important;
       }

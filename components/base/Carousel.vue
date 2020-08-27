@@ -55,38 +55,41 @@
           </v-card>
         </client-only>
       </swiper-slide>
-      <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
-      <v-btn
-        fab
-        absolute
-        x-small
-        class="button--left swiper-button-prev"
-        color="white"
-        slot="button-prev"
-      >
-        <v-icon color="primary">mdi-chevron-left</v-icon>
-      </v-btn>
-      <v-btn
-        fab
-        absolute
-        x-small
-        class="button--right swiper-button-next"
-        color="white"
-        slot="button-next"
-      >
-        <v-icon color="primary">mdi-chevron-right</v-icon>
-      </v-btn>
+      <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+      <template v-if="data && data.length > 1">
+        <v-btn
+          fab
+          absolute
+          x-small
+          class="button--left swiper-button-prev"
+          color="white"
+          slot="button-prev"
+        >
+          <v-icon color="primary">mdi-chevron-left</v-icon>
+        </v-btn>
+        <v-btn
+          fab
+          absolute
+          x-small
+          class="button--right swiper-button-next"
+          color="white"
+          slot="button-next"
+        >
+          <v-icon color="primary">mdi-chevron-right</v-icon>
+        </v-btn>
+      </template>
     </swiper>
-
     <client-only>
       <v-card
         v-if="Object.keys(dataActive).length"
-        class="__carousel--card hidden-xs-only static"
+        class="__carousel--card hidden-xs-only"
         v-bind:class="cardClass"
         v-bind:rounded="false"
+        min-width="352"
         v-bind:height="cardHeight"
         v-bind:width="cardWidth"
         v-bind:max-height="cardMaxHeight"
+        flat tile v-ripple
       >
         <slot v-if="!isXs" name="image-extra"></slot>
         <v-tooltip bttom>
@@ -96,7 +99,7 @@
             v-if="dataActive.caption"
             v-bind="attrs"
             v-on="on"
-            class="text-h6 __txt_primary static"
+            class="text-h6 __txt_primary px-0"
             :class="captionClass"
           >
             {{ dataActive.caption }}
@@ -112,7 +115,7 @@
           <v-card-title
             v-bind="attrs"
             v-on="on"
-            class="text-h4 text-md-h3 text-truncate static"
+            class="text-h4 text-md-h3 text-truncate mb-5 px-0"
             :class="headingClass"
           >
             {{ dataActive.heading }}
@@ -123,7 +126,7 @@
         </v-tooltip>
 
         <v-card-text
-          class="__txt_base static"
+          class="text--primary d-block mb-8 px-0"
           :class="textClass"
         >
           {{ dataActive.text }}
@@ -135,7 +138,7 @@
           </ul>
         </v-card-text>
 
-        <v-card-actions v-if="buttonText" v-bind:class="buttonClass">
+        <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0">
           <t-button
             class="btn-l"
             v-bind:props="{
@@ -167,7 +170,7 @@ export default {
   props: {
     data: { type: Array },
     staticImage: { type: Boolean, default: false },
-    maxHeight: { type: String, default: '446'},
+    maxHeight: { type: String},
     cardClass: { type: String },
     cardHeight: { type: String },
     cardWidth: { type: String },
@@ -273,40 +276,38 @@ export default {
   .__txt_primary {
     color: $primary !important;
   }
-  .whitespace-pre-line {
-    white-space: pre-line;
-  }
-  .whtspc_nowrp {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  .__txt_base {
-    color: rgba(0, 0, 0, 1) !important;
-  }
 
   .__carousel {
     position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
     margin: {
       top: auto !important;
       bottom: auto !important;
     }
-    @media (min-width: 600px) {
-      margin-bottom: 50px !important;
-    }
 
     &--card {
-      width: 100%;
-      padding: 10px 6px 18px;
-      z-index: 2;
+      @include poly-fluid-sizing ('width', (375px:290px, 1440px:445px));
+      @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
+      @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
+      // @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
+      @include poly-fluid-sizing ('padding-left', (375px:20px, 768px:25px, 1440px:50px));
+      @include poly-fluid-sizing ('padding-right', (375px:20px, 768px:25px, 1440px:50px));
+      display: inline-block !important;
+      z-index: 10 !important;
       top: 10% !important;
       right: 0;
       margin: {
-        top: 40px !important;
+        // top: 40px !important;
         right: auto !important;
         left: auto !important;
         bottom: 0 !important;
       }
+      position: absolute;
 
       .reversed & {
         margin: {
@@ -324,7 +325,6 @@ export default {
           left: 0 !important;
           bottom: 0 !important;
         }
-        position: absolute;
       };
 
       @media (min-width: 960px) {
@@ -334,7 +334,6 @@ export default {
           left: 0 !important;
           bottom: 0 !important;
         }
-        position: absolute;
       }
 
       &-list {

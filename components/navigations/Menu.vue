@@ -193,6 +193,7 @@ export default {
 <style lang="scss" scoped>
   ._img--black {
     min-width: 170.19px !important;
+    max-width: 170.19px !important;
   }
   ::v-deep .v-list-group--no-action > .v-list-group__items > .v-list-item{
     padding-left: 30px !important;

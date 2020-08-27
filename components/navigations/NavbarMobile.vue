@@ -38,12 +38,23 @@
           />
         </v-btn>
       </v-col>
-      <v-spacer />
+      <v-col cols="4" class="text-right">
+        <t-btn
+          class="btn-l _inquire--primary-black"
+          v-bind:props="{
+            color: 'primary',
+            to: '/contact-us'
+          }"
+        >
+          Inquire Now
+        </t-btn>
+      </v-col>
     </v-row>
   </v-app-bar>
 </template>
 
 <script>
+import tBtn from '@/components/base/Button.vue';
 export default {
   inheritAttrs: false,
 
@@ -55,6 +66,10 @@ export default {
       default: false
     },
     isIntersecting: { type: Boolean }
+  },
+
+  components: {
+    tBtn,
   },
 
   data () {
@@ -117,6 +132,11 @@ export default {
             border: thin solid $secondary !important;
           }
         }
+      }
+
+      a._inquire--primary-black {
+        background-color: $secondary !important;
+        border-color: $secondary !important;
       }
     }
 

@@ -42,7 +42,6 @@
                   class="__tab--img"
                   v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
                   v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
-                  v-bind:aspect-ratio="16/9"
                 ></v-img>
                 <div class="__tab--content">
                   <v-tooltip bottom>
@@ -199,15 +198,9 @@ export default {
     }
 
     .__tab--img {
-      width: 100%;
       max-width: unset;
-      @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:350px));
-
-      @media (min-width: 960px) {
-        // max-width: 51.351351351%;
-        max-width: 50%;
-        max-height: 100%;
-      }
+      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:718px, 1440px:1110px));
+      @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:460px));
     }
   }
 }

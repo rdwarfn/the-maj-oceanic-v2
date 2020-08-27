@@ -42,29 +42,18 @@
       </div>
     </v-container>
 
-    <v-container class="my-12 my-sm-16 px-6" tag="section">
-      <client-only>
-      <tSkeletonCarousel />
-      </client-only>
-      <!-- <t-carousel
-        class="_carousel"
-        card-class="_carousel--card"
+    <v-container class="px-6 _carousel" tag="section">
+      <t-carousel
         :data="data.carousel_card"
         button-class="pl-4"
         button-text="discover"
-        heading-class="pt-0 mb-1"
-        text-class="mb-3 pr-lg-6"
         static-image
       >
-      </t-carousel> -->
-        <!-- v-bind:data="data.image_card" -->
-      <!-- <t-img-card
-        static-image
-      /> -->
+      </t-carousel>
     </v-container>
 
     <!-- Voyages -->
-    <v-sheet color="#EFE1DC" class="pt-10 pb-6 pb-sm-16 px-6 mt-12 my-sm-16">
+    <v-sheet color="#EFE1DC" class="pt-10 pb-6 pb-sm-10 px-6 mt-12 my-sm-16">
       <v-container class="voyages px-0" tag="section">
         <client-only>
           <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
@@ -279,36 +268,8 @@ export default {
     }
   }
 
-  ::v-deep ._carousel {
-    // @include poly-fluid-sizing('margin-bottom', (600px))
-
-    &--card {
-      // @include poly-fluid-sizing ('padding-top', (600px:35px, ))
-      // @include poly-fluid-sizing('padding', (600px:35px 13px 36px, 1204px:38px 50px 73px));
-      @media (min-width: 600px) {
-        padding: 35px 13px 36px !important;
-        top: 10% !important;
-        right: 0;
-        z-index: 5;
-        max-width: 47.135416667%;
-      }
-
-      @media (min-width: 960px) {
-        padding: 35px 13px 36px !important;
-        top: 15% !important;
-        right: 0;
-        z-index: 5;
-        max-width: 40.09009009%;
-      }
-
-      @media (min-width: 1264px) {
-        padding: 38px 34px 62px !important;
-        // top: -450px !important;
-        top: 15% !important;
-        right: 0;
-        z-index: 5;
-      }
-    }
+  ._carousel {
+    @include poly-fluid-sizing ('margin-bottom', (768px:123px, 1440px:100px))
   }
 </style>
 

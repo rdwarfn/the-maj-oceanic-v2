@@ -3,6 +3,16 @@ export default {
     color: '#208CB2',
     height: '10px'
   },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        name: 'custom',
+        path: '*',
+  //       redirect: '/siiling-soons'
+        component: resolve(__dirname, 'pages/sailing-soons.vue')
+      })
+    }
+  },
   /*
   ** Nuxt rendering mode
   ** See https://nuxtjs.org/api/configuration-mode
@@ -49,7 +59,7 @@ export default {
   */
   plugins: [
     '~/plugins/base-components',
-    '~/plugins/vue-awesome-swiper'
+    { src: '~/plugins/vue-awesome-swiper', mode: 'client' }
     // { src: '~/plugins/vue-awesome-swiper', model: 'client' }
   ],
   /*
