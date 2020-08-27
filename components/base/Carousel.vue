@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="__carousel align-center"
+  <v-container
+    class="__carousel align-center px-0"
     :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
   >
     <swiper
@@ -152,7 +152,7 @@
         </v-card-actions>
       </v-card>
     </client-only>
-  </div>
+  </v-container>
 </template>
 
 <script>
@@ -221,7 +221,7 @@ export default {
 
   watch: {
     activeIndex: function (val) {
-      if (!this.store && !this.store.length) return 
+      if (!this.store && !this.store.length) return
       this.dataActive = this.store[val];
     }
   },
