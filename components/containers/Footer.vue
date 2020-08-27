@@ -58,7 +58,7 @@
           </div>
         </v-col>
 
-        <v-col class="col--2 px-0" sm="auto" md="6" lg="4">
+        <v-col class="col--2 px-0" sm="7" md="6" lg="4">
           <v-row no-gutters align="start" justify-sm="space-between">
             <v-col class="col--2a px-sm-1" cols="12" sm="auto">
               <v-tooltip bottom>

@@ -13,7 +13,7 @@
           <div class="text-h6 mb-3">
             Whatsapp
           </div>
-          <a href="telp:+628113898419">+62 811 3898 419</a>
+          <a href="https://api.whatsapp.com/send?phone=628113898419">+62 811 3898 419</a>
         </div>
 
         <div class="mb-8">
@@ -32,7 +32,7 @@
       </v-col>
       <v-col cols="12" sm="7" md="8" class="pt-15 pb-16">
         <div class="_form--headline">
-          make an enquiry
+          make an inquiry
         </div>
         <v-form
           class="my-8 py-8 px-5 _form hidden-xs-only"
@@ -300,7 +300,7 @@ export default {
       message: '',
       phone: '',
       destination: '',
-      destinationData: ['Komodo National Park (May - October 2020)', 'Raja Ampat (November 2020 - April 2021'],
+      destinationData: ['Komodo National Park (May - October 2020)', 'Raja Ampat (November 2020 - April 2021)'],
       rules: {
         required: v => !!v || 'This field is required.',
         countMin4: v => (v && v.length >= 4) || 'Min 4 characters.',
