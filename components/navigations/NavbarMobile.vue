@@ -39,15 +39,14 @@
         </v-btn>
       </v-col>
       <v-col cols="4" class="text-right">
-        <t-btn
+        <v-btn
           class="btn-l _inquire--primary-black"
-          v-bind:props="{
-            color: 'primary',
-            to: '/contact-us'
-          }"
+          color="primary"
+          to="/contact-us"
+          tile depressed x-small dark nuxt
         >
-          Inquire Now
-        </t-btn>
+         {{ $vuetify.breakpoint.name === 'xs' ? 'inquire' : 'inquire now' }}
+        </v-btn>
       </v-col>
     </v-row>
   </v-app-bar>
@@ -84,6 +83,11 @@ export default {
   $primary: #208CB2;
   $secondary: #232323;
   $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  ::v-deep .v-btn._inquire--primary-black {
+    @include poly-fluid-sizing ('width', (375px:59px, 768px:133px));
+    @include poly-fluid-sizing ('height', (375px:22px, 768px:30px));
+  }
 
   .v-app-bar {
     -webkit-transition:

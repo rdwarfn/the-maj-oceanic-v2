@@ -124,7 +124,7 @@
           </v-row>
         </v-col>
 
-        <v-col class="col--3" cols="12" lg="4" offset-lg="1">
+        <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">
           <v-tooltip bottom>
             <template v-slot:activator="{on, attrs}">
               <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
