@@ -179,8 +179,8 @@
               <v-col cols="12" sm="9" lg="12">
                 <span>
                   By entering your details you consent to be contacted via email
-                  by the Maj group with offers and updates. To opt out, use the
-                  unsubscribe link or email <a href="mailto:themaj@mail.com">themaj@mail.com</a>.
+                  by The MAJ Group with offers and updates. To opt out, use the
+                  unsubscribe link or email <a href="mailto:digital@themajgroup.com.">digital@themajgroup.com.</a>.
                 </span>
               </v-col>
             </v-row>
@@ -190,7 +190,7 @@
       </v-row>
       <v-row no-gutters align="center" class="text-sm-center mt-sm-5 mt-lg-0">
         <v-col>
-          <span class="">Copyright {{ new Date().getFullYear() }} All right reserved</span>
+          <span class="">Copyright {{ new Date().getFullYear() }} All rights reserved</span>
         </v-col>
       </v-row>
     </v-container>
