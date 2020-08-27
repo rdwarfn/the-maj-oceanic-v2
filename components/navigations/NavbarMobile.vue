@@ -8,11 +8,11 @@
     class="hidden-md-and-up flex-nowrap"
   >
     <v-row no-gutters align="center" justify="space-between" class="mt-5 flex-nowrap">
-      <v-col sm="4">
+      <v-col>
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
       <slot name="button-nav-icon"></slot>
       </v-col>
-      <v-col sm="4" class="text-center">
+      <v-col class="text-center align-self-start">
         <v-btn
           to="/"
           v-ripple
@@ -38,7 +38,7 @@
           />
         </v-btn>
       </v-col>
-      <v-col cols="4" class="text-right">
+      <v-col class="text-center">
         <v-btn
           class="_inquire--primary-black"
           color="primary"
