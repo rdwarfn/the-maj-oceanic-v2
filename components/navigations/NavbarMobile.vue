@@ -4,7 +4,6 @@
     v-bind="$attrs"
     min-height="80"
     max-width="100vw"
-    elevate-on-scroll
     class="hidden-md-and-up flex-nowrap"
   >
     <v-row no-gutters align="center" justify="space-between" class="mt-5 flex-nowrap">
@@ -143,7 +142,7 @@ export default {
         }
       }
 
-      a._inquire--primary-black {
+      ._inquire--primary-black {
         background-color: $secondary !important;
         border-color: $secondary !important;
       }

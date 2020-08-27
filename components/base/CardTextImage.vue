@@ -1,7 +1,7 @@
 <template>
   <v-row no-gutters align="center" justify="center" class="mx-auto px-0">
     <client-only>
-      <v-card flat v-if="data" class="pt-6 pb-10" color="transparent">
+      <v-card flat tile v-if="data" class="pt-6 pb-10" color="transparent">
         <div
           class="__card d-sm-flex align-center static"
           v-bind:class="{reversed: reverse}"
@@ -9,7 +9,7 @@
           <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold pb-0">
             {{ data.caption }}
           </v-card-subtitle>
-          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-truncate text-center mb-5">
+          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center mb-5">
             {{ data.heading }}
           </v-card-title>
           <v-img
@@ -55,7 +55,7 @@
                 <template v-slot:activator="{on, attrs}">
                 <v-card-subtitle
                   v-if="data.caption"
-                  class="text-h6 font-weight-bold pb-0 static"
+                  class="text-h6 font-weight-bold pb-0 px-0 static"
                   v-bind:class="contentRight ? 'text-right' : null"
                   v-text="data.caption"
                   v-bind="attrs"
@@ -68,7 +68,7 @@
               <v-tooltip bottom>
                 <template v-slot:activator="{on, attrs}">
                 <v-card-title
-                  class="text-h4 static"
+                  class="text-h4 px-0"
                   v-bind:class="contentRight ? 'justify-end' : null"
                   v-text="data.heading"
                   v-bind="attrs"
@@ -79,6 +79,7 @@
               </v-tooltip>
 
               <v-card-text
+                class="px-0"
                 v-bind:class="contentRight ? 'text-right' : null"
               >
                 {{ data.text }}
@@ -94,7 +95,7 @@
 
               <v-card-actions
                 v-if="buttonText"
-                class="px-4 static"
+                class="px-0"
                 v-bind:class="[
                   buttonContainerClass,
                   contentRight ? 'justify-end' : null
@@ -200,6 +201,14 @@ export default {
     }
 
     &--content {
+      @include poly-fluid-sizing ('margin-left', (375px:0px, 768px:45px, 1440px:65px));
+      margin-right: 0;
+
+      .reversed & {
+        @include poly-fluid-sizing ('margin-right', (375px:0px, 768px:45px, 1440px:65px));
+        margin-left: 0;
+      }
+
       ul {
         padding-left: inherit !important;
         padding-top: 30px !important;
@@ -229,45 +238,6 @@ export default {
               background-color: $primary !important;
               border-color: $primary !important;
             }
-          }
-        }
-      }
-
-      @media (min-width: 600px) {
-        margin: {
-          top: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
-          left: 10px !important;
-        };
-      }
-
-      @media (min-width: 960px) {
-        margin: {
-          top: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
-          left: 65px !important;
-        };
-      }
-
-      .reversed & {
-
-        @media (min-width: 600px) {
-          margin: {
-            top: 0 !important;
-            right: 10px !important;
-            bottom: 0 !important;
-            left: 0 !important;
-          }
-        }
-
-        @media (min-width: 960px) {
-          margin: {
-            top: 0 !important;
-            right: 64px !important;
-            bottom: 0 !important;
-            left: 0 !important;
           }
         }
       }

@@ -1,19 +1,19 @@
 <template>
-  <v-container tag="section" class="px-7 px-sm-6">
-    <v-row no-gutters align="start" justify="space-between" class="py-16" style="background-color: transparent">
-      <v-col cols="12" sm="4" class="pt-sm-15 pb-md-0 pb-10 pr-sm-6 pr-md-2 pb-sm-0 text-sm-left">
-        <div class="text-h3 mb-15">
+  <v-container tag="section" class="px-container">
+    <v-row no-gutters align="start" justify="space-between" class="pb-16 _contact-row">
+      <v-col cols="12" sm="4" class="text-center text-sm-left text-sm-left">
+        <div class="text-h3 mb-8">
           Contact Us
         </div>
-        <div class="mb-10">
-          <p>Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!</p>
+        <div class="mb-89 mb-sm-60 mb-md-10">
+          <p class="_contact-desc mx-auto mx-sm-0">Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!</p>
         </div>
 
         <div class="mb-8">
           <div class="text-h6 mb-3">
             Whatsapp
           </div>
-          <a href="https://api.whatsapp.com/send?phone=628113898419">+62 811 3898 419</a>
+          <a class="_wa" href="https://api.whatsapp.com/send?phone=628113898419">+62 811 3898 419</a>
         </div>
 
         <div class="mb-8">
@@ -31,11 +31,11 @@
         </div>
       </v-col>
       <v-col cols="12" sm="7" md="8" class="pt-15 pb-16">
-        <div class="_form--headline">
+        <div class="_form--headline ml-sm-5">
           make an inquiry
         </div>
         <v-form
-          class="my-8 py-8 px-5 _form hidden-xs-only"
+          class="mt-5 py-8 px-5 _form hidden-xs-only"
           ref="form2"
           v-model="valid"
           @submit.prevent="validate"
@@ -356,6 +356,39 @@ export default {
       background: #FAFAFA !important;
     }
   }
+
+  .px-container {
+    @media (max-width: 600px) {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+
+  .mb-89 {
+    margin-bottom: 89px !important;
+  }
+
+  .mb-sm-60 {
+    @media (min-width: 600px) and (max-width: 960px) {
+      margin-bottom: 60px !important;
+    }
+  }
+
+  ._wa {
+    font-variant: small-caps;
+    letter-spacing: 2px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    line-height: 21px;
+  }
+
+  ._contact-row {
+    @include poly-fluid-sizing ('margin-top', (375px:123px, 768px:210px, 1440px:100px));
+  }
+
+  ._contact-desc {
+    @include poly-fluid-sizing ('width', (375px:293.58px, 768px:210px, 1440px:293.58px));
+  }
+
   ._form--headline {
     font-family: 'Verlag Bold', sans-serif !important;
     font-size: 14px !important;

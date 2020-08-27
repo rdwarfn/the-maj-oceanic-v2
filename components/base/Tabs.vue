@@ -29,7 +29,7 @@
       <v-tab-item
         v-for="item in data"
         v-bind:key="item.label"
-        class="mt-7"
+        class="mt-10"
       >
         <slot v-bind:data-tab="item.data">
           <client-only>
@@ -39,7 +39,7 @@
                 v-bind:class="{reversed: reverse}"
               >
                 <v-img
-                  class="__tab--img"
+                  class="__tab--img mx-auto mx-md-0"
                   v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
                   v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
                 ></v-img>
@@ -59,7 +59,7 @@
                     <span v-text="item.data.title" />
                   </v-tooltip>
 
-                  <v-card-text class="__tab--content-text px-0">
+                  <v-card-text class="__tab--content-text text--primary px-0">
                     <p class="text-justify text-sm-center text-md-left">
                       {{ item.data.text }}
                     </p>
@@ -199,8 +199,8 @@ export default {
 
     .__tab--img {
       max-width: unset;
-      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:718px, 1440px:1110px));
-      @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:460px));
+      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:718px, 1440px:570px));
+      @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:350px));
     }
   }
 }

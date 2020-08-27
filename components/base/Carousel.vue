@@ -39,7 +39,7 @@
             flat tile width="90%"
             class="_card--relative hidden-sm-and-up mx-auto pb-13"
           >
-            <v-card-text class="text-justify px-0 pt-5">
+            <v-card-text class="text-center px-0 pt-5">
               <p class="text--primary px-5">{{ dataActive.text }}</p>
             </v-card-text>
             <v-card-actions class="pa-0 mt-4">
@@ -117,7 +117,7 @@
           <v-card-title
             v-bind="attrs"
             v-on="on"
-            class="text-h4 text-md-h3 text-truncate mb-5 px-0"
+            class="text-h4 text-md-h3 mb-5 px-0"
             :class="headingClass"
           >
             {{ dataActive.heading }}
@@ -344,30 +344,6 @@ export default {
           margin-bottom: 11px !important;
         }
       }
-
-      // ::v-deep a.v-btn {
-      //   font-weight: bold !important;
-      //   &.primary {
-      //     color: white !important;
-      //     caret-color: white !important;
-      //     &:hover {
-      //       color: $primary !important;
-      //       caret-color: $primary !important;
-      //       border: thin solid $primary !important;
-      //       background-color: white !important;
-      //     }
-      //   }
-
-      //   &--outlined {
-      //     &.primary--text {
-      //       &:hover {
-      //         color: white !important;
-      //         background-color: $primary !important;
-      //         border-color: $primary !important;
-      //       }
-      //     }
-      //   }
-      // }
     }
 
     &--img {
@@ -378,14 +354,6 @@ export default {
       @media (min-width: 1441px) {
         max-width: 100%;
       };
-
-      // @media (min-width: 600px) {
-      //   max-width: 71.354166667%;
-      // }
-
-      // @media (min-width: 960px) {
-      //   max-width: 65.765765766%;
-      // }
     }
 
     .swiper {

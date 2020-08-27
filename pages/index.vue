@@ -36,7 +36,7 @@
         class="text-center mx-auto mt-10 intro--paragraph"
       ></v-skeleton-loader>
       <div v-else class="intro--paragraph px-6">
-        <p class="mx-auto text-sm-center">
+        <p class="mx-auto text-center">
           {{ data.paragraph }}
         </p>
       </div>

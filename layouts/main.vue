@@ -1,6 +1,12 @@
 <template>
   <v-app>
-    <t-navigation-mobile v-bind:isIntersecting="isIntersecting">
+    <t-navigation-mobile
+      v-bind:isIntersecting="isIntersecting"
+      v-bind:elevate-on-scroll="getHerosByRouteName"
+      v-bind:class="{
+        'v-app-bar--is-scrolled': !getHerosByRouteName
+      }"
+    >
       <template v-slot:button-nav-icon>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       </template>
@@ -19,7 +25,7 @@
       <v-list flat tile class="_img-logo--mobile text-center">
         <v-list-item dense>
           <v-row no-gutters class="flex-nowrap" align="center" justify="space-between">
-          <v-spacer class="hidden-sm-and-up" />
+          <v-spacer />
           <v-col sm="4">
           <v-list-item-avatar tile width="auto" min-height="67" height="auto" class="mr-0">
             <v-btn
