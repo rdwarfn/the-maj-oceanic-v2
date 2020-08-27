@@ -40,10 +40,10 @@
       </v-col>
       <v-col cols="4" class="text-right">
         <v-btn
-          class="btn-l _inquire--primary-black"
+          class="_inquire--primary-black"
           color="primary"
-          to="/contact-us"
-          tile depressed x-small dark nuxt
+          @click="() => $router.push({ path: '/contact-us'})"
+          tile depressed dark
         >
          {{ $vuetify.breakpoint.name === 'xs' ? 'inquire' : 'inquire now' }}
         </v-btn>
@@ -84,9 +84,14 @@ export default {
   $secondary: #232323;
   $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  ::v-deep .v-btn._inquire--primary-black {
-    @include poly-fluid-sizing ('width', (375px:59px, 768px:133px));
-    @include poly-fluid-sizing ('height', (375px:22px, 768px:30px));
+  ::v-deep .v-btn:not(.v-btn--round).v-size--default {
+    &._inquire--primary-black {
+      letter-spacing: 2px;
+      @include poly-fluid-sizing ('width', (375px:59px, 768px:133px));
+      @include poly-fluid-sizing ('height', (375px:22px, 768px:30px));
+      @include poly-fluid-sizing ('font-size', (375px:8px, 768px:13px));
+      @include poly-fluid-sizing ('font-size', (375px:8px, 768px:13px));
+    }
   }
 
   .v-app-bar {
