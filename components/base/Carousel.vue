@@ -1,7 +1,9 @@
 <template>
-  <v-container
-    class="__carousel align-center px-0"
-    :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
+  <v-sheet
+    class="__carousel align-center px-0 mx-auto"
+    v-bind:class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
+    max-width="1440"
+    color="transparent"
   >
     <swiper
       ref="swiper"
@@ -12,7 +14,7 @@
         v-for="item in data"
         v-bind:key="item.id"
       >
-        <v-card flat tile hover color="transparent">
+        <v-card flat tile hover color="transparent" max-width="auto">
           <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
             {{ item.caption }}
           </v-card-subtitle>
@@ -152,7 +154,7 @@
         </v-card-actions>
       </v-card>
     </client-only>
-  </v-container>
+  </v-sheet>
 </template>
 
 <script>
@@ -279,6 +281,7 @@ export default {
   }
 
   .__carousel {
+    max-width: 1440px !important;
     position: relative;
     height: 100%;
     z-index: 1;
@@ -371,7 +374,10 @@ export default {
       width: 100%;
 
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
-      @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px))
+      @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
+      @media (min-width: 1441px) {
+        max-width: 100%;
+      };
 
       // @media (min-width: 600px) {
       //   max-width: 71.354166667%;
