@@ -1,6 +1,6 @@
 <template>
   <div
-    class="__carousel align-center d-flex static"
+    class="__carousel align-center"
     :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
   >
     <swiper
@@ -28,7 +28,7 @@
             :lazy-src="staticImage
               ? require(`~/assets/images/${item.image}`)
               : item.image"
-            class="__carousel--img static"
+            class="__carousel--img mx-auto mx-sm-0"
             :class="cardImageClass"
           />
         </v-card>
@@ -221,6 +221,7 @@ export default {
 
   watch: {
     activeIndex: function (val) {
+      if (!this.store && !this.store.length) return 
       this.dataActive = this.store[val];
     }
   },
@@ -279,12 +280,9 @@ export default {
 
   .__carousel {
     position: relative;
-    width: 100%;
     height: 100%;
     z-index: 1;
-    display: flex;
     transition-property: transform;
-    box-sizing: content-box;
     margin: {
       top: auto !important;
       bottom: auto !important;
@@ -371,15 +369,17 @@ export default {
 
     &--img {
       width: 100%;
-      height: auto;
 
-      @media (min-width: 600px) {
-        max-width: 71.354166667%;
-      }
+      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
+      @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px))
 
-      @media (min-width: 960px) {
-        max-width: 65.765765766%;
-      }
+      // @media (min-width: 600px) {
+      //   max-width: 71.354166667%;
+      // }
+
+      // @media (min-width: 960px) {
+      //   max-width: 65.765765766%;
+      // }
     }
 
     .swiper {
