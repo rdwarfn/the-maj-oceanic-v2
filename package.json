@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
+    "host": "HOST=0.0.0.0 yarn dev",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "now-build": "nuxt generate"
