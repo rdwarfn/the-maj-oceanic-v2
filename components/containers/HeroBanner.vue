@@ -49,8 +49,6 @@ export default {
     return {
       loading: true,
       swiperOptions: {
-        effect: 'cube',
-        grabCursor: true,
         lazy: true,
         slidesPerView: 1,
       }

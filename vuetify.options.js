@@ -1,5 +1,6 @@
 import colors from 'vuetify/es5/util/colors';
 import IconSearch from '~/assets/images/svg/icon_search.svg?inline';
+import IconFacebook from '~/assets/images/svg/icon_facebook.svg?inline';
 
 const search_icon = {
   props: {
@@ -17,6 +18,23 @@ const search_icon = {
     );
   }
 };
+
+const facebook_icon = {
+  props: {
+    tag: {
+      type: String,
+      default: 'div'
+    }
+  },
+  render () {
+    const Tag = this.tag
+    return (
+      <Tag style="padding: 2px">
+        <IconFacebook />
+      </Tag>
+    )
+  }
+}
 
 export default {
   theme: {
@@ -39,6 +57,9 @@ export default {
     values: {
       search: {
         component: search_icon
+      },
+      facebook: {
+        component: facebook_icon
       }
     }
   }

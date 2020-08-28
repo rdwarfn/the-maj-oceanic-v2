@@ -1,9 +1,9 @@
 <template>
-  <v-footer id="footer" dark tile inset background-color="#232323">
+  <v-footer id="footer" class="px-0" dark tile inset background-color="#232323">
     <v-container class="px-6">
-      <v-row class="mb-6" align="start" justify="space-between">
+      <v-row no-gutters class="mb-1 mb-sm-12 mb-lg-6" align="start" justify="space-between">
         <v-col class="col--1" cols="12" sm="4" md="mb-4" lg="3">
-          <div class="mb-6">
+          <div class="mb-7 mb-sm-6">
             <v-tooltip bottom>
               <template v-slot:activator="{on, attrs}">
                 <div v-bind="attrs" v-on="on" class="text-caption mb-2 text-uppercase font-weight-bold">
@@ -19,14 +19,14 @@
                 v-bind:href="data.link"
                 fab depressed text nuxt tile
               >
-                <v-icon>mdi-{{data.icon}}</v-icon>
+                <v-icon>{{data.icon}}</v-icon>
               </v-btn>
             </div>
           </div>
-          <div class="mb-5">
+          <div class="mb-8">
             <div class="text-uppercase mb-3 __part-of">part of</div>
             <v-row no-gutters align="center" justify="start">
-              <v-col cols="6">
+              <v-col cols="4">
               <v-img
                 v-bind:src="require('~/assets/images/svg/the_maj_experience.svg?data')"
                 v-bind:lazy-src="require('~/assets/images/svg/the_maj_experience.svg?data')"
@@ -180,7 +180,7 @@
                 <span>
                   By entering your details you consent to be contacted via email
                   by The MAJ Group with offers and updates. To opt out, use the
-                  unsubscribe link or email <a href="mailto:digital@themajgroup.com.">digital@themajgroup.com.</a>.
+                  unsubscribe link or email <a href="mailto:digital@themajgroup.com">digital@themajgroup.com</a>.
                 </span>
               </v-col>
             </v-row>
@@ -188,8 +188,8 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row no-gutters align="center" class="text-sm-center mt-sm-5 mt-lg-0">
-        <v-col>
+      <v-row no-gutters align="start" class="text-sm-center mt-0 mt-sm-5 mt-lg-0">
+        <v-col tag="span" class="px-0">
           <span class="">Copyright {{ new Date().getFullYear() }} All rights reserved</span>
         </v-col>
       </v-row>
@@ -206,18 +206,23 @@ export default {
       sosmed: [
         {
           id: 0,
-          icon: "instagram",
-          link: "https://instagram.com/themajbekasi?igshid=4qhtyng01dj0"
+          icon: "mdi-instagram",
+          link: "https://www.instagram.com/themajoceanic/"
         },
         {
           id: 1,
-          icon: "facebook",
-          link: "https://instagram.com/themajbekasi?igshid=4qhtyng01dj0"
+          icon: "$facebook",
+          link: "https://twitter.com/themajoceanic"
         },
         {
           id: 2,
-          icon: "twitter",
-          link: "https://mobile.twitter.com/themajbekasi"
+          icon: "mdi-twitter",
+          link: "https://www.facebook.com/themajoceanic/"
+        },
+        {
+          id: 3,
+          icon: "mdi-youtube",
+          link: "https://www.youtube.com/channel/UC8TUM39T9bFOtxcJn7PwYgA"
         }
       ],
       joins: [

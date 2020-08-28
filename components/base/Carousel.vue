@@ -352,7 +352,7 @@ export default {
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
       @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
       @media (min-width: 1441px) {
-        max-width: 100%;
+        max-width: 70%;
       };
     }
 
