@@ -45,7 +45,6 @@
     <v-container class="px-6 _carousel" tag="section">
       <t-carousel
         :data="data.carousel_card"
-        button-class="pl-4"
         button-text="discover"
         static-image
       >
@@ -53,8 +52,8 @@
     </v-container>
 
     <!-- Voyages -->
-    <v-sheet color="#EFE1DC" class="pt-10 pb-6 pb-sm-10 px-6 mt-12 my-sm-16">
-      <v-container class="voyages px-0" tag="section">
+    <v-sheet color="#EFE1DC" class="pt-10 pb-6 pb-sm-10 mt-12 my-sm-16">
+      <v-container class="voyages px-6" tag="section">
         <client-only>
           <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
             <v-tooltip bottom>

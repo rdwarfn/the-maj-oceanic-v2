@@ -84,14 +84,13 @@
     <client-only>
       <v-card
         v-if="Object.keys(dataActive).length"
-        class="__carousel--card hidden-xs-only"
+        class="__carousel--card hidden-xs-only pb-10"
         v-bind:class="cardClass"
         v-bind:rounded="false"
-        min-width="352"
         v-bind:height="cardHeight"
         v-bind:width="cardWidth"
         v-bind:max-height="cardMaxHeight"
-        flat tile v-ripple
+        flat tile
       >
         <slot v-if="!isXs" name="image-extra"></slot>
         <v-tooltip bttom>
@@ -117,7 +116,7 @@
           <v-card-title
             v-bind="attrs"
             v-on="on"
-            class="text-h4 text-md-h3 mb-5 px-0"
+            class="text-h4 text-no-wrap text-md-h3 mb-5 px-0"
             :class="headingClass"
           >
             {{ dataActive.heading }}
@@ -128,7 +127,7 @@
         </v-tooltip>
 
         <v-card-text
-          class="text--primary d-block mb-8 px-0"
+          class="text--primary d-block px-0"
           :class="textClass"
         >
           {{ dataActive.text }}
@@ -140,7 +139,7 @@
           </ul>
         </v-card-text>
 
-        <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0">
+        <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
           <t-button
             class="btn-l"
             v-bind:props="{
@@ -281,7 +280,7 @@ export default {
   }
 
   .__carousel {
-    max-width: 1440px !important;
+    width: auto;
     position: relative;
     height: 100%;
     z-index: 1;
@@ -293,7 +292,7 @@ export default {
 
     &--card {
       @include poly-fluid-sizing ('width', (375px:290px, 1440px:445px));
-      @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
+      // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
       @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
       // @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
       @include poly-fluid-sizing ('padding-left', (375px:20px, 768px:25px, 1440px:50px));
@@ -301,7 +300,8 @@ export default {
       display: inline-block !important;
       z-index: 10 !important;
       top: 10% !important;
-      right: 0;
+      right: auto;
+      @include poly-fluid-sizing ('left', (374px:260px, 768px:347px, 1440px:665px));
       margin: {
         // top: 40px !important;
         right: auto !important;
@@ -351,9 +351,9 @@ export default {
 
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
       @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
-      @media (min-width: 1441px) {
-        max-width: 70%;
-      };
+      // @media (min-width: 1441px) {
+      //   max-width: 0%;
+      // };
     }
 
     .swiper {
