@@ -1,12 +1,12 @@
 <template>
   <v-row no-gutters align="center" justify="center" class="mx-auto px-0">
     <client-only>
-      <v-card flat tile v-if="data" class="pt-6 pb-10" color="transparent">
+      <v-card flat tile v-if="data" color="transparent">
         <div
           class="__card d-sm-flex align-center static"
           v-bind:class="{reversed: reverse}"
         >
-          <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold pb-0">
+          <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
             {{ data.caption }}
           </v-card-subtitle>
           <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center mb-5">
@@ -33,7 +33,7 @@
           </v-card-text>
           <v-card-actions
             v-if="buttonText"
-            class="hidden-sm-and-up px-0 mt-9"
+            class="hidden-sm-and-up pa-0 mt-9"
           >
             <t-button
               class="mx-auto __card--btn"

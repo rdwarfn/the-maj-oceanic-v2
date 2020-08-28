@@ -81,7 +81,7 @@
       </v-container>
     </v-sheet>
 
-    <v-container class="pb-7 py-sm-16 px-6" tag="section">
+    <v-container class="px-6 dining" tag="section">
       <t-card-text-image
         v-bind:data="data.card_text_image[0]"
         v-bind:button-props="{
@@ -96,7 +96,7 @@
       />
     </v-container>
 
-    <v-container class="pb-5 py-sm-16 px-6" tag="section">
+    <v-container class="px-6 occasions" tag="section">
       <t-card-text-image
         v-bind:data="data.card_text_image[1]"
         v-bind:button-props="{
@@ -223,10 +223,25 @@ export default {
 
   }
 
-  ::v-deep ._card-img-class {
-    margin: 0 auto;
-    @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
-    @include poly-fluid-sizing ('height', (374px:181px, 768px:350px))
+  ::v-deep .dining, ::v-deep .occasions {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    ._card-img-class {
+      margin: 0 auto;
+      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
+      @include poly-fluid-sizing ('height', (374px:181px, 768px:350px))
+    }
+  }
+
+  ::v-deep .dining {
+    @media (min-width: 960px) {
+      margin-top: 100px !important;
+    }
+  }
+  ::v-deep .occasions {
+    @media (min-width: 960px) {
+      margin-bottom: 50px !important;
+    }
   }
 
   section.the-vessel {
