@@ -2,15 +2,8 @@
   {
     "id": 0,
     "title": "the vessel",
-    "to": "/the-vessel",
-    "items": [
-      {
-        "id": 0,
-        "title": "the cabin",
-        "to": "/the-vessel/the-cabin",
-        "disabled": true
-      }
-    ]
+    "to": "/#",
+    "items": []
   },
   {
     "id": 1,
