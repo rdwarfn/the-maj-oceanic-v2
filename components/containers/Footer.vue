@@ -211,7 +211,7 @@ export default {
         },
         {
           id: 1,
-          icon: "$facebook",
+          icon: "mdi-facebook",
           link: "https://twitter.com/themajoceanic"
         },
         {
