@@ -84,7 +84,7 @@
     <client-only>
       <v-card
         v-if="Object.keys(dataActive).length"
-        class="__carousel--card hidden-xs-only pb-10"
+        class="__carousel--card hidden-xs-only"
         v-bind:class="cardClass"
         v-bind:rounded="false"
         v-bind:height="cardHeight"
@@ -294,7 +294,7 @@ export default {
       @include poly-fluid-sizing ('width', (375px:290px, 1440px:445px));
       // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
       @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
-      // @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
+      @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
       @include poly-fluid-sizing ('padding-left', (375px:20px, 768px:25px, 1440px:50px));
       @include poly-fluid-sizing ('padding-right', (375px:20px, 768px:25px, 1440px:50px));
       display: inline-block !important;

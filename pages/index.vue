@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container
-      class="px-0 mb-12 mb-sm-16 intro"
+      class="px-0 pb-10"
       tag="section"
     >
       <v-skeleton-loader
@@ -42,7 +42,7 @@
       </div>
     </v-container>
 
-    <v-container class="px-6 _carousel" tag="section">
+    <v-container class="px-6 pt-10 pb-13" tag="section">
       <t-carousel
         :data="data.carousel_card"
         button-text="discover"
@@ -52,8 +52,8 @@
     </v-container>
 
     <!-- Voyages -->
-    <v-sheet color="#EFE1DC" class="pt-10 pb-6 pb-sm-10 mt-12 my-sm-16">
-      <v-container class="voyages px-6" tag="section">
+    <v-sheet class="voyages">
+      <v-container class="px-6 py-0" tag="section">
         <client-only>
           <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
             <v-tooltip bottom>
@@ -207,6 +207,11 @@ export default {
   }
 
   ::v-deep .voyages {
+    background-color: #EFE1DC !important;
+    @include poly-fluid-sizing ('margin-top', (375px:90px, 768px:75px, 1440px:58px));
+    padding-top: 50px;
+    @include poly-fluid-sizing ('padding-bottom', (375px:50px, 1440px:100px));
+
     &--headline {
       @media (max-width: 768px) {
         width: auto !important;
@@ -215,6 +220,7 @@ export default {
         width: 720px !important;
       }
     }
+
   }
 
   ::v-deep ._card-img-class {
@@ -267,9 +273,9 @@ export default {
     }
   }
 
-  ._carousel {
-    @include poly-fluid-sizing ('margin-bottom', (768px:123px, 1440px:100px))
-  }
+  // ._carousel {
+  //   @include poly-fluid-sizing ('margin-bottom', (768px:123px, 1440px:100px))
+  // }
 </style>
 
 <style module src="~/assets/styles/css/_utilities.module.css"></style>
