@@ -1,10 +1,8 @@
 <template>
-  <v-row
-    no-gutters
+  <v-sheet
     id="sailing-soons"
-    align="center"
-    class="px-8 px-md-0"
   >
+    <v-row no-gutters align="center" class="container mx-auto px-8 px-md-0">
     <v-col cols="12" sm="6" class="mb-12 mx-auto">
       <v-img
         v-ripple
@@ -51,7 +49,8 @@
         </v-col>
       </v-row>
     </v-col>
-  </v-row>
+    </v-row>
+  </v-sheet>
 </template>
 
 <script>
