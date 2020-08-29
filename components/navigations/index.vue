@@ -48,21 +48,13 @@
           </v-col>
 
           <v-col cols="auto">
-            <v-tooltip bottom>
-              <template v-slot:activator="{on, attrs}">
-                <v-btn
-                  to="/#"
-                  v-bind="attrs"
-                  v-on="on"
-                  color="white"
-                  depressed text tile
-                  class="btn-s font-md-12"
-                >
-                  the maj group
-                </v-btn>
-              </template>
-              <span>The Maj Group</span>
-            </v-tooltip>
+            <v-btn
+              color="white"
+              depressed text tile
+              class="btn-s font-md-12"
+            >
+              the maj group
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -73,7 +65,7 @@
         class="text-center rounded py-2 px-3 mx-2"
         v-ripple
       >
-        <nuxt-link class="mx-auto" to="/">
+        <nuxt-link class="mx-auto" to="/" replace>
           <v-img
             :lazy-src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
             :src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
@@ -104,39 +96,25 @@
           justify="space-around"
         >
           <v-col cols="auto">
-            <v-tooltip bottom>
-              <template v-slot:activator="{on, attrs}">
-                <v-btn
-                  to="#"
-                  v-bind="attrs"
-                  v-on="on"
-                  text nuxt
-                  color="white"
-                  class="btn-s __btn font-md-12"
-                >
-                  login
-                </v-btn>
-              </template>
-              <span>Login</span>
-            </v-tooltip>
+            <v-btn
+              to="#"
+              text nuxt
+              color="white"
+              class="btn-s __btn font-md-12"
+            >
+              login
+            </v-btn>
           </v-col>
 
           <v-col cols="auto">
-            <v-tooltip bottom>
-              <template v-slot:activator="{on, attrs}">
-                <v-btn
-                  to="/contact-us"
-                  v-bind="attrs"
-                  v-on="on"
-                  color="primary"
-                  class="btn-s font-md-12"
-                  depressed tile nuxt
-                >
-                  inquire now
-                </v-btn>
-              </template>
-              <span>Inquire Now</span>
-            </v-tooltip>
+            <v-btn
+              to="/contact-us"
+              color="primary"
+              class="btn-s font-md-12"
+              depressed tile nuxt
+            >
+              inquire now
+            </v-btn>
           </v-col>
         </v-row>
       </v-col>
@@ -162,37 +140,25 @@
         />
 
         <v-col cols="auto" class="rounded mr-8 mr-lg-10" v-if="isIntersecting">
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <v-btn
-                v-bind="attrs"
-                v-on="on"
-                to="#"
-                text x-small nuxt
-                class="px-0 font-md-12"
-              >
-                login
-              </v-btn>
-            </template>
-            <span>Login</span>
-          </v-tooltip>
+          <v-btn
+            to="#"
+            text x-small nuxt
+            class="px-0 font-md-12"
+          >
+            login
+          </v-btn>
         </v-col>
 
         <v-col cols="auto" v-if="isIntersecting">
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <v-btn
-                v-bind="attrs"
-                v-on="on"
-                class="btn-s font-md-12"
-                depressed tile nuxt dark
-                to="/contact-us"
-              >
-                Inquire Now
-              </v-btn>
-            </template>
-            <span>Inquire Now</span>
-          </v-tooltip>
+          <v-btn
+            v-bind="attrs"
+            v-on="on"
+            class="btn-s font-md-12"
+            depressed tile nuxt dark
+            to="/contact-us"
+          >
+            Inquire Now
+          </v-btn>
         </v-col>
       </v-row>
     </v-flex>

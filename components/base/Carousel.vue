@@ -93,38 +93,20 @@
         flat tile
       >
         <slot v-if="!isXs" name="image-extra"></slot>
-        <v-tooltip bttom>
-        <template v-slot:activator="{on, attrs}">
+        <v-card-subtitle
+          v-if="dataActive.caption"
+          class="text-h6 __txt_primary px-0"
+          :class="captionClass"
+        >
+          {{ dataActive.caption }}
+        </v-card-subtitle>
 
-          <v-card-subtitle
-            v-if="dataActive.caption"
-            v-bind="attrs"
-            v-on="on"
-            class="text-h6 __txt_primary px-0"
-            :class="captionClass"
-          >
-            {{ dataActive.caption }}
-          </v-card-subtitle>
-
-        </template>
-        <span>{{ dataActive.caption }}</span>
-        </v-tooltip>
-
-        <v-tooltip bottom>
-        <template v-slot:activator="{on, attrs}">
-
-          <v-card-title
-            v-bind="attrs"
-            v-on="on"
-            class="text-h4 text-no-wrap text-md-h3 mb-5 px-0"
-            :class="headingClass"
-          >
-            {{ dataActive.heading }}
-          </v-card-title>
-
-        </template>
-        <span>{{ dataActive.heading }}</span>
-        </v-tooltip>
+        <v-card-title
+          class="text-h4 text-no-wrap text-md-h3 mb-5 px-0"
+          :class="headingClass"
+        >
+          {{ dataActive.heading }}
+        </v-card-title>
 
         <v-card-text
           class="text--primary d-block px-0"

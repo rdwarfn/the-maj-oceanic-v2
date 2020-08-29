@@ -6,24 +6,14 @@
       :light="false"
     >
       <v-tabs-slider color="primary"></v-tabs-slider>
-        <v-tab
-          v-for="item in data"
-          v-bind:key="item.label"
-        >
-        <v-tooltip
-          bottom
-          v-bind:key="item.label"
-        >
-          <template v-slot:activator="{on, attrs}">
-          <div
-            class="__tab--label"
-            v-bind="attrs"
-            v-on="on"
-            v-text="item.label"
-          />
-        </template>
-        <span class="text-capitalize" v-text="item.label" />
-      </v-tooltip>
+      <v-tab
+        v-for="item in data"
+        v-bind:key="item.label"
+      >
+        <div
+          class="__tab--label"
+          v-text="item.label"
+        />
       </v-tab>
 
       <v-tab-item
@@ -44,20 +34,13 @@
                   v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
                 ></v-img>
                 <div class="__tab--content">
-                  <v-tooltip bottom>
-                    <template v-slot:activator="{on, attrs}">
-                      <v-card-title
-                        class="px-0"
-                        v-bind="attrs"
-                        v-on="on"
-                      >
-                        <div class="text-h4 mx-auto mx-md-0">
-                          {{ item.data.title }}
-                        </div>
-                      </v-card-title>
-                    </template>
-                    <span v-text="item.data.title" />
-                  </v-tooltip>
+                  <v-card-title
+                    class="px-0"
+                  >
+                    <div class="text-h4 mx-auto mx-md-0">
+                      {{ item.data.title }}
+                    </div>
+                  </v-card-title>
 
                   <v-card-text class="__tab--content-text text--primary px-0">
                     <p class="text-justify text-sm-center text-md-left">

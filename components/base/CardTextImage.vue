@@ -51,32 +51,17 @@
 
           <client-only>
             <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                <v-card-subtitle
-                  v-if="data.caption"
-                  class="text-h6 font-weight-bold pb-0 px-0 static"
-                  v-bind:class="contentRight ? 'text-right' : null"
-                  v-text="data.caption"
-                  v-bind="attrs"
-                  v-on="on"
-                />
-                </template>
-                <span class="text-capitalize" v-text="data.caption" />
-              </v-tooltip>
-
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                <v-card-title
-                  class="text-h4 px-0"
-                  v-bind:class="contentRight ? 'justify-end' : null"
-                  v-text="data.heading"
-                  v-bind="attrs"
-                  v-on="on"
-                />
-                </template>
-                <span class="text-capitalize" v-text="data.heading" />
-              </v-tooltip>
+              <v-card-subtitle
+                v-if="data.caption"
+                class="text-h6 font-weight-bold pb-0 px-0 static"
+                v-bind:class="contentRight ? 'text-right' : null"
+                v-text="data.caption"
+              />
+              <v-card-title
+                class="text-h4 px-0"
+                v-bind:class="contentRight ? 'justify-end' : null"
+                v-text="data.heading"
+              />
 
               <v-card-text
                 class="px-0"

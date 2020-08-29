@@ -18,33 +18,19 @@
           v-bind:max-width="cardMaxWidth"
           flat
         >
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <v-card-subtitle
-                v-if="dataActive.caption"
-                v-bind="attrs"
-                v-on="on"
-                class="text-h6 pb-0 static"
-                :class="captionClass"
-              >
-                {{ dataActive.caption }}
-              </v-card-subtitle>
-            </template>
-            <span>{{ dataActive.caption }}</span>
-          </v-tooltip>
+          <v-card-subtitle
+            v-if="dataActive.caption"
+            class="text-h6 pb-0 static"
+            :class="captionClass"
+          >
+            {{ dataActive.caption }}
+          </v-card-subtitle>
 
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <v-card-title
-                class="text-h4 text-md-h3 font-weight-bold text-truncate static"
-                v-bind:class="headingClass"
-                v-bind="attrs"
-                v-on="on"
-                v-text="dataActive.heading"
-              />
-            </template>
-            <span>{{ dataActive.heading }}</span>
-          </v-tooltip>
+          <v-card-title
+            class="text-h4 text-md-h3 font-weight-bold text-truncate static"
+            v-bind:class="headingClass"
+            v-text="dataActive.heading"
+          />
 
           <v-card-text class="text--primary static" :class="textClass">
             {{ dataActive.text }}

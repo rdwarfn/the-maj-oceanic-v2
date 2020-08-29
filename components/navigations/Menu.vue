@@ -22,22 +22,17 @@
           tile
           v-bind:rounded="false"
         >
-          <template v-slot:activator="{ on: menu, attrs }">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on: tooltip }">
-                <v-btn
-                  v-bind:to="data.to"
-                  v-bind="attrs"
-                  v-on="{ ...tooltip, ...menu}"
-                  text x-small
-                  v-bind:dark="isIntersecting"
-                  class="px-0 font-md-12"
-                >
-                  {{ data.title }}
-                </v-btn>
-              </template>
-              <span>{{ data.title }}</span>
-            </v-tooltip>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind:to="data.to"
+              v-bind="attrs"
+              v-on="{on}"
+              text x-small
+              v-bind:dark="isIntersecting"
+              class="px-0 font-md-12"
+            >
+              {{ data.title }}
+            </v-btn>
           </template>
           <v-list
             v-if="data.items.length"
@@ -54,18 +49,9 @@
               v-bind:disabled="item.disabled"
               dense nuxt tile
             >
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                  <v-list-item-title
-                    v-bind="attrs"
-                    v-on="on"
-                    class="text-uppercase font-weight-bold font-md-12"
-                  >
-                    {{ item.title }}
-                  </v-list-item-title>
-                </template>
-                <span class="text-capitalize">{{ item.title }}</span>
-              </v-tooltip>
+              <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
+                {{ item.title }}
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>
@@ -77,28 +63,7 @@
       class="text-center rounded py-1 px-2"
       v-ripple
     >
-      <nuxt-link draggable="false" class="mx-auto" to="/">
-        <!-- <v-img
-          :lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-          :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-          class="mx-auto"
-          max-width="200"
-          max-height="auto"
-        >
-        <template v-slot:placeholder>
-          <v-row
-            class="fill-height ma-0"
-            align="center"
-            justify="center"
-          >
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-        </v-img> -->
-
+      <nuxt-link draggable="false" class="mx-auto" to="/" replace>
         <img
           class="mx-auto mr-7 _img--black"
           draggable="false"
@@ -120,22 +85,17 @@
         ]"
       >
         <v-menu bottom offset-y>
-          <template v-slot:activator="{ on: menu, attrs }">
-            <v-tooltip bottom>
-              <template v-slot:activator="{ on: tooltip }">
-                <v-btn
-                  v-bind:to="data.to"
-                  v-bind="attrs"
-                  v-on="{ ...tooltip, ...menu }"
-                  text x-small
-                  v-bind:dark="isIntersecting"
-                  class="px-0 font-md-12"
-                >
-                  {{ data.title }}
-                </v-btn>
-              </template>
-              <span>{{ data.title }}</span>
-            </v-tooltip>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              v-bind:to="data.to"
+              v-bind="attrs"
+              v-on="{on}"
+              text x-small
+              v-bind:dark="isIntersecting"
+              class="px-0 font-md-12"
+            >
+              {{ data.title }}
+            </v-btn>
           </template>
           <v-list
             v-if="data.items.length"
@@ -152,18 +112,9 @@
               v-bind:disabled="item.disabled"
               dense nuxt tile
             >
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                  <v-list-item-title
-                    v-bind="attrs"
-                    v-on="on"
-                    class="text-uppercase font-weight-bold font-md-12"
-                  >
-                    {{ item.title }}
-                  </v-list-item-title>
-                </template>
-                <span class="text-capitalize">{{ item.title }}</span>
-              </v-tooltip>
+              <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
+                {{ item.title }}
+              </v-list-item-title>
             </v-list-item>
           </v-list>
         </v-menu>

@@ -54,17 +54,10 @@
       <v-container class="py-0 px-6 px-md-0" tag="section">
         <client-only>
           <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
-            <v-tooltip bottom>
-              <template v-slot:activator="{on, attrs}">
-              <div
-                class="text-h4 text-sm-h3 mb-8"
-                v-bind="attrs"
-                v-on="on"
-                v-text="data.tabs.heading"
-              />
-              </template>
-              <span v-text="data.tabs.heading" />
-            </v-tooltip>
+            <div
+              class="text-h4 text-sm-h3 mb-8"
+              v-text="data.tabs.heading"
+            />
             <p>
               {{ data.tabs.text }}
             </p>

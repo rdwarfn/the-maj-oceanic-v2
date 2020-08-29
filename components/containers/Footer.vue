@@ -5,14 +5,9 @@
         <!-- the maj oceanic -->
         <v-col class="col--1" cols="12" sm="4" md="mb-4" lg="3">
           <div class="mb-7 mb-sm-6">
-            <v-tooltip bottom>
-              <template v-slot:activator="{on, attrs}">
-                <div v-bind="attrs" v-on="on" class="text-caption mb-2 text-uppercase font-weight-bold">
-                  the maj oceanic
-                </div>
-              </template>
-              <span class="text-capitalize">the maj oceanic</span>
-            </v-tooltip>
+            <div class="text-caption mb-2 text-uppercase font-weight-bold">
+              the maj oceanic
+            </div>
             <div class="ml-n4">
               <v-btn
                 v-for="(data, index) in sosmed"
@@ -64,14 +59,9 @@
         <v-col class="col--2 px-0" sm="5" md="6" lg="4">
           <v-row no-gutters align="start" justify-sm="space-between">
             <v-col class="col--2a px-sm-1" cols="12" sm="auto">
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                  <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
-                    join our family
-                  </div>
-                </template>
-                <span class="text-capitalize">join our family</span>
-              </v-tooltip>
+              <div class="text-caption mb-4 text-uppercase font-weight-bold">
+                join our family
+              </div>
               <v-list class="__list" color="transparent" dense flat tile>
                 <v-list-item-group no-action>
                   <v-list-item
@@ -80,29 +70,19 @@
                     nuxt v-bind:to="data.to"
                     class="px-0 fill-height"
                   >
-                    <v-tooltip bottom>
-                      <template v-slot:activator="{on, attrs}">
-                        <v-list-item-content v-bind="attrs" v-on="on">
-                          <v-list-item-title v-text="data.title">
-                          </v-list-item-title>
-                        </v-list-item-content>
-                      </template>
-                      <span>{{ data.title }}</span>
-                    </v-tooltip>
+                    <v-list-item-content>
+                      <v-list-item-title v-text="data.title">
+                      </v-list-item-title>
+                    </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
               </v-list>
             </v-col>
 
             <v-col class="px-sm-1" cols="12" sm="auto">
-              <v-tooltip bottom>
-                <template v-slot:activator="{on, attrs}">
-                  <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
-                    explore our World
-                  </div>
-                </template>
-                <span class="text-capitalize">explore our World</span>
-              </v-tooltip>
+              <div class="text-caption mb-4 text-uppercase font-weight-bold">
+                explore our World
+              </div>
               <v-list class="__list" color="transparent" dense flat tile>
                 <v-list-item-group no-action>
                   <v-list-item
@@ -111,15 +91,10 @@
                     nuxt v-bind:to="data.to"
                     class="px-0 fill-height"
                   >
-                    <v-tooltip bottom>
-                      <template v-slot:activator="{on, attrs}">
-                        <v-list-item-content v-bind="attrs" v-on="on">
-                          <v-list-item-title class="text-wrap" v-text="data.title">
-                          </v-list-item-title>
-                        </v-list-item-content>
-                      </template>
-                      <span>{{ data.title }}</span>
-                    </v-tooltip>
+                    <v-list-item-content>
+                      <v-list-item-title class="text-wrap" v-text="data.title">
+                      </v-list-item-title>
+                    </v-list-item-content>
                   </v-list-item>
                 </v-list-item-group>
               </v-list>
@@ -128,15 +103,10 @@
         </v-col>
 
         <!-- signup for exlusive news & offers -->
-        <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">
-          <v-tooltip bottom>
-            <template v-slot:activator="{on, attrs}">
-              <div v-bind="attrs" v-on="on" class="text-caption mb-4 text-uppercase font-weight-bold">
-                Sign up for Exclusive news & Offers
-              </div>
-            </template>
-            <span>Sign up for Exclusive news & Offers</span>
-          </v-tooltip>
+        <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">\
+          <div class="text-caption mb-4 text-uppercase font-weight-bold">
+            Sign up for Exclusive news & Offers
+          </div>
           <v-row no-gutters>
           <form ref="form" v-on:submit.prevent="validate">
             <v-row>
@@ -213,17 +183,17 @@ export default {
         {
           id: 0,
           icon: "mdi-instagram",
-          link: "https://www.instagram.com/themajoceanic/"
+          link: "https://www.instagram.com/themajoceanic"
         },
         {
           id: 1,
           icon: "mdi-facebook",
-          link: "https://twitter.com/themajoceanic"
+          link: "https://www.facebook.com/themajoceanic"
         },
         {
           id: 2,
           icon: "mdi-twitter",
-          link: "https://www.facebook.com/themajoceanic/"
+          link: "https://twitter.com/themajoceanic"
         },
         {
           id: 3,
