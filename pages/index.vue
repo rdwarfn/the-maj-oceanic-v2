@@ -10,9 +10,9 @@
         class="intro--head mb-6 mx-auto"
       >
       </v-skeleton-loader>
-      <div v-else class="px-6">
+      <div v-else class="px-6 px-md-0">
         <h1
-          class="intro--head text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
+          class="intro--head text-break text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
           v-text="data.heading"
         />
       </div>
@@ -24,7 +24,7 @@
       ></v-skeleton-loader>
       <tLargeImage
         v-else
-        class="px-sm-6"
+        class="px-sm-6 px-md-0"
         static-image
         :data="data.image"
       />
@@ -33,16 +33,14 @@
         v-if="loading"
         type="paragraph@3"
         max-width="70%"
-        class="text-center mx-auto mt-10 intro--paragraph"
+        class="intro--paragraph text-center mx-auto mt-10"
       ></v-skeleton-loader>
-      <div v-else class="intro--paragraph px-6">
-        <p class="mx-auto text-center">
-          {{ data.paragraph }}
-        </p>
-      </div>
+      <p v-else class="intro--paragraph px-6 px-sm-0 mt-8 mx-auto text-center">
+        {{ data.paragraph }}
+      </p>
     </v-container>
 
-    <v-container class="px-6 pt-10 pb-13" tag="section">
+    <v-container class="the-vessel pt-10 pb-13 px-6 px-md-0" tag="section">
       <t-carousel
         :data="data.carousel_card"
         button-text="discover"
@@ -53,7 +51,7 @@
 
     <!-- Voyages -->
     <v-sheet class="voyages">
-      <v-container class="px-6 py-0" tag="section">
+      <v-container class="py-0 px-6 px-md-0" tag="section">
         <client-only>
           <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
             <v-tooltip bottom>
@@ -81,7 +79,7 @@
       </v-container>
     </v-sheet>
 
-    <v-container class="px-6 dining" tag="section">
+    <v-container class="dining px-6 px-md-0" tag="section">
       <t-card-text-image
         v-bind:data="data.card_text_image[0]"
         v-bind:button-props="{
@@ -96,7 +94,7 @@
       />
     </v-container>
 
-    <v-container class="px-6 occasions" tag="section">
+    <v-container class="occasions px-6 px-md-0" tag="section">
       <t-card-text-image
         v-bind:data="data.card_text_image[1]"
         v-bind:button-props="{
@@ -155,13 +153,6 @@ export default {
   },
 
   computed: {
-    carouselHeight () {
-      const v = this.$vuetify.breakpoint.width;
-      if (!v) return
-      let height = v <= 768 ? '100%' : '581px';
-      return height
-    },
-
     heros () {
       return this.$store.state.heros;
     }
@@ -183,26 +174,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '@/assets/styles/scss/variables.scss';
   $primary: #208cb2;
 
-  .intro {
+  ::v-deep .intro {
     @media (min-width: 1204px) {
       height: 900px !important;
     }
-
     &--head {
-      white-space: pre-line;
-      // @media (max-width: 600px) {
-      //   width: 100% !important;
-      // }
-      // @include poly-fluid-sizing('width', (768px:596px, 1204px: 570px));
+      width: 100%;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+      @include poly-fluid-sizing ('max-width', (375px:310px, 768px:596px, 1440px:560px));
     }
-
     &--paragraph {
-      p {
-        white-space: pre-line !important;
-        @include poly-fluid-sizing('max-width', (768px:596px, 1204px:644px));
-      }
+      white-space: pre-line !important;
+      @include poly-fluid-sizing('max-width', (768px:596px, 1204px:644px));
     }
   }
 
@@ -213,14 +201,13 @@ export default {
     @include poly-fluid-sizing ('padding-bottom', (375px:50px, 1440px:100px));
 
     &--headline {
-      @media (max-width: 768px) {
+      @media #{map-get($display-breakpoints, 'md-and-down')} {
         width: auto !important;
       }
-      @media (min-width: 769px) {
-        width: 720px !important;
+      @media #{map-get($display-breakpoints, 'md-and-up')} {
+        width: 714px !important;
       }
     }
-
   }
 
   ::v-deep .dining, ::v-deep .occasions {
@@ -238,15 +225,10 @@ export default {
       margin-top: 100px !important;
     }
   }
-  ::v-deep .occasions {
-    @media (min-width: 960px) {
-      margin-bottom: 50px !important;
-    }
-  }
 
-  section.the-vessel {
-    @media (min-width: 1204px) {
-      height: 662px !important;
+  ::v-deep .occasions {
+    @media #{map-get($display-breakpoints, 'md-and-down')} {
+      margin-bottom: 50px !important;
     }
   }
 
@@ -267,30 +249,6 @@ export default {
       }
     }
   }
-
-  .__img_stamp_brown {
-    display: none;
-
-    @media (min-width: 600px) {
-      display: inline-block;
-      position: absolute;
-      top: -3.532rem;
-      right: 0;
-      z-index: 3;
-    }
-
-    @media (min-width: 960px) {
-      display: inline-block;
-      position: absolute;
-      top: -3rem;
-      right: 0;
-      z-index: 3;
-    }
-  }
-
-  // ._carousel {
-  //   @include poly-fluid-sizing ('margin-bottom', (768px:123px, 1440px:100px))
-  // }
 </style>
 
 <style module src="~/assets/styles/css/_utilities.module.css"></style>

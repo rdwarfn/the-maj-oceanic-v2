@@ -198,7 +198,9 @@ export default {
     }
 
     .__tab--img {
-      width: 100%;
+      @media (max-width: 599px) {
+        width: 100%;
+      }
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:718px, 1440px:570px));
       @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:350px));
     }

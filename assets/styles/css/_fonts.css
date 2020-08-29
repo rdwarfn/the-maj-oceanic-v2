@@ -26,6 +26,51 @@
   font-display: swap;
 }
 @font-face {
+  font-family: 'Ideal Sans Medium';
+  font-style: normal;
+  src: local('IdealSansMediumPro'),
+    local('Ideal Sans Medium Pro'),
+    local('Ideal-Sans-Medium-Pro'),
+    url('~assets/fonts/Ideal_Sans/IdealSans-Medium-Pro.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ideal Sans Semibold';
+  font-style: normal;
+  src: local('IdealSansSemiboldPro'),
+    local('Ideal Sans Semibold Pro'),
+    local('Ideal-Sans-Semibold-Pro'),
+    url('~assets/fonts/Ideal_Sans/IdealSans-Semibold-Pro.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ideal Sans Bold';
+  font-style: normal;
+  src: local('IdealSansBoldPro'),
+    local('Ideal Sans Bold Pro'),
+    local('Ideal-Sans-Bold-Pro'),
+    url('~assets/fonts/Ideal_Sans/IdealSans-Bold-Pro.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ideal Sans Black';
+  font-style: normal;
+  src: local('IdealSansBlackPro'),
+    local('Ideal Sans Black Pro'),
+    local('Ideal-Sans-Black-Pro'),
+    url('~assets/fonts/Ideal_Sans/IdealSans-Black-Pro.otf');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ideal Sans Book';
+  font-style: normal;
+  src: local('IdealSansBookPro'),
+    local('Ideal Sans Book Pro'),
+    local('Ideal-Sans-Book-Pro'),
+    url('~assets/fonts/Ideal_Sans/IdealSans-Book-Pro.otf');
+  font-display: swap;
+}
+@font-face {
   font-family: 'FontAwesome';
   src: local('FontAwesome'),
     local('Font Awesome'),

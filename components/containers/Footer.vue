@@ -1,7 +1,8 @@
 <template>
   <v-footer id="footer" class="px-0" dark tile inset background-color="#232323">
-    <v-container class="px-6">
+    <v-container class="px-6 px-md-0">
       <v-row no-gutters class="mb-1 mb-sm-12 mb-lg-6" align="start" justify="space-between">
+        <!-- the maj oceanic -->
         <v-col class="col--1" cols="12" sm="4" md="mb-4" lg="3">
           <div class="mb-7 mb-sm-6">
             <v-tooltip bottom>
@@ -48,17 +49,19 @@
           </div>
           <div>
             <div class="text-uppercase __part-of">PROUD COMFORT PARTNER</div>
-            <v-row no-gutters align="center">
+            <!-- <v-row no-gutters align="center"> -->
               <v-img
+                class="ml-n1"
                 v-bind:src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
                 v-bind:lazy-src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
                 max-width="66"
               ></v-img>
-            </v-row>
+            <!-- </v-row> -->
           </div>
         </v-col>
 
-        <v-col class="col--2 px-0" sm="7" md="6" lg="4">
+        <!-- join our family & explore our worl -->
+        <v-col class="col--2 px-0" sm="5" md="6" lg="4">
           <v-row no-gutters align="start" justify-sm="space-between">
             <v-col class="col--2a px-sm-1" cols="12" sm="auto">
               <v-tooltip bottom>
@@ -124,6 +127,7 @@
           </v-row>
         </v-col>
 
+        <!-- signup for exlusive news & offers -->
         <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">
           <v-tooltip bottom>
             <template v-slot:activator="{on, attrs}">
@@ -153,7 +157,7 @@
                   v-bind:rules="forms.fullname.rules"
                   light flat dense clearable single-line solo validate-on-blur
                   hide-details="auto"
-                  label="Fullname"
+                  label="Full name"
                   type="text"
                   required
                 ></v-text-field>
@@ -188,6 +192,8 @@
           </v-row>
         </v-col>
       </v-row>
+
+      <!-- copyrights -->
       <v-row no-gutters align="start" class="text-sm-center mt-0 mt-sm-5 mt-lg-0">
         <v-col tag="span" class="px-0">
           <span class="">Copyright {{ new Date().getFullYear() }} All rights reserved</span>
@@ -313,16 +319,18 @@ export default {
   span {
     font-size: 13px !important;
     font-weight: normal !important;
+    font-family: 'Ideal Sans Book', sans-serif !important;
   }
 
   .v-application .text-caption {
+    font-family: 'Ideal Sans Semibold', sans-serif !important;
     letter-spacing: 3px !important;
     font-weight: bold !important;
   }
 
   .col {
     &--1 {
-      @media (max-width: 600px) {
+      @media (max-width: 599px) {
         border-bottom: thin solid white !important;
         padding-bottom: 40px !important;
         margin-bottom: 41px !important;
@@ -330,19 +338,19 @@ export default {
     }
 
     &--2 {
-      @media (max-width: 600px) {
+      @media (max-width: 599px) {
         margin-bottom: 36px !important;
       }
     }
 
     &--2a {
-      @media (max-width: 600px) {
+      @media (max-width: 599px) {
         margin-bottom: 36px !important;
       }
     }
 
     &--3 {
-      @media (min-width: 600px) and (max-width: 1264px) {
+      @media (min-width: 600px) and (max-width: 1263px) {
         border-top: thin solid #ffffff !important;
         padding-top: 34px !important;
         margin-top: 37px !important;
@@ -355,20 +363,23 @@ export default {
     font-size: 9px !important;
     line-height: 36px !important;
     letter-spacing: 3px !important;
+    font-weight: bold !important;
   }
 
   .__list {
     ::v-deep .v-list-item {
       min-height: 26px !important;
-      .v-list-item__title {
-        font-size: 16px !important;
-      }
+      font-family: 'Ideal Sans Book', sans-serif !important;
+      font-size: 16px !important;
+      // .v-list-item__title {
+      // }
     }
   }
 
   ::v-deep .v-input {
     border-radius: unset !important;
     .v-label {
+      font-family: 'Ideal Sans Light', sans-serif !important;
       color: #B5B5B5 !important;
       font-size: 14px !important;
       font-weight: normal !important;

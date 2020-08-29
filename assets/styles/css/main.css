@@ -100,3 +100,9 @@ ul {
   50% { transform: scale(1.5) }
   100% { transform: scale(0) }
 }
+div, p {
+  -webkit-hyphens: auto !important;
+  -moz-hyphens: auto !important;
+  -ms-hyphens: auto !important;
+  hyphens: auto !important;
+}

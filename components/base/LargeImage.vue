@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters class="container px-0" align="center" justify="center">
+  <v-sheet>
     <client-only>
       <v-img
         :src="staticImage ? require(`~/assets/images/${data}`) : data"
@@ -21,7 +21,7 @@
         </template>
       </v-img>
     </client-only>
-  </v-row>
+  </v-sheet>
 </template>
 
 <script>

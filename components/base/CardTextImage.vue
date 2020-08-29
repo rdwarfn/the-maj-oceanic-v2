@@ -9,7 +9,7 @@
           <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
             {{ data.caption }}
           </v-card-subtitle>
-          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center mb-5">
+          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
             {{ data.heading }}
           </v-card-title>
           <v-img
