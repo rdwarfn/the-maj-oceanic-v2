@@ -103,8 +103,8 @@
         </v-col>
 
         <!-- signup for exlusive news & offers -->
-        <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">\
-          <div class="text-caption mb-4 text-uppercase font-weight-bold">
+        <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">
+          <div class="text-caption text-no-wrap mb-4 text-uppercase font-weight-bold">
             Sign up for Exclusive news & Offers
           </div>
           <v-row no-gutters>
@@ -145,16 +145,16 @@
               </v-col>
             </v-row>
             <v-row no-gutters>
-              <v-col class="mb-4 mb-md-4" sm="3" lg="auto">
+              <v-col class="mb-4 mb-sm-0 mb-lg-4" sm="3" lg="auto">
               <v-btn class="btn-s" light depressed tile type="submit" v-on:click.prevent="validate">
                 sign me up
               </v-btn>
               </v-col>
               <v-col cols="12" sm="9" lg="12">
-                <span>
+                <span class="detail-offers">
                   By entering your details you consent to be contacted via email
                   by The MAJ Group with offers and updates. To opt out, use the
-                  unsubscribe link or email <a href="mailto:digital@themajgroup.com">digital@themajgroup.com</a>.
+                  unsubscribe link or email <a class="inline" href="mailto:digital@themajgroup.com">digital@themajgroup.com</a>.
                 </span>
               </v-col>
             </v-row>
@@ -164,7 +164,7 @@
       </v-row>
 
       <!-- copyrights -->
-      <v-row no-gutters align="start" class="text-sm-center mt-0 mt-sm-5 mt-lg-0">
+      <v-row no-gutters align="start" class="text-sm-center mt-6 mt-sm-1 mt-lg-0">
         <v-col tag="span" class="px-0">
           <span class="">Copyright {{ new Date().getFullYear() }} All rights reserved</span>
         </v-col>
@@ -282,20 +282,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '@/assets/styles/scss/variables.scss';
   #footer {
     @include poly-fluid-sizing ('padding-top', (375px:38px, 768px:55px, 1440px:90px));
     @include poly-fluid-sizing ('padding-bottom', (375px:58, 768px:38px, 1440px:38px));
   }
+
   span {
+    display: inline-block;
     font-size: 13px !important;
     font-weight: normal !important;
     font-family: 'Ideal Sans Book', sans-serif !important;
+
+    &.detail-offers {
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        font-size: 12px !important;
+        line-height: 18px !important;
+        text-align: justify !important;
+        text-justify: inter-word !important;
+      }
+    }
   }
 
   .v-application .text-caption {
     font-family: 'Ideal Sans Semibold', sans-serif !important;
     letter-spacing: 3px !important;
-    font-weight: bold !important;
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      font-size: 11px !important;
+    }
   }
 
   .col {
