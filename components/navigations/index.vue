@@ -151,8 +151,6 @@
 
         <v-col cols="auto" v-if="isIntersecting">
           <v-btn
-            v-bind="attrs"
-            v-on="on"
             class="btn-s font-md-12"
             depressed tile nuxt dark
             to="/contact-us"

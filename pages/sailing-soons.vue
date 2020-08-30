@@ -2,8 +2,8 @@
   <v-sheet
     id="sailing-soons"
   >
-    <v-row no-gutters align="center" class="container mx-auto px-8 px-md-0">
-    <v-col cols="12" sm="6" class="mb-12 mx-auto">
+    <v-row no-gutters align="center" justify="space-between" class="container mx-auto px-8 px-md-0">
+    <v-col cols="12" sm="6" class="mb-12 mx-auto mx-sm-0">
       <v-img
         v-ripple
         ref="refImg"
@@ -22,7 +22,7 @@
       </v-img>
     </v-col>
 
-    <v-col cols="12" sm="5" class="mx-auto px-sm-0 _text-width">
+    <v-col cols="12" sm="5" class="mx-auto mx-sm-0 px-sm-0 _text-width">
       <div class="mb-6 mx-auto">
         <h1 class="text-h4 text-md-h3">It's on the horizon...</h1>
       </div>
@@ -62,6 +62,9 @@ export default {
 <style lang="scss" scoped>
   @import '@/assets/styles/scss/variables.scss';
  #sailing-soons {
+   height: 100%;
+   display: flex !important;
+   flex-direction: row !important;
    @include poly-fluid-sizing ('min-height', (375px:789px, 768px:472px, 1440px:900px));
    @media #{map-get($display-breakpoints, 'sm-and-down')} {
      padding-top: 144px !important;
