@@ -12,7 +12,7 @@
       </v-skeleton-loader>
       <div v-else class="px-6 px-md-0">
         <h1
-          class="intro--head text-break text-h4 text-md-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
+          class="intro--head text-break text-h4 text-sm-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
           v-text="data.heading"
         />
       </div>
@@ -179,7 +179,13 @@ export default {
       -webkit-hyphens: auto;
       -ms-hyphens: auto;
       hyphens: auto;
-      @include poly-fluid-sizing ('max-width', (375px:310px, 768px:596px, 1440px:560px));
+      @include poly-fluid-sizing ('max-width', (375px:310px, 768px:596px, 1440px:570px));
+      @media #{map-get($display-breakpoints, 'sm-and-up')} {
+        line-height: 41px !important;
+      }
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        line-height: 32px !important;
+      }
     }
     &--paragraph {
       white-space: pre-line !important;

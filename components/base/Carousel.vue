@@ -19,7 +19,7 @@
             {{ item.caption }}
           </v-card-subtitle>
           <v-card-title class="hidden-sm-and-up mb-4">
-            <div class="text-h4 text-md-h3 mx-auto">
+            <div class="text-h4 mx-auto">
               {{ item.heading }}
             </div>
           </v-card-title>
@@ -95,14 +95,14 @@
         <slot v-if="!isXs" name="image-extra"></slot>
         <v-card-subtitle
           v-if="dataActive.caption"
-          class="text-h6 __txt_primary px-0"
+          class="text-h6 __txt_primary px-0 pb-0"
           :class="captionClass"
         >
           {{ dataActive.caption }}
         </v-card-subtitle>
 
         <v-card-title
-          class="text-h4 text-no-wrap text-md-h3 mb-5 px-0"
+          class="text-h4 text-no-wrap mb-3 px-0"
           :class="headingClass"
         >
           {{ dataActive.heading }}

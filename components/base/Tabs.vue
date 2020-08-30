@@ -11,7 +11,7 @@
         v-bind:key="item.label"
       >
         <div
-          class="__tab--label"
+          class="__tab--label text-uppercase"
           v-text="item.label"
         />
       </v-tab>
@@ -120,7 +120,8 @@ export default {
 
   &--label {
     font-family: 'Verlag Bold', sans-serif !important;
-    @include poly-fluid-sizing ('font-size', (320px:16px, 600px:22px))
+    @include poly-fluid-sizing ('font-size', (375px:12px, 768px:16px));
+    letter-spacing: 3px !important;
   }
 
   &-item {
@@ -129,39 +130,6 @@ export default {
     @media (min-width: 960px) {
       flex-wrap: unset;
     }
-
-    // &.reversed {
-    //   flex-direction: row-reverse;
-    //   flex-wrap: wrap-reverse;
-    //   @media (min-width: 960px) {
-    //     flex-wrap: unset;
-    //   }
-
-    //   .__tab--content {
-    //     margin-top: unset !important;
-    //     margin-bottom: 16px;
-    //     @media (max-width: 600px) {
-    //       text-align: center !important;
-    //     }
-    //     @media (min-width: 600px) {
-    //       margin-left: unset;
-    //       margin: {
-    //         right: 10.22px !important;
-    //         bottom: 0 !important;
-    //         left: 0 !important;
-    //       }
-    //     }
-    //     @media (min-width: 960px) {
-    //       margin-left: unset;
-    //       margin: {
-    //         right: 33px !important;
-    //         bottom: 0 !important;
-    //         left: 0 !important;
-    //       }
-    //     }
-    //   }
-    // }
-
     .__tab--content {
       @media (max-width: 960px) {
         margin: {

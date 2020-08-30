@@ -197,6 +197,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/styles/scss/variables.scss';
 $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $primary: #208CB2;
 $secondary: #232323;
@@ -261,7 +262,7 @@ $secondary: #232323;
 
 .__nav_bar {
   z-index: 10 !important;
-  @media (min-width: 0px) and (max-width: 959px) {
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
     display: none;
   }
 
@@ -270,7 +271,6 @@ $secondary: #232323;
     position: fixed !important;
     align-items: flex-end;
     max-height: 192px;
-    min-height: 100px;
     background-color: rgba(47, 46, 46, 0.35) !important;
     height: 30%;
     width: 100vw;
@@ -280,10 +280,10 @@ $secondary: #232323;
       box-shadow .8s ease-in-out;
     &.animated {
       // transform: translateY(-60%); //1280
-      transform: translateY(-50%); //1204
-      @media (min-width: 1440px) {
-        transform: translateY(-58%) !important;
-      }
+      transform: translateY(-115px); //1204
+      // @media (min-width: 1440px) {
+      //   transform: translateY(-110px) !important;
+      // }
       box-shadow:
         0 3px 5px -1px rgba(0,0,0,.2),
         0 6px 10px 0 rgba(0,0,0,.14),
@@ -322,26 +322,9 @@ $secondary: #232323;
         &.animated {
           background-color: white;
           color: #232323;
-          height: 100px;
+          height: 78px;
           width: 100%;
           padding: 0 48px !important;
-        }
-      }
-    }
-
-    a.__btn {
-      transition:
-        color .3s ease-out,
-        background-color .3s ease-out,
-        border .3s ease-out;
-      &:hover {
-        border-color: transparent;
-        background-color: $primary !important;
-      }
-
-      &--inquire {
-        &:hover {
-          background-color: $primary !important;
         }
       }
     }
