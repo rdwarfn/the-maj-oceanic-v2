@@ -108,13 +108,18 @@
             Sign up for Exclusive news & Offers
           </div>
           <v-row no-gutters>
-          <form ref="form" v-on:submit.prevent="validate">
+          <v-form
+            ref="form"
+            @submit.prevent="validate"
+            @keyup.enter.prevent="validate"
+            lazy-validation
+          >
             <v-row>
-              <v-col cols="4" sm="2" lg="4">
+              <v-col cols="4" sm="2" lg="4" class="pr-0 pr-sm-3">
                 <v-select
-                  v-model="forms.select.data"
-                  v-bind:items="forms.select.items"
-                  v-bind:rules="forms.select.rules"
+                  v-model="title"
+                  v-bind:items="titleData"
+                  v-bind:rules="[rules.required]"
                   light flat dense solo validate-on-blur
                   hide-details="auto"
                   label="Title"
@@ -123,8 +128,11 @@
               </v-col>
               <v-col cols="8" sm="5" lg="8" class="pl-md-0">
                 <v-text-field
-                  v-model="forms.fullname.data"
-                  v-bind:rules="forms.fullname.rules"
+                  v-model="fullname"
+                  v-bind:rules="[
+                    rules.required,
+                    rules.countMin4
+                  ]"
                   light flat dense clearable single-line solo validate-on-blur
                   hide-details="auto"
                   label="Full name"
@@ -134,8 +142,11 @@
               </v-col>
               <v-col cols="12" sm="5" lg="12" class="mb-3" no-gutters>
                 <v-text-field
-                  v-model="forms.email.data"
-                  v-bind:rules="forms.email.rules"
+                  v-model="email"
+                  v-bind:rules="[
+                    rules.required,
+                    rules.email
+                  ]"
                   light flat dense clearable single-line solo validate-on-blur
                   hide-details="auto"
                   label="Email address"
@@ -158,7 +169,7 @@
                 </span>
               </v-col>
             </v-row>
-          </form>
+          </v-form>
           </v-row>
         </v-col>
       </v-row>
@@ -169,7 +180,17 @@
           <span class="">Copyright {{ new Date().getFullYear() }} All rights reserved</span>
         </v-col>
       </v-row>
+
     </v-container>
+    <v-snackbar
+      v-model="snackbar.show"
+      :color="snackbar.color"
+      top
+      absolute
+      elevation="24"
+    >
+      {{ snackbar.text }}
+    </v-snackbar>
     </v-footer>
 </template>
 
@@ -240,42 +261,68 @@ export default {
           to: "#"
         }
       ],
-      forms: {
-        valid: true,
-        fullname: {
-          data: "",
-          rules: [
-            v => !!v || 'Required.',
-            v => (v && v.length < 20) || 'Name must be less than 20 characters',
-          ]
+      valid: true,
+      fullname: "",
+      title: "",
+      titleData: ["Mr.", "Ms."],
+      email: "",
+      rules: {
+        required: v => !!v || 'This field is required.',
+        countMin4: v => (v && v.length >= 4) || 'Min 4 characters.',
+        email: v => {
+          const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+          return pattern.test(v) || 'Please enter a valid e-mail.'
         },
-        select: {
-          data: null,
-          items: ["Mr.", "Ms."],
-          rules: [v => !!v || 'Required.']
-        },
-        email: {
-          data: "",
-          rules: [
-            value => !!value || 'Required.',
-            value => (value || '').length <= 20 || 'Max 20 characters',
-            value => {
-              const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-              return pattern.test(value) || 'Please enter a valid e-mail.'
-            },
-          ]
-        }
+      },
+      snackbar: {
+        show: false,
+        text: '',
+        color: ''
+      }
+    }
+  },
+
+  computed: {
+    form () {
+      return {
+        title: this.title,
+        fullname: this.fullname,
+        email: this.email
       }
     }
   },
 
   methods: {
     validate () {
-      // this.$refs.form;
-      console.log(this.$refs.form);
+      const ress = this.$refs.form.validate();
+      if (ress) {
+        this.subscribeStore(this.form)
+        this.reset();
+      }
     },
     reset () {
       this.$refs.form.reset();
+    },
+    async subscribeStore ({ title, fullname, email }) {
+      try {
+        const ress = await this.$axios.post(
+          'https://backend.themajbekasi.com/api/oceanic/store-subscriber',
+          { title, fullname, email }
+        )
+        if (ress && ress.statusText === 'OK') {
+          this.snackbar = {
+            text: 'Your message has been sent.',
+            color: 'primary',
+            show: true
+          }
+        }
+      } catch (err) {
+        this.snackbar = {
+          text: 'My apologize, there is error ' + err,
+          color: 'red',
+          show: true
+        }
+      }
     }
   }
 }

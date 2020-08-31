@@ -21,8 +21,8 @@
         >
           <v-row no-gutters align="center" justify="center" class="fill-height">
             <v-spacer />
-            <div class="_head--text text-sm-h2 text-md-h1 text-center">
-              {{ item.text }}
+            <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="item.text">
+              <!-- {{ item.text }} -->
             </div>
             <v-spacer/>
           </v-row>
@@ -73,7 +73,7 @@ export default {
   ._head--text {
     color: #FFFFFF !important;
     position: relative !important;
-    white-space: pre-line !important;
+    // white-space: pre-line !important;
     width: auto;
     font-family: "Sentinel Semibold", serif !important;
     @media (max-width: 600px) {

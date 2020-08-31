@@ -126,7 +126,7 @@
                 hide-details="auto"
                 background-color="#fafafa"
                 rows="4"
-                filled clearable flat denserequired
+                filled clearable flat dense required
               ></v-textarea>
             </v-col>
           </v-row>
@@ -283,6 +283,16 @@
         </v-form>
       </v-col>
     </v-row>
+    <v-snackbar
+      v-model="snackbar.show"
+      absolute
+      centered
+      :timeout="2000"
+      color="primary"
+      elevation="24"
+    >
+     {{ snackbar.text }}
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -314,7 +324,12 @@ export default {
         //   return pattern.test(v) || 'Please'
         // }
       },
-      formHasErrors: false
+      formHasErrors: false,
+      snackbar: {
+        show: false,
+        text: '',
+        color: ''
+      },
     }
   },
 
@@ -335,7 +350,7 @@ export default {
       const res = this.$refs.form.validate()
       const res2 = this.$refs.form2.validate()
       if (res && res2) {
-        console.log(this.form)
+        this.storeContact(this.form)
         this.reset();
         this.reset2();
       }
@@ -346,6 +361,27 @@ export default {
     reset2 () {
       this.$refs.form2.reset()
     },
+    async storeContact ({ name, email, phone, destination, message }) {
+      try {
+        const ress = await this.$axios.post(
+          'https://backend.themajbekasi.com/api/oceanic/store-contact',
+          { name, email, phone, destination, message }
+        )
+        if (ress && ress.statusText === 'OK') {
+          this.snackbar = {
+            text: 'Your message has been sent.',
+            color: 'primary',
+            show: true
+          }
+        }
+      } catch (err) {
+        this.snackbar = {
+          text: 'My apologize, there is error ' + err,
+          color: 'red',
+          show: true
+        }
+      }
+    }
   }
 }
 </script>
