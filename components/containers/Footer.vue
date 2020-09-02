@@ -104,7 +104,7 @@
 
         <!-- signup for exlusive news & offers -->
         <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">
-          <div class="text-caption text-no-wrap mb-4 text-uppercase font-weight-bold">
+          <div class="text-caption mb-4 text-uppercase font-weight-bold">
             Sign up for Exclusive news & Offers
           </div>
           <v-row no-gutters>
