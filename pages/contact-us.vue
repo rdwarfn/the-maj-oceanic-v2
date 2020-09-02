@@ -119,7 +119,7 @@
                 v-model="message"
                 v-bind:rules="[
                   rules.required,
-                  rules.countMin50
+                  rules.countMin30
                 ]"
                 counter
                 validate-on-blur
@@ -242,7 +242,7 @@
                 v-model="message"
                 v-bind:rules="[
                   rules.required,
-                  rules.countMin50
+                  rules.countMin30
                 ]"
                 counter
                 validate-on-blur
@@ -283,15 +283,71 @@
         </v-form>
       </v-col>
     </v-row>
+    <!-- <v-dialog
+      v-model="dialog.show"
+      max-width="875"
+      overlay-color="rgba(255, 255, 255, 0.8)"
+      transition="scale-transition"
+      persistent
+    > -->
+      <!-- <v-row class="pa-2 fill-height "> -->
+        <!-- <v-sheet class="pa-2 fill-height" tile flat>
+          <v-container class="v-dialog--card py-0 px-0"> -->
+          <!-- <v-col cols="12"> -->
+            <!-- <v-row no-gutters justify="end" class="bdr text-right">
+              <v-btn class="float-right" @click="dialog.show = false" icon style="background: white; top: 0; right: 0">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-row>
+            <v-row no-gutters align="center" style="position: relative">
+              <v-col>
+                <v-img
+                  :src="require('~/assets/images/contact-dialog-bottle.png')"
+                  :lazy-src="require('~/assets/images/contact-dialog-bottle.png')"
+                  class="mx-auto ml-sm-0"
+                  height="245"
+                >
+                </v-img>
+              </v-col>
+              <v-col> -->
+                <!-- v-dialog--card-heading -->
+                <!-- <div class="v-dialog--card-heading mx-auto text-center pa-0">
+                  We have received your enquiry and will respond to you very soon.
+                </div>
+              </v-col>
+              <v-col>
+                <v-img
+                  :src="require('~/assets/images/contact-dialog-water.png')"
+                  :lazy-src="require('~/assets/images/contact-dialog-water.png')"
+                  max-width="114"
+                  max-height="61"
+                  class="mt-5 ml-auto mr-n2"
+                />
+              </v-col>
+            </v-row> -->
+            <!-- <v-row class="bdr"></v-row> -->
+            <!-- <v-card-actions class="mt-8" style="border: 1px solid black"> -->
+              <!-- <nuxt-link
+                v-ripple
+                class="px-2 mx-auto text-decoration-underline v-dialog--card-link"
+                to="/"
+              >Return to the Homepage</nuxt-link> -->
+            <!-- </v-card-actions> -->
+          <!-- </v-col> -->
+
+          <!-- </v-container>
+        </v-sheet> -->
+      <!-- </v-row> -->
+    <!-- </v-dialog> -->
+
     <v-snackbar
-      v-model="snackbar.show"
+      v-model="dialog.show"
+      :color="dialog.color"
+      top
       absolute
-      centered
-      :timeout="2000"
-      color="primary"
       elevation="24"
     >
-     {{ snackbar.text }}
+      {{ dialog.text }}
     </v-snackbar>
   </v-container>
 </template>
@@ -310,11 +366,15 @@ export default {
       message: '',
       phone: '',
       destination: '',
-      destinationData: ['Komodo National Park (May - October 2020)', 'Raja Ampat (November 2020 - April 2021)'],
+      destinationData: [
+        'Komodo National Park (June–October)',
+        'Raja Ampat (December–April)',
+        'Spice Islands (May/November)'
+      ],
       rules: {
         required: v => !!v || 'This field is required.',
         countMin4: v => (v && v.length >= 4) || 'Min 4 characters.',
-        countMin50: v => (v && v.length >= 50) || 'Min 50 characters.',
+        countMin30: v => (v && v.length >= 30) || 'Min 30 characters.',
         email: v => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           return pattern.test(v) || 'Please enter a valid e-mail.'
@@ -325,7 +385,7 @@ export default {
         // }
       },
       formHasErrors: false,
-      snackbar: {
+      dialog: {
         show: false,
         text: '',
         color: ''
@@ -368,14 +428,14 @@ export default {
           { name, email, phone, destination, message }
         )
         if (ress && ress.statusText === 'OK') {
-          this.snackbar = {
+          this.dialog = {
             text: 'Your message has been sent.',
             color: 'primary',
             show: true
           }
         }
       } catch (err) {
-        this.snackbar = {
+        this.dialog = {
           text: 'My apologize, there is error ' + err,
           color: 'red',
           show: true
@@ -387,6 +447,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '@/assets/styles/scss/variables.scss';
+
+  ::v-deep .bdr {
+    border: 1px solid black !important;
+  }
+
   section {
     @media (min-width: 600px) {
       background: #FAFAFA !important;
@@ -425,13 +491,65 @@ export default {
     @include poly-fluid-sizing ('width', (375px:293.58px, 768px:210px, 1440px:293.58px));
   }
 
-  ._form--headline {
-    font-family: 'Verlag Bold', sans-serif !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    line-height: 16px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 3px !important;
+  ._form {
+    &--headline {
+      font-family: 'Verlag Bold', sans-serif !important;
+      font-size: 14px !important;
+      font-weight: 400 !important;
+      line-height: 16px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 3px !important;
+    }
+  }
+
+  ::v-deep .v-dialog {
+    width: 100%;
+    @include poly-fluid-sizing ('max-width', (375px:315px, 1440px:857px));
+    @include poly-fluid-sizing ('height', (375px:580px, 1440px:300px));
+    &--card {
+      background: #EFE1DC !important;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // @include poly-fluid-sizing ('height', (375px:580px, 1440px:300px));
+      padding-bottom: 30px !important;
+      @media #{map-get($display-breakpoints, 'sm-and-up')} {
+        padding-bottom: 0 !important;
+      }
+      &-img-water {
+        position: absolute;
+        right: 0;
+        top: 150px;
+        @include poly-fluid-sizing ('width', (375px:74px, 1440px:114px));
+        @include poly-fluid-sizing ('height', (375px:52px, 1440px:61px));
+      }
+      &-heading {
+        font-family: 'Sentinel Semibold', sans-serif !important;
+        @include poly-fluid-sizing ('width', (375px:254px, 1440px:520px));
+        @include poly-fluid-sizing ('font-size', (375px:22px, 1440px:32px));
+        @include poly-fluid-sizing ('line-height', (375px:32px, 1440px:40px));
+        z-index: 2;
+        top: 0;
+        // right: 50px !important;
+        // left: auto;
+        // position: absolute;
+        // left: 50%;
+        // transform: translate(-50%, -50%);
+
+      }
+      // @media #{map-get($display-breakpoints, 'sm-and-up')} {
+      //   &-heading, &-link {
+      //     position: relative;
+      //     top: -180px;
+      //     // margin-left: auto;
+      //   }
+      // }
+      &-link {
+        font-weight: 300 !important;
+        color: #5A5A5A !important;
+      }
+    }
   }
 
   ::v-deep .v-label {
