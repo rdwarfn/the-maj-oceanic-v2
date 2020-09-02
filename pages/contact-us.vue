@@ -100,8 +100,11 @@
                     label="Phone"
                     v-model="phone"
                     v-bind:rules="[
-                      rules.required
+                      rules.required,
+                      rules.countMax16,
+                      rules.isNumber
                     ]"
+                    counter
                     type="tel"
                     validate-on-blur
                     hide-details="auto"
@@ -212,8 +215,11 @@
                 label="Phone"
                 v-model="phone"
                 v-bind:rules="[
-                  rules.required
+                  rules.required,
+                  rules.countMax16,
+                  rules.isNumber
                 ]"
+                counter
                 type="tel"
                 validate-on-blur
                 hide-details="auto"
@@ -283,72 +289,42 @@
         </v-form>
       </v-col>
     </v-row>
-    <!-- <v-dialog
+    <v-dialog
       v-model="dialog.show"
       max-width="875"
       overlay-color="rgba(255, 255, 255, 0.8)"
       transition="scale-transition"
       persistent
-    > -->
-      <!-- <v-row class="pa-2 fill-height "> -->
-        <!-- <v-sheet class="pa-2 fill-height" tile flat>
-          <v-container class="v-dialog--card py-0 px-0"> -->
-          <!-- <v-col cols="12"> -->
-            <!-- <v-row no-gutters justify="end" class="bdr text-right">
-              <v-btn class="float-right" @click="dialog.show = false" icon style="background: white; top: 0; right: 0">
-                <v-icon>mdi-close</v-icon>
-              </v-btn>
-            </v-row>
-            <v-row no-gutters align="center" style="position: relative">
-              <v-col>
-                <v-img
-                  :src="require('~/assets/images/contact-dialog-bottle.png')"
-                  :lazy-src="require('~/assets/images/contact-dialog-bottle.png')"
-                  class="mx-auto ml-sm-0"
-                  height="245"
-                >
-                </v-img>
-              </v-col>
-              <v-col> -->
-                <!-- v-dialog--card-heading -->
-                <!-- <div class="v-dialog--card-heading mx-auto text-center pa-0">
-                  We have received your enquiry and will respond to you very soon.
-                </div>
-              </v-col>
-              <v-col>
-                <v-img
-                  :src="require('~/assets/images/contact-dialog-water.png')"
-                  :lazy-src="require('~/assets/images/contact-dialog-water.png')"
-                  max-width="114"
-                  max-height="61"
-                  class="mt-5 ml-auto mr-n2"
-                />
-              </v-col>
-            </v-row> -->
-            <!-- <v-row class="bdr"></v-row> -->
-            <!-- <v-card-actions class="mt-8" style="border: 1px solid black"> -->
-              <!-- <nuxt-link
-                v-ripple
-                class="px-2 mx-auto text-decoration-underline v-dialog--card-link"
-                to="/"
-              >Return to the Homepage</nuxt-link> -->
-            <!-- </v-card-actions> -->
-          <!-- </v-col> -->
-
-          <!-- </v-container>
-        </v-sheet> -->
-      <!-- </v-row> -->
-    <!-- </v-dialog> -->
-
-    <v-snackbar
-      v-model="dialog.show"
-      :color="dialog.color"
-      top
-      absolute
-      elevation="24"
     >
-      {{ dialog.text }}
-    </v-snackbar>
+      <v-sheet class="v-dialog--sheet" tile>
+        <v-container class="v-dialog--card d-flex flex-column align-content-space-around">
+          <v-btn right top icon absolute class="v-dialog--card-close-btn" @click="dialog.show = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+
+          <v-row align="center" justify="space-around" class="flex-column" style="position: relative">
+            <v-sheet color="transparent" class="d-flex flex-column flex-sm-row justify-center" width="100%">
+              <img :src="require('~/assets/images/contact-dialog-bottle.png')" class="v-dialog--card-img mx-auto ml-sm-0" />
+
+              <div class="v-dialog--card-heading mx-auto text-center text-break pa-0">
+                {{ dialog.text }}
+              </div>
+            </v-sheet>
+
+            <v-img
+              :src="require('~/assets/images/contact-dialog-water.png')"
+              :lazy-src="require('~/assets/images/contact-dialog-water.png')"
+              max-width="114"
+              max-height="61"
+              class="v-dialog--card-img-water mt-5 ml-auto mr-n2"
+            />
+
+            <nuxt-link v-ripple class="px-2 mx-auto text-decoration-underline v-dialog--card-link" to="/">
+              Return to the Homepage</nuxt-link>
+          </v-row>
+        </v-container>
+      </v-sheet>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -366,6 +342,7 @@ export default {
       message: '',
       phone: '',
       destination: '',
+      loading: false,
       destinationData: [
         'Komodo National Park (June–October)',
         'Raja Ampat (December–April)',
@@ -375,10 +352,12 @@ export default {
         required: v => !!v || 'This field is required.',
         countMin4: v => (v && v.length >= 4) || 'Min 4 characters.',
         countMin30: v => (v && v.length >= 30) || 'Min 30 characters.',
+        countMax16: v => (v && v.length <= 16) || 'Max 16 digit numbers.',
         email: v => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           return pattern.test(v) || 'Please enter a valid e-mail.'
         },
+        isNumber: v => (v && !isNaN(v)) || 'This field must be number.',
         // phone: v => {
         //   const pattern = (\+62 ((\d{3}([ -]\d{3,})([- ]\d{4,})?)|(\d+)))|(\(\d+\) \d+)|\d{3}( \d+)+|(\d+[ -]\d+)|\d+
         //   return pattern.test(v) || 'Please'
@@ -387,8 +366,7 @@ export default {
       formHasErrors: false,
       dialog: {
         show: false,
-        text: '',
-        color: ''
+        text: ''
       },
     }
   },
@@ -402,7 +380,7 @@ export default {
         destination: this.destination,
         message: this.message,
       }
-    }
+    },
   },
 
   methods: {
@@ -410,6 +388,7 @@ export default {
       const res = this.$refs.form.validate()
       const res2 = this.$refs.form2.validate()
       if (res && res2) {
+        console.log(this.form)
         this.storeContact(this.form)
         this.reset();
         this.reset2();
@@ -427,17 +406,17 @@ export default {
           'https://backend.themajbekasi.com/api/oceanic/store-contact',
           { name, email, phone, destination, message }
         )
+        console.log(ress)
         if (ress && ress.statusText === 'OK') {
           this.dialog = {
-            text: 'Your message has been sent.',
-            color: 'primary',
+            text: 'We have received your enquiry and will respond to you very soon.',
             show: true
           }
         }
       } catch (err) {
+        console.log(err)
         this.dialog = {
           text: 'My apologize, there is error ' + err,
-          color: 'red',
           show: true
         }
       }
@@ -448,10 +427,6 @@ export default {
 
 <style lang="scss" scoped>
   @import '@/assets/styles/scss/variables.scss';
-
-  ::v-deep .bdr {
-    border: 1px solid black !important;
-  }
 
   section {
     @media (min-width: 600px) {
@@ -504,50 +479,54 @@ export default {
 
   ::v-deep .v-dialog {
     width: 100%;
-    @include poly-fluid-sizing ('max-width', (375px:315px, 1440px:857px));
-    @include poly-fluid-sizing ('height', (375px:580px, 1440px:300px));
+    @include poly-fluid-sizing ('max-width', (375px:315px, 1440px:850px));
+    @include poly-fluid-sizing ('max-height', (375px:580px, 1440px:300px));
+    @include poly-fluid-sizing ('padding', (375px:10px, 1440px:20px));
+    background-color: white;
     &--card {
+      @include poly-fluid-sizing ('height', (375px:560px, 1440px:280px));
       background: #EFE1DC !important;
       width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      // @include poly-fluid-sizing ('height', (375px:580px, 1440px:300px));
+      position: relative;
       padding-bottom: 30px !important;
       @media #{map-get($display-breakpoints, 'sm-and-up')} {
         padding-bottom: 0 !important;
       }
+      &-close-btn {
+        background-color: white;
+        z-index: 2;
+      }
+      &-img {
+        justify-self: flex-start;
+      }
       &-img-water {
         position: absolute;
-        right: 0;
-        top: 150px;
+        bottom: 50px;
         @include poly-fluid-sizing ('width', (375px:74px, 1440px:114px));
         @include poly-fluid-sizing ('height', (375px:52px, 1440px:61px));
+        @include poly-fluid-sizing ('right', (375px:-2px, 1440px:-12px));
       }
       &-heading {
         font-family: 'Sentinel Semibold', sans-serif !important;
-        @include poly-fluid-sizing ('width', (375px:254px, 1440px:520px));
+        @include poly-fluid-sizing ('width', (375px:254px, 1440px:500px));
         @include poly-fluid-sizing ('font-size', (375px:22px, 1440px:32px));
         @include poly-fluid-sizing ('line-height', (375px:32px, 1440px:40px));
-        z-index: 2;
-        top: 0;
-        // right: 50px !important;
-        // left: auto;
-        // position: absolute;
-        // left: 50%;
-        // transform: translate(-50%, -50%);
-
+        @include poly-fluid-sizing ('top', (600px:150px, 1440px:30px));
+        @media #{map-get($display-breakpoints, 'sm-and-up')} {
+          z-index: 2;
+          bottom: auto;
+          position: absolute;
+        }
       }
-      // @media #{map-get($display-breakpoints, 'sm-and-up')} {
-      //   &-heading, &-link {
-      //     position: relative;
-      //     top: -180px;
-      //     // margin-left: auto;
-      //   }
-      // }
       &-link {
         font-weight: 300 !important;
         color: #5A5A5A !important;
+        bottom: unset;
+        @include poly-fluid-sizing ('bottom', (600px:100px, 1440px:65px));
+        @media #{map-get($display-breakpoints, 'sm-and-up')} {
+          position: absolute;
+          // margin-top: 80px;
+        }
       }
     }
   }
@@ -570,7 +549,6 @@ export default {
 
 
   ::v-deep ._form {
-    // border: 1px solid black !important;
     background: #FFFFFF !important;
   }
 
