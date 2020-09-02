@@ -306,8 +306,7 @@
             <v-sheet color="transparent" class="d-flex flex-column flex-sm-row justify-center" width="100%">
               <img :src="require('~/assets/images/contact-dialog-bottle.png')" class="v-dialog--card-img mx-auto ml-sm-0" />
 
-              <div class="v-dialog--card-heading mx-auto text-center text-break pa-0">
-                {{ dialog.text }}
+              <div class="v-dialog--card-heading mx-auto text-center text-break pa-0" v-html="dialog.text">
               </div>
             </v-sheet>
 
@@ -416,7 +415,7 @@ export default {
       } catch (err) {
         console.log(err)
         this.dialog = {
-          text: 'My apologize, there is error ' + err,
+          text: `My apologize, there is error.<br/><pre style="white-space: pre-line; font-size: 12px">*For Developer<br/>${err}</pre>`,
           show: true
         }
       }
