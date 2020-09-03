@@ -1,12 +1,15 @@
 <template>
   <div>
     <v-skeleton-loader
+      v-if="!data"
       boilerplate
       type="image"
       class="_hero--img"
       max-height="100%"
       transition="scale-transition"
     >
+    </v-skeleton-loader>
+    <template v-else>
       <v-sheet v-if="data.video" class="hero-wrapper text-center" style="relative">
           <v-sheet class="video-player-box mx-auto"
             v-video-player:player="{
@@ -36,7 +39,7 @@
           <v-spacer/>
         </v-row>
       </v-img>
-    </v-skeleton-loader>
+    </template>
     <!-- <swiper
       v-else
       class="swiper"
