@@ -8,7 +8,6 @@
       transition="scale-transition"
     >
       <v-sheet v-if="data.video" class="hero-wrapper text-center" style="relative">
-        <client-only>
           <v-sheet class="video-player-box mx-auto"
             v-video-player:player="{
               ...playerOptions,
@@ -21,7 +20,6 @@
           </v-sheet>
           <div class="_head--text text-sm-h2 text-md-h1 text-center" v-html="data.text">
           </div>
-        </client-only>
       </v-sheet>
       <v-img
         v-else
