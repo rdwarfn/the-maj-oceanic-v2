@@ -138,10 +138,8 @@ export default {
     position: relative !important;
     object-position: center !important;
     object-fit: cover !important;
-    .video-js .vjs-tech {
+    .video-js, .vjs-tech {
       object-fit: cover !important;
-    }
-    .vjs_video_3-dimensions, .vjs_video_767-dimensions, .video-js .vjs-tech {
       width: 100vw !important;
       @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
     }
