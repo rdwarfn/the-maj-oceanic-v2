@@ -1,15 +1,13 @@
 <template>
   <div>
     <v-skeleton-loader
-      v-if="!data"
       boilerplate
       type="image"
       class="_hero--img"
       max-height="100%"
       transition="scale-transition"
     >
-    </v-skeleton-loader>
-    <template v-else>
+    <template>
       <v-sheet v-if="data.video" class="hero-wrapper text-center" style="relative">
           <v-sheet class="video-player-box mx-auto"
             v-video-player:player="{
@@ -40,6 +38,7 @@
         </v-row>
       </v-img>
     </template>
+    </v-skeleton-loader>
     <!-- <swiper
       v-else
       class="swiper"
@@ -142,7 +141,7 @@ export default {
     .video-js .vjs-tech {
       object-fit: cover !important;
     }
-    .vjs_video_3-dimensions, .video-js .vjs-tech {
+    .vjs_video_3-dimensions, .vjs_video_767-dimensions, .video-js .vjs-tech {
       width: 100vw !important;
       @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
     }
