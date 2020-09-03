@@ -2,11 +2,12 @@
   <component v-bind:is="'div'">
     <v-skeleton-loader
       v-if="data ? loading : true"
+      boilerplate
       type="image"
       class="_hero--img"
       max-height="100%"
     ></v-skeleton-loader>
-    <swiper
+    <!-- <swiper
       v-else
       class="swiper"
       v-bind:options="swiperOptions"
@@ -22,24 +23,49 @@
           <v-row no-gutters align="center" justify="center" class="fill-height">
             <v-spacer />
             <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="item.text">
-              <!-- {{ item.text }} -->
             </div>
             <v-spacer/>
           </v-row>
         </v-img>
       </swiper-slide>
-    </swiper>
+    </swiper> -->
+    <template v-else>
+      <v-sheet v-if="data.video" class="hero-wrapper text-center" style="relative">
+        <v-sheet class="video-player-box mx-auto"
+          v-video-player:player="playerOptions"
+        >
+        </v-sheet>
+        <div class="_head--text text-sm-h2 text-md-h1 text-center" v-html="data.text">
+        </div>
+      </v-sheet>
+      <v-img
+        v-else
+        v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+        :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+        class="_hero--img justify-center"
+        transition="fade-transition"
+        :aspect-ratio="16/9"
+      >
+        <v-row no-gutters align="center" justify="center" class="fill-height">
+          <v-spacer />
+          <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
+          </div>
+          <v-spacer/>
+        </v-row>
+      </v-img>
+    </template>
   </component>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+
 const components = {Swiper, SwiperSlide};
 export default {
   name: 'HeroBanner',
 
   props: {
-    data: {type: Array},
+    data: {type: [Array, Object]},
     staticImage: {type: Boolean}
   },
 
@@ -51,11 +77,24 @@ export default {
       swiperOptions: {
         lazy: true,
         slidesPerView: 1,
+      },
+      // videojs options
+      playerOptions: {
+        language: 'en',
+        autoplay: true,
+        control: false,
+        controls: false,
+        loop: true,
+        muted: true,
+        sources: [{
+          type: "video/mp4",
+          src: "/tmo-hero-video-final.mp4"
+        }]
       }
     }
   },
 
-  created () {
+  beforeMount () {
     this.setLoad();
   },
 
@@ -63,7 +102,7 @@ export default {
     setLoad () {
       setTimeout(() => {
         this.loading = false
-      }, 1000)
+      }, 2000)
     }
   }
 }
@@ -72,9 +111,13 @@ export default {
 <style lang="scss" scoped>
   ._head--text {
     color: #FFFFFF !important;
-    position: relative !important;
-    // white-space: pre-line !important;
-    width: auto;
+    position: absolute;
+    white-space: pre-line !important;
+    width: 100%;
+    left: 50%;
+    // bottom: 20px;
+    transform: translate(-50%, 0);
+    @include poly-fluid-sizing ('top', (375px:301px, 768px:174.02px, 1440px:350px));
     font-family: "Sentinel Semibold", serif !important;
     @media (max-width: 600px) {
       font-size: 24px !important;
@@ -82,10 +125,27 @@ export default {
   }
   ::v-deep ._hero--img {
     width: 100vw;
-    @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
+    @include poly-fluid-sizing ('height', (375px:670px, 768px:347px, 1440px:700px));
 
     .v-skeleton-loader__image {
+      @include poly-fluid-sizing ('height', (375px:670px, 768px:347px, 1440px:700px));
+    }
+  }
+  ::v-deep .video-player-box {
+    position: relative !important;
+    object-position: center !important;
+    object-fit: cover !important;
+    .video-js .vjs-tech {
+      object-fit: cover !important;
+    }
+    .vjs_video_3-dimensions, .video-js .vjs-tech {
+      width: 100vw !important;
       @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
     }
+  }
+
+  .hero-wrapper {
+    position: relative !important;
+    @include poly-fluid-sizing ('max-height', (376px:670px, 768px:347px, 1440px:700px));
   }
 </style>

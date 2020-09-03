@@ -74,8 +74,8 @@ export default {
   */
   plugins: [
     '~/plugins/base-components',
-    { src: '~/plugins/vue-awesome-swiper', mode: 'client' }
-    // { src: '~/plugins/vue-awesome-swiper', model: 'client' }
+    { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
+    '~/plugins/vue-video-player'
   ],
   /*
   ** Auto import components

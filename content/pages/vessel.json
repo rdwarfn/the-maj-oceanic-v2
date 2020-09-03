@@ -1,16 +1,9 @@
 {
-  "carousel_banner": [
-    {
-      "id": 0,
-      "text": "The Vessel",
-      "image": "carousel/banner/hero-3.jpg"
-    },
-    {
-      "id": 1,
-      "text": "The Vessel",
-      "image": "carousel/banner/hero-3.jpg"
-    }
-  ],
+  "carousel_banner": {
+    "id": 0,
+    "text": "The Vessel",
+    "image": "carousel/banner/hero-3.jpg"
+  },
   "heading": "Inspired by centuries of marine wisdom",
   "text": "One of our missions is to preserve and introduce to the world the glory of the Indonesian maritime history. The MAJ Oceanic is hand-built and handcrafted in Bira, Sulawesi based on the heritage of ancestral knowledge.",
   "image": "large/6.jpg",
