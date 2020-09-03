@@ -1,35 +1,13 @@
 <template>
-  <component v-bind:is="'div'">
+  <div>
     <v-skeleton-loader
-      v-if="data ? loading : true"
+      :loading="data ? loading : true"
       boilerplate
       type="image"
       class="_hero--img"
       max-height="100%"
-    ></v-skeleton-loader>
-    <!-- <swiper
-      v-else
-      class="swiper"
-      v-bind:options="swiperOptions"
+      transition="scale-transition"
     >
-      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
-        <v-img
-          v-bind:src="staticImage ? require('~/assets/images/' + item.image) : item.image"
-          :lazy-src="staticImage ? require('~/assets/images/' + item.image) : item.image"
-          class="_hero--img justify-center"
-          transition="fade-transition"
-          :aspect-ratio="16/9"
-        >
-          <v-row no-gutters align="center" justify="center" class="fill-height">
-            <v-spacer />
-            <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="item.text">
-            </div>
-            <v-spacer/>
-          </v-row>
-        </v-img>
-      </swiper-slide>
-    </swiper> -->
-    <template v-else>
       <v-sheet v-if="data.video" class="hero-wrapper text-center" style="relative">
         <v-sheet class="video-player-box mx-auto"
           v-video-player:player="playerOptions"
@@ -53,8 +31,30 @@
           <v-spacer/>
         </v-row>
       </v-img>
-    </template>
-  </component>
+    </v-skeleton-loader>
+    <!-- <swiper
+      v-else
+      class="swiper"
+      v-bind:options="swiperOptions"
+    >
+      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
+        <v-img
+          v-bind:src="staticImage ? require('~/assets/images/' + item.image) : item.image"
+          :lazy-src="staticImage ? require('~/assets/images/' + item.image) : item.image"
+          class="_hero--img justify-center"
+          transition="fade-transition"
+          :aspect-ratio="16/9"
+        >
+          <v-row no-gutters align="center" justify="center" class="fill-height">
+            <v-spacer />
+            <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="item.text">
+            </div>
+            <v-spacer/>
+          </v-row>
+        </v-img>
+      </swiper-slide>
+    </swiper> -->
+  </div>
 </template>
 
 <script>
@@ -94,7 +94,7 @@ export default {
     }
   },
 
-  beforeMount () {
+  created () {
     this.setLoad();
   },
 

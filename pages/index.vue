@@ -52,17 +52,15 @@
     <!-- Voyages -->
     <v-sheet class="voyages">
       <v-container class="py-0 px-6 px-md-0" tag="section">
-        <client-only>
-          <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
-            <div
-              class="text-h4 text-sm-h3 mb-8"
-              v-text="data.tabs.heading"
-            />
-            <p>
-              {{ data.tabs.text }}
-            </p>
-          </v-row>
-        </client-only>
+        <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
+          <div
+            class="text-h4 text-sm-h3 mb-8"
+            v-text="data.tabs.heading"
+          />
+          <p>
+            {{ data.tabs.text }}
+          </p>
+        </v-row>
         <t-tabs
           button-text="learn more"
           v-bind:data="data.tabs.data"

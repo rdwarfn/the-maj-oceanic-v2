@@ -22,7 +22,6 @@
         class="mt-10"
       >
         <slot v-bind:data-tab="item.data">
-          <client-only>
             <v-card flat>
               <div
                 class="d-flex justify-space-between align-center __tab-item static"
@@ -63,7 +62,6 @@
                 </div>
               </div>
             </v-card>
-          </client-only>
         </slot>
       </v-tab-item>
     </v-tabs>
