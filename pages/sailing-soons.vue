@@ -60,40 +60,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/scss/variables.scss';
- #sailing-soons {
-   height: 100%;
-   display: flex !important;
-   flex-direction: row !important;
-   @include poly-fluid-sizing ('min-height', (375px:789px, 768px:472px, 1440px:900px));
-   @media #{map-get($display-breakpoints, 'sm-and-down')} {
-     padding-top: 144px !important;
-     padding-bottom: 100px !important;
-   }
-   @media #{map-get($display-breakpoints, 'sm-and-up')} {
-     padding-top: 165px !important;
-   }
-   background: #F3E9E5 !important;
+@import '@/assets/styles/scss/variables.scss';
+#sailing-soons {
+  height: 100%;
+  display: flex !important;
+  flex-direction: row !important;
+  @include poly-fluid-sizing ('min-height', (375px:789px, 768px:472px, 1440px:900px));
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    padding-top: 144px !important;
+    padding-bottom: 100px !important;
+  }
+  @media #{map-get($display-breakpoints, 'sm-and-up')} {
+    padding-top: 165px !important;
+  }
+  background: #F3E9E5 !important;
 
-   ._text-width {
-     @include poly-fluid-sizing ('max-width', (375px:244px, 768px:329px, 1440px:427px));
-   }
+  ._text-width {
+    @include poly-fluid-sizing ('max-width', (375px:244px, 768px:329px, 1440px:427px));
+  }
 
-   ._sailing-img {
-     position: relative !important;
-     overflow: visible !important;
-     @include poly-fluid-sizing ('width', (375px:250.96px, 768px:222px, 1440px:495px));
-     @include poly-fluid-sizing ('height', (375px:317px, 768px:264px, 1440px:584px));
-   }
+  ._sailing-img {
+    position: relative !important;
+    overflow: visible !important;
+    @include poly-fluid-sizing ('width', (375px:250.96px, 768px:222px, 1440px:495px));
+    @include poly-fluid-sizing ('height', (375px:317px, 768px:264px, 1440px:584px));
+  }
 
-   ._sailing-img-stamp {
-     position: absolute !important;
-     @include poly-fluid-sizing ('width', (375px:162.24px, 768px:144.07px, 1440px:319.17px));
-     @include poly-fluid-sizing ('height', (375px:117.9px, 768px:98.26px, 1440px:217.69px));
-     left: -28% !important;
-     right: auto;
-     top: 10% !important;
-     bottom: auto;
-   }
- }
+  ._sailing-img-stamp {
+    position: absolute !important;
+    @include poly-fluid-sizing ('width', (375px:162.24px, 768px:144.07px, 1440px:319.17px));
+    @include poly-fluid-sizing ('height', (375px:117.9px, 768px:98.26px, 1440px:217.69px));
+    left: -28% !important;
+    right: auto;
+    top: 10% !important;
+    bottom: auto;
+  }
+}
 </style>

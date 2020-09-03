@@ -27,9 +27,6 @@ export default {
 
 <style scoped>
 #tmo__main {
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   background: #FAFAFA !important;
 }
 </style>

@@ -29,7 +29,7 @@ export default {
   */
   head: {
     titleTemplate: 'The Maj Oceanic',
-    title: 'The Maj Oceanic' || '',
+    title: process.env.npm_package_name || '',
     htmlAttrs: {
       lang: 'id'
     },
