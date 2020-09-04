@@ -297,31 +297,42 @@
       persistent
     >
       <v-sheet class="v-dialog--sheet" tile>
-        <v-container class="v-dialog--card d-flex flex-column align-content-space-around">
-          <v-btn right top icon absolute class="v-dialog--card-close-btn" @click="dialog.show = false">
+        <v-card
+          class="v-dialog--card"
+          :style="{
+            backgroundImage: `url(${dialog.img})`
+          }"
+        >
+          <v-btn
+            v-show="dialog.success"
+            right top icon absolute
+            class="v-dialog--card-close-btn" @click="dialog.show = false">
             <v-icon>mdi-close</v-icon>
           </v-btn>
 
-          <v-row align="center" justify="space-around" class="flex-column" style="position: relative">
-            <v-sheet color="transparent" class="d-flex flex-column flex-sm-row justify-center" width="100%">
-              <img :src="require('~/assets/images/contact-dialog-bottle.png')" class="v-dialog--card-img mx-auto ml-sm-0" />
+          <v-card-title>
+            <div class="v-dialog--card-heading mx-auto text-center text-break pa-0">
+              {{dialog.text}}
+            </div>
+          </v-card-title>
 
-              <div class="v-dialog--card-heading mx-auto text-center text-break pa-0" v-html="dialog.text">
-              </div>
-            </v-sheet>
+          <v-card-actions class="v-dialog--card-actions">
+          <v-btn text class="px-2 mx-auto v-dialog--card-link" @click="dialog.click">
+            <a class="text-decoration-underline">{{dialog.text_link}}</a>
+          </v-btn>
+          </v-card-actions>
 
-            <v-img
-              :src="require('~/assets/images/contact-dialog-water.png')"
-              :lazy-src="require('~/assets/images/contact-dialog-water.png')"
-              max-width="114"
-              max-height="61"
-              class="v-dialog--card-img-water mt-5 ml-auto mr-n2"
-            />
-
-            <nuxt-link v-ripple class="px-2 mx-auto text-decoration-underline v-dialog--card-link" to="/">
-              Return to the Homepage</nuxt-link>
-          </v-row>
-        </v-container>
+          <v-img
+            :src="require('~/assets/images/contact-dialog-water.png')"
+            :lazy-src="require('~/assets/images/contact-dialog-water.png')"
+            class="v-dialog--card-img-water hidden-xs-only ml-auto mr-n2"
+          />
+          <v-img
+            :src="require('~/assets/images/contact-dialog-water-mobile.png')"
+            :lazy-src="require('~/assets/images/contact-dialog-water-mobile.png')"
+            class="v-dialog--card-img-water hidden-sm-and-up ml-auto mr-n2"
+          />
+        </v-card>
       </v-sheet>
     </v-dialog>
   </v-container>
@@ -332,6 +343,17 @@ export default {
   layout: 'main',
 
   name: 'ContactUs',
+
+  head: {
+    title: 'Make an inquiry - TheMajOceanic',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!'
+      }
+    ]
+  },
 
   data () {
     return {
@@ -357,15 +379,15 @@ export default {
           return pattern.test(v) || 'Please enter a valid e-mail.'
         },
         isNumber: v => (v && !isNaN(v)) || 'This field must be number.',
-        // phone: v => {
-        //   const pattern = (\+62 ((\d{3}([ -]\d{3,})([- ]\d{4,})?)|(\d+)))|(\(\d+\) \d+)|\d{3}( \d+)+|(\d+[ -]\d+)|\d+
-        //   return pattern.test(v) || 'Please'
-        // }
       },
       formHasErrors: false,
       dialog: {
         show: false,
-        text: ''
+        text: '',
+        img: '',
+        text_link: '',
+        success: false,
+        click: () => { return }
       },
     }
   },
@@ -387,7 +409,6 @@ export default {
       const res = this.$refs.form.validate()
       const res2 = this.$refs.form2.validate()
       if (res && res2) {
-        console.log(this.form)
         this.storeContact(this.form)
         this.reset();
         this.reset2();
@@ -405,17 +426,27 @@ export default {
           'https://backend.themajbekasi.com/api/oceanic/store-contact',
           { name, email, phone, destination, message }
         )
-        console.log(ress)
         if (ress && ress.statusText === 'OK') {
           this.dialog = {
             text: 'We have received your enquiry and will respond to you very soon.',
-            show: true
+            img: require('~/assets/images/contact-dialog-bottle.png'),
+            text_link: 'Return to the Homepage',
+            success: true,
+            click: () => {
+              this.$router.replace('/')
+            },
+            show: true,
           }
         }
       } catch (err) {
-        console.log(err)
         this.dialog = {
-          text: `My apologize, there is error.<br/><pre style="white-space: pre-line; font-size: 12px">*For Developer<br/>${err}</pre>`,
+          text: "We're sorry, but something went wrong. Please try again",
+          img: require('~/assets/images/contact-dialog-compass.png'),
+          text_link: 'Close',
+          success: false,
+          click: () => {
+            this.dialog.show = false
+          },
           show: true
         }
       }
@@ -480,52 +511,54 @@ export default {
     width: 100%;
     @include poly-fluid-sizing ('max-width', (375px:315px, 1440px:850px));
     @include poly-fluid-sizing ('max-height', (375px:580px, 1440px:300px));
-    @include poly-fluid-sizing ('padding', (375px:10px, 1440px:20px));
+    padding: 10px;
     background-color: white;
+
     &--card {
       @include poly-fluid-sizing ('height', (375px:560px, 1440px:280px));
-      background: #EFE1DC !important;
+      background-color: #EFE1DC !important;
+      display: flex;
+      flex-flow: column wrap;
+      place-content: space-around;
       width: 100%;
       position: relative;
-      padding-bottom: 30px !important;
-      @media #{map-get($display-breakpoints, 'sm-and-up')} {
-        padding-bottom: 0 !important;
+      background-position: top left;
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        background-position: top center;
       }
+
       &-close-btn {
         background-color: white;
         z-index: 2;
       }
-      &-img {
-        justify-self: flex-start;
+      &-row {
+        position: relative !important;
       }
       &-img-water {
         position: absolute;
-        bottom: 50px;
-        @include poly-fluid-sizing ('width', (375px:74px, 1440px:114px));
-        @include poly-fluid-sizing ('height', (375px:52px, 1440px:61px));
-        @include poly-fluid-sizing ('right', (375px:-2px, 1440px:-12px));
+        @include poly-fluid-sizing ('bottom', (375px:80px, 1440px:60px));
+        right: 0;
+      }
+      .v-card__title {
+        @include poly-fluid-sizing ('margin-top', (375px:215px, 1440px:20px));
       }
       &-heading {
+        letter-spacing: normal;
         font-family: 'Sentinel Semibold', sans-serif !important;
         @include poly-fluid-sizing ('width', (375px:254px, 1440px:500px));
         @include poly-fluid-sizing ('font-size', (375px:22px, 1440px:32px));
         @include poly-fluid-sizing ('line-height', (375px:32px, 1440px:40px));
-        @include poly-fluid-sizing ('top', (600px:150px, 1440px:30px));
-        @media #{map-get($display-breakpoints, 'sm-and-up')} {
-          z-index: 2;
-          bottom: auto;
-          position: absolute;
-        }
       }
-      &-link {
+      // &-actions {
+      // }
+      &-link.v-btn {
         font-weight: 300 !important;
         color: #5A5A5A !important;
-        bottom: unset;
-        @include poly-fluid-sizing ('bottom', (600px:100px, 1440px:65px));
-        @media #{map-get($display-breakpoints, 'sm-and-up')} {
-          position: absolute;
-          // margin-top: 80px;
-        }
+        font-size: 16px !important;
+        font-weight: 300 !important;
+        margin-bottom: 15px !important;
+        text-transform: unset !important;
+        font-family: 'Ideal Sans Light', sans-serif !important;
       }
     }
   }

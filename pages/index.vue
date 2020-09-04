@@ -36,7 +36,7 @@
         class="intro--paragraph text-center mx-auto mt-10"
       ></v-skeleton-loader>
       <p v-else class="intro--paragraph px-6 px-sm-0 mt-8 mx-auto text-center">
-        {{ data.paragraph }}
+        {{ data.description }}
       </p>
     </v-container>
 
@@ -122,6 +122,18 @@ export default {
 
   components,
 
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: JSON.stringify(this.data.description)
+        }
+      ]
+    }
+  },
+
   data () {
     return {
       loading: false
@@ -193,7 +205,7 @@ export default {
 
   ::v-deep .voyages {
     background-color: #EFE1DC !important;
-    @include poly-fluid-sizing ('margin-top', (375px:90px, 768px:75px, 1440px:58px));
+    @include poly-fluid-sizing ('margin-top', (375px:0px, 768px:75px, 1440px:58px));
     padding-top: 50px;
     @include poly-fluid-sizing ('padding-bottom', (375px:50px, 1440px:100px));
 

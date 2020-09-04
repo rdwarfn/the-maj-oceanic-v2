@@ -1,6 +1,18 @@
 {
   "name": "the-maj-oceanic",
   "version": "1.0.0",
+  "description": "Official The Maj Oceanic",
+  "author": {
+    "name": "Clevara ID",
+    "url": "https://clevara.id"
+  },
+  "contributors": [
+    {
+      "name": "Ridwan Arifin",
+      "email": "ridwanarifin@pm.me"
+    }
+  ],
+  "homepage": "https://themajoceanic.com",
   "private": true,
   "scripts": {
     "dev": "nuxt",

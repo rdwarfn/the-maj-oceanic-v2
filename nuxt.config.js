@@ -8,38 +8,31 @@ export default {
       routes.push({
         name: 'custom',
         path: '*',
-  //       redirect: '/siiling-soons'
         component: resolve(__dirname, 'pages/sailing-soons.vue')
       })
     }
   },
   /*
   ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'universal',
   /*
   ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
   */
   target: 'server',
   /*
   ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
   */
   head: {
-    titleTemplate: 'The Maj Oceanic',
-    title: process.env.npm_package_name || '',
+    title: 'TheMajOceanic',
     htmlAttrs: {
       lang: 'id'
     },
     meta: [
       { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-      { name: 'msapplication-TileColor', content: '#ffffff' },
-      { name: 'msapplication-TileImage', content: '/the-maj-oceanic--ico/ms-icon-144x144.png' },
-
+      { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#ffffff' },
+      { hid: 'msapplication-TileImage', name: 'msapplication-TileImage', content: '/the-maj-oceanic--ico/ms-icon-144x144.png' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/the-maj-oceanic--ico/favicon.ico' },
@@ -70,7 +63,6 @@ export default {
   ],
   /*
   ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
     '~/plugins/base-components',
@@ -79,13 +71,12 @@ export default {
   ],
   /*
   ** Auto import components
-  ** See https://nuxtjs.org/api/configuration-components
   */
   components: [
     '~/components',
-    { path: '~/components/containers', prefix: 'containers' },
-    { path: '~/components/navigations', prefix: 'navigations' },
-    { path: '~/components/svg', prefix: 'svg' }
+    '~/components/containers',
+    '~/components/navigations',
+    '~/components/svg'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -108,29 +99,25 @@ export default {
   ],
   /*
   ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
   */
   axios: {},
   /*
   ** Content module configuration
-  ** See https://content.nuxtjs.org/configuration
   */
   content: {},
   /*
   ** vuetify module configuration
-  ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
     options: {
       customProperties: true
     },
-    treeShake: true,
+    // treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js',
   },
   /*
   ** Build configuration
-  ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
     loader: {

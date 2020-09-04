@@ -50,7 +50,6 @@ a {
   text-decoration: none !important;
   color: inherit !important;
   -webkit-user-drag: none !important;
-  user-drag: none;
 }
 a::before {
   background-color: unset !important;
@@ -70,6 +69,14 @@ a.btn-l {
   font-size: 12px !important;
   font-weight: 500 !important;
   line-height: 18px !important;
+}
+
+img {
+  user-select: none !important;
+  -moz-user-select: none !important;
+  -webkit-user-drag: none !important;
+  -webkit-user-select: none !important;
+  -ms-user-select: none !important;
 }
 
 ul {
