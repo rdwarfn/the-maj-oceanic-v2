@@ -498,7 +498,7 @@ export default {
 
   ._form {
     &--headline {
-      font-family: 'Verlag Bold', sans-serif !important;
+      font-family: 'Montserrat', sans-serif !important;
       font-size: 14px !important;
       font-weight: 400 !important;
       line-height: 16px !important;
@@ -544,7 +544,7 @@ export default {
       }
       &-heading {
         letter-spacing: normal;
-        font-family: 'Sentinel Semibold', sans-serif !important;
+        font-family: 'Domine', sans-serif !important;
         @include poly-fluid-sizing ('width', (375px:254px, 1440px:500px));
         @include poly-fluid-sizing ('font-size', (375px:22px, 1440px:32px));
         @include poly-fluid-sizing ('line-height', (375px:32px, 1440px:40px));
@@ -558,13 +558,13 @@ export default {
         font-weight: 300 !important;
         margin-bottom: 15px !important;
         text-transform: unset !important;
-        font-family: 'Ideal Sans Light', sans-serif !important;
+        font-family: 'PT Sans', sans-serif !important;
       }
     }
   }
 
   ::v-deep .v-label {
-    font-family: 'Ideal Sans Light', sans-serif !important;
+    font-family: 'PT Sans', sans-serif !important;
     font-size: 16px !important;
     line-height: 21px !important;
     font-weight: normal !important;
@@ -573,7 +573,7 @@ export default {
 
   ::v-deep .v-btn._btn--submit {
     min-width: 111.39px !important;
-    font-family: 'Verlag Bold', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 13px !important;
     letter-spacing: 2px !important;
     line-height: 18px !important;

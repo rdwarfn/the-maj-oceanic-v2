@@ -121,7 +121,7 @@ export default {
     // bottom: 20px;
     transform: translate(-50%, 0);
     @include poly-fluid-sizing ('top', (375px:301px, 768px:174.02px, 1440px:350px));
-    font-family: "Sentinel Semibold", serif !important;
+    font-family: "Domine", serif !important;
     @media (max-width: 600px) {
       font-size: 24px !important;
     }

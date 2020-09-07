@@ -2,8 +2,8 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
-$body-font-family: 'Ideal Sans Light', sans-serif;
-$heading-font-family: 'Sentinel Semibold', serif;
+$body-font-family: 'PT Sans', sans-serif;
+$heading-font-family: 'Domine', serif;
 
 
 $container-max-widths: (
@@ -12,7 +12,6 @@ $container-max-widths: (
 );
 
 $btn-font-weight: 600;
-$btn-font-family: 'Verlag Bold', sans-serif;
 
 $btn-outline-border-width: 0.125rem;
 $btn-font-sizes: (
@@ -74,7 +73,7 @@ $headings: (
     'line-height': 1rem,
     // 3px
     'letter-spacing': 0.188em,
-    'font-family': ('Verlag Bold', sans-serif),
+    'font-family': ('Montserrat', sans-serif),
     'text-transform': uppercase
   ),
   'h6': (
@@ -85,12 +84,12 @@ $headings: (
     'line-height': 0.8125rem,
     // 3px
     'letter-spacing': 0.188em,
-    'font-family': ('Verlag Bold', sans-serif),
+    'font-family': ('Montserrat', sans-serif),
     'text-transform': uppercase
   ),
   'button': (
     'size': 0.8125rem,
-    'font-family': ('Verlag Bold', sans-serif)
+    'font-family': ('Montserrat', sans-serif)
   )
 );
 

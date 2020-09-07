@@ -151,7 +151,7 @@ export default {
   }
   ::v-deep .v-list-item__title, .v-list-group__items {
     a {
-      font-family: 'Verlag Bold', sans-serif !important;
+      font-family: 'Montserrat', sans-serif !important;
       font-weight: 600 !important;
     }
   }
@@ -164,5 +164,3 @@ export default {
     width: 300px !important; height: auto !important;
   }
 </style>
-
-<style module src="@/assets/styles/css/_utilities.module.css" />

@@ -112,7 +112,7 @@ export default {
 
     a._inquire {
       text-transform: uppercase !important;
-      font-family: 'Verlag Bold', sans-serif !important;
+      font-family: 'Montserrat', sans-serif !important;
       text-align: center !important;
       white-space: normal !important;
       @include poly-fluid-sizing('font-size', (367px:7px, 768px:13px));
@@ -165,5 +165,4 @@ export default {
       }
     }
   }
-
 </style>

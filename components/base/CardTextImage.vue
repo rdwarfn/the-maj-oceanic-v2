@@ -80,7 +80,7 @@
 
               <v-card-actions
                 v-if="buttonText"
-                class="px-0"
+                class="px-0 mt-6"
                 v-bind:class="[
                   buttonContainerClass,
                   contentRight ? 'justify-end' : null
@@ -157,7 +157,7 @@ export default {
     flex-wrap: wrap !important;
     flex-direction: row !important;
 
-    &--btn {
+    .v-btn {
       width: 151px !important;
     }
 

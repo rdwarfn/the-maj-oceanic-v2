@@ -117,7 +117,7 @@ export default {
   }
 
   &--label {
-    font-family: 'Verlag Bold', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
     @include poly-fluid-sizing ('font-size', (375px:12px, 768px:16px));
     letter-spacing: 3px !important;
   }

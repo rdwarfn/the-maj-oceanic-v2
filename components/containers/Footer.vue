@@ -339,7 +339,7 @@ export default {
     display: inline-block;
     font-size: 13px !important;
     font-weight: normal !important;
-    font-family: 'Ideal Sans Book', sans-serif !important;
+    font-family: 'PT Sans', sans-serif !important;
 
     &.detail-offers {
       @media #{map-get($display-breakpoints, 'xs-only')} {
@@ -352,7 +352,7 @@ export default {
   }
 
   .v-application .text-caption {
-    font-family: 'Ideal Sans Semibold', sans-serif !important;
+    font-family: 'PT Sans', sans-serif !important;
     letter-spacing: 3px !important;
     @media #{map-get($display-breakpoints, 'sm-and-down')} {
       font-size: 11px !important;
@@ -390,7 +390,7 @@ export default {
   }
 
   .__part-of {
-    font-family: 'Verlag Bold', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-size: 9px !important;
     line-height: 36px !important;
     letter-spacing: 3px !important;
@@ -400,7 +400,7 @@ export default {
   .__list {
     ::v-deep .v-list-item {
       min-height: 26px !important;
-      font-family: 'Ideal Sans Book', sans-serif !important;
+      font-family: 'PT Sans', sans-serif !important;
       font-size: 16px !important;
       // .v-list-item__title {
       // }
@@ -410,7 +410,7 @@ export default {
   ::v-deep .v-input {
     border-radius: unset !important;
     .v-label {
-      font-family: 'Ideal Sans Light', sans-serif !important;
+      font-family: 'PT Sans', sans-serif !important;
       color: #B5B5B5 !important;
       font-size: 14px !important;
       font-weight: normal !important;

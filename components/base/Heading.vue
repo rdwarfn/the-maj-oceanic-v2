@@ -32,7 +32,7 @@
         >
           <p
             class="text--primary"
-            :class="[textClass, $style.whitespace_pre_line]"
+            :class="textClass"
           >
             {{ data.text }}
           </p>
@@ -98,5 +98,3 @@ export default {
   }
 }
 </script>
-
-<style module src="~/assets/styles/css/_utilities.module.css" />

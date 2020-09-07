@@ -105,7 +105,6 @@ import { mapMutations } from 'vuex';
 import tSkeletonCarousel from '@/components/skeletons/SkeletonCarousel.vue';
 
 const components = {
-  tCarouselBanner: () => import('@/components/containers/CarouselBanner.vue'),
   tHeading: () => import('@/components/base/Heading.vue'),
   tCarousel: () => import('@/components/base/Carousel.vue'),
   tLargeImage: () => import('@/components/base/LargeImage.vue'),
@@ -259,5 +258,3 @@ export default {
     }
   }
 </style>
-
-<style module src="~/assets/styles/css/_utilities.module.css"></style>

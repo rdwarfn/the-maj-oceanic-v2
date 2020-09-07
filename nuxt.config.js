@@ -3,6 +3,7 @@ export default {
     color: '#208CB2',
     height: '10px'
   },
+  rootDir: __dirname,
   router: {
     extendRoutes(routes, resolve) {
       routes.push({
@@ -48,6 +49,7 @@ export default {
       { rel: 'apple-touch-icon', sizes: '144x144', href: '/the-maj-oceanic--ico/apple-icon-144x144.png' },
       { rel: 'apple-touch-icon', sizes: '152x152', href: '/the-maj-oceanic--ico/apple-icon-152x152.png' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/the-maj-oceanic--ico/apple-icon-180x180.png' },
+      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Domine&family=Montserrat&family=PT+Sans&display=swap' }
     ]
   },
   /*
@@ -83,7 +85,7 @@ export default {
   */
   buildModules: [
     '@nuxtjs/vuetify',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
   ],
   /*
   ** Nuxt.js modules
@@ -120,24 +122,30 @@ export default {
   ** Build configuration
   */
   build: {
-    loader: {
-      cssModules: {
-        modules: {
-          compileType: 'module',
-          mode: 'local',
-          auto: true,
-          exportOnlyLocals: true,
-          localIndentName: '[path][name]__[local]--[hash:base64:5]'
-        }
-      }
-    },
-    cssSourceMap: true,
+    // cache: true,
+    // loader: {
+    //   cssModules: {
+    //     modules: {
+    //       compileType: 'module',
+    //       mode: 'local',
+    //       auto: true,
+    //       exportOnlyLocals: true,
+    //       localIndentName: '[path][name]__[local]--[hash:base64:5]'
+    //     }
+    //   }
+    // },
     postcss: {
-      plugins: {
-        'postcss-url': {},
-        'postcss-import': {},
-        'postcss-nesting': {}
-      }
+      // preset name
+      order: 'cssnanoLast',
+      // ordered plugin names
+      order: [
+        'postcss-import',
+        'postcss-nesting',
+        'postcss-preset-env',
+        'cssnano'
+      ],
+      // Function to calculate plugin order
+      order: (names, presets) => presets.cssnanoLast(names)
     },
     extractCSS: true,
     optimization: {

@@ -124,9 +124,9 @@
 
     <v-flex
       class="nav_row--list d-flex mx-auto static"
-      :class="[$style.place_items_center, {
+      :class="{
         animated: isIntersecting
-      }]"
+      }"
     >
       <v-row
         no-gutters
@@ -211,7 +211,7 @@ $secondary: #232323;
     padding: 0 !important;
   }
   ::placeholder {
-    font-family: 'Verlag Bold', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     font-weight: bold;
     opacity: 1 !important;
@@ -335,7 +335,7 @@ $secondary: #232323;
   }
 
   .__link_appbar {
-    font-family: 'Verlag Bold', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding: 0 4px;
     font-size: 13px;
     font-weight: bold;
@@ -343,5 +343,3 @@ $secondary: #232323;
   }
 }
 </style>
-
-<style module src="~/assets/styles/css/_utilities.module.css" />

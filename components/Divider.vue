@@ -17,7 +17,7 @@ export default {
 
   $primary: #208cb2;
   .__divide {
-    font-family: 'Sentinel Semibold', serif !important;
+    font-family: 'Domine', serif !important;
     font-weight: 600;
     color: $primary !important;
     font-size: 34px !important;

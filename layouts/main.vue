@@ -149,7 +149,6 @@
 <script>
 import tNavigation from '@/components/navigations/index.vue';
 import tNavigationMobile from '@/components/navigations/NavbarMobile.vue';
-import tCarouselBanner from '@/components/containers/CarouselBanner.vue';
 import tHeroBanner from '@/components/containers/HeroBanner.vue';
 import tFooter from '@/components/containers/Footer.vue';
 import tBtn from '@/components/base/Button.vue';
@@ -159,7 +158,6 @@ const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v
 const components = {
   tNavigation,
   tNavigationMobile,
-  tCarouselBanner,
   tHeroBanner,
   tFooter,
   tBtn,
@@ -256,7 +254,7 @@ $primary--disabled: #C7E2EC;
 }
 ._nav--item {
   .v-list-item__title {
-    font-family: 'Verlag Bold', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
     line-height: 22px !important;
     letter-spacing: 3px !important;
     text-transform: uppercase !important;
@@ -269,7 +267,7 @@ $primary--disabled: #C7E2EC;
 }
 ::v-deep .v-breadcrumbs {
   li {
-    font-family: 'Verlag Bold', sans-serif !important;
+    font-family: 'Montserrat', sans-serif !important;
     font-weight: bold !important;
     line-height: 22px !important;
     font-size: 14px !important;
