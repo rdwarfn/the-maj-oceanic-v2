@@ -7,9 +7,9 @@
       max-height="100%"
       transition="scale-transition"
     >
-    <template>
-      <v-sheet v-if="data.video" class="hero-wrapper text-center" style="relative">
-          <v-sheet class="video-player-box mx-auto"
+      <template>
+        <v-sheet class="hero-wrapper text-center" style="relative">
+          <v-sheet class="video-player-box mx-auto hidden-xs-only"
             v-video-player:player="{
               ...playerOptions,
               sources: [{
@@ -21,23 +21,22 @@
           </v-sheet>
           <div class="_head--text text-sm-h2 text-md-h1 text-center" v-html="data.text">
           </div>
-      </v-sheet>
-      <v-img
-        v-else
-        v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-        :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-        class="_hero--img justify-center"
-        transition="fade-transition"
-        :aspect-ratio="16/9"
-      >
-        <v-row no-gutters align="center" justify="center" class="fill-height">
-          <v-spacer />
-          <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
-          </div>
-          <v-spacer/>
-        </v-row>
-      </v-img>
-    </template>
+          <v-img
+            v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+            :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+            class="_hero--img justify-center hidden-sm-and-up"
+            transition="fade-transition"
+          >
+            <!-- :aspect-ratio="16/9" -->
+            <v-row no-gutters align="center" justify="center" class="fill-height">
+              <v-spacer />
+              <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
+              </div>
+              <v-spacer/>
+            </v-row>
+          </v-img>
+        </v-sheet>
+      </template>
     </v-skeleton-loader>
     <!-- <swiper
       v-else
