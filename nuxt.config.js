@@ -49,7 +49,7 @@ export default {
       { rel: 'apple-touch-icon', sizes: '144x144', href: '/the-maj-oceanic--ico/apple-icon-144x144.png' },
       { rel: 'apple-touch-icon', sizes: '152x152', href: '/the-maj-oceanic--ico/apple-icon-152x152.png' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/the-maj-oceanic--ico/apple-icon-180x180.png' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Domine&family=Montserrat&family=PT+Sans&display=swap' }
+      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Domine&family=Montserrat:wght@400;500;600;700&family=PT+Sans&display=swap' }
     ]
   },
   /*
@@ -122,18 +122,6 @@ export default {
   ** Build configuration
   */
   build: {
-    // cache: true,
-    // loader: {
-    //   cssModules: {
-    //     modules: {
-    //       compileType: 'module',
-    //       mode: 'local',
-    //       auto: true,
-    //       exportOnlyLocals: true,
-    //       localIndentName: '[path][name]__[local]--[hash:base64:5]'
-    //     }
-    //   }
-    // },
     postcss: {
       // preset name
       order: 'cssnanoLast',

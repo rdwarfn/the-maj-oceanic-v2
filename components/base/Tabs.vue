@@ -11,7 +11,7 @@
         v-bind:key="item.label"
       >
         <div
-          class="__tab--label text-uppercase"
+          class="__tab--label font-weight-bold text-uppercase"
           v-text="item.label"
         />
       </v-tab>

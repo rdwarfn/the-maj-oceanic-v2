@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container
-      class="px-0 pb-10"
+      class="px-0 pt-0 pb-10"
       tag="section"
     >
       <v-skeleton-loader
@@ -12,7 +12,7 @@
       </v-skeleton-loader>
       <div v-else class="px-6 px-md-0">
         <h1
-          class="intro--head text-break text-h4 text-sm-h3 font-weight-medium text-center mx-auto mb-6 mb-sm-10"
+          class="intro--head text-center mx-auto mb-6 mb-sm-10"
           v-text="data.heading"
         />
       </div>
@@ -188,7 +188,10 @@ export default {
       -webkit-hyphens: auto;
       -ms-hyphens: auto;
       hyphens: auto;
-      @include poly-fluid-sizing ('max-width', (375px:310px, 768px:596px, 1440px:570px));
+      max-width: 700px;
+      font-family: 'Domine', serif;
+      @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
+      // @include poly-fluid-sizing ('max-width', (375px:700px, 768px:700px));
       @media #{map-get($display-breakpoints, 'sm-and-up')} {
         line-height: 41px !important;
       }

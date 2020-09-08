@@ -11,7 +11,7 @@ $container-max-widths: (
   'xl': 1110px
 );
 
-$btn-font-weight: 600;
+$btn-font-weight: 700;
 
 $btn-outline-border-width: 0.125rem;
 $btn-font-sizes: (
@@ -24,7 +24,7 @@ $headings: (
   'h1': (
     // 48px
     'size': 3rem,
-    // 'weight': 700,
+    'weight': 700,
     // 50px
     'line-height': 3.125rem,
     // normal / 0px
@@ -35,7 +35,7 @@ $headings: (
   'h2': (
     // 36px
     'size': 2.25rem,
-    // 'weight': 700,
+    'weight': 700,
     // 38px
     'line-height': 2.375rem,
     // normal / 0px
@@ -46,7 +46,7 @@ $headings: (
   'h3': (
     // 34px
     'size': 2.125rem,
-    // 'weight': 700,
+    'weight': 700,
     // 36px
     'line-height': 2.25rem,
     // normal / 0px
@@ -57,7 +57,7 @@ $headings: (
   'h4': (
     // 22px
     'size': 1.375rem,
-    // 'weight': 700,
+    'weight': 700,
     // 26px
     'line-height': 1.625rem,
     // normal / 0px
@@ -68,7 +68,7 @@ $headings: (
   'h5': (
     // 14px
     'size': 0.875rem,
-    // 'weight': 700,
+    'weight': 700,
     // 16px
     'line-height': 1rem,
     // 3px
@@ -79,7 +79,7 @@ $headings: (
   'h6': (
     // 11px
     'size': 0.6875rem,
-    // 'weight': 700,
+    'weight': 700,
     // 13px
     'line-height': 0.8125rem,
     // 3px
