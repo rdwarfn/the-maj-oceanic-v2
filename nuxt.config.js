@@ -25,7 +25,7 @@ export default {
   ** Headers of the page
   */
   head: {
-    title: 'TheMajOceanic',
+    title: 'The MAJ Oceanic',
     htmlAttrs: {
       lang: 'id'
     },

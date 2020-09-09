@@ -345,7 +345,7 @@ export default {
   name: 'ContactUs',
 
   head: {
-    title: 'Make an inquiry - TheMajOceanic',
+    title: 'Make an inquiry - The MAJ Oceanic',
     meta: [
       {
         hid: 'description',
