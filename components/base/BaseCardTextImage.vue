@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import tButton from '@/components/base/Button.vue';
+import tButton from '@/components/base/BaseButton.vue';
 const components = {
   tButton
 }

@@ -57,10 +57,10 @@
 const getSpesification = () => import('~/static/data/spesification.json').then(m => m.default || m);
 
 const components = {
-  tHeading: () => import('@/components/base/Heading.vue'),
-  tLargeImage: () => import('@/components/base/LargeImage.vue'),
-  tTabs: () => import('@/components/base/Tabs.vue'),
-  tTables: () => import('@/components/base/Tables.vue')
+  tHeading: () => import('@/components/base/BaseHeading.vue'),
+  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
+  tTabs: () => import('@/components/base/BaseTabs.vue'),
+  tTables: () => import('@/components/base/BaseTables.vue')
 }
 
 export default {

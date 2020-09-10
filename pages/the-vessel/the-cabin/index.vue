@@ -63,11 +63,11 @@ const getTheCabins = () => import('~/static/data/the-cabins.json').then(m => m.d
 import TmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
 const components = {
   TmgIconDivider,
-  tHeading: () => import('@/components/base/Heading.vue'),
-  tLargeImage: () => import('@/components/base/LargeImage.vue'),
-  tCardTextImage: () => import('@/components/base/CardTextImage.vue'),
-  tCarouselTextImage: () => import('@/components/base/CarouselTextImage.vue'),
-  tCarouselThree: () => import('@/components/base/CarouselThree.vue'),
+  tHeading: () => import('@/components/base/BaseHeading.vue'),
+  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
+  tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  tCarouselTextImage: () => import('@/components/base/BaseCarouselTextImage.vue'),
+  tCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
 }
 export default {
   layout: 'main',

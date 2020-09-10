@@ -71,7 +71,7 @@
 <script>
 const primary = "#208CB2";
 const components = {
-  tButton: () => import('@/components/base/Button.vue')
+  tButton: () => import('@/components/base/BaseButton.vue')
 };
 export default {
   name: 'Tabs',

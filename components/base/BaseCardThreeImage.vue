@@ -47,18 +47,13 @@
             </v-card-actions>
           </v-card>
         </v-col>
-        <!-- <div
-          v-bind:key="index"
-          class="mx-auto static"
-          :class="'divide--'+(index+1)" v-if="isXs"
-        /> -->
       </template>
     </v-row>
   </v-flex>
 </template>
 
 <script>
-import tHeading from '@/components/base/Heading.vue';
+import tHeading from '@/components/base/BaseHeading.vue';
 export default {
   name: 'CardThreeImage',
 

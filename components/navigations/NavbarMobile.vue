@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import tBtn from '@/components/base/Button.vue';
+import tBtn from '@/components/base/BaseButton.vue';
 export default {
   inheritAttrs: false,
 

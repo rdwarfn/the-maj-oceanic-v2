@@ -140,7 +140,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import tButton from '@/components/base/Button.vue';
+import tButton from '@/components/base/BaseButton.vue';
 const components = {
   Swiper,
   SwiperSlide,

@@ -50,9 +50,9 @@
 
 <script>
 const components = {
-  tHeading: () => import('@/components/base/Heading.vue'),
-  tLargeImage: () => import('@/components/base/LargeImage.vue'),
-  tCardTextImage: () => import('@/components/base/CardTextImage.vue'),
+  tHeading: () => import('@/components/base/BaseHeading.vue'),
+  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
+  tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
 }
 export default {
   layout: 'main',

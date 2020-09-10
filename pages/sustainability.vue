@@ -40,9 +40,9 @@
 const getSustainability = () => import('~/static/data/sustainability.json').then(m => m.default || m);
 
 const components = {
-  tHeading: () => import('@/components/base/Heading.vue'),
-  tLargeImage: () => import('@/components/base/LargeImage.vue'),
-  tCardTextImg: () => import('@/components/base/CardTextImage.vue'),
+  tHeading: () => import('@/components/base/BaseHeading.vue'),
+  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
+  tCardTextImg: () => import('@/components/base/BaseCardTextImage.vue'),
 }
 
 export default {

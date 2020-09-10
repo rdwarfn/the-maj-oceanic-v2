@@ -151,7 +151,7 @@ import tNavigation from '@/components/navigations/index.vue';
 import tNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tHeroBanner from '@/components/containers/HeroBanner.vue';
 import tFooter from '@/components/containers/Footer.vue';
-import tBtn from '@/components/base/Button.vue';
+import tBtn from '@/components/base/BaseButton.vue';
 
 const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v);
 

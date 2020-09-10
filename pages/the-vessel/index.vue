@@ -72,12 +72,12 @@
 const getTheVessel = () => import('~/static/data/the-vessel.json').then(m => m.default || m);
 import tSkeletonCarousel from '@/components/skeletons/SkeletonCarousel.vue';
 const components = {
-  tHeading: () => import('@/components/base/Heading.vue'),
-  tLargeImage: () => import('@/components/base/LargeImage.vue'),
-  tCardThree: () => import('@/components/base/CardThreeImage.vue'),
-  tCarousel: () => import('@/components/base/Carousel.vue'),
-  tCarouselThree: () => import('@/components/base/CarouselThree.vue'),
-  tCardTextImage: () => import('@/components/base/CardTextImage.vue'),
+  tHeading: () => import('@/components/base/BaseHeading.vue'),
+  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
+  tCardThree: () => import('@/components/base/BaseCardThreeImage.vue'),
+  tCarousel: () => import('@/components/base/BaseCarousel.vue'),
+  tCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
+  tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
   tSkeletonCarousel
 }
 export default {

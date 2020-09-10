@@ -67,7 +67,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/base-components',
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
     '~/plugins/vue-video-player'
   ],
@@ -76,6 +75,7 @@ export default {
   */
   components: [
     '~/components',
+    { path: '~/components/base', prefix: 'Base' },
     '~/components/containers',
     '~/components/navigations',
     '~/components/svg'

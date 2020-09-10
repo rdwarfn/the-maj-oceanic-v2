@@ -64,8 +64,8 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import tHeading from '@/components/base/Heading.vue';
-import tButton from '@/components/base/Button.vue';
+import tHeading from '@/components/base/BaseHeading.vue';
+import tButton from '@/components/base/BaseButton.vue';
 const components = {
   Swiper,
   SwiperSlide,
