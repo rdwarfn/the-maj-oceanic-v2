@@ -75,10 +75,10 @@
               ></v-select>
             </v-col>
           </v-row>
-          <v-row align="end">
-            <v-col cols="6" align-self="start">
-              <v-row no-gutters style="height: 138px">
-                <v-col cols="12" align-self="start">
+          <v-row>
+            <v-col cols="6">
+              <v-row align="stretch">
+                <v-col cols="12" align-self="start" class="pt-0">
                   <v-text-field
                     ref="email"
                     label="Email"
@@ -94,7 +94,8 @@
                     filled clearable flat dense required
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12" align-self="end">
+                <!-- <v-spacer /> -->
+                <v-col cols="12" align-self="end" class="mt-1">
                   <v-text-field
                     ref="phone"
                     label="Phone"
