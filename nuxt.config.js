@@ -115,7 +115,7 @@ export default {
     options: {
       customProperties: true
     },
-    treeShake: true,
+    // treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js',
   },

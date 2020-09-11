@@ -251,21 +251,16 @@ export default {
         },
         {
           id: 1,
-          title: "Ancora Capital Management",
-          to: "#"
-        },
-        {
-          id: 2,
           title: "Media Center",
           to: "#"
         },
         {
-          id: 3,
+          id: 2,
           title: "Privacy",
           to: "#"
         },
         {
-          id: 4,
+          id: 3,
           title: "Terms and Conditions",
           to: "#"
         }
