@@ -44,7 +44,7 @@
           @click="() => $router.push({ path: '/contact-us'})"
           tile depressed dark
         >
-         {{ $vuetify.breakpoint.name === 'xs' ? 'inquire' : 'inquire now' }}
+          inquire
         </v-btn>
       </v-col>
     </v-row>

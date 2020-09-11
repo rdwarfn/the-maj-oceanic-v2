@@ -2,30 +2,38 @@
   <v-flex class="__carousel-three">
     <swiper
       ref="swiper"
-      class="swiper"
+      class="swiper container"
       v-bind:options="swiperOption"
     >
       <swiper-slide
         v-for="item in data"
         v-bind:key="item.id"
       >
-        <div class="d-flex flex-column text-center">
-          <v-img
-            v-bind:src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            v-bind:lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            class="__carousel-three--img"
-          ></v-img>
-          <tHeading
-            class="__carousel-three--head"
-            :heading-class="headingClass"
-            heading-justify="center"
-            text-justify="center"
-            :data="item"
-          />
+        <div class="text-center __carousel-three--item">
+          <div class="swiper-zoom-container">
+            <v-img
+              v-bind:src="staticImage
+                ? require(`~/assets/images/${item.image}`)
+                : item.image"
+              v-bind:lazy-src="staticImage
+                ? require(`~/assets/images/${item.image}`)
+                : item.image"
+              class="__carousel-three--item-img swiper-zoom-target"
+            ></v-img>
+          </div>
+          <h1
+            v-if="item.heading"
+            class="__carousel-three--item-heading mx-auto"
+            v-bind:class="headingClass"
+          >
+            {{item.heading}}
+          </h1>
+          <p
+            v-if="item.description"
+            v-bind:class="descriptionClass"
+          >
+            {{item.description}}
+          </p>
           <t-button
             v-if="buttonText"
             v-bind:class="buttonClass"
@@ -37,7 +45,7 @@
           />
         </div>
       </swiper-slide>
-      <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+      <div class="swiper-pagination swiper-pagination-bullets hidden-xs-only" slot="pagination"></div>
       <v-btn
         absolute
         fab
@@ -79,6 +87,7 @@ export default {
 
   props: {
     headingClass: { type: String },
+    descriptionClass: { type: String } ,
     buttonText: { type: String },
     buttonClass: { type: String },
     buttonProps: { type: Object },
@@ -94,6 +103,9 @@ export default {
     return {
       swiperOption: {
         lazy: true,
+        zoom: {
+          maxRatio: 3,
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -108,8 +120,10 @@ export default {
         breakpoints: {
         // when window width is >= 320px
         320: {
-          slidesPerView: 1,
-          spaceBetween: 20
+          slidesPerView: 'auto',
+          spaceBetween: 10,
+          centeredSlides: true,
+          initialSlide: 1,
         },
         // when window width is >= 480px
         600: {
@@ -124,25 +138,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import '~assets/styles/scss/variables.scss';
   $primary:#208CB2;
   $size: 12px;
   $secondary: #4E5E79;
   $white: #ffffff;
 
-  .__carousel-three {
-    &--head {
-      margin-top: 24px !important;
-      @include poly-fluid-sizing('max-width', (600px:233px, 1204px:350px));
-    }
-
-    &--img {
-      margin-left: auto;
-      margin-right: auto;
+  ::v-deep .__carousel-three {
+    &--item {
       // @include poly-fluid-sizing('max-width', (320px:325px, 600px:233px, 960px:350px));
+      &-heading {
+        @include poly-fluid-sizing('max-width', (600px:233px, 1204px:350px));
+        @include poly-fluid-sizing ('font-size', (768px:18px,1440px:22px));
+        margin-top: 24px !important;
+        font-family: 'Domine', serif;
+        font-weight: 600;
+      }
+      &-img {
+        margin-left: auto;
+        margin-right: auto;
+
+        @media #{map-get($display-breakpoints, 'xs-only')} {
+          height: 300px !important;
+        }
+      }
     }
   }
 
-  .swiper {
+  ::v-deep .swiper {
+    &-slide-active {
+      z-index: 3 !important;
+    }
+    &-slide {
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        width: 300px !important;
+      }
+    }
     padding-bottom: 30px !important;
     .button--left, .button--right {
       display: none !important;
@@ -156,7 +187,7 @@ export default {
     .swiper-pagination-bullets {
       bottom: -5px;
     }
-    ::v-deep .swiper-pagination-bullet-custom {
+    .swiper-pagination-bullet-custom {
       width: $size !important;
       height: $size !important;
       line-height: $size !important;

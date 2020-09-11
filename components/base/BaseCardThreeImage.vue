@@ -1,19 +1,16 @@
 <template>
-  <v-flex class="__card-three static">
-    <v-row no-gutters>
-      <t-heading
-        class="mx-auto"
-        caption-justify="center"
-        caption-class="text-center"
-        heading-justify="center"
-        heading-class="text-center"
-        v-bind:data="{
-          caption: data.caption,
-          heading: data.heading,
-        }"
-      />
+  <v-flex class="__card-three">
+    <v-row no-gutters class="mb-6">
+      <v-col>
+        <div class="__card-three--caption text-h5">
+          {{ data.caption }}
+        </div>
+        <div class="__card-three--heading text-capitalize">
+          {{ data.heading }}
+        </div>
+      </v-col>
     </v-row>
-    <v-row justify="center" class="mt-16">
+    <v-row justify="center">
       <template
         v-for="(item, index) in data.data"
       >
@@ -22,28 +19,26 @@
           sm="4"
           md="4"
           v-bind:key="index"
-          class="text-center"
+          class="text-center __card-three--col"
         >
-          <v-card
-            :loading="loading"
-            flat
-          >
+          <v-card color="transparent" tile flat>
             <v-img
-              v-ripple
               class="__card-three--img mx-auto"
               v-bind:src="staticImage
                 ? require(`~/assets/images/${item.image}`) : item.image"
               v-bind:lazy-src="staticImage
                 ? require(`~/assets/images/${item.image}`) : item.image"
+                width="100%"
             ></v-img>
             <v-card-actions class="text-center">
-              <v-btn
-                text nuxt depressed tile
+              <nuxt-link
+                v-ripple
+                draggable="false"
                 v-bind:to="item.to"
-                class="__card-three--heading font-weight-medium text-capitalize mx-auto text-h4 text--primary"
+                class="__card-three--heading px-3 py-2 text-break text-capitalize mx-auto text-h4 text--primary"
               >
                 {{ item.heading }}
-              </v-btn>
+              </nuxt-link>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -96,8 +91,19 @@ export default {
   ::v-deep .text-h5 {
     color: $primary !important;
   }
-  .__card-three {
-    ::v-deep &.divide {
+
+  ::v-deep .__card-three {
+    &--heading {
+      font-family: 'Domine', serif !important;
+      font-weight: 600;
+      line-height: 41px;
+      @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
+    }
+    &--col {
+      @include poly-fluid-sizing ('padding-right', (375px:12.5px, 768px:8px, 1440px:15px));
+      @include poly-fluid-sizing ('padding-left', (375px:12.5px, 768px:8px, 1440px:15px));
+    }
+    &.divide {
       &--1 {
         margin-top: 24px !important;
         margin-bottom: 32px !important;
@@ -134,7 +140,6 @@ export default {
     }
 
     &--heading {
-      display: inline-block;
       margin-top: 24px !important;
     }
   }

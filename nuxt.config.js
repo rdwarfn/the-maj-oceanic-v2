@@ -78,7 +78,8 @@ export default {
     { path: '~/components/base', prefix: 'Base' },
     '~/components/containers',
     '~/components/navigations',
-    '~/components/svg'
+    '~/components/svg',
+    { path: '~/components/skeletons', prefix: 's' },
   ],
   /*
   ** Nuxt.js dev-modules
@@ -114,7 +115,7 @@ export default {
     options: {
       customProperties: true
     },
-    // treeShake: true,
+    treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js',
   },

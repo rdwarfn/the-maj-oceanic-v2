@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <t-navigation-mobile
+    <tmo-navigation-mobile
       v-bind:isIntersecting="isIntersecting"
       v-bind:elevate-on-scroll="getHerosByRouteName"
       v-bind:class="{
@@ -10,7 +10,7 @@
       <template v-slot:button-nav-icon>
         <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       </template>
-    </t-navigation-mobile>
+    </tmo-navigation-mobile>
 
     <v-navigation-drawer
       v-model="drawer"
@@ -84,7 +84,7 @@
 
         <v-list-item>
           <v-list-item-action>
-            <t-btn
+            <tmo-btn
               class="btn-l"
               v-bind:props="{
                 color: 'primary',
@@ -92,20 +92,20 @@
               }"
             >
               Inquire Now
-            </t-btn>
+            </tmo-btn>
           </v-list-item-action>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <t-navigation
+    <tmo-navigation
       :is-intersecting="isIntersecting"
       :source-nav="navigation.data"
       :loading="false"
     />
 
       <!-- v-if="!routeNameContactUs" -->
-    <t-hero-banner
+    <tmo-hero-banner
       v-if="getHerosByRouteName"
       v-bind:data="getHerosByRouteName"
       static-image
@@ -142,25 +142,25 @@
     </v-main>
     <!-- <div id="mark">viewport intersection observer</div> -->
 
-    <t-footer />
+    <tmo-footer />
   </v-app>
 </template>
 
 <script>
-import tNavigation from '@/components/navigations/index.vue';
-import tNavigationMobile from '@/components/navigations/NavbarMobile.vue';
-import tHeroBanner from '@/components/containers/HeroBanner.vue';
-import tFooter from '@/components/containers/Footer.vue';
-import tBtn from '@/components/base/BaseButton.vue';
+import tmoNavigation from '@/components/navigations/index.vue';
+import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue';
+import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
+import tmoFooter from '@/components/containers/Footer.vue';
+import tmoBtn from '@/components/base/BaseButton.vue';
 
 const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v);
 
 const components = {
-  tNavigation,
-  tNavigationMobile,
-  tHeroBanner,
-  tFooter,
-  tBtn,
+  tmoNavigation,
+  tmoNavigationMobile,
+  tmoHeroBanner,
+  tmoFooter,
+  tmoBtn,
 }
 
 export default {
@@ -223,6 +223,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "~assets/styles/scss/variables.scss";
 $primary: #208CB2;
 $primary--disabled: #C7E2EC;
 
@@ -235,7 +236,12 @@ $primary--disabled: #C7E2EC;
   text-shadow: 0 0 10px black;
 }
 #main {
-  background: #FAFAFA !important;
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    background: #FFFFFF !important;
+  }
+  @media #{map-get($display-breakpoints, 'sm-and-up')} {
+    background: #FAFAFA !important;
+  }
 }
 ::v-deep a.btn-l.primary {
   span.v-btn__content {
@@ -258,6 +264,7 @@ $primary--disabled: #C7E2EC;
     line-height: 22px !important;
     letter-spacing: 3px !important;
     text-transform: uppercase !important;
+    font-weight: 600 !important;
 
     @include poly-fluid-sizing ('font-size', (375px:13px, 768px:16px))
   }

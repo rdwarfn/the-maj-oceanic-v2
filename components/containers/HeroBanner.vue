@@ -9,22 +9,26 @@
     >
       <template>
         <v-sheet class="hero-wrapper text-center" style="relative">
-          <v-sheet class="video-player-box mx-auto hidden-xs-only"
-            v-video-player:player="{
-              ...playerOptions,
-              sources: [{
-                type: 'video/mp4',
-                src: data.video
-              }]
-            }"
-          >
-          </v-sheet>
-          <div class="_head--text text-sm-h2 text-md-h1 text-center" v-html="data.text">
-          </div>
+          <template v-if="data.video">
+            <v-sheet class="video-player-box mx-auto hidden-xs-only"
+              v-video-player:player="{
+                ...playerOptions,
+                sources: [{
+                  type: 'video/mp4',
+                  src: data.video
+                }]
+              }"
+            >
+            </v-sheet>
+            <div class="_head--text text-sm-h2 text-md-h1 text-center" v-html="data.text">
+            </div>
+          </template>
+
           <v-img
             v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-            class="_hero--img justify-center hidden-sm-and-up"
+            class="_hero--img justify-center"
+            v-bind:class="{'hidden-sm-and-up': data.image && data.video}"
             transition="fade-transition"
           >
             <!-- :aspect-ratio="16/9" -->

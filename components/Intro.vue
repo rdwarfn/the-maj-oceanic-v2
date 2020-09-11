@@ -1,7 +1,7 @@
 <template>
-  <v-container tag="section">
+  <v-container tag="section" class="pa-0 d-flex flex-column">
     <v-skeleton-loader
-      v-if="loading"
+      v-if="!data.heading"
       type="text@2"
       class="intro--head mb-6 mx-auto"
     >
@@ -14,26 +14,33 @@
     </div>
 
     <v-skeleton-loader
-      v-if="loading"
+      v-if="!data.image"
       type="image@2"
-      class="mx-auto"
+      class="mx-auto mb-10"
+      v-bind:class="imageClass"
     ></v-skeleton-loader>
     <base-large-image
       v-else
       class="px-sm-6 px-md-0"
+      v-bind:class="imageClass ? imageClass : 'mb-8'"
       static-image
       :data="data.image"
     />
 
     <v-skeleton-loader
+      v-if="!data.description"
       type="paragraph@3"
       max-width="70%"
-      class="intro--paragraph text-center mx-auto mt-10"
+      class="intro--paragraph text-center mx-auto"
     >
-      <p class="intro--paragraph px-6 px-sm-0 mt-8 mx-auto text-center">
-        {{ data.description }}
-      </p>
     </v-skeleton-loader>
+    <div
+      v-else
+      class="intro--paragraph text-break px-6 px-sm-0 mx-auto"
+      v-bind:class="descriptionClass ? descriptionClass : 'text-center'"
+    >
+      {{ data.description }}
+    </div>
   </v-container>
 </template>
 
@@ -52,7 +59,8 @@ export default {
       image: { type: String },
       description: { type: String }
     },
-    loading: { type: Boolean, default: false }
+    imageClass: { type: String },
+    descriptionClass: { type: String }
   }
 }
 </script>
@@ -78,7 +86,6 @@ export default {
     }
   }
   &--paragraph {
-    white-space: pre-line !important;
     @include poly-fluid-sizing('max-width', (768px:596px, 1204px:700px));
   }
 }

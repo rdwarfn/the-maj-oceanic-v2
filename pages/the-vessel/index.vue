@@ -1,50 +1,26 @@
 <template>
-  <div :class="sectionPading">
-    <v-container tag="section" class="mb-16">
-      <t-heading
-        class="mx-auto"
-        heading-justify="center"
-        heading-class="text-center"
-        text-justify="center"
-        text-class="text-center"
-        v-bind:data="{
-          heading: data.heading,
-          text: data.text
-        }"
-      />
-      <t-large-image
-        class="mt-8"
-        static-image
-        :data="data.image"
-      />
-    </v-container>
+  <div>
+    <intro
+      class="mb-16"
+      v-bind:data="{
+        heading: data.heading,
+        image: data.image,
+        description: data.description
+      }"
+      image-class="order-last mt-8 px-6 px-md-0"
+      description-class="text-justify text-sm-center"
+    />
 
-    <v-container tag="section" class="my-16">
-      <t-card-three
-        v-bind:data="data.card_three_image"
-        static-image
-      />
-    </v-container>
+    <the-cabins
+      v-bind:data="data.card_three_image"
+    />
 
-    <v-container tag="section" class="my-16">
-        <!-- <t-carousel
-          class="__carousel"
-          v-bind:data="data.carousel_card"
-          card-class="__carousel_card"
-          button-class="pl-4"
-          button-text="discover"
-          heading-class="pt-0 mb-1"
-          text-class="mb-3 pr-lg-6"
-          static-image
-        >
-        </t-carousel> -->
-      <client-only>
-      <tSkeletonCarousel />
-      </client-only>
-    </v-container>
+    <spesification
+      v-bind:data="data.carousel_card"
+    />
 
     <!-- <v-container tag="section" class="my-16">
-      <t-carousel-three
+      <base-carousel-three
         v-bind:data="data.carousel_three"
         static-image
       />
@@ -69,16 +45,14 @@
 </template>
 
 <script>
-const getTheVessel = () => import('~/static/data/the-vessel.json').then(m => m.default || m);
-import tSkeletonCarousel from '@/components/skeletons/SkeletonCarousel.vue';
 const components = {
-  tHeading: () => import('@/components/base/BaseHeading.vue'),
-  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
-  tCardThree: () => import('@/components/base/BaseCardThreeImage.vue'),
-  tCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  tCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
+  BaseCardThree: () => import('@/components/base/BaseCardThreeImage.vue'),
+  BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
+  BaseCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
   tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  tSkeletonCarousel
+  Intro: () => import('@/components/Intro.vue'),
+  TheCabins: () => import('@/components/TheCabins.thevessel.vue'),
+  Spesification: () => import('@/components/Spesification.thevessel.vue')
 }
 export default {
   layout: 'main',
@@ -93,8 +67,8 @@ export default {
   },
 
   mounted () {
-    if (this.$data && this.$data.data.carousel_banner) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.carousel_banner });
+    if (this.$data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
       this.addBreadcrumb ({
         text: 'the vessel',
         href: this.$route.path

@@ -152,6 +152,10 @@ export default {
       }
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:718px, 1440px:570px));
       @include poly-fluid-sizing ('max-height', (375px:181px, 768px:347px, 1440px:350px));
+
+      ::v-deep .v-image__image {
+        background-position: center top !important;
+      }
     }
   }
 }

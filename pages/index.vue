@@ -61,7 +61,7 @@ const components = {
   BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
   BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
   intro: () => import('@/components/Intro.vue'),
-  voyages: () => import ('@/components/voyages.home.vue'),
+  voyages: () => import ('@/components/Voyages.home.vue'),
 }
 
 export default {
@@ -93,8 +93,9 @@ export default {
   },
 
   mounted () {
-    if (this.$data.data && this.$data.data.carousel_banner) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.carousel_banner })
+    console.log(this.$vuetify)
+    if (this.$data.data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
       this.addBreadcrumb ({
         text: 'home',
         href: this.$route.path

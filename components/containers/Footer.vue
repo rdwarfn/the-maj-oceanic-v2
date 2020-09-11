@@ -3,7 +3,7 @@
     <v-container class="px-6 px-md-0">
       <v-row no-gutters class="mb-1 mb-sm-12 mb-lg-6" align="start" justify="space-between">
         <!-- the maj oceanic -->
-        <v-col class="col--1" cols="12" sm="4" md="mb-4" lg="3">
+        <v-col class="col--1" cols="12" sm="6" md="5" lg="3">
           <div class="mb-7 mb-sm-6">
             <div class="text-caption mb-2 text-uppercase font-weight-bold">
               the maj oceanic
@@ -42,6 +42,15 @@
               <!-- <v-spacer/> -->
             </v-row>
           </div>
+          <div class="mb-8">
+            <div class="text-uppercase __part-of">CRUISE OPERATOR</div>
+            <v-img
+              class=""
+              v-bind:src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
+              v-bind:lazy-src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
+              max-width="45"
+            ></v-img>
+          </div>
           <div>
             <div class="text-uppercase __part-of">PROUD COMFORT PARTNER</div>
             <!-- <v-row no-gutters align="center"> -->
@@ -56,9 +65,9 @@
         </v-col>
 
         <!-- join our family & explore our worl -->
-        <v-col class="col--2 px-0" sm="5" md="6" lg="4">
+        <v-col class="col--2 px-0" sm="6" md="6" lg="4">
           <v-row no-gutters align="start" justify-sm="space-between">
-            <v-col class="col--2a px-sm-1" cols="12" sm="auto">
+            <v-col class="col--2a px-sm-1" cols="12" sm="6">
               <div class="text-caption mb-4 text-uppercase font-weight-bold">
                 join our family
               </div>
@@ -79,7 +88,7 @@
               </v-list>
             </v-col>
 
-            <v-col class="px-sm-1" cols="12" sm="auto">
+            <v-col class="px-sm-1" cols="12" sm="6">
               <div class="text-caption mb-4 text-uppercase font-weight-bold">
                 explore our World
               </div>

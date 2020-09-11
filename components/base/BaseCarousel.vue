@@ -5,6 +5,14 @@
     max-width="1440"
     color="transparent"
   >
+    <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
+      {{ dataActive.caption }}
+    </v-card-subtitle>
+    <v-card-title class="hidden-sm-and-up mb-4">
+      <div class="text-h4 text-break text-center mx-auto">
+        {{ dataActive.heading }}
+      </div>
+    </v-card-title>
     <swiper
       ref="swiper"
       class="swiper"
@@ -15,32 +23,41 @@
         v-bind:key="item.id"
       >
         <v-card flat tile hover color="transparent" max-width="auto">
-          <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
+          <!-- <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
             {{ item.caption }}
           </v-card-subtitle>
           <v-card-title class="hidden-sm-and-up mb-4">
             <div class="text-h4 mx-auto">
               {{ item.heading }}
             </div>
-          </v-card-title>
-          <v-img
-            :src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            :lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            class="__carousel--img mx-auto mx-sm-0"
-            :class="cardImageClass"
-          />
+          </v-card-title> -->
+          <template>
+            <v-skeleton-loader
+              v-if="!item.image"
+              class="__carousel--img mx-auto mx-sm-0"
+              type="image"
+            ></v-skeleton-loader>
+            <v-img
+              v-else mx-auto
+              :src="staticImage
+                ? require(`~/assets/images/${item.image}`)
+                : item.image"
+              :lazy-src="staticImage
+                ? require(`~/assets/images/${item.image}`)
+                : item.image"
+              class="__carousel--img mx-auto mx-sm-0"
+              :class="cardImageClass"
+            />
+          </template>
         </v-card>
         <client-only>
           <v-card
-            flat tile width="90%"
-            class="_card--relative hidden-sm-and-up mx-auto pb-13"
+            flat tile
+            class="hidden-sm-and-up mx-auto pb-13"
+            v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'"
           >
-            <v-card-text class="text-center px-0 pt-5">
-              <p class="text--primary px-5">{{ dataActive.text }}</p>
+            <v-card-text class="px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'">
+              <p class="text--primary px-5">{{ item.text }}</p>
             </v-card-text>
             <v-card-actions class="pa-0 mt-4">
               <t-button
@@ -48,7 +65,7 @@
                 v-bind:props="{
                   color: 'primary',
                   outlined: true,
-                  to: dataActive.to,
+                  to: item.to,
                   ...buttonProps
                 }"
                 v-text="buttonText"
@@ -81,6 +98,7 @@
         </v-btn>
       </template>
     </swiper>
+
     <client-only>
       <v-card
         v-if="Object.keys(dataActive).length"
@@ -160,6 +178,8 @@ export default {
     cardMaxHeight: { type: String },
     cardImageClass: { type: String },
     captionClass: { type: String },
+    cardMobileClass: { type: String },
+    cardTextMobileClass: { type: String },
     headingClass: { type: String },
     textClass: { type: String },
     buttonClass: { type: String },
@@ -241,10 +261,13 @@ export default {
   $white: #ffffff;
 
   ._card--relative {
-    position: relative !important; top: -25px !important; z-index: 3 !important;
+    width: 90%;
+    position: relative !important;
+    top: -25px !important;
+    z-index: 3 !important;
   }
 
-  ::v-deep .v-card {
+  ::v-deep {
     .v-card__subtitle {
       color: $primary !important;
       font-weight: bold !important;
@@ -336,6 +359,10 @@ export default {
       // @media (min-width: 1441px) {
       //   max-width: 0%;
       // };
+      ::v-deep .v-skeleton-loader__image {
+        @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
+        @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
+      }
     }
 
     .swiper {
