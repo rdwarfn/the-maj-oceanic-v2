@@ -58,7 +58,7 @@
                 v-text="data.caption"
               />
               <v-card-title
-                class="text-h4 px-0"
+                class="px-0 text-break"
                 v-bind:class="contentRight ? 'justify-end' : null"
                 v-text="data.heading"
               />
@@ -186,11 +186,18 @@ export default {
     }
 
     &--content {
-      @include poly-fluid-sizing ('margin-left', (375px:0px, 768px:45px, 1440px:65px));
+      .v-card__title {
+        font-family: 'Domine', serif !important;
+        font-size: 22px !important;
+        font-weight: 600;
+        letter-spacing: normal !important;
+        line-height: 28px;
+      }
+      @include poly-fluid-sizing ('margin-left', (375px:0px, 768px:30px, 1440px:65px));
       margin-right: 0;
 
       .reversed & {
-        @include poly-fluid-sizing ('margin-right', (375px:0px, 768px:45px, 1440px:65px));
+        @include poly-fluid-sizing ('margin-right', (375px:0px, 768px:30px, 1440px:65px));
         margin-left: 0;
       }
 
