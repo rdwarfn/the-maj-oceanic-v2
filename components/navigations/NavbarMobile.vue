@@ -4,7 +4,7 @@
     v-bind="$attrs"
     min-height="78"
     max-width="100vw"
-    class="hidden-md-and-up flex-nowrap"
+    class="hidden-lg-and-up flex-nowrap"
   >
     <v-row no-gutters align="center" justify="space-between" class="mt-5 flex-nowrap">
       <v-col>

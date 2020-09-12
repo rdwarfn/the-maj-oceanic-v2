@@ -54,6 +54,7 @@ export default {
     }
   },
   icons: {
+    iconfont: 'mdiSvg',
     values: {
       search: {
         component: search_icon

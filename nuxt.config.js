@@ -1,3 +1,5 @@
+const glob = require('glob-all');
+const path = require('path');
 export default {
   loading: {
     color: '#208CB2',
@@ -57,10 +59,12 @@ export default {
   */
   styleResources: {
     scss: [
-      './assets/styles/scss/_poly-fluid-sizing.scss'
+      './assets/styles/scss/_poly-fluid-sizing.scss',
+      './assets/styles/scss/variables.scss'
     ]
   },
   css: [
+    '@/assets/styles/css/_fonts.css',
     '@/assets/styles/css/main.css',
   ],
   /*
@@ -78,7 +82,6 @@ export default {
     { path: '~/components/base', prefix: 'Base' },
     '~/components/containers',
     '~/components/navigations',
-    '~/components/svg',
     { path: '~/components/skeletons', prefix: 's' },
   ],
   /*
@@ -86,7 +89,7 @@ export default {
   */
   buildModules: [
     '@nuxtjs/vuetify',
-    '@nuxtjs/style-resources',
+    '@nuxtjs/style-resources'
   ],
   /*
   ** Nuxt.js modules
@@ -98,7 +101,7 @@ export default {
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
     // Doc: https://github.com/nuxt-community/svg-module
-    '@nuxtjs/svg'
+    '@nuxtjs/svg',
   ],
   /*
   ** Axios module configuration
@@ -112,10 +115,11 @@ export default {
   ** vuetify module configuration
   */
   vuetify: {
+    defaultAssets: false,
     options: {
       customProperties: true
     },
-    // treeShake: true,
+    treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js',
   },
@@ -124,18 +128,32 @@ export default {
   */
   build: {
     postcss: {
-      // preset name
-      order: 'cssnanoLast',
-      // ordered plugin names
-      order: [
-        'postcss-import',
-        'postcss-nesting',
-        'postcss-preset-env',
-        'cssnano'
-      ],
-      // Function to calculate plugin order
-      order: (names, presets) => presets.cssnanoLast(names)
+      plugins: {
+        // Add some plugins
+        'postcss-import': {},
+        'postcss-nesting': {},
+        // 'postcss-uncss': {
+        //   'stylesheets': [
+        //     './assets/styles/css/_fonts.css',
+        //     './node_modules/prismjs/themes/prism.css',
+        //   ],
+        //   'ignore': [
+        //     /-(leave|enter|appear)(|-(to|from|active))$/, // Normal transitions
+        //     /^nuxt-link(|-exact)-active$/, // Nuxt link classes
+        //     /^(?!cursor-move).+-move$/, // Move transitions
+        //     /data-v-.*/, // Keep scoped styles
+        //     /^v-.*/,
+        //     /^theme.*/
+        //   ]
+        // }
+      },
+      preset: {
+        autoprefixer: {
+          // grid: true
+        }
+      }
     },
+
     extractCSS: true,
     optimization: {
       splitChunks: {

@@ -1,6 +1,6 @@
 <template>
   <v-layout
-    class="__nav_bar align-self-center static"
+    class="__nav_bar align-self-center"
     v-bind:class="{
       animated: isIntersecting
     }"
@@ -264,12 +264,9 @@ $secondary: #232323;
 
 
 .__nav_bar {
-  z-index: 10 !important;
-  @media #{map-get($display-breakpoints, 'sm-and-down')} {
-    display: none;
-  }
-
-  @media (min-width: 960px) {
+  display: none;
+  @media #{map-get($display-breakpoints, 'lg-and-up')} {
+    z-index: 10 !important;
     display: grid;
     position: fixed !important;
     align-items: flex-end;
@@ -331,6 +328,69 @@ $secondary: #232323;
       }
     }
   }
+
+  // @media (min-width: 960px) {
+  //   display: grid;
+  //   position: fixed !important;
+  //   align-items: flex-end;
+  //   max-height: 192px;
+  //   background-color: rgba(47, 46, 46, 0.35) !important;
+  //   height: 30%;
+  //   width: 100vw;
+  //   z-index: 2;
+  //   transition:
+  //     transform .8s ease-in-out,
+  //     box-shadow .8s ease-in-out;
+  //   &.animated {
+  //     // transform: translateY(-60%); //1280
+  //     transform: translateY(-115px); //1204
+  //     // @media (min-width: 1440px) {
+  //     //   transform: translateY(-110px) !important;
+  //     // }
+  //     box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);
+  //   }
+
+  //   .nav_row {
+  //     margin-top: 2rem;
+  //     place-self: baseline;
+  //     opacity: 1;
+  //     width: 90%;
+  //     transform: scale(1);
+  //     transition:
+  //       opacity .3s ease-in-out,
+  //       transform 1s ease-in-out;
+  //     &.animated {
+  //       opacity: 0;
+  //       transform: scale(0.9, 0.9);
+  //     }
+
+  //     &--list {
+  //       align-self: flex-end !important;
+  //       justify-self: center;
+  //       width: 90%;
+  //       background-color: transparent;
+  //       border-top: 1px solid white;
+  //       color: white;
+  //       height: 44px;
+  //       top: unset;
+  //       // padding: 0 10rem;
+  //       transition:
+  //         background-color .8s ease-in-out,
+  //         color .8s linear,
+  //         height .8s linear,
+  //         width .8s $cubic;
+  //       &.animated {
+  //         background-color: white;
+  //         color: #232323;
+  //         height: 78px;
+  //         width: 100%;
+  //         // padding: 0 48px !important;
+  //         @include poly-fluid-sizing ('padding-left', (960px:20px, 1440px:48px));
+  //         @include poly-fluid-sizing ('padding-right', (960px:20px, 1440px:48px));
+  //       }
+  //     }
+  //   }
+  // }
 
   .__input_nav_bar {
     place-self: center;

@@ -19,12 +19,14 @@
       v-bind:data="data.carousel_card"
     />
 
-    <!-- <v-container tag="section" class="my-16">
+    <!-- <base-carousel-three /> -->
+
+    <v-container tag="section" class="my-16">
       <base-carousel-three
-        v-bind:data="data.carousel_three"
+        v-bind:data="data.card_three_image"
         static-image
       />
-    </v-container> -->
+    </v-container>
 
     <!-- <v-container tag="section" class="my-16">
       <t-card-text-image

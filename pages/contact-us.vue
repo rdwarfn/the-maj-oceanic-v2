@@ -30,7 +30,7 @@
           <a href="mailto:marketing@themajoceanic.com">marketing@themajoceanic.com</a>
         </div>
       </v-col>
-      <v-col cols="12" sm="7" md="8" class="pt-15 pt-md-0 pb-16">
+      <v-col cols="12" sm="7" md="8" class="pt-15 pt-sm-0 pb-16">
         <div class="_form--headline ml-sm-5">
           make an inquiry
         </div>
@@ -484,7 +484,7 @@ export default {
   }
 
   ._contact-row {
-    @include poly-fluid-sizing ('margin-top', (375px:102px, 768px:100px, 1440px:178px));
+    @include poly-fluid-sizing ('margin-top', (375px:102px, 768px:199px, 1440px:197px));
   }
 
   ._contact-desc {

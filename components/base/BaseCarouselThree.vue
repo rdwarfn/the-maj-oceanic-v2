@@ -10,7 +10,12 @@
         v-bind:key="item.id"
       >
         <div class="text-center __carousel-three--item">
-          <div class="swiper-zoom-container">
+          <v-skeleton-loader
+            v-if="!item.image"
+            type="image"
+            class="__carousel-three--item-img"
+          ></v-skeleton-loader>
+          <div v-else class="swiper-zoom-container">
             <v-img
               v-bind:src="staticImage
                 ? require(`~/assets/images/${item.image}`)
@@ -144,6 +149,11 @@ export default {
   $secondary: #4E5E79;
   $white: #ffffff;
 
+  ::v-deep .v-skeleton-loader__image {
+    @include poly-fluid-sizing ('max-width', (375px:300px, 768px:233px, 1204px:350px));
+    @include poly-fluid-sizing ('height', (375px:300px, 768px:197px, 1204px:350px));
+  }
+
   ::v-deep .__carousel-three {
     &--item {
       // @include poly-fluid-sizing('max-width', (320px:325px, 600px:233px, 960px:350px));
@@ -154,10 +164,10 @@ export default {
         font-family: 'Domine', serif;
         font-weight: 600;
       }
+
       &-img {
         margin-left: auto;
         margin-right: auto;
-
         @media #{map-get($display-breakpoints, 'xs-only')} {
           height: 300px !important;
         }
