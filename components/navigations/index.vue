@@ -139,25 +139,30 @@
           :nav-list="sourceNav"
         />
 
-        <v-col cols="auto" class="rounded mr-8 mr-lg-10" v-if="isIntersecting">
-          <v-btn
-            to="#"
-            text x-small nuxt
-            class="px-0 font-md-12"
-          >
-            login
-          </v-btn>
-        </v-col>
+        <!-- <v-col cols="auto" class="rounded mr-lg-10" v-if="isIntersecting">
+          <v-row align="center">
+            <v-col>
+              <v-btn
+                to="#"
+                text x-small nuxt
+                class="px-0 font-md-12"
+              >
+                login
+              </v-btn>
 
-        <v-col cols="auto" v-if="isIntersecting">
-          <v-btn
-            class="btn-s font-md-12"
-            depressed tile nuxt dark
-            to="/contact-us"
-          >
-            Inquire Now
-          </v-btn>
-        </v-col>
+            </v-col>
+
+            <v-col cols="auto">
+              <v-btn
+                class="btn-s ml-1 font-md-12"
+                depressed tile nuxt dark
+                to="/contact-us"
+              >
+                Inquire Now
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col> -->
       </v-row>
     </v-flex>
   </v-layout>
@@ -282,10 +287,7 @@ $secondary: #232323;
       // @media (min-width: 1440px) {
       //   transform: translateY(-110px) !important;
       // }
-      box-shadow:
-        0 3px 5px -1px rgba(0,0,0,.2),
-        0 6px 10px 0 rgba(0,0,0,.14),
-        0 1px 18px 0 rgba(0,0,0,.12) !important;
+      box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);
     }
 
     .nav_row {
@@ -311,7 +313,7 @@ $secondary: #232323;
         color: white;
         height: 44px;
         top: unset;
-        padding: 0 10rem;
+        // padding: 0 10rem;
         transition:
           background-color .8s ease-in-out,
           color .8s linear,
@@ -322,7 +324,9 @@ $secondary: #232323;
           color: #232323;
           height: 78px;
           width: 100%;
-          padding: 0 48px !important;
+          // padding: 0 48px !important;
+          @include poly-fluid-sizing ('padding-left', (960px:20px, 1440px:48px));
+          @include poly-fluid-sizing ('padding-right', (960px:20px, 1440px:48px));
         }
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <v-container tag="section" class="px-container">
     <v-row no-gutters align="start" justify="space-between" class="pb-16 _contact-row">
-      <v-col cols="12" sm="4" class="text-center text-sm-left text-sm-left">
+      <v-col cols="12" sm="4" class="text-center text-sm-left text-sm-left pb-16 pb-sm-0">
         <div class="text-h3 mb-8">
           Contact Us
         </div>
@@ -30,7 +30,7 @@
           <a href="mailto:marketing@themajoceanic.com">marketing@themajoceanic.com</a>
         </div>
       </v-col>
-      <v-col cols="12" sm="7" md="8" class="pt-15 pb-16">
+      <v-col cols="12" sm="7" md="8" class="pt-15 pt-md-0 pb-16">
         <div class="_form--headline ml-sm-5">
           make an inquiry
         </div>
@@ -43,7 +43,7 @@
           lazy-validation
         >
           <v-row align="center" justify="space-between">
-            <v-col cols="6">
+            <v-col cols="6" class="py-0" style="height: 102px">
               <v-text-field
                 ref="name"
                 label="Name"
@@ -59,7 +59,7 @@
                 filled clearable flat dense required
               ></v-text-field>
             </v-col>
-            <v-col cols="6">
+            <v-col cols="6" class="py-0" style="height: 102px">
               <v-select
                 ref="destination"
                 label="Destination"
@@ -76,9 +76,9 @@
             </v-col>
           </v-row>
           <v-row>
-            <v-col cols="6">
+            <v-col cols="6" class="py-0">
               <v-row align="stretch">
-                <v-col cols="12" align-self="start" class="pt-0">
+                <v-col cols="12" align-self="start" class="py-0" style="height: 102px">
                   <v-text-field
                     ref="email"
                     label="Email"
@@ -95,7 +95,7 @@
                   ></v-text-field>
                 </v-col>
                 <!-- <v-spacer /> -->
-                <v-col cols="12" align-self="end" class="mt-1">
+                <v-col cols="12" align-self="end" class="py-0">
                   <v-text-field
                     ref="phone"
                     label="Phone"
@@ -115,7 +115,7 @@
                 </v-col>
               </v-row>
             </v-col>
-            <v-col cols="6" align-self="start">
+            <v-col cols="6" align-self="start"  class="py-0">
               <v-textarea
                 ref="message"
                 class="_message align-self-end"
@@ -177,8 +177,8 @@
           @keyup.enter.prevent="validate"
           lazy-validation
         >
-          <v-row align="center">
-            <v-col cols="12">
+          <v-row no-gutters align="center">
+            <v-col cols="12" style="min-height: 78px">
               <v-text-field
                 ref="name"
                 label="Name"
@@ -194,7 +194,7 @@
                 filled clearable flat dense required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" align-self="end">
+            <v-col cols="12" align-self="end" style="min-height: 78px">
               <v-text-field
                 ref="email"
                 label="Email"
@@ -210,7 +210,7 @@
                 filled clearable flat dense required
               ></v-text-field>
             </v-col>
-            <v-col cols="12">
+            <v-col cols="12" style="min-height: 78px">
               <v-text-field
                 ref="phone"
                 label="Phone"
@@ -228,7 +228,7 @@
                 filled clearable flat dense required
               ></v-text-field>
             </v-col>
-            <v-col cols="12">
+            <v-col cols="12" style="min-height: 78px">
               <v-select
                 ref="destination"
                 label="Destination"
@@ -457,18 +457,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/scss/variables.scss';
+  @import '~/assets/styles/scss/variables.scss';
 
   section {
-    @media (min-width: 600px) {
-      background: #FAFAFA !important;
-    }
-  }
-
-  .px-container {
-    @media (max-width: 600px) {
-      padding-left: 25px;
-      padding-right: 25px;
+    @media #{map-get($display-breakpoints, 'sm-and-down')} {
+      padding-left: 25px !important;
+      padding-right: 25px !important;
     }
   }
 
@@ -490,21 +484,30 @@ export default {
   }
 
   ._contact-row {
-    @include poly-fluid-sizing ('margin-top', (375px:123px, 768px:210px, 1440px:100px));
+    @include poly-fluid-sizing ('margin-top', (375px:102px, 768px:100px, 1440px:178px));
   }
 
   ._contact-desc {
-    @include poly-fluid-sizing ('width', (375px:293.58px, 768px:210px, 1440px:293.58px));
+    @include poly-fluid-sizing ('width', (375px:293.58px, 768px:220px, 1440px:293.58px));
   }
 
   ._form {
+    box-shadow:  0px 7px 64px rgba(0, 0, 0, 0.03);;
     &--headline {
       font-family: 'Montserrat', sans-serif !important;
       font-size: 14px !important;
-      font-weight: 400 !important;
+      font-weight: bold !important;
       line-height: 16px !important;
       text-transform: uppercase !important;
       letter-spacing: 3px !important;
+
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        margin-bottom: 52px !important;
+      }
+    }
+
+    ::v-deep .v-textarea textarea {
+      min-height: 129px !important;
     }
   }
 

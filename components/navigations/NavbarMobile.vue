@@ -2,7 +2,7 @@
   <v-app-bar
     fixed app
     v-bind="$attrs"
-    min-height="80"
+    min-height="78"
     max-width="100vw"
     class="hidden-md-and-up flex-nowrap"
   >

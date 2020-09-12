@@ -227,6 +227,10 @@ export default {
 $primary: #208CB2;
 $primary--disabled: #C7E2EC;
 
+::v-deep .v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
+  box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);;
+}
+
 #mark{
   z-index: 20;
   width: 100%;

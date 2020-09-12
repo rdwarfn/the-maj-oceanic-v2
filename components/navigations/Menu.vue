@@ -1,12 +1,8 @@
 <template>
-  <v-row no-gutters align="center" justify="space-around">
+  <v-row no-gutters align="center" justify="space-around" class="flex-nowrap">
     <template v-for="data in NavList">
       <v-col cols="auto"
         class="text-center"
-        :class="[
-          'rounded',
-          !isIntersecting && data.id < 3 ? 'mr-5 mr-lg-10' : ''
-        ]"
         v-if="data.id < 4"
         :key="data.id"
       >
@@ -23,13 +19,15 @@
           v-bind:rounded="false"
         >
           <template v-slot:activator="{ on, attrs }">
+              <!-- v-bind:to="data.to" -->
             <v-btn
-              v-bind:to="data.to"
               v-bind="attrs"
               v-on="{on}"
-              text x-small
+              v-bind:to="data.to"
+              text tile nuxt
+              draggable="false"
               v-bind:dark="isIntersecting"
-              class="px-0 font-md-12"
+              class="btn-s font-md-12"
             >
               {{ data.title }}
             </v-btn>
@@ -57,67 +55,105 @@
         </v-menu>
       </v-col>
     </template>
-    <v-spacer v-if="!isIntersecting" />
+
+    <v-spacer v-show="!isIntersecting" />
+
     <v-col
-      v-if="!isIntersecting"
-      class="text-center rounded py-1 px-2"
-      v-ripple
+      v-show="!isIntersecting"
+      cols="auto"
+      class="text-center ml-lg-n16"
+      v-bind:class="{
+        intersec: !isIntersecting
+      }"
     >
-      <nuxt-link draggable="false" class="mx-auto" to="/" replace>
+      <v-btn
+          class="mx-auto"
+          to="/"
+          text tile nuxt replace>
         <img
-          class="mx-auto mr-7 _img--black"
+          class="mx-auto _img--black"
           draggable="false"
           v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
           width="auto"
           height="auto"
         />
-      </nuxt-link>
+      </v-btn>
     </v-col>
-    <v-spacer v-if="!isIntersecting" />
+    <v-spacer v-show="!isIntersecting" />
     <template v-for="data in NavList">
       <v-col cols="auto"
         v-if="data.id >= 4"
         v-bind:key="data.id"
         v-bind:class="[
           'text-center',
-          !isIntersecting && data.id == 4 ? 'mr-5 mr-lg-10' : ''
         ]"
       >
-        <v-menu bottom offset-y>
-          <template v-slot:activator="{ on, attrs }">
+        <v-row no-gutters align="center">
+          <v-col cols="auto">
+            <v-menu bottom offset-y>
+              <template v-slot:activator="{ on, attrs }">
+                  <!-- v-bind:to="data.to" -->
+                <v-btn
+                  v-bind="attrs"
+                  v-on="{on}"
+                  v-bind:to="data.to"
+                  text tile nuxt
+                  v-bind:dark="isIntersecting"
+                  class="font-md-12">
+                  {{ data.title }}
+                </v-btn>
+              </template>
+              <v-list
+                v-if="data.items.length"
+                flat subheader dense tile
+                min-width="190"
+                color="transparent"
+                auto
+                v-bind:dark="isIntersecting"
+              >
+                <v-list-item
+                  v-bind:to="item.to"
+                  v-for="(item, index) in data.items"
+                  v-bind:key="index"
+                  v-bind:disabled="item.disabled"
+                  dense nuxt tile
+                >
+                  <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
+                    {{ item.title }}
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </v-col>
+
+          <v-col
+            v-show="!isIntersecting"
+            v-bind:class="{
+              intersec: !isIntersecting
+            }">
             <v-btn
-              v-bind:to="data.to"
-              v-bind="attrs"
-              v-on="{on}"
-              text x-small
-              v-bind:dark="isIntersecting"
-              class="px-0 font-md-12"
-            >
-              {{ data.title }}
+              text tile nuxt
+              class="font-md-12">
+              login
             </v-btn>
-          </template>
-          <v-list
-            v-if="data.items.length"
-            flat subheader dense tile
-            min-width="190"
-            color="transparent"
-            auto
-            v-bind:dark="isIntersecting"
-          >
-            <v-list-item
-              v-for="(item, index) in data.items"
-              v-bind:key="index"
-              v-bind:to="item.to"
-              v-bind:disabled="item.disabled"
-              dense nuxt tile
+          </v-col>
+
+          <v-col
+            v-show="!isIntersecting"
+            cols="auto"
+            v-bind:class="{
+              intersec: !isIntersecting
+            }">
+            <v-btn
+              class="btn-s btn--inquire ml-1 font-md-12"
+              to="/contact-us"
+              depressed tile nuxt dark
             >
-              <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
-                {{ item.title }}
-              </v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+              Inquire Now
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </template>
   </v-row>
@@ -137,14 +173,34 @@ export default {
       type: [Array, Object],
       default: function () { return [] }
     }
+  },
+
+  methods: {
+    goTo (path, query=null, replace=false) {
+      const ctx = Object.prototype.toString(path);
+      console.log(path)
+      if (ctx === '[object Object]') {
+        const dest = Object.assign(path, query);
+        this.$router.push(dest)
+        return null;
+      } else if (replace) {
+        this.$router.replace(path)
+      }
+      this.$router.push(path)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  ::v-deep.v-btn:not(.v-btn--round).v-size--default.btn--inquire {
+    @include poly-fluid-sizing ('max-width', (960px:120px, 1440px:141px));
+  }
   ._img--black {
     min-width: 170.19px !important;
     max-width: 170.19px !important;
+    // @include poly-fluid-sizing ('margin-left', (960px:2px, ))
   }
   ::v-deep .v-list-group--no-action > .v-list-group__items > .v-list-item{
     padding-left: 30px !important;
