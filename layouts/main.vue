@@ -15,7 +15,7 @@
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="false"
-      class="hidden-md-and-up"
+      class="hidden-lg-and-up"
       style="z-index: 20"
       color="#FBF7F6"
       width="100vw"
@@ -45,7 +45,7 @@
           <v-col sm="4">
           <v-list-item-action class="mr-0">
             <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
-              <v-icon>mdi-close</v-icon>
+              <v-icon>{{svgClose}}</v-icon>
             </v-btn>
           </v-list-item-action>
           </v-col>
@@ -147,6 +147,7 @@
 </template>
 
 <script>
+import { mdiClose } from '@mdi/js';
 import tmoNavigation from '@/components/navigations/index.vue';
 import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
@@ -160,7 +161,7 @@ const components = {
   tmoNavigationMobile,
   tmoHeroBanner,
   tmoFooter,
-  tmoBtn,
+  tmoBtn
 }
 
 export default {
@@ -178,6 +179,7 @@ export default {
       isLoadedHeros: false,
       intersec: null,
       showHero: true,
+      svgClose: mdiClose
     }
   },
 

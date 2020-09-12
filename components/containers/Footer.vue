@@ -204,6 +204,12 @@
 </template>
 
 <script>
+import {
+  mdiInstagram,
+  mdiFacebook,
+  mdiTwitter,
+  mdiYoutube
+} from '@mdi/js';
 export default {
   name: 'Footer',
 
@@ -212,22 +218,22 @@ export default {
       sosmed: [
         {
           id: 0,
-          icon: "mdi-instagram",
+          icon: mdiInstagram,
           link: "https://www.instagram.com/themajoceanic"
         },
         {
           id: 1,
-          icon: "mdi-facebook",
+          icon: mdiFacebook,
           link: "https://www.facebook.com/themajoceanic"
         },
         {
           id: 2,
-          icon: "mdi-twitter",
+          icon: mdiTwitter,
           link: "https://twitter.com/themajoceanic"
         },
         {
           id: 3,
-          icon: "mdi-youtube",
+          icon: mdiYoutube,
           link: "https://www.youtube.com/channel/UC8TUM39T9bFOtxcJn7PwYgA"
         }
       ],

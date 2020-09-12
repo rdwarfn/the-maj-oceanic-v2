@@ -132,20 +132,6 @@ export default {
         // Add some plugins
         'postcss-import': {},
         'postcss-nesting': {},
-        // 'postcss-uncss': {
-        //   'stylesheets': [
-        //     './assets/styles/css/_fonts.css',
-        //     './node_modules/prismjs/themes/prism.css',
-        //   ],
-        //   'ignore': [
-        //     /-(leave|enter|appear)(|-(to|from|active))$/, // Normal transitions
-        //     /^nuxt-link(|-exact)-active$/, // Nuxt link classes
-        //     /^(?!cursor-move).+-move$/, // Move transitions
-        //     /data-v-.*/, // Keep scoped styles
-        //     /^v-.*/,
-        //     /^theme.*/
-        //   ]
-        // }
       },
       preset: {
         autoprefixer: {
