@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="the-vessel">
     <intro
       class="mb-16"
       v-bind:data="{
@@ -19,30 +19,23 @@
       v-bind:data="data.carousel_card"
     />
 
-    <!-- <base-carousel-three /> -->
+    <the-teams
+      v-bind:data="data.teams"
+    />
 
-    <v-container tag="section" class="my-16">
-      <base-carousel-three
-        v-bind:data="data.card_three_image"
-        static-image
-      />
+    <v-container class="sustainability d-flex flex-column justify-center px-6 px-md-0" tag="section">
+      <div>
+        <base-card-text-image
+          v-bind:data="data.card_text_image[0]"
+          v-bind:button-props="{
+            outlined: true
+          }"
+          button-text="Learn More"
+          static-image
+          reverse
+        />
+      </div>
     </v-container>
-
-    <!-- <v-container tag="section" class="my-16">
-      <t-card-text-image
-        :data="data.card_text_image[0]"
-        v-bind:button-props="{
-          outlined: true
-        }"
-        card-content-class=""
-        v-bind:img-aspect-ratio="null"
-        button-text="learn more"
-        button-class="btn-l"
-        card-img-class="__card_text_img--img"
-        static-image
-        reverse
-      />
-    </v-container> -->
   </div>
 </template>
 
@@ -51,10 +44,11 @@ const components = {
   BaseCardThree: () => import('@/components/base/BaseCardThreeImage.vue'),
   BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
   BaseCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
-  tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
   Intro: () => import('@/components/Intro.vue'),
   TheCabins: () => import('@/components/TheCabins.thevessel.vue'),
-  Spesification: () => import('@/components/Spesification.thevessel.vue')
+  Spesification: () => import('@/components/Spesification.thevessel.vue'),
+  TheTeams: () => import('@/components/TheTeams.thevessel.vue')
 }
 export default {
   layout: 'main',
@@ -126,5 +120,9 @@ export default {
   ::v-deep .__card_text_img--img {
     @include poly-fluid-sizing('max-width', (375px:325px, 600px:356px, 1204px:445px));
     @include poly-fluid-sizing('max-height', (375px:345px, 600px:700px, 1204px:716px));
+  }
+
+  .sustainability {
+    @include poly-fluid-sizing ('min-height', (375px:667px, 768px:450px));
   }
 </style>

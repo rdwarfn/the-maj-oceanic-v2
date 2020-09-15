@@ -1,0 +1,59 @@
+{
+  "hero": {
+    "id": 0,
+    "text": "Suites & Staterooms",
+    "image": "carousel/banner/hero-5.jpg"
+  },
+  "heading": "Locally-crafted, world-inspired",
+  "description": "Upping the suite game in the luxury Pinisi market, there are 6+1 cabins specially-designed by a group of land-based designers to give a modern look that's a floating reflection of a world-class resort.",
+
+  "spesification": [{
+    "type": "admiral suite",
+    "data": [
+      {
+        "id": 0,
+        "caption": "admiral suite",
+        "heading": "Zheng He",
+        "image": "carousel/card/13.png",
+        "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
+        "to": "#"
+      },
+      {
+        "id": 1,
+        "caption": "admiral suite",
+        "heading": "Zheng He",
+        "image": "carousel/card/13.png",
+        "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
+        "to": "#"
+      }
+    ]
+  },{
+    "type": "commodore suite",
+    "data": [
+      {
+        "id": 0,
+        "caption": "commodore suite",
+        "heading": "Columbus",
+        "image": "carousel/card/14-columbus.png",
+        "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
+        "to": "#"
+      },
+      {
+        "id": 1,
+        "caption": "commodore suite",
+        "heading": "Columbus",
+        "image": "carousel/card/15-columbus.png",
+        "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
+        "to": "#"
+      },
+      {
+        "id": 2,
+        "caption": "commodore suite",
+        "heading": "Columbus",
+        "image": "carousel/card/16-columbus.png",
+        "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
+        "to": "#"
+      }
+    ]
+  }]
+}

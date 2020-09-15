@@ -1,88 +1,70 @@
 <template>
-  <v-flex class="__carousel-three">
-    <swiper
-      ref="swiper"
-      class="swiper container"
-      v-bind:options="swiperOption"
-    >
-      <swiper-slide
-        v-for="item in data"
-        v-bind:key="item.id"
+  <v-container class="px-0 __carousel-three">
+    <!-- <div> -->
+      <swiper
+        ref="swiper"
+        class="swiper"
+        v-bind:options="swiperOption"
       >
-        <div class="text-center __carousel-three--item">
-          <v-skeleton-loader
-            v-if="!item.image"
-            type="image"
-            class="__carousel-three--item-img"
-          ></v-skeleton-loader>
-          <div v-else class="swiper-zoom-container">
-            <v-img
-              v-bind:src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
-              v-bind:lazy-src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
-              class="__carousel-three--item-img swiper-zoom-target"
-            ></v-img>
+        <swiper-slide
+          v-for="item in data"
+          v-bind:key="item.id"
+        >
+          <div class="text-center __carousel-three--item">
+            <v-skeleton-loader
+              v-if="!item.image"
+              type="image"
+              class="__carousel-three--item-img"
+            ></v-skeleton-loader>
+            <!-- <div v-else class="swiper-zoom-container"> -->
+              <v-img
+                v-bind:src="staticImage
+                  ? require(`~/assets/images/${item.image}`)
+                  : item.image"
+                v-bind:lazy-src="staticImage
+                  ? require(`~/assets/images/${item.image}`)
+                  : item.image"
+                class="__carousel-three--item-img swiper-zoom-target"
+              ></v-img>
+            <!-- </div> -->
+            <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
+              {{item.heading}}
+            </h1>
+            <p v-if="item[textData]" v-bind:class="textClass">
+              {{item[textData]}}
+            </p>
+            <t-button
+              v-if="buttonText"
+              v-bind:class="buttonClass"
+              v-text="buttonText"
+              v-bind:props="{
+                to: item.to,
+                ...buttonProps
+              }"
+            />
           </div>
-          <h1
-            v-if="item.heading"
-            class="__carousel-three--item-heading mx-auto"
-            v-bind:class="headingClass"
-          >
-            {{item.heading}}
-          </h1>
-          <p
-            v-if="item.description"
-            v-bind:class="descriptionClass"
-          >
-            {{item.description}}
-          </p>
-          <t-button
-            v-if="buttonText"
-            v-bind:class="buttonClass"
-            v-text="buttonText"
-            v-bind:props="{
-              to: item.to,
-              ...buttonProps
-            }"
-          />
-        </div>
-      </swiper-slide>
-      <div class="swiper-pagination swiper-pagination-bullets hidden-xs-only" slot="pagination"></div>
-      <v-btn
-        absolute
-        fab
-        x-small
-        class="button--left swiper-button-prev"
-        slot="button-prev"
-        color="primary"
-      >
-        <v-icon color="white">mdi-chevron-left</v-icon>
-      </v-btn>
-      <v-btn
-        absolute
-        fab
-        x-small
-        class="button--left swiper-button-next"
-        color="primary"
-        slot="button-next"
-      >
-      <v-icon color="white">mdi-chevron-right</v-icon>
-      </v-btn>
-    </swiper>
-  </v-flex>
+        </swiper-slide>
+        <div class="swiper-pagination swiper-pagination-bullets hidden-md-and-down" slot="pagination"></div>
+      </swiper>
+      <div class="navigation container hidden-md-and-down">
+        <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
+          <v-icon color="white"> {{icon.left}} </v-icon>
+        </v-btn>
+        <v-btn depressed absolute fab x-small class="button--right" color="primary" @click="next">
+          <v-icon color="white"> {{icon.right}} </v-icon>
+        </v-btn>
+      </div>
+    <!-- </div> -->
+  </v-container>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import tHeading from '@/components/base/BaseHeading.vue';
 import tButton from '@/components/base/BaseButton.vue';
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
 const components = {
   Swiper,
   SwiperSlide,
-  tHeading,
   tButton
 }
 export default {
@@ -92,7 +74,8 @@ export default {
 
   props: {
     headingClass: { type: String },
-    descriptionClass: { type: String } ,
+    textClass: { type: String } ,
+    textData: { type: String, default: 'text' },
     buttonText: { type: String },
     buttonClass: { type: String },
     buttonProps: { type: Object },
@@ -106,11 +89,13 @@ export default {
 
   data () {
     return {
+      icon: {
+        left: mdiChevronLeft,
+        right: mdiChevronRight
+      },
+      isEnd: false,
       swiperOption: {
         lazy: true,
-        zoom: {
-          maxRatio: 3,
-        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -118,25 +103,32 @@ export default {
             return `<span title="${index+1}" class="${className} swiper-pagination-bullet-custom"></span>`
           }
         },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
         breakpoints: {
-        // when window width is >= 320px
-        320: {
-          slidesPerView: 'auto',
-          spaceBetween: 10,
-          centeredSlides: true,
-          initialSlide: 1,
-        },
-        // when window width is >= 480px
-        600: {
-          slidesPerView: 3,
-          spaceBetween: 30
+          // when window width is >= 320px
+          320: {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            centeredSlides: true,
+            initialSlide: 1,
+          },
+          // when window width is >= 480px
+          600: {
+            slidesPerView: 3,
+            spaceBetween: 15
+          }
         }
       }
-      }
+    }
+  },
+
+  methods: {
+    prev () {
+      if (this.$refs.swiper.$swiper.isBeginning) { return }
+      this.$refs.swiper.$swiper.slidePrev();
+    },
+    next () {
+      if (this.$refs.swiper.$swiper.isEnd) { return }
+      this.$refs.swiper.$swiper.slideNext();
     }
   }
 }
@@ -154,9 +146,33 @@ export default {
     @include poly-fluid-sizing ('height', (375px:300px, 768px:197px, 1204px:350px));
   }
 
-  ::v-deep .__carousel-three {
+  @media #{map-get($display-breakpoints, ('md-and-up'))} {
+    .button--left {
+      top: 40%;
+      right: auto;
+      left: -62px;
+    }
+    .button--right {
+      top: 40%;
+      left: auto;
+      right: -62px;
+    }
+  }
+  @media #{map-get($display-breakpoints, ('sm-only'))} {
+    .button--left, .button--right {
+      top: 30%;
+    }
+    .button--left {
+      left: 24px;
+    }
+    .button--right {
+      right: 24px;
+    }
+  }
+
+  .__carousel-three {
+    position: relative !important;
     &--item {
-      // @include poly-fluid-sizing('max-width', (320px:325px, 600px:233px, 960px:350px));
       &-heading {
         @include poly-fluid-sizing('max-width', (600px:233px, 1204px:350px));
         @include poly-fluid-sizing ('font-size', (768px:18px,1440px:22px));
@@ -166,8 +182,6 @@ export default {
       }
 
       &-img {
-        margin-left: auto;
-        margin-right: auto;
         @media #{map-get($display-breakpoints, 'xs-only')} {
           height: 300px !important;
         }
@@ -176,24 +190,17 @@ export default {
   }
 
   ::v-deep .swiper {
-    &-slide-active {
-      z-index: 3 !important;
+    @media #{map-get($display-breakpoints, ('sm-only'))} {
+      width: 88%;
     }
+    padding-bottom: 50px !important;
+
+    &-slide-active { z-index: 3 !important; }
     &-slide {
       @media #{map-get($display-breakpoints, 'xs-only')} {
         width: 300px !important;
       }
     }
-    padding-bottom: 30px !important;
-    .button--left, .button--right {
-      display: none !important;
-      top: 35%;
-      @media (min-width: 600px) {
-        display: flex !important;
-        z-index: 10 !important;
-      }
-    }
-
     .swiper-pagination-bullets {
       bottom: -5px;
     }
@@ -249,13 +256,6 @@ export default {
             border-color: $primary !important;
           }
         }
-      }
-    }
-
-    .swiper-button-next, .swiper-button-prev {
-      opacity: 1 !important;
-      &::after {
-        content: none;
       }
     }
   }

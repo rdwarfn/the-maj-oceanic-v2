@@ -11,7 +11,7 @@
       outlined
       depressed
       tile
-    >discover more</v-btn>
+    >suites and staterooms</v-btn>
   </v-container>
   <v-row no-gutters tag="section" class="__the-cabins text-center" v-else>
     <v-col cols="12" class="pa-0">
@@ -31,7 +31,7 @@
         outlined
         depressed
         tile
-      >discover more</v-btn>
+      >suites and staterooms</v-btn>
     </v-col>
   </v-row>
 </template>

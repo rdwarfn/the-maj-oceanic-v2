@@ -1,6 +1,6 @@
 <template>
-  <v-container tag="section" class="__spesification px-6 px-md-0">
-    <div>
+  <v-sheet color="#fafafa" tag="section" class="__spesification d-flex align-center">
+    <v-container class="mx-auto px-6 px-md-0">
       <base-carousel
         v-bind:data="data"
         card-class="__carousel_card"
@@ -13,8 +13,8 @@
         static-image
       >
       </base-carousel>
-    </div>
-  </v-container>
+    </v-container>
+  </v-sheet>
 </template>
 
 <script>
@@ -34,9 +34,8 @@ export default {
 
 <style lang="scss" scoped>
 .__spesification {
-  // display: grid;
-  // align-items: center;
   @include poly-fluid-sizing ('height', (375px:680px, 768px:545px, 1440px:595px));
+  @include poly-fluid-sizing ('margin-top', (375px:40px, 768px:75px, 1440px:90px));
 }
 ::v-deep .v-card__text {
   p {

@@ -1,55 +1,21 @@
 <template>
-  <div class="container">
-    <client-only>
-      <v-row v-if="data.caption" align="center" :justify="captionJustify" class="mb-3">
-        <div
-          class="text-h5 static"
-          :class="captionClass"
-          v-text="data.caption"
-        />
-      </v-row>
-      <v-row align="center" :justify="headingJustify" class="fill-height mb-3">
-        <v-skeleton-loader
-          type="heading"
-          :loading="loading"
-          :transition="transition"
-          max-width="100%"
-        >
-          <div
-            :title="data.heading"
-            v-text="data.heading"
-            class="text-h4 text-md-h3 font-weight-medium static"
-            :class="headingClass"
-          />
-        </v-skeleton-loader>
-      </v-row>
-      <v-row v-if="data.text" align="center" :justify="textJustify" class="fill-height">
-        <v-skeleton-loader
-          type="paragraph"
-          :loading="loading"
-          :transition="transition"
-          max-width="100%"
-        >
-          <p
-            class="text--primary"
-            :class="textClass"
-          >
-            {{ data.text }}
-          </p>
-        </v-skeleton-loader>
-      </v-row>
-      <v-row v-if="data.list">
-        <ul :class="listClass">
-          <li
-            v-for="(item, index) in data.list.split('\n')"
-            :key="index"
-            :title="item"
-            v-text="item"
-          />
-        </ul>
-      </v-row>
-    </client-only>
-  </div>
+  <v-container class="mx-auto justify-center">
+    <v-row v-if="data.caption" align="center" :justify="captionJustify" class="mb-3">
+      <div
+        class="text-h5 static"
+        :class="captionClass"
+        v-text="data.caption"
+      />
+    </v-row>
+    <div
+      v-text="data.heading"
+      class="v-heading font-weight-bold text-center"
+      v-bind:class="headingClass"
+    />
+    <p class="text--primary v-paragraph text-center" :class="textClass">
+      {{ data.text }}
+    </p>
+  </v-container>
 </template>
 
 <script>
@@ -98,3 +64,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+ .v-heading {
+   font-family: 'Domine', serif;
+   @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
+ }
+
+ .v-paragraph {
+   margin-top: 40px;
+ }
+</style>

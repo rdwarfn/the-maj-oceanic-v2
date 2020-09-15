@@ -1,6 +1,15 @@
 <template>
-  <div>
-    <div v-for="(data, index) in store" v-bind:key="index">
+  <div id="the-cabin">
+    <v-container tag="section" class="mx-auto px-6 px-md-0">
+      <div class="intro--head font-weight-bold text-center">
+        {{data.heading}}
+      </div>
+      <p class="intro--paragraph text-center"> {{data.description}} </p>
+    </v-container>
+
+    <spesification v-bind:data="data.spesification[0].data" />
+
+    <!-- <div v-for="(data, index) in store" v-bind:key="index">
       <v-container tag="section" class="mb-16 px-7 px-sm-4 px-md-0 px-lg-0">
         <tCarousel
           class="__carousel"
@@ -54,20 +63,20 @@
           />
         </v-container>
       </section>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
-const getTheCabins = () => import('~/static/data/the-cabins.json').then(m => m.default || m);
 import TmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
 const components = {
   TmgIconDivider,
-  tHeading: () => import('@/components/base/BaseHeading.vue'),
-  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
-  tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  tCarouselTextImage: () => import('@/components/base/BaseCarouselTextImage.vue'),
-  tCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
+  // tHeading: () => import('@/components/base/BaseHeading.vue'),
+  // tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
+  // tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  // tCarouselTextImage: () => import('@/components/base/BaseCarouselTextImage.vue'),
+  // tCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
+  Spesification: () => import('@/components/Spesification.thecabin.vue')
 }
 export default {
   layout: 'main',
@@ -76,15 +85,24 @@ export default {
 
   name: 'the-cabin',
 
-  data () {
-    return {
-      store: [],
+  async asyncData ({ $content }) {
+    const data = await $content ('pages/the-cabins/index').fetch();
+    return { data }
+  },
+
+  mounted () {
+    console.log(this.$data.data)
+    if (this.$data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      this.addBreadcrumb ({
+        text: 'the cabin',
+        href: this.$route.path
+      });
     }
   },
 
-  async fetch () {
-    const data = await getTheCabins();
-    this.store = data;
+  destroyed () {
+    this.removeBreadcrumb('the vessel');
   },
 
   computed: {
@@ -95,6 +113,21 @@ export default {
         default: break;
       }
     },
+  },
+
+  methods: {
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', { page_key, data });
+    },
+    addBreadcrumb ({ text, href }) {
+      this.$store.commit('breadcrumbs/add', {
+        text, href
+      });
+    },
+    removeBreadcrumb(params) {
+      const callback = (args) => args.text === params;
+      this.$store.commit('breadcrumbs/remove', callback);
+    }
   }
 }
 </script>
@@ -102,6 +135,27 @@ export default {
 <style lang="scss" scoped>
 $primary: #208cb2;
 $secondary: #EFE1DC;
+
+.intro {
+  &--head {
+    width: 100%;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    font-family: 'Domine', serif;
+    @include poly-fluid-sizing ('font-size', (375px:20px, 768px:34px));
+    @media #{map-get($display-breakpoints, 'sm-and-up')} {
+      line-height: 41px !important;
+    }
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      line-height: 32px !important;
+    }
+  }
+
+  &--paragraph {
+    margin-top: 40px;
+  }
+}
 
 ::v-deep .__oceanic--secondary {
   background: $secondary !important;

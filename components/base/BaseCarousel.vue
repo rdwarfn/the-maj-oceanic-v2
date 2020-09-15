@@ -13,6 +13,7 @@
         {{ dataActive.heading }}
       </div>
     </v-card-title>
+    <client-only>
     <swiper
       ref="swiper"
       class="swiper"
@@ -23,14 +24,6 @@
         v-bind:key="item.id"
       >
         <v-card flat tile hover color="transparent" max-width="auto">
-          <!-- <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
-            {{ item.caption }}
-          </v-card-subtitle>
-          <v-card-title class="hidden-sm-and-up mb-4">
-            <div class="text-h4 mx-auto">
-              {{ item.heading }}
-            </div>
-          </v-card-title> -->
           <template>
             <v-skeleton-loader
               v-if="!item.image"
@@ -50,29 +43,25 @@
             />
           </template>
         </v-card>
-        <client-only>
-          <v-card
-            flat tile
-            class="hidden-sm-and-up mx-auto pb-13"
-            v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'"
-          >
-            <v-card-text class="px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'">
-              <p class="text--primary px-5">{{ item.text }}</p>
-            </v-card-text>
-            <v-card-actions class="pa-0 mt-4">
-              <t-button
-                class="btn-l mx-auto"
-                v-bind:props="{
-                  color: 'primary',
-                  outlined: true,
-                  to: item.to,
-                  ...buttonProps
-                }"
-                v-text="buttonText"
-              />
-            </v-card-actions>
-          </v-card>
-        </client-only>
+        <!-- <client-only> -->
+        <v-card flat tile class="hidden-sm-and-up mx-auto pb-13" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
+          <v-card-text class="px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'">
+            <p class="text--primary px-5">{{ item.text }}</p>
+          </v-card-text>
+          <v-card-actions v-if="buttonText" class="pa-0 mt-4">
+            <t-button
+              class="btn-l mx-auto"
+              v-bind:props="{
+                color: 'primary',
+                outlined: true,
+                to: item.to,
+                ...buttonProps
+              }"
+              v-text="buttonText"
+            />
+          </v-card-actions>
+        </v-card>
+        <!-- </client-only> -->
       </swiper-slide>
       <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
       <template v-if="data && data.length > 1">
@@ -84,7 +73,7 @@
           color="white"
           slot="button-prev"
         >
-          <v-icon color="primary">mdi-chevron-left</v-icon>
+          <v-icon color="primary">{{iconLeft}}</v-icon>
         </v-btn>
         <v-btn
           fab
@@ -94,12 +83,13 @@
           color="white"
           slot="button-next"
         >
-          <v-icon color="primary">mdi-chevron-right</v-icon>
+          <v-icon color="primary">{{iconRight}}</v-icon>
         </v-btn>
       </template>
     </swiper>
+    </client-only>
 
-    <client-only>
+    <!-- <client-only> -->
       <v-card
         v-if="Object.keys(dataActive).length"
         class="__carousel--card hidden-xs-only"
@@ -152,12 +142,13 @@
           />
         </v-card-actions>
       </v-card>
-    </client-only>
+    <!-- </client-only> -->
   </v-sheet>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 import tButton from '@/components/base/BaseButton.vue';
 const components = {
   Swiper,
@@ -195,6 +186,8 @@ export default {
       store: [],
       dataActive: {},
       activeIndex: 0,
+      iconLeft: mdiChevronLeft,
+      iconRight: mdiChevronRight,
       swiperOption: {
         lazy: true,
         slidesPerView: 1,
@@ -296,17 +289,19 @@ export default {
     }
 
     &--card {
+      display: inline-block !important;
+      z-index: 10 !important;
+      box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.03) !important;
+      border-radius: 2px;
       @include poly-fluid-sizing ('width', (375px:290px, 1440px:445px));
       // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
       @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
       @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
       @include poly-fluid-sizing ('padding-left', (375px:20px, 768px:25px, 1440px:50px));
       @include poly-fluid-sizing ('padding-right', (375px:20px, 768px:25px, 1440px:50px));
-      display: inline-block !important;
-      z-index: 10 !important;
-      top: 10% !important;
-      right: auto;
       @include poly-fluid-sizing ('left', (374px:260px, 768px:347px, 1440px:665px));
+      right: auto;
+      top: 10% !important;
       margin: {
         // top: 40px !important;
         right: auto !important;
@@ -356,9 +351,6 @@ export default {
 
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
       @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
-      // @media (min-width: 1441px) {
-      //   max-width: 0%;
-      // };
       ::v-deep .v-skeleton-loader__image {
         @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
         @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
@@ -413,21 +405,21 @@ export default {
           }
         }
 
-        &.swiper-button-disabled {
-          box-shadow: none;
-          pointer-events: none;
-          color: rgba(0,0,0,.26) !important;
-          background-color: #E0E0E0 !important;
-          .v-icon {
-            color: rgba(0,0,0,.26) !important;
-            background-color: transparent !important;
-          }
-        }
+        // &.swiper-button-disabled {
+        //   box-shadow: none;
+        //   pointer-events: none;
+        //   color: rgba(0,0,0,.26) !important;
+        //   background-color: #E0E0E0 !important;
+        //   .v-icon {
+        //     color: rgba(0,0,0,.26) !important;
+        //     background-color: transparent !important;
+        //   }
+        // }
       }
 
       .button--left, .button--right {
         display: none !important;
-        top: 80% !important;
+        top: 85% !important;
         @media (min-width: 600px) {
           display: inline-block !important;
         }

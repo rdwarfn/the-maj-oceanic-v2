@@ -5,8 +5,9 @@
     "image": "carousel/banner/hero-3.jpg"
   },
   "heading": "Inspired by centuries of marine wisdom",
-  "description": "One of our missions is to preserve and introduce to the world the glory of the Indonesian maritime history. The MAJ Oceanic is hand-built and handcrafted in Bira, Sulawesi based on the heritage of ancestral knowledge.",
+  "description": "Sailing on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity.",
   "image": "large/6.jpg",
+
   "card_three_image": {
     "caption": "The Cabins",
     "heading": "Lorem Ipsum Dolor Sit Amet",
@@ -31,50 +32,67 @@
       }
     ]
   },
+
   "carousel_card": [
     {
+      "id": 0,
+      "caption": "The Decks",
+      "heading": "The sea is your fairway",
+      "image": "carousel/card/11.png",
+      "text": "The shaded lounge areas on the fore and aft decks offer an oasis of calm to relax and bask in the ever-changing scenery. The top deck offers a one-of-a-kind ‘equatorial golf’ experience using biodegradable ecoballs, making the ocean as the player's fairway.",
+      "to": "#"
+    },
+    {
       "id": 1,
-      "caption": "The Vessel",
+      "caption": "The Decks",
       "heading": "Craftmanship lives on",
-      "text": "Sailing on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity.",
+      "image": "carousel/card/12.png",
+      "text": "The shaded lounge areas on the fore and aft decks offer an oasis of calm to relax and bask in the ever-changing scenery. The top deck offers a one-of-a-kind ‘equatorial golf’ experience using biodegradable ecoballs, making the ocean as the player's fairway.",
       "to": "#"
     }
   ],
-  "tabs":{
-    "heading": "Voyages",
-    "text": "Whether you are interested in culture, history, ecology or wildlife, Indonesia's eastern archipelago presents a fantastic range of land-based experiences, including those only reached by sea.",
-    "data": [{
-      "id": 0,
-      "label": "Flores Sea",
-      "data": {
-        "title": "Here be dragons",
-        "text": "From island hopping to trekking tours, from the world-famous Komodo Island (dubbed as Indonesia’s Jurassic Park) to splendid pink sand beaches. This UNESCO World Heritage Site offers endless splendors to relish on.",
-        "image": "tabs/2.jpg",
+
+  "teams": {
+    "caption": "The Team",
+    "heading": "The beating heart of our mission",
+    "data": [
+      {
+        "id": 0,
+        "image": "teams/christophe_beltrando.png",
+        "heading": "Christophe Beltrando",
+        "status": "Cruise Director",
+        "to": "#"
+      },
+      {
+        "id": 1,
+        "image": "teams/yunus.png",
+        "heading": "Yunus Ardiyamsyah",
+        "status": "Captain",
+        "to": "#"
+      },
+      {
+        "id": 2,
+        "image": "teams/syamsuddin.png",
+        "heading": "Syamsuddin",
+        "status": "First Officer",
+        "to": "#"
+      },
+      {
+        "id": 3,
+        "image": "teams/chef_oceanic.png",
+        "heading": "Sumarna",
+        "status": "Head Chef",
         "to": "#"
       }
-    },{
-      "id": 1,
-      "label": "Raja Ampat",
-      "data": {
-        "title": "Here be dragons",
-        "text": "From island hopping to trekking tours, from the world-famous Komodo Island (dubbed as Indonesia’s Jurassic Park) to splendid pink sand beaches. This UNESCO World Heritage Site offers endless splendors to relish on.",
-        "image": "tabs/2.jpg",
-        "to": "#"
-      }
-    }]
+    ]
   },
+
   "card_text_image": [
     {
-      "caption": "dining",
-      "heading": "The finest at sea",
-      "text": "Menus aboard The MAJ Oceanic pay homage to the regions where we sail while ensuring tremendous variety. You and our chef can also craft a bespoke menu inspired by a palate or a special moment. It is then prepared and served in a location of your choosing.",
-      "image": "card/10.jpg",
-      "to": "#"
-    },{
-      "caption": "occasions",
-      "heading": "Convene like ancient seamen",
-      "text": "Upgrade your party to a special bespoke trip that will take you deeper into the hidden beaches, and closer to the elements than any cruise ships or liveaboards.",
-      "image": "card/10.jpg",
+      "caption": "Sustainability",
+      "heading": "After all, the ocean is our home",
+      "text": "We have profound responsibility in preserving and protecting the places and communities we visit. More than anything else, we take care of the environment in which we operate, the guests who cruise with us, and the people who work with us.",
+      "image": "card/13.jpg",
       "to": "#"
     }
   ]

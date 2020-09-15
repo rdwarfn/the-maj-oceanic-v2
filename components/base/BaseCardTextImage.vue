@@ -49,57 +49,55 @@
             ></t-button>
           </v-card-actions>
 
-          <client-only>
-            <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
-              <v-card-subtitle
-                v-if="data.caption"
-                class="text-h6 font-weight-bold pb-0 px-0 static"
-                v-bind:class="contentRight ? 'text-right' : null"
-                v-text="data.caption"
-              />
-              <v-card-title
-                class="px-0 text-break"
-                v-bind:class="contentRight ? 'justify-end' : null"
-                v-text="data.heading"
-              />
+          <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
+            <v-card-subtitle
+              v-if="data.caption"
+              class="text-h6 font-weight-bold pb-0 px-0 static"
+              v-bind:class="contentRight ? 'text-right' : null"
+              v-text="data.caption"
+            />
+            <v-card-title
+              class="px-0 text-break"
+              v-bind:class="contentRight ? 'justify-end' : null"
+              v-text="data.heading"
+            />
 
-              <v-card-text
-                class="px-0"
-                v-bind:class="contentRight ? 'text-right' : null"
-              >
-                {{ data.text }}
+            <v-card-text
+              class="px-0"
+              v-bind:class="contentRight ? 'text-right' : null"
+            >
+              {{ data.text }}
 
-                <ul v-if="data.list">
-                  <li
-                    v-for="(item, index) in data.list.split('\n')"
-                    v-bind:key="index"
-                    v-text="item"
-                  />
-                </ul>
-              </v-card-text>
+              <ul v-if="data.list">
+                <li
+                  v-for="(item, index) in data.list.split('\n')"
+                  v-bind:key="index"
+                  v-text="item"
+                />
+              </ul>
+            </v-card-text>
 
-              <v-card-actions
-                v-if="buttonText"
-                class="px-0 mt-6"
-                v-bind:class="[
-                  buttonContainerClass,
-                  contentRight ? 'justify-end' : null
-                ]"
-              >
-                <t-button
-                  :class="buttonClass"
-                  :props="{
-                    color: 'primary',
-                    depressed: true,
-                    tile: true,
-                    to: data.to,
-                    ...buttonProps
-                  }"
-                  v-text="buttonText"
-                ></t-button>
-              </v-card-actions>
-            </div>
-          </client-only>
+            <v-card-actions
+              v-if="buttonText"
+              class="px-0 mt-6"
+              v-bind:class="[
+                buttonContainerClass,
+                contentRight ? 'justify-end' : null
+              ]"
+            >
+              <t-button
+                :class="buttonClass"
+                :props="{
+                  color: 'primary',
+                  depressed: true,
+                  tile: true,
+                  to: data.to,
+                  ...buttonProps
+                }"
+                v-text="buttonText"
+              ></t-button>
+            </v-card-actions>
+          </div>
         </div>
       </v-card>
       <v-card v-else>

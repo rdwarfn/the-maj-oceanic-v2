@@ -7,9 +7,7 @@
     >
     </v-skeleton-loader>
     <div v-else class="px-6 px-md-0">
-      <h1
-        class="intro--head text-center mx-auto mb-6 mb-sm-10"
-        v-text="data.heading"
+      <h1 class="intro--head font-weight-bold text-center mx-auto mb-6 mb-sm-10" v-text="data.heading"
       />
     </div>
 
@@ -75,7 +73,6 @@ export default {
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
-    max-width: 700px;
     font-family: 'Domine', serif;
     @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
     @media #{map-get($display-breakpoints, 'sm-and-up')} {
