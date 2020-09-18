@@ -2,7 +2,7 @@
   "hero": {
     "id": 0,
     "text": "Suites & Staterooms",
-    "image": "carousel/banner/hero-5.jpg"
+    "image": "carousel/banner/hero-thevessel.png"
   },
   "heading": "Locally-crafted, world-inspired",
   "description": "Upping the suite game in the luxury Pinisi market, there are 6+1 cabins specially-designed by a group of land-based designers to give a modern look that's a floating reflection of a world-class resort.",
@@ -22,7 +22,23 @@
         "id": 1,
         "caption": "admiral suite",
         "heading": "Zheng He",
-        "image": "carousel/card/13.png",
+        "image": "carousel/card/admiral-suite/1.png",
+        "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
+        "to": "#"
+      },
+      {
+        "id": 1,
+        "caption": "admiral suite",
+        "heading": "Zheng He",
+        "image": "carousel/card/admiral-suite/2.png",
+        "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
+        "to": "#"
+      },
+      {
+        "id": 1,
+        "caption": "admiral suite",
+        "heading": "Zheng He",
+        "image": "carousel/card/admiral-suite/3.png",
         "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
         "to": "#"
       }
@@ -52,6 +68,26 @@
         "heading": "Columbus",
         "image": "carousel/card/16-columbus.png",
         "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
+        "to": "#"
+      },
+      {
+        "id": 3,
+        "caption": "commodore suite",
+        "heading": "Columbus",
+        "image": "carousel/card/17-columbus.png",
+        "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
+        "to": "#"
+      }
+    ]
+  },{
+    "type": "deluxe staterooms",
+    "data": [
+      {
+        "id": 0,
+        "caption": "deluxe staterooms",
+        "heading": "F. Magellan | Marcopolo | Vasco da Gama | James Cook",
+        "image": "carousel/card/18-delux.png",
+        "text": "A space for socializing, not just sleeping.  Multi-jet shower and a well-appointed open living area with chaise, built-in dresser, and writing desk.",
         "to": "#"
       }
     ]

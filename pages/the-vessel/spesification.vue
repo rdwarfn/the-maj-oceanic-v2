@@ -1,32 +1,20 @@
 <template>
-  <h1 v-if="$fetchState.pending">loading...</h1>
-  <div v-else>
-    <v-container class="mb-16 px-7 px-sm-4 px-md-0 px-lg-0" tag="section">
-      <t-heading
-        class="mx-auto"
-        heading-justify="center"
-        heading-class="text-center"
-        text-class="text-center"
-        v-bind:data="{
-          heading: data.heading,
-          text: data.text,
-        }"
-        style="max-width: 560px"
-      />
-      <t-large-image
-        class="mt-3"
+  <div id="spesification">
+    <v-container tag="section" class="spesific--master px-6 px-md-0">
+      <base-card-text-image
+        v-bind:data="data.card_text_image[0]"
         static-image
-        v-bind:data="data.image"
       />
     </v-container>
 
-    <v-container class="mb-16 __bg--secondary" fluid>
+    <deck-spesification
+      v-bind:data="data.decks_spesification"
+      static-image
+    />
+
+    <!-- <v-container class="my-16 __bg--secondary" fluid>
       <v-container class="px-4 px-md-0 px-lg-0">
-        <t-tabs
-          v-bind:data="data.tabs.data"
-          static-image
-        >
-          <template v-slot:default="{dataTab}">
+        <base-tabs :default="{dataTab}">
             <client-only>
               <v-card max-height="389" color="transparent" flat>
                 <v-img
@@ -43,43 +31,62 @@
               </v-card>
             </client-only>
           </template>
-        </t-tabs>
+        </base-tabs>
       </v-container>
-    </v-container>
+    </v-container> -->
 
     <v-container>
-      <t-tables />
+      <base-tables />
     </v-container>
   </div>
 </template>
 
 <script>
-const getSpesification = () => import('~/static/data/spesification.json').then(m => m.default || m);
-
 const components = {
-  tHeading: () => import('@/components/base/BaseHeading.vue'),
-  tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
-  tTabs: () => import('@/components/base/BaseTabs.vue'),
-  tTables: () => import('@/components/base/BaseTables.vue')
+  BaseTabs: () => import('@/components/base/BaseTabs.vue'),
+  BaseTables: () => import('@/components/base/BaseTables.vue'),
+  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  DeckSpesification: () => import('@/components/DeckSpesification.vue')
 }
 
 export default {
   layout: 'main',
 
-  name: 'Spesification',
-
   components,
 
-  data () {
-    return {
-      data: {},
+  async asyncData ({ $content }) {
+    const data = await $content ('pages/spesification').fetch();
+    return { data }
+  },
+
+  mounted () {
+    if (this.$data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      this.addBreadcrumb ({
+        text: 'spesification',
+        href: this.$route.path
+      });
     }
   },
 
-  async fetch () {
-    const data = await getSpesification();
-    this.data = data;
+  destroyed () {
+    this.removeBreadcrumb('spesification');
   },
+
+  methods: {
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', { page_key, data });
+    },
+    addBreadcrumb ({ text, href }) {
+      this.$store.commit('breadcrumbs/add', {
+        text, href
+      });
+    },
+    removeBreadcrumb(params) {
+      const callback = (args) => args.text === params;
+      this.$store.commit('breadcrumbs/remove', callback);
+    }
+  }
 }
 </script>
 
@@ -93,6 +100,10 @@ export default {
 
   .__bg--secondary {
     background: $secondary !important;
+  }
+
+  .spesific--master {
+    margin-bottom: 100px !important;
   }
 
   ::v-deep .__bg--transparent {

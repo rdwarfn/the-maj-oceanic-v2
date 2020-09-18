@@ -1,5 +1,5 @@
 <template>
-  <v-footer id="footer" class="px-0" dark tile inset background-color="#232323">
+  <v-footer id="footer" class="px-0" dark tile background-color="#232323">
     <v-container class="px-6 px-md-0">
       <v-row no-gutters class="mb-1 mb-sm-12 mb-lg-6" align="start" justify="space-between">
         <!-- the maj oceanic -->
@@ -13,7 +13,8 @@
                 v-for="(data, index) in sosmed"
                 v-bind:key="index"
                 v-bind:href="data.link"
-                fab depressed text nuxt tile
+                target="blank"
+                fab depressed text tile link
               >
                 <v-icon>{{data.icon}}</v-icon>
               </v-btn>
@@ -44,23 +45,25 @@
           </div>
           <div class="mb-8">
             <div class="text-uppercase __part-of">CRUISE OPERATOR</div>
-            <v-img
-              class=""
-              v-bind:src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
-              v-bind:lazy-src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
-              max-width="45"
-            ></v-img>
+            <v-btn class="px-0" tile depressed text link small target="blank" href="https://yachtsourcing.com/">
+              <v-img
+                class=""
+                v-bind:src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
+                v-bind:lazy-src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
+                max-width="45"
+              ></v-img>
+            </v-btn>
           </div>
           <div>
             <div class="text-uppercase __part-of">PROUD COMFORT PARTNER</div>
-            <!-- <v-row no-gutters align="center"> -->
+            <v-btn class="px-0" tile depressed text link small target="blank" href="https://global.sunbrella.com/">
               <v-img
                 class="ml-n1"
                 v-bind:src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
                 v-bind:lazy-src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
                 max-width="66"
               ></v-img>
-            <!-- </v-row> -->
+            </v-btn>
           </div>
         </v-col>
 

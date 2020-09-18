@@ -271,7 +271,7 @@ $secondary: #232323;
     position: fixed !important;
     align-items: flex-end;
     max-height: 192px;
-    background-color: rgba(47, 46, 46, 0.35) !important;
+    background: rgba(47, 46, 46, 0.4) !important;
     height: 30%;
     width: 100vw;
     z-index: 2;

@@ -1,0 +1,64 @@
+{
+  "hero": {
+    "id": 0,
+    "text": "Spesification",
+    "image": "carousel/banner/hero-6.png"
+  },
+
+  "card_text_image": [
+    {
+      "heading": "Decks and Technical Detail",
+      "text": "The MAJ Oceanic is a motorsailer, handcrafted in Bira, Sulawesi, in the traditional style of a Phinisi. It measures 47 meters in length overall with 10,5 meters beam.",
+      "image": "card/14.png",
+      "to": "#"
+    }
+  ],
+
+  "carousel_card": [
+    {
+      "id": 0,
+      "label": "Main Deck",
+      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
+      "image": "tabs/layout-deck-1.png"
+    },
+    {
+      "id": 1,
+      "label": "Lower Deck",
+      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
+      "image": "tabs/layout-deck-2.png"
+    },
+    {
+      "id": 2,
+      "label": "Bridge Deck",
+      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
+      "image": "tabs/layout-deck-3.png"
+    }
+  ],
+
+  "decks_spesification": [
+    {
+      "id": 0,
+      "name": "Main Deck",
+      "text": "Commodore Suite Lounge & Bar Area ",
+      "image": "carousel/card/1-main-deck.png"
+    },
+    {
+      "id": 1,
+      "name": "Lower Deck",
+      "text": "Deluxe Staterooms",
+      "image": "carousel/card/2-lower-deck.png"
+    },
+    {
+      "id": 2,
+      "name": "Bridge Deck",
+      "text": "Admiral Suite",
+      "image": "carousel/card/3-bridge-deck.png"
+    },
+    {
+      "id": 3,
+      "name": "Golf Deck",
+      "text": "Equatorial Golf",
+      "image": "carousel/card/4-golf-deck.png"
+    }
+  ]
+}

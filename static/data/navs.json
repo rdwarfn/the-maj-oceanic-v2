@@ -2,32 +2,49 @@
   {
     "id": 0,
     "title": "the vessel",
-    "to": "/sailing-soons",
-    "items": []
+    "to": "/the-vessel",
+    "children": [
+      {
+        "id": 0,
+        "title": "suites & staterooms",
+        "to": "/the-vessel/the-cabin"
+      },
+      {
+        "id": 1,
+        "title": "spesification",
+        "to": "/the-vessel/spesification"
+      }
+    ]
   },
   {
     "id": 1,
     "title": "voyages",
-    "to": "/sailing-soons",
-    "items": []
+    "to": "/voyages",
+    "children": [
+      {
+        "id": 0,
+        "title": "rates & schedule",
+        "to": "/voyages/rates-and-schedule"
+      }
+    ]
   },
   {
     "id": 2,
     "title": "dining",
     "to": "/sailing-soons",
-    "items": []
+    "children": []
   },
   {
     "id": 3,
     "title": "occasions",
     "to": "/sailing-soons",
-    "items": []
+    "children": []
   },
   {
     "id": 4,
     "title": "destinations",
     "to": "/sailing-soons",
     "disabled": true,
-    "items": []
+    "children": []
   }
 ]

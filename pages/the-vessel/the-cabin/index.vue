@@ -1,89 +1,102 @@
 <template>
   <div id="the-cabin">
-    <v-container tag="section" class="mx-auto px-6 px-md-0">
-      <div class="intro--head font-weight-bold text-center">
+    <v-container tag="section" class="mx-auto px-6 px-md-0 mb-16">
+      <div class="intro--head font-weight-bold text-center mx-auto">
         {{data.heading}}
       </div>
-      <p class="intro--paragraph text-center"> {{data.description}} </p>
+      <p class="intro--paragraph text-center mx-auto"> {{data.description}} </p>
     </v-container>
+    <spesification v-bind:data="data.spesification[0].data">
+      <template #icon>
+        <v-img
+          class="spesification--icon"
+          v-bind:src="icon.zhenghe"
+          v-bind:lazy-src="icon.zhenghe"></v-img>
+      </template>
+    </spesification>
+    <spesification reverse v-bind:data="data.spesification[1].data">
+      <template #icon>
+        <v-img
+          class="spesification--icon"
+          v-bind:src="icon.columbus"
+          v-bind:lazy-src="icon.columbus"></v-img>
+      </template>
+    </spesification>
+    <spesification v-bind:data="data.spesification[2].data" no-wrap>
+      <template #icon>
+        <div class="d-inline-flex">
+          <v-img
+            class="spesification--icon spesification--icon-delux"
+            v-bind:src="icon.ferdinand"
+            v-bind:lazy-src="icon.ferdinand"></v-img>
 
-    <spesification v-bind:data="data.spesification[0].data" />
+          <v-img
+            class="spesification--icon spesification--icon-delux"
+            v-bind:src="icon.marco"
+            v-bind:lazy-src="icon.marco"></v-img>
 
-    <!-- <div v-for="(data, index) in store" v-bind:key="index">
-      <v-container tag="section" class="mb-16 px-7 px-sm-4 px-md-0 px-lg-0">
-        <tCarousel
-          class="__carousel"
-          card-class="__carousel_card pl-md-3"
-          v-bind:data="data.carousel_card"
-          button-class="pl-4"
-          button-text="discover"
-          heading-class="pt-0 mb-1"
-          text-class="mb-3 pr-lg-6"
-          static-image
-        >
-        </tCarousel>
+          <v-img
+          class="spesification--icon spesification--icon-delux"
+            v-bind:src="icon.vasco"
+            v-bind:lazy-src="icon.vasco"></v-img>
+
+          <v-img
+          class="spesification--icon spesification--icon-delux mr-0"
+            v-bind:src="icon.james"
+            v-bind:lazy-src="icon.james"></v-img>
+        </div>
+      </template>
+    </spesification>
+    <v-sheet color="#EFE1DC">
+      <v-container class="text-center">
+        <div class="ig--heading my-16">Follow us on Instagram</div>
+        <v-row id="instafeed"></v-row>
+
+        <v-btn :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l mt-10 mb-16" color="primary" tile outlined depressed>
+          View more
+        </v-btn>
       </v-container>
-
-      <v-row class="container mx-auto my-sm-16 px-7 px-sm-4 px-md-0 px-lg-0" align="center" justify="center">
-        <tmg-icon-divider />
-      </v-row>
-
-      <v-container tag="section" class="my-16 px-7 px-sm-4 px-md-0 px-lg-0">
-        <t-carousel-text-image
-          static-image
-          v-bind:data="data.carousel_text_image"
-          button-text="discover"
-          :button-props="{
-            outlined: true
-          }"
-        />
-      </v-container>
-
-      <section class="mt-16 container--fluid __oceanic--secondary">
-        <v-container class="px-7 px-sm-4 px-md-0 px-lg-0">
-          <t-heading
-            class="mb-10"
-            caption-justify="center"
-            caption-class="__text-primary"
-            heading-justify="center"
-            v-bind:data="{
-              caption: data.carousel_three_image.caption,
-              heading: data.carousel_three_image.heading
-            }"
-          />
-          <t-carousel-three
-            v-bind:data="data.carousel_three_image.data"
-            v-bind:buttonProps="{
-              outlined: true,
-              color: 'primary'
-            }"
-            button-text="discover more"
-            button-class="btn-l mx-auto"
-            static-image
-          />
-        </v-container>
-      </section>
-    </div> -->
+    </v-sheet>
   </div>
 </template>
 
 <script>
+const myIgToken = "IGQVJXT3NVR21Ra1JpdlluTUQ3RmhhWjY4NWFFUXRYSzAxWklRSFgtODVOaktlNTRfRk4wdmE3cTB6aXBSaThwcXE2LWNXdXBwdWpfQ1ZATd25kR2dKMmM2dHByYzRfeDV5MktST2hFMGN0aEVpSmhmOQZDZD";
+const test = "IGQVJWRFN6UUVvam9qbVA3TTU3ZAVNGelpFLTJQOFRxOTJ3N1pnSmlxeG1pdGE5ZAmJGNmJtMll6U3ZApZA2ljeDV0RkpkWUJrajZAWOUNHRFBaeGo5TnVOUGM4Y0kyc1JxR0R4dDVKU3RB";
+// import VueInstagram from 'vue-instagram';
 import TmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
+import iconZhengHe from '@/assets/images/tmg-icon-zheng-he.png';
+import columbus from '@/assets/images/tmo-icon-columbus-2.png';
+import iconFerdinand from '@/assets/images/tmo-icon-ferdinand-magellan.png';
+import iconJames from '@/assets/images/tmo-icon-james-cook.png';
+import iconMarco from '@/assets/images/tmo-icon-marco-polo.png';
+import iconVasco from '@/assets/images/tmo-icon-vasco-da-gamma.png';
 const components = {
   TmgIconDivider,
-  // tHeading: () => import('@/components/base/BaseHeading.vue'),
-  // tLargeImage: () => import('@/components/base/BaseLargeImage.vue'),
-  // tCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  // tCarouselTextImage: () => import('@/components/base/BaseCarouselTextImage.vue'),
-  // tCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
-  Spesification: () => import('@/components/Spesification.thecabin.vue')
+  Spesification: () => import('@/components/SpesificationTheCabin.vue'),
+  // VueInstagram: () => import('vue-instagram')
 }
 export default {
   layout: 'main',
 
   components,
 
-  name: 'the-cabin',
+  data () {
+    return {
+      icon: {
+        zhenghe :iconZhengHe,
+        columbus: columbus,
+        ferdinand: iconFerdinand,
+        james: iconJames,
+        marco: iconMarco,
+        vasco: iconVasco,
+      },
+      mytoken: myIgToken,
+      myIgData: [],
+      showed: 6,
+      loading: false
+    }
+  },
 
   async asyncData ({ $content }) {
     const data = await $content ('pages/the-cabins/index').fetch();
@@ -91,7 +104,7 @@ export default {
   },
 
   mounted () {
-    console.log(this.$data.data)
+    this.instafeed();
     if (this.$data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
       this.addBreadcrumb ({
@@ -102,17 +115,7 @@ export default {
   },
 
   destroyed () {
-    this.removeBreadcrumb('the vessel');
-  },
-
-  computed: {
-    sectionPading () {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 'px-7';
-        case 'sm': return 'px-4';
-        default: break;
-      }
-    },
+    this.removeBreadcrumb('the cabin');
   },
 
   methods: {
@@ -127,12 +130,35 @@ export default {
     removeBreadcrumb(params) {
       const callback = (args) => args.text === params;
       this.$store.commit('breadcrumbs/remove', callback);
+    },
+    instafeed (limit=this.showed) {
+      var feed = new Instafeed({
+        limit: limit,
+        accessToken: myIgToken,
+        transform: function(item) {
+          var d = new Date(item.timestamp);
+          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/');
+          return item;
+        },
+        template: `<div class="col-4">
+            <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
+        </div>`,
+      });
+      feed.run();
+      this.loading = false
+    },
+    loadMore (params=null) {
+      this.loading = true
+      const n = this.showed + params
+      this.showed = n
+      this.instafeed(n);
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/scss/variables.scss";
 $primary: #208cb2;
 $secondary: #EFE1DC;
 
@@ -143,17 +169,28 @@ $secondary: #EFE1DC;
     -ms-hyphens: auto;
     hyphens: auto;
     font-family: 'Domine', serif;
+    @include poly-fluid-sizing ('max-width', (768px:596px, 1440px:560px));
     @include poly-fluid-sizing ('font-size', (375px:20px, 768px:34px));
     @media #{map-get($display-breakpoints, 'sm-and-up')} {
       line-height: 41px !important;
     }
     @media #{map-get($display-breakpoints, 'xs-only')} {
       line-height: 32px !important;
+      max-width: 100% !important;
     }
   }
 
   &--paragraph {
     margin-top: 40px;
+    @include poly-fluid-sizing ('max-width', (768px:718px, 960px:800px))
+  }
+}
+
+.spesification--icon {
+  @include poly-fluid-sizing ('width', (768px:40px, 1264px:70px));
+
+  &-delux {
+    @include poly-fluid-sizing ('margin-right', (375px: 10px, 768px:12px, 1264px:20px));
   }
 }
 
@@ -176,5 +213,21 @@ $secondary: #EFE1DC;
   @include poly-fluid-sizing('padding-top', (375px:39px, 768px:26px, 1204px:34px));
   @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:34px, 1204px: 69px));
   @include poly-fluid-sizing('width', (375px:323px, 600px:362px, 1204px: 445px));
+}
+
+::v-deep .ig--img {
+  width: 100%;
+  // @include poly-fluid-sizing ('width', (768px:352px, 1440px:445px));
+}
+
+.ig--heading {
+  font-family: 'Domine', serif !important;
+  line-height: 41px;
+  font-weight: 600;
+  text-align: center !important;
+
+  @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 </style>

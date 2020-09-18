@@ -1,4 +1,4 @@
-const glob = require('glob-all');
+
 const path = require('path');
 export default {
   loading: {
@@ -51,7 +51,10 @@ export default {
       { rel: 'apple-touch-icon', sizes: '144x144', href: '/the-maj-oceanic--ico/apple-icon-144x144.png' },
       { rel: 'apple-touch-icon', sizes: '152x152', href: '/the-maj-oceanic--ico/apple-icon-152x152.png' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/the-maj-oceanic--ico/apple-icon-180x180.png' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Domine&family=Montserrat:wght@400;500;600;700&family=PT+Sans&display=swap' }
+      // { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Domine&family=Montserrat:wght@400;500;600;700&family=PT+Sans&display=swap' }
+    ],
+    script: [
+      { type: 'text/javascript', src: '/js/instafeed.min.js' }
     ]
   },
   /*
@@ -72,7 +75,8 @@ export default {
   */
   plugins: [
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
-    '~/plugins/vue-video-player'
+    '~/plugins/vue-video-player',
+    { src: '~/plugins/vue-instagram', mode: 'client' }
   ],
   /*
   ** Auto import components

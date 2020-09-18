@@ -16,17 +16,15 @@
               type="image"
               class="__carousel-three--item-img"
             ></v-skeleton-loader>
-            <!-- <div v-else class="swiper-zoom-container"> -->
-              <v-img
-                v-bind:src="staticImage
-                  ? require(`~/assets/images/${item.image}`)
-                  : item.image"
-                v-bind:lazy-src="staticImage
-                  ? require(`~/assets/images/${item.image}`)
-                  : item.image"
-                class="__carousel-three--item-img swiper-zoom-target"
-              ></v-img>
-            <!-- </div> -->
+            <v-img
+              v-bind:src="staticImage
+                ? require(`~/assets/images/${item.image}`)
+                : item.image"
+              v-bind:lazy-src="staticImage
+                ? require(`~/assets/images/${item.image}`)
+                : item.image"
+              class="__carousel-three--item-img swiper-zoom-target"
+            ></v-img>
             <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
               {{item.heading}}
             </h1>
@@ -44,7 +42,7 @@
             />
           </div>
         </swiper-slide>
-        <div class="swiper-pagination swiper-pagination-bullets hidden-md-and-down" slot="pagination"></div>
+        <div v-if="!hidePagination" class="swiper-pagination swiper-pagination-bullets hidden-md-and-down" slot="pagination"></div>
       </swiper>
       <div class="navigation container hidden-md-and-down">
         <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
@@ -85,6 +83,7 @@ export default {
     staticImage: {
       type: Boolean
     },
+    hidePagination: { type: Boolean, default: false }
   },
 
   data () {

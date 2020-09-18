@@ -4,7 +4,7 @@
       <base-carousel
         v-bind:data="data"
         card-class="__carousel_card"
-        button-class="pl-4"
+        button-class="px-0"
         button-text="discover"
         heading-class="mb-1"
         text-class="mb-3 pr-lg-6"
@@ -45,8 +45,8 @@ export default {
 }
 ::v-deep .__carousel_card {
   margin: 0 auto;
-  @include poly-fluid-sizing('padding-top', (375px:39px, 768px:26px, 1204px:34px));
-  @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:34px, 1204px: 69px));
+  @include poly-fluid-sizing('padding-top', (375px:39px, 768px:25px, 1204px:73px));
+  @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:32px, 1204px: 73px));
   @include poly-fluid-sizing('width', (375px:323px, 600px:362px, 1204px: 445px));
   // @include poly-fluid-sizing('height', (375px:482px, 600px:498px, 1204px: 525px));
 }

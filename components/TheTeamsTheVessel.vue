@@ -11,6 +11,7 @@
         v-bind:data="data.data"
         text-data="status"
         heading-class="ct--heading"
+        hide-pagination
         static-image
       />
     <!-- </div> -->
@@ -34,6 +35,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/scss/variables.scss";
 $primary: #208cb2;
 $secondary: #EFE1DC;
 ::v-deep .__caption {
@@ -51,5 +53,11 @@ $secondary: #EFE1DC;
 .the-teams {
   place-items: center;
   @include poly-fluid-sizing ('min-height', (375px:598px, 768px:450px, 1440px:711px));
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    margin-top: 80px;
+  }
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    margin-top: 140px;
+  }
 }
 </style>

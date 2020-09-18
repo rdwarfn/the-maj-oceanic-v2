@@ -1,6 +1,10 @@
-export const state = () => ({
-  items: []
-})
+const getDefaultState = () => {
+  return {
+    items: [],
+  }
+}
+
+export const state = () => getDefaultState();
 
 export const mutations = {
   add (state, { text, href }) {
@@ -11,5 +15,8 @@ export const mutations = {
   },
   remove (state, context) {
     state.items.splice(state.items.findIndex(context))
+  },
+  reset (state) {
+    Object.assign(state, getDefaultState())
   }
 }

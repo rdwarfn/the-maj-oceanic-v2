@@ -64,6 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/scss/variables.scss";
 ::v-deep .intro {
   @media (min-width: 1204px) {
     height: 900px !important;
@@ -74,16 +75,18 @@ export default {
     -ms-hyphens: auto;
     hyphens: auto;
     font-family: 'Domine', serif;
+    @include poly-fluid-sizing ('max-width', (768px:620px, 960px:650px));
     @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
     @media #{map-get($display-breakpoints, 'sm-and-up')} {
       line-height: 41px !important;
     }
     @media #{map-get($display-breakpoints, 'xs-only')} {
       line-height: 32px !important;
+      max-width: 100% !important;
     }
   }
   &--paragraph {
-    @include poly-fluid-sizing('max-width', (768px:596px, 1204px:700px));
+    white-space: pre-line !important;
   }
 }
 </style>

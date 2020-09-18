@@ -14,19 +14,19 @@
   {
     "id": 2,
     "title": "dining",
-    "to": "/dining",
+    "to": "/sailing-soons",
     "items": []
   },
   {
     "id": 3,
     "title": "occasions",
-    "to": "#",
+    "to": "/sailing-soons",
     "items": []
   },
   {
     "id": 4,
     "title": "destination",
-    "to": "#destination",
+    "to": "/sailing-soons",
     "items": []
   }
 ]

@@ -6,53 +6,47 @@
         v-if="data.id < 4"
         :key="data.id"
       >
-        <v-menu
-          background-color="transparent"
-          bottom right
-          transition="slide-x-transition"
-          open-on-hover
-          v-bind:close-on-click="false"
-          v-bind:close-on-content-click="false"
-          offset-y
-          auto
-          tile
-          v-bind:rounded="false"
-        >
-          <template v-slot:activator="{ on, attrs }">
-              <!-- v-bind:to="data.to" -->
-            <v-btn
-              v-bind="attrs"
-              v-on="{on}"
-              v-bind:to="data.to"
-              text tile nuxt
-              draggable="false"
+        <!-- <div class="d-flex align-start justify-center text-center"> -->
+          <v-menu
+            background-color="transparent"
+            v-bind:close-on-click="false"
+            v-bind:close-on-content-click="false"
+            bottom offset-y open-on-hover
+            tile v-bind:rounded="false"
+            auto min-width="190">
+            <!-- open-on-hover -->
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                v-on="on"
+                v-bind:to="data.to"
+                text tile nuxt
+                draggable="false"
+                v-bind:dark="isIntersecting"
+                class="btn-s font-md-12"
+              >
+                {{ data.title }}
+              </v-btn>
+            </template>
+            <v-list
+              v-if="data.children.length"
               v-bind:dark="isIntersecting"
-              class="btn-s font-md-12"
-            >
-              {{ data.title }}
-            </v-btn>
-          </template>
-          <v-list
-            v-if="data.items.length"
-            flat subheader dense tile
-            min-width="190"
-            color="transparent"
-            auto
-            v-bind:dark="isIntersecting"
-          >
-            <v-list-item
-              v-for="(item, index) in data.items"
-              v-bind:key="index"
-              v-bind:to="item.to"
-              v-bind:disabled="item.disabled"
-              dense nuxt tile
-            >
-              <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
-                {{ item.title }}
-              </v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+              class="py-0">
+              <!-- min-width="190"
+              max-width="190" -->
+              <v-list-item
+                v-for="(item, index) in data.children"
+                v-bind:key="index"
+                v-bind:to="item.to"
+                v-bind:disabled="item.disabled"
+                dense nuxt tile style="letter-spacing: 2px">
+                <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        <!-- </div> -->
       </v-col>
     </template>
 
@@ -105,7 +99,7 @@
                 </v-btn>
               </template>
               <v-list
-                v-if="data.items.length"
+                v-if="data.children.length"
                 flat subheader dense tile
                 min-width="190"
                 color="transparent"
@@ -114,7 +108,7 @@
               >
                 <v-list-item
                   v-bind:to="item.to"
-                  v-for="(item, index) in data.items"
+                  v-for="(item, index) in data.children"
                   v-bind:key="index"
                   v-bind:disabled="item.disabled"
                   dense nuxt tile
@@ -178,7 +172,6 @@ export default {
   methods: {
     goTo (path, query=null, replace=false) {
       const ctx = Object.prototype.toString(path);
-      console.log(path)
       if (ctx === '[object Object]') {
         const dest = Object.assign(path, query);
         this.$router.push(dest)
@@ -202,8 +195,19 @@ export default {
     max-width: 170.19px !important;
     // @include poly-fluid-sizing ('margin-left', (960px:2px, ))
   }
-  ::v-deep .v-list-group--no-action > .v-list-group__items > .v-list-item{
-    padding-left: 30px !important;
+  .v-menu__content {
+    box-shadow: unset !important;
+    transform: translateX(-25px) !important;
+  }
+  ::v-deep .v-list {
+    &.theme--dark {
+      margin-top: 4px !important;
+      background: rgba(47, 46, 46, 0.6) !important;
+    }
+    &.theme--light {
+      margin-top: 20px !important;
+      background: rgba(212, 212, 212, 0.6) !important;
+    }
   }
   ::v-deep .v-list-item__title, .v-list-group__items {
     a {

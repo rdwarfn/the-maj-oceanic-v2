@@ -12,6 +12,7 @@
     />
 
     <the-cabins
+      container-class="pt-sm-10"
       v-bind:data="data.card_three_image"
     />
 
@@ -32,6 +33,7 @@
           }"
           button-text="Learn More"
           static-image
+          content-right
           reverse
         />
       </div>
@@ -46,14 +48,12 @@ const components = {
   BaseCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
   BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
   Intro: () => import('@/components/Intro.vue'),
-  TheCabins: () => import('@/components/TheCabins.thevessel.vue'),
-  Spesification: () => import('@/components/Spesification.thevessel.vue'),
-  TheTeams: () => import('@/components/TheTeams.thevessel.vue')
+  TheCabins: () => import('@/components/TheCabinsTheVessel.vue'),
+  Spesification: () => import('@/components/SpesificationTheVessel.vue'),
+  TheTeams: () => import('@/components/TheTeamsTheVessel.vue')
 }
 export default {
   layout: 'main',
-
-  name: 'the-vessel',
 
   components,
 
@@ -64,6 +64,7 @@ export default {
 
   mounted () {
     if (this.$data && this.$data.data.hero) {
+      this.resetBreadcrumb();
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
       this.addBreadcrumb ({
         text: 'the vessel',
@@ -72,19 +73,9 @@ export default {
     }
   },
 
-  destroyed () {
-    this.removeBreadcrumb('the vessel');
-  },
-
-  computed: {
-    sectionPading () {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 'px-7';
-        case 'sm': return 'px-4';
-        default: break;
-      }
-    },
-  },
+  // destroyed () {
+  //   this.removeBreadcrumb('the vessel');
+  // },
 
   methods: {
     addHeros ({ page_key, data }) {
@@ -95,19 +86,28 @@ export default {
         text, href
       });
     },
-    removeBreadcrumb(params) {
-      const callback = (args) => args.text === params;
-      this.$store.commit('breadcrumbs/remove', callback);
+    // removeBreadcrumb(params) {
+    //   const callback = (args) => args.text === params;
+    //   this.$store.commit('breadcrumbs/remove', callback);
+    // },
+    resetBreadcrumb () {
+      this.$store.commit ('breadcrumbs/reset');
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+  ::v-deep .intro--head {
+    max-width: 100% !important;
+  }
   ::v-deep .__carousel {
     @media (min-width: 600px) {
       margin-bottom: 150px !important;
     }
+  }
+  ::v-deep .intro--paragraph {
+    @include poly-fluid-sizing('max-width', (768px:610px, 960px:766px));
   }
   ::v-deep .__carousel_card {
     margin: 0 auto;

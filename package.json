@@ -35,7 +35,8 @@
     "swiper": "^5",
     "uncss": "^0.17.3",
     "vue-awesome-swiper": "4.1.0",
-    "vue-content-loader": "^0.2.3"
+    "vue-content-loader": "^0.2.3",
+    "vue-instagram": "^3.0.0"
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.1.11",

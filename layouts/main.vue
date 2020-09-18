@@ -2,7 +2,7 @@
   <v-app>
     <tmo-navigation-mobile
       v-bind:isIntersecting="isIntersecting"
-      v-bind:elevate-on-scroll="getHerosByRouteName"
+      v-bind:elevate-on-scroll="getHerosByRouteName != undefined"
       v-bind:class="{
         'v-app-bar--is-scrolled': !getHerosByRouteName
       }"
@@ -43,7 +43,7 @@
           </v-list-item-avatar>
           </v-col>
           <v-col sm="4">
-          <v-list-item-action class="mr-0">
+          <v-list-item-action class="mx-0">
             <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
               <v-icon>{{svgClose}}</v-icon>
             </v-btn>
@@ -53,10 +53,10 @@
         </v-list-item>
       </v-list>
       <v-divider />
-      <v-list-item dense>
+      <v-list-item class="pl-0" dense>
         <v-list-item-content>
           <v-text-field
-            prepend-icon="$search"
+            prepend-inner-icon="$search"
             label="SEARCH"
             clearable
             flat
@@ -65,7 +65,44 @@
       </v-list-item>
       <v-divider />
       <v-list>
-        <v-list-item-group color="primary">
+        <v-sheet class="wrapper" color="transparent">
+          <template v-for="(item, key) in navigation.data">
+            <v-list-item
+              class="_nav--item"
+              v-bind:key="key"
+              v-if="!item.children.length"
+              nuxt v-bind:to="item.to"
+              v-on:click.prevent="drawer = false">
+              <v-list-item-content>
+                <v-list-item-title>{{item.title}}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+
+            <v-list-group class="_nav--item" v-else :key="key">
+              <template #activator>
+                <v-list-item-content>
+                  <v-btn v-on:click.prevent="drawer = false" :ripple="false" class="px-0" text nuxt tile v-bind:to="item.to">
+                    <v-list-item-title>{{item.title}}</v-list-item-title>
+                  </v-btn>
+                </v-list-item-content>
+              </template>
+              <template v-if="item.children.length">
+                <v-list-item
+                  v-for="(child, k) in item.children"
+                  v-bind:key="k"
+                  v-on:click.prevent="drawer = false"
+                  nuxt v-bind:to="child.to">
+                    <template>
+                      <v-list-item-action>
+                        <v-icon x-small v-text="svgCheckboxMenu"></v-icon>
+                      </v-list-item-action>
+                      <v-list-item-title> {{child.title}} </v-list-item-title>
+                    </template>
+                </v-list-item>
+              </template>
+            </v-list-group>
+          </template>
+        <!-- <v-list-item-group color="primary">
           <v-list-item
             v-for="(data, i) in navigation.data"
             v-bind:key="i"
@@ -80,9 +117,9 @@
               <v-list-item-title v-text="data.title" />
             </v-list-item-content>
           </v-list-item>
-        </v-list-item-group>
+        </v-list-item-group> -->
 
-        <v-list-item>
+        <v-list-item class="action-inquire">
           <v-list-item-action>
             <tmo-btn
               class="btn-l"
@@ -95,6 +132,7 @@
             </tmo-btn>
           </v-list-item-action>
         </v-list-item>
+        </v-sheet>
       </v-list>
     </v-navigation-drawer>
 
@@ -111,7 +149,7 @@
       static-image
     />
 
-    <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0">
+    <!-- <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0 hidden-sm-and-down">
       <v-breadcrumbs
         v-bind:items="getBreadcrumb"
         large v-show="getBreadcrumb.length > 1"
@@ -127,7 +165,7 @@
           </v-breadcrumbs-item>
         </template>
       </v-breadcrumbs>
-    </v-container>
+    </v-container> -->
 
     <v-main id="main"
       v-bind:class="{'pt-0': !getHerosByRouteName}"
@@ -141,13 +179,12 @@
       <nuxt />
     </v-main>
     <!-- <div id="mark">viewport intersection observer</div> -->
-
     <tmo-footer />
   </v-app>
 </template>
 
 <script>
-import { mdiClose } from '@mdi/js';
+import { mdiClose, mdiCheckboxBlankCircleOutline } from '@mdi/js';
 import tmoNavigation from '@/components/navigations/index.vue';
 import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
@@ -168,7 +205,6 @@ export default {
   layout: 'empty',
   data () {
     return {
-      selected_item: 1,
       isIntersecting: false,
       mini_variant: false,
       drawer: false,
@@ -179,15 +215,16 @@ export default {
       isLoadedHeros: false,
       intersec: null,
       showHero: true,
-      svgClose: mdiClose
+      svgClose: mdiClose,
+      svgCheckboxMenu: mdiCheckboxBlankCircleOutline
     }
   },
 
   components,
 
   async fetch () {
-    const navs= await getNavs();
-    this.navigation.data  = navs
+    const navs = await getNavs();
+    this.navigation.data = navs
     this.navigation.isLoaded = true
   },
 
@@ -242,20 +279,40 @@ $primary--disabled: #C7E2EC;
   text-shadow: 0 0 10px black;
 }
 #main {
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    background: #FFFFFF !important;
-  }
-  @media #{map-get($display-breakpoints, 'sm-and-up')} {
-    background: #FAFAFA !important;
-  }
+  background: #fafafa !important;
+  // @media #{map-get($display-breakpoints, 'xs-only')} {
+  //   background: #FFFFFF !important;
+  // }
+  // @media #{map-get($display-breakpoints, 'sm-and-up')} {
+  //   background: #FAFAFA !important;
+  // }
+}
+::v-deep .theme--light .v-input:not(.v-input--is-focused) {
+  color:#C4C9D2 !important;
+}
+// ::v-deep .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
+
+// }
+::v-deep .v-input__prepend-inner {
+  padding-right: 15px !important;
 }
 ::v-deep a.btn-l.primary {
   span.v-btn__content {
     color: #ffffff;
   }
 }
-::v-deep .v-navigation-drawer .v-list:not(._img-logo--mobile) {
-  padding-left: 45px !important;
+::v-deep .v-navigation-drawer__content {
+  padding-left: 25px !important;
+  padding-right: 25px !important;
+}
+::v-deep .v-navigation-drawer .v-list:not(._img-logo--mobile) .wrapper {
+  .v-list-item:not(.action-inquire) {
+    padding-left: 37px !important;
+    .v-list-item__action {
+      margin-right: 11px !important;
+      margin-left: 15px;
+    }
+  }
 }
 ::v-deep .v-list-item__action {
   .v-btn--contained {

@@ -61,7 +61,7 @@ const components = {
   BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
   BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
   intro: () => import('@/components/Intro.vue'),
-  voyages: () => import ('@/components/Voyages.home.vue'),
+  voyages: () => import ('@/components/VoyagesHome.vue'),
 }
 
 export default {
@@ -93,7 +93,6 @@ export default {
   },
 
   mounted () {
-    console.log(this.$vuetify)
     if (this.$data.data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
       this.addBreadcrumb ({
@@ -119,6 +118,10 @@ export default {
       this.$store.commit('breadcrumbs/add', {
         text, href
       })
+    },
+    removeBreadcrumb(params) {
+      const callback = (args) => args.text === params;
+      this.$store.commit('breadcrumbs/remove', callback);
     }
   }
 }
@@ -127,6 +130,10 @@ export default {
 <style lang="scss" scoped>
   @import '@/assets/styles/scss/variables.scss';
   $primary: #208cb2;
+
+  ::v-deep .intro--paragraph {
+    @include poly-fluid-sizing('max-width', (768px:596px, 960px:700px));
+  }
 
   ::v-deep .dining, ::v-deep .occasions {
     padding-top: 50px;
