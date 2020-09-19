@@ -27,7 +27,7 @@
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
     </swiper>
 
-    <div class="navigation container">
+    <div class="navigation container hidden-xs-only">
       <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
         <v-icon color="white"> {{icon.left}} </v-icon>
       </v-btn>
@@ -127,20 +127,20 @@ $white: #ffffff;
 
 @media #{map-get($display-breakpoints, ('md-and-up'))} {
   .button--left {
-    top: 40%;
+    top: 50%;
     right: auto;
-    left: -62px;
+    left: 62px;
   }
   .button--right {
-    top: 40%;
+    top: 50%;
     left: auto;
-    right: -62px;
+    right: 62px;
   }
 }
 
 @media #{map-get($display-breakpoints, ('sm-only'))} {
   .button--left, .button--right {
-    top: 30%;
+    top: 50%;
   }
   .button--left {
     left: 24px;
@@ -153,11 +153,11 @@ $white: #ffffff;
 .deck-spesification {
   background-color: #EFE1DC !important;
   @include poly-fluid-sizing ('height', (375px:327px, 768px:431px, 1264px:700px));
+  @include poly-fluid-sizing ('padding-top', (375px:33px, 768px:50px, 1264px:100px));
   position: relative !important;
   &--item {
     &-heading {
       @include poly-fluid-sizing ('font-size', (768px:18px,1440px:22px));
-      margin-top: 24px !important;
       font-family: 'Domine', serif;
       font-weight: 600;
     }

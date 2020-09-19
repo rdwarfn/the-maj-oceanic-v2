@@ -5,7 +5,34 @@
     v-bind:items="data.data"
     item-key="name"
     :items-per-page="12"
-  />
+    hide-default-footer
+    hide-default-header
+  >
+    <template #header>
+      <thead class="thead--spesification">
+        <tr>
+          <td class="text-center text-sm-left" colspan="2">TABLE of SPESIFICATION</td>
+        </tr>
+      </thead>
+    </template>
+    <template #body="{ items }">
+      <tbody>
+        <tr class="hidden-xs-only" v-for="item in items" :key="item.name">
+          <td class="montserrat text-uppercase font-weight-bold">
+            {{item.name}}
+          </td>
+          <td class="pt-sans" v-html="item.value">
+          </td>
+        </tr>
+        <tr class="hidden-sm-and-up" v-for="item in items" :key="item.name">
+          <td colspan="2" class="">
+            <div class="montserrat text-uppercase font-weight-bold py-5"> {{item.name}} </div>
+            <div class="pt-sans" v-html="item.value"></div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+  </v-data-table>
 </template>
 
 <script>
@@ -42,26 +69,22 @@ export default {
           },
           {
             name: "Beam",
-            value: ""
+            value: "10.5 m / 34 ft"
           },
           {
-            name: "Hull",
-            value: ""
+            name: "Draft",
+            value: "3.52 m / 11.5 ft"
           },
           {
-            name: "Cabins | guests | no of crew",
-            value: "7| |"
+            name: "no. of cabinS | GUESTS | crew",
+            value: "6+1 | 14 | 12"
           },
           {
-            name: "Max. cruising speed",
-            value: "12 knots"
+            name: "cruising speed",
+            value: "17 knot (max.) / 12 knot (avg.) / 9 knot (min.)"
           },
           {
             name: "Engine model",
-            value: "Yanmar marine diesel 6AYM-WST 659HP/1900RPM (sea water cooling) 5 blade bronze propellers"
-          },
-          {
-            name: "Generator",
             value: "Yanmar marine diesel 6AYM-WST 659HP/1900RPM (sea water cooling) 5 blade bronze propellers"
           },
           {
@@ -69,12 +92,12 @@ export default {
             value: "Garmin Aquamap 1252"
           },
           {
-            name: "Sports Area / Platform",
-            value: "35 m2"
+            name: "life raft",
+            value: "type YZF-A capacity of 25 persons"
           },
           {
             name: "Watersports Equipment",
-            value: "6 Paddle board,\n6 Sea Kayaks,\nFishing Gear,\nComplete diving equipment,\nComplete Snorkeling equipment"
+            value: "6 Paddle board,<br/>6 Sea Kayaks,<br/>Fishing Gear,<br/>Complete diving equipment,<br/>Complete Snorkeling equipment"
           }
         ]
       }
@@ -83,6 +106,29 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+::v-deep .v-data-table__wrapper > table > thead > tr > td  {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 16px;
+  letter-spacing: 3px !important;
+  font-weight: 700 !important;
+  padding-top: 113px !important;
+  padding-bottom: 56px !important;
+}
 
+.montserrat {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 11px !important;
+  line-height: 13px;
+  letter-spacing: 3px !important;
+  white-space: nowrap !important;
+  width: 50% !important;
+}
+
+.pt-sans {
+  font-family: 'PT Sans', sans-serif !important;
+  font-size: 16px !important;
+  line-height: 21px !important;
+}
 </style>
