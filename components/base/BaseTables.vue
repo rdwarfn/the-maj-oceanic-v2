@@ -138,5 +138,6 @@ export default {
   font-family: 'PT Sans', sans-serif !important;
   font-size: 16px !important;
   line-height: 21px !important;
+  color: #5A5A5A !important;
 }
 </style>
