@@ -186,7 +186,7 @@ export default {
     &--content {
       .v-card__title {
         font-family: 'Domine', serif !important;
-        font-size: 22px !important;
+        font-size: 21px !important;
         font-weight: 600;
         letter-spacing: normal !important;
         line-height: 28px;

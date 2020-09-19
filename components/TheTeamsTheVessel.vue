@@ -4,13 +4,14 @@
       <div class="__caption text-center text-h5 mb-3">
         {{ data.caption }}
       </div>
-      <div class="__heading text-center mb-5">
+      <div class="__heading text-center">
         {{ data.heading }}
       </div>
       <base-carousel-three
         v-bind:data="data.data"
         text-data="status"
         heading-class="ct--heading"
+        image-class="ct--image"
         hide-pagination
         static-image
       />
@@ -46,9 +47,24 @@ $secondary: #EFE1DC;
   font-weight: 600;
   line-height: 41px;
   @include poly-fluid-sizing ('font-size', (375px:20px, 768px:34px));
+  @include poly-fluid-sizing ('margin-bottom', (375px:20px, 768px:40px, 960px:90px));
 }
 ::v-deep .ct--heading {
   margin-bottom: 10px;
+}
+::v-deep .ct--image {
+  @include poly-fluid-sizing ('width', (375px:300px, 768px:200px, 960px:350px));
+}
+::v-deep .swiper-slide {
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    width: 300px !important;
+  }
+  @media #{map-get($display-breakpoints, 'sm-only')} {
+    width: 200px !important;
+  }
+  // @media #{map-get($display-breakpoints, 'md-and-up')} {
+  //   width: 350px !important;
+  // }
 }
 .the-teams {
   place-items: center;

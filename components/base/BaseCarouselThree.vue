@@ -24,6 +24,7 @@
                 ? require(`~/assets/images/${item.image}`)
                 : item.image"
               class="__carousel-three--item-img"
+              v-bind:class="imageClass"
             ></v-img>
             <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
               {{item.heading}}
@@ -48,7 +49,7 @@
           v-bind:class="paginationClass"
           slot="pagination"></div>
       </swiper>
-      <div class="navigation container hidden-md-and-down">
+      <div class="navigation container hidden-xs-only">
         <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
           <v-icon color="white"> {{icon.left}} </v-icon>
         </v-btn>
@@ -82,6 +83,7 @@ export default {
     buttonClass: { type: String },
     buttonProps: { type: Object },
     customClassPagination: { type: String },
+    imageClass: { type: String },
     data: {
       type: Array
     },
@@ -115,11 +117,18 @@ export default {
             slidesPerView: 'auto',
             spaceBetween: 10,
             centeredSlides: true,
+            initialSlide: 0
           },
           // when window width is >= 480px
           600: {
             slidesPerView: 3,
-            spaceBetween: 15
+            spaceBetween: 15,
+            initialSlide: 0
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 15,
+            initialSlide: 0,
           }
         }
       }
@@ -153,28 +162,27 @@ export default {
 
   @media #{map-get($display-breakpoints, ('md-and-up'))} {
     .button--left {
-      top: 40%;
+      top: 180px;
       right: auto;
       left: -62px;
     }
     .button--right {
-      top: 40%;
+      top: 180px;
       left: auto;
       right: -62px;
     }
   }
   @media #{map-get($display-breakpoints, ('sm-only'))} {
     .button--left, .button--right {
-      top: 30%;
+      top: 100px;
     }
     .button--left {
-      left: 24px;
+      left: 0;
     }
     .button--right {
-      right: 24px;
+      right: 0;
     }
   }
-
   .__carousel-three {
     position: relative !important;
     &--item {
@@ -186,11 +194,11 @@ export default {
         font-weight: 600;
       }
 
-      &-img {
-        @media #{map-get($display-breakpoints, 'xs-only')} {
-          height: 300px !important;
-        }
-      }
+      // &-img {
+      //   @media #{map-get($display-breakpoints, 'xs-only')} {
+      //     height: 300px !important;
+      //   }
+      // }
     }
   }
 

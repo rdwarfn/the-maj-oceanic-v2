@@ -39,6 +39,14 @@
         "image": "tabs/4.jpg",
         "to": "/voyages"
       }
+    },{
+      "id": 2,
+      "label": "Spice Island",
+      "data": {
+        "title": "The ‘great nutmeg island’",
+        "text": "The volcanic Banda Islands are as rich in history and natural beauty as they are remote. Centuries ago, this tiny archipelago in Maluku was the world’s only source of nutmeg, the ‘gold of the spice trade.’",
+        "image": "tabs/5.png"
+      }
     }]
   },
   "card_text_image": [

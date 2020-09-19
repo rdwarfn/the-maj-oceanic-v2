@@ -19,7 +19,7 @@
       <v-tab-item
         v-for="item in data"
         v-bind:key="item.label"
-        class="mt-10"
+        class="mt-16"
       >
         <slot v-bind:data-tab="item.data">
             <v-card flat>
@@ -41,7 +41,7 @@
                     </div>
                   </v-card-title>
 
-                  <v-card-text class="__tab--content-text text--primary px-0">
+                  <v-card-text class="__tab--content-text text--primary px-0 mb-3">
                     <p class="text-justify text-sm-center text-md-left">
                       {{ item.data.text }}
                     </p>

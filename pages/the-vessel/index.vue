@@ -32,6 +32,7 @@
             outlined: true
           }"
           button-text="Learn More"
+          card-img-class="_card-image-class"
           static-image
           content-right
           reverse
@@ -98,6 +99,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "@/assets/styles/scss/variables.scss";
   ::v-deep .intro--head {
     max-width: 100% !important;
   }
@@ -123,6 +125,17 @@ export default {
   }
 
   .sustainability {
-    @include poly-fluid-sizing ('min-height', (375px:667px, 768px:450px));
+    padding-top: 50px;
+    @include poly-fluid-sizing ('padding-bottom', (375px:97px, 768px:50px));
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-top: 90px !important;
+      margin-bottom: 50px !important;
+    }
+  }
+
+  ::v-deep ._card-image-class {
+    margin: 0 auto;
+    @include poly-fluid-sizing ('max-width', (374px:325px, 768px:366px, 960px:570px));
+    @include poly-fluid-sizing ('height', (374px:181px, 768px:350px))
   }
 </style>

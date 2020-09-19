@@ -2,6 +2,7 @@
   <v-btn
     nuxt tile depressed dark
     v-bind="props"
+    height="38"
   >
     <slot />
   </v-btn>

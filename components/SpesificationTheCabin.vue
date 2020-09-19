@@ -5,7 +5,7 @@
         <slot name="icon"></slot>
       </center>
       <div class="data--caption text-h6 text-center hidden-sm-and-up"> {{dataActive.caption}} </div>
-      <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up"> {{dataActive.heading}} </div>
+      <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up" v-html="dataActive.heading"></div>
       <swiper ref="swiper" class="swiper static" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
         <swiper-slide v-for="(item, index) in data" v-bind:key="index">
           <v-img
@@ -17,13 +17,13 @@
             : item.image"
             class="image--item"></v-img>
         </swiper-slide>
-        <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+        <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
         <template v-if="data && data.length > 1">
-          <v-btn fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
+          <v-btn depressed fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
             <v-icon color="primary">{{iconLeft}}</v-icon>
           </v-btn>
 
-          <v-btn fab absolute x-small class="button--right swiper-button-next" v-bind:class="{reversed: reverse}" color="white" slot="button-next">
+          <v-btn depressed fab absolute x-small class="button--right swiper-button-next" v-bind:class="{reversed: reverse}" color="white" slot="button-next">
             <v-icon color="primary">{{iconRight}}</v-icon>
           </v-btn>
         </template>
@@ -32,7 +32,7 @@
         <div class="hidden-xs-only">
           <slot name="icon"></slot>
           <v-card-subtitle class="px-0 pb-0 text-h6 data--caption"> {{dataActive.caption}} </v-card-subtitle>
-          <v-card-title class="px-0 ml-lg-0 font-weight-bold text-break data--heading"> {{dataActive.heading}} </v-card-title>
+          <v-card-title class="px-0 ml-lg-0 font-weight-bold data--heading" v-html="dataActive.heading"></v-card-title>
         </div>
         <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">
           {{dataActive.text}}
@@ -175,19 +175,22 @@ $white: #ffffff;
 
   .data {
     &--caption {
-      margin-top: 14px;
+      @media #{map-get($display-breakpoints, 'sm-and-up')} {
+        margin-top: 14px !important;
+      }
+      @media #{map-get($display-breakpoints, 'xs-only')} {
+        margin-top: 35px !important;
+      }
     }
     &--heading {
       @include poly-fluid-sizing ('font-size', (375px:20px,768px:22px));
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-      hyphens: auto;
+      white-space: nowrap !important;
       font-family: "Domine", serif;
       line-height: 28px;
       letter-spacing: normal;
       padding-top: 12px !important;
       @media #{map-get($display-breakpoints, 'xs-only')} {
-        margin-bottom: 30px !important;
+        margin-bottom: 40px !important;
       }
     }
     &--card {
@@ -225,6 +228,12 @@ $white: #ffffff;
   }
 }
 
+
+::v-deep .swiper-container-horizontal > .swiper-pagination-bullets.reversed {
+  left: auto !important;
+  right: 0px !important;
+}
+
 .swiper {
   // height: 300px;
   // width: 100%;
@@ -233,13 +242,7 @@ $white: #ffffff;
     bottom: -5px;
     width: 100%;
 
-    @media (min-width: 600px) {
-      max-width: 71.354166667%;
-    }
-
-    @media (min-width: 960px) {
-      max-width: 65.765765766%;
-    }
+    @include poly-fluid-sizing ('max-width', (375px:300px, 600px:414px, 768px:412px, 1440px:730px));
   }
   &:not(.reversed) {
     .swiper-slide {
@@ -284,7 +287,8 @@ $white: #ffffff;
 
 .button--left, .button--right {
   display: none !important;
-  top: 90% !important;
+  top: auto !important;
+  bottom: 39px !important;
   @media (min-width: 600px) {
     display: inline-block !important;
   }
@@ -298,22 +302,22 @@ $white: #ffffff;
 }
 
 .swiper-button-prev:not(.reversed), .swiper-container-rtl .swiper-button-next {
-  left: 24px !important;
+  left: 12px !important;
   right: auto;
 }
 
 .swiper-button-prev.reversed, .swiper-container-rtl .swiper-button-next {
-  right: 80px !important;
+  right: 52px !important;
   left: auto;
 }
 
 .swiper-button-next:not(.reversed), .swiper-container-rtl .swiper-button-prev {
-  left: 80px !important;
+  left: 52px !important;
   right: auto;
 }
 
 .swiper-button-next.reversed, .swiper-container-rtl .swiper-button-prev {
-  right: 24px !important;
+  right: 12px !important;
   left: auto;
 }
 

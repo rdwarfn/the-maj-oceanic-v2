@@ -48,11 +48,11 @@
       </template>
     </spesification>
     <v-sheet color="#EFE1DC">
-      <v-container class="text-center">
-        <div class="ig--heading my-16">Follow us on Instagram</div>
+      <v-container class="ig--container text-center px-6 px-md-0">
+        <div class="ig--heading">Follow us on Instagram</div>
         <v-row id="instafeed"></v-row>
 
-        <v-btn :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l mt-10 mb-16" color="primary" tile outlined depressed>
+        <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
           View more
         </v-btn>
       </v-container>
@@ -220,6 +220,11 @@ $secondary: #EFE1DC;
   // @include poly-fluid-sizing ('width', (768px:352px, 1440px:445px));
 }
 
+.ig--container {
+  @include poly-fluid-sizing ('padding-top', (375px:50px, 768px:53px, 960px:100px));
+  @include poly-fluid-sizing ('padding-bottom', (375px:100px, 768px:98.74px, 960px:113px));
+}
+
 .ig--heading {
   font-family: 'Domine', serif !important;
   line-height: 41px;
@@ -227,7 +232,14 @@ $secondary: #EFE1DC;
   text-align: center !important;
 
   @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
-  margin-top: 50px;
-  margin-bottom: 100px;
+  @include poly-fluid-sizing ('margin-bottom', (375px:43px, 768px:55px, 960px:84px));
+}
+.ig--btn {
+  @include poly-fluid-sizing ('margin-top', (375px:50px, 960px:100px));
+}
+::v-deep .col-4 {
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    padding: 4.5px !important;
+  }
 }
 </style>
