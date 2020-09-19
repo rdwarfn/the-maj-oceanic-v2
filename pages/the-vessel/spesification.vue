@@ -35,7 +35,7 @@
       </v-container>
     </v-container> -->
 
-    <v-container>
+    <v-container class="pa-0">
       <base-tables />
     </v-container>
   </div>

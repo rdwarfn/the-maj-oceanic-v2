@@ -107,13 +107,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/scss/variables.scss";
+.theme--light.v-data-table {
+  @media #{map-get($display-breakpoints, ('sm-and-up'))} {
+    background-color: transparent !important;
+  }
+  padding-top: 113px !important;
+  padding-bottom: 68px !important;
+}
+
 ::v-deep .v-data-table__wrapper > table > thead > tr > td  {
   font-family: 'Montserrat', sans-serif !important;
   font-size: 14px !important;
   line-height: 16px;
   letter-spacing: 3px !important;
   font-weight: 700 !important;
-  padding-top: 113px !important;
   padding-bottom: 56px !important;
 }
 
