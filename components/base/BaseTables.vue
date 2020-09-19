@@ -18,15 +18,15 @@
     <template #body="{ items }">
       <tbody>
         <tr class="hidden-xs-only" v-for="item in items" :key="item.name">
-          <td class="montserrat text-uppercase font-weight-bold">
+          <td class="montserrat text-uppercase font-weight-bold py-5">
             {{item.name}}
           </td>
-          <td class="pt-sans" v-html="item.value">
+          <td class="pt-sans py-5" v-html="item.value">
           </td>
         </tr>
         <tr class="hidden-sm-and-up" v-for="item in items" :key="item.name">
-          <td colspan="2" class="">
-            <div class="montserrat text-uppercase font-weight-bold py-5"> {{item.name}} </div>
+          <td colspan="2" class="py-5">
+            <div class="montserrat text-uppercase font-weight-bold pb-5"> {{item.name}} </div>
             <div class="pt-sans" v-html="item.value"></div>
           </td>
         </tr>
