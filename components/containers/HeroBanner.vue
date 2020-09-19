@@ -10,19 +10,32 @@
       <template>
         <v-sheet class="hero-wrapper text-center" style="relative">
           <template v-if="data.video">
-            <v-sheet class="video-player-box mx-auto"
+            <client-only>
+            <v-sheet class="video-player-box mx-auto hidden-xs-only"
               v-video-player:player="{
                 ...playerOptions,
-                sources: [{
-                  type: 'video/mp4',
-                  src: data.video
-                }]
+                sources: data.video
               }"
               @canplay="onPlayerCanplay($event)"
             >
             </v-sheet>
             <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center" v-html="data.text">
             </div>
+            </client-only>
+            <v-img
+              v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+              :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+              class="_hero--img justify-center hidden-sm-and-up"
+              transition="fade-transition"
+            >
+              <!-- :aspect-ratio="16/9" -->
+              <v-row no-gutters align="center" justify="center" class="fill-height">
+                <v-spacer />
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
+                </div>
+                <v-spacer/>
+              </v-row>
+            </v-img>
           </template>
 
           <v-img
@@ -30,7 +43,6 @@
             v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             class="_hero--img justify-center"
-            v-bind:class="{'hidden-sm-and-up': data.image && data.video}"
             transition="fade-transition"
           >
             <!-- :aspect-ratio="16/9" -->
@@ -93,7 +105,7 @@ export default {
       // videojs options
       playerOptions: {
         language: 'en',
-        // autoplay: true,
+        autoplay: true,
         control: false,
         controls: false,
         loop: true,
@@ -113,7 +125,10 @@ export default {
       }, 2000)
     },
     onPlayerCanplay (player) {
-      player.play();
+      this.$nextTick(() => {
+        console.log('can play', player)
+        player.play();
+      });
     }
   }
 }

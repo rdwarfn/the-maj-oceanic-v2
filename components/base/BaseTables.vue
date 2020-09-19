@@ -1,6 +1,6 @@
 <template>
   <v-data-table
-    class="text--primary justify-space-between"
+    class="text--primary justify-space-between px-6 px-md-0"
     v-bind:headers="data.headers"
     v-bind:items="data.data"
     item-key="name"
@@ -18,14 +18,14 @@
     <template #body="{ items }">
       <tbody>
         <tr class="hidden-xs-only" v-for="item in items" :key="item.name">
-          <td class="montserrat text-uppercase font-weight-bold py-5">
+          <td class="px-0 montserrat text-uppercase font-weight-bold py-5">
             {{item.name}}
           </td>
-          <td class="pt-sans py-5" v-html="item.value">
+          <td class="px-0 pt-sans py-5" v-html="item.value">
           </td>
         </tr>
         <tr class="hidden-sm-and-up" v-for="item in items" :key="item.name">
-          <td colspan="2" class="py-5">
+          <td colspan="2" class="px-0 py-5">
             <div class="montserrat text-uppercase font-weight-bold pb-5"> {{item.name}} </div>
             <div class="pt-sans" v-html="item.value"></div>
           </td>

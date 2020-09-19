@@ -1,12 +1,12 @@
 <template>
   <v-sheet class="deck-spesification text-center">
-    <v-row align="center" justify="center" class="px-6 px-md-0">
+    <v-row no-gutters align="center" justify="center" class="container mx-auto py-0 px-6 px-md-0">
       <v-col cols="12" class="pb-0">
         <div class="deck-spesification--item-heading">
           {{dataActive.name}}
         </div>
       </v-col>
-      <v-col>
+      <v-col cols="12">
         <div class="deck-spesification--item-paragraph">
           {{dataActive.text}}
         </div>
@@ -152,23 +152,25 @@ $white: #ffffff;
 
 .deck-spesification {
   background-color: #EFE1DC !important;
-  @include poly-fluid-sizing ('height', (375px:327px, 768px:431px, 1264px:700px));
-  @include poly-fluid-sizing ('padding-top', (375px:33px, 768px:50px, 1264px:100px));
+  @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:50px, 1440px:100px));
+  @include poly-fluid-sizing ('padding-bottom', (375px:50px, 1440px:100px));
   position: relative !important;
   &--item {
     &-heading {
-      @include poly-fluid-sizing ('font-size', (768px:18px,1440px:22px));
+      @include poly-fluid-sizing ('font-size', (768px:22px,1440px:34px));
       font-family: 'Domine', serif;
       font-weight: 600;
     }
 
     &-paragraph {
-      @include poly-fluid-sizing ('margin-bottom', (378px:47px, 768px:40px, 1264px:69.11px));
+      @include poly-fluid-sizing ('margin-top', (378px:18px, 768px:15px, 960px:25px));
+      @include poly-fluid-sizing ('margin-bottom', (378px:37px, 768px:30px, 960px:59.11px));
+      text-align: start !important;
     }
 
     &-img {
-      @include poly-fluid-sizing ('width', (375px:296.93px, 768px:542.84px, 1440px:819.73px));
-      @include poly-fluid-sizing ('max-height', (375px:73.78, 768px:133.94px, 1440px:202.49px));
+      @include poly-fluid-sizing ('width', (375px:326px, 768px:596px, 1440px:900px));
+      // @include poly-fluid-sizing ('max-height', (375px:73.78, 768px:133.94px, 1440px:202.49px));
     }
   }
 }
@@ -177,7 +179,7 @@ $white: #ffffff;
   @media #{map-get($display-breakpoints, ('sm-only'))} {
     width: 88%;
   }
-  padding-bottom: 50px !important;
+  @include poly-fluid-sizing ('padding-bottom', (375px:32.61px, 768px:56.53px, 1440px:148.4px));
 
   &-slide-active { z-index: 3 !important; }
   &-slide {

@@ -1,7 +1,7 @@
 <template>
   <v-container tag="section" class="d-flex flex-column justify-center px-0 px-sm-6 px-md-0 the-teams">
     <!-- <div> -->
-      <div class="__caption text-center text-h5 mb-3">
+      <div class="__caption text-no-wrap text-center text-h5 mb-3">
         {{ data.caption }}
       </div>
       <div class="__heading text-center">

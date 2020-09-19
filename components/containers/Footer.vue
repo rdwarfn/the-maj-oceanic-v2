@@ -32,7 +32,7 @@
                   class="mr-14"
                 ></v-img>
               </v-col>
-              <v-col cols="4">
+              <v-col cols="5">
                 <v-img
                   v-bind:src="require('~/assets/images/svg/the_maj_group.svg?data')"
                   v-bind:lazy-src="require('~/assets/images/svg/the_maj_group.svg?data')"
@@ -55,7 +55,7 @@
                   ></v-img>
                 </v-btn>
               </v-col>
-              <v-col cols="4" sm="12">
+              <v-col cols="5" sm="12">
                 <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">PROUD COMFORT PARTNER</div>
                 <v-btn class="px-0" tile depressed text link small target="blank" href="https://global.sunbrella.com/">
                   <v-img

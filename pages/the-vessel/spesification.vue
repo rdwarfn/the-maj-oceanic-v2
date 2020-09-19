@@ -12,29 +12,6 @@
       static-image
     />
 
-    <!-- <v-container class="my-16 __bg--secondary" fluid>
-      <v-container class="px-4 px-md-0 px-lg-0">
-        <base-tabs :default="{dataTab}">
-            <client-only>
-              <v-card max-height="389" color="transparent" flat>
-                <v-img
-                  v-bind:src="require('~/assets/images/'+ dataTab.image)"
-                  v-bind:lazy-src="require('~/assets/images/'+ dataTab.image)"
-                  class="transparent mx-auto mt-15"
-                  max-height="224"
-                  contain
-                ></v-img>
-                <v-card-text
-                  class="text--primary mt-10"
-                  v-text="dataTab.text"
-                />
-              </v-card>
-            </client-only>
-          </template>
-        </base-tabs>
-      </v-container>
-    </v-container> -->
-
     <v-container class="pa-0">
       <base-tables />
     </v-container>
