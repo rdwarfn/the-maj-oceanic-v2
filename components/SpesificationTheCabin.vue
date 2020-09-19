@@ -6,7 +6,7 @@
       </center>
       <div class="data--caption text-h6 text-center hidden-sm-and-up"> {{dataActive.caption}} </div>
       <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up" v-html="dataActive.heading"></div>
-      <swiper ref="swiper" class="swiper static" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
+      <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
         <swiper-slide v-for="(item, index) in data" v-bind:key="index">
           <v-img
             v-bind:src="staticImage
@@ -17,7 +17,7 @@
             : item.image"
             class="image--item"></v-img>
         </swiper-slide>
-        <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
+        <div v-if="data && data.length > 1" class="hidden-xs-only swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
         <template v-if="data && data.length > 1">
           <v-btn depressed fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
             <v-icon color="primary">{{iconLeft}}</v-icon>

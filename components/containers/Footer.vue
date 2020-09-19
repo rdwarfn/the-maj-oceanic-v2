@@ -24,46 +24,49 @@
             <div class="text-uppercase mb-3 __part-of">part of</div>
             <v-row no-gutters align="center" justify="start">
               <v-col cols="4">
-              <v-img
-                v-bind:src="require('~/assets/images/svg/the_maj_experience.svg?data')"
-                v-bind:lazy-src="require('~/assets/images/svg/the_maj_experience.svg?data')"
-                min-width="75"
-                max-width="76"
-                class="mr-14"
-              ></v-img>
+                <v-img
+                  v-bind:src="require('~/assets/images/svg/the_maj_experience.svg?data')"
+                  v-bind:lazy-src="require('~/assets/images/svg/the_maj_experience.svg?data')"
+                  min-width="75"
+                  max-width="76"
+                  class="mr-14"
+                ></v-img>
               </v-col>
-              <v-col cols="6">
-              <v-img
-                v-bind:src="require('~/assets/images/svg/the_maj_group.svg?data')"
-                v-bind:lazy-src="require('~/assets/images/svg/the_maj_group.svg?data')"
-                min-width="75"
-                max-width="91.91"
-              ></v-img>
+              <v-col cols="4">
+                <v-img
+                  v-bind:src="require('~/assets/images/svg/the_maj_group.svg?data')"
+                  v-bind:lazy-src="require('~/assets/images/svg/the_maj_group.svg?data')"
+                  min-width="75"
+                  max-width="91.91"
+                ></v-img>
               </v-col>
-              <!-- <v-spacer/> -->
             </v-row>
           </div>
-          <div class="mb-8">
-            <div class="text-uppercase __part-of">CRUISE OPERATOR</div>
-            <v-btn class="px-0" tile depressed text link small target="blank" href="https://yachtsourcing.com/">
-              <v-img
-                class=""
-                v-bind:src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
-                v-bind:lazy-src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
-                max-width="45"
-              ></v-img>
-            </v-btn>
-          </div>
           <div>
-            <div class="text-uppercase __part-of">PROUD COMFORT PARTNER</div>
-            <v-btn class="px-0" tile depressed text link small target="blank" href="https://global.sunbrella.com/">
-              <v-img
-                class="ml-n1"
-                v-bind:src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
-                v-bind:lazy-src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
-                max-width="66"
-              ></v-img>
-            </v-btn>
+            <v-row no-gutters>
+              <v-col cols="4" sm="12" class="mb-sm-8">
+                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">CRUISE OPERATOR</div>
+                <v-btn class="px-0" tile depressed text link small target="blank" href="https://yachtsourcing.com/">
+                  <v-img
+                    class="ml-n1"
+                    v-bind:src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
+                    v-bind:lazy-src="require('~/assets/images/svg/tmo_yacht_sourching.svg?data')"
+                    max-width="45"
+                  ></v-img>
+                </v-btn>
+              </v-col>
+              <v-col cols="4" sm="12">
+                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">PROUD COMFORT PARTNER</div>
+                <v-btn class="px-0" tile depressed text link small target="blank" href="https://global.sunbrella.com/">
+                  <v-img
+                    class="ml-n1"
+                    v-bind:src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
+                    v-bind:lazy-src="require('~/assets/images/svg/tmo_sanbrella.svg?data')"
+                    max-width="66"
+                  ></v-img>
+                </v-btn>
+              </v-col>
+            </v-row>
           </div>
         </v-col>
 
@@ -404,8 +407,8 @@ export default {
 
   .__part-of {
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 9px !important;
-    line-height: 36px !important;
+    font-size: 7px !important;
+    line-height: 36px;
     letter-spacing: 3px !important;
     font-weight: bold !important;
   }

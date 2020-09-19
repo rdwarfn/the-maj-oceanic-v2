@@ -13,7 +13,7 @@
           <div class="text-h6 mb-3">
             Whatsapp
           </div>
-          <a class="_wa" href="https://api.whatsapp.com/send?phone=628113898419">+62 811 3898 419</a>
+          <a class="_wa" href="https://api.whatsapp.com/send?phone=628113898419">+62 811 3898 419</a> <span class="_wa--name">(Ringga Ards)</span>
         </div>
 
         <div class="mb-8">
@@ -150,7 +150,7 @@
                       @click.prevent="reset2"
                       v-on="on"
                     >
-                      <v-icon>mdi-refresh</v-icon>
+                      <v-icon>{{icon.refresh}}</v-icon>
                     </v-btn>
                   </template>
                   <span>Refresh form</span>
@@ -270,7 +270,7 @@
                       @click.prevent="reset"
                       v-on="on"
                     >
-                      <v-icon>mdi-refresh</v-icon>
+                      <v-icon>{{icon.refresh}}</v-icon>
                     </v-btn>
                   </template>
                   <span>Refresh form</span>
@@ -308,7 +308,7 @@
             v-show="dialog.success"
             right top icon absolute
             class="v-dialog--card-close-btn" @click="dialog.show = false">
-            <v-icon>mdi-close</v-icon>
+            <v-icon>{{icon.close}}</v-icon>
           </v-btn>
 
           <v-card-title>
@@ -340,6 +340,7 @@
 </template>
 
 <script>
+import { mdiClose, mdiRefresh } from '@mdi/js';
 export default {
   layout: 'main',
 
@@ -358,6 +359,10 @@ export default {
 
   data () {
     return {
+      icon: {
+        close: mdiClose,
+        refresh: mdiRefresh
+      },
       valid: true,
       name: '',
       email: '',
@@ -481,6 +486,10 @@ export default {
     letter-spacing: 2px;
     font-feature-settings: 'pnum' on, 'lnum' on;
     line-height: 21px;
+  }
+
+  ._wa--name {
+    letter-spacing: 2px;
   }
 
   ._contact-row {

@@ -10,7 +10,7 @@
       <template>
         <v-sheet class="hero-wrapper text-center" style="relative">
           <template v-if="data.video">
-            <v-sheet class="video-player-box mx-auto hidden-xs-only"
+            <v-sheet class="video-player-box mx-auto"
               v-video-player:player="{
                 ...playerOptions,
                 sources: [{
@@ -18,6 +18,7 @@
                   src: data.video
                 }]
               }"
+              @canplay="onPlayerCanplay($event)"
             >
             </v-sheet>
             <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center" v-html="data.text">
@@ -25,6 +26,7 @@
           </template>
 
           <v-img
+            v-if="!data.video"
             v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             class="_hero--img justify-center"
@@ -91,7 +93,7 @@ export default {
       // videojs options
       playerOptions: {
         language: 'en',
-        autoplay: true,
+        // autoplay: true,
         control: false,
         controls: false,
         loop: true,
@@ -109,6 +111,9 @@ export default {
       setTimeout(() => {
         this.loading = false
       }, 2000)
+    },
+    onPlayerCanplay (player) {
+      player.play();
     }
   }
 }
