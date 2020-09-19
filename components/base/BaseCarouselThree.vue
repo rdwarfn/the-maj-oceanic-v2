@@ -1,5 +1,5 @@
 <template>
-  <v-container class="px-0 __carousel-three">
+  <v-container class="pa-0 __carousel-three">
     <!-- <div> -->
       <swiper
         ref="swiper"
@@ -23,7 +23,7 @@
               v-bind:lazy-src="staticImage
                 ? require(`~/assets/images/${item.image}`)
                 : item.image"
-              class="__carousel-three--item-img swiper-zoom-target"
+              class="__carousel-three--item-img"
             ></v-img>
             <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
               {{item.heading}}
@@ -42,7 +42,11 @@
             />
           </div>
         </swiper-slide>
-        <div v-if="!hidePagination" class="swiper-pagination swiper-pagination-bullets hidden-md-and-down" slot="pagination"></div>
+        <div
+          v-if="!hidePagination"
+          class="swiper-pagination swiper-pagination-bullets"
+          v-bind:class="paginationClass"
+          slot="pagination"></div>
       </swiper>
       <div class="navigation container hidden-md-and-down">
         <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
@@ -77,13 +81,15 @@ export default {
     buttonText: { type: String },
     buttonClass: { type: String },
     buttonProps: { type: Object },
+    customClassPagination: { type: String },
     data: {
       type: Array
     },
     staticImage: {
       type: Boolean
     },
-    hidePagination: { type: Boolean, default: false }
+    hidePagination: { type: Boolean, default: false },
+    paginationClass: { type: String, default: 'hidden-md-and-down' }
   },
 
   data () {
@@ -95,6 +101,7 @@ export default {
       isEnd: false,
       swiperOption: {
         lazy: true,
+        initialSlide: 0,
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -108,7 +115,6 @@ export default {
             slidesPerView: 'auto',
             spaceBetween: 10,
             centeredSlides: true,
-            initialSlide: 1,
           },
           // when window width is >= 480px
           600: {

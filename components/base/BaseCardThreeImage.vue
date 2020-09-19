@@ -30,15 +30,10 @@
                 ? require(`~/assets/images/${item.image}`) : item.image"
                 width="100%"
             ></v-img>
-            <v-card-actions class="text-center">
-              <nuxt-link
-                v-ripple
-                draggable="false"
-                v-bind:to="item.to"
-                class="__card-three--heading px-3 py-2 text-break text-capitalize mx-auto text-h4 text--primary"
-              >
+            <v-card-actions class="__card-three--heading px-3 text-break text-capitalize mx-auto text-h4 text--primary">
+              <div class="mx-auto ">
                 {{ item.heading }}
-              </nuxt-link>
+              </div>
             </v-card-actions>
           </v-card>
         </v-col>
@@ -140,7 +135,7 @@ export default {
     }
 
     &--heading {
-      margin-top: 24px !important;
+      margin-top: 12px !important;
     }
   }
 </style>

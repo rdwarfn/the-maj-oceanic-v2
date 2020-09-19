@@ -16,19 +16,19 @@
         "id": 0,
         "image": "card/three/4.jpg",
         "heading": "Admiral Suite",
-        "to": "/#"
+        "to": "/the-vessel/the-cabin"
       },
       {
         "id": 1,
         "image": "card/three/5.jpg",
         "heading": "Commodore Suite",
-        "to": "/#"
+        "to": "/the-vessel/the-cabin"
       },
       {
         "id": 2,
         "image": "card/three/6.jpg",
         "heading": "Deluxe Staterooms",
-        "to": "/#"
+        "to": "/the-vessel/the-cabin"
       }
     ]
   },
@@ -73,7 +73,7 @@
       {
         "id": 2,
         "image": "teams/syamsuddin.png",
-        "heading": "Syamsuddin",
+        "heading": "Syamsudin",
         "status": "First Officer",
         "to": "#"
       },

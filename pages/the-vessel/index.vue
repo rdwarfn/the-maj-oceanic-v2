@@ -12,7 +12,7 @@
     />
 
     <the-cabins
-      container-class="pt-sm-10"
+      container-class="pt-sm-16"
       v-bind:data="data.card_three_image"
     />
 
