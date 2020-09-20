@@ -69,13 +69,14 @@ export default {
   css: [
     '@/assets/styles/css/_fonts.css',
     '@/assets/styles/css/main.css',
+    'video.js/dist/video-js.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
-    '~/plugins/vue-video-player',
+    { src: '~/plugins/vue-video-player', mode: 'client' },
     { src: '~/plugins/vue-instagram', mode: 'client' }
   ],
   /*

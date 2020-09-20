@@ -10,32 +10,33 @@
       <template>
         <v-sheet class="hero-wrapper text-center" style="relative">
           <template v-if="data.video">
-            <client-only>
-            <v-sheet class="video-player-box mx-auto hidden-xs-only"
+            <div class="video-player-box mx-auto"
+              :playsinline="true"
               v-video-player:player="{
                 ...playerOptions,
                 sources: data.video
               }"
+              @play="onPlayerPlay($event)"
+              @waiting="onPlayerWaiting($event)"
               @canplay="onPlayerCanplay($event)"
+              @canplaythrough="onPlayerCanplaythrough($event)"
             >
-            </v-sheet>
+            </div>
             <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center" v-html="data.text">
             </div>
-            </client-only>
-            <v-img
+            <!-- <v-img
               v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
               :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-              class="_hero--img justify-center hidden-sm-and-up"
+              class="_hero--img justify-center hidden"
               transition="fade-transition"
             >
-              <!-- :aspect-ratio="16/9" -->
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
                 <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
                 </div>
                 <v-spacer/>
               </v-row>
-            </v-img>
+            </v-img> -->
           </template>
 
           <v-img
@@ -104,10 +105,11 @@ export default {
       },
       // videojs options
       playerOptions: {
+
         language: 'en',
-        autoplay: true,
+        // autoplay: true,
         control: false,
-        controls: false,
+        // controls: false,
         loop: true,
         muted: true,
       }
@@ -124,12 +126,31 @@ export default {
         this.loading = false
       }, 2000)
     },
+    onPlayerPlay(player) {
+      // console.log('player play!', player)
+      this.$nextTick(() => {
+        player.controls(false)
+      });
+    },
+    onPlayerWaiting(player) {
+      // console.log('player Waiting!', player)
+    },
     onPlayerCanplay (player) {
       this.$nextTick(() => {
-        console.log('can play', player)
-        player.play();
+        player.play().then(() => {
+          console.log("can autoplay");
+        })
+        .catch(() => {
+          console.warn('can not autoplay');
+        })
       });
-    }
+    },
+    onPlayerCanplaythrough(player) {
+      // console.log('player Canplaythrough!', player)
+      // player.play().then(() => {
+      //   player.controls(false);
+      // });
+    },
   }
 }
 </script>
@@ -165,6 +186,28 @@ export default {
       object-fit: cover !important;
       width: 100vw !important;
       @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
+    }
+
+    // .video-js .vjs-big-play-button {
+    //   top: 50% !important;
+    //   left: 40%;
+    // }
+    .video-js .vjs-big-play-button {
+      @include poly-fluid-sizing ('top', (376px:311px, 768px:149.5px, 1440px:324px));
+      left: 50%;
+      // bottom: 20px;
+      transform: translate(-50%, 0);
+      border-radius: 50%;
+      width: 48px !important;
+      height: 48px !important;
+      border-color: transparent !important;
+      z-index: 2;
+    }
+
+    .video-js .vjs-play-control:before {
+      top:20% !important;
+      content: '\f101';
+      font-size: 48px;
     }
   }
 
