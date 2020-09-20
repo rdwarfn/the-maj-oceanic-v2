@@ -57,7 +57,7 @@ export default {
         "data": [
           {
             name: "Build",
-            value: "Bira, Sulawesi, Indonesia in 20019"
+            value: "Bira, Sulawesi, Indonesia in 2019"
           },
           {
             name: "Type",
