@@ -7,13 +7,13 @@
 
   "voyages": [
     {
-      "heading": "Home of the mystical Komodo Dragons",
+      "heading": "Home of the mystical<br class='hidden-sm-and-up'/> Komodo Dragons",
       "description": "This UNESCO World Heritage site encompasses three main islands – Komodo, Padar and Rinca. Below the water, multihued coral gardens are a diver’s dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering schools of fish.",
       "image": "large/8.png",
       "to": "#"
     },
     {
-      "heading": "The richest coal reefs on earth",
+      "heading": "The richest coal<br class='hidden-sm-and-up'/> reefs on earth",
       "description": "This UNESCO World Heritage site encompasses three main islands – Komodo, Padar and Rinca. Below the water, multihued coral gardens are a diver’s dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering schools of fish.",
       "image": "large/9.png",
       "to": "#"

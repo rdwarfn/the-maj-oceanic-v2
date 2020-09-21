@@ -5,7 +5,7 @@
       v-bind:data="data.image"
       static-image
     />
-    <div v-bind:class="headingClass" class="heading mx-auto text-h4 text-sm-h3 text-center"> {{data.heading}} </div>
+    <div v-bind:class="headingClass" class="heading mx-auto text-h4 text-sm-h3 text-center" v-html="data.heading"></div>
     <p class="text mx-auto text-center"> {{data.description}} </p>
     <v-btn class="d-block mx-auto" width="143" height="38" color="primary" outlined nuxt tile>read more</v-btn>
   </v-container>
