@@ -62,6 +62,7 @@
               color="primary"
               tile depressed outlined :to="item.to"
               height="38"
+              min-width="132"
             >{{buttonText}}</v-btn>
           </v-card-actions>
         </v-card>
@@ -136,6 +137,8 @@
           v-bind:class="buttonProps"
           color="primary"
           tile depressed outlined :to="dataActive.to"
+          height="38"
+          min-width="132"
         >{{buttonText}}</v-btn>
       </v-card-actions>
     </v-card>
@@ -380,6 +383,7 @@ export default {
 
         &:hover {
           opacity: 1;
+          color: white !important;
           background: $primary !important;
         }
 
