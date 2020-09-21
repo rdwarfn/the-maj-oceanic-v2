@@ -383,7 +383,6 @@ export default {
 
         &:hover {
           opacity: 1;
-          color: white !important;
           background: $primary !important;
         }
 
@@ -400,6 +399,7 @@ export default {
         &:hover {
           background-color: $primary !important;
           border-color: $primary !important;
+          color: white !important;
           .v-icon {
             color: $white !important;
             caret-color: $white !important;
