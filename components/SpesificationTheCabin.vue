@@ -33,9 +33,7 @@
         <v-card-subtitle class="pa-0 text-h6 data--caption"> {{dataActive.caption}} </v-card-subtitle>
         <v-card-title class="pa-0 ml-lg-0 font-weight-bold data--heading" v-html="dataActive.heading"></v-card-title>
       </div>
-      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">
-        {{dataActive.text}}
-      </p>
+      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">{{dataActive.text}}</p>
     </v-card>
   </v-container>
 </template>

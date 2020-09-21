@@ -57,16 +57,12 @@
             <p class="text--primary px-5">{{ item.text }}</p>
           </v-card-text>
           <v-card-actions v-if="buttonText" class="pa-0 mt-4">
-            <t-button
+            <v-btn
               class="btn-l mx-auto"
-              v-bind:props="{
-                color: 'primary',
-                outlined: true,
-                to: item.to,
-                ...buttonProps
-              }"
-              v-text="buttonText"
-            />
+              color="primary"
+              tile depressed outlined :to="item.to"
+              height="38"
+            >{{buttonText}}</v-btn>
           </v-card-actions>
         </v-card>
         <!-- </client-only> -->
@@ -135,16 +131,12 @@
       </v-card-text>
 
       <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
-        <t-button
+        <v-btn
           class="btn-l"
-          v-bind:props="{
-            color: 'primary',
-            outlined: true,
-            to: dataActive.to,
-            ...buttonProps
-          }"
-          v-text="buttonText"
-        />
+          v-bind:class="buttonProps"
+          color="primary"
+          tile depressed outlined :to="dataActive.to"
+        >{{buttonText}}</v-btn>
       </v-card-actions>
     </v-card>
   </v-sheet>

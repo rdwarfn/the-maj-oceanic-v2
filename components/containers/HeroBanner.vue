@@ -14,7 +14,7 @@
               :playsinline="true"
               v-video-player:player="{
                 ...playerOptions,
-                sources: data.video
+                sources: [...data.video]
               }"
               @play="onPlayerPlay($event)"
               @waiting="onPlayerWaiting($event)"

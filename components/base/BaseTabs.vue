@@ -39,16 +39,12 @@
                 </v-card-text>
 
                 <v-card-actions class="px-0" v-bind:class="buttonClass">
-                  <t-button
+                  <v-btn
                     class="btn-l mx-auto mx-md-0 __tab--btn"
-                    v-bind:props="{
-                      color: 'primary',
-                      to: item.data.to,
-                      outlined: true,
-                      ...buttonProps
-                    }"
-                    v-text="buttonText"
-                  />
+                    v-bind:class="buttonProps"
+                    color="primary"
+                    tile depressed outlined :to="item.data.to"
+                  >{{buttonText}}</v-btn>
                 </v-card-actions>
               </div>
             </div>

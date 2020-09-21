@@ -43,15 +43,12 @@
           </v-card-text>
 
           <v-card-actions v-if="buttonText" :class="buttonClass">
-            <t-button
+            <v-btn
               class="btn-l"
-              v-bind:props="{
-                color: 'primary',
-                to: dataActive.to,
-                ...buttonProps
-              }"
-              v-text="buttonText"
-            />
+              color="primary"
+              tile depressed outlined :to="dataActive.to">
+            {{buttonText}}
+            </v-btn>
           </v-card-actions>
         </v-card>
         </client-only>
@@ -106,11 +103,9 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import tButton from '@/components/base/BaseButton.vue';
 const components = {
   Swiper,
-  SwiperSlide,
-  tButton
+  SwiperSlide
 }
 export default {
   name: 'CarouselTextImage',

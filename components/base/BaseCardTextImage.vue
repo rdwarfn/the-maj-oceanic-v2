@@ -1,10 +1,7 @@
 <template>
   <v-row no-gutters align="center" justify="center" class="card-text-image mx-auto">
     <v-card flat tile color="transparent">
-      <div
-        class="__card d-sm-flex align-center static"
-        v-bind:class="{reversed: reverse}"
-      >
+      <div class="__card d-sm-flex align-center" v-bind:class="{reversed: reverse}">
         <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
           {{ data.caption }}
         </v-card-subtitle>
@@ -34,17 +31,16 @@
           v-if="buttonText"
           class="hidden-sm-and-up pa-0 mt-9"
         >
-          <t-button
+          <v-btn
             class="mx-auto __card--btn"
             v-bind:class="buttonClass"
-            v-bind:props="{
-              color: 'primary',
-              outlined: true,
-              to: data.to,
-              ...buttonProps
-            }"
-            v-text="buttonText"
-          ></t-button>
+            color="primary"
+            tile depressed
+            outlined :to="data.to"
+            height="38"
+          >
+            {{buttonText}}
+          </v-btn>
         </v-card-actions>
 
         <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
@@ -74,16 +70,14 @@
               buttonContainerClass,
               contentRight ? 'justify-end' : null
             ]">
-            <t-button
+            <v-btn
               :class="buttonClass"
-              :props="{
-                color: 'primary',
-                outlined: true,
-                to: data.to,
-                ...buttonProps
-              }"
-              v-text="buttonText"
-            ></t-button>
+              color="primary"
+              tile depressed outlined :to="data.to"
+              height="38"
+            >
+              {{buttonText}}
+            </v-btn>
           </v-card-actions>
         </div>
       </div>

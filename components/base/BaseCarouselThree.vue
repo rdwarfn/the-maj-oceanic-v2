@@ -26,6 +26,7 @@
           <p v-if="item[textData]" v-bind:class="textClass">
             {{item[textData]}}
           </p>
+          <client-only>
           <t-button
             v-if="buttonText"
             v-bind:class="buttonClass"
@@ -35,6 +36,7 @@
               ...buttonProps
             }"
           />
+          </client-only>
         </div>
       </swiper-slide>
       <div
@@ -56,12 +58,10 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import tButton from '@/components/base/BaseButton.vue';
 import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
 const components = {
   Swiper,
-  SwiperSlide,
-  tButton
+  SwiperSlide
 }
 export default {
   name: 'CarouselThree',
@@ -77,12 +77,8 @@ export default {
     buttonProps: { type: Object },
     customClassPagination: { type: String },
     imageClass: { type: String },
-    data: {
-      type: Array
-    },
-    staticImage: {
-      type: Boolean
-    },
+    data: { type: Array },
+    staticImage: { type: Boolean },
     hidePagination: { type: Boolean, default: false },
     paginationClass: { type: String, default: 'hidden-md-and-down' }
   },
