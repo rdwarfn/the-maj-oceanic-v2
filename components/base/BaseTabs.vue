@@ -1,67 +1,58 @@
 <template>
-  <v-row no-gutters class="__tab" ref="tabsRef">
+  <v-row no-gutters class="__tab">
     <v-tabs
       background-color="transparent"
       v-bind:centered="tabsCenter ? tabsCenter : isSmDown"
       :light="false"
+      show-arrows
     >
       <v-tabs-slider color="primary"></v-tabs-slider>
-      <v-tab
-        v-for="item in data"
-        v-bind:key="item.label"
-      >
-        <div
-          class="__tab--label font-weight-bold text-uppercase"
-          v-text="item.label"
-        />
+      <v-tab v-for="item in data" v-bind:key="item.label">
+        <div class="__tab--label font-weight-bold text-uppercase" v-text="item.label" />
       </v-tab>
 
-      <v-tab-item
-        v-for="item in data"
-        v-bind:key="item.label"
-        class="mt-16"
-      >
+      <v-tab-item v-for="item in data" v-bind:key="item.label" class="mt-16">
         <slot v-bind:data-tab="item.data">
-            <v-card flat>
-              <div
-                class="d-flex justify-space-between align-center __tab-item static"
-                v-bind:class="{reversed: reverse}"
+          <v-card flat>
+            <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
+              <v-img class="__tab--img mx-auto mx-md-0"
+                v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
+                v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
               >
-                <v-img
-                  class="__tab--img mx-auto mx-md-0"
-                  v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
-                  v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
-                ></v-img>
-                <div class="__tab--content">
-                  <v-card-title
-                    class="px-0"
-                  >
-                    <div class="text-h4 mx-auto mx-md-0">
-                      {{ item.data.title }}
-                    </div>
-                  </v-card-title>
+                <template v-slot:placeholder>
+                  <v-row class="fill-height ma-0" align="center" justify="center">
+                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                  </v-row>
+                </template>
+              </v-img>
+              <div class="__tab--content">
+                <v-card-title class="px-0 pt-0">
+                  <div class="text-h4 mx-auto mx-md-0">
+                    {{ item.data.title }}
+                  </div>
+                </v-card-title>
 
-                  <v-card-text class="__tab--content-text text--primary px-0 mb-3">
-                    <p class="text-justify text-sm-center text-md-left">
-                      {{ item.data.text }}
-                    </p>
-                  </v-card-text>
+                <v-card-text class="__tab--content-text text--primary px-0 mb-3">
+                  <p class="text-justify text-sm-center text-md-left">
+                    {{ item.data.text }}
+                  </p>
+                </v-card-text>
 
-                  <v-card-actions class="px-0" v-bind:class="buttonClass">
-                    <t-button
-                      class="btn-l mx-auto mx-md-0 __tab--btn"
-                      v-bind:props="{
-                        color: 'primary',
-                        to: item.data.to,
-                        outlined: true,
-                        ...buttonProps
-                      }"
-                      v-text="buttonText"
-                    />
-                  </v-card-actions>
-                </div>
+                <v-card-actions class="px-0" v-bind:class="buttonClass">
+                  <t-button
+                    class="btn-l mx-auto mx-md-0 __tab--btn"
+                    v-bind:props="{
+                      color: 'primary',
+                      to: item.data.to,
+                      outlined: true,
+                      ...buttonProps
+                    }"
+                    v-text="buttonText"
+                  />
+                </v-card-actions>
               </div>
-            </v-card>
+            </div>
+          </v-card>
         </slot>
       </v-tab-item>
     </v-tabs>
@@ -100,17 +91,19 @@ export default {
 ::v-deep .theme--light.v-tabs-items {
   background-color: transparent !important;
 }
-.__tab {
-  clear: both !important;
-  ::v-deep .v-tabs {
-    .v-tab {
-      letter-spacing: 0;
-      text-transform: capitalize !important;
-      &:not(.v-tab--active) {
-        color: #232323 !important;
-      }
+
+::v-deep .v-tabs {
+  .v-tab {
+    letter-spacing: 0;
+    text-transform: capitalize !important;
+    &:not(.v-tab--active) {
+      color: #232323 !important;
     }
   }
+}
+
+.__tab {
+  clear: both !important;
 
   &--btn {
     width: 151px !important;

@@ -1,113 +1,93 @@
 <template>
-  <v-row no-gutters align="center" justify="center" class="mx-auto px-0">
-    <client-only>
-      <v-card flat tile v-if="data" color="transparent">
-        <div
-          class="__card d-sm-flex align-center static"
-          v-bind:class="{reversed: reverse}"
+  <v-row no-gutters align="center" justify="center" class="card-text-image mx-auto">
+    <v-card flat tile color="transparent">
+      <div
+        class="__card d-sm-flex align-center static"
+        v-bind:class="{reversed: reverse}"
+      >
+        <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
+          {{ data.caption }}
+        </v-card-subtitle>
+        <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
+          {{ data.heading }}
+        </v-card-title>
+        <v-img
+          v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
+          v-bind:src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
+          v-bind:lazy-src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
+          v-bind:aspect-ratio="imgAspectRatio"
         >
-          <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
-            {{ data.caption }}
-          </v-card-subtitle>
-          <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
-            {{ data.heading }}
-          </v-card-title>
-          <v-img
-            v-bind:class="cardImgClass ? cardImgClass : '__card--image'"
-            v-bind:src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
-            v-bind:lazy-src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
-            v-bind:aspect-ratio="imgAspectRatio"
-          >
-            <template v-slot:placeholder>
-              <v-row
-                class="fill-height ma-0"
-                align="center"
-                justify="center"
-              >
-                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-              </v-row>
-            </template>
-          </v-img>
-          <v-card-text class="hidden-sm-and-up px-0 mt-5 text-justify">
+          <template v-slot:placeholder>
+            <v-row
+              class="fill-height ma-0"
+              align="center"
+              justify="center"
+            >
+              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+            </v-row>
+          </template>
+        </v-img>
+        <v-card-text class="hidden-sm-and-up px-0 mt-5 text-justify">
+          {{ data.text }}
+        </v-card-text>
+        <v-card-actions
+          v-if="buttonText"
+          class="hidden-sm-and-up pa-0 mt-9"
+        >
+          <t-button
+            class="mx-auto __card--btn"
+            v-bind:class="buttonClass"
+            v-bind:props="{
+              color: 'primary',
+              outlined: true,
+              to: data.to,
+              ...buttonProps
+            }"
+            v-text="buttonText"
+          ></t-button>
+        </v-card-actions>
+
+        <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
+          <v-card-subtitle v-if="data.caption" class="text-h6 font-weight-bold pb-0 px-0 static"
+            v-bind:class="contentRight ? 'text-right' : null"
+            v-text="data.caption"
+          />
+          <v-card-title class="px-0 text-break"
+            v-bind:class="contentRight ? 'justify-end' : null"
+            v-text="data.heading"
+          />
+
+          <v-card-text class="px-0"
+            v-bind:class="contentRight ? 'text-right' : null">
             {{ data.text }}
+            <ul v-if="data.list">
+              <li v-for="(item, index) in data.list.split('\n')"
+                v-bind:key="index"
+                v-text="item"
+              />
+            </ul>
           </v-card-text>
-          <v-card-actions
-            v-if="buttonText"
-            class="hidden-sm-and-up pa-0 mt-9"
-          >
+
+          <v-card-actions v-if="buttonText"
+            class="px-0 mt-6"
+            v-bind:class="[
+              buttonContainerClass,
+              contentRight ? 'justify-end' : null
+            ]">
             <t-button
-              class="mx-auto __card--btn"
-              v-bind:class="buttonClass"
-              v-bind:props="{
+              :class="buttonClass"
+              :props="{
                 color: 'primary',
-                depressed: true,
-                tile: true,
+                outlined: true,
                 to: data.to,
                 ...buttonProps
               }"
               v-text="buttonText"
             ></t-button>
           </v-card-actions>
-
-          <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
-            <v-card-subtitle
-              v-if="data.caption"
-              class="text-h6 font-weight-bold pb-0 px-0 static"
-              v-bind:class="contentRight ? 'text-right' : null"
-              v-text="data.caption"
-            />
-            <v-card-title
-              class="px-0 text-break"
-              v-bind:class="contentRight ? 'justify-end' : null"
-              v-text="data.heading"
-            />
-
-            <v-card-text
-              class="px-0"
-              v-bind:class="contentRight ? 'text-right' : null"
-            >
-              {{ data.text }}
-
-              <ul v-if="data.list">
-                <li
-                  v-for="(item, index) in data.list.split('\n')"
-                  v-bind:key="index"
-                  v-text="item"
-                />
-              </ul>
-            </v-card-text>
-
-            <v-card-actions
-              v-if="buttonText"
-              class="px-0 mt-6"
-              v-bind:class="[
-                buttonContainerClass,
-                contentRight ? 'justify-end' : null
-              ]"
-            >
-              <t-button
-                :class="buttonClass"
-                :props="{
-                  color: 'primary',
-                  depressed: true,
-                  tile: true,
-                  to: data.to,
-                  ...buttonProps
-                }"
-                v-text="buttonText"
-              ></t-button>
-            </v-card-actions>
-          </div>
         </div>
-      </v-card>
-      <v-card v-else>
-        <v-card-title>Oops!</v-card-title>
-        <v-card-text>
-          <h6>Component stack card-text-image</h6>
-          <pre>data is undefined or empty</pre>
-        </v-card-text>
-      </v-card>
-    </client-only>
+      </div>
+    </v-card>
   </v-row>
 </template>
 
@@ -151,6 +131,11 @@ export default {
     font-size: 16px !important;
   }
 
+  .card-text-image {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
   .__card {
     flex-wrap: wrap !important;
     flex-direction: row !important;
@@ -177,10 +162,8 @@ export default {
     }
 
     &--image {
-      max-width: 100%;
-      @media (min-width: 600px) {
-        max-width: 51.351351351351354%;
-      }
+      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
+      @include poly-fluid-sizing ('height', (374px:181px, 768px:350px));
     }
 
     &--content {

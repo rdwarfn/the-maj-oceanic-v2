@@ -1,43 +1,30 @@
 <template>
   <div id="the-vessel">
     <intro
-      class="mb-16"
+      class="the-veseel--intro px-0 pt-0"
       v-bind:data="{
         heading: data.heading,
         image: data.image,
         description: data.description
       }"
-      image-class="order-last mt-8 px-6 px-md-0"
+      image-class="order-last px-6 px-md-0"
       description-class="text-justify text-sm-center"
     />
 
-    <the-cabins
-      container-class="pt-sm-16"
-      v-bind:data="data.card_three_image"
-    />
+    <the-cabins v-bind:data="data.card_three_image" />
 
-    <spesification
-      v-bind:data="data.carousel_card"
-    />
+    <spesification v-bind:data="data.carousel_card" />
 
-    <the-teams
-      v-bind:data="data.teams"
-    />
+    <the-teams v-bind:data="data.teams" />
 
-    <v-container class="sustainability d-flex flex-column justify-center px-6 px-md-0" tag="section">
-      <div>
-        <base-card-text-image
-          v-bind:data="data.card_text_image[0]"
-          v-bind:button-props="{
-            outlined: true
-          }"
-          button-text="Learn More"
-          card-img-class="_card-image-class"
-          static-image
-          content-right
-          reverse
-        />
-      </div>
+    <v-container class="sustainability py-0 px-6 px-md-0" tag="section">
+      <base-card-text-image
+        v-bind:data="data.card_text_image[0]"
+        button-text="Learn More"
+        static-image
+        content-right
+        reverse
+      />
     </v-container>
   </div>
 </template>
@@ -100,42 +87,34 @@ export default {
 
 <style lang="scss" scoped>
   @import "@/assets/styles/scss/variables.scss";
-  ::v-deep .intro--head {
-    max-width: 100% !important;
-  }
-  ::v-deep .__carousel {
-    @media (min-width: 600px) {
-      margin-bottom: 150px !important;
-    }
-  }
-  ::v-deep .intro--paragraph {
-    @include poly-fluid-sizing('max-width', (768px:610px, 960px:766px));
-  }
-  ::v-deep .__carousel_card {
-    margin: 0 auto;
-    @include poly-fluid-sizing('padding-top', (375px:39px, 768px:26px, 1204px:34px));
-    // @include poly-fluid-sizing('padding-left', (375px:17px, 768px:22px, 1204px:34px));
-    @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:34px, 1204px: 69px));
-    @include poly-fluid-sizing('width', (375px:323px, 600px:362px, 1204px: 445px));
-    // @include poly-fluid-sizing('height', (375px:482px, 600px:498px, 1204px: 525px));
-  }
-  ::v-deep .__card_text_img--img {
-    @include poly-fluid-sizing('max-width', (375px:325px, 600px:356px, 1204px:445px));
-    @include poly-fluid-sizing('max-height', (375px:345px, 600px:700px, 1204px:716px));
+
+  ::v-deep section.the-veseel--intro {
+      padding-bottom: 50px;
+      .intro--head {
+        @include poly-fluid-sizing ('margin-bottom', (375px:25px, 768px:29px, 1440px:30px));
+      }
+      .intro--paragraph {
+        @media #{map-get($display-breakpoints, 'md-and-up')} {
+          max-width: 795px;
+          margin-bottom: 29px;
+        }
+        @media #{map-get($display-breakpoints, 'sm-only')} {
+          max-width: 635px;
+          margin-bottom: 51px;
+        }
+        @media #{map-get($display-breakpoints, 'xs-only')} {
+          margin-bottom: 35px;
+        }
+      }
   }
 
-  .sustainability {
-    padding-top: 50px;
-    @include poly-fluid-sizing ('padding-bottom', (375px:97px, 768px:50px));
+  ::v-deep section.sustainability {
+    @media #{map-get($display-breakpoints, ('xs-only'))} {
+      margin-bottom: 47px !important;
+    }
     @media #{map-get($display-breakpoints, 'md-and-up')} {
       margin-top: 90px !important;
       margin-bottom: 50px !important;
     }
-  }
-
-  ::v-deep ._card-image-class {
-    margin: 0 auto;
-    @include poly-fluid-sizing ('max-width', (374px:325px, 768px:366px, 960px:570px));
-    @include poly-fluid-sizing ('height', (374px:181px, 768px:350px))
   }
 </style>

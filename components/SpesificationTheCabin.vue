@@ -1,44 +1,42 @@
 <template>
-  <v-container class="the-cabin--spesification px-sm-6 px-md-0 pa-0 static" v-bind:class="{reversed: reverse}">
-    <!-- <div> -->
-      <center class="hidden-sm-and-up">
-        <slot name="icon"></slot>
-      </center>
-      <div class="data--caption text-h6 text-center hidden-sm-and-up"> {{dataActive.caption}} </div>
-      <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up" v-html="dataActive.heading"></div>
-      <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
-        <swiper-slide v-for="(item, index) in data" v-bind:key="index">
-          <v-img
-            v-bind:src="staticImage
-              ? require('~/assets/images/' + item.image)
-              : item.image"
-            v-bind:lazy-src="staticImage
+  <v-container class="suites-and-staterooms px-0 px-sm-6 px-md-0" v-bind:class="{reversed: reverse}">
+    <center class="hidden-sm-and-up">
+      <slot name="icon"></slot>
+    </center>
+    <div class="data--caption text-h6 text-center hidden-sm-and-up"> {{dataActive.caption}} </div>
+    <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up" v-html="dataActive.heading"></div>
+    <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
+      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
+        <v-img
+          v-bind:src="staticImage
             ? require('~/assets/images/' + item.image)
             : item.image"
-            class="image--item"></v-img>
-        </swiper-slide>
-        <div v-if="data && data.length > 1" class="hidden-xs-only swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
-        <template v-if="data && data.length > 1">
-          <v-btn depressed fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
-            <v-icon color="primary">{{iconLeft}}</v-icon>
-          </v-btn>
+          v-bind:lazy-src="staticImage
+          ? require('~/assets/images/' + item.image)
+          : item.image"
+          class="image--item"></v-img>
+      </swiper-slide>
+      <div v-if="data && data.length > 1" class="hidden-xs-only swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
+      <template v-if="data && data.length > 1">
+        <v-btn depressed fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
+          <v-icon color="primary">{{iconLeft}}</v-icon>
+        </v-btn>
 
-          <v-btn depressed fab absolute x-small class="button--right swiper-button-next" v-bind:class="{reversed: reverse}" color="white" slot="button-next">
-            <v-icon color="primary">{{iconRight}}</v-icon>
-          </v-btn>
-        </template>
-      </swiper>
-      <v-card v-bind:color="$vuetify.breakpoint.xsOnly ? 'transparent' : '#ffffff'" class="data--card" v-bind:class="{reversed: reverse}" flat tile>
-        <div class="hidden-xs-only">
-          <slot name="icon"></slot>
-          <v-card-subtitle class="px-0 pb-0 text-h6 data--caption"> {{dataActive.caption}} </v-card-subtitle>
-          <v-card-title class="px-0 ml-lg-0 font-weight-bold data--heading" v-html="dataActive.heading"></v-card-title>
-        </div>
-        <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">
-          {{dataActive.text}}
-        </p>
-      </v-card>
-    <!-- </div> -->
+        <v-btn depressed fab absolute x-small class="button--right swiper-button-next" v-bind:class="{reversed: reverse}" color="white" slot="button-next">
+          <v-icon color="primary">{{iconRight}}</v-icon>
+        </v-btn>
+      </template>
+    </swiper>
+    <v-card class="data--card" v-bind:class="{reversed: reverse}" flat tile>
+      <div class="hidden-xs-only">
+        <slot name="icon"></slot>
+        <v-card-subtitle class="pa-0 text-h6 data--caption"> {{dataActive.caption}} </v-card-subtitle>
+        <v-card-title class="pa-0 ml-lg-0 font-weight-bold data--heading" v-html="dataActive.heading"></v-card-title>
+      </div>
+      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">
+        {{dataActive.text}}
+      </p>
+    </v-card>
   </v-container>
 </template>
 
@@ -141,7 +139,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~/assets/styles/scss/variables.scss";
+@import "@/assets/styles/scss/variables.scss";
 $primary:#208CB2;
 $size: 12px;
 $secondary: #4E5E79;
@@ -163,35 +161,59 @@ $white: #ffffff;
   letter-spacing: normal !important;
 }
 
-.the-cabin--spesification {
+.suites-and-staterooms {
+  position: relative !important;
   // border: 1px solid black;
-  @include poly-fluid-sizing ('min-height', (375px:675px, 768px:545px, 1440px:595px));
-  position: relative;
-  place-items: center;
+  // @include poly-fluid-sizing ('min-height', (375px:675px, 768px:545px, 1440px:595px));
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
     background: #fafafa !important;
+    padding-top: 55px !important;
+    padding-bottom: 61px !important;
+
+    .data--caption { margin-top: 35px !important }
+    .data--heading {
+      margin-top: 12px !important;
+      margin-bottom: 40px !important;
+    }
+    .data--card {
+      top: 0 !important;
+      padding: 0 !important;
+      height: auto !important;
+    }
+  }
+
+  @media #{map-get($display-breakpoints, 'sm-only')} {
+    padding-top: 75px !important;
+    padding-bottom: 75px !important;
+
+    .data--caption { margin-top: 25px !important }
+    .data--heading {
+      margin-top: 15px !important;
+      margin-bottom: 35px !important;
+    }
+    .data--card { top: 125px !important }
+  }
+
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+
+    .data--caption { margin-top: 30px !important }
+    .data--heading {
+      margin-top: 12px !important;
+      margin-bottom: 36px !important;
+    }
+    .data--card { top: 100px !important }
   }
 
   .data {
-    &--caption {
-      @media #{map-get($display-breakpoints, 'sm-and-up')} {
-        margin-top: 14px !important;
-      }
-      @media #{map-get($display-breakpoints, 'xs-only')} {
-        margin-top: 35px !important;
-      }
-    }
     &--heading {
       @include poly-fluid-sizing ('font-size', (375px:20px,768px:22px));
       white-space: nowrap !important;
       font-family: "Domine", serif;
       line-height: 28px;
       letter-spacing: normal;
-      padding-top: 12px !important;
-      @media #{map-get($display-breakpoints, 'xs-only')} {
-        margin-bottom: 40px !important;
-      }
     }
     &--card {
       height: auto;
@@ -209,7 +231,6 @@ $white: #ffffff;
     }
     &--card:not(.reversed) {
       @media #{map-get($display-breakpoints, ('sm-and-up'))} {
-        top: 50px;
         position: absolute;
         z-index: 2;
         right: auto;
@@ -218,7 +239,6 @@ $white: #ffffff;
     }
     &--card.reversed {
       @media #{map-get($display-breakpoints, ('sm-and-up'))} {
-        top: 50px;
         position: absolute;
         z-index: 2;
         left: auto;

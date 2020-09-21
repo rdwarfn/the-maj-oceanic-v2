@@ -13,7 +13,7 @@
         {{ dataActive.heading }}
       </div>
     </v-card-title>
-    <client-only>
+    <!-- <client-only> -->
     <swiper
       ref="swiper"
       class="swiper"
@@ -23,28 +23,36 @@
         v-for="item in data"
         v-bind:key="item.id"
       >
-        <v-card flat tile hover color="transparent" max-width="auto">
-          <template>
-            <v-skeleton-loader
-              v-if="!item.image"
-              class="__carousel--img mx-auto mx-sm-0"
-              type="image"
-            ></v-skeleton-loader>
-            <v-img
-              v-else mx-auto
-              :src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
-              :lazy-src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
-              class="__carousel--img mx-auto mx-sm-0"
-              :class="cardImageClass"
-            />
+        <template>
+          <v-skeleton-loader
+            v-if="!item.image"
+            class="__carousel--img mx-auto mx-sm-0"
+            type="image"
+          ></v-skeleton-loader>
+          <v-img
+            v-else mx-auto
+            :src="staticImage
+              ? require(`~/assets/images/${item.image}`)
+              : item.image"
+            :lazy-src="staticImage
+              ? require(`~/assets/images/${item.image}`)
+              : item.image"
+            class="__carousel--img mx-auto mx-sm-0"
+            :class="cardImageClass"
+          >
+          <template v-slot:placeholder>
+            <v-row
+              class="fill-height ma-0"
+              align="center"
+              justify="center"
+            >
+              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+            </v-row>
           </template>
-        </v-card>
+          </v-img>
+        </template>
         <!-- <client-only> -->
-        <v-card flat tile class="hidden-sm-and-up mx-auto pb-13" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
+        <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
           <v-card-text class="px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'">
             <p class="text--primary px-5">{{ item.text }}</p>
           </v-card-text>
@@ -67,6 +75,7 @@
       <template v-if="data && data.length > 1">
         <v-btn
           fab
+          depressed
           absolute
           x-small
           class="button--left swiper-button-prev"
@@ -77,6 +86,7 @@
         </v-btn>
         <v-btn
           fab
+          depressed
           absolute
           x-small
           class="button--right swiper-button-next"
@@ -87,62 +97,56 @@
         </v-btn>
       </template>
     </swiper>
-    </client-only>
-
-    <!-- <client-only> -->
-      <v-card
-        v-if="Object.keys(dataActive).length"
-        class="__carousel--card hidden-xs-only"
-        v-bind:class="cardClass"
-        v-bind:rounded="false"
-        v-bind:height="cardHeight"
-        v-bind:width="cardWidth"
-        v-bind:max-height="cardMaxHeight"
-        flat tile
-      >
-        <slot v-if="!isXs" name="image-extra"></slot>
-        <v-card-subtitle
-          v-if="dataActive.caption"
-          class="text-h6 __txt_primary px-0 pb-0"
-          :class="captionClass"
-        >
-          {{ dataActive.caption }}
-        </v-card-subtitle>
-
-        <v-card-title
-          class="text-h4 text-no-wrap mb-3 px-0"
-          :class="headingClass"
-        >
-          {{ dataActive.heading }}
-        </v-card-title>
-
-        <v-card-text
-          class="text--primary d-block px-0"
-          :class="textClass"
-        >
-          {{ dataActive.text }}
-
-          <ul class="__carousel--card-list" v-if="dataActive.list">
-            <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
-              {{i}}
-            </li>
-          </ul>
-        </v-card-text>
-
-        <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
-          <t-button
-            class="btn-l"
-            v-bind:props="{
-              color: 'primary',
-              outlined: true,
-              to: dataActive.to,
-              ...buttonProps
-            }"
-            v-text="buttonText"
-          />
-        </v-card-actions>
-      </v-card>
     <!-- </client-only> -->
+
+    <v-card
+      v-if="Object.keys(dataActive).length"
+      class="__carousel--card hidden-xs-only"
+      v-bind:class="cardClass"
+      v-bind:rounded="false"
+      v-bind:height="cardHeight"
+      v-bind:width="cardWidth"
+      v-bind:max-height="cardMaxHeight"
+      flat tile
+    >
+      <slot v-if="!isXs" name="image-extra"></slot>
+      <v-card-subtitle v-if="dataActive.caption" class="text-h6 __txt_primary pa-0" :class="captionClass">
+        {{ dataActive.caption }}
+      </v-card-subtitle>
+
+      <v-card-title
+        class="text-h4 text-no-wrap mb-3 px-0"
+        :class="headingClass"
+      >
+        {{ dataActive.heading }}
+      </v-card-title>
+
+      <v-card-text
+        class="text--primary d-block px-0"
+        :class="textClass"
+      >
+        {{ dataActive.text }}
+
+        <ul class="__carousel--card-list" v-if="dataActive.list">
+          <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
+            {{i}}
+          </li>
+        </ul>
+      </v-card-text>
+
+      <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
+        <t-button
+          class="btn-l"
+          v-bind:props="{
+            color: 'primary',
+            outlined: true,
+            to: dataActive.to,
+            ...buttonProps
+          }"
+          v-text="buttonText"
+        />
+      </v-card-actions>
+    </v-card>
   </v-sheet>
 </template>
 
@@ -190,6 +194,7 @@ export default {
       iconRight: mdiChevronRight,
       swiperOption: {
         lazy: true,
+        autoHeight: true,
         slidesPerView: 1,
         on: {
           slideChange: () => {
@@ -248,8 +253,8 @@ export default {
 
 <style lang="scss" scoped>
   $primary:#208CB2;
-  $size: 12px;
-  $secondary: #4E5E79;
+  $size: 10px;
+  $secondary: #C4C4C4;
   $transition-time-normal: .5s;
   $white: #ffffff;
 
@@ -293,13 +298,15 @@ export default {
       z-index: 10 !important;
       box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.03) !important;
       border-radius: 2px;
-      @include poly-fluid-sizing ('width', (375px:290px, 1440px:445px));
+      @include poly-fluid-sizing ('max-width', (768px:352px, 1440px:445px));
       // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
       @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
       @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
       @include poly-fluid-sizing ('padding-left', (375px:20px, 768px:25px, 1440px:50px));
       @include poly-fluid-sizing ('padding-right', (375px:20px, 768px:25px, 1440px:50px));
-      @include poly-fluid-sizing ('left', (374px:260px, 768px:347px, 1440px:665px));
+      @include poly-fluid-sizing ('left', (600px:198px, 768px:366px, 1440px:665px));
+
+        // @include poly-fluid-sizing ('left', (600px:220px, 768px:390px, 1440px:665px));
       right: auto;
       top: 10% !important;
       margin: {
@@ -348,13 +355,8 @@ export default {
 
     &--img {
       width: 100%;
-
       @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
-      @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
-      ::v-deep .v-skeleton-loader__image {
-        @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
-        @include poly-fluid-sizing ('height', (375px:181px, 768px:350.9px, 1440px:445px));
-      }
+      @include poly-fluid-sizing ('height', (375px:181px, 768px:347px, 1440px:445px));
     }
 
     .swiper {
@@ -381,11 +383,12 @@ export default {
         line-height: $size !important;
         text-align: center;
         color: $secondary;
-        opacity: 0.25;
+        opacity: 1;
         background: $secondary;
 
         &:hover {
           opacity: 1;
+          background: $primary !important;
         }
 
         &.swiper-pagination-bullet-active {
@@ -395,7 +398,9 @@ export default {
         }
       }
       ::v-deep .v-btn {
-
+        .swiper-button-disabled {
+          cursor: not-allowed !important;
+        }
         &:hover {
           background-color: $primary !important;
           border-color: $primary !important;
@@ -419,7 +424,8 @@ export default {
 
       .button--left, .button--right {
         display: none !important;
-        top: 85% !important;
+        top: auto;
+        bottom: 42px;
         @media (min-width: 600px) {
           display: inline-block !important;
         }
@@ -433,12 +439,12 @@ export default {
       }
 
       .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-        left: 24px !important;
+        left: 15px !important;
         right: auto;
       }
 
       .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-        left: 80px !important;
+        left: 57px !important;
         right: auto;
       }
     }

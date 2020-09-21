@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div id="home">
     <intro
-      class="px-0 pt-0 pb-10"
+      class="home--intro"
       v-bind:data="{
         heading: data.heading,
         image: data.image,
@@ -9,7 +9,7 @@
       }"
     />
 
-    <v-container class="pt-10 pb-13 px-6 px-md-0" tag="section">
+    <v-container class="home--the-vessel px-6 px-md-0" tag="section">
       <base-carousel
         :data="data.carousel_card"
         button-text="discover"
@@ -26,13 +26,9 @@
       }"
     />
 
-    <v-container class="dining px-6 px-md-0" tag="section">
+    <v-container class="home--dining px-6 px-md-0 py-0" tag="section">
       <base-card-text-image
         v-bind:data="data.card_text_image[0]"
-        v-bind:button-props="{
-          outlined: true
-        }"
-        card-img-class="_card-img-class"
         button-text="learn more"
         content-right
         static-image
@@ -40,13 +36,9 @@
       />
     </v-container>
 
-    <v-container class="occasions px-6 px-md-0" tag="section">
+    <v-container class="home--occasions px-6 px-md-0 py-0" tag="section">
       <base-card-text-image
         v-bind:data="data.card_text_image[1]"
-        v-bind:button-props="{
-          outlined: true
-        }"
-        card-img-class="_card-img-class"
         button-text="learn more"
         static-image
       />
@@ -131,29 +123,40 @@ export default {
   @import '@/assets/styles/scss/variables.scss';
   $primary: #208cb2;
 
-  ::v-deep .intro--paragraph {
-    @include poly-fluid-sizing('max-width', (768px:596px, 960px:700px));
-  }
-
-  ::v-deep .dining, ::v-deep .occasions {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    ._card-img-class {
-      margin: 0 auto;
-      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
-      @include poly-fluid-sizing ('height', (374px:181px, 768px:350px));
+  ::v-deep section.home--intro {
+    @include poly-fluid-sizing ('margin-bottom', (375px:50px, 768px:23px, 1440px:50px));
+    .intro--head {
+      @include poly-fluid-sizing ('max-width', (768px:620px, 960px:650px));
+      @include poly-fluid-sizing ('margin-bottom', (375px:25px, 768px:40px));
+    }
+    .intro--image {
+      @include poly-fluid-sizing ('margin-bottom', (375px:35px, 768px:45px, 1440px:50px));
+    }
+    .intro--paragraph {
+      @include poly-fluid-sizing ('max-width', (768px:596px, 1440px:660px));
     }
   }
 
-  ::v-deep .dining {
-    @media (min-width: 960px) {
-      margin-top: 100px !important;
+  ::v-deep section.home--the-vessel {
+    .__carousel .swiper { padding: 0 !important;}
+    padding-bottom: 0;
+    @include poly-fluid-sizing ('padding-top', (375px:50px, 768px:75px, 1440px:50px));
+    @include poly-fluid-sizing ('height', (600px:545px, 768px:545px, 1440px:595px));
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      height: auto !important;
+      padding-bottom: 70px;
     }
   }
 
-  ::v-deep .occasions {
-    @media #{map-get($display-breakpoints, 'md-and-down')} {
-      margin-bottom: 50px !important;
+  section.home--dining {
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-top: 50px;
+    }
+  }
+
+  section.home--occasions {
+    @media #{map-get($display-breakpoints, 'sm-and-up')} {
+      margin-bottom: 50px;
     }
   }
 

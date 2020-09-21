@@ -41,7 +41,6 @@ export default {
 @import '@/assets/styles/scss/variables.scss';
 .voyages {
   background-color: #EFE1DC !important;
-  @include poly-fluid-sizing ('margin-top', (375px:0px, 768px:75px, 1440px:58px));
   padding-top: 50px;
   @include poly-fluid-sizing ('padding-bottom', (375px:50px, 1440px:100px));
 

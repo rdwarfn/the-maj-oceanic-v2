@@ -1,43 +1,16 @@
 <template>
   <v-container tag="section" class="pa-0 d-flex flex-column">
-    <v-skeleton-loader
-      v-if="!data.heading"
-      type="text@2"
-      class="intro--head mb-6 mx-auto"
-    >
-    </v-skeleton-loader>
-    <div v-else class="px-6 px-md-0">
-      <h1 class="intro--head font-weight-bold text-center mx-auto mb-6 mb-sm-10" v-text="data.heading"
-      />
+    <div class="px-6 px-md-0 intro--head font-weight-bold text-center mx-auto" v-html="data.heading">
     </div>
 
-    <v-skeleton-loader
-      v-if="!data.image"
-      type="image@2"
-      class="mx-auto mb-10"
-      v-bind:class="imageClass"
-    ></v-skeleton-loader>
     <base-large-image
-      v-else
-      class="px-sm-6 px-md-0"
-      v-bind:class="imageClass ? imageClass : 'mb-8'"
+      class="intro--image"
+      v-bind:class="imageClass"
       static-image
       :data="data.image"
     />
 
-    <v-skeleton-loader
-      v-if="!data.description"
-      type="paragraph@3"
-      max-width="70%"
-      class="intro--paragraph text-center mx-auto"
-    >
-    </v-skeleton-loader>
-    <div
-      v-else
-      class="intro--paragraph text-break px-6 px-sm-0 mx-auto"
-      v-bind:class="descriptionClass ? descriptionClass : 'text-center'"
-    >
-      {{ data.description }}
+    <div class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
     </div>
   </v-container>
 </template>
@@ -66,17 +39,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/styles/scss/variables.scss";
 ::v-deep .intro {
-  @media (min-width: 1204px) {
-    height: 900px !important;
-  }
   &--head {
     width: 100%;
     -webkit-hyphens: auto;
     -ms-hyphens: auto;
     hyphens: auto;
     font-family: 'Domine', serif;
-    @include poly-fluid-sizing ('max-width', (768px:620px, 960px:650px));
-    @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
+    @include poly-fluid-sizing ('font-size', (375px:20px, 768px:34px));
     @media #{map-get($display-breakpoints, 'sm-and-up')} {
       line-height: 41px !important;
     }
@@ -84,9 +53,6 @@ export default {
       line-height: 32px !important;
       max-width: 100% !important;
     }
-  }
-  &--paragraph {
-    white-space: pre-line !important;
   }
 }
 </style>

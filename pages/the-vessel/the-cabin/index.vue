@@ -1,12 +1,13 @@
 <template>
   <div id="the-cabin">
-    <v-container tag="section" class="mx-auto px-6 px-md-0 mb-16">
+    <v-container tag="section" class="mx-auto px-6 px-md-0">
       <div class="intro--head font-weight-bold text-center mx-auto">
         {{data.heading}}
       </div>
       <p class="intro--paragraph text-center mx-auto"> {{data.description}} </p>
     </v-container>
-    <spesification v-bind:data="data.spesification[0].data">
+
+    <spesification class="admiral-suite" v-bind:data="data.spesification[0].data">
       <template #icon>
         <v-img
           class="spesification--icon"
@@ -14,7 +15,8 @@
           v-bind:lazy-src="icon.zhenghe"></v-img>
       </template>
     </spesification>
-    <spesification reverse v-bind:data="data.spesification[1].data">
+
+    <spesification class="columbus" reverse v-bind:data="data.spesification[1].data">
       <template #icon>
         <v-img
           class="spesification--icon"
@@ -22,7 +24,8 @@
           v-bind:lazy-src="icon.columbus"></v-img>
       </template>
     </spesification>
-    <spesification v-bind:data="data.spesification[2].data" no-wrap>
+
+    <spesification class="deluxe" v-bind:data="data.spesification[2].data" no-wrap>
       <template #icon>
         <div class="d-inline-flex">
           <v-img
@@ -194,26 +197,35 @@ $secondary: #EFE1DC;
   }
 }
 
-::v-deep .__oceanic--secondary {
-  background: $secondary !important;
-  @include poly-fluid-sizing('padding-top', (375px:39px, 600px:80px, 960px:110px));
-  @include poly-fluid-sizing('padding-bottom', (375px:39px, 600px:80px, 960px:110px));
-}
-
-::v-deep .__text-primary {
-  color: $primary !important;
-}
-::v-deep .__carousel {
-  @media (min-width: 600px) {
+@media #{map-get($display-breakpoints, 'md-and-up')} {
+  .suites-and-staterooms.admiral-suite, .suites-and-staterooms.deluxe {
+    margin-bottom: 100px !important;
+  }
+  .suites-and-staterooms.columbus {
     margin-bottom: 150px !important;
   }
 }
-::v-deep .__carousel_card {
-  top: 40px !important;
-  @include poly-fluid-sizing('padding-top', (375px:39px, 768px:26px, 1204px:34px));
-  @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:34px, 1204px: 69px));
-  @include poly-fluid-sizing('width', (375px:323px, 600px:362px, 1204px: 445px));
-}
+
+// ::v-deep .__oceanic--secondary {
+//   background: $secondary !important;
+//   @include poly-fluid-sizing('padding-top', (375px:39px, 600px:80px, 960px:110px));
+//   @include poly-fluid-sizing('padding-bottom', (375px:39px, 600px:80px, 960px:110px));
+// }
+
+// ::v-deep .__text-primary {
+//   color: $primary !important;
+// }
+// ::v-deep .__carousel {
+//   @media (min-width: 600px) {
+//     margin-bottom: 150px !important;
+//   }
+// }
+// ::v-deep .__carousel_card {
+//   top: 40px !important;
+//   @include poly-fluid-sizing('padding-top', (375px:39px, 768px:26px, 1204px:34px));
+//   @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:34px, 1204px: 69px));
+//   @include poly-fluid-sizing('width', (375px:323px, 600px:362px, 1204px: 445px));
+// }
 
 ::v-deep .ig--img {
   width: 100%;
@@ -241,5 +253,10 @@ $secondary: #EFE1DC;
   @media #{map-get($display-breakpoints, 'xs-only')} {
     padding: 4.5px !important;
   }
+}
+
+.v-btn--outlined:hover {
+  color: white !important;
+  background-color: #208cb2 !important;
 }
 </style>

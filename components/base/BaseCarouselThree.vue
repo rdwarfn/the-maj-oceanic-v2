@@ -1,63 +1,56 @@
 <template>
   <v-container class="pa-0 __carousel-three">
-    <!-- <div> -->
-      <swiper
-        ref="swiper"
-        class="swiper"
-        v-bind:options="swiperOption"
-      >
-        <swiper-slide
-          v-for="item in data"
-          v-bind:key="item.id"
-        >
-          <div class="text-center __carousel-three--item">
-            <v-skeleton-loader
-              v-if="!item.image"
-              type="image"
-              class="__carousel-three--item-img"
-            ></v-skeleton-loader>
-            <v-img
-              v-bind:src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
-              v-bind:lazy-src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
-              class="__carousel-three--item-img"
-              v-bind:class="imageClass"
-            ></v-img>
-            <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
-              {{item.heading}}
-            </h1>
-            <p v-if="item[textData]" v-bind:class="textClass">
-              {{item[textData]}}
-            </p>
-            <t-button
-              v-if="buttonText"
-              v-bind:class="buttonClass"
-              v-text="buttonText"
-              v-bind:props="{
-                to: item.to,
-                ...buttonProps
-              }"
-            />
-          </div>
-        </swiper-slide>
-        <div
-          v-if="!hidePagination"
-          class="swiper-pagination swiper-pagination-bullets"
-          v-bind:class="paginationClass"
-          slot="pagination"></div>
-      </swiper>
-      <div class="navigation container hidden-xs-only">
-        <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
-          <v-icon color="white"> {{icon.left}} </v-icon>
-        </v-btn>
-        <v-btn depressed absolute fab x-small class="button--right" color="primary" @click="next">
-          <v-icon color="white"> {{icon.right}} </v-icon>
-        </v-btn>
-      </div>
-    <!-- </div> -->
+    <swiper ref="swiper" class="swiper" v-bind:options="swiperOption">
+      <swiper-slide v-for="item in data" v-bind:key="item.id">
+        <div class="text-center __carousel-three--item">
+          <v-skeleton-loader v-if="!item.image" type="image" class="__carousel-three--item-img"></v-skeleton-loader>
+          <v-img v-else
+            v-bind:src="staticImage
+              ? require(`~/assets/images/${item.image}`)
+              : item.image"
+            v-bind:lazy-src="staticImage
+              ? require(`~/assets/images/${item.image}`)
+              : item.image"
+            class="__carousel-three--item-img"
+            v-bind:class="imageClass"
+          >
+            <template v-slot:placeholder>
+              <v-row class="fill-height ma-0" align="center" justify="center">
+                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              </v-row>
+            </template>
+          </v-img>
+          <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
+            {{item.heading}}
+          </h1>
+          <p v-if="item[textData]" v-bind:class="textClass">
+            {{item[textData]}}
+          </p>
+          <t-button
+            v-if="buttonText"
+            v-bind:class="buttonClass"
+            v-text="buttonText"
+            v-bind:props="{
+              to: item.to,
+              ...buttonProps
+            }"
+          />
+        </div>
+      </swiper-slide>
+      <div
+        v-if="!hidePagination"
+        class="swiper-pagination swiper-pagination-bullets"
+        v-bind:class="paginationClass"
+        slot="pagination"></div>
+    </swiper>
+    <div class="navigation container hidden-xs-only">
+      <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
+        <v-icon color="white"> {{icon.left}} </v-icon>
+      </v-btn>
+      <v-btn depressed absolute fab x-small class="button--right" color="primary" @click="next">
+        <v-icon color="white"> {{icon.right}} </v-icon>
+      </v-btn>
+    </div>
   </v-container>
 </template>
 
