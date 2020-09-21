@@ -9,9 +9,9 @@
     hide-default-header
   >
     <template #header>
-      <thead class="thead--spesification">
+      <thead>
         <tr>
-          <td class="text-center text-sm-left" colspan="2">TABLE of SPESIFICATION</td>
+          <td class="text-center text-sm-left" colspan="2">TABLE of SPECIFICATION</td>
         </tr>
       </thead>
     </template>
@@ -44,7 +44,7 @@ export default {
       data: {
         "headers": [
           {
-            text: "Table Of Spesification",
+            text: "Table Of Specification",
             align: "start",
             value: "name",
           },
@@ -65,7 +65,7 @@ export default {
           },
           {
             name: "Length (Total)",
-            value: "45 m /147 ft"
+            value: "47 m /154 ft"
           },
           {
             name: "Beam",
