@@ -1,6 +1,6 @@
 <template>
   <v-container tag="section" class="pa-0 d-flex flex-column">
-    <div class="px-6 px-md-0 intro--head font-weight-bold text-center mx-auto" v-html="data.heading">
+    <div class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto" v-html="data.heading">
     </div>
 
     <base-large-image

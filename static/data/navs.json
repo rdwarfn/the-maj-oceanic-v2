@@ -6,11 +6,6 @@
     "children": [
       {
         "id": 0,
-        "title": "suites & staterooms",
-        "to": "/the-vessel/the-cabin"
-      },
-      {
-        "id": 1,
         "title": "specification",
         "to": "/the-vessel/specification"
       }
@@ -18,33 +13,26 @@
   },
   {
     "id": 1,
-    "title": "voyages",
-    "to": "/voyages",
-    "children": [
-      {
-        "id": 0,
-        "title": "rates & schedule",
-        "to": "/voyages/rates-and-schedule"
-      }
-    ]
+    "title": "suites & staterooms",
+    "to": "/suites-and-staterooms",
+    "children": []
   },
   {
     "id": 2,
-    "title": "dining",
-    "to": "/sailing-soons",
+    "title": "voyages",
+    "to": "/voyages",
     "children": []
   },
   {
     "id": 3,
-    "title": "occasions",
+    "title": "activites",
     "to": "/sailing-soons",
     "children": []
   },
   {
     "id": 4,
-    "title": "destinations",
-    "to": "/sailing-soons",
-    "disabled": true,
+    "title": "rates & schedule",
+    "to": "/rates-and-schedule",
     "children": []
   }
 ]

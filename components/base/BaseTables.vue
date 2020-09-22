@@ -17,14 +17,14 @@
     </template>
     <template #body="{ items }">
       <tbody>
-        <tr class="hidden-xs-only" v-for="item in items" :key="item.name">
+        <tr class="hidden-xs-only" v-for="(item, index) in items" :key="index">
           <td class="px-0 montserrat text-uppercase font-weight-bold py-5">
             {{item.name}}
           </td>
           <td class="px-0 pt-sans py-5" v-html="item.value">
           </td>
         </tr>
-        <tr class="hidden-sm-and-up" v-for="item in items" :key="item.name">
+        <tr class="hidden-sm-and-up" v-for="(item, index) in items" :key="('children-' + index)">
           <td colspan="2" class="px-0 py-5">
             <div class="montserrat text-uppercase font-weight-bold pb-5"> {{item.name}} </div>
             <div class="pt-sans" v-html="item.value"></div>

@@ -1,7 +1,7 @@
 <template>
   <div id="the-vessel">
     <intro
-      class="the-veseel--intro px-0 pt-0"
+      class="the-veseel--intro px-0"
       v-bind:data="{
         heading: data.heading,
         image: data.image,
@@ -43,6 +43,20 @@ const components = {
 export default {
   layout: 'main',
 
+  meta: {
+    breadcrumbs: [
+      {
+        to: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        to: '/the-vessel',
+        text: 'The Vessel'
+      }
+    ]
+  },
+
   components,
 
   async asyncData ({ $content }) {
@@ -52,34 +66,13 @@ export default {
 
   mounted () {
     if (this.$data && this.$data.data.hero) {
-      this.resetBreadcrumb();
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      this.addBreadcrumb ({
-        text: 'the vessel',
-        href: this.$route.path
-      });
     }
   },
-
-  // destroyed () {
-  //   this.removeBreadcrumb('the vessel');
-  // },
 
   methods: {
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', { page_key, data });
-    },
-    addBreadcrumb ({ text, href }) {
-      this.$store.commit('breadcrumbs/add', {
-        text, href
-      });
-    },
-    // removeBreadcrumb(params) {
-    //   const callback = (args) => args.text === params;
-    //   this.$store.commit('breadcrumbs/remove', callback);
-    // },
-    resetBreadcrumb () {
-      this.$store.commit ('breadcrumbs/reset');
     }
   }
 }
@@ -89,7 +82,7 @@ export default {
   @import "@/assets/styles/scss/variables.scss";
 
   ::v-deep section.the-veseel--intro {
-      padding-bottom: 50px;
+      margin-bottom: 150px;
       .intro--head {
         @include poly-fluid-sizing ('margin-bottom', (375px:25px, 768px:29px, 1440px:30px));
       }
@@ -106,6 +99,10 @@ export default {
           margin-bottom: 35px;
         }
       }
+  }
+
+  ::v-deep section.the-decks {
+    margin-bottom: 90px !important;
   }
 
   ::v-deep section.sustainability {

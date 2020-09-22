@@ -1,8 +1,16 @@
 export const state = () => ({
-  counter: 0
+  counter: 0,
+  breadcrumbs: [],
+  hero: {},
 })
 
 export const mutations = {
+  SET_BREADCRUMBS (state, crumbs) {
+    state.breadcrumbs = crumbs
+  },
+  SET_HERO (state, hero) {
+    state.hero = hero
+  },
   increment(state) {
     state.counter++
   },

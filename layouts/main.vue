@@ -149,33 +149,17 @@
       static-image
     />
 
-    <!-- <v-container v-if="getBreadcrumb.length > 1" class="px-sm-0 hidden-sm-and-down">
-      <v-breadcrumbs
-        v-bind:items="getBreadcrumb"
-        large v-show="getBreadcrumb.length > 1"
-      >
-        <template v-slot:item="{item}">
-          <v-breadcrumbs-item
-            nuxt
-            v-bind:to="item.href"
-            v-bind:disabled="item.disabled"
-            class="text-uppercase"
-          >
-            {{ item.text }}
-          </v-breadcrumbs-item>
-        </template>
-      </v-breadcrumbs>
-    </v-container> -->
-
     <v-main id="main"
-      v-bind:class="{'pt-0': !getHerosByRouteName}"
       v-intersect="{
         handler: onIntersect,
         options: {
           rootMargin: '0px 0px -600px 0px'
         }
       }"
+      v-bind:class="{'pt-0': getHerosByRouteName}"
+      :style="getHerosByRouteName ? 'padding-top: 0' : 'padding-top: 78px'"
     >
+      <breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-6'" />
       <nuxt />
     </v-main>
     <!-- <div id="mark">viewport intersection observer</div> -->
@@ -190,6 +174,7 @@ import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
 import tmoFooter from '@/components/containers/Footer.vue';
 import tmoBtn from '@/components/base/BaseButton.vue';
+import Breadcrumbs from '@/components/Breadcrumbs.vue';
 
 const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v);
 
@@ -198,7 +183,8 @@ const components = {
   tmoNavigationMobile,
   tmoHeroBanner,
   tmoFooter,
-  tmoBtn
+  tmoBtn,
+  Breadcrumbs
 }
 
 export default {
@@ -243,7 +229,7 @@ export default {
       return res && res.data
     },
     getBreadcrumb () {
-      return this.$store.state.breadcrumbs.items
+      return this.$store.state.breadcrumbs
     },
     listenIntersecting () {
       return this.isIntersecting;
@@ -280,19 +266,10 @@ $primary--disabled: #C7E2EC;
 }
 #main {
   background: #fafafa !important;
-  // @media #{map-get($display-breakpoints, 'xs-only')} {
-  //   background: #FFFFFF !important;
-  // }
-  // @media #{map-get($display-breakpoints, 'sm-and-up')} {
-  //   background: #FAFAFA !important;
-  // }
 }
 ::v-deep .theme--light .v-input:not(.v-input--is-focused) {
   color:#C4C9D2 !important;
 }
-// ::v-deep .theme--light.v-list-item:not(.v-list-item--active):not(.v-list-item--disabled) {
-
-// }
 ::v-deep .v-input__prepend-inner {
   padding-right: 15px !important;
 }

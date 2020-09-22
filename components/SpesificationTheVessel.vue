@@ -1,5 +1,5 @@
 <template>
-  <v-container class="__spesification mx-auto px-6 px-md-0">
+  <v-container tag="section" class="the-decks mx-auto px-6 px-md-0">
     <base-carousel
       v-bind:data="data"
       card-class="__carousel_card"
@@ -32,7 +32,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/styles/scss/variables.scss";
-  .__spesification {
+  .the-decks {
     @media #{map-get($display-breakpoints, 'xs-only')} {
       padding-top: 50px;
       padding-bottom: 50px;

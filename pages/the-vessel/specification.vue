@@ -29,6 +29,27 @@ const components = {
 export default {
   layout: 'main',
 
+  meta: {
+    breadcrumbs: [
+      {
+        href: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        href: '/the-vessel',
+        text: 'The Vessel'
+      },
+      {
+        href: '/the-vessel/specification',
+        disabled: true,
+        text: 'Specification'
+      }
+    ]
+  },
+
+  name: 'specification',
+
   components,
 
   async asyncData ({ $content }) {
@@ -39,29 +60,12 @@ export default {
   mounted () {
     if (this.$data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      this.addBreadcrumb ({
-        text: 'spesification',
-        href: this.$route.path
-      });
     }
-  },
-
-  destroyed () {
-    this.removeBreadcrumb('spesification');
   },
 
   methods: {
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', { page_key, data });
-    },
-    addBreadcrumb ({ text, href }) {
-      this.$store.commit('breadcrumbs/add', {
-        text, href
-      });
-    },
-    removeBreadcrumb(params) {
-      const callback = (args) => args.text === params;
-      this.$store.commit('breadcrumbs/remove', callback);
     }
   }
 }

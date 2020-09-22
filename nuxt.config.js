@@ -7,9 +7,11 @@ export default {
   },
   rootDir: __dirname,
   router: {
+    // trailingSlash: false,
+    middleware: ['breadcrumbs'],
     extendRoutes(routes, resolve) {
       routes.push({
-        name: 'custom',
+        name: '404',
         path: '*',
         component: resolve(__dirname, 'pages/sailing-soons.vue')
       })
@@ -63,7 +65,8 @@ export default {
   styleResources: {
     scss: [
       './assets/styles/scss/_poly-fluid-sizing.scss',
-      './assets/styles/scss/variables.scss'
+      './assets/styles/scss/variables.scss',
+      './assets/styles/scss/main.scss'
     ]
   },
   css: [

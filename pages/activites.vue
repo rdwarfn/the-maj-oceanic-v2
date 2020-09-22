@@ -8,65 +8,17 @@
     </v-container>
 
     <spesification class="admiral-suite" v-bind:data="data.spesification[0].data">
-      <template #icon>
-        <v-img
-          class="spesification--icon"
-          v-bind:src="icon.zhenghe"
-          v-bind:lazy-src="icon.zhenghe"></v-img>
-      </template>
     </spesification>
 
     <spesification class="columbus" reverse v-bind:data="data.spesification[1].data">
-      <template #icon>
-        <v-img
-          class="spesification--icon"
-          v-bind:src="icon.columbus"
-          v-bind:lazy-src="icon.columbus"></v-img>
-      </template>
     </spesification>
 
     <spesification class="deluxe" v-bind:data="data.spesification[2].data" no-wrap>
-      <template #icon>
-        <div class="d-inline-flex">
-          <v-img
-            class="spesification--icon spesification--icon-delux"
-            v-bind:src="icon.ferdinand"
-            v-bind:lazy-src="icon.ferdinand"></v-img>
-
-          <v-img
-            class="spesification--icon spesification--icon-delux"
-            v-bind:src="icon.marco"
-            v-bind:lazy-src="icon.marco"></v-img>
-
-          <v-img
-          class="spesification--icon spesification--icon-delux"
-            v-bind:src="icon.vasco"
-            v-bind:lazy-src="icon.vasco"></v-img>
-
-          <v-img
-          class="spesification--icon spesification--icon-delux mr-0"
-            v-bind:src="icon.james"
-            v-bind:lazy-src="icon.james"></v-img>
-        </div>
-      </template>
     </spesification>
-    <v-sheet color="#EFE1DC">
-      <v-container class="ig--container text-center px-6 px-md-0">
-        <div class="ig--heading">Follow us on Instagram</div>
-        <v-row id="instafeed"></v-row>
-
-        <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
-          View more
-        </v-btn>
-      </v-container>
-    </v-sheet>
   </div>
 </template>
 
 <script>
-const myIgToken = "IGQVJXT3NVR21Ra1JpdlluTUQ3RmhhWjY4NWFFUXRYSzAxWklRSFgtODVOaktlNTRfRk4wdmE3cTB6aXBSaThwcXE2LWNXdXBwdWpfQ1ZATd25kR2dKMmM2dHByYzRfeDV5MktST2hFMGN0aEVpSmhmOQZDZD";
-const test = "IGQVJWRFN6UUVvam9qbVA3TTU3ZAVNGelpFLTJQOFRxOTJ3N1pnSmlxeG1pdGE5ZAmJGNmJtMll6U3ZApZA2ljeDV0RkpkWUJrajZAWOUNHRFBaeGo5TnVOUGM4Y0kyc1JxR0R4dDVKU3RB";
-// import VueInstagram from 'vue-instagram';
 import TmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
 import iconZhengHe from '@/assets/images/tmg-icon-zheng-he.png';
 import columbus from '@/assets/images/tmo-icon-columbus-2.png';
@@ -76,28 +28,29 @@ import iconMarco from '@/assets/images/tmo-icon-marco-polo.png';
 import iconVasco from '@/assets/images/tmo-icon-vasco-da-gamma.png';
 const components = {
   TmgIconDivider,
-  Spesification: () => import('@/components/SpesificationTheCabin.vue'),
-  // VueInstagram: () => import('vue-instagram')
+  Spesification: () => import('@/components/SpesificationTheCabin.vue')
 }
 export default {
   layout: 'main',
+
+  meta: {
+    breadcrumbs: [
+      {
+        to: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        to: '/activites',
+        text: 'Activites'
+      }
+    ]
+  },
 
   components,
 
   data () {
     return {
-      icon: {
-        zhenghe :iconZhengHe,
-        columbus: columbus,
-        ferdinand: iconFerdinand,
-        james: iconJames,
-        marco: iconMarco,
-        vasco: iconVasco,
-      },
-      mytoken: myIgToken,
-      myIgData: [],
-      showed: 6,
-      loading: false
     }
   },
 
@@ -107,54 +60,14 @@ export default {
   },
 
   mounted () {
-    this.instafeed();
     if (this.$data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      this.addBreadcrumb ({
-        text: 'the cabin',
-        href: this.$route.path
-      });
     }
-  },
-
-  destroyed () {
-    this.removeBreadcrumb('the cabin');
   },
 
   methods: {
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', { page_key, data });
-    },
-    addBreadcrumb ({ text, href }) {
-      this.$store.commit('breadcrumbs/add', {
-        text, href
-      });
-    },
-    removeBreadcrumb(params) {
-      const callback = (args) => args.text === params;
-      this.$store.commit('breadcrumbs/remove', callback);
-    },
-    instafeed (limit=this.showed) {
-      var feed = new Instafeed({
-        limit: limit,
-        accessToken: myIgToken,
-        transform: function(item) {
-          var d = new Date(item.timestamp);
-          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/');
-          return item;
-        },
-        template: `<div class="col-4">
-            <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
-        </div>`,
-      });
-      feed.run();
-      this.loading = false
-    },
-    loadMore (params=null) {
-      this.loading = true
-      const n = this.showed + params
-      this.showed = n
-      this.instafeed(n);
     }
   }
 }

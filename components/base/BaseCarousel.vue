@@ -392,31 +392,6 @@ export default {
           background: $primary;
         }
       }
-      ::v-deep .v-btn {
-        .swiper-button-disabled {
-          cursor: not-allowed !important;
-        }
-        &:hover {
-          background-color: $primary !important;
-          border-color: $primary !important;
-          color: white !important;
-          .v-icon {
-            color: $white !important;
-            caret-color: $white !important;
-          }
-        }
-
-        // &.swiper-button-disabled {
-        //   box-shadow: none;
-        //   pointer-events: none;
-        //   color: rgba(0,0,0,.26) !important;
-        //   background-color: #E0E0E0 !important;
-        //   .v-icon {
-        //     color: rgba(0,0,0,.26) !important;
-        //     background-color: transparent !important;
-        //   }
-        // }
-      }
 
       .button--left, .button--right {
         display: none !important;

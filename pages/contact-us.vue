@@ -344,7 +344,19 @@ import { mdiClose, mdiRefresh } from '@mdi/js';
 export default {
   layout: 'main',
 
-  name: 'ContactUs',
+  meta: {
+    breadcrumbs: [
+      {
+        to: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        to: '/contact-us',
+        text: 'Contact Us'
+      }
+    ]
+  },
 
   head: {
     title: 'Make an inquiry - The MAJ Oceanic',

@@ -120,33 +120,6 @@
               </v-list>
             </v-menu>
           </v-col>
-
-          <v-col
-            v-show="!isIntersecting"
-            v-bind:class="{
-              intersec: !isIntersecting
-            }">
-            <v-btn
-              text tile nuxt
-              class="font-md-12">
-              login
-            </v-btn>
-          </v-col>
-
-          <v-col
-            v-show="!isIntersecting"
-            cols="auto"
-            v-bind:class="{
-              intersec: !isIntersecting
-            }">
-            <v-btn
-              class="btn-s btn--inquire ml-1 font-md-12"
-              to="/contact-us"
-              depressed tile nuxt dark
-            >
-              Inquire Now
-            </v-btn>
-          </v-col>
         </v-row>
       </v-col>
     </template>

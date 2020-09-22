@@ -1,7 +1,7 @@
 <template>
-  <v-sheet id="rates-and-schedule">
+  <div id="rates-and-schedule">
     <v-container tag="section" class="px-6 px-md-0" style="padding-top: 78px">
-      <v-sheet max-width="790" class="mx-auto">
+      <div class="mx-auto" style="max-width: 790px">
         <div class="heading mx-auto text-h4 text-sm-h3 text-center font-weight-bold mb-10"> Public Rates 2020–2021 </div>
         <p class="text-justify mb-10">
           The Maj Oceanic will sail all year round to destinations depending on seasons and winds. Typically, The Maj Oceanic sails to Komodo from May to October, the Banda / Spice Islands in October/November and in April/May and Raja Ampat from Mid-November to April. Besides, we offer tailor-made routes and voyages in remote locations, designed especially with specific places or activities.
@@ -107,14 +107,28 @@
             ]" v-bind:key="i"> {{d}} </li>
           </ul>
         </div>
-      </v-sheet>
+      </div>
     </v-container>
-  </v-sheet>
+  </div>
 </template>
 
 <script>
 export default {
   layout: 'main',
+
+  meta: {
+    breadcrumbs: [
+      {
+        to: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        to: '/rates-and-schedule',
+        text: 'Rates & Schedule'
+      }
+    ]
+  },
 
   data () {
     return {
@@ -269,16 +283,6 @@ export default {
     return { slug }
   },
 
-  mounted () {
-    this.$nextTick(() => {
-      this.resetBreadcrumb();
-    })
-  },
-
-  // destroyed () {
-  //   this.removeBreadcrumb('rates and schedule');
-  // },
-
   methods: {
     formatPrice (params) {
       if (!params) { return null }
@@ -289,18 +293,6 @@ export default {
       }).format (params);
       return price.toString().replace(/\,/g, " ");
     },
-    // addBreadcrumb ({ text, href }) {
-    //   this.$store.commit('breadcrumbs/add', {
-    //     text, href
-    //   });
-    // },
-    // removeBreadcrumb(params) {
-    //   const callback = (args) => args.text === params;
-    //   this.$store.commit('breadcrumbs/remove', callback);
-    // },
-    resetBreadcrumb () {
-      this.$store.commit ('breadcrumbs/reset');
-    }
   }
 }
 </script>

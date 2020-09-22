@@ -59,6 +59,8 @@ const components = {
 export default {
   layout: 'main',
 
+  name: 'home',
+
   components,
 
   head () {
@@ -87,10 +89,6 @@ export default {
   mounted () {
     if (this.$data.data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
-      this.addBreadcrumb ({
-        text: 'home',
-        href: this.$route.path
-      })
     }
   },
 
@@ -105,15 +103,6 @@ export default {
       this.$store.commit('heros/add', {
         page_key, data
       })
-    },
-    addBreadcrumb ({ text, href }) {
-      this.$store.commit('breadcrumbs/add', {
-        text, href
-      })
-    },
-    removeBreadcrumb(params) {
-      const callback = (args) => args.text === params;
-      this.$store.commit('breadcrumbs/remove', callback);
     }
   }
 }
@@ -122,6 +111,8 @@ export default {
 <style lang="scss" scoped>
   @import '@/assets/styles/scss/variables.scss';
   $primary: #208cb2;
+
+  #home { padding-top: 51px }
 
   ::v-deep section.home--intro {
     @include poly-fluid-sizing ('margin-bottom', (375px:50px, 768px:23px, 1440px:50px));
