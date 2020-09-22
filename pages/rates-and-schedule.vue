@@ -1,6 +1,6 @@
 <template>
   <div id="rates-and-schedule">
-    <v-container tag="section" class="px-6 px-md-0" style="padding-top: 78px">
+    <v-container tag="section" class="px-6 px-md-0 py-0">
       <div class="mx-auto" style="max-width: 790px">
         <div class="heading mx-auto text-h4 text-sm-h3 text-center font-weight-bold mb-10"> Public Rates 2020–2021 </div>
         <p class="text-justify mb-10">

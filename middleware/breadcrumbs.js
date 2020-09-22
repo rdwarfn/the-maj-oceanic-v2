@@ -6,6 +6,5 @@ export default ({ route, store }) => {
     text: route.name === 'index' ? 'Home' : route.name.replace(/\-/g, ' ')
   }]
   const crumbs = route.meta.reduce((breadcrumbs, meta) => meta.breadcrumbs || breadcrumbs, defaultBreadcrumbs)
-  console.log(crumbs)
   store.commit('SET_BREADCRUMBS', crumbs)
 }

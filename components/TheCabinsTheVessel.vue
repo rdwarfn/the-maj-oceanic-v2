@@ -36,7 +36,7 @@
           color="primary"
           height="38"
           nuxt
-          to="/the-vessel/suites-and-staterooms"
+          :to="data.to"
           class="swiper__item--button btn-l mx-auto">suites and staterooms</v-btn>
       </v-col>
     </v-row>

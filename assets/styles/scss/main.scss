@@ -2,7 +2,8 @@ $primary: #208CB2;
 ::v-deep .v-btn--outlined.primary--text:hover {
   background-color: $primary !important;
   color: white !important;
-  caret-color:  white !important;
+  border-color: $primary !important;
+  // caret-color:  white !important;
 }
 // carousel button next & prev
 ::v-deep .swiper {

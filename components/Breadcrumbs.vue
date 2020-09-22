@@ -1,7 +1,7 @@
 <template>
-  <v-container class="px-sm-0 hidden-sm-and-down">
+  <v-container class="px-6 px-md-0">
     <v-breadcrumbs
-      class="text-uppercase"
+      class="px-0 text-uppercase hidden-xs-only"
       v-show="getBreadcrumb.length > 1"
       :items="getBreadcrumb"
       large

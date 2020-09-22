@@ -159,7 +159,7 @@
       v-bind:class="{'pt-0': getHerosByRouteName}"
       :style="getHerosByRouteName ? 'padding-top: 0' : 'padding-top: 78px'"
     >
-      <breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-6'" />
+      <breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-4 py-sm-6'" />
       <nuxt />
     </v-main>
     <!-- <div id="mark">viewport intersection observer</div> -->

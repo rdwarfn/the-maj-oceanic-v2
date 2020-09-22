@@ -1,6 +1,9 @@
 <template>
-  <v-sheet>
+  <v-sheet class="slide-y-transition">
+    <v-skeleton-loader tile type="image" v-if="!data">
+    </v-skeleton-loader>
     <v-img
+      v-else
       :src="staticImage ? require(`~/assets/images/${data}`) : data"
       :lazy-src="staticImage ? require(`~/assets/images/${data}`) : data"
       :aspect-ratio="16/9"

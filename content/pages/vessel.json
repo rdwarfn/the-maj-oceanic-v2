@@ -11,27 +11,25 @@
   "card_three_image": {
     "caption": "suites & staterooms",
     "heading": "Your private sanctuary at sea",
+    "to": "/suites-and-staterooms",
     "data": [
       {
         "id": 0,
         "image": "card/three/4.jpg",
         "heading": "Admiral Suite",
-        "text": "120 sqm",
-        "to": "/the-vessel/the-cabin"
+        "text": "120 sqm"
       },
       {
         "id": 1,
         "image": "card/three/5.jpg",
         "heading": "Commodore Suite",
-        "text": "35 sqm",
-        "to": "/the-vessel/the-cabin"
+        "text": "35 sqm"
       },
       {
         "id": 2,
         "image": "card/three/6.jpg",
         "heading": "Deluxe Staterooms",
-        "text": "25 sqm",
-        "to": "/the-vessel/the-cabin"
+        "text": "25 sqm"
       }
     ]
   },

@@ -1,6 +1,8 @@
 <template>
   <v-container tag="section" class="pa-0 d-flex flex-column">
-    <div class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto" v-html="data.heading">
+    <v-skeleton-loader type="text@2" class="intro--head" v-if="!data.heading">
+    </v-skeleton-loader>
+    <div v-else class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move" v-html="data.heading">
     </div>
 
     <base-large-image
@@ -10,7 +12,9 @@
       :data="data.image"
     />
 
-    <div class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
+    <v-skeleton-loader type="text@4" class="text-center" v-if="!data.description">
+    </v-skeleton-loader>
+    <div v-else class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
     </div>
   </v-container>
 </template>

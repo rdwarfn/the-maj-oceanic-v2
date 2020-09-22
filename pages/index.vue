@@ -112,7 +112,9 @@ export default {
   @import '@/assets/styles/scss/variables.scss';
   $primary: #208cb2;
 
-  #home { padding-top: 51px }
+  #home {
+    @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+  }
 
   ::v-deep section.home--intro {
     @include poly-fluid-sizing ('margin-bottom', (375px:50px, 768px:23px, 1440px:50px));

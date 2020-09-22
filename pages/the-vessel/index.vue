@@ -31,14 +31,11 @@
 
 <script>
 const components = {
-  BaseCardThree: () => import('@/components/base/BaseCardThreeImage.vue'),
-  BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  BaseCarouselThree: () => import('@/components/base/BaseCarouselThree.vue'),
-  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
   Intro: () => import('@/components/Intro.vue'),
   TheCabins: () => import('@/components/TheCabinsTheVessel.vue'),
   Spesification: () => import('@/components/SpesificationTheVessel.vue'),
-  TheTeams: () => import('@/components/TheTeamsTheVessel.vue')
+  TheTeams: () => import('@/components/TheTeamsTheVessel.vue'),
+  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
 }
 export default {
   layout: 'main',

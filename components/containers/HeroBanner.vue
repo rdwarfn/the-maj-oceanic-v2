@@ -1,11 +1,10 @@
 <template>
   <div>
     <v-skeleton-loader
-      boilerplate
       type="image"
       class="_hero--img"
-      max-height="100%"
-      transition="scale-transition"
+      :loading="loading"
+      transition="slide-y-reverse-transition"
     >
       <template>
         <v-sheet class="hero-wrapper text-center" style="relative">
@@ -40,11 +39,10 @@
           </template>
 
           <v-img
-            v-if="!data.video"
+            v-else
             v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
             class="_hero--img justify-center"
-            transition="fade-transition"
           >
             <!-- :aspect-ratio="16/9" -->
             <v-row no-gutters align="center" justify="center" class="fill-height">
@@ -57,28 +55,6 @@
         </v-sheet>
       </template>
     </v-skeleton-loader>
-    <!-- <swiper
-      v-else
-      class="swiper"
-      v-bind:options="swiperOptions"
-    >
-      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
-        <v-img
-          v-bind:src="staticImage ? require('~/assets/images/' + item.image) : item.image"
-          :lazy-src="staticImage ? require('~/assets/images/' + item.image) : item.image"
-          class="_hero--img justify-center"
-          transition="fade-transition"
-          :aspect-ratio="16/9"
-        >
-          <v-row no-gutters align="center" justify="center" class="fill-height">
-            <v-spacer />
-            <div class="_head--text text-break text-sm-h2 text-md-h1 text-center" v-html="item.text">
-            </div>
-            <v-spacer/>
-          </v-row>
-        </v-img>
-      </swiper-slide>
-    </swiper> -->
   </div>
 </template>
 
@@ -122,9 +98,11 @@ export default {
 
   methods: {
     setLoad () {
+      if (!this.data)
+        return
       setTimeout(() => {
         this.loading = false
-      }, 2000)
+      }, 500)
     },
     onPlayerPlay(player) {
       // console.log('player play!', player)

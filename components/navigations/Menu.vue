@@ -9,8 +9,7 @@
         <!-- <div class="d-flex align-start justify-center text-center"> -->
           <v-menu
             background-color="transparent"
-            v-bind:close-on-click="false"
-            v-bind:close-on-content-click="false"
+            close-on-click
             bottom offset-y open-on-hover
             tile v-bind:rounded="false"
             auto min-width="190">
@@ -85,7 +84,12 @@
       >
         <v-row no-gutters align="center">
           <v-col cols="auto">
-            <v-menu bottom offset-y>
+            <v-menu
+              background-color="transparent"
+              close-on-click
+              bottom offset-y open-on-hover
+              tile v-bind:rounded="false"
+              auto min-width="190">
               <template v-slot:activator="{ on, attrs }">
                   <!-- v-bind:to="data.to" -->
                 <v-btn
