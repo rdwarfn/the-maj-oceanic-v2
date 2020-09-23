@@ -12,18 +12,18 @@
       "src": "/tmo-hero.webm"
       }
     ],
-    "image": "carousel/banner/hero-4.jpg"
+    "image": "home/hero.png"
   },
   "heading": "Traces of the ancient<br class='hidden-sm-and-up'/> maritime glory<br class='hidden-xs-only'/> with touches of<br class='hidden-sm-and-up'/> modern-day comfort",
   "description": "The MAJ Oceanic is a traditional handcrafted two-masted Phinisi ecoyacht with 6+1<br/>resort-standard suites, outfitted with modern design and technology.<br/><br/>Learn, feel, understand, taste, and touch new things while awakening your inner explorer. Get up close with the world's largest lizard species. Huddle together along the railings to spot nature's great displays. Enjoy seafood the Jack Sparrow way. Or practice yoga to the sound of waves.<br/><br/>If to travel is to live, then a voyage aboard The MAJ Oceanic<br class='hidden-xs-only' /> might be the life you never knew existed.",
-  "image": "large/intro-home.png",
+  "image": "home/intro.png",
   "carousel_card": [
     {
       "id": 1,
       "caption": "The Vessel",
       "heading": "Craftmanship lives on",
       "text": "Sailing on a modern-take of the Phinisi is the best way to enjoy the beauty of the Indonesian archipelago. An icon of Indonesia's seafaring tradition, the Phinisi boat-building is recognized by UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity.",
-      "image": "carousel/card/10.jpg",
+      "image": "home/10.jpg",
       "to": "/the-vessel"
     }
   ],
@@ -64,13 +64,13 @@
       "caption": "dining",
       "heading": "The finest at sea",
       "text": "Menus aboard The MAJ Oceanic pay homage to the regions where we sail while ensuring tremendous variety. You and our chef can also craft a bespoke menu inspired by a palate or a special moment. It is then prepared and served in a location of your choosing.",
-      "image": "card/11.jpg",
+      "image": "home/11.jpg",
       "to": "#"
     },{
       "caption": "occasions",
       "heading": "Convene like ancient seamen",
       "text": "Upgrade your party to a special bespoke trip that will take you deeper into the hidden beaches, and closer to the elements than any cruise ships or liveaboards.",
-      "image": "card/12.jpg",
+      "image": "home/12.jpg",
       "to": "#"
     }
   ]

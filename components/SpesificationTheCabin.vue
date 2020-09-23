@@ -59,6 +59,9 @@ export default {
       dataActive: {},
       swiperOptions: {
         lazy: true,
+        allowTouchMove: false,
+        shortSwipes: false,
+        followFinger: false,
         slidesPerView: 1,
         initialSlide: 0,
         spaceBetween: 25,
@@ -252,9 +255,22 @@ $white: #ffffff;
   right: 0px !important;
 }
 
+.swiper-container:not(.reversed) {
+  margin-left: 0 !important;
+}
+.swiper-container.reversed {
+  margin-right: 0 !important;
+}
+
 .swiper {
   // height: 300px;
   // width: 100%;
+  @media #{map-get($display-breakpoints, 'md-and-up')} {
+    max-width: 730px;
+  }
+  @media #{map-get($display-breakpoints, 'sm-only')} {
+    max-width: 414px;
+  }
   padding-bottom: 30px !important;
   .swiper-pagination-bullets {
     bottom: -5px;
