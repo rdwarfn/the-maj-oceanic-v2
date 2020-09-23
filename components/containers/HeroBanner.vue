@@ -9,33 +9,38 @@
       <template>
         <v-sheet class="hero-wrapper text-center" style="relative">
           <template v-if="data.video">
-            <div class="video-player-box mx-auto"
-              :playsinline="true"
-              v-video-player:player="{
-                ...playerOptions,
-                sources: [...data.video]
-              }"
-              @play="onPlayerPlay($event)"
-              @waiting="onPlayerWaiting($event)"
-              @canplay="onPlayerCanplay($event)"
-              @canplaythrough="onPlayerCanplaythrough($event)"
-            >
-            </div>
-            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center" v-html="data.text">
-            </div>
-            <!-- <v-img
-              v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-              :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-              class="_hero--img justify-center hidden"
-              transition="fade-transition"
-            >
-              <v-row no-gutters align="center" justify="center" class="fill-height">
-                <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
-                </div>
-                <v-spacer/>
-              </v-row>
-            </v-img> -->
+            <template>
+              <div class="video-player-box mx-auto hidden-xs-only"
+                :playsinline="true"
+                v-video-player:player="{
+                  ...playerOptions,
+                  sources: [...data.video]
+                }"
+                @play="onPlayerPlay($event)"
+                @waiting="onPlayerWaiting($event)"
+                @canplay="onPlayerCanplay($event)"
+                @canplaythrough="onPlayerCanplaythrough($event)"
+              >
+              </div>
+              <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.text">
+              </div>
+            </template>
+
+            <template>
+              <v-img
+                v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+                :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+                class="_hero--img justify-center hidden hidden-sm-and-up"
+                transition="fade-transition"
+              >
+                <v-row no-gutters align="center" justify="center" class="fill-height">
+                  <v-spacer />
+                  <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center hidden-sm-and-up" v-html="data.text">
+                  </div>
+                  <v-spacer/>
+                </v-row>
+              </v-img>
+            </template>
           </template>
 
           <v-img
