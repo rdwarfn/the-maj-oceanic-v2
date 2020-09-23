@@ -2,16 +2,6 @@
   "hero": {
     "id": 0,
     "text": "The future of travel,<br/> on traditions of the past.",
-    "video": [
-      {
-      "type": "video/mp4",
-      "src": "/II-tmo-hero.mp4"
-      },
-      {
-      "type": "video/webm",
-      "src": "/tmo-hero.webm"
-      }
-    ],
     "image": "home/hero.png"
   },
   "heading": "Traces of the ancient<br class='hidden-sm-and-up'/> maritime glory<br class='hidden-xs-only'/> with touches of<br class='hidden-sm-and-up'/> modern-day comfort",
