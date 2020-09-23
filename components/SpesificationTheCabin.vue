@@ -59,8 +59,6 @@ export default {
       dataActive: {},
       swiperOptions: {
         lazy: true,
-        allowTouchMove: false,
-        shortSwipes: false,
         followFinger: false,
         slidesPerView: 1,
         initialSlide: 0,
@@ -89,11 +87,13 @@ export default {
             slidesPerView: 1,
             spaceBetween: 25,
             centeredSlides: true,
+            followFinger: true
           },
           375: {
             slidesPerView: 'auto',
             spaceBetween: 25,
             centeredSlides: true,
+            followFinger: true
           },
           768: {
             slidesPerView: 1,
