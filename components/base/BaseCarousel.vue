@@ -189,8 +189,8 @@ export default {
       iconRight: mdiChevronRight,
       swiperOption: {
         lazy: true,
-        autoHeight: true,
         slidesPerView: 1,
+        spaceBetween: 25,
         on: {
           slideChange: () => {
             this.activeIndex = this.swiper.activeIndex
