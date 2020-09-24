@@ -229,7 +229,7 @@ export default {
           {
             id: 12,
             headline: 'November',
-            sailing_area: 'Alor/Spice Islands',
+            sailing_area: 'Spice Islands/Alor',
             minimum_nights: 6,
             rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 9500}]
           },
@@ -305,14 +305,14 @@ export default {
       return price
     },
     togglePage (event, params) {
-      if (this.itemsPerPage === params.pagination.itemsLength) {
-        this.itemsPerPage = params.pagination.itemsLength  / 2
+      if (this.itemsPerPage === params.itemsPerPageOptions[3]) {
+        this.itemsPerPage = params.itemsPerPageOptions[1]
         this.footerButton = 'View More'
       } else {
-        this.itemsPerPage = params.pagination.itemsLength
+        this.itemsPerPage = params.itemsPerPageOptions[3]
         this.footerButton = 'View Less'
       }
-      console.log(params);
+      // console.log(params);
     }
   }
 }
