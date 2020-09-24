@@ -2,10 +2,9 @@
   <v-row no-gutters class="__tab">
     <v-tabs
       background-color="transparent"
-      v-bind:centered="tabsCenter ? tabsCenter : isSmDown"
       :light="false"
-      show-arrows
     >
+      <!-- v-bind:centered="tabsCenter ? tabsCenter : isSm" -->
       <v-tabs-slider color="primary"></v-tabs-slider>
       <v-tab v-for="item in data" v-bind:key="item.label">
         <div class="__tab--label font-weight-bold text-uppercase" v-text="item.label" />
@@ -76,8 +75,8 @@ export default {
   components,
 
   computed: {
-    isSmDown () {
-      return this.$vuetify.breakpoint.smAndDown;
+    isSm () {
+      return this.$vuetify.breakpoint.smOnly;
     }
   }
 }
@@ -96,6 +95,17 @@ export default {
       color: #232323 !important;
     }
   }
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    .v-tab {
+      padding: 0 5px !important;
+    }
+    .v-slide-group__prev {
+      display: none !important;
+    }
+    .__tab--label {
+      letter-spacing: 1.5px !important;
+    }
+  }
 }
 
 .__tab {
@@ -107,7 +117,7 @@ export default {
 
   &--label {
     font-family: 'Montserrat', sans-serif !important;
-    @include poly-fluid-sizing ('font-size', (375px:12px, 768px:16px));
+    @include poly-fluid-sizing ('font-size', (375px:12px, 768px:15px));
     letter-spacing: 3px !important;
   }
 

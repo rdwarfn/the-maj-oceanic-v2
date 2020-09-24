@@ -192,7 +192,7 @@ export default {
       font-weight: 600 !important;
     }
   }
-  @media (max-width: 1264px) {
+  @media (max-width: 1362px) {
     .font-md-12 {
       font-size: 12px !important;
     }

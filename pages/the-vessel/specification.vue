@@ -83,10 +83,6 @@ export default {
     background: $secondary !important;
   }
 
-  .spesific--master {
-    margin-bottom: 100px !important;
-  }
-
   ::v-deep .__bg--transparent {
     background: transparent !important;
   }

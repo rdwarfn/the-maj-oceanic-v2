@@ -233,7 +233,7 @@ $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 $primary: #208CB2;
 $secondary: #232323;
 
-@media (max-width: 1264px) {
+@media (max-width: 1362px) {
   .font-md-12 {
     font-size: 12px !important;
   }
