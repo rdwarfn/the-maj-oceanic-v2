@@ -1,5 +1,5 @@
 <template>
-  <div class="voyages">
+  <div id="voyages">
     <template v-for="(item, index) in data.voyages">
       <voyages-item v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
     </template>
@@ -67,6 +67,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/assets/styles/scss/variables.scss";
+
+#voyages {
+  @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+}
+
 .heading-komodo {
   // margin-top: 40px;
   // @include poly-fluid-sizing ('margin-bottom', (375px:25px, 768px:40px));

@@ -1,6 +1,6 @@
 <template>
   <div id="spesification">
-    <v-container tag="section" class="spesific--master px-6 px-md-0">
+    <v-container tag="section" class="spesific--master py-0 px-6 px-md-0">
       <base-card-text-image
         v-bind:data="data.card_text_image[0]"
         static-image
@@ -75,6 +75,13 @@ export default {
   $primary: #208cb2;
   $secondary: #EFE1DC;
 
+  #spesification {
+    @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+  }
+
+  ::v-deep .card-text-image {
+    padding-top: 0 !important;
+  }
   .__tab {
     min-height: 527px !important;
   }

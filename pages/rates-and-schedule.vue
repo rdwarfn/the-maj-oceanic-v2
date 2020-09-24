@@ -7,15 +7,11 @@
           The Maj Oceanic will sail all year round to destinations depending on seasons and winds. Typically, The Maj Oceanic sails to Komodo from May to October, the Banda / Spice Islands in October/November and in April/May and Raja Ampat from Mid-November to April. Besides, we offer tailor-made routes and voyages in remote locations, designed especially with specific places or activities.
         </p>
 
-        <p>
-          The public rate list for 2020-2021 will be in USD and per Night:
-        </p>
-
         <v-data-table
           :headers="tables.headers"
           :items="tables.schedules"
           :items-per-page="$vuetify.breakpoint.xsOnly ? 5 : 10"
-          style="border-spacing: 1"
+          style="background: transparent"
           class="elevation-0 mt-5 text--primary"
           hide-default-header
         >
@@ -23,7 +19,7 @@
             <thead>
               <tr>
                 <td colspan="3"></td>
-                <td colspan="2" class="text-center font-weight-bold px-md-8 py-sm-2" style="background: #208CB2; color: white">Rates Full Charter per Night in USD</td>
+                <td colspan="2" class="text-center font-weight-bold px-md-8 py-sm-2" style="background: #208CB2; color: white">Full Charter Rates per night (USD)</td>
               </tr>
               <tr>
                 <td class="hidden-sm-and-up" colspan="2"></td>
@@ -36,7 +32,7 @@
             </thead>
           </template>
           <template v-slot:body="{ items }">
-            <tbody class="border-spacing: 1px">
+            <tbody>
               <tr v-for="item in items" :key="item.name">
                 <td colspan="2" class="pl-0 hidden-sm-and-up">
                   <div>{{ item.headline }}</div>
@@ -56,7 +52,7 @@
           <v-row no-gutters>
             <v-col cols="5" sm="3">Full Ship Capacity</v-col>
             <v-col cols="auto" class="px-5">:</v-col>
-            <v-col>6 +1 Cabins, 12+2 passengers</v-col>
+            <v-col>6 +1 Cabins, 14 passengers</v-col>
           </v-row>
           <v-row no-gutters>
             <v-col cols="5" sm="3">Extra Guest</v-col>
@@ -238,7 +234,7 @@ export default {
             headline: 'December 21-31',
             sailing_area: 'Raja Ampat',
             minimum_nights: 6,
-            rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 10500}]
+            rates_per_night: [{ year: 2020, price: 9500 }, { year: 2021, price: 10500}]
           },
         ]
       },
@@ -291,7 +287,7 @@ export default {
         style: 'currency',
         currency: 'USD'
       }).format (params);
-      return price.toString().replace(/\,/g, " ");
+      return price
     },
   }
 }

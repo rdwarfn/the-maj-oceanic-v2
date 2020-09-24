@@ -1,6 +1,6 @@
 <template>
   <div id="the-cabin">
-    <v-container tag="section" class="mx-auto px-6 px-md-0">
+    <v-container tag="section" class="mx-auto py-0 px-6 px-md-0">
       <div class="intro--head font-weight-bold text-center mx-auto">
         {{data.heading}}
       </div>
@@ -162,6 +162,10 @@ export default {
 @import "@/assets/styles/scss/variables.scss";
 $primary: #208cb2;
 $secondary: #EFE1DC;
+
+#the-cabin {
+  @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+}
 
 .intro {
   &--head {

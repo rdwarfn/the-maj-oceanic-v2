@@ -78,6 +78,10 @@ export default {
 <style lang="scss" scoped>
   @import "@/assets/styles/scss/variables.scss";
 
+  #the-vessel {
+    @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+  }
+
   ::v-deep section.the-veseel--intro {
       margin-bottom: 150px;
       .intro--head {
