@@ -52,20 +52,6 @@
           </v-img>
         </template>
         <!-- <client-only> -->
-        <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-          <v-card-text class="px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'">
-            <p class="text--primary px-5">{{ item.text }}</p>
-          </v-card-text>
-          <v-card-actions v-if="buttonText" class="pa-0 mt-4">
-            <v-btn
-              class="btn-l mx-auto"
-              color="primary"
-              tile depressed outlined :to="item.to"
-              height="38"
-              min-width="132"
-            >{{buttonText}}</v-btn>
-          </v-card-actions>
-        </v-card>
         <!-- </client-only> -->
       </swiper-slide>
       <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
@@ -95,6 +81,19 @@
       </template>
     </swiper>
     <!-- </client-only> -->
+    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
+      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.text">
+      </v-card-text>
+      <v-card-actions v-if="buttonText" class="pa-0 mt-4">
+        <v-btn
+          class="btn-l mx-auto"
+          color="primary"
+          tile depressed outlined :to="dataActive.to"
+          height="38"
+          min-width="132"
+        >{{buttonText}}</v-btn>
+      </v-card-actions>
+    </v-card>
 
     <v-card
       v-if="Object.keys(dataActive).length"
@@ -112,7 +111,7 @@
       </v-card-subtitle>
 
       <v-card-title
-        class="text-h4 text-no-wrap mb-3 px-0"
+        class="text-h4 text-no-wrap px-0"
         :class="headingClass"
       >
         {{ dataActive.heading }}
@@ -121,14 +120,13 @@
       <v-card-text
         class="text--primary d-block px-0"
         :class="textClass"
+        v-html="dataActive.text"
       >
-        {{ dataActive.text }}
-
-        <ul class="__carousel--card-list" v-if="dataActive.list">
+        <!-- <ul class="__carousel--card-list" v-if="dataActive.list">
           <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
             {{i}}
           </li>
-        </ul>
+        </ul> -->
       </v-card-text>
 
       <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
@@ -247,6 +245,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+  @import "~assets/styles/scss/variables.scss";
   $primary:#208CB2;
   $size: 10px;
   $secondary: #C4C4C4;
@@ -254,7 +253,13 @@ export default {
   $white: #ffffff;
 
   ._card--relative {
-    width: 90%;
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      max-width: 290px !important;
+      height: 320px !important;
+    }
+    @media only screen and (max-width: 374px) {
+      max-width: 90% !important;
+    }
     position: relative !important;
     top: -25px !important;
     z-index: 3 !important;
@@ -268,7 +273,7 @@ export default {
 
     .v-card__text {
       p {
-        font-size: 16px !important;
+        font-size: 15px !important;
       }
     }
   }
@@ -297,20 +302,20 @@ export default {
       // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
       @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
       @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
-      @include poly-fluid-sizing ('padding-left', (375px:20px, 768px:25px, 1440px:50px));
-      @include poly-fluid-sizing ('padding-right', (375px:20px, 768px:25px, 1440px:50px));
+      @include poly-fluid-sizing ('padding-left', (375px:19px, 768px:25px, 1440px:50px));
+      @include poly-fluid-sizing ('padding-right', (375px:19px, 768px:25px, 1440px:50px));
       @include poly-fluid-sizing ('left', (600px:198px, 768px:366px, 1440px:665px));
 
         // @include poly-fluid-sizing ('left', (600px:220px, 768px:390px, 1440px:665px));
-      right: auto;
-      top: 10% !important;
-      margin: {
-        // top: 40px !important;
-        right: auto !important;
-        left: auto !important;
-        bottom: 0 !important;
-      }
-      position: absolute;
+      // right: auto;
+      // top: 10% !important;
+      // margin: {
+      //   // top: 40px !important;
+      //   right: auto !important;
+      //   left: auto !important;
+      //   bottom: 0 !important;
+      // }
+      // position: absolute;
 
       .reversed & {
         margin: {
@@ -322,6 +327,9 @@ export default {
       }
 
       @media (min-width: 600px)  {
+        right: auto;
+        top: 10% !important;
+        position: absolute;
         margin: {
           top: 0 !important;
           right: 0 !important;

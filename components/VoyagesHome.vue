@@ -1,6 +1,6 @@
 <template>
-  <v-sheet class="voyages">
-    <v-container class="py-0 px-6 px-md-0" tag="section">
+  <v-sheet class="voyages" tag="section">
+    <v-container class="py-0 px-6 px-md-0">
       <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
         <div
           class="text-h4 text-sm-h3 mb-8"

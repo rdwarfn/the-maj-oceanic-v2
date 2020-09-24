@@ -23,21 +23,27 @@
                   </v-row>
                 </template>
               </v-img>
-              <div v-if="item.heading" class="swiper__item--heading font-weight-bold">{{item.heading}}</div>
-              <div v-if="item.text" class="swiper__item--text">{{item.text}}</div>
+              <div class="hidden-xs-only">
+                <div class="swiper__item--heading font-weight-bold">{{item.heading}}</div>
+                <div v-if="item.text" class="swiper__item--text" v-html="item.text"></div>
+              </div>
             </div>
           </swiper-slide>
           <div class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" slot="pagination"></div>
         </swiper>
-        <v-btn
-          tile
-          depressed
-          outlined
-          color="primary"
-          height="38"
-          nuxt
-          :to="data.to"
-          class="swiper__item--button btn-l mx-auto">suites and staterooms</v-btn>
+        <div class="swiper__content">
+          <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{dataActive.heading}}</div>
+          <div v-if="dataActive.text" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.text"></div>
+          <v-btn
+            tile
+            depressed
+            outlined
+            color="primary"
+            height="38"
+            nuxt
+            :to="data.to"
+            class="swiper__item--button btn-l mx-auto">suites and staterooms</v-btn>
+        </div>
       </v-col>
     </v-row>
   </v-container>
@@ -66,6 +72,9 @@ export default {
 
   data () {
     return {
+      store: [],
+      dataActive: {},
+      activeIndex: 0,
       icon: {
         left: mdiChevronLeft,
         right: mdiChevronRight
@@ -77,6 +86,11 @@ export default {
         slidesPerView: 'auto',
         spaceBetween: 25,
         centeredSlides: true,
+        on: {
+          slideChange: () => {
+            this.activeIndex = this.swiper.activeIndex
+          }
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -102,7 +116,29 @@ export default {
     }
   },
 
+  mounted () {
+    this.initStore();
+  },
+
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper;
+    }
+  },
+
+  watch: {
+    activeIndex: function (val) {
+      if (!this.store && !this.store.length) return
+      this.dataActive = this.store[val];
+    }
+  },
+
   methods: {
+    initStore () {
+      if (!this.data.data.length) return
+      this.store = this.data.data;
+      this.dataActive = this.data.data[0];
+    },
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
       this.$refs.swiper.$swiper.slidePrev();
@@ -140,6 +176,7 @@ $secondary: #EFE1DC;
 }
 
 .suites-and-staterooms {
+  position: relative !important;
    .__caption {
     color: $primary !important;
   }
@@ -156,10 +193,10 @@ $secondary: #EFE1DC;
     margin-bottom: 5.5px;
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    padding-top: 50px;
-    padding-bottom: 0 !important;
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
     .swiper {
-      padding-bottom: 138px !important;
+      padding-bottom: 230px !important;
     }
     .swiper-slide {
       width: 300px !important;
@@ -167,10 +204,16 @@ $secondary: #EFE1DC;
     .swiper-pagination-bullets {
       bottom: 0 !important;
     }
-    .swiper__item--button {
-      // position: relative !important;
-      top: -109px;
-      z-index: 2;
+    .swiper__content {
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute !important;
+      bottom: 125px !important;
+      z-index: 2 !important;
+
+      .swiper__item--text {
+        margin-bottom: 30px;
+      }
     }
     .swiper__item--img {
       width: 300px !important;

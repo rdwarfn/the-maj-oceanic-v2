@@ -20,7 +20,7 @@
               </v-btn>
             </div>
           </div>
-          <div class="mb-8">
+          <div class="mb-6">
             <div class="text-uppercase mb-3 __part-of">part of</div>
             <v-row no-gutters align="center" justify="start">
               <v-col cols="4">
@@ -44,7 +44,7 @@
           </div>
           <div>
             <v-row no-gutters>
-              <v-col cols="4" sm="12" class="mb-sm-8">
+              <v-col cols="4" sm="12" class="mb-sm-6">
                 <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">CRUISE OPERATOR</div>
                 <v-btn class="px-0" tile depressed text link small target="blank" href="https://yachtsourcing.com/">
                   <v-img

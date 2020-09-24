@@ -141,15 +141,25 @@ export default {
     }
   }
 
-  section.home--dining {
+  ::v-deep section.home--dining {
     @media #{map-get($display-breakpoints, 'md-and-up')} {
-      margin-top: 50px;
+      margin-top: 50px !important;
+    }
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      .v-card__text {
+        text-align: center !important;
+      }
     }
   }
 
-  section.home--occasions {
+  ::v-deep section.home--occasions {
     @media #{map-get($display-breakpoints, 'sm-and-up')} {
-      margin-bottom: 50px;
+      margin-bottom: 50px !important;
+    }
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      .v-card__text {
+        text-align: center !important;
+      }
     }
   }
 

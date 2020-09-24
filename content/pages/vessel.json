@@ -17,19 +17,19 @@
         "id": 0,
         "image": "card/three/4.jpg",
         "heading": "Admiral Suite",
-        "text": "120 sqm"
+        "text": "<em>120 sqm</em>"
       },
       {
         "id": 1,
         "image": "card/three/5.jpg",
         "heading": "Commodore Suite",
-        "text": "35 sqm"
+        "text": "<em>35 sqm</em>"
       },
       {
         "id": 2,
         "image": "card/three/6.jpg",
         "heading": "Deluxe Staterooms",
-        "text": "25 sqm"
+        "text": "<em>25 sqm</em>"
       }
     ]
   },
@@ -40,7 +40,7 @@
       "caption": "The Decks",
       "heading": "The sea is your fairway",
       "image": "carousel/card/11.png",
-      "text": "The shaded lounge areas on the fore and aft decks offer an oasis of calm to relax and bask in the ever-changing scenery. The top deck offers a one-of-a-kind ‘equatorial golf’ experience using biodegradable ecoballs, making the ocean as the player's fairway.",
+      "text": "<p class='ma-0'>The shaded lounge areas on the fore and aft decks offer an oasis of calm to relax and bask in the ever-changing scenery. The top deck offers a one-of-a-kind ‘equatorial golf’ experience using biodegradable ecoballs, making the ocean as the player's fairway.</p>",
       "to": "/the-vessel/specification"
     },
     {
@@ -48,7 +48,7 @@
       "caption": "The Decks",
       "heading": "Craftmanship lives on",
       "image": "carousel/card/12.png",
-      "text": "The most emblematic of the main deck area, the Gajah Mada lounge and dining room, features a large decorative copper bas-relief depicting iconic maritime scenes from a bygone era.",
+      "text": "<p>The most emblematic of the main deck area, the Gajah Mada lounge and dining room, features a large decorative copper bas-relief depicting iconic maritime scenes from a bygone era.</p>",
       "to": "/the-vessel/specification"
     }
   ],

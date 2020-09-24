@@ -83,7 +83,13 @@ export default {
   }
 
   ::v-deep section.the-veseel--intro {
-      margin-bottom: 150px;
+      @media #{map-get($display-breakpoints, 'md-and-up')} {
+        margin-bottom: 100px !important;
+        padding-bottom: 50px !important;
+      }
+      @media #{map-get($display-breakpoints, 'sm-and-down')} {
+        padding-bottom: 50px !important;
+      }
       .intro--head {
         @include poly-fluid-sizing ('margin-bottom', (375px:25px, 768px:29px, 1440px:30px));
       }
@@ -103,7 +109,9 @@ export default {
   }
 
   ::v-deep section.the-decks {
-    margin-bottom: 90px !important;
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-bottom: 90px !important;
+    }
   }
 
   ::v-deep section.sustainability {

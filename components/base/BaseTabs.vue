@@ -3,54 +3,59 @@
     <v-tabs
       background-color="transparent"
       :light="false"
+      show-arrows
+      :center-active="isSmAndDown"
+      :hide-slider="isXs"
+      v-bind:centered="tabsCenter ? tabsCenter : isSmAndDown"
+      v-model="label"
     >
-      <!-- v-bind:centered="tabsCenter ? tabsCenter : isSm" -->
       <v-tabs-slider color="primary"></v-tabs-slider>
       <v-tab v-for="item in data" v-bind:key="item.label">
         <div class="__tab--label font-weight-bold text-uppercase" v-text="item.label" />
       </v-tab>
-
-      <v-tab-item v-for="item in data" v-bind:key="item.label" class="mt-16">
-        <slot v-bind:data-tab="item.data">
-          <v-card flat>
-            <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
-              <v-img class="__tab--img mx-auto mx-md-0"
-                v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
-                v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
-              >
-                <template v-slot:placeholder>
-                  <v-row class="fill-height ma-0" align="center" justify="center">
-                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
-              <div class="__tab--content">
-                <v-card-title class="px-0 pt-0">
-                  <div class="text-h4 mx-auto mx-md-0">
-                    {{ item.data.title }}
-                  </div>
-                </v-card-title>
-
-                <v-card-text class="__tab--content-text text--primary px-0 mb-3">
-                  <p class="text-justify text-sm-center text-md-left">
-                    {{ item.data.text }}
-                  </p>
-                </v-card-text>
-
-                <v-card-actions class="px-0" v-bind:class="buttonClass">
-                  <v-btn
-                    class="btn-l mx-auto mx-md-0 __tab--btn"
-                    v-bind:class="buttonProps"
-                    color="primary"
-                    tile depressed outlined :to="item.data.to"
-                  >{{buttonText}}</v-btn>
-                </v-card-actions>
-              </div>
-            </div>
-          </v-card>
-        </slot>
-      </v-tab-item>
     </v-tabs>
+    <v-tabs-items v-model="label" class="mt-16">
+    <v-tab-item v-for="item in data" v-bind:key="item.label">
+      <slot v-bind:data-tab="item.data">
+        <v-card flat>
+          <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
+            <v-img class="__tab--img mx-auto mx-md-0"
+              v-bind:src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
+              v-bind:lazy-src="staticImage ? require(`~/assets/images/${item.data.image}`) : item.data.image"
+            >
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+            <div class="__tab--content">
+              <v-card-title class="px-0 pt-0">
+                <div class="text-h4 mx-auto mx-md-0">
+                  {{ item.data.title }}
+                </div>
+              </v-card-title>
+
+              <v-card-text class="__tab--content-text text--primary px-0 mb-3">
+                <p class="text-center text-md-left">
+                  {{ item.data.text }}
+                </p>
+              </v-card-text>
+
+              <v-card-actions class="px-0" v-bind:class="buttonClass">
+                <v-btn
+                  class="btn-l mx-auto mx-md-0 __tab--btn"
+                  v-bind:class="buttonProps"
+                  color="primary"
+                  tile depressed outlined :to="item.data.to"
+                >{{buttonText}}</v-btn>
+              </v-card-actions>
+            </div>
+          </div>
+        </v-card>
+      </slot>
+    </v-tab-item>
+    </v-tabs-items>
   </v-row>
 </template>
 
@@ -72,11 +77,20 @@ export default {
     reverse: { type: Boolean, default: false }
   },
 
+  data () {
+    return {
+      label: null
+    }
+  },
+
   components,
 
   computed: {
-    isSm () {
-      return this.$vuetify.breakpoint.smOnly;
+    isSmAndDown () {
+      return this.$vuetify.breakpoint.smAndDown;
+    },
+    isXs () {
+      return this.$vuetify.breakpoint.xsOnly
     }
   }
 }
@@ -94,16 +108,15 @@ export default {
     &:not(.v-tab--active) {
       color: #232323 !important;
     }
-  }
-  @media #{map-get($display-breakpoints, 'xs-only')} {
-    .v-tab {
-      padding: 0 5px !important;
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      width: 262px !important;
+      color: #232323 !important;
     }
-    .v-slide-group__prev {
-      display: none !important;
+    @media only screen and (max-width: 413px) {
+      width: 223px !important;
     }
-    .__tab--label {
-      letter-spacing: 1.5px !important;
+    @media only screen and (max-width: 374px) {
+      width: 168px !important;
     }
   }
 }
@@ -117,7 +130,7 @@ export default {
 
   &--label {
     font-family: 'Montserrat', sans-serif !important;
-    @include poly-fluid-sizing ('font-size', (375px:12px, 768px:15px));
+    @include poly-fluid-sizing ('font-size', (375px:12px, 768px:14px));
     letter-spacing: 3px !important;
   }
 

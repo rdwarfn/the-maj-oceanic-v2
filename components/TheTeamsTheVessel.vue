@@ -20,11 +20,15 @@
               </v-row>
             </template>
           </v-img>
-          <div v-if="item.heading" class="swiper__item--heading font-weight-bold">{{item.heading}}</div>
-          <div v-if="item.status" class="swiper__item--text">{{item.status}}</div>
+          <div v-if="item.heading" class="swiper__item--heading font-weight-bold hidden-xs-only">{{item.heading}}</div>
+          <div v-if="item.status" class="swiper__item--text hidden-xs-only">{{item.status}}</div>
         </div>
       </swiper-slide>
     </swiper>
+    <div class="mx-auto text-center hidden-sm-and-up">
+      <div v-if="dataActive.heading" class="swiper__item--heading font-weight-bold">{{dataActive.heading}}</div>
+      <div v-if="dataActive.status" class="swiper__item--text">{{dataActive.status}}</div>
+    </div>
     <v-btn depressed absolute fab x-small class="button--left hidden-xs-only" color="primary" @click="prev">
       <v-icon color="white"> {{icon.left}} </v-icon>
     </v-btn>
@@ -56,6 +60,9 @@ export default {
 
   data () {
     return {
+      store: [],
+      dataActive: {},
+      activeIndex: 0,
       icon: {
         left: mdiChevronLeft,
         right: mdiChevronRight
@@ -66,6 +73,11 @@ export default {
         slidesPerView: 'auto',
         spaceBetween: 25,
         centeredSlides: true,
+        on: {
+          slideChange: () => {
+            this.activeIndex = this.swiper.activeIndex
+          }
+        },
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
@@ -91,7 +103,29 @@ export default {
     }
   },
 
+  mounted () {
+    this.initStore();
+  },
+
+  watch: {
+    activeIndex: function (val) {
+      if (!this.store && !this.store.length) return
+      this.dataActive = this.store[val];
+    }
+  },
+
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper;
+    }
+  },
+
   methods: {
+    initStore () {
+      if (!this.data.data.length) return
+      this.store = this.data.data;
+      this.dataActive = this.data.data[0];
+    },
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
       this.$refs.swiper.$swiper.slidePrev();

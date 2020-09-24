@@ -8,43 +8,52 @@
         </p>
 
         <v-data-table
+          :items-per-page="itemsPerPage"
           :headers="tables.headers"
           :items="tables.schedules"
-          :items-per-page="$vuetify.breakpoint.xsOnly ? 5 : 10"
           style="background: transparent"
-          class="elevation-0 mt-5 text--primary"
+          class="elevation-0 mt-5 text--primary text-center"
           hide-default-header
+          :hide-default-footer="isMobile"
+          :footer-props="{
+            itemsPerPageOptions: [5, 7, 10, -1]
+          }"
         >
           <template v-slot:header>
             <thead>
               <tr>
-                <td colspan="3"></td>
-                <td colspan="2" class="text-center font-weight-bold px-md-8 py-sm-2" style="background: #208CB2; color: white">Full Charter Rates per night (USD)</td>
+                <td colspan="3" class="bg-none"></td>
+                <td colspan="2" class="font-weight-bold px-0 px-sm-5 px-md-8 py-sm-2">Full Charter Rates per Night (USD)</td>
               </tr>
               <tr>
-                <td class="hidden-sm-and-up" colspan="2"></td>
-                <td class="hidden-xs-only"></td>
-                <td class="hidden-xs-only text-center font-weight-bold" style="background: #208CB2; color: white">Sailing Area</td>
-                <td class="text-center font-weight-bold py-sm-2" style="background: #208CB2; color: white; width: 15%">Minimum Nights</td>
-                <td class="text-center font-weight-bold" style="background: #208CB2; color: white; width: 15%">2020</td>
-                <td class="text-center font-weight-bold" style="background: #208CB2; color: white; width: 15%">2021</td>
+                <td class="hidden-sm-and-up bg-none" colspan="2"></td>
+                <td class="hidden-xs-only bg-none"></td>
+                <td class="hidden-xs-only font-weight-bold">Sailing Area</td>
+                <td class="font-weight-bold py-sm-2" style="width: 15%">Minimum Nights</td>
+                <td class="font-weight-bold" style="width: 15%">2020</td>
+                <td class="font-weight-bold" style="width: 15%">2021</td>
               </tr>
             </thead>
           </template>
           <template v-slot:body="{ items }">
             <tbody>
               <tr v-for="item in items" :key="item.name">
-                <td colspan="2" class="pl-0 hidden-sm-and-up">
-                  <div>{{ item.headline }}</div>
-                  <div>({{ item.sailing_area }})</div>
+                <td colspan="2" class="px-0 hidden-sm-and-up">
+                  <div class="text-no-wrap text-left">{{ item.headline }}</div>
+                  <div class="text-no-wrap text-left">({{ item.sailing_area }})</div>
                 </td>
-                <td class="hidden-xs-only"> {{ item.headline }} </td>
-                <td class="hidden-xs-only"> {{ item.sailing_area }} </td>
-                <td class="text-center"> {{ item.minimum_nights }} </td>
-                <td class="text-center font-price"> {{ formatPrice(item.rates_per_night[0].price) }} </td>
-                <td class="text-center font-price"> {{ formatPrice(item.rates_per_night[1].price) }} </td>
+                <td class="hidden-xs-only text-left"> {{ item.headline }} </td>
+                <td class="hidden-xs-only text-left"> {{ item.sailing_area }} </td>
+                <td class="px-0"> {{ item.minimum_nights }} </td>
+                <td class="font-price"> {{ formatPrice(item.rates_per_night[0].price) }} </td>
+                <td class="font-price"> {{ formatPrice(item.rates_per_night[1].price) }} </td>
               </tr>
             </tbody>
+          </template>
+          <template v-if="isMobile" v-slot:footer="{ props }">
+            <v-btn class="mt-7" tile depressed outlined color="primary" @click="togglePage($event, props)">
+              {{footerButton}}
+            </v-btn>
           </template>
         </v-data-table>
 
@@ -57,12 +66,12 @@
           <v-row no-gutters>
             <v-col cols="5" sm="3">Extra Guest</v-col>
             <v-col cols="auto" class="px-5">:</v-col>
-            <v-col>Adult + 500 USD per night / Children up to 12 years + 350 USD per night</v-col>
+            <v-col>Adult + 500 USD per night / Children up to 12 Y.O. + 350 USD per night</v-col>
           </v-row>
           <v-row no-gutters>
             <v-col cols="5" sm="3">Relocation Fee</v-col>
             <v-col cols="auto" class="px-5">:</v-col>
-            <v-col>2’000 USD per day</v-col>
+            <v-col>2000 USD per day</v-col>
           </v-row>
         </div>
 
@@ -95,7 +104,7 @@
             ]" v-bind:key="i"> {{d}} </li>
           </ul>
 
-          <div class="font-weight-bold mt-10 mb-4">Payment Terms and Conditions</div>
+          <div class="font-weight-bold mt-10 mb-4">Cancellation Policy</div>
           <ul class="list pl-3">
             <li v-for="(d, i) of [
               '60 days or more prior to departure the first payment (Deposit of 50%) will be forfeited.',
@@ -128,7 +137,9 @@ export default {
 
   data () {
     return {
-      sailingArea: ["Raja Ampat", "Komodo", "Spice Island/Alor"],
+      itemsPerPage: 7,
+      footerButton: 'View More',
+      sailingArea: ["Raja Ampat", "Komodo", "Spice Islands/Alor"],
       tables: {
         headers: [
           { text: '', value: 'headline' },
@@ -176,7 +187,7 @@ export default {
           {
             id: 6,
             headline: 'May',
-            sailing_area: 'Spice Island/Alor',
+            sailing_area: 'Spice Islands/Alor',
             minimum_nights: 6,
             rates_per_night: [{ year: 2020, price: null }, { year: 2021, price: 9000}]
           },
@@ -188,49 +199,49 @@ export default {
             rates_per_night: [{ year: 2020, price: null }, { year: 2021, price: 9500}]
           },
           {
-            id: 7,
+            id: 8,
             headline: 'July',
             sailing_area: 'Komodo',
             minimum_nights: 3,
             rates_per_night: [{ year: 2020, price: null }, { year: 2021, price: 9500}]
           },
           {
-            id: 7,
+            id: 9,
             headline: 'August',
             sailing_area: 'Komodo',
             minimum_nights: 3,
-            rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 9500}]
+            rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 10000}]
           },
           {
-            id: 8,
+            id: 10,
             headline: 'September',
             sailing_area: 'Komodo',
             minimum_nights: 3,
             rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 9500}]
           },
           {
-            id: 9,
+            id: 11,
             headline: 'October',
             sailing_area: 'Komodo',
             minimum_nights: 3,
             rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 9500}]
           },
           {
-            id: 10,
+            id: 12,
             headline: 'November',
-            sailing_area: 'Spice Island/Alor',
+            sailing_area: 'Alor/Spice Islands',
             minimum_nights: 6,
             rates_per_night: [{ year: 2020, price: 8500 }, { year: 2021, price: 9500}]
           },
           {
-            id: 11,
+            id: 13,
             headline: 'December 1-20',
             sailing_area: 'Raja Ampat',
             minimum_nights: 5,
             rates_per_night: [{ year: 2020, price: 9000 }, { year: 2021, price: 10500}]
           },
           {
-            id: 12,
+            id: 14,
             headline: 'December 21-31',
             sailing_area: 'Raja Ampat',
             minimum_nights: 6,
@@ -244,7 +255,7 @@ export default {
         '30 minutes’ trial massage or beauty treatment per person during the cruise',
         'Personal laundry',
         'Use of equipment on board : gym (exercise bike, weights, yoga mats), board games, movie library',
-        'Golf Pack (including clubs, Tee, carpet and 30 complimentary bio-degradable balls )'
+        'Golf Pack (including clubs, Tee, carpet and 30 complimentary bio-degradable balls)'
       ],
       list_second: [
         'Stand up paddle boards',
@@ -279,16 +290,30 @@ export default {
     return { slug }
   },
 
+  computed: {
+    isMobile () {
+      return this.$vuetify.breakpoint.xs
+    }
+  },
+
   methods: {
     formatPrice (params) {
       if (!params) { return null }
       const price = new Intl.NumberFormat ('en', {
-        maximumSignificantDigits: 3,
-        style: 'currency',
-        currency: 'USD'
+        maximumSignificantDigits: 3
       }).format (params);
       return price
     },
+    togglePage (event, params) {
+      if (this.itemsPerPage === params.pagination.itemsLength) {
+        this.itemsPerPage = params.pagination.itemsLength  / 2
+        this.footerButton = 'View More'
+      } else {
+        this.itemsPerPage = params.pagination.itemsLength
+        this.footerButton = 'View Less'
+      }
+      console.log(params);
+    }
   }
 }
 </script>
@@ -318,14 +343,21 @@ export default {
 
 ::v-deep .v-data-table {
   @media #{map-get($display-breakpoints, 'sm-and-up')} {
-    .v-data-table__wrapper > table > thead > tr > td {
+    .v-data-table__wrapper > table > thead > tr > td:not(.bg-none) {
       font-size: 16px !important;
+      background: #208CB2;
+      color: white;
     }
     .v-data-table__wrapper > table > tbody > tr > td {
       font-size: 16px !important;
     }
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {
+    .v-data-table__wrapper > table > thead > tr > td:not(.bg-none) {
+      font-size: 12px !important;
+      background: #208CB2;
+      color: white;
+    }
     .v-data-footer {
       padding: 0 !important;
       justify-content: flex-start;
