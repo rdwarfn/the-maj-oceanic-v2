@@ -8,13 +8,13 @@
         </p>
 
         <v-data-table
-          :items-per-page="itemsPerPage"
+          :items-per-page="isMobile ? itemsPerPage : -1"
           :headers="tables.headers"
           :items="tables.schedules"
           style="background: transparent"
           class="elevation-0 mt-5 text--primary text-center"
           hide-default-header
-          :hide-default-footer="isMobile"
+          hide-default-footer
           :footer-props="{
             itemsPerPageOptions: [5, 7, 10, -1]
           }"

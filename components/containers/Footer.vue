@@ -45,7 +45,7 @@
           <div>
             <v-row no-gutters>
               <v-col cols="4" sm="12" class="mb-sm-6">
-                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">CRUISE OPERATOR</div>
+                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">CRUISE<br class="hidden-sm-and-up"/> OPERATOR</div>
                 <v-btn class="px-0" tile depressed text link small target="blank" href="https://yachtsourcing.com/">
                   <v-img
                     class="ml-n1"
@@ -56,7 +56,7 @@
                 </v-btn>
               </v-col>
               <v-col cols="5" sm="12">
-                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">PROUD COMFORT PARTNER</div>
+                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">PROUD COMFORT<br class="hidden-sm-and-up"/> PARTNER</div>
                 <v-btn class="px-0" tile depressed text link small target="blank" href="https://global.sunbrella.com/">
                   <v-img
                     class="ml-n1"

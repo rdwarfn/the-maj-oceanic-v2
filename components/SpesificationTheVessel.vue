@@ -1,30 +1,52 @@
 <template>
   <v-container tag="section" class="the-decks mx-auto px-6 px-md-0">
-    <base-carousel
-      v-bind:data="data"
-      card-class="__carousel_card"
-      button-class="px-0"
-      button-text="discover"
-      heading-class="mb-1"
-      text-class="mb-3 pr-lg-6"
-      card-mobile-class="__carousel_card transparent"
-      card-text-mobile-class="text-justify"
-      static-image
-    >
-    </base-carousel>
+  <base-carousel-mobile v-if="isxs"
+    class="hidden-sm-and-up"
+    v-bind:data="data"
+    card-class="__carousel_card"
+    button-class="px-0"
+    button-text="discover"
+    heading-class="mb-1"
+    text-class="mb-3 pr-lg-6"
+    card-mobile-class="__carousel_card transparent"
+    card-text-mobile-class="text-justify"
+    static-image
+  >
+  </base-carousel-mobile>
+  <base-carousel
+    class="hidden-xs-only"
+    v-else
+    v-bind:data="data"
+    card-class="__carousel_card"
+    button-class="px-0"
+    button-text="discover"
+    heading-class="mb-1"
+    text-class="mb-3 pr-lg-6"
+    card-text-mobile-class="text-justify"
+    static-image
+  >
+  </base-carousel>
   </v-container>
 </template>
 
 <script>
 import BaseCarousel from '@/components/base/BaseCarousel.vue';
+import BaseCarouselMobile from '@/components/base/BaseCarouselMobile.vue';
 export default {
   components: {
-    BaseCarousel
+    BaseCarousel,
+    BaseCarouselMobile
   },
 
   props: {
     data: {
       type: Array
+    }
+  },
+
+  computed: {
+    isxs () {
+      return this.$vuetify.breakpoint.xs
     }
   }
 }
