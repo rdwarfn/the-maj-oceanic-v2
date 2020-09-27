@@ -1,5 +1,6 @@
 <template>
   <v-row no-gutters class="__tab">
+    <client-only>
     <v-tabs
       background-color="transparent"
       :light="false"
@@ -56,6 +57,7 @@
       </slot>
     </v-tab-item>
     </v-tabs-items>
+    </client-only>
   </v-row>
 </template>
 
@@ -108,17 +110,17 @@ export default {
     &:not(.v-tab--active) {
       color: #232323 !important;
     }
-    @include poly-fluid-sizing ('width', (320px:262px, 375px:223px, 599px:447px));
+    // @include poly-fluid-sizing ('width', (320px:262px, 375px:223px, 599px:447px));
     @media #{map-get($display-breakpoints, 'xs-only')} {
-      // width: 262px !important;
+      width: 262px !important;
       color: #232323 !important;
     }
-    // @media only screen and (max-width: 413px) {
-    //   width: 223px !important;
-    // }
-    // @media only screen and (max-width: 374px) {
-    //   width: 168px !important;
-    // }
+    @media only screen and (max-width: 413px) {
+      width: 223px !important;
+    }
+    @media only screen and (max-width: 374px) {
+      width: 168px !important;
+    }
   }
 }
 
