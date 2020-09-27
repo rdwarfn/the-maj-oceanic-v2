@@ -7,14 +7,15 @@
       :center-active="isSmAndDown"
       :hide-slider="isXs"
       v-bind:centered="tabsCenter ? tabsCenter : isSmAndDown"
+      v-model="label"
     >
       <v-tabs-slider color="primary"></v-tabs-slider>
-      <v-tab v-for="item in data" v-bind:key="item.label">
+      <v-tab v-for="item in data" v-bind:key="item.label" :href="`#${item.label.replace(/\s/g, '-').toLowerCase()}`">
         <div class="__tab--label font-weight-bold text-uppercase" v-text="item.label" />
       </v-tab>
     </v-tabs>
-    <v-tabs-items class="mt-16">
-    <v-tab-item v-for="item in data" v-bind:key="item.label">
+    <v-tabs-items class="mt-16" v-model="label">
+    <v-tab-item v-for="item in data" v-bind:key="item.label" :value="item.label.replace(/\s/g, '-').toLowerCase()">
       <slot v-bind:data-tab="item.data">
         <v-card flat>
           <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
@@ -107,16 +108,17 @@ export default {
     &:not(.v-tab--active) {
       color: #232323 !important;
     }
+    @include poly-fluid-sizing ('width', (320px:262px, 375px:223px, 599px:447px));
     @media #{map-get($display-breakpoints, 'xs-only')} {
-      width: 262px !important;
+      // width: 262px !important;
       color: #232323 !important;
     }
-    @media only screen and (max-width: 413px) {
-      width: 223px !important;
-    }
-    @media only screen and (max-width: 374px) {
-      width: 168px !important;
-    }
+    // @media only screen and (max-width: 413px) {
+    //   width: 223px !important;
+    // }
+    // @media only screen and (max-width: 374px) {
+    //   width: 168px !important;
+    // }
   }
 }
 
