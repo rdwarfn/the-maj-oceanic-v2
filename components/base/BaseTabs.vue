@@ -7,14 +7,13 @@
       :center-active="isSmAndDown"
       :hide-slider="isXs"
       v-bind:centered="tabsCenter ? tabsCenter : isSmAndDown"
-      v-model="label"
     >
       <v-tabs-slider color="primary"></v-tabs-slider>
       <v-tab v-for="item in data" v-bind:key="item.label">
         <div class="__tab--label font-weight-bold text-uppercase" v-text="item.label" />
       </v-tab>
     </v-tabs>
-    <v-tabs-items v-model="label" class="mt-16">
+    <v-tabs-items class="mt-16">
     <v-tab-item v-for="item in data" v-bind:key="item.label">
       <slot v-bind:data-tab="item.data">
         <v-card flat>
