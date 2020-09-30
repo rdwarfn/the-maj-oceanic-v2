@@ -8,7 +8,7 @@
         description: data.description
       }"
       image-class="order-last px-6 px-md-0"
-      description-class="text-justify text-sm-center"
+      description-class="text-center"
     />
 
     <the-cabins v-bind:data="data.card_three_image" />

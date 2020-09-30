@@ -22,7 +22,15 @@
           v-bind:lazy-src="staticImage
           ? require('~/assets/images/' + item.image)
           : item.image"
-          class="deck-spesification--item-img mx-auto"></v-img>
+          class="hidden-xs-only deck-spesification--item-img mx-auto"></v-img>
+        <v-img
+          v-bind:src="staticImage
+            ? require('~/assets/images/' + item.svg)
+            : item.svg"
+          v-bind:lazy-src="staticImage
+          ? require('~/assets/images/' + item.svg)
+          : item.svg"
+          class="hidden-sm-and-up deck-spesification--item-img mx-auto"></v-img>
       </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
     </swiper>
@@ -171,6 +179,9 @@ $white: #ffffff;
     &-img {
       @include poly-fluid-sizing ('width', (375px:326px, 768px:596px, 1440px:900px));
       // @include poly-fluid-sizing ('max-height', (375px:73.78, 768px:133.94px, 1440px:202.49px));
+    }
+    &-svg {
+      height: 185px;
     }
   }
 }

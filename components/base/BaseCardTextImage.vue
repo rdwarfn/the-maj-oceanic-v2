@@ -24,7 +24,7 @@
             </v-row>
           </template>
         </v-img>
-        <v-card-text class="hidden-sm-and-up px-0 mt-5 text-justify">
+        <v-card-text class="hidden-sm-and-up px-0 mt-5 text-center">
           {{ data.text }}
         </v-card-text>
         <v-card-actions

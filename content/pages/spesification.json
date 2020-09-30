@@ -14,51 +14,34 @@
     }
   ],
 
-  "carousel_card": [
-    {
-      "id": 0,
-      "label": "Main Deck",
-      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
-      "image": "tabs/layout-deck-1.png"
-    },
-    {
-      "id": 1,
-      "label": "Lower Deck",
-      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
-      "image": "tabs/layout-deck-2.png"
-    },
-    {
-      "id": 2,
-      "label": "Bridge Deck",
-      "text": "Laboris laborum aliquip aliquip incididunt adipisicing consequat pariatur duis cupidatat incididunt excepteur dolore laborum sit. Amet duis incididunt voluptate nostrud qui sint labore non excepteur. Cillum anim labore irure consequat fugiat dolore duis culpa anim cupidatat elit irure. Nulla nostrud elit quis nostrud sit cupidatat aute sit excepteur nisi. ",
-      "image": "tabs/layout-deck-3.png"
-    }
-  ],
-
   "decks_spesification": [
     {
       "id": 0,
       "name": "Main Deck",
       "text": "Commodore Suite Lounge & Bar Area ",
-      "image": "carousel/card/1-main-deck.png"
+      "image": "carousel/card/1-main-deck.png",
+      "svg": "tabs/layout-decks-1.svg"
     },
     {
       "id": 1,
       "name": "Lower Deck",
       "text": "Deluxe Staterooms",
-      "image": "carousel/card/2-lower-deck.png"
+      "image": "carousel/card/2-lower-deck.png",
+      "svg": "tabs/layout-decks-2.svg"
     },
     {
       "id": 2,
       "name": "Bridge Deck",
       "text": "Admiral Suite",
-      "image": "carousel/card/3-bridge-deck.png"
+      "image": "carousel/card/3-bridge-deck.png",
+      "svg": "tabs/layout-decks-3.svg"
     },
     {
       "id": 3,
       "name": "Golf Deck",
       "text": "Equatorial Golf",
-      "image": "carousel/card/4-golf-deck.png"
+      "image": "carousel/card/4-golf-deck.png",
+      "svg": "tabs/layout-decks-4.svg"
     }
   ]
 }

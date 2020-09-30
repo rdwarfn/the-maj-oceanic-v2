@@ -2,7 +2,8 @@
   "hero": {
     "id": 0,
     "text": "Suites & Staterooms",
-    "image": "suites-and-staterooms/hero.png"
+    "image": "suites-and-staterooms/hero.png",
+    "mobile_image": "suites-and-staterooms/hero-mobile.png"
   },
   "heading": "Locally-crafted, world-inspired",
   "description": "Upping the suite game in the luxury Pinisi market, there are 6+1 cabins specially-designed by a group of land-based designers to give a modern look that's a floating reflection of a world-class resort.",

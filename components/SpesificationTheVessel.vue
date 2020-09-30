@@ -9,9 +9,9 @@
     heading-class="mb-1"
     text-class="mb-3 pr-lg-6"
     card-mobile-class="__carousel_card transparent"
-    card-text-mobile-class="text-justify"
     static-image
   >
+    <!-- card-text-mobile-class="text-justify" -->
   </base-carousel-mobile>
   <base-carousel
     class="hidden-xs-only"

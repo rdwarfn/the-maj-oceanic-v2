@@ -43,20 +43,36 @@
             </template>
           </template>
 
-          <v-img
-            v-else
-            v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-            :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-            class="_hero--img justify-center"
-          >
-            <!-- :aspect-ratio="16/9" -->
-            <v-row no-gutters align="center" justify="center" class="fill-height">
-              <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
-              </div>
-              <v-spacer/>
-            </v-row>
-          </v-img>
+          <template
+            else>
+            <v-img
+              :class="{'hidden-xs-only': data.mobile_image}"
+              v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+              :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+              class="_hero--img justify-center"
+            >
+              <!-- :aspect-ratio="16/9" -->
+              <v-row no-gutters align="center" justify="center" class="fill-height">
+                <v-spacer />
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
+                </div>
+                <v-spacer/>
+              </v-row>
+            </v-img>
+              <!-- class="hidden-sm-and-up" -->
+            <v-img
+              v-if="data.mobile_image"
+              :src="staticImage? require('~/assets/images/' + data.mobile_image) : data.mobile_image"
+              :lazy-src="staticImage? require('~/assets/images/' + data.mobile_image) : data.mobile_image"
+              >
+                <v-row no-gutters align="center" justify="center" class="fill-height">
+                  <v-spacer />
+                  <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
+                  </div>
+                  <v-spacer/>
+                </v-row>
+              </v-img>
+          </template>
         </v-sheet>
       </template>
     </v-skeleton-loader>
