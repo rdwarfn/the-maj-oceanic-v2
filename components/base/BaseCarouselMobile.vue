@@ -8,10 +8,16 @@
     <v-card-subtitle class="hidden-sm-and-up text-h6 text-center pb-0">
       {{ dataActive.caption }}
     </v-card-subtitle>
-    <v-card-title class="hidden-sm-and-up mb-4">
-      <div class="text-h4 text-break text-center mx-auto">
+    <v-card-title class="hidden-sm-and-up mb-4 px-0">
+      <v-btn depressed x-small class="button--left" color="transparent" @click="prev">
+        <v-icon color="black"> {{icon.left}} </v-icon>
+      </v-btn>
+      <div class="text-h4 text-break mx-auto text-center">
         {{ dataActive.heading }}
       </div>
+      <v-btn depressed x-small class="button--right" color="transparent" @click="next">
+        <v-icon color="black"> {{icon.right}} </v-icon>
+      </v-btn>
     </v-card-title>
     <!-- <client-only> -->
     <swiper
@@ -54,7 +60,7 @@
         <!-- <client-only> -->
         <!-- </client-only> -->
       </swiper-slide>
-      <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+      <!-- <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div> -->
     </swiper>
     <!-- </client-only> -->
     <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
@@ -75,6 +81,7 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
 const components = {
   Swiper,
   SwiperSlide
@@ -110,6 +117,10 @@ export default {
       store: [],
       dataActive: {},
       activeIndex: 0,
+      icon: {
+        left: mdiChevronLeft,
+        right: mdiChevronRight
+      },
       swiperOption: {
         lazy: true,
         slidesPerView: 1,
@@ -152,6 +163,14 @@ export default {
       if (!this.data.length) return
       this.store = this.data;
       this.dataActive = this.data[0];
+    },
+    prev () {
+      if (this.swiper.isBeginning) { return }
+      this.swiper.slidePrev();
+    },
+    next () {
+      if (this.swiper.isEnd) { return }
+      this.swiper.slideNext();
     }
   }
 }

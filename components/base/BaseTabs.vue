@@ -2,6 +2,7 @@
   <v-row no-gutters class="__tab">
     <client-only>
     <v-tabs
+      ref="tabs"
       background-color="transparent"
       :light="false"
       show-arrows
@@ -9,6 +10,7 @@
       :hide-slider="isXs"
       v-bind:centered="tabsCenter ? tabsCenter : isSmAndDown"
       v-model="label"
+      @change="_handleClick"
     >
       <v-tabs-slider color="primary"></v-tabs-slider>
       <v-tab v-for="item in data" v-bind:key="item.label" :href="`#${item.label.replace(/\s/g, '-').toLowerCase()}`">
@@ -93,6 +95,19 @@ export default {
     },
     isXs () {
       return this.$vuetify.breakpoint.xsOnly
+    },
+    listenLabel () {
+      return this.label
+    },
+    tabsRef () {
+      return this.$refs.tabsRef
+    }
+  },
+
+  methods: {
+    _handleClick (e) {
+      console.log(this.$refs)
+      console.log(e)
     }
   }
 }

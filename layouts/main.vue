@@ -22,8 +22,8 @@
       temporary
       app
     >
-      <v-list flat tile class="_img-logo--mobile text-center">
-        <v-list-item dense>
+      <v-list flat tile class="_img-logo--mobile text-center px-0">
+        <v-list-item dense class="px-0">
           <v-row no-gutters class="flex-nowrap" align="center" justify="space-between">
           <v-spacer />
           <v-col sm="4">
@@ -42,10 +42,11 @@
             </v-btn>
           </v-list-item-avatar>
           </v-col>
-          <v-col sm="4">
+          <v-spacer class="hidden-xs-only" />
+          <v-col sm="auto">
           <v-list-item-action class="mx-0">
             <v-btn color="transparent" fab depressed @click.prevent="drawer = false">
-              <v-icon>{{svgClose}}</v-icon>
+              <v-icon color="rgba(0,0,0,0.54)">{{svgClose}}</v-icon>
             </v-btn>
           </v-list-item-action>
           </v-col>
@@ -53,9 +54,10 @@
         </v-list-item>
       </v-list>
       <v-divider />
-      <v-list-item class="pl-0" dense>
+      <v-list-item class="px-0" dense>
         <v-list-item-content>
           <v-text-field
+            class="search-mobile--drawer"
             prepend-inner-icon="$search"
             label="SEARCH"
             clearable
@@ -266,6 +268,12 @@ $primary--disabled: #C7E2EC;
 }
 #main {
   background: #fafafa !important;
+}
+::v-deep .search-mobile--drawer.v-input:not(.v-input--is-focused) {
+  .v-input__slot::before, .v-input__slot::after {
+    // border-color: rgba(0, 0, 0, 0.12) !important;
+    border-color: transparent !important;
+  }
 }
 ::v-deep .theme--light .v-input:not(.v-input--is-focused) {
   color:#C4C9D2 !important;

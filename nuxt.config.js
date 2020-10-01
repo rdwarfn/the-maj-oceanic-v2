@@ -1,4 +1,4 @@
-
+import webpack from 'webpack';
 const path = require('path');
 export default {
   loading: {
@@ -135,6 +135,11 @@ export default {
   ** Build configuration
   */
   build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        _: 'lodash'
+      })
+    ],
     postcss: {
       plugins: {
         // Add some plugins

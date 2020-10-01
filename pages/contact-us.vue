@@ -105,7 +105,6 @@
                       rules.countMax16,
                       rules.isNumber
                     ]"
-                    counter
                     type="tel"
                     validate-on-blur
                     hide-details="auto"
@@ -220,7 +219,6 @@
                   rules.countMax16,
                   rules.isNumber
                 ]"
-                counter
                 type="tel"
                 validate-on-blur
                 hide-details="auto"

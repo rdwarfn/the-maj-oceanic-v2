@@ -1,3 +1,4 @@
+@import "./variables.scss";
 $primary: #208CB2;
 ::v-deep .v-btn--outlined.primary--text:hover {
   background-color: $primary !important;
@@ -25,5 +26,11 @@ $primary: #208CB2;
       // color: rgba(0,0,0,.26) !important;
       background-color: transparent !important;
     }
+  }
+}
+
+@media #{map-get($display-breakpoints, 'xs-only')} {
+  tr:hover {
+    background-color: transparent !important;
   }
 }
