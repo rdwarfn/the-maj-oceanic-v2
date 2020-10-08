@@ -4,7 +4,7 @@
       <div class="mx-auto" style="max-width: 790px">
         <div class="heading mx-auto text-h4 text-sm-h3 text-center font-weight-bold mb-10">Rates & Schedule</div>
         <p class="text-center text-sm-justify mb-10">
-          The Maj Oceanic will sail all year round to destinations depending on seasons and winds. Typically, The Maj Oceanic sails to Komodo from May to October, the Banda / Spice Islands in October/November and in April/May and Raja Ampat from Mid-November to April. Besides, we offer tailor-made routes and voyages in remote locations, designed especially with specific places or activities.
+          The MAJ Oceanic will sail all year round to destinations depending on seasons and winds. Typically, The MAJ Oceanic sails to Komodo from May to October, the Banda / Spice Islands in October/November and in April/May and Raja Ampat from Mid-November to April. Besides, we offer tailor-made routes and voyages in remote locations, designed especially with specific places or activities.
         </p>
 
         <v-data-table

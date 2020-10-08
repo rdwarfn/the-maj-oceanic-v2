@@ -2,7 +2,8 @@
   "hero": {
     "id": 0,
     "text": "Specification",
-    "image": "carousel/banner/hero-6.png"
+    "image": "carousel/banner/hero-8.png",
+    "mobile_image": "carousel/banner/hero-8-mobile.png"
   },
 
   "card_text_image": [
@@ -19,29 +20,29 @@
       "id": 0,
       "name": "Main Deck",
       "text": "Commodore Suite Lounge & Bar Area ",
-      "image": "carousel/card/1-main-deck.png",
-      "svg": "tabs/layout-decks-1.svg"
+      "image": "svg/desktop-main-deck.svg",
+      "mobile_image": "tabs/layout-decks-1.svg"
     },
     {
       "id": 1,
       "name": "Lower Deck",
       "text": "Deluxe Staterooms",
-      "image": "carousel/card/2-lower-deck.png",
-      "svg": "tabs/layout-decks-2.svg"
+      "image": "svg/desktop-lower-deck.svg",
+      "mobile_image": "tabs/layout-decks-2.svg"
     },
     {
       "id": 2,
       "name": "Bridge Deck",
       "text": "Admiral Suite",
-      "image": "carousel/card/3-bridge-deck.png",
-      "svg": "tabs/layout-decks-3.svg"
+      "image": "svg/desktop-bridge-deck.svg",
+      "mobile_image": "tabs/layout-decks-3.svg"
     },
     {
       "id": 3,
       "name": "Golf Deck",
       "text": "Equatorial Golf",
-      "image": "carousel/card/4-golf-deck.png",
-      "svg": "tabs/layout-decks-4.svg"
+      "image": "svg/desktop-golf-deck.svg",
+      "mobile_image": "tabs/layout-decks-4.svg"
     }
   ]
 }
