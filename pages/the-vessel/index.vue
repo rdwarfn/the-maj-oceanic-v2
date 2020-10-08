@@ -4,12 +4,17 @@
       class="the-veseel--intro px-0"
       v-bind:data="{
         heading: data.heading,
-        image: data.image,
+        id_youtube: 'Hm2KQirCJoU',
         description: data.description
       }"
       image-class="order-last px-6 px-md-0"
       description-class="text-center"
     />
+
+    <!-- <client-only>
+      <youtube video-id="Hm2KQirCJoU" @ready="ready"></youtube>
+    </client-only> -->
+
 
     <the-cabins v-bind:data="data.card_three_image" />
 
@@ -30,6 +35,7 @@
 </template>
 
 <script>
+// import { getIdFromURL } from 'vue-youtube-embed';
 const components = {
   Intro: () => import('@/components/Intro.vue'),
   TheCabins: () => import('@/components/TheCabinsTheVessel.vue'),
@@ -70,6 +76,12 @@ export default {
   methods: {
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', { page_key, data });
+    },
+    ready (event) {
+      this.player = event.target
+    },
+    playing (event) {
+      console.log(event)
     }
   }
 }

@@ -80,7 +80,8 @@ export default {
   plugins: [
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
     { src: '~/plugins/vue-video-player', mode: 'client' },
-    { src: '~/plugins/vue-instagram', mode: 'client' }
+    { src: '~/plugins/vue-instagram', mode: 'client' },
+    { src: '~/plugins/vue-youtube-embed', mode: 'client' }
   ],
   /*
   ** Auto import components

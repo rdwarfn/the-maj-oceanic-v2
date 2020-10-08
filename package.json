@@ -38,7 +38,8 @@
     "uncss": "^0.17.3",
     "vue-awesome-swiper": "4.1.0",
     "vue-content-loader": "^0.2.3",
-    "vue-instagram": "^3.0.0"
+    "vue-instagram": "^3.0.0",
+    "vue-youtube-embed": "^2.2.2"
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.1.11",

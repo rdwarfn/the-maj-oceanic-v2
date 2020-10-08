@@ -6,6 +6,7 @@
     </div>
 
     <base-large-image
+      v-if="data.image"
       class="intro--image"
       v-bind:class="imageClass"
       static-image
@@ -16,6 +17,11 @@
     </v-skeleton-loader>
     <div v-else class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
     </div>
+    <client-only>
+      <div class="px-6 px-md-0 mx-auto">
+        <youtube v-if="data.id_youtube" :video-id="data.id_youtube" @ready="ready" @playing="playing"></youtube>
+      </div>
+    </client-only>
   </v-container>
 </template>
 
@@ -30,12 +36,22 @@ export default {
 
   props: {
     data: {
+      id_youtube: { type: String },
       heading: { type: String },
       image: { type: String },
       description: { type: String }
     },
     imageClass: { type: String },
     descriptionClass: { type: String }
+  },
+
+  methods: {
+    ready (event) {
+      this.player = event.target
+    },
+    playing (event) {
+      console.log(event)
+    }
   }
 }
 </script>
