@@ -23,14 +23,13 @@
           ? require('~/assets/images/' + item.image)
           : item.image"
           class="hidden-xs-only deck-spesification--item-img mx-auto"></v-img>
-        <v-img
+        <img
           v-bind:src="staticImage
             ? require('~/assets/images/' + item.mobile_image)
             : item.mobile_image"
-          v-bind:lazy-src="staticImage
-          ? require('~/assets/images/' + item.mobile_image)
-          : item.mobile_image"
-          class="hidden-sm-and-up deck-spesification--item-img mx-auto"></v-img>
+          class="hidden-sm-and-up mx-auto"
+          alt="deck-spesification"
+        > 
       </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
     </swiper>

@@ -18,9 +18,16 @@
     <div v-else class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
     </div>
     <client-only>
-      <div class="px-6 px-md-0 mx-auto">
-        <youtube v-if="data.id_youtube" :video-id="data.id_youtube" @ready="ready" @playing="playing"></youtube>
-      </div>
+      <v-container class="mx-auto pa-0" v-if="data.id_youtube">
+          <!-- :player-width="youtubeWidth"
+          :player-height="youtubeHeight" -->
+        <youtube
+          class="d-flex justify-center"
+          :video-id="data.id_youtube"
+          :player-vars="{ autoplay: 1 }"
+          @ready="ready"
+          @playing="playing"></youtube>
+      </v-container>
     </client-only>
   </v-container>
 </template>
@@ -52,12 +59,38 @@ export default {
     playing (event) {
       console.log(event)
     }
+  },
+
+  computed: {
+    youtubeWidth () {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return '100%'
+        case 'sm': return 768
+        case 'md': return 966
+        case 'lg': return 966
+        case 'xl': return 966
+      }
+      // return 375
+    },
+    youtubeHeight () {
+      switch (this.$vuetify.breakpoint.name) {
+        case 'xs': return 210
+        case 'sm': return 432
+        case 'md': return 543
+        case 'lg': return 543
+        case 'xl': return 543
+      }
+      // return 210.933
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
 @import "@/assets/styles/scss/variables.scss";
+#youtube-player-1 {
+  margin: 0 auto;
+}
 ::v-deep .intro {
   &--head {
     width: 100%;

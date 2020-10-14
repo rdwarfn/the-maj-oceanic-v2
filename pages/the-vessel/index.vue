@@ -4,17 +4,12 @@
       class="the-veseel--intro px-0"
       v-bind:data="{
         heading: data.heading,
-        id_youtube: 'Hm2KQirCJoU',
+        id_youtube: 'TnUCHmKvu4Q',
         description: data.description
       }"
       image-class="order-last px-6 px-md-0"
       description-class="text-center"
     />
-
-    <!-- <client-only>
-      <youtube video-id="Hm2KQirCJoU" @ready="ready"></youtube>
-    </client-only> -->
-
 
     <the-cabins v-bind:data="data.card_three_image" />
 
