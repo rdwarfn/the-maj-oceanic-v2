@@ -17,7 +17,8 @@
         "heading": "Zheng He",
         "image": "suites-and-staterooms/admiral-suite/0.png",
         "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
-        "to": "#"
+        "to": "#",
+        "sqm": 120
       },
       {
         "id": 1,
@@ -25,7 +26,8 @@
         "heading": "Zheng He",
         "image": "suites-and-staterooms/admiral-suite/1.png",
         "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
-        "to": "#"
+        "to": "#",
+        "sqm": 120
       },
       {
         "id": 1,
@@ -33,7 +35,8 @@
         "heading": "Zheng He",
         "image": "suites-and-staterooms/admiral-suite/2.png",
         "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
-        "to": "#"
+        "to": "#",
+        "sqm": 120
       },
       {
         "id": 1,
@@ -41,7 +44,8 @@
         "heading": "Zheng He",
         "image": "suites-and-staterooms/admiral-suite/3.png",
         "text": "Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.",
-        "to": "#"
+        "to": "#",
+        "sqm": 120
       }
     ]
   },{
@@ -53,7 +57,8 @@
         "heading": "Columbus",
         "image": "suites-and-staterooms/columbus/1.png",
         "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
-        "to": "#"
+        "to": "#",
+        "sqm": 35
       },
       {
         "id": 1,
@@ -61,7 +66,8 @@
         "heading": "Columbus",
         "image": "suites-and-staterooms/columbus/2.png",
         "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
-        "to": "#"
+        "to": "#",
+        "sqm": 35
       },
       {
         "id": 2,
@@ -69,7 +75,8 @@
         "heading": "Columbus",
         "image": "suites-and-staterooms/columbus/3.png",
         "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
-        "to": "#"
+        "to": "#",
+        "sqm": 35
       },
       {
         "id": 3,
@@ -77,7 +84,8 @@
         "heading": "Columbus",
         "image": "suites-and-staterooms/columbus/4.png",
         "text": "As far as space is concerned, this comes in a close second. Private en-suite bathroom, permanent queen bed, and closet. Built-in dresser with writing desk. Located on the main deck and is near the main lounge and dining room.",
-        "to": "#"
+        "to": "#",
+        "sqm": 35
       }
     ]
   },{
@@ -89,7 +97,8 @@
         "heading": "F. Magellan | Marcopolo |<br/> Vasco da Gama | James Cook",
         "image": "suites-and-staterooms/delux/1.png",
         "text": "A space for socializing, not just sleeping.  Multi-jet shower and a well-appointed open living area with chaise, built-in dresser, and writing desk.",
-        "to": "#"
+        "to": "#",
+        "sqm": 25
       }
     ]
   }]

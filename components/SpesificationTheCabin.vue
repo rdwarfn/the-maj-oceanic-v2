@@ -5,6 +5,9 @@
     </center>
     <div class="data--caption text-h6 text-center hidden-sm-and-up"> {{dataActive.caption}} </div>
     <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up" v-html="dataActive.heading"></div>
+    <div class="data--sqm hidden-sm-and-up">
+      <em class="data--sqm-em">{{ dataActive.sqm }} sqm</em>
+    </div>
     <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
       <swiper-slide v-for="(item, index) in data" v-bind:key="index">
         <v-img
@@ -32,6 +35,9 @@
         <slot name="icon"></slot>
         <v-card-subtitle class="pa-0 text-h6 data--caption"> {{dataActive.caption}} </v-card-subtitle>
         <v-card-title class="pa-0 ml-lg-0 font-weight-bold data--heading" v-html="dataActive.heading"></v-card-title>
+        <div class="data--sqm">
+          <em class="data--sqm-em">{{ dataActive.sqm }} sqm</em>
+        </div>
       </div>
       <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">{{dataActive.text}}</p>
     </v-card>
@@ -175,6 +181,9 @@ $white: #ffffff;
     .data--caption { margin-top: 35px !important }
     .data--heading {
       margin-top: 12px !important;
+      margin-bottom: 10px;
+    }
+    .data--sqm {
       margin-bottom: 40px !important;
     }
     .data--card {
@@ -191,7 +200,10 @@ $white: #ffffff;
     .data--caption { margin-top: 25px !important }
     .data--heading {
       margin-top: 15px !important;
-      margin-bottom: 35px !important;
+      margin-bottom: 10px;
+    }
+    .data--sqm {
+      margin-bottom: 10px !important;
     }
     .data--card { top: 125px !important }
   }
@@ -203,6 +215,9 @@ $white: #ffffff;
     .data--caption { margin-top: 30px !important }
     .data--heading {
       margin-top: 12px !important;
+      margin-bottom: 10px;
+    }
+    .data--sqm {
       margin-bottom: 36px !important;
     }
     .data--card { top: 100px !important }
@@ -225,7 +240,7 @@ $white: #ffffff;
         width: 100%;
       }
       @include poly-fluid-sizing ('width', (768px:352px, 1440px:445px));
-      @include poly-fluid-sizing ('height', (768px:347px, 1440px:445px));
+      @include poly-fluid-sizing ('min-height', (768px:347px, 1440px:445px));
       @include poly-fluid-sizing ('padding-left', (768px:25px, 1440px:50px));
       @include poly-fluid-sizing ('padding-right', (768px:23px, 1440px:50px));
       @include poly-fluid-sizing ('padding-top', (768px:25px, 1440px:30px));

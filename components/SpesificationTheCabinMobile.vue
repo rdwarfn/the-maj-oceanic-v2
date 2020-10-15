@@ -5,6 +5,9 @@
     </center>
     <div class="data--caption text-h6 text-center"> {{dataActive.caption}} </div>
     <div class="data--heading px-6 px-md-0 font-weight-bold text-center" v-html="dataActive.heading"></div>
+    <div class="data--sqm text-center">
+      <em class="data--sqm-em">{{ dataActive.sqm }} sqm</em>
+    </div>
     <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
       <swiper-slide v-for="(item, index) in data" v-bind:key="index">
         <v-img
@@ -65,7 +68,7 @@ export default {
 
   computed: {
     swiper () {
-      return this.$refs.swiper.$swiper;
+      return this.$refs.swiper && this.$refs.swiper.$swiper;
     }
   },
 
@@ -74,7 +77,7 @@ export default {
       this.$nextTick(() => {
         if (!this.data.length) { return }
         this.store = this.data;
-        this.dataActive = this.data[this.swiper.activeIndex];
+        this.dataActive = this.data[0];
       })
     }
   },
@@ -112,6 +115,9 @@ $primary:#208CB2;
   .data--caption { margin-top: 35px !important }
   .data--heading {
     margin-top: 12px !important;
+    margin-bottom: 10px;
+  }
+  .data--sqm {
     margin-bottom: 40px !important;
   }
   .data--card {
