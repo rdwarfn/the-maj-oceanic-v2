@@ -341,6 +341,9 @@ export default {
   @include poly-fluid-sizing ('padding-bottom', (375px:75px, 768px:80px, 1440px:100px));
 }
 
+.theme--light.v-data-table > .v-data-table__wrapper > table > tbody > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {
+  background: unset !important;
+}
 ::v-deep .v-data-table {
   @media #{map-get($display-breakpoints, 'sm-and-up')} {
     .v-data-table__wrapper > table > thead > tr > td:not(.bg-none) {
