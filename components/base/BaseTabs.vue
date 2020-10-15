@@ -10,7 +10,6 @@
       :hide-slider="isXs"
       v-bind:centered="tabsCenter ? tabsCenter : isSmAndDown"
       v-model="label"
-      @change="_handleClick"
     >
       <v-tabs-slider color="primary"></v-tabs-slider>
       <v-tab v-for="item in data" v-bind:key="item.label" :href="`#${item.label.replace(/\s/g, '-').toLowerCase()}`">
@@ -101,13 +100,6 @@ export default {
     },
     tabsRef () {
       return this.$refs.tabsRef
-    }
-  },
-
-  methods: {
-    _handleClick (e) {
-      console.log(this.$refs)
-      console.log(e)
     }
   }
 }

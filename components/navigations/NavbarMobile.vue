@@ -2,11 +2,11 @@
   <v-app-bar
     fixed app
     v-bind="$attrs"
-    min-height="78"
     max-width="100vw"
     class="hidden-lg-and-up flex-nowrap"
+    hide-on-scroll
   >
-    <v-row no-gutters align="center" justify="space-between" class="mt-5 flex-nowrap">
+    <v-row no-gutters align="center" justify="space-between" class="flex-nowrap">
       <v-col>
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
       <slot name="button-nav-icon"></slot>
@@ -95,16 +95,16 @@ export default {
 
   .v-app-bar {
     -webkit-transition:
-      background-color .8s ease-out !important,
-      display .8s ease-out !important,
+      background-color .8s ease-out,
+      display .8s ease-out,
       color .8s ease-out !important;
     -moz-transition:
-      background-color .8s ease-out !important,
-      display .8s ease-out !important,
+      background-color .8s ease-out,
+      display .8s ease-out,
       color .8s ease-out !important;
     transition:
-      background-color .8s ease-out !important,
-      display .8s ease-out !important,
+      background-color .8s ease-out,
+      display .8s ease-out,
       color .8s ease-out !important;
 
     ._img--white { display: none !important; }

@@ -149,6 +149,10 @@
       v-if="getHerosByRouteName"
       v-bind:data="getHerosByRouteName"
       static-image
+      v-intersect.quiet="{
+        handler: heroIntersec,
+        options: { rootMargin: '0px', threshold: [0.5, 1.0] }
+      }"
     />
 
     <v-main id="main"
@@ -162,7 +166,25 @@
       :style="getHerosByRouteName ? 'padding-top: 0' : 'padding-top: 78px'"
     >
       <breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-4 py-sm-6'" />
-      <nuxt />
+        <nuxt />
+      <v-fab-transition>
+      <v-btn
+        fab
+        fixed
+        bottom
+        right
+        :large="$vuetify.breakpoint.smAndUp"
+        v-show="showBtnScroll"
+        color="primary"
+        @click="$vuetify.goTo(0, {
+          duration: 1000,
+          offset: 0,
+          easing: 'easeInOutCubic'
+        })"
+      >
+        <v-icon>{{ svgChevTop }}</v-icon>
+      </v-btn>
+      </v-fab-transition>
     </v-main>
     <!-- <div id="mark">viewport intersection observer</div> -->
     <tmo-footer />
@@ -170,7 +192,7 @@
 </template>
 
 <script>
-import { mdiClose, mdiCheckboxBlankCircleOutline } from '@mdi/js';
+import { mdiClose, mdiCheckboxBlankCircleOutline, mdiChevronUp } from '@mdi/js';
 import tmoNavigation from '@/components/navigations/index.vue';
 import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue';
 import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
@@ -204,7 +226,10 @@ export default {
       intersec: null,
       showHero: true,
       svgClose: mdiClose,
-      svgCheckboxMenu: mdiCheckboxBlankCircleOutline
+      svgCheckboxMenu: mdiCheckboxBlankCircleOutline,
+      svgChevTop: mdiChevronUp,
+
+      showBtnScroll: false,
     }
   },
 
@@ -238,12 +263,15 @@ export default {
     },
     computedRoute () {
       return JSON.stringify(this.$route)
-    }
+    },
   },
 
   methods: {
     onIntersect: function (entries, observer) {
       this.isIntersecting = entries[0].isIntersecting;
+    },
+    heroIntersec (entries, observer) {
+      this.showBtnScroll = !entries[0].isIntersecting
     }
   }
 }

@@ -23,13 +23,17 @@
           ? require('~/assets/images/' + item.image)
           : item.image"
           class="hidden-xs-only deck-spesification--item-img mx-auto"></v-img>
-        <img
-          v-bind:src="staticImage
+        <v-img
+          :src="staticImage
+            ? require('~/assets/images/' + item.mobile_image)
+            : item.mobile_image"
+          :lazy-src="staticImage
             ? require('~/assets/images/' + item.mobile_image)
             : item.mobile_image"
           class="hidden-sm-and-up mx-auto"
-          alt="deck-spesification"
-        > 
+          max-width="150"
+          height="502px"
+        ></v-img>
       </swiper-slide>
       <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
     </swiper>
@@ -171,7 +175,12 @@ $white: #ffffff;
 
     &-paragraph {
       @include poly-fluid-sizing ('margin-top', (378px:18px, 768px:15px, 960px:25px));
-      @include poly-fluid-sizing ('margin-bottom', (378px:37px, 768px:30px, 960px:59.11px));
+      @media #{map-get($display-breakpoints, 'sm-only')} {
+        margin-bottom: 30px;
+      }
+      @media #{map-get($display-breakpoints, 'md-and-up')} {
+        margin-bottom: 59.11px;
+      }
       text-align: start !important;
     }
 
