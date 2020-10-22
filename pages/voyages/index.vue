@@ -4,6 +4,10 @@
       <voyages-item v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
     </template>
 
+    <section class="voyages__testimonal">
+      <BaseTestimonal :data="data.testimonal" static-image />
+    </section>
+
     <v-container tag="section" class="container__carousel px-6 px-md-0">
       <base-carousel
         card-mobile-class="mt-2 transparent"
@@ -21,7 +25,8 @@
 <script>
 const components = {
   VoyagesItem: () => import('@/components/VoyagesItem.vue'),
-  BaseCarousel: () => import('@/components/base/BaseCarousel.vue')
+  BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
+  BaseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
 }
 export default {
   layout: 'main',
@@ -43,7 +48,7 @@ export default {
   components,
 
   async asyncData ({ $content }) {
-    const data = await $content('pages/voyages').fetch();
+    const data = await $content('pages/voyages/index').fetch();
     return { data }
   },
 
@@ -70,6 +75,12 @@ export default {
 
 #voyages {
   @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+  .voyages__testimonal {
+    @media #{map-get($display-breakpoints, 'md-and-up')} {
+      margin-top: 150px;
+    }
+    @include poly-fluid-sizing ('margin-bottom', (375px:100px, 1440px:150px));
+  }
 }
 
 .heading-komodo {

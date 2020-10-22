@@ -30,19 +30,29 @@
             <v-list
               v-if="data.children.length"
               v-bind:dark="isIntersecting"
-              class="py-0">
+              class="py-0"
+            >
               <!-- min-width="190"
               max-width="190" -->
-              <v-list-item
-                v-for="(item, index) in data.children"
-                v-bind:key="index"
-                v-bind:to="item.to"
-                v-bind:disabled="item.disabled"
-                dense nuxt tile style="letter-spacing: 2px">
-                <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
-                  {{ item.title }}
-                </v-list-item-title>
-              </v-list-item>
+
+              <template v-for="(item, index) in data.children">
+                <v-list-item
+                  :to="item.to"
+                  :key="index"
+                  :exact="item.exact"
+                  :disabled="item.disabled"
+                  dense nuxt tile style="letter-spacing: 2px"
+                >
+                  <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
+                    {{ item.title }}
+                  </v-list-item-title>
+                </v-list-item>
+                <v-divider
+                  :key="index + '-divider'"
+                  v-if="index !== data.children.length -1"
+                  class="mx-3"
+                ></v-divider>
+              </template>
             </v-list>
           </v-menu>
         <!-- </div> -->
@@ -104,23 +114,25 @@
               </template>
               <v-list
                 v-if="data.children.length"
-                flat subheader dense tile
                 min-width="190"
                 color="transparent"
-                auto
+                flat subheader dense tile auto
                 v-bind:dark="isIntersecting"
               >
-                <v-list-item
-                  v-bind:to="item.to"
-                  v-for="(item, index) in data.children"
-                  v-bind:key="index"
-                  v-bind:disabled="item.disabled"
-                  dense nuxt tile
-                >
-                  <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
-                    {{ item.title }}
-                  </v-list-item-title>
-                </v-list-item>
+                <template v-for="(item, index) in data.children">
+                  <v-list-item
+                    :to="item.to"
+                    :key="index"
+                    :exact="item.exact"
+                    :disabled="item.disabled"
+                    dense nuxt tile style="letter-spacing: 2px"
+                  >
+                    <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
+                      {{ item.title }}
+                    </v-list-item-title>
+                  </v-list-item>
+                  <v-divider inset :key="index"></v-divider>
+                </template>
               </v-list>
             </v-menu>
           </v-col>

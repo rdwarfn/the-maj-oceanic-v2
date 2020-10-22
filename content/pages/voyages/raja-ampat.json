@@ -1,0 +1,23 @@
+{
+  "hero": {
+    "id": 0,
+    "text": "Raja Ampat",
+    "image": "voyages/raja-ampat/hero-raja-ampat.png",
+    "mobile_image": "voyages/raja-ampat/hero-raja-ampat-mobile.png"
+  },
+  "des_1": {
+    "image": "voyages/raja-ampat/des-1.png",
+    "description": "The name Raja Ampat—literally ‘The Four Kings’—speaks of the mysterious folklore surrounding Indonesia’s most far-flung cluster of islands. Local stories tell of a woman who finds seven mysterious eggs, four of which hatched to become the kings that reigned over the archipelago’s four main islands, Waigo, Salawati, Batanta, and Misool. It’s said that the other three were not so lucky, and become a ghost, a woman and a stone.",
+    "to": "#"
+  },
+  "des_2": {
+    "heading": "The Last Paradise",
+    "image": "voyages/raja-ampat/des-2.png",
+    "description": "More than 1,500 wild islands, cays and shoals make up Raja Ampat’s 40,000 square kilometre area, which lies on northwest tip of the Bird’s Head Peninsula in Papua (New Guinea). Underwater, the marine habitats are among the most biodiverse in the world with 1,200 species of fish and 550 species of hard and soft coral. Giant manta rays, black and white-tipped reef sharks, wobbegong sharks, sea turtles, pygmy seahorses, and schools of barracuda and grouper are just a few of the creatures you can encounter here."
+  },
+  "des_3": {
+    "images": ["voyages/raja-ampat/des-3-1.png", "voyages/raja-ampat/des-3-2.png", "voyages/raja-ampat/des-3-3.png"],
+    "mobile_images": ["voyages/raja-ampat/des-3-1-mobile.png", "voyages/raja-ampat/des-3-2.png", "voyages/raja-ampat/des-3-3.png"],
+    "description": "In 2012, a world-record 374 fish species in one dive was documented. Raja Ampat’s landscapes resemble something out of Jurassic Park with dense tropical jungle giving way to hidden waterfalls and jutting limestone cliffs. Prehistoric wall paintings can be found alongside cave bunkers and seabed wreckage from WW2. Birdsong from parrots, hornbills and birds-of-paradise are your soundtrack as you paddle through mangroves on a kayak, stroll on beaches fringed by thick tropical jungle, or meet the indigenous tribes."
+  }
+}

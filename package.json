@@ -33,6 +33,7 @@
     "lodash": "^4.17.20",
     "nuxt": "^2.14.0",
     "postcss-uncss": "^0.17.0",
+    "remark-emoji": "^2.1.0",
     "ress": "^3.0.0",
     "swiper": "^5",
     "uncss": "^0.17.3",

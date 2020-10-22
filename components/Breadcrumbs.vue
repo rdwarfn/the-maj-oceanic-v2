@@ -1,5 +1,6 @@
 <template>
   <v-container class="px-6 px-md-0">
+    <client-only>
     <v-breadcrumbs
       class="px-0 text-uppercase hidden-xs-only"
       v-show="getBreadcrumb.length > 1"
@@ -16,6 +17,7 @@
         </v-breadcrumbs-item>
       </template>
     </v-breadcrumbs>
+    </client-only>
   </v-container>
 </template>
 

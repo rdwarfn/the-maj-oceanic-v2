@@ -25,6 +25,13 @@
       "to": "/sailing-soons"
     }
   ],
+  "testimonal": [{
+    "image": "voyages/1.png",
+    "description": "How insane is this Phinisi ship?!🛥 It was one of the most amazing experiences I’ve had in Indonesia, and the perfect way to spend my 30th birthday!",
+    "name": "Jack Morris",
+    "ig_username": "@doyoutravel",
+    "ig_link": "https://www.instagram.com/doyoutravel"
+  }],
   "carousel_card": [
     {
       "id": 0,

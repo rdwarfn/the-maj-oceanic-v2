@@ -119,7 +119,13 @@ export default {
   /*
   ** Content module configuration
   */
-  content: {},
+  content: {
+    markdown: {
+      remarkPlugins: [
+        ['remark-emoji', { emoticon: true }]
+      ]
+    }
+  },
   /*
   ** vuetify module configuration
   */

@@ -1,5 +1,5 @@
 <template>
-  <div id="activites">
+  <article id="activites">
     <v-container tag="section" class="mx-auto px-6 px-md-0 mb-15">
       <div class="intro--head font-weight-bold text-center mx-auto">
         {{ data.introduction.heading }}
@@ -10,16 +10,22 @@
     <template v-for="(card, index) in data.cards">
       <cards class="card-section" :data="card" :key="index" />
     </template>
-  </div>
+
+    <section class="activites__testimonal">
+      <BaseTestimonal :data="data.testimonal" static-image />
+    </section>
+  </article>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import Cards from '@/components/activites/Carousel.vue';
+import BaseTestimonal from '@/components/base/BaseTestimonal.vue';
 
 const components = {
   Spesification: () => import('@/components/SpesificationTheCabin.vue'),
   Cards,
+  BaseTestimonal
 };
 
 export default {
@@ -40,11 +46,6 @@ export default {
   },
 
   components,
-
-  data () {
-    return {
-    }
-  },
 
   async asyncData ({ $content }) {
     const data = await $content ('pages/activites').fetch();
@@ -95,6 +96,6 @@ $secondary: #EFE1DC;
 }
 
 section.activites-container {
-  margin-bottom: 74px !important;
+  margin-bottom: 150px !important;
 }
 </style>

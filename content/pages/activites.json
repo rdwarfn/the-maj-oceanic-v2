@@ -43,5 +43,13 @@
       "activites/exploration/2.png",
       "activites/exploration/3.png"
     ]
+  }],
+  "testimonal": [{
+    "id": 0,
+    "image": "activites/testimonal-1.png",
+    "description": "Moody sunset hikes to the top of Padar Island, I’ve been up here many times & it was crazy to see it so quiet 😯 over the coming months we plan to see more of Indonesia & support local tourism as much as we can 🙏🏼",
+    "name": "Lauren Bullen",
+    "ig_username": "@gypsea_lust",
+    "ig_link": "https://www.instagram.com/gypsea_lust"
   }]
 }
