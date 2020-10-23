@@ -12,7 +12,7 @@ sections:
   templates:
   - introduction
 - type: document
-  path: content/Home.md
+  path: content/articles/Home.md
   label: Home
 upload_dir: uploads
 public_path: "/uploads"
