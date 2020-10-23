@@ -9,6 +9,8 @@ sections:
   label: Articles
   create: documents
   match: "**/*"
+  templates:
+  - introduction
 - type: document
   path: content/Home.md
   label: Home
