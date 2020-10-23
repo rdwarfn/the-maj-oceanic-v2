@@ -21,3 +21,5 @@ fields:
     schema:
       format: markdown
   label: Description
+pages:
+- content/articles/blog1.md
