@@ -4,7 +4,7 @@
       type="image"
       class="_hero--img"
       transition="slide-y-reverse-transition"
-      v-if="loading"
+      v-if="!data"
     >
     </v-skeleton-loader>
     <template v-else>
@@ -15,13 +15,13 @@
               :playsinline="true"
               v-video-player:player="{
                 ...playerOptions,
-                sources: [...data.video]
+                sources: [...data.video],
               }"
               @play="onPlayerPlay($event)"
               @waiting="onPlayerWaiting($event)"
-              @canplay="onPlayerCanplay($event)"
-              @canplaythrough="onPlayerCanplaythrough($event)"
             >
+              <!-- @canplay="onPlayerCanplay($event)"
+              @canplaythrough="onPlayerCanplaythrough($event)" -->
             </div>
             <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.text">
             </div>
@@ -36,16 +36,14 @@
             >
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center hidden-sm-and-up" v-html="data.text">
-                </div>
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text"></div>
                 <v-spacer/>
               </v-row>
             </v-img>
           </template>
         </template>
 
-        <template
-          else>
+        <template v-else>
           <v-img
             :class="{'hidden-xs-only': data.mobile_image}"
             v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
@@ -55,14 +53,14 @@
             <!-- :aspect-ratio="16/9" -->
             <v-row no-gutters align="center" justify="center" class="fill-height">
               <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
-              </div>
+              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text"></div>
               <v-spacer/>
             </v-row>
           </v-img>
             <!-- class="hidden-sm-and-up" -->
           <v-img
             v-if="data.mobile_image"
+            class="hidden-sm-and-up"
             :src="staticImage? require('~/assets/images/' + data.mobile_image) : data.mobile_image"
             :lazy-src="staticImage? require('~/assets/images/' + data.mobile_image) : data.mobile_image"
             >
@@ -104,9 +102,9 @@ export default {
       playerOptions: {
 
         language: 'en',
-        // autoplay: true,
+        autoplay: true,
         control: false,
-        // controls: false,
+        controls: false,
         loop: true,
         muted: true,
       }

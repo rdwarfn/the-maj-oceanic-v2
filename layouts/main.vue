@@ -168,22 +168,18 @@
       <breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-4 py-sm-6'" />
         <nuxt />
       <v-fab-transition>
-      <v-btn
-        fab
-        fixed
-        bottom
-        right
-        :large="$vuetify.breakpoint.smAndUp"
-        v-show="showBtnScroll"
-        color="primary"
-        @click="$vuetify.goTo(0, {
-          duration: 1000,
-          offset: 0,
-          easing: 'easeInOutCubic'
-        })"
-      >
-        <v-icon>{{ svgChevTop }}</v-icon>
-      </v-btn>
+        <v-btn
+          fab
+          fixed
+          bottom
+          right
+          :large="$vuetify.breakpoint.smAndUp"
+          v-show="showBtnScroll"
+          color="primary"
+          @click="$vuetify.goTo(scrollTarget, scrollOptions)"
+        >
+          <v-icon>{{ svgChevTop }}</v-icon>
+        </v-btn>
       </v-fab-transition>
     </v-main>
     <!-- <div id="mark">viewport intersection observer</div> -->
@@ -199,6 +195,8 @@ import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
 import tmoFooter from '@/components/containers/Footer.vue';
 import tmoBtn from '@/components/base/BaseButton.vue';
 import Breadcrumbs from '@/components/Breadcrumbs.vue';
+
+import * as easings from 'vuetify/es5/services/goto/easing-patterns'
 
 const getNavs = () => import('~/static/data/navs.json').then(v => v.default || v);
 
@@ -230,6 +228,12 @@ export default {
       svgChevTop: mdiChevronUp,
 
       showBtnScroll: false,
+      scrollTarget: 0,
+      scrollOptions: {
+        duration: 300,
+        offset: 0,
+        easing: 'easeInOutCubic'
+      }
     }
   },
 

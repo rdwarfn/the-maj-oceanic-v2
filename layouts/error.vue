@@ -11,27 +11,41 @@
       Home page
     </NuxtLink>
   </v-container> -->
-  <v-sheet height="calc(100vh - 300px)" color="#F3E9E5" class="other-error d-flex flex-row" v-if="error.statusCode !== 404">
+  <v-sheet color="#F3E9E5" class="other-error d-flex flex-row" v-if="error.statusCode !== 404">
     <v-container>
-      <v-row align="center" justify="center" class="container mx-auto">
-      <v-col cols="12" sm="auto" class="mx-auto mx-sm-0">
+      <v-row no-gutters align="center" justify="space-between" class="container mx-auto px-8 px-md-0">
+      <v-col cols="12" sm="6" class="mb-12 mx-auto mx-sm-0">
         <v-img
+          v-ripple
           ref="refImg"
-          v-bind:src="require('~/assets/images/contact-dialog-compass.png')"
-          v-bind:lazy-src="require('~/assets/images/contact-dialog-compass.png')"
+          v-bind:src="require('~/assets/images/sailing-soons.png')"
+          v-bind:lazy-src="require('~/assets/images/sailing-soons.png')"
           class="_sailing-img mx-auto"
-          width="300px"
         >
+          <v-img
+            v-bind:src="require('~/assets/images/sailing-soons-stamp.png')"
+            v-bind:lazy-src="require('~/assets/images/sailing-soons-stamp.png')"
+            max-width="319.17"
+            max-height="217.69px"
+            class="_sailing-img-stamp"
+          >
+          </v-img>
         </v-img>
       </v-col>
 
-      <v-col cols="12" sm="auto" class="mx-auto mx-sm-0 px-sm-0 _text-width">
-        <h1 class="text-center text-h4 text-md-h3 mb-6">We're sorry,<br /> but something went wrong.</h1>
-        <div class="mb-15 mb-sm-6 mt-6 text-break mx-auto">
-          <h4>Error message :</h4>
-          <code>
-            {{ error.message }}
-          </code>
+      <v-col cols="12" sm="5" class="mx-auto mx-sm-0 px-sm-0 _text-width">
+        <div class="mb-6 mx-auto">
+          <h1 class="text-h4 text-md-h3">We're sorry, but something went wrong.</h1>
+        </div>
+        <div class="mb-15 mb-sm-6 text-break mx-auto">
+          {{ otherError }}
+          <div>
+            <!-- <p class="mb-n6 mt-6">Errors</p> -->
+            <code>
+              <v-treeview class="pl-n7 error--text" :items="items"
+              ></v-treeview>
+            </code>
+          </div>
         </div>
         <v-row no-gutters align="start" justify="start" class="ml-n2 ml-sm-0 flex-sm-nowrap">
           <v-col cols="12" sm="auto" class="mb-6 mb-sm-0">
