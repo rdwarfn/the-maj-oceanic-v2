@@ -5,7 +5,7 @@
     </template>
 
     <section class="voyages__testimonal">
-      <BaseTestimonal :data="data.testimonal" static-image />
+      <base-testimonal :data="data.testimonal" static-image />
     </section>
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
@@ -13,9 +13,6 @@
         card-mobile-class="mt-2 transparent"
         v-bind:data="data.carousel_card"
         button-text="Rates & Schedule"
-        v-bind:button-props="{
-          class: 'px-6'
-        }"
         static-image
       />
     </v-container>

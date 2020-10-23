@@ -10,19 +10,19 @@
       "heading": "Home of the mystical<br class='hidden-sm-and-up'/> Komodo Dragons",
       "description": "This UNESCO World Heritage site encompasses three main islands – Komodo, Padar and Rinca. Below the water, multihued coral gardens are a diver’s dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering schools of fish.",
       "image": "large/8.png",
-      "to": "/sailing-soons"
+      "to": "/voyages/komodo"
     },
     {
       "heading": "The richest coal<br class='hidden-sm-and-up'/> reefs on earth",
       "description": "This UNESCO World Heritage site encompasses three main islands – Komodo, Padar and Rinca. Below the water, multihued coral gardens are a diver’s dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering schools of fish.",
       "image": "large/9.png",
-      "to": "/sailing-soons"
+      "to": "/voyages/raja-ampat"
     },
     {
       "heading": "The ‘great nutmeg island’",
       "description": "The volcanic Banda Islands are as rich in history and natural beauty as they are remote. Centuries ago, this tiny archipelago in Maluku was the world’s only source of nutmeg, the ‘gold of the spice trade.’ Today, only adventurous travellers make the trip—and are rewarded with bygone colonial architecture, buzzing spice markets, and postcard-pretty scenery.",
       "image": "large/10.png",
-      "to": "/sailing-soons"
+      "to": "/voyages/spice-islands"
     }
   ],
   "testimonal": [{
