@@ -24,7 +24,7 @@ export default {
   /*
   ** Nuxt target
   */
-  target: 'server',
+  target: 'static',
   /*
   ** Headers of the page
   */
