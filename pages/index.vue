@@ -71,7 +71,8 @@ export default {
           name: 'description',
           content: JSON.stringify(this.data.description)
         }
-      ]
+      ],
+      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     }
   },
 
