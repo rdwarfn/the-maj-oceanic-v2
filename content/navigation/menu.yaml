@@ -1,0 +1,6 @@
+menu:
+  - title: 'The Vessel'
+  - to: '/the-vessel'
+  - children:
+    - title: 'Spesification'
+    - to: '/the-vessel/spesification'

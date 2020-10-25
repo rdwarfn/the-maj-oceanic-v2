@@ -42,7 +42,7 @@ collections:
     files:
       - label: 'Menu'
         name: 'menu'
-        file: 'content/navigation/menu.yml'
+        file: 'content/navigation/menu.yaml'
         fields:
           - name: menu
             label: Menu
