@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <template>
-      <div v-if="!data.intro" class="text-center">
+      <div v-if="!data.intro" class="text-center container">
         <v-skeleton-loader type="text@2" :loading="!data.intro" />
         <v-skeleton-loader type="image" :loading="!data.intro" />
         <v-skeleton-loader type="paragraph" :loading="!data.intro" />
@@ -19,7 +19,7 @@
     </v-container>
 
     <template>
-      <div v-if="!data.voyages" class="text-center">
+      <div v-if="!data.voyages" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.voyages" />
       </div>
       <voyages v-else v-bind:data="data.voyages"

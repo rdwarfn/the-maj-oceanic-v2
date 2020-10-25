@@ -1,3 +1,10 @@
 ---
-heading: >
-  Traces of the ancient<br class='hidden-sm-and-up'/> maritime glory<br class='hidden-xs-only'/> with touches of<br class='hidden-sm-and-up'/> modern-day comfort
+hero:
+  heading: >
+    The future of travel,
+
+    on traditions of the past.
+  video:
+    - type: video/mp4
+    - src: /video-hero-home.mp4
+  image: /hero-home.png
