@@ -18,10 +18,6 @@ export default {
     }
   },
   /*
-  ** Nuxt rendering mode
-  */
-  mode: 'universal',
-  /*
   ** Nuxt target
   */
   target: 'static',
