@@ -18,25 +18,6 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - label: 'Heroes'
-    name: 'heroes'
-    folder: 'content/heroes'
-    create: true
-    slug: '{{slug}}'
-    fields:
-      - { label: 'Headline', name: 'headline', widget: 'string' }
-      - label: 'Videos'
-        label_singular: 'Video'
-        name: 'videos'
-        required: true
-        widget: 'list'
-        summary: '{{fields.type}} - {{fields.src}}'
-        fields:
-          - { label: 'Type', name: 'type', widget: 'string', hint: 'Type of video, example: video/mp4' }
-          - { label: 'Src', name: 'src', widget: 'file' }
-      - { label: 'Image', name: 'image', widget: 'image' }
-      - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
-
   - label: 'Navigation'
     name: 'navigation'
     description: 'Navigation menu'
@@ -71,8 +52,24 @@ collections:
         fields:
           - label: 'Hero'
             name: 'hero'
-            widget: 'relation'
-            collection: 'heroes'
-      - { label: 'Heading', name: 'heading', widget: 'markdown' }
-      - { label: 'Description', name: 'description', widget: 'markdown' }
-      - { image: 'Image', name: 'image', widget: 'image' }
+            widget: 'Object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - label: 'Videos'
+                label_singular: 'Video'
+                name: 'videos'
+                widget: 'list'
+                summary: '{{fields.type}} - {{fields.src}}'
+                fields:
+                  - { label: 'Type', name: 'type', widget: 'string', hint: 'Type of video, example: video/mp4' }
+                  - { label: 'Src', name: 'src', widget: 'file' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+
+          - label: 'Section Intro'
+            name: 'intro'
+            widget: 'Object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { image: 'Image', name: 'image', widget: 'image' }
