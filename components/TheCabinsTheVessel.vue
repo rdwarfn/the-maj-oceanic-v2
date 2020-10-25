@@ -6,7 +6,7 @@
         <div class="__heading px-6 px-sm-0 px-6 px-md-0">{{ data.heading }}</div>
 
         <swiper ref="swiper" class="swiper container py-0 px-0 px-sm-6 px-md-0" v-bind:options="swiperOption">
-          <swiper-slide v-for="item in data.data" v-bind:key="item.id">
+          <swiper-slide v-for="(item, index) in data.data" v-bind:key="index">
             <div class="text-center swiper__item">
               <v-img
                 v-bind:src="staticImage
@@ -25,7 +25,7 @@
               </v-img>
               <div class="hidden-xs-only">
                 <div class="swiper__item--heading font-weight-bold">{{item.heading}}</div>
-                <div v-if="item.text" class="swiper__item--text" v-html="item.text"></div>
+                <div v-if="item.description" class="swiper__item--text" v-html="item.description"></div>
               </div>
             </div>
           </swiper-slide>
@@ -33,7 +33,7 @@
         </swiper>
         <div class="swiper__content">
           <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{dataActive.heading}}</div>
-          <div v-if="dataActive.text" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.text"></div>
+          <div v-if="dataActive.description" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.description"></div>
           <v-btn
             tile
             depressed

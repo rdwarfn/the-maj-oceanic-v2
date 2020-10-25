@@ -67,7 +67,6 @@ collections:
                   - { label: 'Src', name: 'src', widget: 'file' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
-
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
@@ -75,7 +74,6 @@ collections:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { image: 'Image', name: 'image', widget: 'image' }
-
           - label: 'Section The Vessel'
             name: 'the_vessel'
             widget: 'object'
@@ -85,7 +83,6 @@ collections:
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
-
           - label: 'Section Voyages'
             name: 'voyages'
             widget: 'object'
@@ -107,7 +104,6 @@ collections:
                       - { label: 'Description', name: 'description', widget: 'markdown' }
                       - { label: 'Image', name: 'image', widget: 'image' }
                       - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
-
           - label: 'Section Dining'
             name: 'dining'
             widget: 'object'
@@ -117,7 +113,6 @@ collections:
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'to', name: 'to', widget: 'string', hint: 'Button link.'}
-
           - label: 'Section Occasions'
             name: 'occasios'
             widget: 'object'
@@ -127,3 +122,68 @@ collections:
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'to', name: 'to', widget: 'string', hint: 'Button link.'}
+
+      - label: 'The Vessel'
+        name: 'vessel'
+        file: 'content/pages/vessel.yaml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Intro'
+            name: 'intro'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Youtube id', name: 'youtube_id', widget: 'string' }
+          - label: 'Section suites & Staterooms'
+            name: 'suites_and_staterooms'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'To', name: 'to', hint: 'Button link.' }
+              - label: 'Slider Data'
+                name: 'data'
+                widget: 'list'
+                summary: '{{fields.name}}'
+                fields:
+                  - { label: 'Heading', name: 'heading', widget: 'string' }
+                  - { label: 'Description', name: 'description', widget: 'markdown' }
+                  - { label: 'Image', name: 'image', widget: 'image' }
+          - label: 'Section The Decks'
+            name: 'the_decks'
+            widget: 'list'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
+          - label: 'Section The Teams'
+            name: 'teams'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - label: 'Slider Data'
+                name: 'data'
+                widget: 'list'
+                fields:
+                  - { label: 'Title', name: 'title', widget: 'string' }
+                  - { label: 'Name', name: 'name', widget: 'string' }
+                  - { label: 'Image', name: 'image', widget: 'image' }
+          - label: 'Section Sustainability'
+            name: 'sustainability'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'To', name: 'to', hint: 'Button link.' }

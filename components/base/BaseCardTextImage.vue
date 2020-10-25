@@ -25,7 +25,7 @@
           </template>
         </v-img>
         <v-card-text class="hidden-sm-and-up px-0 mt-5 text-center">
-          {{ data.text }}
+          {{ data[returnTextData] }}
         </v-card-text>
         <v-card-actions
           v-if="buttonText"
