@@ -47,13 +47,14 @@ collections:
           - name: menu
             label: Menu
             widget: list
+            summary: 'Title: {{fields.title}}, to: {{fields.to}}, children: {{fields.children}}'
             fields:
             - { label: 'Title', name: 'title', widget: 'string' }
             - { label: 'To', name: 'to', widget: 'string', hint: 'Navigation link, example: /the-vessel'}
             - label: 'Children'
               name: 'children'
               widget: 'list'
-              summary: '{{fields.title}} - {{fields.to}}'
+              summary: 'Title: {{fields.title}}, to: {{fields.to}}'
               hint: 'Navigation Children'
               default: []
               fields:
