@@ -20,7 +20,6 @@ collections:
 
   - name: 'Heroes'
     label: 'heroes'
-    format: 'json'
     folder: 'content/heroes'
     create: true
     slug: '{{slug}}'
@@ -35,3 +34,22 @@ collections:
         fields:
           - { label: 'Type', name: 'type', widget: 'string', hint: 'Type of video, example: video/mp4' }
           - { label: 'Src', name: 'src', widget: 'file' }
+
+  - name: 'Menu'
+    label: 'menu'
+    file: 'content/navigation/menu.yml'
+    description: 'Navigation menu'
+    collapsed: false
+    widget: 'list'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'To', name: 'to', widget: 'string', hint: 'Navigation link, example: /the-vessel'}
+      - label: 'Children'
+        name: 'children'
+        widget: 'list'
+        summary: '{{fields.title}} - {{fields.to}}'
+        hint: 'Navigation Children'
+        default: []
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'To', name: 'to', widget: 'string' }
