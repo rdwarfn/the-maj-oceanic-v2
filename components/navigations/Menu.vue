@@ -1,10 +1,10 @@
 <template>
   <v-row no-gutters align="center" justify="space-around" class="flex-nowrap">
-    <template v-for="data in NavList">
+    <template v-for="(data, idx) in menu">
       <v-col cols="auto"
         class="text-center"
-        v-if="data.id < 4"
-        :key="data.id"
+        v-if="idx < 4"
+        :key="idx"
       >
         <!-- <div class="d-flex align-start justify-center text-center"> -->
           <v-menu
@@ -84,10 +84,10 @@
       </v-btn>
     </v-col>
     <v-spacer v-show="!isIntersecting" />
-    <template v-for="data in NavList">
+    <template v-for="(data, idx) in menu">
       <v-col cols="auto"
-        v-if="data.id >= 4"
-        v-bind:key="data.id"
+        v-if="idx >= 4"
+        v-bind:key="idx"
         v-bind:class="[
           'text-center',
         ]"
@@ -151,11 +151,18 @@ export default {
     'is-intersecting': {
       type: Boolean,
       default: false
-    },
-    NavList: {
-      type: [Array, Object],
-      default: function () { return [] }
     }
+  },
+
+  data () {
+    return {
+      menu: []
+    }
+  },
+
+  async fetch () {
+    const { menu } = await this.$content('navigation/menu').only(['menu']).fetch()
+    this.menu = menu
   },
 
   methods: {

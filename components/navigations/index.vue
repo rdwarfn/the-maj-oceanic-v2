@@ -134,10 +134,7 @@
         justify="space-around"
       >
 
-        <t-navigation-menu
-          :isIntersecting="!isIntersecting"
-          :nav-list="sourceNav"
-        />
+        <navigation-menu :isIntersecting="!isIntersecting" />
 
         <!-- <v-col cols="auto" class="rounded mr-lg-10" v-if="isIntersecting">
           <v-row align="center">
@@ -197,7 +194,7 @@
 </template>
 
 <script>
-import tNavigationMenu from './Menu.vue';
+import navigationMenu from './Menu.vue';
 export default {
   name: 'Navigation',
 
@@ -206,9 +203,6 @@ export default {
       type: Boolean,
       default: false
     },
-    sourceNav: {
-      type: [Array, Object]
-    },
     loading: {
       type: Boolean,
       default: true
@@ -216,7 +210,7 @@ export default {
   },
 
   components: {
-    tNavigationMenu
+    navigationMenu
   },
 
   data () {

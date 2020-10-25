@@ -1,11 +1,15 @@
 export const state = () => ({
   counter: 0,
   breadcrumbs: [],
+  drawer: false,
 })
 
 export const mutations = {
   SET_BREADCRUMBS (state, crumbs) {
     state.breadcrumbs = crumbs
+  },
+  toggleDrawer (state) {
+    state.drawer = !state.drawer
   },
   increment(state) {
     state.counter++
