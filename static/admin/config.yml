@@ -52,7 +52,7 @@ collections:
         fields:
           - label: 'Hero'
             name: 'hero'
-            widget: 'Object'
+            widget: 'object'
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - label: 'Videos'
@@ -68,7 +68,7 @@ collections:
 
           - label: 'Section Intro'
             name: 'intro'
-            widget: 'Object'
+            widget: 'object'
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
