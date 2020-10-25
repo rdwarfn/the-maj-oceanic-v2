@@ -240,7 +240,7 @@ export default {
   components,
 
   async fetch () {
-    const { menu } = await this.$content('navigation/menu').only(['menu']).fetch();
+    const { menu } = await this.$content('navigation/menu').fetch();
     this.navigation.data = menu
     this.navigation.isLoaded = true
   },
