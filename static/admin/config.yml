@@ -39,13 +39,10 @@ collections:
     label: 'navigation'
     description: 'Navigation menu'
     delete: false
-    editor:
-      preview: false
     files:
       - label: 'Menu'
         name: 'menu'
-        file: 'content/navigation/navs.json'
-        format: 'json'
+        file: 'content/navigation/menu.yml'
         fields:
           - name: menu
             label: Menu
@@ -62,3 +59,10 @@ collections:
               fields:
                 - { label: 'Title', name: 'title', widget: 'string' }
                 - { label: 'To', name: 'to', widget: 'string' }
+
+  # - label: 'Pages'
+  #   name: 'pages'
+  #   files:
+  #     - label: 'Home Page'
+  #       name: 'home'
+  #       file: 'content/pages/home.md'
