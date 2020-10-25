@@ -37,7 +37,7 @@ collections:
 
   - name: 'Menu'
     label: 'menu'
-    file: 'content/navigation/menu.yml'
+    file: 'content/navigation/navs.json'
     description: 'Navigation menu'
     collapsed: false
     widget: 'list'
