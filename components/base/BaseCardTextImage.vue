@@ -55,7 +55,7 @@
 
           <v-card-text class="px-0"
             v-bind:class="contentRight ? 'text-right' : null">
-            {{ data.text }}
+            {{ data[returnTextData] }}
             <ul v-if="data.list">
               <li v-for="(item, index) in data.list.split('\n')"
                 v-bind:key="index"
@@ -102,6 +102,7 @@ export default {
     buttonText: { type: String },
     buttonClass: { type: String },
     buttonContainerClass: { type: String },
+    returnTextData: { type: string, default: 'text' },
     reverse: { type: Boolean },
     imgAspectRatio: {
       type: [String, Number]

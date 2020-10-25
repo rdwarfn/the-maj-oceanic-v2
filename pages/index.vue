@@ -40,6 +40,7 @@
         <base-card-text-image
           v-else
           v-bind:data="data.dining"
+          return-text-data="description"
           button-text="learn more"
           content-right
           static-image
@@ -56,6 +57,7 @@
         <base-card-text-image
           v-else
           v-bind:data="data.occasions"
+          return-text-data="description"
           button-text="learn more"
           static-image
         />
