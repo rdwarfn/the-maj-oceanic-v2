@@ -1,6 +1,5 @@
 <template>
   <v-container class="mx-auto px-6 px-md-0">
-    <nuxt-content :document="data" />
     {{ data }}
   </v-container>
 </template>
