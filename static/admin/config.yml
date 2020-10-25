@@ -27,12 +27,11 @@ collections:
     fields:
       - { label: 'Headline', name: 'headline', widget: 'string' }
       - label: 'Videos'
+        label_singular: 'Video'
         name: 'videos'
+        required: true
         widget: 'list'
         summary: '{{fields.type}} - {{fields.src}}'
         fields:
-          - { label: 'Type', name: 'type', widget: 'string' }
-          - label: 'Src'
-            name: 'src'
-            widget: 'file'
-            default: '/files/'
+          - { label: 'Type', name: 'type', widget: 'string', hint: 'Type of video, example: video/mp4' }
+          - { label: 'Src', name: 'src', widget: 'file' }
