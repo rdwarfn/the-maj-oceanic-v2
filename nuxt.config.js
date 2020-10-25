@@ -128,6 +128,13 @@ export default {
    */
   netlifyFiles: {
     netlifyToml: {
+      build: {
+        processing: {
+          html: {
+            pretty_urls: false
+          }
+        }
+      },
       headers: [
         {
           for: '/*',
