@@ -2,7 +2,7 @@ menu:
   - to: /the-vessel
     title: The-vessel
     children:
-      - title: Specification
+      - title: Spesification
         to: /the-vessel/specification
   - children: []
     title: Suites & Staterooms
