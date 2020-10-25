@@ -93,7 +93,6 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
-    '@nuxtjs/netlify-files',
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources'
   ],
@@ -121,26 +120,6 @@ export default {
       remarkPlugins: [
         ['remark-emoji', { emoticon: true }]
       ]
-    }
-  },
-  /**
-   * Netlify buildmodule configuration
-   */
-  netlifyFiles: {
-    netlifyToml: {
-      build: {
-        processing: {
-          html: {
-            pretty_urls: false
-          }
-        }
-      },
-      headers: [
-        {
-          for: '/*',
-          values: { 'X-XSS-Protection': '1; mode=block' }
-        }
-      ],
     }
   },
   /*

@@ -43,7 +43,6 @@
     "vue-youtube-embed": "^2.2.2"
   },
   "devDependencies": {
-    "@nuxtjs/netlify-files": "^1.2.0",
     "@nuxtjs/svg": "^0.1.11",
     "@nuxtjs/vuetify": "^1.11.2",
     "glob-all": "^3.2.1",

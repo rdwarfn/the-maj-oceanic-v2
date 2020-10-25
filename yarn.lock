@@ -882,11 +882,6 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
-"@iarna/toml@^2.2.5":
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/@iarna/toml/-/toml-2.2.5.tgz#b32366c89b43c6f8cefbdefac778b9c828e3ba8c"
-  integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
-
 "@lokidb/full-text-search@^2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@lokidb/full-text-search/-/full-text-search-2.1.0.tgz#5f0b36dc0d67ba365f84663a9c0438537c186a76"
@@ -1314,14 +1309,6 @@
     axios-retry "^3.1.8"
     consola "^2.15.0"
     defu "^3.1.0"
-
-"@nuxtjs/netlify-files@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/netlify-files/-/netlify-files-1.2.0.tgz#ea0d37a4c957891c5ded6719588b2cd0a16c8ec4"
-  integrity sha512-4Kr2saBXWEpglAAjuMc1cxa6YFTP/2SpsqmJi3PhcvxDHRkmVioDjQHIvjgPu8uW2E1DgPtZb2JdPS2EXC4DiA==
-  dependencies:
-    "@iarna/toml" "^2.2.5"
-    consola "^2.12.2"
 
 "@nuxtjs/now-builder@^0.17.3":
   version "0.17.3"
@@ -3157,7 +3144,7 @@ consola@2.14.0:
   resolved "https://registry.yarnpkg.com/consola/-/consola-2.14.0.tgz#162ee903b6c9c4de25077d93f34ab902ebcb4dac"
   integrity sha512-A2j1x4u8d6SIVikhZROfpFJxQZie+cZOfQMyI/tu2+hWXe8iAv7R6FW6s6x04/7zBCst94lPddztot/d6GJiuQ==
 
-consola@^2.10.0, consola@^2.10.1, consola@^2.11.3, consola@^2.12.2, consola@^2.14.0, consola@^2.15.0, consola@^2.4.0, consola@^2.6.0, consola@^2.9.0:
+consola@^2.10.0, consola@^2.10.1, consola@^2.11.3, consola@^2.14.0, consola@^2.15.0, consola@^2.4.0, consola@^2.6.0, consola@^2.9.0:
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/consola/-/consola-2.15.0.tgz#40fc4eefa4d2f8ef2e2806147f056ea207fcc0e9"
   integrity sha512-vlcSGgdYS26mPf7qNi+dCisbhiyDnrN1zaRbw3CSuc2wGOMEGGPsp46PdRG5gqXwgtJfjxDkxRNAgRPr1B77vQ==
