@@ -91,5 +91,5 @@ sw.*
 
 .vercel
 
-pages/develop/
-pages/develop.vue
+# Local Netlify folder
+.netlify
