@@ -6,13 +6,11 @@
           class="text-h4 text-sm-h3 mb-8"
           v-text="data.heading"
         />
-        <p>
-          {{ data.text }}
-        </p>
+        <div v-html="data.description"></div>
       </v-row>
       <base-tabs
         button-text="learn more"
-        v-bind:data="data.tabsData"
+        v-bind:data="data.tabs_data"
         static-image
         class="hidden-xs-only"
       >
@@ -24,14 +22,14 @@
             <v-icon color="black"> {{icon.left}} </v-icon>
           </v-btn>
           <div class="tabs-mobile--label text-uppercase text-center mx-auto">
-            {{dataActive.label}}
+            {{dataActive.name}}
           </div>
           <v-btn depressed x-small class="button--right" color="transparent" @click="next">
             <v-icon color="black"> {{icon.right}} </v-icon>
           </v-btn>
         </v-row>
         <swiper ref="swiper" class="swiper" :options="swiperOption">
-          <swiper-slide v-for="(item, index) in data.tabsData" :key="index">
+          <swiper-slide v-for="(item, index) in data.tabs_data" :key="index">
             <v-img
               v-bind:src="staticImage
                 ? require('~/assets/images/' + item.data.image)
@@ -44,8 +42,8 @@
         </swiper>
 
         <div class="tabs-mobile--content text-center">
-          <div class="tabs-mobile--heading">{{dataActive.data && dataActive.data.title}}</div>
-          <div class="tabs-mobile--text">{{dataActive.data && dataActive.data.text}}</div>
+          <div class="tabs-mobile--heading">{{dataActive.data && dataActive.data.heading}}</div>
+          <div class="tabs-mobile--text">{{dataActive.data && dataActive.data.description }}</div>
           <v-btn
             tile nuxt
             outlined
@@ -74,8 +72,8 @@ export default {
   props: {
     data: {
       heading: { type: String },
-      text: { type: String },
-      tabsData: { type: Array }
+      description: { type: String },
+      tabs_data: { type: Array }
     },
     staticImage: { type: Boolean, default: true }
   },

@@ -1,48 +1,68 @@
 <template>
   <div id="home">
-    <intro
-      class="home--intro"
-      v-bind:data="{
-        heading: data.heading,
-        image: data.image,
-        description: data.description
-      }"
-    />
+    <template>
+      <div v-if="!data.intro" class="text-center">
+        <v-skeleton-loader type="text@2" :loading="!data.intro" />
+        <v-skeleton-loader type="image" :loading="!data.intro" />
+        <v-skeleton-loader type="paragraph" :loading="!data.intro" />
+      </div>
+      <intro v-else class="home--intro" v-bind:data="data.intro" />
+    </template>
 
     <v-container class="home--the-vessel px-6 px-md-0" tag="section">
-      <base-carousel
-        :data="data.carousel_card"
-        button-text="discover"
-        static-image
-      >
-      </base-carousel>
+      <template>
+        <div v-if="!data.the_vessel" class="text-center">
+          <v-skeleton-loader type="image" :loading="!data.the_vessel" />
+        </div>
+        <base-carousel v-else :data="data.the_vessel" button-text="discover" static-image></base-carousel>
+      </template>
     </v-container>
 
-    <voyages
-      v-bind:data="{
-        heading: data.tabs.heading,
-        text: data.tabs.text,
-        tabsData: data.tabs.data
-      }"
-    />
+    <template>
+      <div v-if="!data.voyages" class="text-center">
+        <v-skeleton-loader type="card" :loading="!data.voyages" />
+      </div>
+      <voyages v-else v-bind:data="data.voyages"
+      />
+      <!-- <voyages v-bind:data="{
+          heading: data.tabs.heading,
+          text: data.tabs.text,
+          tabsData: data.tabs.data
+        }"
+      /> -->
+    </template>
 
     <v-container class="home--dining px-6 px-md-0 py-0" tag="section">
-      <base-card-text-image
-        v-bind:data="data.card_text_image[0]"
-        button-text="learn more"
-        content-right
-        static-image
-        reverse
-      />
+      <template>
+        <div v-if="!data.dining" class="text-center">
+          <v-skeleton-loader type="card" :loading="!data.dining" />
+        </div>
+        <base-card-text-image
+          v-else
+          v-bind:data="data.dining"
+          button-text="learn more"
+          content-right
+          static-image
+          reverse
+        />
+      </template>
     </v-container>
 
     <v-container class="home--occasions px-6 px-md-0 py-0" tag="section">
-      <base-card-text-image
-        v-bind:data="data.card_text_image[1]"
-        button-text="learn more"
-        static-image
-      />
+      <template>
+        <div v-if="!data.occasions" class="text-center">
+          <v-skeleton-loader type="card" :loading="!data.occasions" />
+        </div>
+        <base-card-text-image
+          v-else
+          v-bind:data="data.occasions"
+          button-text="learn more"
+          static-image
+        />
+      </template>
     </v-container>
+
+    {{ data }}
   </div>
 </template>
 

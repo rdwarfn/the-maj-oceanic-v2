@@ -73,3 +73,53 @@ collections:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { image: 'Image', name: 'image', widget: 'image' }
+
+          - label: 'Section The Vessel'
+            name: 'the_vessel'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+
+          - label: 'Section Voyages'
+            name: 'voyages'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'string', default: 'Voyages' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Tabs Data'
+                name: 'tabs_data'
+                widget: 'list'
+                min: 1
+                summary: '{{fields.label}}'
+                fields:
+                  - { label: 'Tab name', name: 'name', widget: 'string' }
+                  - label: 'Tab Content'
+                    name: 'data'
+                    widget: 'object'
+                    fields:
+                      - { label: 'Heading', name: 'heading', widget: 'string' }
+                      - { label: 'Description', name: 'description', widget: 'markdown' }
+                      - { label: 'Image', name: 'image', widget: 'image' }
+                      - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
+
+          - label: 'Section Dining'
+            name: 'dining'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string', default: 'Dining' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'to', name: 'to', widget: 'string', hint: 'Button link.'}
+
+          - label: 'Section Occasions'
+            name: 'occasios'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string', default: 'Occasions' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'to', name: 'to', widget: 'string', hint: 'Button link.'}
