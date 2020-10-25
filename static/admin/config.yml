@@ -2,6 +2,7 @@ backend:
   name: git-gateway
   branch: netlify-cms
 
+publish_mode: editorial_workflow
 media_folder: static/media_root
 public_folder: /media_root
 
@@ -92,7 +93,7 @@ collections:
                 name: 'tabs_data'
                 widget: 'list'
                 min: 1
-                summary: '{{fields.label}}'
+                summary: '{{fields.name}}'
                 fields:
                   - { label: 'Tab name', name: 'name', widget: 'string' }
                   - label: 'Tab Content'
