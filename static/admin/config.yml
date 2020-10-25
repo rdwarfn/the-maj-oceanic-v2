@@ -2,9 +2,6 @@ backend:
   name: git-gateway
   branch: netlify-cms
 
-site_url: https://themajoceanic.netlify.app
-
-publish_mode: editorial_workflow
 media_folder: static/media_root
 public_folder: /media_root
 
@@ -25,6 +22,8 @@ collections:
     name: 'navigation'
     description: 'Navigation menu'
     delete: false
+    editor:
+      preview: false
     files:
       - label: 'Menu'
         name: 'menu'
@@ -91,7 +90,7 @@ collections:
             name: 'voyages'
             widget: 'object'
             fields:
-              - { label: 'Heading', name: 'heading', widget: 'string', default: 'Voyages' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - label: 'Tabs Data'
                 name: 'tabs_data'
@@ -113,7 +112,7 @@ collections:
             name: 'dining'
             widget: 'object'
             fields:
-              - { label: 'Caption', name: 'caption', widget: 'string', default: 'Dining' }
+              - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
@@ -123,7 +122,7 @@ collections:
             name: 'occasios'
             widget: 'object'
             fields:
-              - { label: 'Caption', name: 'caption', widget: 'string', default: 'Occasions' }
+              - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
