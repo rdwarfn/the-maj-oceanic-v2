@@ -6,8 +6,8 @@ media_folder: static/media_root
 public_folder: /media_root
 
 collections:
-  - name: 'articles'
-    label: 'articles'
+  - label: 'Articles'
+    name: 'articles'
     format: 'json'
     folder: 'content/articles'
     create: true
@@ -18,8 +18,8 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
-  - name: 'Heroes'
-    label: 'heroes'
+  - label: 'Heroes'
+    name: 'heroes'
     folder: 'content/heroes'
     create: true
     slug: '{{slug}}'
@@ -34,9 +34,11 @@ collections:
         fields:
           - { label: 'Type', name: 'type', widget: 'string', hint: 'Type of video, example: video/mp4' }
           - { label: 'Src', name: 'src', widget: 'file' }
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
 
-  - name: 'Navigation'
-    label: 'navigation'
+  - label: 'Navigation'
+    name: 'navigation'
     description: 'Navigation menu'
     delete: false
     files:
@@ -47,7 +49,6 @@ collections:
           - name: menu
             label: Menu
             widget: list
-            summary: 'Title: {{fields.title}}, to: {{fields.to}}, children: {{fields.children}}'
             fields:
             - { label: 'Title', name: 'title', widget: 'string' }
             - { label: 'To', name: 'to', widget: 'string', hint: 'Navigation link, example: /the-vessel'}
@@ -61,9 +62,17 @@ collections:
                 - { label: 'Title', name: 'title', widget: 'string' }
                 - { label: 'To', name: 'to', widget: 'string' }
 
-  # - label: 'Pages'
-  #   name: 'pages'
-  #   files:
-  #     - label: 'Home Page'
-  #       name: 'home'
-  #       file: 'content/pages/home.md'
+  - label: 'Pages'
+    name: 'pages'
+    files:
+      - label: 'Home Page'
+        name: 'home'
+        file: 'content/pages/home.yaml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'relation'
+            collection: 'heroes'
+      - { label: 'Heading', name: 'heading', widget: 'markdown' }
+      - { label: 'Description', name: 'description', widget: 'markdown' }
+      - { image: 'Image', name: 'image', widget: 'image' }
