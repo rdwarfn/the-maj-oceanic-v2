@@ -82,6 +82,8 @@ collections:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
 
           - label: 'Section Voyages'
             name: 'voyages'
