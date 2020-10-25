@@ -123,7 +123,7 @@ collections:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'to', name: 'to', widget: 'string', hint: 'Button link.'}
 
-      - label: 'The Vessel'
+      - label: 'The Vessel Page'
         name: 'vessel'
         file: 'content/pages/vessel.yaml'
         fields:
@@ -189,3 +189,15 @@ collections:
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'To', name: 'to', hint: 'Button link.' }
+
+      - label: 'Suites & Staterooms Page'
+        name: 'suites-and-staterooms'
+        file: 'content/pages/suites-and-staterooms.yaml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
