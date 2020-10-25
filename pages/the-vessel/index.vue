@@ -1,11 +1,6 @@
 <template>
   <div id="the-vessel">
     <template>
-      <div v-if="!data.intro" class="text-center container">
-        <v-skeleton-loader type="text@2" :loading="!data.intro" />
-        <v-skeleton-loader type="image" :loading="!data.intro" />
-        <v-skeleton-loader type="paragraph" :loading="!data.intro" />
-      </div>
       <intro
         class="the-veseel--intro px-0"
         v-bind:data="data.intro"
@@ -18,21 +13,21 @@
       <div v-if="!data.suites_and_staterooms" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.suites_and_staterooms" />
       </div>
-      <the-cabins v-bind:data="data.suites_and_staterooms" />
+      <the-cabins v-else v-bind:data="data.suites_and_staterooms" />
     </template>
 
     <template>
       <div v-if="!data.the_decks" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.the_decks" />
       </div>
-      <spesification v-bind:data="data.the_decks" />
+      <spesification v-else v-bind:data="data.the_decks" />
     </template>
 
     <template>
       <div v-if="!data.teams" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.teams" />
       </div>
-      <the-teams v-bind:data="data.teams" />
+      <the-teams v-else v-bind:data="data.teams" />
     </template>
 
     <v-container class="sustainability py-0 px-6 px-md-0" tag="section">
@@ -41,6 +36,7 @@
           <v-skeleton-loader type="card" :loading="!data.sustainability" />
         </div>
         <base-card-text-image
+          v-else
           v-bind:data="data.sustainability"
           button-text="Learn More"
           content-right

@@ -151,7 +151,7 @@ collections:
               - label: 'Slider Data'
                 name: 'data'
                 widget: 'list'
-                summary: '{{fields.name}}'
+                summary: '{{fields.heading}}'
                 fields:
                   - { label: 'Heading', name: 'heading', widget: 'string' }
                   - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -159,6 +159,7 @@ collections:
           - label: 'Section The Decks'
             name: 'the_decks'
             widget: 'list'
+            summary: '{{fields.heading}}'
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
@@ -174,6 +175,7 @@ collections:
               - label: 'Slider Data'
                 name: 'data'
                 widget: 'list'
+                summary: '{{fields.name}} - {{fields.title}}'
                 fields:
                   - { label: 'Title', name: 'title', widget: 'string' }
                   - { label: 'Name', name: 'name', widget: 'string' }

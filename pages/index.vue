@@ -1,12 +1,7 @@
 <template>
   <div id="home">
     <template>
-      <div v-if="!data.intro" class="text-center container">
-        <v-skeleton-loader type="text@2" :loading="!data.intro" />
-        <v-skeleton-loader type="image" :loading="!data.intro" />
-        <v-skeleton-loader type="paragraph" :loading="!data.intro" />
-      </div>
-      <intro v-else class="home--intro" v-bind:data="data.intro" />
+      <intro class="home--intro" v-bind:data="data.intro" />
     </template>
 
     <v-container class="home--the-vessel px-6 px-md-0" tag="section">
