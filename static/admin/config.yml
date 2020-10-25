@@ -38,7 +38,6 @@ collections:
   - name: 'Navigation'
     label: 'navigation'
     description: 'Navigation menu'
-    format: 'json'
     delete: false
     editor:
       preview: false
@@ -46,6 +45,7 @@ collections:
       - label: 'Menu'
         name: 'menu'
         file: 'content/navigation/navs.json'
+        format: 'json'
         widget: 'list'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
