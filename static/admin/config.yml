@@ -38,11 +38,14 @@ collections:
   - name: 'Navigation'
     label: 'navigation'
     description: 'Navigation menu'
-    collapsed: false
+    delete: false
+    editor:
+      preview: false
     files:
       - label: 'Menu'
         name: 'menu'
-        file: 'content/navigation/menu.yml'
+        file: 'content/navigation/navs.json'
+        format: 'json'
         widget: 'list'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
