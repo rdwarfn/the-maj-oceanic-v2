@@ -1,25 +1,25 @@
 <template>
   <div id="voyages">
-    <voyages-item v-for="(item, index) in data.voyages" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
+    <voyages-item v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
 
-    <section class="voyages__testimonal">
+    <!-- <section class="voyages__testimonal">
       <base-testimonal :data="data.testimonal" static-image />
-    </section>
+    </section> -->
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
-      <base-carousel
+      <!-- <base-carousel
         card-mobile-class="mt-2 transparent"
         v-bind:data="data.carousel_card"
         button-text="Rates & Schedule"
         static-image
-      />
+      /> -->
     </v-container>
   </div>
 </template>
 
 <script>
 const components = {
-  voyagesItem: () => import('@/components/VoyagesItem.vue'),
+  voyagesItem: () => import('@/components/voyages/VoyagesItem'),
   baseCarousel: () => import('@/components/base/BaseCarousel.vue'),
   baseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
 }

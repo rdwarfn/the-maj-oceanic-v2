@@ -2,8 +2,6 @@ backend:
   name: git-gateway
   branch: netlify-cms
 
-publish_mode: editorial_workflow
-
 media_folder: static/media_root
 
 collections:
@@ -33,7 +31,7 @@ collections:
         widget: 'object'
         fields:
           - { label: 'Username', name: 'username', widget: 'string' }
-          - { label: 'Link', name: 'link', widget: 'string', hint: 'Default: https://www.instagram.com/{{fields.username}}', default: 'https://www.instagram.com/{{fields.username}}' }
+          - { label: 'Link', name: 'link', widget: 'string', default: 'https://www.instagram.com/' }
       - { label: 'Image', name: 'image', widget: 'image' }
       - { label: 'Comment or Message', name: 'comment', widget: 'markdown' }
 
