@@ -5,7 +5,6 @@
     <div v-else class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move" v-html="data.heading">
     </div>
 
-    <v-skeleton-loader type="image" class="intro--image" v-if="!data.image"></v-skeleton-loader>
     <base-large-image
       v-if="data.image"
       class="intro--image"
@@ -24,7 +23,8 @@
           :video-id="data.youtube_id"
           :player-vars="{ autoplay: 1 }"
           @ready="ready"
-          @playing="playing"></youtube>
+          @playing="playing"
+        ></youtube>
       </v-container>
     </client-only>
   </v-container>

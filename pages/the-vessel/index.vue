@@ -1,33 +1,33 @@
 <template>
   <div id="the-vessel">
     <template>
-      <intro
+      <vessel-intro
         class="the-veseel--intro px-0"
         v-bind:data="data.intro"
         image-class="order-last px-6 px-md-0"
         description-class="text-center"
-      />
+      ></vessel-intro>
     </template>
 
     <template>
       <div v-if="!data.suites_and_staterooms" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.suites_and_staterooms" />
       </div>
-      <the-cabins v-else v-bind:data="data.suites_and_staterooms" />
+      <vessel-suites v-else v-bind:data="data.suites_and_staterooms"></vessel-suites>
     </template>
 
     <template>
       <div v-if="!data.the_decks" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.the_decks" />
       </div>
-      <spesification v-else v-bind:data="data.the_decks" />
+      <vessel-decks v-else v-bind:data="data.the_decks"></vessel-decks>
     </template>
 
     <template>
       <div v-if="!data.teams" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.teams" />
       </div>
-      <the-teams v-else v-bind:data="data.teams" />
+      <vessel-teams v-else v-bind:data="data.teams"></vessel-teams>
     </template>
 
     <v-container class="sustainability py-0 px-6 px-md-0" tag="section">
@@ -35,14 +35,13 @@
         <div v-if="!data.sustainability" class="text-center container">
           <v-skeleton-loader type="card" :loading="!data.sustainability" />
         </div>
-        <base-card-text-image
+        <vessel-sustainability
           v-else
           v-bind:data="data.sustainability"
           button-text="Learn More"
-          return-text-data="description"
           content-right
           reverse
-        />
+        ></vessel-sustainability>
       </template>
     </v-container>
   </div>
@@ -50,18 +49,18 @@
 
 <script>
 // import { getIdFromURL } from 'vue-youtube-embed';
-import intro from '@/components/Intro.vue';
-import theCabins from '@/components/TheCabinsTheVessel.vue';
-import spesification from '@/components/SpesificationTheVessel.vue';
-import theTeams from '@/components/TheTeamsTheVessel.vue';
-import baseCardTextImage from '@/components/base/BaseCardTextImage.vue';
+import vesselIntro from '@/components/Intro.vue';
+import vesselSuites from '@/components/vessel/VesselSuites';
+import vesselDecks from '@/components/vessel/VesselDecks.vue';
+import vesselTeams from '@/components/vessel/VesselTeams.vue';
+import vesselSustainability from '@/components/base/BaseCardTextImage.vue';
 
 const components = {
-  intro,
-  theCabins,
-  spesification,
-  theTeams,
-  baseCardTextImage,
+  vesselIntro,
+  vesselSuites,
+  vesselDecks,
+  vesselTeams,
+  vesselSustainability,
 }
 export default {
   layout: 'main',
@@ -84,7 +83,10 @@ export default {
 
   async asyncData ({ $content }) {
     const data = await $content('pages/vessel').fetch();
-    return { data }
+
+    return {
+      data
+    }
   },
 
   mounted () {

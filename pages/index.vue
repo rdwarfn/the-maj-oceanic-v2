@@ -1,7 +1,10 @@
 <template>
   <div id="home">
     <template>
-      <intro class="home--intro" v-bind:data="data.intro" />
+      <home-intro
+        class="home--intro"
+        v-bind:data="data.intro"
+      ></home-intro>
     </template>
 
     <v-container class="home--the-vessel px-6 px-md-0" tag="section">
@@ -9,7 +12,11 @@
         <div v-if="!data.the_vessel" class="text-center">
           <v-skeleton-loader type="image" :loading="!data.the_vessel" />
         </div>
-        <base-carousel v-else :data="data.the_vessel" button-text="discover"></base-carousel>
+        <home-vessel
+          v-else
+          :data="[...data.the_vessel]"
+          button-text="discover"
+        ></home-vessel>
       </template>
     </v-container>
 
@@ -17,13 +24,7 @@
       <div v-if="!data.voyages" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.voyages" />
       </div>
-      <voyages v-else v-bind:data="data.voyages" />
-      <!-- <voyages v-bind:data="{
-          heading: data.tabs.heading,
-          text: data.tabs.text,
-          tabsData: data.tabs.data
-        }"
-      /> -->
+      <home-voyages v-else v-bind:data="data.voyages" />
     </template>
 
     <v-container class="home--dining px-6 px-md-0 py-0" tag="section">
@@ -31,14 +32,13 @@
         <div v-if="!data.dining" class="text-center">
           <v-skeleton-loader type="card" :loading="!data.dining" />
         </div>
-        <base-card-text-image
+        <home-dining-occasions
           v-else
           v-bind:data="data.dining"
-          return-text-data="description"
           button-text="learn more"
           content-right
           reverse
-        />
+        ></home-dining-occasions>
       </template>
     </v-container>
 
@@ -47,31 +47,28 @@
         <div v-if="!data.occasions" class="text-center">
           <v-skeleton-loader type="card" :loading="!data.occasions" />
         </div>
-        <base-card-text-image
+        <home-dining-occasions
           v-else
           v-bind:data="data.occasions"
-          return-text-data="description"
           button-text="learn more"
-        />
+        ></home-dining-occasions>
       </template>
     </v-container>
-
-    {{ data }}
   </div>
 </template>
 
 <script>
 import { mapMutations } from 'vuex';
-import baseCarousel from '@/components/base/BaseCarousel.vue';
-import baseCardTextImage from '@/components/base/BaseCardTextImage.vue'
-import intro from '@/components/Intro.vue';
-import voyages from '@/components/VoyagesHome.vue'
+import homeIntro from '@/components/Intro.vue';
+import homeVessel from '@/components/base/BaseCarousel.vue';
+import homeDiningOccasions from '@/components/base/BaseCardTextImage.vue'
+import homeVoyages from '@/components/home/HomeVoyages'
 
 const components = {
-  baseCarousel,
-  baseCardTextImage,
-  intro,
-  voyages,
+  homeIntro,
+  homeVessel,
+  homeVoyages,
+  homeDiningOccasions,
 }
 
 export default {
@@ -85,22 +82,19 @@ export default {
         {
           hid: 'description',
           name: 'description',
-          content: JSON.stringify(this.data.description)
+          content: JSON.stringify(this.data.intro.description)
         }
       ],
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     }
   },
 
-  data () {
-    return {
-      loading: false
-    }
-  },
-
   async asyncData ({ $content }) {
     const data = await $content('pages/home').fetch();
-    return { data }
+
+    return {
+      data
+    }
   },
 
   mounted () {

@@ -11,12 +11,8 @@
             type="image"
           ></v-skeleton-loader>
           <v-img
-            v-bind:src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            v-bind:lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
+            v-bind:src="item.image"
+            v-bind:lazy-src="item.image"
             class="swiper__item--img"
           >
             <template v-slot:placeholder>
@@ -25,14 +21,14 @@
               </v-row>
             </template>
           </v-img>
-          <div v-if="item.heading" class="swiper__item--heading font-weight-bold hidden-xs-only">{{item.heading}}</div>
-          <div v-if="item.status" class="swiper__item--text hidden-xs-only">{{item.status}}</div>
+          <div v-if="item.name" class="swiper__item--heading font-weight-bold hidden-xs-only">{{item.name}}</div>
+          <div v-if="item.title" class="swiper__item--text hidden-xs-only">{{item.title}}</div>
         </div>
       </swiper-slide>
     </swiper>
     <div class="mx-auto text-center hidden-sm-and-up">
-      <div v-if="dataActive.heading" class="swiper__item--heading font-weight-bold">{{dataActive.heading}}</div>
-      <div v-if="dataActive.status" class="swiper__item--text">{{dataActive.status}}</div>
+      <div v-if="dataActive.heading" class="swiper__item--heading font-weight-bold">{{dataActive.name}}</div>
+      <div v-if="dataActive.title" class="swiper__item--text">{{dataActive.title}}</div>
     </div>
     <v-btn depressed absolute fab x-small class="button--left hidden-xs-only" color="primary" @click="prev">
       <v-icon color="white"> {{icon.left}} </v-icon>
@@ -53,8 +49,7 @@ export default {
       caption: { type: String },
       heading: { type: String },
       data: { type: Array }
-    },
-    staticImage: { type: Boolean, default: true }
+    }
   },
 
   components: {

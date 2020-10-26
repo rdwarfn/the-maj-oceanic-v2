@@ -9,34 +9,30 @@
     </v-skeleton-loader>
     <template v-else>
       <v-sheet class="hero-wrapper text-center" style="relative">
-        <template v-if="data.video">
+        <template v-if="data.videos">
           <template>
             <div class="video-player-box mx-auto hidden-xs-only"
               :playsinline="true"
               v-video-player:player="{
                 ...playerOptions,
-                sources: [...data.video],
+                sources: [...data.videos],
               }"
-              @play="onPlayerPlay($event)"
-              @waiting="onPlayerWaiting($event)"
             >
-              <!-- @canplay="onPlayerCanplay($event)"
-              @canplaythrough="onPlayerCanplaythrough($event)" -->
             </div>
-            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.text">
+            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.heading">
             </div>
           </template>
 
           <template>
             <v-img
-              v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-              :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+              v-bind:src="data.image"
+              :lazy-src="data.image"
               class="_hero--img justify-center hidden hidden-sm-and-up"
               transition="fade-transition"
             >
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text"></div>
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading"></div>
                 <v-spacer/>
               </v-row>
             </v-img>
@@ -46,14 +42,14 @@
         <template v-else>
           <v-img
             :class="{'hidden-xs-only': data.mobile_image}"
-            v-bind:src="staticImage ? require('~/assets/images/' + data.image) : data.image"
-            :lazy-src="staticImage ? require('~/assets/images/' + data.image) : data.image"
+            v-bind:src="data.image"
+            :lazy-src="data.image"
             class="_hero--img justify-center"
           >
             <!-- :aspect-ratio="16/9" -->
             <v-row no-gutters align="center" justify="center" class="fill-height">
               <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text"></div>
+              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading"></div>
               <v-spacer/>
             </v-row>
           </v-img>
@@ -61,12 +57,12 @@
           <v-img
             v-if="data.mobile_image"
             class="hidden-sm-and-up"
-            :src="staticImage? require('~/assets/images/' + data.mobile_image) : data.mobile_image"
-            :lazy-src="staticImage? require('~/assets/images/' + data.mobile_image) : data.mobile_image"
+            :src="data.mobile_image"
+            :lazy-src="data.mobile_image"
             >
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.text">
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading">
                 </div>
                 <v-spacer/>
               </v-row>
@@ -80,25 +76,22 @@
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 
-const components = {Swiper, SwiperSlide};
+const components = { Swiper, SwiperSlide };
 export default {
   props: {
-    data: {type: [Array, Object]},
-    staticImage: {type: Boolean}
+    data: { type: [Array, Object] },
   },
 
   components,
 
   data () {
     return {
-      loading: true,
       swiperOptions: {
         lazy: true,
         slidesPerView: 1,
       },
       // videojs options
       playerOptions: {
-
         language: 'en',
         autoplay: true,
         control: false,
@@ -107,45 +100,6 @@ export default {
         muted: true,
       }
     }
-  },
-
-  mounted () {
-    this.setLoad();
-  },
-
-  methods: {
-    setLoad () {
-      if (!this.data)
-        return
-      setTimeout(() => {
-        this.loading = false
-      }, 500)
-    },
-    onPlayerPlay(player) {
-      // console.log('player play!', player)
-      this.$nextTick(() => {
-        player.controls(false)
-      });
-    },
-    onPlayerWaiting(player) {
-      // console.log('player Waiting!', player)
-    },
-    onPlayerCanplay (player) {
-      this.$nextTick(() => {
-        player.play().then(() => {
-          console.log("can autoplay");
-        })
-        .catch(() => {
-          console.warn('can not autoplay');
-        })
-      });
-    },
-    onPlayerCanplaythrough(player) {
-      // console.log('player Canplaythrough!', player)
-      // player.play().then(() => {
-      //   player.controls(false);
-      // });
-    },
   }
 }
 </script>

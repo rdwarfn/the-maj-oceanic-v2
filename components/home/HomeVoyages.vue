@@ -11,7 +11,6 @@
       <base-tabs
         button-text="learn more"
         v-bind:data="data.tabs_data"
-        static-image
         class="hidden-xs-only"
       >
       </base-tabs>
@@ -36,12 +35,8 @@
               type="image"
             ></v-skeleton-loader>
             <v-img
-              v-bind:src="staticImage
-                ? require('~/assets/images/' + item.data.image)
-                : item.data.image"
-              v-bind:lazy-src="staticImage
-              ? require('~/assets/images/' + item.data.image)
-              : item.data.image"
+              v-bind:src="item.data.image"
+              v-bind:lazy-src="item.data.image"
               class="tabs-mobile--image"></v-img>
           </swiper-slide>
         </swiper>
@@ -76,11 +71,10 @@ export default {
 
   props: {
     data: {
-      heading: { type: String },
+      name: { type: String },
       description: { type: String },
       tabs_data: { type: Array }
-    },
-    staticImage: { type: Boolean, default: true }
+    }
   },
 
   data () {
@@ -124,9 +118,9 @@ export default {
 
   methods: {
     initStore () {
-      if (!this.data.tabsData.length) return
-      this.store = this.data.tabsData;
-      this.dataActive = this.data.tabsData[0];
+      if (!this.data.tabs_data.length) return
+      this.store = this.data.tabs_data;
+      this.dataActive = this.data.tabs_data[0];
     },
     prev () {
       if (this.swiper.isBeginning) { return }

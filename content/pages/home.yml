@@ -4,9 +4,9 @@ hero:
     on traditions of the past.
   videos:
     - type: video/mp4
-      src: media_root/video-hero-home.mp4
-  image: media_root/home-hero.png
-  mobile_image: media_root/home-hero.png
+      src: /media_root/video-hero-home.mp4
+  image: /media_root/home-hero.png
+  mobile_image: /media_root/home-hero.png
 intro:
   heading: >
     Traces of the ancient<br class='hidden-sm-and-up'/> maritime glory<br
@@ -22,7 +22,7 @@ intro:
     of waves.<br/><br/>If to travel is to live, then a voyage aboard The MAJ
     Oceanic<br class='hidden-xs-only' /> might be the life you never knew
     existed.
-  image: media_root/home-intro.png
+  image: /media_root/home-intro.png
 the_vessel:
   caption: The Vessel
   heading: Craftmanship lives on
@@ -31,7 +31,7 @@ the_vessel:
     way to enjoy the beauty of the Indonesian archipelago. An icon of
     Indonesia's seafaring tradition, the Phinisi boat-building is recognized by
     UNESCO as a Masterpiece of Oral and Intangible Heritage of Humanity.</p>
-  image: media_root/home-the-vessel.jpg
+  image: /media_root/home-the-vessel.jpg
   to: /the-vessel
 voyages:
   heading: Voyages
@@ -48,7 +48,7 @@ voyages:
           Island (dubbed as Indonesia’s Jurassic Park) to splendid pink sand
           beaches. This UNESCO World Heritage Site offers endless splendors to
           relish on.
-        image: media_root/home-voyages-komodo.jpg
+        image: /media_root/home-voyages-komodo.jpg
         to: /voyages
     - name: Raja Ampat
       data:
@@ -57,7 +57,7 @@ voyages:
           Welcome to the world's richest underwater biodiversity with over 600
           small islands surrounding the four main islands of Misool, Salawati,
           Batanta and Waigeo.
-        image: media_root/home-voyages-raja-ampat.jpg
+        image: /media_root/home-voyages-raja-ampat.jpg
         to: /voyages
     - name: Spice Islands
       data:
@@ -66,7 +66,7 @@ voyages:
           The volcanic Banda Islands are as rich in history and natural beauty
           as they are remote. Centuries ago, this tiny archipelago in Maluku was
           the world’s only source of nutmeg, the ‘gold of the spice trade.’
-        image: media_root/home-voyages-spice-islands.png
+        image: /media_root/home-voyages-spice-islands.png
         to: /voyages
 dining:
   caption: Dining
@@ -76,14 +76,14 @@ dining:
     ensuring tremendous variety. You and our chef can also craft a bespoke menu
     inspired by a palate or a special moment. It is then prepared and served in
     a location of your choosing.
-  image: media_root/home-dining.jpg
+  image: /media_root/home-dining.jpg
   to: /contact-us
-occasios:
+occasions:
   caption: Occasions
   heading: Convene like ancient seamen
   description: >
     Upgrade your party to a special bespoke trip that will take you deeper into
     the hidden beaches, and closer to the elements than any cruise ships or
     liveaboards.
-  image: media_root/home-occasions.jpg
+  image: /media_root/home-occasions.jpg
   to: /contact-us

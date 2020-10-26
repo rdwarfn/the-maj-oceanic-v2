@@ -51,7 +51,7 @@ collections:
     files:
       - label: 'Home Page'
         name: 'home'
-        file: 'content/pages/home.yaml'
+        file: 'content/pages/home.yml'
         fields:
           - label: 'Hero'
             name: 'hero'
@@ -115,7 +115,7 @@ collections:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'to', name: 'to', widget: 'string', hint: 'Button link.'}
           - label: 'Section Occasions'
-            name: 'occasios'
+            name: 'occasions'
             widget: 'object'
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
@@ -126,7 +126,7 @@ collections:
 
       - label: 'The Vessel Page'
         name: 'vessel'
-        file: 'content/pages/vessel.yaml'
+        file: 'content/pages/vessel.yml'
         fields:
           - label: 'Hero'
             name: 'hero'
@@ -193,7 +193,7 @@ collections:
 
       - label: 'Suites & Staterooms Page'
         name: 'suites-and-staterooms'
-        file: 'content/pages/suites-and-staterooms.yaml'
+        file: 'content/pages/suites-and-staterooms.yml'
         fields:
           - label: 'Hero'
             name: 'hero'
@@ -202,3 +202,66 @@ collections:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Intro'
+            name: 'intro'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+          - label: 'Section Admiral Suite'
+            name: 'admiral_suite'
+            widget: 'object'
+            fields:
+              - { label: 'Icon', name: 'icon', widget: 'image' }
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - label: 'Sqm'
+                name: 'sqm'
+                widget: 'number'
+                value_type: 'int'
+                default: 120
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Gallery'
+                label_singular: 'Image'
+                name: 'gallery'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image'}
+          - label: 'Section Commodore Suite'
+            name: 'commodore_suite'
+            widget: 'object'
+            fields:
+              - { label: 'Icon', name: 'icon', widget: 'image' }
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - label: 'Sqm'
+                name: 'sqm'
+                widget: 'number'
+                value_type: 'int'
+                default: 120
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Gallery'
+                label_singular: 'Image'
+                name: 'gallery'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image'}
+          - label: 'Section Deluxe Staterooms'
+            name: 'deluxe_staterooms'
+            widget: 'object'
+            fields:
+              - label: 'Icons'
+                name: 'icons'
+                widget: 'list'
+                field: { label: 'Icon', name: 'icon', widget: 'image' }
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - label: 'Sqm'
+                name: 'sqm'
+                widget: 'number'
+                value_type: 'int'
+                default: 120
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Gallery'
+                label_singular: 'Image'
+                name: 'gallery'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image'}

@@ -1,58 +1,55 @@
 <template>
   <div id="the-cabin">
     <v-container tag="section" class="mx-auto py-0 px-6 px-md-0">
-      <div class="intro--head font-weight-bold text-center mx-auto">
-        {{data.heading}}
+      <div
+        class="intro--head font-weight-bold text-center mx-auto"
+        v-html="data.intro.heading"
+      >
       </div>
-      <p class="intro--paragraph text-center mx-auto"> {{data.description}} </p>
+      <div
+        class="intro--paragraph text-center mx-auto"
+        v-html="data.intro.description"
+      ></div>
     </v-container>
 
-    <component :is="asyncComponent" class="admiral-suite" v-bind:data="data.spesification[0].data">
+    <component :is="asyncComponent" class="admiral-suite" v-bind:data="data.admiral_suite">
       <template #icon>
         <v-img
+          v-if="data.admiral_suite.icon"
           class="spesification--icon"
-          v-bind:src="icon.zhenghe"
-          v-bind:lazy-src="icon.zhenghe"></v-img>
+          v-bind:src="data.admiral_suite.icon"
+          v-bind:lazy-src="data.admiral_suite.icon"></v-img>
       </template>
     </component>
 
-    <component :is="asyncComponent" class="columbus" reverse v-bind:data="data.spesification[1].data">
+    <component :is="asyncComponent" class="columbus" reverse v-bind:data="data.commodore_suite">
       <template #icon>
         <v-img
+          v-if="data.commodore_suite.icon"
           class="spesification--icon"
-          v-bind:src="icon.columbus"
-          v-bind:lazy-src="icon.columbus"></v-img>
+          v-bind:src="data.commodore_suite.icon"
+          v-bind:lazy-src="data.commodore_suite.icon"></v-img>
       </template>
     </component>
 
-    <component :is="asyncComponent" class="deluxe" v-bind:data="data.spesification[2].data" no-wrap>
+    <component :is="asyncComponent" class="deluxe" v-bind:data="data.deluxe_staterooms" no-wrap>
       <template #icon>
-        <div class="d-inline-flex">
+        <div v-if="data.deluxe_staterooms.icons" class="d-inline-flex">
           <v-img
+            v-for="(d, index) in data.deluxe_staterooms.icons"
+            :key="index"
             class="spesification--icon spesification--icon-delux"
-            v-bind:src="icon.ferdinand"
-            v-bind:lazy-src="icon.ferdinand"></v-img>
-
-          <v-img
-            class="spesification--icon spesification--icon-delux"
-            v-bind:src="icon.marco"
-            v-bind:lazy-src="icon.marco"></v-img>
-
-          <v-img
-          class="spesification--icon spesification--icon-delux"
-            v-bind:src="icon.vasco"
-            v-bind:lazy-src="icon.vasco"></v-img>
-
-          <v-img
-          class="spesification--icon spesification--icon-delux mr-0"
-            v-bind:src="icon.james"
-            v-bind:lazy-src="icon.james"></v-img>
+            :class="{'mr-0': data.deluxe_staterooms.icons.length - 1 == index}"
+            v-bind:src="d.icon"
+            v-bind:lazy-src="d.icon"
+          ></v-img>
         </div>
       </template>
     </component>
+
     <v-sheet color="#EFE1DC">
       <v-container class="ig--container text-center px-6 px-md-0">
-        <div class="ig--heading">Follow us on Instagram</div>
+        <div class="ig--heading" v-html="data.instagram.heading"></div>
         <v-row id="instafeed"></v-row>
 
         <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
@@ -64,21 +61,13 @@
 </template>
 
 <script>
-const myIgToken = "IGQVJXT3NVR21Ra1JpdlluTUQ3RmhhWjY4NWFFUXRYSzAxWklRSFgtODVOaktlNTRfRk4wdmE3cTB6aXBSaThwcXE2LWNXdXBwdWpfQ1ZATd25kR2dKMmM2dHByYzRfeDV5MktST2hFMGN0aEVpSmhmOQZDZD";
-const test = "IGQVJWRFN6UUVvam9qbVA3TTU3ZAVNGelpFLTJQOFRxOTJ3N1pnSmlxeG1pdGE5ZAmJGNmJtMll6U3ZApZA2ljeDV0RkpkWUJrajZAWOUNHRFBaeGo5TnVOUGM4Y0kyc1JxR0R4dDVKU3RB";
 import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
-import iconZhengHe from '@/assets/images/tmg-icon-zheng-he.png';
-import columbus from '@/assets/images/tmo-icon-columbus-2.png';
-import iconFerdinand from '@/assets/images/tmo-icon-ferdinand-magellan.png';
-import iconJames from '@/assets/images/tmo-icon-james-cook.png';
-import iconMarco from '@/assets/images/tmo-icon-marco-polo.png';
-import iconVasco from '@/assets/images/tmo-icon-vasco-da-gamma.png';
-import spesification from '@/components/SpesificationTheCabin.vue';
-import spesificationMobile from '@/components/SpesificationTheCabinMobile.vue';
+import suitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue';
+import suitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue';
 const components = {
   tmgIconDivider,
-  spesification,
-  spesificationMobile,
+  suitesSpecification,
+  suitesSpecificationMobile,
 }
 export default {
   layout: 'main',
@@ -102,15 +91,6 @@ export default {
 
   data () {
     return {
-      icon: {
-        zhenghe :iconZhengHe,
-        columbus: columbus,
-        ferdinand: iconFerdinand,
-        james: iconJames,
-        marco: iconMarco,
-        vasco: iconVasco,
-      },
-      mytoken: myIgToken,
       myIgData: [],
       showed: 6,
       loading: false
@@ -118,7 +98,7 @@ export default {
   },
 
   async asyncData ({ $content }) {
-    const data = await $content ('pages/the-cabins/index').fetch();
+    const data = await $content ('pages/suites-and-staterooms').fetch();
     return { data }
   },
 
@@ -132,8 +112,8 @@ export default {
   computed: {
     asyncComponent () {
       if (!this.$vuetify.breakpoint.xs)
-        return 'spesification'
-      return 'spesification-mobile'
+        return 'suites-specification'
+      return 'suites-specification-mobile'
     }
   },
 
@@ -144,7 +124,7 @@ export default {
     instafeed (limit=this.showed) {
       var feed = new Instafeed({
         limit: limit,
-        accessToken: myIgToken,
+        accessToken: this.data && this.data.instagram && this.data.instagram.access_token,
         transform: function(item) {
           var d = new Date(item.timestamp);
           item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/');

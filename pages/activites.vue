@@ -23,7 +23,6 @@ import cards from '@/components/activites/Carousel.vue';
 import baseTestimonal from '@/components/base/BaseTestimonal.vue';
 
 const components = {
-  spesification: () => import('@/components/SpesificationTheCabin.vue'),
   cards,
   baseTestimonal
 };

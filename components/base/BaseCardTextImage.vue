@@ -9,14 +9,14 @@
           {{ data.heading }}
         </v-card-title>
         <v-skeleton-loader
-          v-if="!item.image"
+          v-if="!data.image"
           :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
           type="image"
         ></v-skeleton-loader>
         <v-img
           v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
-          v-bind:src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
-          v-bind:lazy-src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
+          v-bind:src="data.image"
+          v-bind:lazy-src="data.image"
           v-bind:aspect-ratio="imgAspectRatio"
         >
           <template v-slot:placeholder>
@@ -30,7 +30,7 @@
           </template>
         </v-img>
         <v-card-text class="hidden-sm-and-up px-0 mt-5 text-center">
-          {{ data[returnTextData] }}
+          {{ data.description }}
         </v-card-text>
         <v-card-actions
           v-if="buttonText"
@@ -60,7 +60,7 @@
 
           <v-card-text class="px-0"
             v-bind:class="contentRight ? 'text-right' : null">
-            {{ data[returnTextData] }}
+            {{ data.description }}
             <ul v-if="data.list">
               <li v-for="(item, index) in data.list.split('\n')"
                 v-bind:key="index"
@@ -109,8 +109,7 @@ export default {
     reverse: { type: Boolean },
     imgAspectRatio: {
       type: [String, Number]
-    },
-    staticImage: { type: Boolean }
+    }
   },
 
   components,
