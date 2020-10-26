@@ -68,7 +68,10 @@ export default {
 
   async asyncData ({ $content }) {
     const data = await $content ('pages/activites').fetch();
-    return { data }
+
+    return {
+      data
+    }
   },
 
   mounted () {

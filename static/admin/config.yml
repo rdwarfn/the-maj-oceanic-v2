@@ -376,3 +376,75 @@ collections:
                 label_singular: 'Image'
                 field: { label: 'Image', name: 'image', widget: 'image'}
               - { label: 'Reverse', name: 'reverse', widget: 'boolean', default: false }
+
+      - label: 'Rates & Schedule Page'
+        name: 'rates_and_schedule'
+        file: 'content/pages/rates-and-schedule.yml'
+        fields:
+          - label: 'Section Intro'
+            name: 'intro'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+          - label: 'Section Tables'
+            name: 'tables'
+            widget: 'object'
+            fields:
+              - label: 'Table Headers'
+                name: 'headers'
+                widget: 'list'
+                fields:
+                 - { label: 'Text', name: 'text', widget: 'string' }
+                 - { label: 'Value', name: 'value', widget: 'string' }
+                 - { label: 'Align', name: 'align', widget: 'select', options: ['left', 'center', 'right'] }
+              - label: 'Table Data'
+                name: 'data'
+                widget: 'list'
+                fields:
+                  - { label: 'ID', name: 'id', widget: 'hidden' }
+                  - { label: 'Headline', name: 'headline', widget: 'string' }
+                  - { label: 'Minimum Nights', name: 'minimum_nights', widget: 'number', min: 1, value_type: 'int' }
+                  - label: 'Rates per Nights'
+                    name: 'rates_per_night'
+                    widget: 'list'
+                    fields:
+                      - { label: 'Year', name: 'year', widget: 'number', min: 2019, value_type: 'int' }
+                      - { label: 'Price', name: 'price', widget: 'number', value_type: 'int' }
+          - {
+            label: 'Full Ship Capacity',
+            name: 'full_ship_capacity',
+            widget: 'string'
+          }
+          - {
+            label: 'Extra Guest',
+            name: 'extra_guest',
+            widget: 'string'
+          }
+          - {
+            label: 'Relocation Fee',
+            name: 'relocation_fee',
+            widget: 'string'
+          }
+          - label: 'Full Ship Charter Rates include'
+            name: 'full_ship_charter_rates_include'
+            widget: 'object'
+            fields:
+              - label: 'List'
+                name: 'list'
+                widget: 'list'
+              - label: 'Water sports'
+                name: 'water_sports'
+                widget: 'list'
+              - label: 'Tours and Fees'
+                name: 'tours_and_fees'
+                widget: 'list'
+              - label: 'Our package does not include'
+                name: 'does_not_include'
+                widget: 'list'
+          - label: 'Payment Terms and Conditions'
+            name: 'payment_terms_and_conditions'
+            widget: 'list'
+          - label: 'Cancellation Policy'
+            name: 'cancellation_policy'
+            widget: 'list'
