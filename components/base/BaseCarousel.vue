@@ -120,7 +120,7 @@
       <v-card-text
         class="text--primary d-block px-0"
         :class="textClass"
-        v-html="dataActive.text"
+        v-html="dataActive[returnTextData]"
       >
         <!-- <ul class="__carousel--card-list" v-if="dataActive.list">
           <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
@@ -173,7 +173,8 @@ export default {
     buttonClass: { type: String },
     buttonText: { type: String },
     buttonProps: { type: Object },
-    reverse: { type: Boolean }
+    reverse: { type: Boolean },
+    returnTextData: { type: string, default: 'text' },
   },
 
   components,

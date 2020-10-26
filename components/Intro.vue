@@ -9,7 +9,6 @@
       v-if="data.image"
       class="intro--image"
       v-bind:class="imageClass"
-      static-image
       :data="data.image"
     />
 

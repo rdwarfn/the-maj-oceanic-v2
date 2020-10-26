@@ -39,6 +39,7 @@
           v-else
           v-bind:data="data.sustainability"
           button-text="Learn More"
+          return-text-data="description"
           content-right
           reverse
         />

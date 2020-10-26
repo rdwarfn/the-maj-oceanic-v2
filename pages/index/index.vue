@@ -38,7 +38,6 @@
           return-text-data="description"
           button-text="learn more"
           content-right
-          static-image
           reverse
         />
       </template>
@@ -54,7 +53,6 @@
           v-bind:data="data.occasions"
           return-text-data="description"
           button-text="learn more"
-          static-image
         />
       </template>
     </v-container>

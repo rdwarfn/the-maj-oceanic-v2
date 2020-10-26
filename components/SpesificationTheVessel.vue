@@ -9,7 +9,7 @@
     heading-class="mb-1"
     text-class="mb-3 pr-lg-6"
     card-mobile-class="__carousel_card transparent"
-    static-image
+    return-text-data="description"
   >
     <!-- card-text-mobile-class="text-justify" -->
   </base-carousel-mobile>
@@ -23,7 +23,7 @@
     heading-class="mb-1"
     text-class="mb-3 pr-lg-6"
     card-text-mobile-class="text-justify"
-    static-image
+    return-text-data="description"
   >
   </base-carousel>
   </v-container>
