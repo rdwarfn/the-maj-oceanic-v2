@@ -13,6 +13,12 @@
         button-text="Rates & Schedule"
       />
     </v-container>
+
+    <v-container class="mx-auto">
+      <pre>
+        {{ data }}
+      </pre>
+    </v-container>
   </div>
 </template>
 

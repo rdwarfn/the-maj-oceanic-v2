@@ -494,7 +494,7 @@ collections:
 
       - label: 'Komodo Page'
         name: 'komodo'
-        file: 'content/pages/komodo.yml'
+        file: 'content/pages/voyages/komodo.yml'
         fields:
           - label: 'Hero'
             name: 'hero'
@@ -539,7 +539,7 @@ collections:
 
       - label: 'Raja Ampat Page'
         name: 'raja-ampat'
-        file: 'content/pages/raja-ampat.yml'
+        file: 'content/pages/voyages/raja-ampat.yml'
         fields:
           - label: 'Hero'
             name: 'hero'
@@ -578,7 +578,7 @@ collections:
 
       - label: 'Spice Islands Page'
         name: 'spice-islands'
-        file: 'content/pages/spice-islands.yml'
+        file: 'content/pages/voyages/spice-islands.yml'
         fields:
           - label: 'Hero'
             name: 'hero'
