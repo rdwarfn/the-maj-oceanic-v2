@@ -5,6 +5,11 @@
     <swiper ref="swiper" class="swiper" v-bind:options="swiperOption">
       <swiper-slide v-for="item in data.data" v-bind:key="item.id">
         <div class="text-center swiper__item">
+          <v-skeleton-loader
+            v-if="!item.image"
+            class="swiper__item--img"
+            type="image"
+          ></v-skeleton-loader>
           <v-img
             v-bind:src="staticImage
               ? require(`~/assets/images/${item.image}`)

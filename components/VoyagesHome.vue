@@ -30,6 +30,11 @@
         </v-row>
         <swiper ref="swiper" class="swiper" :options="swiperOption">
           <swiper-slide v-for="(item, index) in data.tabs_data" :key="index">
+            <v-skeleton-loader
+              v-if="!item.data.image"
+              class="tabs-mobile--image"
+              type="image"
+            ></v-skeleton-loader>
             <v-img
               v-bind:src="staticImage
                 ? require('~/assets/images/' + item.data.image)

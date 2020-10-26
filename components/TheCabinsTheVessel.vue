@@ -8,7 +8,9 @@
         <swiper ref="swiper" class="swiper container py-0 px-0 px-sm-6 px-md-0" v-bind:options="swiperOption">
           <swiper-slide v-for="(item, index) in data.data" v-bind:key="index">
             <div class="text-center swiper__item">
+              <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.image"></v-skeleton-loader>
               <v-img
+                v-else
                 v-bind:src="staticImage
                   ? require(`~/assets/images/${item.image}`)
                   : item.image"
@@ -31,6 +33,7 @@
           </swiper-slide>
           <div class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" slot="pagination"></div>
         </swiper>
+
         <div class="swiper__content">
           <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{dataActive.heading}}</div>
           <div v-if="dataActive.description" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.description"></div>
@@ -67,7 +70,7 @@ export default {
       heading: { type: String },
       data: { type: Array }
     },
-    staticImage: { type: Boolean, default: true }
+    staticImage: { type: Boolean, default: false }
   },
 
   data () {

@@ -8,6 +8,11 @@
         <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
           {{ data.heading }}
         </v-card-title>
+        <v-skeleton-loader
+          v-if="!item.image"
+          :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
+          type="image"
+        ></v-skeleton-loader>
         <v-img
           v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
           v-bind:src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
