@@ -48,8 +48,6 @@ export default {
     ]
   },
 
-  name: 'specification',
-
   components,
 
   async asyncData ({ $content }) {

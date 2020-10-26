@@ -74,8 +74,6 @@ const components = {
 export default {
   layout: 'main',
 
-  name: 'home',
-
   components,
 
   head () {
