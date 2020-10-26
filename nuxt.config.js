@@ -22,22 +22,7 @@ export default {
   */
   target: 'static',
   generate: {
-    fallback: 'sailing-soons/index.html',
-    routes: [
-      '/',
-      '/the-vessel',
-      '/the-vessel/specification',
-      '/voyages',
-      '/voyages/komodo',
-      '/voyages/raja-ampat',
-      '/voyages/spice-islands',
-      '/activites',
-      '/contact-us',
-      '/rates-and-schedule',
-      '/sailing-soons',
-      '/suites-and-staterooms',
-      '/develop'
-    ]
+    fallback: 'sailing-soons/index.html'
   },
   /*
   ** Headers of the page
