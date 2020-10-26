@@ -6,23 +6,37 @@ voyages_items:
   - image: /media_root/voyages-item-komodo.png
     heading: Home of the mystical<br class='hidden-sm-and-up'/> Komodo Dragons
     description: >
-      This UNESCO World Heritage site encompasses three main islands – Komodo, Padar and Rinca. Below the water, multihued coral gardens are a diver’s dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering schools of fish.
+      This UNESCO World Heritage site encompasses three main islands – Komodo,
+      Padar and Rinca. Below the water, multihued coral gardens are a diver’s
+      dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering
+      schools of fish.
     to: /voyages/komodo
   - image: /media_root/voyages-item-raja-ampat.png
     heading: The richest coal<br class='hidden-sm-and-up'/> reefs on earth
     description: >
-      This UNESCO World Heritage site encompasses three main islands – Komodo, Padar and Rinca. Below the water, multihued coral gardens are a diver’s dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering schools of fish.
+      This UNESCO World Heritage site encompasses three main islands – Komodo,
+      Padar and Rinca. Below the water, multihued coral gardens are a diver’s
+      dream. Expect to see manta rays, ribbon eels, sea turtles, and shimmering
+      schools of fish.
     to: /voyages/raja-ampat
   - image: /media_root/voyages-item-spice-islands.png
     heading: The ‘great nutmeg island’
     description: >
-      The volcanic Banda Islands are as rich in history and natural beauty as they are remote. Centuries ago, this tiny archipelago in Maluku was the world’s only source of nutmeg, the ‘gold of the spice trade.’ Today, only adventurous travellers make the trip—and are rewarded with bygone colonial architecture, buzzing spice markets, and postcard-pretty scenery.
+      The volcanic Banda Islands are as rich in history and natural beauty as
+      they are remote. Centuries ago, this tiny archipelago in Maluku was the
+      world’s only source of nutmeg, the ‘gold of the spice trade.’ Today, only
+      adventurous travellers make the trip—and are rewarded with bygone colonial
+      architecture, buzzing spice markets, and postcard-pretty scenery.
     to: /voyages/spice-islands
 testimonies_data:
+  - 2020-10-26-jack-morris
 itineraries:
   caption: itineraries
   image: /media_root/voyages-itineraries.png
   heading: As bespoke as it gets
   description: >
-    The MAJ Oceanic is based in Labuan Bajo, Komodo National Park (May-October), Raja Ampat (November-April) and sail through Spice Islands, Banda in between. Trips are tailored to guests' preferred itineraries. Full vessel private chartering are available.
+    The MAJ Oceanic is based in Labuan Bajo, Komodo National Park (May-October),
+    Raja Ampat (November-April) and sail through Spice Islands, Banda in
+    between. Trips are tailored to guests' preferred itineraries. Full vessel
+    private chartering are available.
   to: /rates-and-schedule
