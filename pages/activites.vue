@@ -12,20 +12,20 @@
     </template>
 
     <section class="activites__testimonal">
-      <BaseTestimonal :data="data.testimonal" static-image />
+      <base-testimonal :data="data.testimonal" static-image />
     </section>
   </article>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import Cards from '@/components/activites/Carousel.vue';
-import BaseTestimonal from '@/components/base/BaseTestimonal.vue';
+import cards from '@/components/activites/Carousel.vue';
+import baseTestimonal from '@/components/base/BaseTestimonal.vue';
 
 const components = {
-  Spesification: () => import('@/components/SpesificationTheCabin.vue'),
-  Cards,
-  BaseTestimonal
+  spesification: () => import('@/components/SpesificationTheCabin.vue'),
+  cards,
+  baseTestimonal
 };
 
 export default {

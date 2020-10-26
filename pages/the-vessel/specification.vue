@@ -20,10 +20,10 @@
 
 <script>
 const components = {
-  BaseTabs: () => import('@/components/base/BaseTabs.vue'),
-  BaseTables: () => import('@/components/base/BaseTables.vue'),
-  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  DeckSpesification: () => import('@/components/DeckSpesification.vue')
+  baseTabs: () => import('@/components/base/BaseTabs.vue'),
+  baseTables: () => import('@/components/base/BaseTables.vue'),
+  baseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  deckSpesification: () => import('@/components/DeckSpesification.vue')
 }
 
 export default {

@@ -9,7 +9,7 @@
         <div v-if="!data.the_vessel" class="text-center">
           <v-skeleton-loader type="image" :loading="!data.the_vessel" />
         </div>
-        <base-carousel v-else :data="data.the_vessel" button-text="discover" static-image></base-carousel>
+        <base-carousel v-else :data="data.the_vessel" button-text="discover"></base-carousel>
       </template>
     </v-container>
 
@@ -17,8 +17,7 @@
       <div v-if="!data.voyages" class="text-center container">
         <v-skeleton-loader type="card" :loading="!data.voyages" />
       </div>
-      <voyages v-else v-bind:data="data.voyages"
-      />
+      <voyages v-else v-bind:data="data.voyages" />
       <!-- <voyages v-bind:data="{
           heading: data.tabs.heading,
           text: data.tabs.text,
@@ -63,12 +62,16 @@
 
 <script>
 import { mapMutations } from 'vuex';
+import baseCarousel from '@/components/base/BaseCarousel.vue';
+import baseCardTextImage from '@/components/base/BaseCardTextImage.vue'
+import intro from '@/components/Intro.vue';
+import voyages from '@/components/VoyagesHome.vue'
 
 const components = {
-  BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  intro: () => import('@/components/Intro.vue'),
-  voyages: () => import ('@/components/VoyagesHome.vue'),
+  baseCarousel,
+  baseCardTextImage,
+  intro,
+  voyages,
 }
 
 export default {

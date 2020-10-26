@@ -50,12 +50,18 @@
 
 <script>
 // import { getIdFromURL } from 'vue-youtube-embed';
+import intro from '@/components/Intro.vue';
+import theCabins from '@/components/TheCabinsTheVessel.vue';
+import spesification from '@/components/SpesificationTheVessel.vue';
+import theTeams from '@/components/TheTeamsTheVessel.vue';
+import baseCardTextImage from '@/components/base/BaseCardTextImage.vue';
+
 const components = {
-  Intro: () => import('@/components/Intro.vue'),
-  TheCabins: () => import('@/components/TheCabinsTheVessel.vue'),
-  Spesification: () => import('@/components/SpesificationTheVessel.vue'),
-  TheTeams: () => import('@/components/TheTeamsTheVessel.vue'),
-  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  intro,
+  theCabins,
+  spesification,
+  theTeams,
+  baseCardTextImage,
 }
 export default {
   layout: 'main',
