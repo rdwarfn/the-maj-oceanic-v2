@@ -66,19 +66,19 @@
 <script>
 const myIgToken = "IGQVJXT3NVR21Ra1JpdlluTUQ3RmhhWjY4NWFFUXRYSzAxWklRSFgtODVOaktlNTRfRk4wdmE3cTB6aXBSaThwcXE2LWNXdXBwdWpfQ1ZATd25kR2dKMmM2dHByYzRfeDV5MktST2hFMGN0aEVpSmhmOQZDZD";
 const test = "IGQVJWRFN6UUVvam9qbVA3TTU3ZAVNGelpFLTJQOFRxOTJ3N1pnSmlxeG1pdGE5ZAmJGNmJtMll6U3ZApZA2ljeDV0RkpkWUJrajZAWOUNHRFBaeGo5TnVOUGM4Y0kyc1JxR0R4dDVKU3RB";
-import TmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
+import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
 import iconZhengHe from '@/assets/images/tmg-icon-zheng-he.png';
 import columbus from '@/assets/images/tmo-icon-columbus-2.png';
 import iconFerdinand from '@/assets/images/tmo-icon-ferdinand-magellan.png';
 import iconJames from '@/assets/images/tmo-icon-james-cook.png';
 import iconMarco from '@/assets/images/tmo-icon-marco-polo.png';
 import iconVasco from '@/assets/images/tmo-icon-vasco-da-gamma.png';
-import Spesification from '@/components/SpesificationTheCabin.vue';
-import SpesificationMobile from '@/components/SpesificationTheCabinMobile.vue';
+import spesification from '@/components/SpesificationTheCabin.vue';
+import spesificationMobile from '@/components/SpesificationTheCabinMobile.vue';
 const components = {
-  TmgIconDivider,
-  Spesification,
-  SpesificationMobile,
+  tmgIconDivider,
+  spesification,
+  spesificationMobile,
 }
 export default {
   layout: 'main',

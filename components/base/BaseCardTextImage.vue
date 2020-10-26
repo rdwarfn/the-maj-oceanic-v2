@@ -91,8 +91,6 @@ const components = {
   tButton
 }
 export default {
-  name: 'CardTextImage',
-
   props: {
     data: { type: Object },
     cardImgClass: { type: String },
@@ -102,7 +100,7 @@ export default {
     buttonText: { type: String },
     buttonClass: { type: String },
     buttonContainerClass: { type: String },
-    returnTextData: { type: string, default: 'text' },
+    returnTextData: { type: String, default: 'text' },
     reverse: { type: Boolean },
     imgAspectRatio: {
       type: [String, Number]

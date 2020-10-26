@@ -45,13 +45,11 @@
 <script>
 import tHeading from '@/components/base/BaseHeading.vue';
 export default {
-  name: 'CardThreeImage',
-
   props: {
-    "data": {
+    data: {
       type: Object
     },
-    "static-image": {
+    staticImage: {
       type: Boolean
     }
   },

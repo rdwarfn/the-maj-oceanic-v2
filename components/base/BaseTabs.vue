@@ -68,8 +68,6 @@ const components = {
   tButton: () => import('@/components/base/BaseButton.vue')
 };
 export default {
-  name: 'Tabs',
-
   props: {
     data: { type: Array },
     buttonClass: { type: String },

@@ -1,4 +1,4 @@
 hero:
   heading: Suites & Staterooms
-  image: /suites-hero.jpg
-  mobile_image: /suites-hero-mobile.jpg
+  image: /media_root/suites-hero.jpg
+  mobile_image: /media_root/suites-hero-mobile.jpg

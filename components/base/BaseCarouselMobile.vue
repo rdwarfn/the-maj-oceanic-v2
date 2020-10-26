@@ -88,8 +88,6 @@ const components = {
 }
 
 export default {
-  name: 'Carousel',
-
   props: {
     data: { type: Array },
     staticImage: { type: Boolean, default: false },
@@ -104,7 +102,7 @@ export default {
     cardTextMobileClass: { type: String },
     headingClass: { type: String },
     textClass: { type: String },
-    returnTextData: { type: string, default: 'text' },
+    returnTextData: { type: String, default: 'text' },
     buttonClass: { type: String },
     buttonText: { type: String },
     buttonProps: { type: Object },

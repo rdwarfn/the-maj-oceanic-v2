@@ -196,8 +196,6 @@
 <script>
 import navigationMenu from './Menu.vue';
 export default {
-  name: 'Navigation',
-
   props: {
     isIntersecting: {
       type: Boolean,

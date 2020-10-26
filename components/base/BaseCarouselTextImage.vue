@@ -108,8 +108,6 @@ const components = {
   SwiperSlide
 }
 export default {
-  name: 'CarouselTextImage',
-
   props: {
     data: { type: Array },
     cardClass: { type: String },

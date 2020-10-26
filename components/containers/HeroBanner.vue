@@ -82,8 +82,6 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 
 const components = {Swiper, SwiperSlide};
 export default {
-  name: 'HeroBanner',
-
   props: {
     data: {type: [Array, Object]},
     staticImage: {type: Boolean}

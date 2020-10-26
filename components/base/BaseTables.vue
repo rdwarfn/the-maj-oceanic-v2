@@ -37,8 +37,6 @@
 
 <script>
 export default {
-  name: 'Tables',
-
   data () {
     return {
       data: {

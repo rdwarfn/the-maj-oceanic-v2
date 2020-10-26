@@ -1,7 +1,7 @@
 hero:
   heading: The Vessel
-  image: media_root/vessel-hero.jpg
-  mobile_image: media_root/vessel-hero.jpg
+  image: /media_root/vessel-hero.jpg
+  mobile_image: /media_root/vessel-hero.jpg
 intro:
   heading: >
     Inspired by centuries of<br class='hidden-sm-and-up' /> marine wisdom
@@ -15,25 +15,25 @@ suites_and_staterooms:
   data:
     - heading: Admiral Suite
       description: <em>120 sqm</em>
-      image: media_root/vessel-suites-admiral.jpg
+      image: /media_root/vessel-suites-admiral.jpg
     - heading: Commodore Suite
       description: <em>35 sqm</em>
-      image: media_root/vessel-suites-commodore.jpg
+      image: /media_root/vessel-suites-commodore.jpg
     - heading: Deluxe Staterooms
       description: <em>25 sqm</em>
-      image: media_root/vessel-suites-deluxe.jpg
+      image: /media_root/vessel-suites-deluxe.jpg
 the_decks:
   - caption: The Decks
     heading: The sea is your fairway
     description: >
       The shaded lounge areas on the fore and aft decks offer an oasis of calm to relax and bask in the ever-changing scenery. The top deck offers a one-of-a-kind ‘equatorial golf’ experience using biodegradable ecoballs, making the ocean as the player's fairway.</p>
-    image: media_root/vessel-decks-sea.jpg
+    image: /media_root/vessel-decks-sea.jpg
     to: /the-vessel/specification
   - caption: The Decks
     heading: Craftmanship lives on
     description: >
       The most emblematic of the main deck area, the Gajah Mada lounge and dining room, features a large decorative copper bas-relief depicting iconic maritime scenes from a bygone era.
-    image: media_root/vessel-decks-caftmanship.jpg
+    image: /media_root/vessel-decks-caftmanship.jpg
     to: /the-vessel/specification
 teams:
   caption: The Team
@@ -41,20 +41,20 @@ teams:
   data:
     - title: Cruise Director
       name: Christophe Beltrando
-      image: media_root/vessel-teams-christophe-beltrando.png
+      image: /media_root/vessel-teams-christophe-beltrando.png
     - title: Captain
       name: Yunus Ardiyamsyah
-      image: media_root/vessel-teams-yunus.png
+      image: /media_root/vessel-teams-yunus.png
     - title: First Officer
       name: Syamsudin
-      image: media_root/vessel-teams-syamsudin.png
+      image: /media_root/vessel-teams-syamsudin.png
     - title: Head Chef
       name: Sumarna
-      image: media_root/vessel-teams-sumarna.png
+      image: /media_root/vessel-teams-sumarna.png
 sustainability:
   caption: Sustainability
   heading: After all, the ocean is our home
   description: >
     We have profound responsibility in preserving and protecting the places and communities we visit. More than anything else, we take care of the environment in which we operate, the guests who cruise with us, and the people who work with us.
-  image: media_root/vessel-sustainability.png
+  image: /media_root/vessel-sustainability.png
   to: /contact-us

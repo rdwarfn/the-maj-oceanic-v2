@@ -145,8 +145,6 @@
 <script>
 
 export default {
-  name: 'Menu',
-
   props: {
     'is-intersecting': {
       type: Boolean,

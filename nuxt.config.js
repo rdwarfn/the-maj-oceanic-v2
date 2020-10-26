@@ -21,6 +21,24 @@ export default {
   ** Nuxt target
   */
   target: 'static',
+  generate: {
+    fallback: 'sailing-soons/index.html',
+    routes: [
+      '/',
+      '/the-vessel',
+      '/the-vessel/specification',
+      '/voyages',
+      '/voyages/komodo',
+      '/voyages/raja-ampat',
+      '/voyages/spice-islands',
+      '/activites',
+      '/contact-us',
+      '/rates-and-schedule',
+      '/sailing-soons',
+      '/suites-and-staterooms',
+      '/develop'
+    ]
+  },
   /*
   ** Headers of the page
   */

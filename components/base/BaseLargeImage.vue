@@ -27,8 +27,6 @@
 
 <script>
 export default {
-  name: 'largeImage',
-
   props: {
     data: {
       type: String,

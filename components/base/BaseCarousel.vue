@@ -154,7 +154,6 @@ const components = {
 }
 
 export default {
-  name: 'Carousel',
 
   props: {
     data: { type: Array },
@@ -174,7 +173,7 @@ export default {
     buttonText: { type: String },
     buttonProps: { type: Object },
     reverse: { type: Boolean },
-    returnTextData: { type: string, default: 'text' },
+    returnTextData: { type: String, default: 'text' },
   },
 
   components,

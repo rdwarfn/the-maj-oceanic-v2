@@ -1,8 +1,6 @@
 <template>
   <div id="voyages">
-    <template v-for="(item, index) in data.voyages">
-      <voyages-item v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
-    </template>
+    <voyages-item v-for="(item, index) in data.voyages" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
 
     <section class="voyages__testimonal">
       <base-testimonal :data="data.testimonal" static-image />
@@ -21,9 +19,9 @@
 
 <script>
 const components = {
-  VoyagesItem: () => import('@/components/VoyagesItem.vue'),
-  BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  BaseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
+  voyagesItem: () => import('@/components/VoyagesItem.vue'),
+  baseCarousel: () => import('@/components/base/BaseCarousel.vue'),
+  baseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
 }
 export default {
   layout: 'main',
