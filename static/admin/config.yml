@@ -19,6 +19,24 @@ collections:
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
 
+  - label: 'Testimonies':
+    name: 'testimonies'
+    format: 'yml'
+    folder: 'content/testimonies'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    identifier_field: 'name'
+    fields:
+      - { label: 'Name', name: 'name' }
+      - label: 'Instagram'
+        name: 'instagram'
+        widget: 'object'
+        fields:
+          - { label: 'Username', name: 'username', widget: 'string' }
+          - { label: 'Link', name: 'link', widget: 'string', hint: 'Default: https://www.instagram.com/{{fields.username}}', default: 'https://www.instagram.com/{{fields.username}}' }
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Comment or Message', name: 'comment', widget: 'markdown' }
+
   - label: 'Navigation'
     name: 'navigation'
     description: 'Navigation menu'
@@ -265,3 +283,40 @@ collections:
                 name: 'gallery'
                 widget: 'list'
                 field: { label: 'Image', name: 'image', widget: 'image'}
+
+      - label: 'Voyages Page'
+        name: 'voyages'
+        file: 'content/pages/voyages/index.yml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Voyages Items'
+            name: 'voyages_items'
+            widget: 'list'
+            summary: '{{fields.heading}}'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
+          - label: 'Testimonies'
+            name: 'testimonies_data'
+            widget: 'relation'
+            collection: 'testimonies'
+            value_field: '{{slug}}'
+            search_fields: ['name', 'instagram.username']
+            display_fileds: ['instagram.username', 'name']
+          - label: 'Section Itineraries'
+            name: 'itineraries'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
