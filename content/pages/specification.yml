@@ -1,0 +1,57 @@
+hero:
+  heading: Specification
+  image: /media_root/specification-hero.png
+  mobile_image: /media_root/specification-hero-mobile.png
+decks_technical_detail:
+  heading: 'Decks and Technical Detail'
+  description: >
+    The MAJ Oceanic is a motorsailer, handcrafted in Bira, Sulawesi, in the traditional style of a Phinisi. It measures 47 meters in length overall with 10,5 meters beam.
+  image: /media_root/specification-decks-technical-detail.png
+deck_previews:
+  - name: Main Deck
+    description: Commodore Suite Lounge & Bar Area
+    image: /media_root/specification-main-deck.svg
+    mobile_image: /media_root/specification-main-deck-mobile.png
+  - name: Lower Deck
+    description: Deluxe Staterooms
+    image: /media_root/specification-lower-deck.svg
+    mobile_image: /media_root/specification-lower-deck-mobile.svg
+  - name: Bridge Deck
+    description: Admiral Suite
+    image: /media_root/specification-bridge-deck.svg
+    mobile_image: /media_root/specification-bridge-deck-mobile.svg
+  - name: Golf Deck
+    description: Equatorial Golf
+    image: /media_root/specification-golf-deck.svg
+    mobile_image: /media_root/specification-golf-deck-mobile.svg
+table_specification:
+  headers:
+    - text: ''
+      value: name
+      align: start
+    - text: ''
+      value: value
+  data:
+    - name: Build
+      value: Bira, Sulawesi, Indonesia in 2019
+    - name: Type
+      value: Traditional gaft-rigged timber phinisi (teak wood)
+    - name: Length (Total)
+      value: 47 m /154 ft
+    - name: Beam
+      value: 10.5 m / 34 ft
+    - name: Draft
+      value: 3.52 m / 11.5 ft
+    - name:  No. of cabins | guests | crew
+      value: 6+1 | 14 | 12
+    - name: Cruising speed
+      value: 17 knot (max.) / 12 knot (avg.) / 9 knot (min.)
+    - name: Engine model
+      value: Yanmar marine diesel 6AYM-WST 659HP/1900RPM (sea water cooling) 5 blade bronze propellers
+    - name: Navigation
+      value: Garmin Aquamap 1252
+    - name: Life raft
+      value: Type YZF-A capacity of 25 persons
+    - name: Watersports Equipment
+      value: >
+        6 Paddle board,<br/>6 Sea Kayaks,<br/>Fishing Gear,<br/>Complete diving equipment,<br/>Complete Snorkeling equipment

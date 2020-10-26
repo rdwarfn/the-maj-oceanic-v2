@@ -37,70 +37,73 @@
 
 <script>
 export default {
-  data () {
-    return {
-      data: {
-        "headers": [
-          {
-            text: "Table Of Specification",
-            align: "start",
-            value: "name",
-          },
-          {
-            text: "",
-            value: "value",
-            sortable: false
-          }
-        ],
-        "data": [
-          {
-            name: "Build",
-            value: "Bira, Sulawesi, Indonesia in 2019"
-          },
-          {
-            name: "Type",
-            value: "Traditional gaft-rigged timber phinisi (teak wood)"
-          },
-          {
-            name: "Length (Total)",
-            value: "47 m /154 ft"
-          },
-          {
-            name: "Beam",
-            value: "10.5 m / 34 ft"
-          },
-          {
-            name: "Draft",
-            value: "3.52 m / 11.5 ft"
-          },
-          {
-            name: "no. of cabinS | GUESTS | crew",
-            value: "6+1 | 14 | 12"
-          },
-          {
-            name: "cruising speed",
-            value: "17 knot (max.) / 12 knot (avg.) / 9 knot (min.)"
-          },
-          {
-            name: "Engine model",
-            value: "Yanmar marine diesel 6AYM-WST 659HP/1900RPM (sea water cooling) 5 blade bronze propellers"
-          },
-          {
-            name: "Navigation",
-            value: "Garmin Aquamap 1252"
-          },
-          {
-            name: "life raft",
-            value: "type YZF-A capacity of 25 persons"
-          },
-          {
-            name: "Watersports Equipment",
-            value: "6 Paddle board,<br/>6 Sea Kayaks,<br/>Fishing Gear,<br/>Complete diving equipment,<br/>Complete Snorkeling equipment"
-          }
-        ]
-      }
-    }
+  props: {
+    data: { type: Object, required: true }
   }
+  // data () {
+  //   return {
+  //     data: {
+  //       "headers": [
+  //         {
+  //           text: "Table Of Specification",
+  //           align: "start",
+  //           value: "name",
+  //         },
+  //         {
+  //           text: "",
+  //           value: "value",
+  //           sortable: false
+  //         }
+  //       ],
+  //       "data": [
+  //         {
+  //           name: "Build",
+  //           value: "Bira, Sulawesi, Indonesia in 2019"
+  //         },
+  //         {
+  //           name: "Type",
+  //           value: "Traditional gaft-rigged timber phinisi (teak wood)"
+  //         },
+  //         {
+  //           name: "Length (Total)",
+  //           value: "47 m /154 ft"
+  //         },
+  //         {
+  //           name: "Beam",
+  //           value: "10.5 m / 34 ft"
+  //         },
+  //         {
+  //           name: "Draft",
+  //           value: "3.52 m / 11.5 ft"
+  //         },
+  //         {
+  //           name: "no. of cabinS | GUESTS | crew",
+  //           value: "6+1 | 14 | 12"
+  //         },
+  //         {
+  //           name: "cruising speed",
+  //           value: "17 knot (max.) / 12 knot (avg.) / 9 knot (min.)"
+  //         },
+  //         {
+  //           name: "Engine model",
+  //           value: "Yanmar marine diesel 6AYM-WST 659HP/1900RPM (sea water cooling) 5 blade bronze propellers"
+  //         },
+  //         {
+  //           name: "Navigation",
+  //           value: "Garmin Aquamap 1252"
+  //         },
+  //         {
+  //           name: "life raft",
+  //           value: "type YZF-A capacity of 25 persons"
+  //         },
+  //         {
+  //           name: "Watersports Equipment",
+  //           value: "6 Paddle board,<br/>6 Sea Kayaks,<br/>Fishing Gear,<br/>Complete diving equipment,<br/>Complete Snorkeling equipment"
+  //         }
+  //       ]
+  //     }
+  //   }
+  // }
 }
 </script>
 
