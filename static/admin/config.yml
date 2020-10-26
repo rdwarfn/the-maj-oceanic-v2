@@ -402,6 +402,7 @@ collections:
                 name: 'data'
                 widget: 'list'
                 fields:
+                  - { label: 'ID', name: 'id', widget: 'hidden' }
                   - { label: 'Headline', name: 'headline', widget: 'string' }
                   - { label: 'Minimum Nights', name: 'minimum_nights', widget: 'number', min: 1, value_type: 'int' }
                   - label: 'Rates per Nights'
@@ -451,3 +452,43 @@ collections:
       - label: 'Specification Page'
         name: 'specification'
         file: 'content/pages/specification.yml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Techical Detail'
+            name: 'decks_technical_detail'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+          - label: 'Section Deck Priviews'
+            name: 'deck_previews'
+            widget: 'list'
+            summary: '{{fields.name}} - {{fields.description}}'
+            fields:
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Description', name: 'Description', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Table Spesification'
+            name: 'table_specification'
+            widget: 'object'
+            fields:
+              - label: 'Table Headers'
+                name: 'headers'
+                widget: 'list'
+                fields:
+                  - { label: 'Text', name: 'text', widget: 'string' }
+                  - { label: 'Value', name: 'value', widget: 'string' }
+              - label: 'Table Data'
+                name: 'data'
+                widget: 'list'
+                fields:
+                  - { label: 'Name', name: 'name', widget: 'string' }
+                  - { label: 'Value', name: 'value', widget: 'markdown' }

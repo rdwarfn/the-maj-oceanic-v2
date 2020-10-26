@@ -1,0 +1,11 @@
+hero:
+  heading: Komodo
+  image: /media_root/komodo-hero.png
+  mobile_image: /media_root/komodo-hero-mobile.png
+des_1:
+  image: /media_root/komodo-des-1.png
+  description: >
+    Manta rays, sea turtles and bottle nose dolphins are just three of more than 1000 species of marine animals that call Komodo National Park home. A UNESCO World Heritage Site, the park stretches a total area of 1,733 square kilometers, encompassing three main islands—Komodo, Padar, and Rinca—and 26 smaller islets.
+  to: /contact-us
+des_2:
+  heading: Home of The Dragons
