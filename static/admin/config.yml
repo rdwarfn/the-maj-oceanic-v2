@@ -536,3 +536,42 @@ collections:
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
+
+      - label: 'Raja Ampat Page'
+        name: 'raja-ampat'
+        file: 'content/pages/raja-ampat.yml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Des 1'
+            name: 'des_1'
+            widget: 'object'
+            fields:
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
+          - label: 'Section Des 2'
+            name: 'des_2'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+          - label: 'Section Des 3'
+            name: 'des_3'
+            widget: 'object'
+            fields:
+              - label: 'Images'
+                name: 'images'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image' }
+              - label: 'Mobile Images'
+                name: 'mobile_images'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
