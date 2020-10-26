@@ -2,28 +2,48 @@
   <article id="activites">
     <v-container tag="section" class="mx-auto px-6 px-md-0 mb-15">
       <div class="intro--head font-weight-bold text-center mx-auto">
-        {{ data.introduction.heading }}
+        {{ data.intro.heading }}
       </div>
-      <p class="intro--paragraph text-center mx-auto"> {{ data.introduction.description }} </p>
+      <p
+        class="intro--paragraph text-center mx-auto"
+        v-html="data.intro.description"
+      ></p>
     </v-container>
 
-    <template v-for="(card, index) in data.cards">
-      <cards class="card-section" :data="card" :key="index" />
-    </template>
+    <!-- watersports -->
+    <activites-carousel
+      :data="data.watersports"
+      class="watersports-section"
+    ></activites-carousel>
+    <!-- end watersports -->
 
-    <section class="activites__testimonal">
+    <!-- fitness_wellness -->
+    <activites-carousel
+      :data="data.fitness_wellness"
+      class="fitness_wellness-section"
+    ></activites-carousel>
+    <!-- end fitness_wellness -->
+
+    <!-- exploration -->
+    <activites-carousel
+      :data="data.exploration"
+      class="exploration-section"
+    ></activites-carousel>
+    <!-- end exploration -->
+
+    <!-- <section class="activites__testimonal">
       <base-testimonal :data="data.testimonal" static-image />
-    </section>
+    </section> -->
   </article>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import cards from '@/components/activites/Carousel.vue';
+import activitesCarousel from '@/components/activites/Carousel.vue';
 import baseTestimonal from '@/components/base/BaseTestimonal.vue';
 
 const components = {
-  cards,
+  activitesCarousel,
   baseTestimonal
 };
 

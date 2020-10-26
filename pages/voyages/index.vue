@@ -7,12 +7,11 @@
     </section> -->
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
-      <!-- <base-carousel
+      <base-carousel
         card-mobile-class="mt-2 transparent"
-        v-bind:data="data.carousel_card"
+        v-bind:data="[...data.itineraries]"
         button-text="Rates & Schedule"
-        static-image
-      /> -->
+      />
     </v-container>
   </div>
 </template>

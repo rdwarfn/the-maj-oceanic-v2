@@ -1,0 +1,35 @@
+hero:
+  heading: Activites
+  image: /media_root/activites-hero.png
+  mobile_image: /media_root/activites-hero.png
+watersports:
+  caption: watersports
+  heading: Ride the waves
+  description: >
+    Snorkel in some of the densest and most diverse marine habitats in the world. Kayak and paddle into the sunset. Ride your jet-ski aimlessly and then stop by a remote, pristine beach to take a breather by simply watching the time go by.
+  gallery:
+    - image: activites-watersports-1.png
+    - image: activites-watersports-2.png
+    - image: activites-watersports-3.png
+  reverse: false
+fitness_wellness:
+  caption: fitness & wellness
+  heading: Pastimes for Downtime
+  description: >
+    Unwind and take the stress away without having to leave the boat. Relax with locally-inspired spa treatments. Practice yoga to the soothing sound of ocean waves. Experience the one-of-a-kind equatorial golf on the top deck of the ship, with the ocean as your fairway. The game's special biodegradable balls contain fish food, improving marine sustainability and biodiversity.
+  gallery:
+    - image: activites-fitness-wellness-1
+    - image: activites-fitness-wellness-2
+    - image: activites-fitness-wellness-3
+  reverse: true
+exploration:
+  caption: exploration
+  heading: >
+    Port of call: adventure
+  description: >
+    Immerse yourself in authentic and engaging travel experiences designed to deepen your understanding of the spots you visit. Dramatic landscape of fascinating volcanic structures, pink sand beaches and underwater canyons full of soft corals is a wonderful contrast to be included in your cruise itinerary.
+  gallery:
+    - image: activites-exploration-1
+    - image: activites-exploration-2
+    - image: activites-exploration-3
+  reverse: false

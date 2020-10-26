@@ -298,15 +298,16 @@ collections:
             widget: 'list'
             summary: '{{fields.heading}}'
             fields:
+              - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
-              - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
           - label: 'Testimonies'
             name: 'testimonies_data'
             widget: 'relation'
             collection: 'testimonies'
             value_field: '{{slug}}'
+            multiple: true
             search_fields: ['name', 'instagram.username']
             display_fileds: ['instagram.username', 'name']
           - label: 'Section Itineraries'
@@ -314,7 +315,64 @@ collections:
             widget: 'object'
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
+              - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
-              - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
+
+      - label: 'Activites Page'
+        name: 'activites'
+        file: 'content/pages/activites.yml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Intro'
+            name: 'intro'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+          - label: 'Section Watersports'
+            name: 'watersports'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string', default: 'watersports' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Gallery'
+                name: 'gallery'
+                widget: 'list'
+                label_singular: 'Image'
+                field: { label: 'Image', name: 'image', widget: 'image'}
+              - { label: 'Reverse', name: 'reverse', widget: 'boolean', default: false }
+          - label: 'Section Fitness And Wellness'
+            name: 'fitness_wellness'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string', default: 'fitness & wellness' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Gallery'
+                name: 'gallery'
+                widget: 'list'
+                label_singular: 'Image'
+                field: { label: 'Image', name: 'image', widget: 'image'}
+              - { label: 'Reverse', name: 'reverse', widget: 'boolean', default: true }
+          - label: 'Section Exploration'
+            name: 'exploration'
+            widget: 'object'
+            fields:
+              - { label: 'Caption', name: 'caption', widget: 'string', default: 'exploration' }
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - label: 'Gallery'
+                name: 'gallery'
+                widget: 'list'
+                label_singular: 'Image'
+                field: { label: 'Image', name: 'image', widget: 'image'}
+              - { label: 'Reverse', name: 'reverse', widget: 'boolean', default: false }
