@@ -4,8 +4,7 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: 'static/media_root'
-public_folder: '/media_root'
+media_folder: static/media_root
 
 collections:
   - label: 'Articles'

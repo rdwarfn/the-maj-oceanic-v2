@@ -76,7 +76,7 @@ dining:
     ensuring tremendous variety. You and our chef can also craft a bespoke menu
     inspired by a palate or a special moment. It is then prepared and served in
     a location of your choosing.
-  image: home-dining.jpg
+  image: media_root/home-dining.jpg
   to: /contact-us
 occasios:
   caption: Occasions
