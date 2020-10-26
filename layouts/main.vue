@@ -20,7 +20,6 @@
     <tmo-hero-banner
       v-if="getHerosByRouteName"
       v-bind:data="getHerosByRouteName"
-      static-image
       v-intersect.quiet="{
         handler: heroIntersec,
         options: { rootMargin: '0px', threshold: [0.5, 1.0] }
