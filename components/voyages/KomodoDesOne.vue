@@ -6,8 +6,8 @@
           <v-card flat tile class="komodo--des-one_card">
 
             <v-img
-              :src="staticImage ? require(`@/assets/images/${data.image}`) : data.image"
-              :lazy-src="staticImage ? require(`@/assets/images/${data.image}`) : data.image"
+              :src="data.image"
+              :lazy-src="data.image"
               class="komodo--des-one_img"
             >
               <template v-slot:placeholder>
@@ -28,7 +28,7 @@
                 <v-btn
                   tile
                   nuxt
-                  to="#"
+                  :to="data.to"
                   outlined
                   depressed
                   color="primary"
@@ -49,10 +49,10 @@ export default {
   props: {
     data: {
       image: { type: String, required: true },
-      description: { type: String, required: true }
+      description: { type: String, required: true },
+      to: { type: String, required: true }
     },
     buttonText: { type: String, default: 'Book a trip'},
-    staticImage: { type: Boolean, default: false }
   }
 }
 </script>

@@ -395,14 +395,13 @@ collections:
                 name: 'headers'
                 widget: 'list'
                 fields:
-                 - { label: 'Text', name: 'text', widget: 'string' }
+                 - { label: 'Text', name: 'text', widget: 'string', default: '' }
                  - { label: 'Value', name: 'value', widget: 'string' }
                  - { label: 'Align', name: 'align', widget: 'select', options: ['left', 'center', 'right'] }
               - label: 'Table Data'
                 name: 'data'
                 widget: 'list'
                 fields:
-                  - { label: 'ID', name: 'id', widget: 'hidden' }
                   - { label: 'Headline', name: 'headline', widget: 'string' }
                   - { label: 'Minimum Nights', name: 'minimum_nights', widget: 'number', min: 1, value_type: 'int' }
                   - label: 'Rates per Nights'
@@ -484,7 +483,7 @@ collections:
                 name: 'headers'
                 widget: 'list'
                 fields:
-                  - { label: 'Text', name: 'text', widget: 'string' }
+                  - { label: 'Text', name: 'text', widget: 'string', default: '' }
                   - { label: 'Value', name: 'value', widget: 'string' }
               - label: 'Table Data'
                 name: 'data'
@@ -492,3 +491,48 @@ collections:
                 fields:
                   - { label: 'Name', name: 'name', widget: 'string' }
                   - { label: 'Value', name: 'value', widget: 'markdown' }
+
+      - label: 'Komodo Page'
+        name: 'komodo'
+        file: 'content/pages/komodo.yml'
+        fields:
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'markdown' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+          - label: 'Section Des 1'
+            name: 'des_1'
+            widget: 'object'
+            fields:
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+              - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
+          - label: 'Section Des 2'
+            name: 'des_2'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+          - label: 'Section Des 3'
+            name: 'des_3'
+            widget: 'object'
+            fields:
+              - label: 'Images'
+                name: 'images'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image' }
+              - label: 'Mobile Images'
+                name: 'mobile_images'
+                widget: 'list'
+                field: { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
+          - label: 'Section Des 4'
+            name: 'des_4'
+            widget: 'object'
+            fields:
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }

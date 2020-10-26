@@ -10,8 +10,8 @@
         <v-row align="center">
           <v-col :cols="!index ? 12 : 6" v-for="(d, index) in data.images" :key="index">
             <v-img
-              :src="staticImage ? require(`@/assets/images/${d}`) : d"
-              :lazy-src="staticImage ? require(`@/assets/images/${d}`) : d"
+              :src="d.image"
+              :lazy-src="d.image"
               class="komodo--des-three_image"
             >
               <template v-slot:placeholder>
@@ -38,8 +38,7 @@ export default {
       images: { type: Array },
       mobile_images: { type: Array },
       description: { type: String, required: true }
-    },
-    staticImage: { type: Boolean, default: false }
+    }
   }
 }
 </script>

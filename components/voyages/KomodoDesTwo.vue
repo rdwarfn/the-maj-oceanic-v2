@@ -4,8 +4,8 @@
     <v-row no-gutters align="center" justify-sm="space-between" class="komodo--des-two_content">
       <v-col cols="12" sm="5" class="mb-8 mb-sm-0">
         <v-img
-          :src="staticImage ? require(`@/assets/images/${data.image}`) : data.image"
-          :lazy-src="staticImage ? require(`@/assets/images/${data.image}`) : data.image"
+          :src="data.image"
+          :lazy-src="data.image"
           class="komodo--des-two_image"
         >
           <template v-slot:placeholder>
@@ -33,8 +33,7 @@ export default {
       heading: { type: String, required: true },
       image: { type: String, required: true },
       description: { type: String, required: true }
-    },
-    staticImage: { type: Boolean, default: false }
+    }
   }
 }
 </script>
