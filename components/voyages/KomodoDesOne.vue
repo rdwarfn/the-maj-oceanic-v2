@@ -88,6 +88,11 @@ export default {
           linear-gradient(rgba(229,229,229,0.2),
           transparent, rgba(229,229,229,0.2));
       }
+      &.raja-ampat {
+        background-image: url('~assets/images/voyages/raja-ampat/bg-intro-mobile.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
       background-repeat: no-repeat !important;
       background-size: contain !important;
       padding-bottom: 41px !important;
@@ -120,6 +125,11 @@ export default {
       }
       &.spice-islands {
         background-image: url('~assets/images/voyages/spice-islands/bg-intro.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
+      &.raja-ampat {
+        background-image: url('~assets/images/voyages/raja-ampat/bg-intro.svg?data'),
           linear-gradient(rgba(229,229,229,0.2),
           transparent, rgba(229,229,229,0.2));
       }
