@@ -21,9 +21,6 @@ export default {
   ** Nuxt target
   */
   target: 'static',
-  generate: {
-    fallback: 'sailing-soons/index.html'
-  },
   /*
   ** Headers of the page
   */
