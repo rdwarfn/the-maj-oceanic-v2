@@ -20,10 +20,10 @@ export default {
   /*
   ** Nuxt target
   */
-  // target: 'static',
-  // generate: {
-  //   fallback: 'sailing-soons/index.html'
-  // },
+  target: 'static',
+  generate: {
+    fallback: 'sailing-soons/index.html'
+  },
   /*
   ** Headers of the page
   */
@@ -159,18 +159,18 @@ export default {
       }
     },
 
-    extractCSS: true,
-    optimization: {
-      splitChunks: {
-        cacheGroups: {
-          styles: {
-            name: 'styles',
-            test: /\.(css|vue)$/,
-            chunks: 'all',
-            enforce: true
-          }
-        }
-      }
-    }
+    // extractCSS: true,
+    // optimization: {
+    //   splitChunks: {
+    //     cacheGroups: {
+    //       styles: {
+    //         name: 'styles',
+    //         test: /\.(css|vue)$/,
+    //         chunks: 'all',
+    //         enforce: true
+    //       }
+    //     }
+    //   }
+    // }
   }
 }
