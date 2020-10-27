@@ -37,3 +37,10 @@ exploration:
     - image: /media_root/activites-exploration-2.png
     - image: /media_root/activites-exploration-3.png
   reverse: false
+testimonies:
+  - name: Lauren Bullen
+    instagram:
+      username: gypsea_lust
+      link: https://www.instagram.com/gypsea_lust
+    image:
+    comment:

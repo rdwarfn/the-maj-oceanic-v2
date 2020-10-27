@@ -5,36 +5,6 @@ backend:
 media_folder: static/media_root
 
 collections:
-  - label: 'Articles'
-    name: 'articles'
-    format: 'json'
-    folder: 'content/articles'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
-      - { label: 'Description', name: 'description', widget: 'string' }
-      - { label: 'Body', name: 'body', widget: 'markdown' }
-
-  - label: 'Testimonies'
-    name: 'testimonies'
-    format: 'yml'
-    folder: 'content/testimonies'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    identifier_field: 'name'
-    fields:
-      - { label: 'Name', name: 'name' }
-      - label: 'Instagram'
-        name: 'instagram'
-        widget: 'object'
-        fields:
-          - { label: 'Username', name: 'username', widget: 'string' }
-          - { label: 'Link', name: 'link', widget: 'string', default: 'https://www.instagram.com/' }
-      - { label: 'Image', name: 'image', widget: 'image' }
-      - { label: 'Comment or Message', name: 'comment', widget: 'markdown' }
-
   - label: 'Navigation'
     name: 'navigation'
     description: 'Navigation menu'
@@ -302,14 +272,19 @@ collections:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'To', name: 'to', widget: 'string', hint: 'Button link.' }
-          - label: 'Testimonies'
-            name: 'testimonies_data'
-            widget: 'relation'
-            collection: 'testimonies'
-            value_field: '{{slug}}'
-            multiple: true
-            search_fields: ['name', 'instagram.username']
-            display_fileds: ['instagram.username', 'name']
+          - label: 'Section Testimonies'
+            name: 'testimonies'
+            widget: 'list'
+            fields:
+              - { label: 'Name', name: 'name' }
+              - label: 'Instagram'
+                name: 'instagram'
+                widget: 'object'
+                fields:
+                  - { label: 'Username', name: 'username', widget: 'string' }
+                  - { label: 'Link', name: 'link', widget: 'string', default: 'https://www.instagram.com/' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Comment or Message', name: 'comment', widget: 'markdown' }
           - label: 'Section Itineraries'
             name: 'itineraries'
             widget: 'object'
@@ -376,6 +351,19 @@ collections:
                 label_singular: 'Image'
                 field: { label: 'Image', name: 'image', widget: 'image'}
               - { label: 'Reverse', name: 'reverse', widget: 'boolean', default: false }
+          - label: 'Section Testimonies'
+            name: 'testimonies'
+            widget: 'list'
+            fields:
+              - { label: 'Name', name: 'name' }
+              - label: 'Instagram'
+                name: 'instagram'
+                widget: 'object'
+                fields:
+                  - { label: 'Username', name: 'username', widget: 'string' }
+                  - { label: 'Link', name: 'link', widget: 'string', default: 'https://www.instagram.com/' }
+              - { label: 'Image', name: 'image', widget: 'image' }
+              - { label: 'Comment or Message', name: 'comment', widget: 'markdown' }
 
       - label: 'Rates & Schedule Page'
         name: 'rates_and_schedule'
