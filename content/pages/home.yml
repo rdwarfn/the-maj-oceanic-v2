@@ -1,7 +1,9 @@
 hero:
-  heading: |
+  heading: |-
     The future of travel,
     on traditions of the past.
+
+    update
   videos:
     - type: video/mp4
       src: /media_root/video-hero-home.mp4
