@@ -31,9 +31,9 @@
     ></activites-carousel>
     <!-- end exploration -->
 
-    <!-- <section class="activites__testimonal">
-      <base-testimonal :data="data.testimonal" static-image />
-    </section> -->
+    <section class="activites__testimonal">
+      <base-testimonal :data="data.testimonies" />
+    </section>
   </article>
 </template>
 
@@ -118,6 +118,6 @@ $secondary: #EFE1DC;
 }
 
 section.activites-container {
-  margin-bottom: 150px !important;
+  @include poly-fluid-sizing ('margin-bottom', (768px:0px, 1440px:150px))
 }
 </style>

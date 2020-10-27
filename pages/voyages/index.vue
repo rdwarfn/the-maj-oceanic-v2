@@ -2,9 +2,9 @@
   <div id="voyages">
     <voyages-item v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
 
-    <!-- <section class="voyages__testimonal">
-      <base-testimonal :data="data.testimonal" static-image />
-    </section> -->
+    <section class="voyages__testimonal">
+      <base-testimonal :data="data.testimonies" />
+    </section>
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
       <base-carousel
@@ -12,12 +12,6 @@
         v-bind:data="[...data.itineraries]"
         button-text="Rates & Schedule"
       />
-    </v-container>
-
-    <v-container class="mx-auto">
-      <pre>
-        {{ data }}
-      </pre>
     </v-container>
   </div>
 </template>
