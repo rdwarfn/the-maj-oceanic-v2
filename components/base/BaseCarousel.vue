@@ -76,7 +76,7 @@
     </swiper>
 
     <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.description">
+      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.description"> test
       </v-card-text>
       <v-card-actions v-if="buttonText" class="pa-0 mt-4">
         <v-btn
@@ -285,7 +285,6 @@ export default {
     }
 
     &--card {
-      display: inline-block !important;
       z-index: 10 !important;
       box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.03) !important;
       border-radius: 2px;

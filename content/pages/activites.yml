@@ -1,7 +1,7 @@
 hero:
   heading: Activites
   image: /media_root/activites-hero.png
-  mobile_image: /media_root/activites-hero.png
+  mobile_image:
 intro:
   heading: So much to explore, so little time
   description: >

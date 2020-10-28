@@ -1,7 +1,7 @@
 hero:
   heading: Voyages
   image: /media_root/voyages-hero.png
-  mobile_image: /media_root/voyages-hero.png
+  mobile_image:
 voyages_items:
   - image: /media_root/voyages-item-komodo.png
     heading: Home of the mystical<br class='hidden-sm-and-up'/> Komodo Dragons
