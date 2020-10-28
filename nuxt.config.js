@@ -156,7 +156,7 @@ export default {
       }
     },
 
-    extractCSS: true,
+    // extractCSS: true,
     // optimization: {
     //   splitChunks: {
     //     cacheGroups: {

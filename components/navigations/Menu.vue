@@ -204,10 +204,9 @@ export default {
     }
   }
   ::v-deep .v-list-item__title, .v-list-group__items {
-    a {
-      font-family: 'Montserrat', sans-serif !important;
-      font-weight: 600 !important;
-    }
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
   }
   @media (max-width: 1362px) {
     .font-md-12 {
