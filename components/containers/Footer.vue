@@ -217,8 +217,6 @@ import {
   mdiYoutube
 } from '@mdi/js';
 export default {
-  name: 'Footer',
-
   data () {
     return {
       sosmed: [

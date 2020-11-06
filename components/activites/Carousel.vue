@@ -7,11 +7,11 @@
       class="swiper activites-swiper-mobile hidden-sm-and-up"
       :options="swiperMobileOptions"
     >
-      <swiper-slide v-for="(item, index2) in data.images" :key="index2">
+      <swiper-slide v-for="(item, index2) in data.gallery" :key="index2">
         <template>
           <v-img
-            :src="require(`@/assets/images/${item}`)"
-            :lazy-src="require(`@/assets/images/${item}`)"
+            :src="item.image"
+            :lazy-src="item.image"
             class="activites-image"
           >
             <template #placeholder>
@@ -24,8 +24,10 @@
       </swiper-slide>
     </swiper>
 
-    <div class="activites-description-mobile hidden-sm-and-up px-6 px-md-0 text-center">
-      {{ data.description }}
+    <div
+      class="activites-description-mobile hidden-sm-and-up px-6 px-md-0 text-center"
+      v-html="data.description"
+    >
     </div>
 
 
@@ -36,11 +38,11 @@
         :options="swiperOptions"
         :dir="data.reverse ? 'rtl' : 'ltr'"
       >
-        <swiper-slide v-for="(item, index2) in data.images" :key="index2">
+        <swiper-slide v-for="(item, index2) in data.gallery" :key="index2">
           <template>
             <v-img
-              :src="require(`@/assets/images/${item}`)"
-              :lazy-src="require(`@/assets/images/${item}`)"
+              :src="item.image"
+              :lazy-src="item.image"
               class="activites-image"
             >
               <template #placeholder>
@@ -58,7 +60,7 @@
         <div class="activites-heading font-weight-bold text-h4">
           {{ data.heading }}
         </div>
-        <p>{{ data.description }} </p>
+        <div v-html="data.description"></div>
       </v-card>
       <v-row no-gutters align="center" justify="space-between" class="activites-actions" :class="{reversed: data.reverse}">
         <v-col cols="auto">

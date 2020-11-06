@@ -1,13 +1,13 @@
 <template>
   <v-sheet class="testimonal" color="#EFE1DC">
-    <v-container class="py-0 px-6 px-md-0 mx-auto text-center" style="position: relative">
+    <v-container class="py-0 px-6 px-md-0 mx-auto text-center text-sm-left" style="position: relative">
       <!-- mobile -->
       <template>
         <div class="hidden-sm-and-up">
           <swiper ref="swiperMobile" class="swiper" :options="swiperOptionsMobile">
             <swiper-slide v-for="(obj, index) in data" :key="index" class="text-center">
               <img
-                :src="staticImage? require(`@/assets/images/${obj.image}`) : obj.image"
+                :src="obj.image"
                 class="testimonal--img"
               />
             </swiper-slide>
@@ -17,8 +17,8 @@
 
         <div class="testimonal--content-mobile mr-6 mr-sm-0 hidden-sm-and-up">
           <template>
-            <v-skeleton-loader v-if="!dataActive.description" class="mb-8" loading type="paragraph"></v-skeleton-loader>
-            <div v-else class="testimonal--description text--primary" v-html="dataActive.description"></div>
+            <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph"></v-skeleton-loader>
+            <div v-else class="testimonal--description text--primary" v-html="dataActive.comment"></div>
           </template>
 
           <template>
@@ -29,9 +29,9 @@
           </template>
 
           <template>
-            <v-skeleton-loader v-if="!dataActive.ig_username" loading type="text"></v-skeleton-loader>
-            <a v-else :href="dataActive.ig_link" target="blank">
-              <div class="font-weight-medium">({{ dataActive.ig_username }})</div>
+            <v-skeleton-loader v-if="!dataActive.instagram" loading type="text"></v-skeleton-loader>
+            <a v-else :href="dataActive.instagram.link" target="blank">
+              <div class="font-weight-medium">(@{{ dataActive.instagram.username }})</div>
             </a>
           </template>
         </div>
@@ -45,8 +45,8 @@
             <swiper ref="swiper" class="swiper" :options="swiperOptions">
               <swiper-slide v-for="(obj, index) in data" :key="index">
                 <v-img
-                  :src="staticImage? require(`@/assets/images/${obj.image}`) : obj.image"
-                  :lazy-src="staticImage? require(`@/assets/images/${obj.image}`) : obj.image"
+                  :src="obj.image"
+                  :lazy-src="obj.image"
                   class="testimonal--img"
                 ></v-img>
               </swiper-slide>
@@ -56,15 +56,15 @@
 
           <v-col cols="12" sm="5">
             <template>
-              <v-skeleton-loader v-if="!dataActive.description" class="mb-8" loading type="paragraph"></v-skeleton-loader>
-              <div v-else class="testimonal--description text--primary" v-html="dataActive.description"></div>
+              <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph"></v-skeleton-loader>
+              <div v-else class="testimonal--description text--primary" v-html="dataActive.comment"></div>
             </template>
 
             <template>
-              <v-skeleton-loader v-if="!dataActive.name && !dataActive.ig_link" loading type="text@2"></v-skeleton-loader>
-              <a v-else :href="dataActive.ig_link" target="blank">
+              <v-skeleton-loader v-if="!dataActive.instagram" loading type="text@2"></v-skeleton-loader>
+              <a v-else :href="dataActive.instagram.link" target="blank">
                 <strong>{{ dataActive.name }}</strong>
-                <span class="font-weight-medium">({{ dataActive.ig_username }})</span>
+                <span class="font-weight-medium">(@{{ dataActive.instagram.username }})</span>
               </a>
             </template>
           </v-col>
@@ -109,7 +109,6 @@ export default {
   components: { Swiper, SwiperSlide },
 
   props: {
-    staticImage: { type: Boolean, default: true },
     data: { type: Array, required: true }
   },
 

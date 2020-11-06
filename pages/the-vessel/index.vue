@@ -1,42 +1,66 @@
 <template>
   <div id="the-vessel">
-    <intro
-      class="the-veseel--intro px-0"
-      v-bind:data="{
-        heading: data.heading,
-        id_youtube: 'TnUCHmKvu4Q',
-        description: data.description
-      }"
-      image-class="order-last px-6 px-md-0"
-      description-class="text-center"
-    />
+    <template>
+      <vessel-intro
+        class="the-veseel--intro px-0"
+        v-bind:data="data.intro"
+        image-class="order-last px-6 px-md-0"
+        description-class="text-center"
+      ></vessel-intro>
+    </template>
 
-    <the-cabins v-bind:data="data.card_three_image" />
+    <template>
+      <div v-if="!data.suites_and_staterooms" class="text-center container">
+        <v-skeleton-loader type="card" :loading="!data.suites_and_staterooms" />
+      </div>
+      <vessel-suites v-else v-bind:data="data.suites_and_staterooms"></vessel-suites>
+    </template>
 
-    <spesification v-bind:data="data.carousel_card" />
+    <template>
+      <div v-if="!data.the_decks" class="text-center container">
+        <v-skeleton-loader type="card" :loading="!data.the_decks" />
+      </div>
+      <vessel-decks v-else v-bind:data="data.the_decks"></vessel-decks>
+    </template>
 
-    <the-teams v-bind:data="data.teams" />
+    <template>
+      <div v-if="!data.teams" class="text-center container">
+        <v-skeleton-loader type="card" :loading="!data.teams" />
+      </div>
+      <vessel-teams v-else v-bind:data="data.teams"></vessel-teams>
+    </template>
 
     <v-container class="sustainability py-0 px-6 px-md-0" tag="section">
-      <base-card-text-image
-        v-bind:data="data.card_text_image[0]"
-        button-text="Learn More"
-        static-image
-        content-right
-        reverse
-      />
+      <template>
+        <div v-if="!data.sustainability" class="text-center container">
+          <v-skeleton-loader type="card" :loading="!data.sustainability" />
+        </div>
+        <vessel-sustainability
+          v-else
+          v-bind:data="data.sustainability"
+          button-text="Learn More"
+          content-right
+          reverse
+        ></vessel-sustainability>
+      </template>
     </v-container>
   </div>
 </template>
 
 <script>
-// import { getIdFromURL } from 'vue-youtube-embed';
+import _ from 'lodash';
+import vesselIntro from '@/components/Intro.vue';
+import vesselSuites from '@/components/vessel/VesselSuites';
+import vesselDecks from '@/components/vessel/VesselDecks.vue';
+import vesselTeams from '@/components/vessel/VesselTeams.vue';
+import vesselSustainability from '@/components/base/BaseCardTextImage.vue';
+
 const components = {
-  Intro: () => import('@/components/Intro.vue'),
-  TheCabins: () => import('@/components/TheCabinsTheVessel.vue'),
-  Spesification: () => import('@/components/SpesificationTheVessel.vue'),
-  TheTeams: () => import('@/components/TheTeamsTheVessel.vue'),
-  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  vesselIntro,
+  vesselSuites,
+  vesselDecks,
+  vesselTeams,
+  vesselSustainability,
 }
 export default {
   layout: 'main',
@@ -55,16 +79,61 @@ export default {
     ]
   },
 
+  head() {
+    return {
+      title: this.data.header && this.data.header.title || 'The MAJ Oceanic',
+      meta: [
+        {
+          hid: this.meta_primary.title.hid,
+          name: this.meta_primary.title.name,
+          content: this.meta_primary.title.content
+        },
+        {
+          hid: this.meta_primary.description.hid,
+          name: this.meta_primary.description.name,
+          content: this.meta_primary.description.content
+        },
+        {
+          hid: this.meta_primary.description.hid,
+          name: this.meta_primary.description.name,
+          content: this.meta_primary.description.content
+        },
+        {
+          hid: this.meta_primary.keywords.hid,
+          name: this.meta_primary.keywords.name,
+          content: _.join(this.meta_primary.keywords, ', ')
+        },
+        _.assign({}, this.meta_facebook),
+        _.assign({}, this.meta_twitter)
+      ]
+    }
+  },
+
   components,
 
   async asyncData ({ $content }) {
     const data = await $content('pages/vessel').fetch();
-    return { data }
+    console.log(data);
+    return {
+      data
+    }
   },
 
   mounted () {
     if (this.$data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+    }
+  },
+
+  computed: {
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 

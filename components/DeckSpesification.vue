@@ -3,12 +3,12 @@
     <v-row no-gutters align="center" justify="center" class="container mx-auto py-0 px-6 px-md-0">
       <v-col cols="12" class="pb-0">
         <div class="deck-spesification--item-heading">
-          {{dataActive.name}}
+          {{ dataActive.name }}
         </div>
       </v-col>
       <v-col cols="12">
         <div class="deck-spesification--item-paragraph">
-          {{dataActive.text}}
+          {{ dataActive.description }}
         </div>
       </v-col>
     </v-row>
@@ -16,20 +16,12 @@
     <swiper ref="swiper" class="swiper static" v-bind:options="swiperOptions">
       <swiper-slide v-for="(item, index) in data" v-bind:key="index">
         <v-img
-          v-bind:src="staticImage
-            ? require('~/assets/images/' + item.image)
-            : item.image"
-          v-bind:lazy-src="staticImage
-          ? require('~/assets/images/' + item.image)
-          : item.image"
+          v-bind:src="item.image"
+          v-bind:lazy-src="item.image"
           class="hidden-xs-only deck-spesification--item-img mx-auto"></v-img>
         <v-img
-          :src="staticImage
-            ? require('~/assets/images/' + item.mobile_image)
-            : item.mobile_image"
-          :lazy-src="staticImage
-            ? require('~/assets/images/' + item.mobile_image)
-            : item.mobile_image"
+          :src="item.mobile_image"
+          :lazy-src="item.mobile_image"
           class="hidden-sm-and-up mx-auto"
           max-width="150"
           height="502px"
@@ -54,7 +46,6 @@ import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
 export default {
   props: {
-    staticImage: { type: Boolean },
     data: { type: Array }
   },
 

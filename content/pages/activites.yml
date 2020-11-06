@@ -1,0 +1,47 @@
+hero:
+  heading: Activites
+  image: /media_root/activites-hero.png
+  mobile_image:
+intro:
+  heading: So much to explore, so little time
+  description: >
+    Whether you're looking for stillness or some thrills, reconnect with your true rhythm with a wide array of choices for exploration, entertainment, and relaxation.
+watersports:
+  caption: watersports
+  heading: Ride the waves
+  description: >
+    Snorkel in some of the densest and most diverse marine habitats in the world. Kayak and paddle into the sunset. Ride your jet-ski aimlessly and then stop by a remote, pristine beach to take a breather by simply watching the time go by.
+  gallery:
+    - image: /media_root/activites-watersports-1.png
+    - image: /media_root/activites-watersports-2.png
+    - image: /media_root/activites-watersports-3.png
+  reverse: false
+fitness_wellness:
+  caption: fitness & wellness
+  heading: Pastimes for Downtime
+  description: >
+    Unwind and take the stress away without having to leave the boat. Relax with locally-inspired spa treatments. Practice yoga to the soothing sound of ocean waves. Experience the one-of-a-kind equatorial golf on the top deck of the ship, with the ocean as your fairway. The game's special biodegradable balls contain fish food, improving marine sustainability and biodiversity.
+  gallery:
+    - image: /media_root/activites-fitness-wellness-1.png
+    - image: /media_root/activites-fitness-wellness-2.png
+    - image: /media_root/activites-fitness-wellness-3.png
+  reverse: true
+exploration:
+  caption: exploration
+  heading: >
+    Port of call: adventure
+  description: >
+    Immerse yourself in authentic and engaging travel experiences designed to deepen your understanding of the spots you visit. Dramatic landscape of fascinating volcanic structures, pink sand beaches and underwater canyons full of soft corals is a wonderful contrast to be included in your cruise itinerary.
+  gallery:
+    - image: /media_root/activites-exploration-1.png
+    - image: /media_root/activites-exploration-2.png
+    - image: /media_root/activites-exploration-3.png
+  reverse: false
+testimonies:
+  - name: Lauren Bullen
+    instagram:
+      username: gypsea_lust
+      link: https://www.instagram.com/gypsea_lust
+    image: /media_root/activites-testimoni-lauren-bullen.png
+    comment: >
+      Moody sunset hikes to the top of Padar Island, I’ve been up here many times & it was crazy to see it so quiet 😯 over the coming months we plan to see more of Indonesia & support local tourism as much as we can 🙏🏼

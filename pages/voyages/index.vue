@@ -1,19 +1,16 @@
 <template>
   <div id="voyages">
-    <template v-for="(item, index) in data.voyages">
-      <voyages-item v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
-    </template>
+    <voyages-item v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
 
     <section class="voyages__testimonal">
-      <base-testimonal :data="data.testimonal" static-image />
+      <base-testimonal :data="data.testimonies" />
     </section>
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
       <base-carousel
         card-mobile-class="mt-2 transparent"
-        v-bind:data="data.carousel_card"
+        v-bind:data="[...data.itineraries]"
         button-text="Rates & Schedule"
-        static-image
       />
     </v-container>
   </div>
@@ -21,9 +18,9 @@
 
 <script>
 const components = {
-  VoyagesItem: () => import('@/components/VoyagesItem.vue'),
-  BaseCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  BaseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
+  voyagesItem: () => import('@/components/voyages/VoyagesItem'),
+  baseCarousel: () => import('@/components/base/BaseCarousel.vue'),
+  baseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
 }
 export default {
   layout: 'main',

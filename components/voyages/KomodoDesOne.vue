@@ -1,13 +1,21 @@
 <template>
-  <v-sheet tag="section" class="komodo--des-one__wrap">
+  <v-sheet
+    tag="section"
+    class="komodo--des-one__wrap"
+    :class="{
+      komodo: this.$route.name.includes('komodo'),
+      'spice-islands': this.$route.name.includes('spice-islands'),
+      'raja-ampat': this.$route.name.includes('raja-ampat'),
+    }"
+  >
     <v-container class="py-0 px-6 px-md-0">
       <v-row no-gutters>
         <v-col cols="12" sm="6" class="text-center text-sm-left">
           <v-card flat tile class="komodo--des-one_card">
 
             <v-img
-              :src="staticImage ? require(`@/assets/images/${data.image}`) : data.image"
-              :lazy-src="staticImage ? require(`@/assets/images/${data.image}`) : data.image"
+              :src="data.image"
+              :lazy-src="data.image"
               class="komodo--des-one_img"
             >
               <template v-slot:placeholder>
@@ -28,7 +36,7 @@
                 <v-btn
                   tile
                   nuxt
-                  to="#"
+                  :to="data.to"
                   outlined
                   depressed
                   color="primary"
@@ -49,10 +57,10 @@ export default {
   props: {
     data: {
       image: { type: String, required: true },
-      description: { type: String, required: true }
+      description: { type: String, required: true },
+      to: { type: String, required: true }
     },
     buttonText: { type: String, default: 'Book a trip'},
-    staticImage: { type: Boolean, default: false }
   }
 }
 </script>
@@ -70,9 +78,21 @@ export default {
 
   @media #{map-get($display-breakpoints, 'xs-only')} {
     &__wrap {
-      background-image: url('~assets/images/voyages/komodo/bg-intro-komodo-mobile.png'),
+      &.komodo {
+        background-image: url('~assets/images/voyages/komodo/bg-intro-komodo-mobile.png'),
         linear-gradient(rgba(229,229,229,0.2),
         transparent, rgba(229,229,229,0.2));
+      };
+      &.spice-islands {
+        background-image: url('~assets/images/voyages/spice-islands/bg-intro-mobile.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
+      &.raja-ampat {
+        background-image: url('~assets/images/voyages/raja-ampat/bg-intro-mobile.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
       background-repeat: no-repeat !important;
       background-size: contain !important;
       padding-bottom: 41px !important;
@@ -87,7 +107,9 @@ export default {
       height: 348px !important;
     }
     &__content {
-      padding: 30px 17px 0 !important;
+      @media #{map-get($display-breakpoints, 'sm-and-up')} {
+        padding: 30px 17px 0 !important;
+      }
     }
     &_text {
       margin-bottom: 64px !important;
@@ -96,9 +118,21 @@ export default {
 
   @media #{map-get($display-breakpoints, 'sm-and-up')} {
     &__wrap {
-      background-image: url('~assets/images/voyages/komodo/bg-intro-komodo.svg?data'),
-        linear-gradient(rgba(229,229,229,0.2),
-        transparent, rgba(229,229,229,0.2));
+      &.komodo {
+        background-image: url('~assets/images/voyages/komodo/bg-intro-komodo.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
+      &.spice-islands {
+        background-image: url('~assets/images/voyages/spice-islands/bg-intro.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
+      &.raja-ampat {
+        background-image: url('~assets/images/voyages/raja-ampat/bg-intro.svg?data'),
+          linear-gradient(rgba(229,229,229,0.2),
+          transparent, rgba(229,229,229,0.2));
+      }
       // background-position: center !important;
       background-repeat: no-repeat !important;
       background-size: contain !important;

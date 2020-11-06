@@ -64,8 +64,6 @@ const components = {
   SwiperSlide
 }
 export default {
-  name: 'CarouselThree',
-
   components,
 
   props: {

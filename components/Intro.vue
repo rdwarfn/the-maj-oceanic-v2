@@ -9,7 +9,6 @@
       v-if="data.image"
       class="intro--image"
       v-bind:class="imageClass"
-      static-image
       :data="data.image"
     />
 
@@ -18,15 +17,14 @@
     <div v-else class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
     </div>
     <client-only>
-      <v-container class="mx-auto pa-0" v-if="data.id_youtube">
-          <!-- :player-width="youtubeWidth"
-          :player-height="youtubeHeight" -->
+      <v-container class="mx-auto pa-0" v-if="data.youtube_id">
         <youtube
           class="d-flex justify-center"
-          :video-id="data.id_youtube"
+          :video-id="data.youtube_id"
           :player-vars="{ autoplay: 1 }"
           @ready="ready"
-          @playing="playing"></youtube>
+          @playing="playing"
+        ></youtube>
       </v-container>
     </client-only>
   </v-container>

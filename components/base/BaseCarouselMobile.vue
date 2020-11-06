@@ -64,7 +64,7 @@
     </swiper>
     <!-- </client-only> -->
     <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.text">
+      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive[returnTextData]">
       </v-card-text>
       <v-card-actions v-if="buttonText" class="pa-0 mt-4">
         <v-btn
@@ -88,8 +88,6 @@ const components = {
 }
 
 export default {
-  name: 'Carousel',
-
   props: {
     data: { type: Array },
     staticImage: { type: Boolean, default: false },
@@ -104,6 +102,7 @@ export default {
     cardTextMobileClass: { type: String },
     headingClass: { type: String },
     textClass: { type: String },
+    returnTextData: { type: String, default: 'text' },
     buttonClass: { type: String },
     buttonText: { type: String },
     buttonProps: { type: Object },

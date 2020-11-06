@@ -1,0 +1,22 @@
+<template>
+  <v-container class="mx-auto px-6 px-md-0">
+    <nuxt-content :document="data" />
+    {{ data }}
+  </v-container>
+</template>
+
+<script>
+export default {
+  async asyncData ({ $content }) {
+    const data = await $content('navigation/menu').fetch()
+
+    return {
+      data
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

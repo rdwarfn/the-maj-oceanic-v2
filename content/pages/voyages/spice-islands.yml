@@ -1,0 +1,25 @@
+hero:
+  heading: Spice Islands
+  image: /media_root/spice-islands-hero.png
+  mobile_image: /media_root/spice-islands-hero-mobile.png
+des_1:
+  image: /media_root/spice-islands-des-1.png
+  description: >
+    Cruise the Spice Islands, also referred to as the Banda Islands, to discover the rich colonial history, untouched coral reefs and pristine white sand beaches. This destination is as remote as it is beautiful.
+  to: /contact-us
+des_2:
+  heading: The Last Paradise
+  image: /media_root/spice-islands-des-2.png
+  description: >
+    The Spice Islands were once the center of colonial crossfire as the European powers fought for supremacy over the region’s supply of nutmeg, cloves, and mace. This legacy has left several impressive buildings like the governor’s house on Banda Neira and a few forts which are well worth visiting.
+des_3:
+  images:
+    - image: /media_root/spice-islands-des-3-1.png
+    - image: /media_root/spice-islands-des-3-2.png
+    - image: /media_root/spice-islands-des-3-3.png
+  mobile_images:
+    - image: /media_root/spice-islands-des-3-1-mobile.png
+    - image: /media_root/spice-islands-des-3-2.png
+    - image: /media_root/spice-islands-des-3-3.png
+  description: >
+    Take a trip to Pulau Banda Neira and Pulau Banda Besar form a beautiful crescent around a picture book volcano called Gunung Api. Diving on the slopes of this volcano is particularly exceptional if you consider that an eruption in 1988 devasted the coral here and within a short space of time has sprung back up again. Scientists think this is something to do with the lava but are still to figure out precisely what.<br/><br/>Chartering a yacht in the Banda Islands is the best way to get the most out of your trip because this region is all about extensive unspoiled coral reefs and their attendant marine species. Discover gorgeous Gregorian fans, chimneys and swim-throughs, giant pelagics, sharks, turtles, manta rays, and a myriad of macro life.

@@ -8,10 +8,15 @@
         <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
           {{ data.heading }}
         </v-card-title>
+        <v-skeleton-loader
+          v-if="!data.image"
+          :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
+          type="image"
+        ></v-skeleton-loader>
         <v-img
           v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
-          v-bind:src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
-          v-bind:lazy-src="staticImage? require(`~/assets/images/${data.image}`) : data.image"
+          v-bind:src="data.image"
+          v-bind:lazy-src="data.image"
           v-bind:aspect-ratio="imgAspectRatio"
         >
           <template v-slot:placeholder>
@@ -25,7 +30,7 @@
           </template>
         </v-img>
         <v-card-text class="hidden-sm-and-up px-0 mt-5 text-center">
-          {{ data.text }}
+          {{ data.description }}
         </v-card-text>
         <v-card-actions
           v-if="buttonText"
@@ -55,7 +60,7 @@
 
           <v-card-text class="px-0"
             v-bind:class="contentRight ? 'text-right' : null">
-            {{ data.text }}
+            {{ data.description }}
             <ul v-if="data.list">
               <li v-for="(item, index) in data.list.split('\n')"
                 v-bind:key="index"
@@ -91,8 +96,6 @@ const components = {
   tButton
 }
 export default {
-  name: 'CardTextImage',
-
   props: {
     data: { type: Object },
     cardImgClass: { type: String },
@@ -102,11 +105,11 @@ export default {
     buttonText: { type: String },
     buttonClass: { type: String },
     buttonContainerClass: { type: String },
+    returnTextData: { type: String, default: 'text' },
     reverse: { type: Boolean },
     imgAspectRatio: {
       type: [String, Number]
-    },
-    staticImage: { type: Boolean }
+    }
   },
 
   components,

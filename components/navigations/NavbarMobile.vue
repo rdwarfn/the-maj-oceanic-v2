@@ -55,9 +55,6 @@
 import tBtn from '@/components/base/BaseButton.vue';
 export default {
   inheritAttrs: false,
-
-  name: 'NavbarMobile',
-
   props: {
     isDrawerOpen: {
       type: Boolean,

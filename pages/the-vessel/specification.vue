@@ -2,28 +2,25 @@
   <div id="spesification">
     <v-container tag="section" class="spesific--master py-0 px-6 px-md-0">
       <base-card-text-image
-        v-bind:data="data.card_text_image[0]"
+        v-bind:data="data.decks_technical_detail"
         static-image
       />
     </v-container>
 
-    <deck-spesification
-      v-bind:data="data.decks_spesification"
-      static-image
-    />
+    <deck-spesification v-bind:data="data.deck_previews" />
 
     <v-container class="pa-0">
-      <base-tables />
+      <base-tables :data="data.table_specification" />
     </v-container>
   </div>
 </template>
 
 <script>
 const components = {
-  BaseTabs: () => import('@/components/base/BaseTabs.vue'),
-  BaseTables: () => import('@/components/base/BaseTables.vue'),
-  BaseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  DeckSpesification: () => import('@/components/DeckSpesification.vue')
+  baseTabs: () => import('@/components/base/BaseTabs.vue'),
+  baseTables: () => import('@/components/base/BaseTables.vue'),
+  baseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
+  deckSpesification: () => import('@/components/DeckSpesification.vue')
 }
 
 export default {
@@ -48,13 +45,14 @@ export default {
     ]
   },
 
-  name: 'specification',
-
   components,
 
   async asyncData ({ $content }) {
-    const data = await $content ('pages/spesification').fetch();
-    return { data }
+    const data = await $content ('pages/specification').fetch();
+
+    return {
+      data
+    }
   },
 
   mounted () {

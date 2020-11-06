@@ -4,8 +4,8 @@
       <swiper v-if="data.mobile_images" ref="swiper" class="swiper" :options="swiperOptions">
         <swiper-slide v-for="(d, index) in data.mobile_images" :key="index">
           <v-img
-            :src="staticImage ? require(`@/assets/images/${d}`) : d"
-            :lazy-src="staticImage ? require(`@/assets/images/${d}`) : d"
+            :src="d.image"
+            :lazy-src="d.image"
             class="swiper-komodo-mobile-1224--image-mobile"
           >
             <template v-slot:placeholder>

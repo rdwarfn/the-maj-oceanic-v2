@@ -2,30 +2,49 @@
   <article id="activites">
     <v-container tag="section" class="mx-auto px-6 px-md-0 mb-15">
       <div class="intro--head font-weight-bold text-center mx-auto">
-        {{ data.introduction.heading }}
+        {{ data.intro.heading }}
       </div>
-      <p class="intro--paragraph text-center mx-auto"> {{ data.introduction.description }} </p>
+      <p
+        class="intro--paragraph text-center mx-auto"
+        v-html="data.intro.description"
+      ></p>
     </v-container>
 
-    <template v-for="(card, index) in data.cards">
-      <cards class="card-section" :data="card" :key="index" />
-    </template>
+    <!-- watersports -->
+    <activites-carousel
+      :data="data.watersports"
+      class="watersports-section"
+    ></activites-carousel>
+    <!-- end watersports -->
+
+    <!-- fitness_wellness -->
+    <activites-carousel
+      :data="data.fitness_wellness"
+      class="fitness_wellness-section"
+    ></activites-carousel>
+    <!-- end fitness_wellness -->
+
+    <!-- exploration -->
+    <activites-carousel
+      :data="data.exploration"
+      class="exploration-section"
+    ></activites-carousel>
+    <!-- end exploration -->
 
     <section class="activites__testimonal">
-      <BaseTestimonal :data="data.testimonal" static-image />
+      <base-testimonal :data="data.testimonies" />
     </section>
   </article>
 </template>
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import Cards from '@/components/activites/Carousel.vue';
-import BaseTestimonal from '@/components/base/BaseTestimonal.vue';
+import activitesCarousel from '@/components/activites/Carousel.vue';
+import baseTestimonal from '@/components/base/BaseTestimonal.vue';
 
 const components = {
-  Spesification: () => import('@/components/SpesificationTheCabin.vue'),
-  Cards,
-  BaseTestimonal
+  activitesCarousel,
+  baseTestimonal
 };
 
 export default {
@@ -49,7 +68,10 @@ export default {
 
   async asyncData ({ $content }) {
     const data = await $content ('pages/activites').fetch();
-    return { data }
+
+    return {
+      data
+    }
   },
 
   mounted () {
@@ -96,6 +118,6 @@ $secondary: #EFE1DC;
 }
 
 section.activites-container {
-  margin-bottom: 150px !important;
+  @include poly-fluid-sizing ('margin-bottom', (768px:0px, 1440px:150px))
 }
 </style>

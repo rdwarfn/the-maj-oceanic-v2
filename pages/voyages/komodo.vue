@@ -1,13 +1,12 @@
 <template>
   <div id="voyages-komodo">
-    <v-progress-circular v-if="$fetchState.pending" indeterminate color="primary" class="mt-16"></v-progress-circular>
-    <template v-else>
+    <template>
       <!-- section des 1 -->
-      <komodo-des-one :data="data.des_1" static-image />
+      <komodo-des-one :data="data.des_1" />
       <!-- end section des 1 -->
 
       <!-- section des 2 -->
-      <komodo-des-two :data="data.des_2" static-image />
+      <komodo-des-two :data="data.des_2" />
       <!-- end section des 2 -->
 
       <!-- section des 3 -->
@@ -15,11 +14,11 @@
         <swiper-komodo-mobile :data="data.des_3" />
       </v-sheet>
 
-      <komodo-des-three class="hidden-xs-only" :data="data.des_3" static-image />
+      <komodo-des-three class="hidden-xs-only" :data="data.des_3" />
       <!-- end section des 3 -->
 
       <!-- section des 4 -->
-      <komodo-des-four v-if="data.des_4" :data="data.des_4" static-image />
+      <komodo-des-four v-if="data.des_4" :data="data.des_4" />
       <!-- end section des 4 -->
     </template>
   </div>
@@ -67,21 +66,20 @@ export default {
     staticImage: { type: Boolean, default: true }
   },
 
-  data() {
-    return  {
-      data: {}
+  async asyncData({ $content }) {
+    const data = await $content(`pages/voyages/komodo`).fetch();
+
+    return {
+      data
     }
   },
 
-  async fetch() {
-    const response = await this.$content(`pages/voyages/komodo`).fetch();
-    this.data = _.assign({}, response);
-  },
-
-  watch: {
-    data (val) {
-      this.addHeros({ page_key: this.$route.name, data: this.data.hero });
-    }
+  mounted () {
+    this.$nextTick(() => {
+      if (this.$data.data && this.$data.data.hero) {
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      }
+    })
   },
 
   methods: {

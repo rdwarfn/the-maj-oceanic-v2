@@ -13,15 +13,15 @@
         {{ dataActive.heading }}
       </div>
     </v-card-title>
-    <!-- <client-only> -->
+
     <swiper
       ref="swiper"
       class="swiper"
       v-bind:options="swiperOption"
     >
       <swiper-slide
-        v-for="item in data"
-        v-bind:key="item.id"
+        v-for="(item, index) in data"
+        v-bind:key="index"
       >
         <template>
           <v-skeleton-loader
@@ -31,12 +31,8 @@
           ></v-skeleton-loader>
           <v-img
             v-else mx-auto
-            :src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            :lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
+            :src="item.image"
+            :lazy-src="item.image"
             class="__carousel--img mx-auto mx-sm-0"
             :class="cardImageClass"
           >
@@ -51,8 +47,6 @@
           </template>
           </v-img>
         </template>
-        <!-- <client-only> -->
-        <!-- </client-only> -->
       </swiper-slide>
       <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
       <template v-if="data && data.length > 1">
@@ -80,9 +74,9 @@
         </v-btn>
       </template>
     </swiper>
-    <!-- </client-only> -->
+
     <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.text">
+      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.description"> test
       </v-card-text>
       <v-card-actions v-if="buttonText" class="pa-0 mt-4">
         <v-btn
@@ -120,13 +114,8 @@
       <v-card-text
         class="text--primary d-block px-0"
         :class="textClass"
-        v-html="dataActive.text"
+        v-html="dataActive.description"
       >
-        <!-- <ul class="__carousel--card-list" v-if="dataActive.list">
-          <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
-            {{i}}
-          </li>
-        </ul> -->
       </v-card-text>
 
       <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
@@ -154,10 +143,9 @@ const components = {
 }
 
 export default {
-  name: 'Carousel',
 
   props: {
-    data: { type: Array },
+    data: { type: [Array, Object] },
     staticImage: { type: Boolean, default: false },
     maxHeight: { type: String},
     cardClass: { type: String },
@@ -173,7 +161,8 @@ export default {
     buttonClass: { type: String },
     buttonText: { type: String },
     buttonProps: { type: Object },
-    reverse: { type: Boolean }
+    reverse: { type: Boolean },
+    returnTextData: { type: String, default: 'text' },
   },
 
   components,
@@ -296,7 +285,6 @@ export default {
     }
 
     &--card {
-      display: inline-block !important;
       z-index: 10 !important;
       box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.03) !important;
       border-radius: 2px;

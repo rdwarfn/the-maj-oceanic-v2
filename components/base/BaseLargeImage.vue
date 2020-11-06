@@ -4,8 +4,8 @@
     </v-skeleton-loader>
     <v-img
       v-else
-      :src="staticImage ? require(`~/assets/images/${data}`) : data"
-      :lazy-src="staticImage ? require(`~/assets/images/${data}`) : data"
+      :src="data"
+      :lazy-src="data"
       :aspect-ratio="16/9"
       max-height="460"
     >
@@ -27,8 +27,6 @@
 
 <script>
 export default {
-  name: 'largeImage',
-
   props: {
     data: {
       type: String,

@@ -20,8 +20,6 @@
 
 <script>
 export default {
-  name: 'Heading',
-
   props: {
     data: {
       type: Object,
