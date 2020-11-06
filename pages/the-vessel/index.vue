@@ -48,7 +48,7 @@
 </template>
 
 <script>
-// import { getIdFromURL } from 'vue-youtube-embed';
+import _ from 'lodash';
 import vesselIntro from '@/components/Intro.vue';
 import vesselSuites from '@/components/vessel/VesselSuites';
 import vesselDecks from '@/components/vessel/VesselDecks.vue';
@@ -79,11 +79,22 @@ export default {
     ]
   },
 
+  head() {
+    return {
+      title: this.data.header.title && this.data.header.title || 'The MAJ Oceanic',
+      meta: [
+        _.assign({}, this.meta_primary),
+        _.assign({}, this.meta_facebook),
+        _.assign({}, this.meta_twitter)
+      ]
+    }
+  },
+
   components,
 
   async asyncData ({ $content }) {
     const data = await $content('pages/vessel').fetch();
-
+    console.log(data);
     return {
       data
     }
@@ -92,6 +103,18 @@ export default {
   mounted () {
     if (this.$data && this.$data.data.hero) {
       this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+    }
+  },
+
+  computed: {
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 

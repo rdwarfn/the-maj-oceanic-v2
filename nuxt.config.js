@@ -1,5 +1,4 @@
 import webpack from 'webpack';
-const path = require('path');
 export default {
   loading: {
     color: '#208CB2',
@@ -31,7 +30,7 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
+      { hid: 'robots', name: 'robots', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
       { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#ffffff' },
       { hid: 'msapplication-TileImage', name: 'msapplication-TileImage', content: '/the-maj-oceanic--ico/ms-icon-144x144.png' }
     ],
@@ -49,7 +48,6 @@ export default {
       { rel: 'apple-touch-icon', sizes: '144x144', href: '/the-maj-oceanic--ico/apple-icon-144x144.png' },
       { rel: 'apple-touch-icon', sizes: '152x152', href: '/the-maj-oceanic--ico/apple-icon-152x152.png' },
       { rel: 'apple-touch-icon', sizes: '180x180', href: '/the-maj-oceanic--ico/apple-icon-180x180.png' },
-      // { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Domine&family=Montserrat:wght@400;500;600;700&family=PT+Sans&display=swap' }
     ],
     script: [
       { type: 'text/javascript', src: '/js/instafeed.min.js' }

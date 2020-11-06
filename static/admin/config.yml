@@ -39,6 +39,108 @@ collections:
         name: 'home'
         file: 'content/pages/home.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -114,6 +216,108 @@ collections:
         name: 'vessel'
         file: 'content/pages/vessel.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -181,6 +385,108 @@ collections:
         name: 'suites-and-staterooms'
         file: 'content/pages/suites-and-staterooms.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -256,6 +562,108 @@ collections:
         name: 'voyages'
         file: 'content/pages/voyages/index.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -299,6 +707,108 @@ collections:
         name: 'activites'
         file: 'content/pages/activites.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -369,6 +879,108 @@ collections:
         name: 'rates_and_schedule'
         file: 'content/pages/rates-and-schedule.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
@@ -440,6 +1052,108 @@ collections:
         name: 'specification'
         file: 'content/pages/specification.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -484,6 +1198,108 @@ collections:
         name: 'komodo'
         file: 'content/pages/voyages/komodo.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -529,6 +1345,108 @@ collections:
         name: 'raja-ampat'
         file: 'content/pages/voyages/raja-ampat.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
@@ -568,6 +1486,108 @@ collections:
         name: 'spice-islands'
         file: 'content/pages/voyages/spice-islands.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'obj'
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'list'
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'twitter_meta'
+                    widget: 'object'
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'string' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
