@@ -68,7 +68,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -245,7 +252,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -414,7 +428,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -591,7 +612,15 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
+
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -736,7 +765,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -908,7 +944,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1081,7 +1124,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1227,7 +1277,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1374,7 +1431,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1515,7 +1579,14 @@ collections:
                           - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Keywords'
                         name: 'keywords'
-                        widget: 'list'
+                        widget: 'object'
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
+                          - label: 'Content'
+                            name: 'content'
+                            widget: 'list'
+                            default: [""]
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'

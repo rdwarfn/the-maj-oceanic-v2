@@ -83,7 +83,26 @@ export default {
     return {
       title: this.data.header && this.data.header.title || 'The MAJ Oceanic',
       meta: [
-        _.assign({}, this.meta_primary),
+        {
+          hid: this.meta_primary.title.hid,
+          name: this.meta_primary.title.name,
+          content: this.meta_primary.title.content
+        },
+        {
+          hid: this.meta_primary.description.hid,
+          name: this.meta_primary.description.name,
+          content: this.meta_primary.description.content
+        },
+        {
+          hid: this.meta_primary.description.hid,
+          name: this.meta_primary.description.name,
+          content: this.meta_primary.description.content
+        },
+        {
+          hid: this.meta_primary.keywords.hid,
+          name: this.meta_primary.keywords.name,
+          content: _.join(this.meta_primary.keywords, ', ')
+        },
         _.assign({}, this.meta_facebook),
         _.assign({}, this.meta_twitter)
       ]
