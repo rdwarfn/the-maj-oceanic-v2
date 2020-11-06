@@ -72,7 +72,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -84,7 +84,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -92,7 +92,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -100,7 +100,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -120,7 +120,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -128,7 +128,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -253,7 +253,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -265,7 +265,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -273,7 +273,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -281,7 +281,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -301,7 +301,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -309,7 +309,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -426,7 +426,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -438,7 +438,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -446,7 +446,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -454,7 +454,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -474,7 +474,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -482,7 +482,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -607,7 +607,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
 
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
@@ -620,7 +620,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -628,7 +628,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -636,7 +636,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -656,7 +656,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -664,7 +664,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -757,7 +757,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -769,7 +769,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -777,7 +777,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -785,7 +785,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -805,7 +805,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -813,7 +813,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -933,7 +933,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -945,7 +945,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -953,7 +953,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -961,7 +961,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -981,7 +981,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -989,7 +989,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1110,7 +1110,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1122,7 +1122,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1130,7 +1130,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1138,7 +1138,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -1158,7 +1158,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1166,7 +1166,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1260,7 +1260,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1272,7 +1272,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1280,7 +1280,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1288,7 +1288,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -1308,7 +1308,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1316,7 +1316,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1411,7 +1411,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1423,7 +1423,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1431,7 +1431,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1439,7 +1439,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -1459,7 +1459,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1467,7 +1467,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1556,7 +1556,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1568,7 +1568,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1576,7 +1576,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
@@ -1584,7 +1584,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'og:description' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'og:description' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'og:description' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Image Meta'
                         name: 'image'
                         widget: 'object'
@@ -1604,7 +1604,7 @@ collections:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:url' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:url' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Title Meta'
                         name: 'title'
                         widget: 'object'
@@ -1612,7 +1612,7 @@ collections:
                           - { label: 'HID', name: 'hide', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
-                          - { label: 'Content', name: 'content', widget: 'string' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
                       - label: 'Description Meta'
                         name: 'description'
                         widget: 'object'
