@@ -1,3 +1,44 @@
+header:
+  title: The MAJ Oceanic
+  seo_meta_tag:
+    meta_primary:
+      keywords:
+        content: Labuan Bajo, Komodo, Flores, Raja Ampat, Phinisi, Pinisi, Kapal PInisi,
+          Liburan, Vacation, Luxury Cruise, The MAJ Group, The MAJ Dago, The MAJ
+          Senayan, The MAJ Nusa Dua, The MAJ Bekasi, The MAJ Oceanic, The MAJ
+          CIbubur, Indonesia Travel, Diving Raja ampat, Diving Indonesia, Luxury
+          Yacht, Yachtsourcing
+      title:
+        content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+      description:
+        content: Book cruises and arrange bespoke itineraries to Raja Ampat and Komodo
+          National Park aboard a traditional handcrafted two-masted Phinisi
+          ecoyacht with 6+1 resort-standard suites, outfitted with modern design
+          and technology.
+    meta_facebook:
+      title:
+        content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+      description:
+        content: Book cruises and arrange bespoke itineraries to Raja Ampat and Komodo
+          National Park aboard a traditional handcrafted two-masted Phinisi
+          ecoyacht with 6+1 resort-standard suites, outfitted with modern design
+          and technology.
+      url:
+        content: https://themajoceanic.com/
+      image:
+        content: /static/media_root/home-hero.png
+    twitter_meta:
+      title:
+        content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+      description:
+        content: Book cruises and arrange bespoke itineraries to Raja Ampat and Komodo
+          National Park aboard a traditional handcrafted two-masted Phinisi
+          ecoyacht with 6+1 resort-standard suites, outfitted with modern design
+          and technology.
+      url:
+        content: https://themajoceanic.com/
+      image:
+        content: /static/media_root/home-hero.png
 hero:
   heading: |-
     The future of travel,
