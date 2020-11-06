@@ -81,7 +81,7 @@ export default {
 
   head() {
     return {
-      title: this.data.header.title && this.data.header.title || 'The MAJ Oceanic',
+      title: this.data.header && this.data.header.title || 'The MAJ Oceanic',
       meta: [
         _.assign({}, this.meta_primary),
         _.assign({}, this.meta_facebook),
