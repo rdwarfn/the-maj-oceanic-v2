@@ -87,6 +87,17 @@ export default {
     ]
   },
 
+  head() {
+    return {
+      title: this.data.header && this.data.header.title || 'Suites & Staterooms - The MAJ Oceanic',
+      meta: [
+        _.assign({}, this.meta_primary),
+        _.assign({}, this.meta_facebook),
+        _.assign({}, this.meta_twitter)
+      ]
+    }
+  },
+
   components,
 
   data () {
@@ -114,6 +125,15 @@ export default {
       if (!this.$vuetify.breakpoint.xs)
         return 'suites-specification'
       return 'suites-specification-mobile'
+    },
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 

@@ -78,12 +78,11 @@ export default {
 
   head () {
     return {
+      title: this.data.header && this.data.header.title || 'The MAJ Oceanic',
       meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: JSON.stringify(this.data.intro.description)
-        }
+        _.assign({}, this.meta_primary),
+        _.assign({}, this.meta_facebook),
+        _.assign({}, this.meta_twitter)
       ],
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
     }
@@ -104,8 +103,14 @@ export default {
   },
 
   computed: {
-    heros () {
-      return this.$store.state.heros;
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 

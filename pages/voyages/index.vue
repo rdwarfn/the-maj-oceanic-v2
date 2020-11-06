@@ -39,6 +39,17 @@ export default {
     ]
   },
 
+  head() {
+    return {
+      title: this.data.header && this.data.header.title || 'Voyages - The MAJ Oceanic',
+      meta: [
+        _.assign({}, this.meta_primary),
+        _.assign({}, this.meta_facebook),
+        _.assign({}, this.meta_twitter)
+      ]
+    }
+  },
+
   components,
 
   async asyncData ({ $content }) {
@@ -52,6 +63,18 @@ export default {
         this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
       }
     })
+  },
+
+  computed: {
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
+    }
   },
 
   methods: {
