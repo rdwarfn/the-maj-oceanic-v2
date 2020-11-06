@@ -72,10 +72,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -256,10 +253,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -432,10 +426,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -616,10 +607,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
 
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
@@ -769,10 +757,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -948,10 +933,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1128,10 +1110,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1281,10 +1260,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1435,10 +1411,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
@@ -1583,10 +1556,7 @@ collections:
                         fields:
                           - { label: 'HID', name: 'hid', widget: 'hidden', default: 'keywords' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'keywords' }
-                          - label: 'Content'
-                            name: 'content'
-                            widget: 'list'
-                            default: [""]
+                          - { label: 'Content', name: 'content', widget: 'string', hint: 'list of keywords separated by commas.'}
                   - label: 'Open Graph / Facebook Meta'
                     name: 'meta_facebook'
                     widget: 'object'
