@@ -139,10 +139,73 @@ export default {
     return {
       title: this.data.header && this.data.header.title || 'Rates & Schedule - The MAJ Oceanic',
       meta: [
-        _.assign({}, this.meta_primary),
-        _.assign({}, this.meta_facebook),
-        _.assign({}, this.meta_twitter)
-      ]
+        // meta primary
+        {
+          hid: this.meta_primary.title.hid,
+          name: this.meta_primary.title.name,
+          content: this.meta_primary.title.content
+        },
+        {
+          hid: this.meta_primary.description.hid,
+          name: this.meta_primary.description.name,
+          content: this.meta_primary.description.content
+        },
+        {
+          hid: this.meta_primary.keywords.hid,
+          name: this.meta_primary.keywords.name,
+          content: this.meta_primary.keywords.content
+        },
+        // meta faceboook
+        {
+          hid: this.meta_facebook.url.hid,
+          name: this.meta_facebook.url.name,
+          property: this.meta_facebook.url.property,
+          content: this.meta_facebook.url.content
+        },
+        {
+          hid: this.meta_facebook.title.hid,
+          name: this.meta_facebook.title.name,
+          property: this.meta_facebook.title.property,
+          content: this.meta_facebook.title.content
+        },
+        {
+          hid: this.meta_facebook.description.hid,
+          name: this.meta_facebook.description.name,
+          property: this.meta_facebook.description.property,
+          content: this.meta_facebook.description.content
+        },
+        {
+          hid: this.meta_facebook.image.hid,
+          name: this.meta_facebook.image.name,
+          property: this.meta_facebook.image.property,
+          content: this.meta_facebook.image.content
+        },
+        // meta twitter
+        {
+          hid: this.meta_twitter.url.hid,
+          name: this.meta_twitter.url.name,
+          property: this.meta_twitter.url.property,
+          content: this.meta_twitter.url.content
+        },
+        {
+          hid: this.meta_twitter.title.hid,
+          name: this.meta_twitter.title.name,
+          property: this.meta_twitter.title.property,
+          content: this.meta_twitter.title.content
+        },
+        {
+          hid: this.meta_twitter.description.hid,
+          name: this.meta_twitter.description.name,
+          property: this.meta_twitter.description.property,
+          content: this.meta_twitter.description.content
+        },
+        {
+          hid: this.meta_twitter.image.hid,
+          name: this.meta_twitter.image.name,
+          property: this.meta_twitter.image.property,
+          content: this.meta_twitter.image.content
+        }
+      ],
     }
   },
 
