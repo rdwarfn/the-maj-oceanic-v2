@@ -88,6 +88,17 @@ export default {
         },
         // meta faceboook
         {
+          hid: 'article:publisher',
+          name: 'article:publisher',
+          property: 'article:publisher',
+          content: 'https://www.facebook.com/themajoceanic/',
+        },
+        {
+          hid: 'article:modified_time',
+          property: 'article:modified_time',
+          content: this.data.updatedAt
+        },
+        {
           hid: this.meta_facebook.url.hid,
           name: this.meta_facebook.url.name,
           property: this.meta_facebook.url.property,
@@ -112,6 +123,24 @@ export default {
           content: this.meta_facebook.image.content
         },
         // meta twitter
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          hid: 'twitter:creator',
+          name: 'twitter:creator',
+          property: 'twitter:creator',
+          content: '@themajoceanic'
+        },
+        {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          property: 'twitter:site',
+          content: '@themajoceanic'
+        },
         {
           hid: this.meta_twitter.url.hid,
           name: this.meta_twitter.url.name,

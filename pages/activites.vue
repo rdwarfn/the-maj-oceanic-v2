@@ -111,6 +111,24 @@ export default {
         },
         // meta twitter
         {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          property: 'twitter:card',
+          content: 'summary_large_image'
+        },
+        {
+          hid: 'twitter:creator',
+          name: 'twitter:creator',
+          property: 'twitter:creator',
+          content: '@themajoceanic'
+        },
+        {
+          hid: 'twitter:site',
+          name: 'twitter:site',
+          property: 'twitter:site',
+          content: '@themajoceanic'
+        },
+        {
           hid: this.meta_twitter.url.hid,
           name: this.meta_twitter.url.name,
           property: this.meta_twitter.url.property,

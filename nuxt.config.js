@@ -26,15 +26,19 @@ export default {
   head: {
     title: 'The MAJ Oceanic',
     htmlAttrs: {
-      lang: 'id'
+      lang: 'en-US'
     },
     meta: [
       { charset: 'utf-8' },
-      { hid: 'robots', name: 'robots', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
+      { hid: 'robots', name: 'robots', content: 'follow, index' },
+      { hid: 'googlebot', name: 'googlebot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
+      { hid: 'bingbot', name: 'bingbot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
+      { hid: 'og:locale', property: 'og:locale', content: 'en_US' },
       { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#ffffff' },
       { hid: 'msapplication-TileImage', name: 'msapplication-TileImage', content: '/the-maj-oceanic--ico/ms-icon-144x144.png' }
     ],
     link: [
+      { rel: 'canonical', href: 'https://themajoceanic.com' },
       { rel: 'icon', type: 'image/x-icon', href: '/the-maj-oceanic--ico/favicon.ico' },
       { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/the-maj-oceanic--ico/android-icon-192x192.png' },
       { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/the-maj-oceanic--ico/favicon-32x32.png' },
