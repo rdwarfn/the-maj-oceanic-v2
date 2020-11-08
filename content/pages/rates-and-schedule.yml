@@ -210,39 +210,39 @@ extra_guest: >
 relocation_fee: 2000 USD per day
 full_ship_charter_rates_include:
   list:
-    - All gourmet Asian Fusion and Western meals and snacks
-    - Soft drinks, juices, local beer and local wine
-    - 30 minutes’ trial massage or beauty treatment per person during the cruise
-    - Personal laundry
-    - >
+    - content: All gourmet Asian Fusion and Western meals and snacks
+    - content: Soft drinks, juices, local beer and local wine
+    - content: 30 minutes’ trial massage or beauty treatment per person during the cruise
+    - content: Personal laundry
+    - content: >
       Use of equipment on board : gym (exercise bike, weights, yoga mats), board games, movie library
-    - Golf Pack (including clubs, Tee, carpet and 30 complimentary bio-degradable balls)
+    - content: Golf Pack (including clubs, Tee, carpet and 30 complimentary bio-degradable balls)
   water_sports:
-    - Stand up paddle boards
-    - Sea kayaks
-    - Snorkeling
-    - Diving equipment
-    - Dive instructor
-    - Dive master
-    - 2 tenders (2 RIB x 6M x 90HP) outboard
+    - content: Stand up paddle boards
+    - content: Sea kayaks
+    - content: Snorkeling
+    - content: Diving equipment
+    - content: Dive instructor
+    - content: Dive master
+    - content: 2 tenders (2 RIB x 6M x 90HP) outboard
   tours_and_fees:
-    - Excursions and guide fees
-    - Park entrance fees
-    - Boat clearance fees
-    - Cruise permits during the trip
-    - Fuel charges
-    - Airport transfers
+    - content: Excursions and guide fees
+    - content: Park entrance fees
+    - content: Boat clearance fees
+    - content: Cruise permits during the trip
+    - content: Fuel charges
+    - content: Airport transfers
   does_not_include:
-    - International and domestic airfares, excess baggage fees, passports, visas or airport taxes
-    - Alcoholic beverages
-    - Spa treatments
-    - Personal expenses & crew gratuities
-    - Travel and diving insurance.
-    - Unscheduled excursions and drone usage fee
+    - content: International and domestic airfares, excess baggage fees, passports, visas or airport taxes
+    - content: Alcoholic beverages
+    - content: Spa treatments
+    - content: Personal expenses & crew gratuities
+    - content: Travel and diving insurance.
+    - content: Unscheduled excursions and drone usage fee
 payment_terms_and_conditions:
-  - 50% deposit is required to confirm the charter
-  - Full payment required 90 days before your departure
+  - content: 50% deposit is required to confirm the charter
+  - content: Full payment required 90 days before your departure
 
 cancellation_policy:
-  - 60 days or more prior to departure the first payment (Deposit of 50%) will be forfeited.
-  - Less than 60 days prior to departure 100% of the total payment will be forfeited.
+  - content: 60 days or more prior to departure the first payment (Deposit of 50%) will be forfeited.
+  - content: Less than 60 days prior to departure 100% of the total payment will be forfeited.

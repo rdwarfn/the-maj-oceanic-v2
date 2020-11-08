@@ -84,32 +84,32 @@
         <div>
           <div class="font-weight-bold mb-5">Full Ship Charter Rates include:</div>
           <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.list" v-bind:key="i"> {{d}} </li>
+            <li v-for="(d, i) of data.full_ship_charter_rates_include.list" v-bind:key="i"> {{ d.content }} </li>
           </ul>
 
           <div class="mt-5 mb-1">Water sports</div>
           <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.water_sports" v-bind:key="i"> {{d}} </li>
+            <li v-for="(d, i) of data.full_ship_charter_rates_include.water_sports" v-bind:key="i"> {{ d.content }} </li>
           </ul>
 
           <div class="mt-5 mb-1">Tours and Fees</div>
           <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.tours_and_fees" v-bind:key="i"> {{d}} </li>
+            <li v-for="(d, i) of data.full_ship_charter_rates_include.tours_and_fees" v-bind:key="i"> {{ d.content }} </li>
           </ul>
 
           <div class="mt-5 mb-1">Our package does not include:</div>
           <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.does_not_include" v-bind:key="i"> {{d}} </li>
+            <li v-for="(d, i) of data.full_ship_charter_rates_include.does_not_include" v-bind:key="i"> {{ d.content }} </li>
           </ul>
 
           <div class="font-weight-bold mt-10 mb-4">Payment Terms and Conditions</div>
           <ul class="list pl-3">
-            <li v-for="(d, i) of data.payment_terms_and_conditions" v-bind:key="i"> {{d}} </li>
+            <li v-for="(d, i) of data.payment_terms_and_conditions" v-bind:key="i"> {{ d.content }} </li>
           </ul>
 
           <div class="font-weight-bold mt-10 mb-4">Cancellation Policy</div>
           <ul class="list pl-3">
-            <li v-for="(d, i) of data.cancellation_policy" v-bind:key="i"> {{d}} </li>
+            <li v-for="(d, i) of data.cancellation_policy" v-bind:key="i"> {{ d.content }} </li>
           </ul>
         </div>
       </div>
