@@ -51,6 +51,7 @@ header:
         name: twitter:title
         property: twitter:title
         content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+        hide: twitter:title
       description:
         hid: twitter:description
         name: twitter:description
