@@ -1361,7 +1361,7 @@ collections:
             summary: '{{fields.name}} - {{fields.description}}'
             fields:
               - { label: 'Name', name: 'name', widget: 'hidden' }
-              - { label: 'Description', name: 'Description', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
           - label: 'Section Table Spesification'
@@ -1373,7 +1373,7 @@ collections:
                 name: 'headers'
                 widget: 'list'
                 fields:
-                  - { label: 'Text', name: 'text', widget: 'string', default: '' }
+                  - { label: 'Text', name: 'text', widget: 'string', default: '', required: false }
                   - { label: 'Value', name: 'value', widget: 'string' }
               - label: 'Table Data'
                 name: 'data'
