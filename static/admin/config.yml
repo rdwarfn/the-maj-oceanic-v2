@@ -306,7 +306,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -479,7 +479,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -661,7 +661,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -810,7 +810,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -986,7 +986,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -1157,7 +1157,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -1307,7 +1307,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -1458,7 +1458,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
@@ -1603,7 +1603,7 @@ collections:
                         name: 'title'
                         widget: 'object'
                         fields:
-                          - { labe: 'HID', hiddenme: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
                           - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Property', name: 'property', widget: 'hidden', default: 'twitter:title' }
                           - { label: 'Content', name: 'content', widget: 'text' }
