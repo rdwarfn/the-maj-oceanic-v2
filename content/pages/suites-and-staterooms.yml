@@ -51,6 +51,7 @@ header:
         name: twitter:title
         property: twitter:title
         content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+        hide: twitter:title
       description:
         hid: twitter:description
         name: twitter:description
@@ -71,19 +72,23 @@ header:
         content: /static/media_root/home-hero.png
 hero:
   heading: Suites & Staterooms
-  image: /media_root/suites-hero-new.jpg
+  image: /static/media_root/admiral-suite-03-mq-.jpg
   mobile_image: /media_root/suites-hero-mobile.png
 intro:
   heading: Locally-crafted, world-inspired
   description: >
-    Upping the suite game in the luxury Pinisi market, there are 6+1 cabins specially-designed by a group of land-based designers to give a modern look that's a floating reflection of a world-class resort.
+    Upping the suite game in the luxury Pinisi market, there are 6+1 cabins
+    specially-designed by a group of land-based designers to give a modern look
+    that's a floating reflection of a world-class resort.
 admiral_suite:
   icon: /media_root/suites-icon-zheng-he.png
   caption: admiral suite
   heading: Zheng He
   sqm: 120
   description: >
-    Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.
+    Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master
+    suite on a Phinisi cruise in the market. Being the only suite on the bridge
+    deck, it offers full privacy, its own balcony, and a 270º view of the ocean.
   gallery:
     - image: /media_root/suites-admiral-suite-1.png
     - image: /media_root/suites-admiral-suite-2.png
@@ -95,7 +100,9 @@ commodore_suite:
   heading: Columbus
   sqm: 35
   description: >
-    Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master suite on a Phinisi cruise in the market. Being the only suite on the bridge deck, it offers full privacy, its own balcony, and a 270º view of the ocean.
+    Of the ship's 6+1 suites, the 120 sqm Admiral Suite is the largest master
+    suite on a Phinisi cruise in the market. Being the only suite on the bridge
+    deck, it offers full privacy, its own balcony, and a 270º view of the ocean.
   gallery:
     - image: /media_root/suites-commodore-suite-1.png
     - image: /media_root/suites-commodore-suite-2.png
@@ -111,7 +118,9 @@ deluxe_staterooms:
   heading: F. Magellan | Marcopolo |<br/> Vasco da Gama | James Cook
   sqm: 25
   description: >
-    A space for socializing, not just sleeping.  Multi-jet shower and a well-appointed open living area with chaise, built-in dresser, and writing desk.
+    A space for socializing, not just sleeping.  Multi-jet shower and a
+    well-appointed open living area with chaise, built-in dresser, and writing
+    desk.
   gallery:
     - image: /media_root/suites-deluxe-staterooms-1.png
 instagram:
