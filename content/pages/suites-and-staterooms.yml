@@ -72,7 +72,7 @@ header:
         content: /static/media_root/home-hero.png
 hero:
   heading: Suites & Staterooms
-  image: /static/media_root/suites-hero-new-2.jpg
+  image: /media_root/suites-hero-new-2.jpg
   mobile_image: /media_root/suites-hero-mobile.png
 intro:
   heading: Locally-crafted, world-inspired
