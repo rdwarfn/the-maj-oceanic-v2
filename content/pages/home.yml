@@ -1,5 +1,77 @@
+header:
+  title: The MAJ Oceanic
+  seo_meta_tag:
+    meta_primary:
+      keywords:
+        hid: keywords
+        name: keywords
+        content: Labuan Bajo, Komodo, Flores, Raja Ampat, Phinisi, Pinisi, Kapal PInisi,
+          Liburan, Vacation, Luxury Cruise, The MAJ Group, The MAJ Dago, The MAJ
+          Senayan, The MAJ Nusa Dua, The MAJ Bekasi, The MAJ Oceanic, The MAJ
+          CIbubur, Indonesia Travel, Diving Raja ampat, Diving Indonesia, Luxury
+          Yacht, Yachtsourcing
+      title:
+        hid: title
+        name: title
+        content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+      description:
+        hid: description
+        name: description
+        content: Book cruises and arrange bespoke itineraries to Raja Ampat and Komodo
+          National Park aboard a traditional handcrafted two-masted Phinisi
+          ecoyacht with 6+1 resort-standard suites, outfitted with modern design
+          and technology.
+    meta_facebook:
+      title:
+        hid: og:title
+        name: og:title
+        property: og:title
+        content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+      description:
+        hid: og:description
+        name: og:description
+        property: og:description
+        content: Book cruises and arrange bespoke itineraries to Raja Ampat and Komodo
+          National Park aboard a traditional handcrafted two-masted Phinisi
+          ecoyacht with 6+1 resort-standard suites, outfitted with modern design
+          and technology.
+      url:
+        hid: og:url
+        name: og:url
+        property: og:url
+        content: https://themajoceanic.com/
+      image:
+        hid: og:image
+        name: og:image
+        property: og:image
+        content: /static/media_root/home-hero.png
+    meta_twitter:
+      title:
+        hid: twitter:title
+        name: twitter:title
+        property: twitter:title
+        content: Indonesia Luxury Cruises | The MAJ Oceanic Official Site
+        hide: twitter:title
+      description:
+        hid: twitter:description
+        name: twitter:description
+        property: twitter:description
+        content: Book cruises and arrange bespoke itineraries to Raja Ampat and Komodo
+          National Park aboard a traditional handcrafted two-masted Phinisi
+          ecoyacht with 6+1 resort-standard suites, outfitted with modern design
+          and technology.
+      url:
+        hid: twitter:url
+        name: twitter:url
+        property: twitter:url
+        content: https://themajoceanic.com/
+      image:
+        hid: twitter:image
+        name: twitter:image
+        property: twitter:image
+        content: /static/media_root/home-hero.png
 hero:
-  heading: |
+  heading: |-
     The future of travel,
     on traditions of the past.
   videos:

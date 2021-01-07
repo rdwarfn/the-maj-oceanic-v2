@@ -13,6 +13,10 @@
     }
   ],
   "homepage": "https://themajoceanic.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ridwanarifin/the-maj-oceanic-v2.git"
+  },
   "private": true,
   "scripts": {
     "dev": "nuxt",

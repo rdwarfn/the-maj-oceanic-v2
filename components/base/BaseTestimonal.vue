@@ -31,7 +31,7 @@
           <template>
             <v-skeleton-loader v-if="!dataActive.instagram" loading type="text"></v-skeleton-loader>
             <a v-else :href="dataActive.instagram.link" target="blank">
-              <div class="font-weight-medium">@({{ dataActive.instagram.username }})</div>
+              <div class="font-weight-medium">(@{{ dataActive.instagram.username }})</div>
             </a>
           </template>
         </div>
@@ -64,7 +64,7 @@
               <v-skeleton-loader v-if="!dataActive.instagram" loading type="text@2"></v-skeleton-loader>
               <a v-else :href="dataActive.instagram.link" target="blank">
                 <strong>{{ dataActive.name }}</strong>
-                <span class="font-weight-medium">@({{ dataActive.instagram.username }})</span>
+                <span class="font-weight-medium">(@{{ dataActive.instagram.username }})</span>
               </a>
             </template>
           </v-col>

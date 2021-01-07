@@ -2,13 +2,13 @@ backend:
   name: git-gateway
   branch: netlify-cms
 
-media_folder: static/media_root
+media_folder: "static/media_root"
+public_folder: "/media_root"
 
 collections:
   - label: 'Navigation'
     name: 'navigation'
     description: 'Navigation menu'
-    delete: false
     editor:
       preview: false
     files:
@@ -39,9 +39,132 @@ collections:
         name: 'home'
         file: 'content/pages/home.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - label: 'Videos'
@@ -53,10 +176,11 @@ collections:
                   - { label: 'Type', name: 'type', widget: 'string', hint: 'Type of video, example: video/mp4' }
                   - { label: 'Src', name: 'src', widget: 'file' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -64,6 +188,7 @@ collections:
           - label: 'Section The Vessel'
             name: 'the_vessel'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
@@ -73,6 +198,7 @@ collections:
           - label: 'Section Voyages'
             name: 'voyages'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -86,6 +212,7 @@ collections:
                   - label: 'Tab Content'
                     name: 'data'
                     widget: 'object'
+                    collapsed: true
                     fields:
                       - { label: 'Heading', name: 'heading', widget: 'string' }
                       - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -94,6 +221,7 @@ collections:
           - label: 'Section Dining'
             name: 'dining'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
@@ -103,6 +231,7 @@ collections:
           - label: 'Section Occasions'
             name: 'occasions'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
@@ -114,16 +243,140 @@ collections:
         name: 'vessel'
         file: 'content/pages/vessel.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -131,6 +384,7 @@ collections:
           - label: 'Section suites & Staterooms'
             name: 'suites_and_staterooms'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
@@ -156,6 +410,7 @@ collections:
           - label: 'Section The Teams'
             name: 'teams'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
@@ -165,11 +420,12 @@ collections:
                 summary: '{{fields.name}} - {{fields.title}}'
                 fields:
                   - { label: 'Title', name: 'title', widget: 'string' }
-                  - { label: 'Name', name: 'name', widget: 'string' }
+                  - { label: 'Name', name: 'name', widget: 'hidden' }
                   - { label: 'Image', name: 'image', widget: 'image' }
           - label: 'Section Sustainability'
             name: 'sustainability'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Heading', name: 'heading', widget: 'string' }
@@ -181,22 +437,147 @@ collections:
         name: 'suites-and-staterooms'
         file: 'content/pages/suites-and-staterooms.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
           - label: 'Section Admiral Suite'
             name: 'admiral_suite'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Icon', name: 'icon', widget: 'image' }
               - { label: 'Caption', name: 'caption', widget: 'string' }
@@ -215,6 +596,7 @@ collections:
           - label: 'Section Commodore Suite'
             name: 'commodore_suite'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Icon', name: 'icon', widget: 'image' }
               - { label: 'Caption', name: 'caption', widget: 'string' }
@@ -233,6 +615,7 @@ collections:
           - label: 'Section Deluxe Staterooms'
             name: 'deluxe_staterooms'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'Icons'
                 name: 'icons'
@@ -256,13 +639,137 @@ collections:
         name: 'voyages'
         file: 'content/pages/voyages/index.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Voyages Items'
             name: 'voyages_items'
             widget: 'list'
@@ -280,6 +787,7 @@ collections:
               - label: 'Instagram'
                 name: 'instagram'
                 widget: 'object'
+                collapsed: true
                 fields:
                   - { label: 'Username', name: 'username', widget: 'string' }
                   - { label: 'Link', name: 'link', widget: 'string', default: 'https://www.instagram.com/' }
@@ -288,6 +796,7 @@ collections:
           - label: 'Section Itineraries'
             name: 'itineraries'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string' }
               - { label: 'Image', name: 'image', widget: 'image' }
@@ -299,22 +808,147 @@ collections:
         name: 'activites'
         file: 'content/pages/activites.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
           - label: 'Section Watersports'
             name: 'watersports'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string', default: 'watersports' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
@@ -328,6 +962,7 @@ collections:
           - label: 'Section Fitness And Wellness'
             name: 'fitness_wellness'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string', default: 'fitness & wellness' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
@@ -341,6 +976,7 @@ collections:
           - label: 'Section Exploration'
             name: 'exploration'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Caption', name: 'caption', widget: 'string', default: 'exploration' }
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
@@ -359,6 +995,7 @@ collections:
               - label: 'Instagram'
                 name: 'instagram'
                 widget: 'object'
+                collapsed: true
                 fields:
                   - { label: 'Username', name: 'username', widget: 'string' }
                   - { label: 'Link', name: 'link', widget: 'string', default: 'https://www.instagram.com/' }
@@ -369,23 +1006,147 @@ collections:
         name: 'rates_and_schedule'
         file: 'content/pages/rates-and-schedule.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Section Intro'
             name: 'intro'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
           - label: 'Section Tables'
             name: 'tables'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'Table Headers'
                 name: 'headers'
                 widget: 'list'
                 fields:
-                 - { label: 'Text', name: 'text', widget: 'string', default: '' }
-                 - { label: 'Value', name: 'value', widget: 'string' }
-                 - { label: 'Align', name: 'align', widget: 'select', options: ['left', 'center', 'right'] }
+                  - { label: 'Text', name: 'text', widget: 'string', default: '', required: false }
+                  - { label: 'Value', name: 'value', widget: 'string' }
+                  - { label: 'Align', name: 'align', widget: 'select', options: ['left', 'center', 'right'] }
               - label: 'Table Data'
                 name: 'data'
                 widget: 'list'
@@ -397,59 +1158,178 @@ collections:
                     widget: 'list'
                     fields:
                       - { label: 'Year', name: 'year', widget: 'number', min: 2019, value_type: 'int' }
-                      - { label: 'Price', name: 'price', widget: 'number', value_type: 'int' }
-          - {
-            label: 'Full Ship Capacity',
-            name: 'full_ship_capacity',
-            widget: 'string'
-          }
-          - {
-            label: 'Extra Guest',
-            name: 'extra_guest',
-            widget: 'string'
-          }
-          - {
-            label: 'Relocation Fee',
-            name: 'relocation_fee',
-            widget: 'string'
-          }
+                      - { label: 'Price', name: 'price', widget: 'number', value_type: 'int', required: false }
+          - { label: 'Full Ship Capacity', name: 'full_ship_capacity', widget: 'text' }
+          - { label: 'Extra Guest', name: 'extra_guest', widget: 'text' }
+          - { label: 'Relocation Fee', name: 'relocation_fee', widget: 'text' }
           - label: 'Full Ship Charter Rates include'
             name: 'full_ship_charter_rates_include'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'List'
                 name: 'list'
                 widget: 'list'
+                field: { label: 'Content', name: 'content', widget: 'string' }
               - label: 'Water sports'
                 name: 'water_sports'
                 widget: 'list'
+                field: { label: 'Content', name: 'content', widget: 'string' }
               - label: 'Tours and Fees'
                 name: 'tours_and_fees'
                 widget: 'list'
+                field: { label: 'Content', name: 'content', widget: 'string' }
               - label: 'Our package does not include'
                 name: 'does_not_include'
                 widget: 'list'
+                field: { label: 'Content', name: 'content', widget: 'string' }
           - label: 'Payment Terms and Conditions'
             name: 'payment_terms_and_conditions'
             widget: 'list'
+            field: { label: 'Content', name: 'content', widget: 'string' }
           - label: 'Cancellation Policy'
             name: 'cancellation_policy'
             widget: 'list'
+            field: { label: 'Content', name: 'content', widget: 'string' }
 
       - label: 'Specification Page'
         name: 'specification'
         file: 'content/pages/specification.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Techical Detail'
             name: 'decks_technical_detail'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -460,18 +1340,19 @@ collections:
             summary: '{{fields.name}} - {{fields.description}}'
             fields:
               - { label: 'Name', name: 'name', widget: 'string' }
-              - { label: 'Description', name: 'Description', widget: 'markdown' }
+              - { label: 'Description', name: 'description', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
           - label: 'Section Table Spesification'
             name: 'table_specification'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'Table Headers'
                 name: 'headers'
                 widget: 'list'
                 fields:
-                  - { label: 'Text', name: 'text', widget: 'string', default: '' }
+                  - { label: 'Text', name: 'text', widget: 'string', default: '', required: false }
                   - { label: 'Value', name: 'value', widget: 'string' }
               - label: 'Table Data'
                 name: 'data'
@@ -484,16 +1365,140 @@ collections:
         name: 'komodo'
         file: 'content/pages/voyages/komodo.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Des 1'
             name: 'des_1'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -501,6 +1506,7 @@ collections:
           - label: 'Section Des 2'
             name: 'des_2'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Image', name: 'image', widget: 'image' }
@@ -508,6 +1514,7 @@ collections:
           - label: 'Section Des 3'
             name: 'des_3'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'Images'
                 name: 'images'
@@ -521,6 +1528,7 @@ collections:
           - label: 'Section Des 4'
             name: 'des_4'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -529,16 +1537,140 @@ collections:
         name: 'raja-ampat'
         file: 'content/pages/voyages/raja-ampat.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Des 1'
             name: 'des_1'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -546,6 +1678,7 @@ collections:
           - label: 'Section Des 2'
             name: 'des_2'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Image', name: 'image', widget: 'image' }
@@ -553,6 +1686,7 @@ collections:
           - label: 'Section Des 3'
             name: 'des_3'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'Images'
                 name: 'images'
@@ -568,16 +1702,140 @@ collections:
         name: 'spice-islands'
         file: 'content/pages/voyages/spice-islands.yml'
         fields:
+          - label: 'Header'
+            name: 'header'
+            widget: 'object'
+            collapsed: true
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string', default: 'The MAJ Oceanic' }
+              - label: 'Meta Tags'
+                name: 'seo_meta_tag'
+                widget: 'object'
+                collapsed: true
+                fields:
+                  - label: 'Primary Meta'
+                    name: 'meta_primary'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Keywords'
+                        name: 'keywords'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'keywords' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'keywords' }
+                          - { label: 'Content', name: 'content', widget: 'text', hint: 'list of keyword separated by commas.'}
+                  - label: 'Open Graph / Facebook Meta'
+                    name: 'meta_facebook'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:title' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'og:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'og:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'og:description' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
+                  - label: 'Twitter Meta'
+                    name: 'meta_twitter'
+                    widget: 'object'
+                    collapsed: true
+                    fields:
+                      - label: 'URL Meta'
+                        name: 'url'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:url' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Title Meta'
+                        name: 'title'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { labe: 'HID', name: 'hide', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Name', name: 'name', widget: 'hidden', default: 'twitter:title' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:title' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Description Meta'
+                        name: 'description'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:description' }
+                          - { label: 'Content', name: 'content', widget: 'text' }
+                      - label: 'Image Meta'
+                        name: 'image'
+                        widget: 'object'
+                        collapsed: true
+                        fields:
+                          - { label: 'HID', name: 'hid', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Name', name: 'name', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Property', name: 'property', widget: 'string', default: 'twitter:image' }
+                          - { label: 'Content', name: 'content', widget: 'image' }
           - label: 'Hero'
             name: 'hero'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'markdown' }
               - { label: 'Image', name: 'image', widget: 'image' }
-              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image' }
+              - { label: 'Mobile Image', name: 'mobile_image', widget: 'image', required: false }
           - label: 'Section Des 1'
             name: 'des_1'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Image', name: 'image', widget: 'image' }
               - { label: 'Description', name: 'description', widget: 'markdown' }
@@ -585,6 +1843,7 @@ collections:
           - label: 'Section Des 2'
             name: 'des_2'
             widget: 'object'
+            collapsed: true
             fields:
               - { label: 'Heading', name: 'heading', widget: 'string' }
               - { label: 'Image', name: 'image', widget: 'image' }
@@ -592,6 +1851,7 @@ collections:
           - label: 'Section Des 3'
             name: 'des_3'
             widget: 'object'
+            collapsed: true
             fields:
               - label: 'Images'
                 name: 'images'

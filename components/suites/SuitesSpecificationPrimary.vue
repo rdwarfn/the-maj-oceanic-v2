@@ -15,8 +15,8 @@
           v-bind:lazy-src="item.image"
           class="image--item"></v-img>
       </swiper-slide>
-      <div v-if="data && data.length > 1" class="hidden-xs-only swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
-      <template v-if="data && data.length > 1">
+      <div v-if="data && data.gallery.length > 1" class="hidden-xs-only swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
+      <template v-if="data && data.gallery.length > 1">
         <v-btn depressed fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
           <v-icon color="primary">{{iconLeft}}</v-icon>
         </v-btn>
