@@ -4,8 +4,8 @@
     <v-row no-gutters align="center" justify-sm="space-between" class="komodo--des-two_content">
       <v-col cols="12" sm="5" class="mb-8 mb-sm-0">
         <v-img
-          :src="data.image"
-          :lazy-src="data.image"
+          :src="data.gallery[0].image"
+          :lazy-src="data.gallery[0].image"
           class="komodo--des-two_image"
         >
           <template v-slot:placeholder>

@@ -32,14 +32,14 @@
       </template>
     </component>
 
-    <component :is="asyncComponent" class="deluxe" v-bind:data="data.deluxe_staterooms" no-wrap>
+    <component :is="asyncComponent" class="deluxe" v-bind:data="data.deluxe_stateroom" no-wrap>
       <template #icon>
-        <div v-if="data.deluxe_staterooms.icons" class="d-inline-flex">
+        <div v-if="data.deluxe_stateroom.icons" class="d-inline-flex">
           <v-img
-            v-for="(d, index) in data.deluxe_staterooms.icons"
+            v-for="(d, index) in data.deluxe_stateroom.icons"
             :key="index"
             class="spesification--icon spesification--icon-delux"
-            :class="{'mr-0': data.deluxe_staterooms.icons.length - 1 == index}"
+            :class="{'mr-0': data.deluxe_stateroom.icons.length - 1 == index}"
             v-bind:src="d.icon"
             v-bind:lazy-src="d.icon"
           ></v-img>
@@ -87,108 +87,108 @@ export default {
     ]
   },
 
-  head() {
-    return {
-      title: this.data.header && this.data.header.title || 'Suites & Staterooms - The MAJ Oceanic',
-      meta: [
-        // meta primary
-        {
-          hid: this.meta_primary.title.hid,
-          name: this.meta_primary.title.name,
-          content: this.meta_primary.title.content
-        },
-        {
-          hid: this.meta_primary.description.hid,
-          name: this.meta_primary.description.name,
-          content: this.meta_primary.description.content
-        },
-        {
-          hid: this.meta_primary.keywords.hid,
-          name: this.meta_primary.keywords.name,
-          content: this.meta_primary.keywords.content
-        },
-        // meta faceboook
-        {
-          hid: 'article:publisher',
-          name: 'article:publisher',
-          property: 'article:publisher',
-          content: 'https://www.facebook.com/themajoceanic/',
-        },
-        {
-          hid: 'article:modified_time',
-          property: 'article:modified_time',
-          content: this.data.updatedAt
-        },
-        {
-          hid: this.meta_facebook.url.hid,
-          name: this.meta_facebook.url.name,
-          property: this.meta_facebook.url.property,
-          content: this.meta_facebook.url.content
-        },
-        {
-          hid: this.meta_facebook.title.hid,
-          name: this.meta_facebook.title.name,
-          property: this.meta_facebook.title.property,
-          content: this.meta_facebook.title.content
-        },
-        {
-          hid: this.meta_facebook.description.hid,
-          name: this.meta_facebook.description.name,
-          property: this.meta_facebook.description.property,
-          content: this.meta_facebook.description.content
-        },
-        {
-          hid: this.meta_facebook.image.hid,
-          name: this.meta_facebook.image.name,
-          property: this.meta_facebook.image.property,
-          content: this.meta_facebook.image.content
-        },
-        // meta twitter
-        {
-          hid: 'twitter:card',
-          name: 'twitter:card',
-          property: 'twitter:card',
-          content: 'summary_large_image'
-        },
-        {
-          hid: 'twitter:creator',
-          name: 'twitter:creator',
-          property: 'twitter:creator',
-          content: '@themajoceanic'
-        },
-        {
-          hid: 'twitter:site',
-          name: 'twitter:site',
-          property: 'twitter:site',
-          content: '@themajoceanic'
-        },
-        {
-          hid: this.meta_twitter.url.hid,
-          name: this.meta_twitter.url.name,
-          property: this.meta_twitter.url.property,
-          content: this.meta_twitter.url.content
-        },
-        {
-          hid: this.meta_twitter.title.hid,
-          name: this.meta_twitter.title.name,
-          property: this.meta_twitter.title.property,
-          content: this.meta_twitter.title.content
-        },
-        {
-          hid: this.meta_twitter.description.hid,
-          name: this.meta_twitter.description.name,
-          property: this.meta_twitter.description.property,
-          content: this.meta_twitter.description.content
-        },
-        {
-          hid: this.meta_twitter.image.hid,
-          name: this.meta_twitter.image.name,
-          property: this.meta_twitter.image.property,
-          content: this.meta_twitter.image.content
-        }
-      ],
-    }
-  },
+  // head() {
+  //   return {
+  //     title: this.data.header && this.data.header.title || 'Suites & Staterooms - The MAJ Oceanic',
+  //     meta: [
+  //       // meta primary
+  //       {
+  //         hid: this.meta_primary.title.hid,
+  //         name: this.meta_primary.title.name,
+  //         content: this.meta_primary.title.content
+  //       },
+  //       {
+  //         hid: this.meta_primary.description.hid,
+  //         name: this.meta_primary.description.name,
+  //         content: this.meta_primary.description.content
+  //       },
+  //       {
+  //         hid: this.meta_primary.keywords.hid,
+  //         name: this.meta_primary.keywords.name,
+  //         content: this.meta_primary.keywords.content
+  //       },
+  //       // meta faceboook
+  //       {
+  //         hid: 'article:publisher',
+  //         name: 'article:publisher',
+  //         property: 'article:publisher',
+  //         content: 'https://www.facebook.com/themajoceanic/',
+  //       },
+  //       {
+  //         hid: 'article:modified_time',
+  //         property: 'article:modified_time',
+  //         content: this.data.updatedAt
+  //       },
+  //       {
+  //         hid: this.meta_facebook.url.hid,
+  //         name: this.meta_facebook.url.name,
+  //         property: this.meta_facebook.url.property,
+  //         content: this.meta_facebook.url.content
+  //       },
+  //       {
+  //         hid: this.meta_facebook.title.hid,
+  //         name: this.meta_facebook.title.name,
+  //         property: this.meta_facebook.title.property,
+  //         content: this.meta_facebook.title.content
+  //       },
+  //       {
+  //         hid: this.meta_facebook.description.hid,
+  //         name: this.meta_facebook.description.name,
+  //         property: this.meta_facebook.description.property,
+  //         content: this.meta_facebook.description.content
+  //       },
+  //       {
+  //         hid: this.meta_facebook.image.hid,
+  //         name: this.meta_facebook.image.name,
+  //         property: this.meta_facebook.image.property,
+  //         content: this.meta_facebook.image.content
+  //       },
+  //       // meta twitter
+  //       {
+  //         hid: 'twitter:card',
+  //         name: 'twitter:card',
+  //         property: 'twitter:card',
+  //         content: 'summary_large_image'
+  //       },
+  //       {
+  //         hid: 'twitter:creator',
+  //         name: 'twitter:creator',
+  //         property: 'twitter:creator',
+  //         content: '@themajoceanic'
+  //       },
+  //       {
+  //         hid: 'twitter:site',
+  //         name: 'twitter:site',
+  //         property: 'twitter:site',
+  //         content: '@themajoceanic'
+  //       },
+  //       {
+  //         hid: this.meta_twitter.url.hid,
+  //         name: this.meta_twitter.url.name,
+  //         property: this.meta_twitter.url.property,
+  //         content: this.meta_twitter.url.content
+  //       },
+  //       {
+  //         hid: this.meta_twitter.title.hid,
+  //         name: this.meta_twitter.title.name,
+  //         property: this.meta_twitter.title.property,
+  //         content: this.meta_twitter.title.content
+  //       },
+  //       {
+  //         hid: this.meta_twitter.description.hid,
+  //         name: this.meta_twitter.description.name,
+  //         property: this.meta_twitter.description.property,
+  //         content: this.meta_twitter.description.content
+  //       },
+  //       {
+  //         hid: this.meta_twitter.image.hid,
+  //         name: this.meta_twitter.image.name,
+  //         property: this.meta_twitter.image.property,
+  //         content: this.meta_twitter.image.content
+  //       }
+  //     ],
+  //   }
+  // },
 
   components,
 
@@ -200,8 +200,8 @@ export default {
     }
   },
 
-  async asyncData ({ $content }) {
-    const data = await $content ('pages/suites-and-staterooms').fetch();
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/suites-and-staterooms')
     return { data }
   },
 

@@ -14,9 +14,9 @@
         </div>
 
         <v-data-table
-          :items-per-page="isMobile ? itemsPerPage : -1"
-          :headers="data.tables.headers"
-          :items="data.tables.data"
+          :items-per-page="$vuetify.breakpoint.mobile ? itemsPerPage : -1"
+          :headers="data.table_full_chapter.headers"
+          :items="data.table_full_chapter.data"
           style="background: transparent"
           class="elevation-0 mt-5 text--primary text-center"
           hide-default-header
@@ -56,9 +56,9 @@
               </tr>
             </tbody>
           </template>
-          <template v-if="isMobile" v-slot:footer="{ props }">
+          <template v-if="$vuetify.breakpoint.mobile" v-slot:footer="{ props }">
             <v-btn class="mt-7" tile depressed outlined color="primary" @click="togglePage($event, props)">
-              {{footerButton}}
+              {{ footerButton }}
             </v-btn>
           </template>
         </v-data-table>
@@ -67,50 +67,32 @@
           <v-row no-gutters>
             <v-col cols="5" sm="3">Full Ship Capacity</v-col>
             <v-col cols="auto" class="px-5">:</v-col>
-            <v-col>{{ data.full_ship_capacity }}</v-col>
+            <v-col>{{ data.table_full_chapter.ship_capacity }}</v-col>
           </v-row>
           <v-row no-gutters>
             <v-col cols="5" sm="3">Extra Guest</v-col>
             <v-col cols="auto" class="px-5">:</v-col>
-            <v-col>{{ data.extra_guest }}</v-col>
+            <v-col>{{ data.table_full_chapter.extra_guest }}</v-col>
           </v-row>
           <v-row no-gutters>
             <v-col cols="5" sm="3">Relocation Fee</v-col>
             <v-col cols="auto" class="px-5">:</v-col>
-            <v-col>{{ data.relocation_fee }}</v-col>
+            <v-col>{{ data.table_full_chapter.relocation_fee }}</v-col>
           </v-row>
         </div>
 
+
         <div>
-          <div class="font-weight-bold mb-5">Full Ship Charter Rates include:</div>
-          <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.list" v-bind:key="i"> {{ d.content }} </li>
-          </ul>
-
-          <div class="mt-5 mb-1">Water sports</div>
-          <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.water_sports" v-bind:key="i"> {{ d.content }} </li>
-          </ul>
-
-          <div class="mt-5 mb-1">Tours and Fees</div>
-          <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.tours_and_fees" v-bind:key="i"> {{ d.content }} </li>
-          </ul>
-
-          <div class="mt-5 mb-1">Our package does not include:</div>
-          <ul class="list pl-3">
-            <li v-for="(d, i) of data.full_ship_charter_rates_include.does_not_include" v-bind:key="i"> {{ d.content }} </li>
-          </ul>
-
-          <div class="font-weight-bold mt-10 mb-4">Payment Terms and Conditions</div>
-          <ul class="list pl-3">
-            <li v-for="(d, i) of data.payment_terms_and_conditions" v-bind:key="i"> {{ d.content }} </li>
-          </ul>
-
-          <div class="font-weight-bold mt-10 mb-4">Cancellation Policy</div>
-          <ul class="list pl-3">
-            <li v-for="(d, i) of data.cancellation_policy" v-bind:key="i"> {{ d.content }} </li>
-          </ul>
+          <template v-for="(item, idx) in data.charter_rate_includes">
+            <div :key="idx">
+              <div v-html="item.name" />
+              <ul class="list pl-3">
+                <li v-for="(d, i) of item.data" :key="i">
+                  {{ d.text }}
+                </li>
+              </ul>
+            </div>
+          </template>
         </div>
       </div>
     </v-container>
@@ -135,108 +117,108 @@ export default {
     ]
   },
 
-  head() {
-    return {
-      title: this.data.header && this.data.header.title || 'Rates & Schedule - The MAJ Oceanic',
-      meta: [
-        // meta primary
-        {
-          hid: this.meta_primary.title.hid,
-          name: this.meta_primary.title.name,
-          content: this.meta_primary.title.content
-        },
-        {
-          hid: this.meta_primary.description.hid,
-          name: this.meta_primary.description.name,
-          content: this.meta_primary.description.content
-        },
-        {
-          hid: this.meta_primary.keywords.hid,
-          name: this.meta_primary.keywords.name,
-          content: this.meta_primary.keywords.content
-        },
-        // meta faceboook
-        {
-          hid: 'article:publisher',
-          name: 'article:publisher',
-          property: 'article:publisher',
-          content: 'https://www.facebook.com/themajoceanic/',
-        },
-        {
-          hid: 'article:modified_time',
-          property: 'article:modified_time',
-          content: this.data.updatedAt
-        },
-        {
-          hid: this.meta_facebook.url.hid,
-          name: this.meta_facebook.url.name,
-          property: this.meta_facebook.url.property,
-          content: this.meta_facebook.url.content
-        },
-        {
-          hid: this.meta_facebook.title.hid,
-          name: this.meta_facebook.title.name,
-          property: this.meta_facebook.title.property,
-          content: this.meta_facebook.title.content
-        },
-        {
-          hid: this.meta_facebook.description.hid,
-          name: this.meta_facebook.description.name,
-          property: this.meta_facebook.description.property,
-          content: this.meta_facebook.description.content
-        },
-        {
-          hid: this.meta_facebook.image.hid,
-          name: this.meta_facebook.image.name,
-          property: this.meta_facebook.image.property,
-          content: this.meta_facebook.image.content
-        },
-        // meta twitter
-        {
-          hid: 'twitter:card',
-          name: 'twitter:card',
-          property: 'twitter:card',
-          content: 'summary_large_image'
-        },
-        {
-          hid: 'twitter:creator',
-          name: 'twitter:creator',
-          property: 'twitter:creator',
-          content: '@themajoceanic'
-        },
-        {
-          hid: 'twitter:site',
-          name: 'twitter:site',
-          property: 'twitter:site',
-          content: '@themajoceanic'
-        },
-        {
-          hid: this.meta_twitter.url.hid,
-          name: this.meta_twitter.url.name,
-          property: this.meta_twitter.url.property,
-          content: this.meta_twitter.url.content
-        },
-        {
-          hid: this.meta_twitter.title.hid,
-          name: this.meta_twitter.title.name,
-          property: this.meta_twitter.title.property,
-          content: this.meta_twitter.title.content
-        },
-        {
-          hid: this.meta_twitter.description.hid,
-          name: this.meta_twitter.description.name,
-          property: this.meta_twitter.description.property,
-          content: this.meta_twitter.description.content
-        },
-        {
-          hid: this.meta_twitter.image.hid,
-          name: this.meta_twitter.image.name,
-          property: this.meta_twitter.image.property,
-          content: this.meta_twitter.image.content
-        }
-      ],
-    }
-  },
+  // head() {
+  //   return {
+  //     title: this.data.header && this.data.header.title || 'Rates & Schedule - The MAJ Oceanic',
+  //     meta: [
+  //       // meta primary
+  //       {
+  //         hid: this.meta_primary.title.hid,
+  //         name: this.meta_primary.title.name,
+  //         content: this.meta_primary.title.content
+  //       },
+  //       {
+  //         hid: this.meta_primary.description.hid,
+  //         name: this.meta_primary.description.name,
+  //         content: this.meta_primary.description.content
+  //       },
+  //       {
+  //         hid: this.meta_primary.keywords.hid,
+  //         name: this.meta_primary.keywords.name,
+  //         content: this.meta_primary.keywords.content
+  //       },
+  //       // meta faceboook
+  //       {
+  //         hid: 'article:publisher',
+  //         name: 'article:publisher',
+  //         property: 'article:publisher',
+  //         content: 'https://www.facebook.com/themajoceanic/',
+  //       },
+  //       {
+  //         hid: 'article:modified_time',
+  //         property: 'article:modified_time',
+  //         content: this.data.updatedAt
+  //       },
+  //       {
+  //         hid: this.meta_facebook.url.hid,
+  //         name: this.meta_facebook.url.name,
+  //         property: this.meta_facebook.url.property,
+  //         content: this.meta_facebook.url.content
+  //       },
+  //       {
+  //         hid: this.meta_facebook.title.hid,
+  //         name: this.meta_facebook.title.name,
+  //         property: this.meta_facebook.title.property,
+  //         content: this.meta_facebook.title.content
+  //       },
+  //       {
+  //         hid: this.meta_facebook.description.hid,
+  //         name: this.meta_facebook.description.name,
+  //         property: this.meta_facebook.description.property,
+  //         content: this.meta_facebook.description.content
+  //       },
+  //       {
+  //         hid: this.meta_facebook.image.hid,
+  //         name: this.meta_facebook.image.name,
+  //         property: this.meta_facebook.image.property,
+  //         content: this.meta_facebook.image.content
+  //       },
+  //       // meta twitter
+  //       {
+  //         hid: 'twitter:card',
+  //         name: 'twitter:card',
+  //         property: 'twitter:card',
+  //         content: 'summary_large_image'
+  //       },
+  //       {
+  //         hid: 'twitter:creator',
+  //         name: 'twitter:creator',
+  //         property: 'twitter:creator',
+  //         content: '@themajoceanic'
+  //       },
+  //       {
+  //         hid: 'twitter:site',
+  //         name: 'twitter:site',
+  //         property: 'twitter:site',
+  //         content: '@themajoceanic'
+  //       },
+  //       {
+  //         hid: this.meta_twitter.url.hid,
+  //         name: this.meta_twitter.url.name,
+  //         property: this.meta_twitter.url.property,
+  //         content: this.meta_twitter.url.content
+  //       },
+  //       {
+  //         hid: this.meta_twitter.title.hid,
+  //         name: this.meta_twitter.title.name,
+  //         property: this.meta_twitter.title.property,
+  //         content: this.meta_twitter.title.content
+  //       },
+  //       {
+  //         hid: this.meta_twitter.description.hid,
+  //         name: this.meta_twitter.description.name,
+  //         property: this.meta_twitter.description.property,
+  //         content: this.meta_twitter.description.content
+  //       },
+  //       {
+  //         hid: this.meta_twitter.image.hid,
+  //         name: this.meta_twitter.image.name,
+  //         property: this.meta_twitter.image.property,
+  //         content: this.meta_twitter.image.content
+  //       }
+  //     ],
+  //   }
+  // },
 
   data () {
     return {
@@ -245,9 +227,8 @@ export default {
     }
   },
 
-  async asyncData ({ $content }) {
-    const data = await $content('pages/rates-and-schedule').fetch()
-
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/rates-and-schedule')
     return {
       data
     }

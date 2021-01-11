@@ -21,20 +21,20 @@
               </v-row>
             </template>
           </v-img>
-          <div v-if="item.name" class="swiper__item--heading font-weight-bold hidden-xs-only">{{item.name}}</div>
-          <div v-if="item.title" class="swiper__item--text hidden-xs-only">{{item.title}}</div>
+          <div v-if="item.name" class="swiper__item--heading font-weight-bold hidden-xs-only" style="font-family: Domine">{{ item.name }}</div>
+          <div v-if="item.title" class="swiper__item--text hidden-xs-only">{{ item.title }}</div>
         </div>
       </swiper-slide>
     </swiper>
     <div class="mx-auto text-center hidden-sm-and-up">
-      <div v-if="dataActive.heading" class="swiper__item--heading font-weight-bold">{{dataActive.name}}</div>
-      <div v-if="dataActive.title" class="swiper__item--text">{{dataActive.title}}</div>
+      <div v-if="dataActive.heading" class="swiper__item--heading font-weight-bold">{{ dataActive.name }}</div>
+      <div v-if="dataActive.title" class="swiper__item--text">{{ dataActive.title }}</div>
     </div>
     <v-btn depressed absolute fab x-small class="button--left hidden-xs-only" color="primary" @click="prev">
-      <v-icon color="white"> {{icon.left}} </v-icon>
+      <v-icon color="white">{{ icon.left }}</v-icon>
     </v-btn>
     <v-btn depressed absolute fab x-small class="button--right hidden-xs-only" color="primary" @click="next">
-      <v-icon color="white"> {{icon.right}} </v-icon>
+      <v-icon color="white">{{ icon.right }}</v-icon>
     </v-btn>
   </v-container>
 </template>

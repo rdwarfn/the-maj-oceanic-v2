@@ -146,7 +146,7 @@
 
 export default {
   props: {
-    'is-intersecting': {
+    isIntersecting: {
       type: Boolean,
       default: false
     }
@@ -159,8 +159,8 @@ export default {
   },
 
   async fetch () {
-    const { menu } = await this.$content('navigation/menu').only(['menu']).fetch()
-    this.menu = menu
+    const data = await this.$axios.$get('/api/navigations/')
+    this.menu = data
   },
 
   methods: {

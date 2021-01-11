@@ -8,7 +8,7 @@
 
       <v-col cols="6">
         <v-row align="center">
-          <v-col :cols="!index ? 12 : 6" v-for="(d, index) in data.images" :key="index">
+          <v-col :cols="!index ? 12 : 6" v-for="(d, index) in data.gallery" :key="index">
             <v-img
               :src="d.image"
               :lazy-src="d.image"

@@ -6,36 +6,80 @@
         <div class="__heading px-6 px-sm-0 px-6 px-md-0">{{ data.heading }}</div>
 
         <swiper ref="swiper" class="swiper container py-0 px-0 px-sm-6 px-md-0" v-bind:options="swiperOption">
-          <swiper-slide v-for="(item, index) in data.data" v-bind:key="index">
-            <div class="text-center swiper__item">
-              <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.image"></v-skeleton-loader>
-              <v-img
-                v-else
-                v-bind:src="staticImage
-                  ? require(`~/assets/images/${item.image}`)
-                  : item.image"
-                v-bind:lazy-src="staticImage
-                  ? require(`~/assets/images/${item.image}`)
-                  : item.image"
-                class="swiper__item--img"
-              >
-                <template v-slot:placeholder>
-                  <v-row class="fill-height ma-0" align="center" justify="center">
-                    <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
-              <div class="hidden-xs-only">
-                <div class="swiper__item--heading font-weight-bold">{{item.heading}}</div>
-                <div v-if="item.description" class="swiper__item--text" v-html="item.description"></div>
+          <template v-for="(item, index) in data.data">
+            <swiper-slide v-bind:key="index">
+              <div class="text-center swiper__item">
+                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.admiral.gallery"></v-skeleton-loader>
+                <v-img
+                  v-else
+                  v-bind:src="item.admiral.gallery[0].image"
+                  v-bind:lazy-src="item.admiral.gallery[0].image"
+                  class="swiper__item--img"
+                >
+                  <template v-slot:placeholder>
+                    <v-row class="fill-height ma-0" align="center" justify="center">
+                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+                <div class="hidden-xs-only">
+                  <div class="swiper__item--heading font-weight-bold text-capitalize">{{ item.admiral.caption }}</div>
+                  <div class="swiper__item--text">
+                    <em>{{ item.admiral.sqm }} sqm</em>
+                  </div>
+                </div>
               </div>
-            </div>
-          </swiper-slide>
+            </swiper-slide><swiper-slide v-bind:key="index + 1">
+              <div class="text-center swiper__item">
+                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.commodore.gallery"></v-skeleton-loader>
+                <v-img
+                  v-else
+                  v-bind:src="item.commodore.gallery[0].image"
+                  v-bind:lazy-src="item.commodore.gallery[0].image"
+                  class="swiper__item--img"
+                >
+                  <template v-slot:placeholder>
+                    <v-row class="fill-height ma-0" align="center" justify="center">
+                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+                <div class="hidden-xs-only">
+                  <div class="swiper__item--heading font-weight-bold text-capitalize">{{ item.commodore.caption }}</div>
+                  <div class="swiper__item--text">
+                    <em>{{ item.commodore.sqm }} sqm</em>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide><swiper-slide v-bind:key="index + 2">
+              <div class="text-center swiper__item">
+                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.deluxe.gallery"></v-skeleton-loader>
+                <v-img
+                  v-else
+                  v-bind:src="item.deluxe.gallery[0].image"
+                  v-bind:lazy-src="item.deluxe.gallery[0].image"
+                  class="swiper__item--img"
+                >
+                  <template v-slot:placeholder>
+                    <v-row class="fill-height ma-0" align="center" justify="center">
+                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                    </v-row>
+                  </template>
+                </v-img>
+                <div class="hidden-xs-only">
+                  <div class="swiper__item--heading font-weight-bold text-capitalize">{{ item.deluxe.caption }}</div>
+                  <div class="swiper__item--text">
+                    <em>{{ item.deluxe.sqm }} sqm</em>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide>
+          </template>
           <div class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" slot="pagination"></div>
         </swiper>
 
         <div class="swiper__content">
-          <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{dataActive.heading}}</div>
+          <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{ dataActive.heading }}</div>
           <div v-if="dataActive.description" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.description"></div>
           <v-btn
             tile
@@ -193,6 +237,7 @@ $secondary: #EFE1DC;
   .swiper__item--heading {
     @include poly-fluid-sizing ('font-size', (768px:18px, 960px:22px));
     @include poly-fluid-sizing ('margin-top', (375px:30px, 768px:20px, 960px:35px));
+    font-family: 'Sentinel';
     margin-bottom: 5.5px;
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {

@@ -9,7 +9,7 @@
     </v-skeleton-loader>
     <template v-else>
       <v-sheet class="hero-wrapper text-center" style="relative">
-        <template v-if="data.videos">
+        <template v-if="data.videos.length">
           <template>
             <div class="video-player-box mx-auto hidden-xs-only"
               :playsinline="true"
@@ -19,8 +19,7 @@
               }"
             >
             </div>
-            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.heading">
-            </div>
+            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.heading" />
           </template>
 
           <template>
@@ -32,7 +31,7 @@
             >
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading"></div>
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
                 <v-spacer/>
               </v-row>
             </v-img>
@@ -49,7 +48,7 @@
             <!-- :aspect-ratio="16/9" -->
             <v-row no-gutters align="center" justify="center" class="fill-height">
               <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading"></div>
+              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
               <v-spacer/>
             </v-row>
           </v-img>
@@ -62,8 +61,7 @@
             >
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading">
-                </div>
+                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
                 <v-spacer/>
               </v-row>
             </v-img>

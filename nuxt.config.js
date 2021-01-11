@@ -113,7 +113,9 @@ export default {
   /*
   ** Axios module configuration
   */
-  axios: {},
+  axios: {
+    baseURL: 'http://193.168.195.1:8000'
+  },
   /*
   ** Content module configuration
   */
@@ -156,20 +158,6 @@ export default {
           // grid: true
         }
       }
-    },
-
-    // extractCSS: true,
-    // optimization: {
-    //   splitChunks: {
-    //     cacheGroups: {
-    //       styles: {
-    //         name: 'styles',
-    //         test: /\.(css|vue)$/,
-    //         chunks: 'all',
-    //         enforce: true
-    //       }
-    //     }
-    //   }
-    // }
+    }
   }
 }

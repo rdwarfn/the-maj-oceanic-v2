@@ -30,24 +30,24 @@
         <swiper ref="swiper" class="swiper" :options="swiperOption">
           <swiper-slide v-for="(item, index) in data.tabs_data" :key="index">
             <v-skeleton-loader
-              v-if="!item.data.image"
+              v-if="!item.image"
               class="tabs-mobile--image"
               type="image"
             ></v-skeleton-loader>
             <v-img
-              v-bind:src="item.data.image"
-              v-bind:lazy-src="item.data.image"
+              v-bind:src="item.image"
+              v-bind:lazy-src="item.image"
               class="tabs-mobile--image"></v-img>
           </swiper-slide>
         </swiper>
 
         <div class="tabs-mobile--content text-center">
-          <div class="tabs-mobile--heading">{{dataActive.data && dataActive.data.heading}}</div>
-          <div class="tabs-mobile--text">{{dataActive.data && dataActive.data.description }}</div>
+          <div class="tabs-mobile--heading">{{dataActive && dataActive.heading}}</div>
+          <div class="tabs-mobile--text">{{dataActive && dataActive.description }}</div>
           <v-btn
             tile nuxt
             outlined
-            :to="dataActive.data && dataActive.data.to"
+            :to="dataActive && dataActive.to"
             class="tabs-mobile--btn btn-l"
             color="primary">
             learn more

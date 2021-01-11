@@ -18,12 +18,12 @@
     </v-tabs>
     <v-tabs-items class="mt-16" v-model="name">
     <v-tab-item v-for="item in data" v-bind:key="item.name" :value="item.name.replace(/\s/g, '-').toLowerCase()">
-      <slot v-bind:data-tab="item.data">
+      <slot v-bind:data-tab="item">
         <v-card flat>
           <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
             <v-img class="__tab--img mx-auto mx-md-0"
-              v-bind:src="item.data.image"
-              v-bind:lazy-src="item.data.image"
+              v-bind:src="item.image"
+              v-bind:lazy-src="item.image"
             >
               <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
@@ -34,13 +34,13 @@
             <div class="__tab--content">
               <v-card-title class="px-0 pt-0">
                 <div class="text-h4 mx-auto mx-md-0">
-                  {{ item.data.heading }}
+                  {{ item.heading }}
                 </div>
               </v-card-title>
 
               <v-card-text class="__tab--content-text text--primary px-0 mb-3">
                 <p class="text-center text-md-left">
-                  {{ item.data.description }}
+                  {{ item.description }}
                 </p>
               </v-card-text>
 
@@ -49,7 +49,7 @@
                   class="btn-l mx-auto mx-md-0 __tab--btn"
                   v-bind:class="buttonProps"
                   color="primary"
-                  tile depressed outlined :to="item.data.to"
+                  tile depressed outlined :to="item.to"
                 >{{buttonText}}</v-btn>
               </v-card-actions>
             </div>

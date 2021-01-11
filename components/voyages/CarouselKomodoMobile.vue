@@ -1,11 +1,11 @@
 <template>
   <v-row no-gutters align="center" justify="space-between" class="swiper-komodo-mobile-1224">
     <v-col cols="12" sm="6" order-sm="12">
-      <swiper v-if="data.mobile_images" ref="swiper" class="swiper" :options="swiperOptions">
-        <swiper-slide v-for="(d, index) in data.mobile_images" :key="index">
+      <swiper v-if="data.gallery.length" ref="swiper" class="swiper" :options="swiperOptions">
+        <swiper-slide v-for="(d, index) in data.gallery" :key="index">
           <v-img
-            :src="d.image"
-            :lazy-src="d.image"
+            :src="d.mobile_image"
+            :lazy-src="d.mobile_image"
             class="swiper-komodo-mobile-1224--image-mobile"
           >
             <template v-slot:placeholder>
@@ -20,7 +20,7 @@
           </v-img>
         </swiper-slide>
       </swiper>
-      <v-skeleton-loader v-else :loading="!data.mobile_images" type="image">
+      <v-skeleton-loader v-else :loading="!data.gallery.length" type="image">
       </v-skeleton-loader>
     </v-col>
 

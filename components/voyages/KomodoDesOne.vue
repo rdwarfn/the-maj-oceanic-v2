@@ -14,8 +14,8 @@
           <v-card flat tile class="komodo--des-one_card">
 
             <v-img
-              :src="data.image"
-              :lazy-src="data.image"
+              :src="data.gallery[0].image"
+              :lazy-src="data.gallery[0].image"
               class="komodo--des-one_img"
             >
               <template v-slot:placeholder>
@@ -36,7 +36,7 @@
                 <v-btn
                   tile
                   nuxt
-                  :to="data.to"
+                  to="/contact-us"
                   outlined
                   depressed
                   color="primary"
