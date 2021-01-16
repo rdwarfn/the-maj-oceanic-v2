@@ -3,8 +3,8 @@
     <v-row no-gutters align="center" justify-sm="space-between">
       <v-col cols="12" sm="5">
         <v-img
-          :src="data.gallery[0].image"
-          :lazy-src="data.gallery[0].image"
+          :src="$store.state.storage + data.gallery[0].image"
+          :lazy-src="$store.state.storage + data.gallery[0].image"
           class="komodo--des-four_image"
         >
           <template v-slot:placeholder>
@@ -13,14 +13,14 @@
               align="center"
               justify="center"
             >
-              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              <v-progress-circular indeterminate color="grey lighten-5" />
             </v-row>
           </template>
         </v-img>
       </v-col>
 
       <v-col cols="12" sm="5">
-        <div class="komodo--des-four_text text--primary text--primary text-body-1" v-html="data.description"></div>
+        <div class="komodo--des-four_text text--primary text--primary text-body-1" v-html="data.description" />
       </v-col>
     </v-row>
   </v-container>

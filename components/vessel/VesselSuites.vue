@@ -9,16 +9,16 @@
           <template v-for="(item, index) in data.data">
             <swiper-slide v-bind:key="index">
               <div class="text-center swiper__item">
-                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.admiral.gallery"></v-skeleton-loader>
+                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.admiral.gallery" />
                 <v-img
                   v-else
-                  v-bind:src="item.admiral.gallery[0].image"
-                  v-bind:lazy-src="item.admiral.gallery[0].image"
+                  v-bind:src="$store.state.storage + item.admiral.gallery[0].image"
+                  v-bind:lazy-src="$store.state.storage + item.admiral.gallery[0].image"
                   class="swiper__item--img"
                 >
                   <template v-slot:placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
-                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                      <v-progress-circular indeterminate color="grey lighten-5" />
                     </v-row>
                   </template>
                 </v-img>
@@ -31,16 +31,16 @@
               </div>
             </swiper-slide><swiper-slide v-bind:key="index + 1">
               <div class="text-center swiper__item">
-                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.commodore.gallery"></v-skeleton-loader>
+                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.commodore.gallery" />
                 <v-img
                   v-else
-                  v-bind:src="item.commodore.gallery[0].image"
-                  v-bind:lazy-src="item.commodore.gallery[0].image"
+                  v-bind:src="$store.state.storage + item.commodore.gallery[0].image"
+                  v-bind:lazy-src="$store.state.storage + item.commodore.gallery[0].image"
                   class="swiper__item--img"
                 >
                   <template v-slot:placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
-                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                      <v-progress-circular indeterminate color="grey lighten-5" />
                     </v-row>
                   </template>
                 </v-img>
@@ -53,16 +53,16 @@
               </div>
             </swiper-slide><swiper-slide v-bind:key="index + 2">
               <div class="text-center swiper__item">
-                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.deluxe.gallery"></v-skeleton-loader>
+                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.deluxe.gallery" />
                 <v-img
                   v-else
-                  v-bind:src="item.deluxe.gallery[0].image"
-                  v-bind:lazy-src="item.deluxe.gallery[0].image"
+                  v-bind:src="$store.state.storage + item.deluxe.gallery[0].image"
+                  v-bind:lazy-src="$store.state.storage + item.deluxe.gallery[0].image"
                   class="swiper__item--img"
                 >
                   <template v-slot:placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
-                      <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                      <v-progress-circular indeterminate color="grey lighten-5" />
                     </v-row>
                   </template>
                 </v-img>
@@ -75,12 +75,12 @@
               </div>
             </swiper-slide>
           </template>
-          <div class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" slot="pagination"></div>
+          <div class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" slot="pagination" />
         </swiper>
 
         <div class="swiper__content">
           <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{ dataActive.heading }}</div>
-          <div v-if="dataActive.description" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.description"></div>
+          <div v-if="dataActive.description" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.description" />
           <v-btn
             tile
             depressed

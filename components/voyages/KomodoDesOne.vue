@@ -14,8 +14,8 @@
           <v-card flat tile class="komodo--des-one_card">
 
             <v-img
-              :src="data.gallery[0].image"
-              :lazy-src="data.gallery[0].image"
+              :src="$store.state.storage + data.gallery[0].image"
+              :lazy-src="$store.state.storage + data.gallery[0].image"
               class="komodo--des-one_img"
             >
               <template v-slot:placeholder>
@@ -24,13 +24,13 @@
                   align="center"
                   justify="center"
                 >
-                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                  <v-progress-circular indeterminate color="grey lighten-5" />
                 </v-row>
               </template>
             </v-img>
 
             <div class="komodo--des-one__content">
-              <v-card-text class="komodo--des-one_text px-0 text--primary text-body-1" v-html="data.description"></v-card-text>
+              <v-card-text class="komodo--des-one_text px-0 text--primary text-body-1" v-html="data.description" />
 
               <v-card-actions class="pa-0">
                 <v-btn

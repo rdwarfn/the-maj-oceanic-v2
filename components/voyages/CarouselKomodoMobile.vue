@@ -4,8 +4,8 @@
       <swiper v-if="data.gallery.length" ref="swiper" class="swiper" :options="swiperOptions">
         <swiper-slide v-for="(d, index) in data.gallery" :key="index">
           <v-img
-            :src="d.mobile_image"
-            :lazy-src="d.mobile_image"
+            :src="$store.state.storage + d.mobile_image"
+            :lazy-src="$store.state.storage + d.mobile_image"
             class="swiper-komodo-mobile-1224--image-mobile"
           >
             <template v-slot:placeholder>
@@ -14,20 +14,19 @@
                 align="center"
                 justify="center"
               >
-                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                <v-progress-circular indeterminate color="grey lighten-5" />
               </v-row>
             </template>
           </v-img>
         </swiper-slide>
       </swiper>
-      <v-skeleton-loader v-else :loading="!data.gallery.length" type="image">
-      </v-skeleton-loader>
+      <v-skeleton-loader v-else :loading="!data.gallery.length" type="image" />
     </v-col>
 
     <v-col cols="12" sm="6">
       <v-container class="swiper-komodo-mobile-1224--content px-6 px-md-0 text-center text-sm-left">
-        <div v-if="data.description" class="text--primary text-body-1" v-html="data.description"></div>
-        <v-skeleton-loader v-else class="my-6 mx-6 mx-md-0" type="paragraph@2" loading></v-skeleton-loader>
+        <div v-if="data.description" class="text--primary text-body-1" v-html="data.description" />
+        <v-skeleton-loader v-else class="my-6 mx-6 mx-md-0" type="paragraph@2" loading />
       </v-container>
     </v-col>
   </v-row>

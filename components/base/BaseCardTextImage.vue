@@ -12,11 +12,11 @@
           v-if="!data.image"
           :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
           type="image"
-        ></v-skeleton-loader>
+        />
         <v-img
           v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
-          v-bind:src="data.image"
-          v-bind:lazy-src="data.image"
+          v-bind:src="$store.state.storage + data.image"
+          v-bind:lazy-src="$store.state.storage + data.image"
           v-bind:aspect-ratio="imgAspectRatio"
         >
           <template v-slot:placeholder>
@@ -25,7 +25,7 @@
               align="center"
               justify="center"
             >
-              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              <v-progress-circular indeterminate color="grey lighten-5" />
             </v-row>
           </template>
         </v-img>

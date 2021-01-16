@@ -5,27 +5,25 @@
       class="_hero--img"
       transition="slide-y-reverse-transition"
       v-if="!data"
-    >
-    </v-skeleton-loader>
+    />
     <template v-else>
       <v-sheet class="hero-wrapper text-center" style="relative">
-        <template v-if="data.videos.length">
+        <template v-if="dataVideo">
           <template>
             <div class="video-player-box mx-auto hidden-xs-only"
               :playsinline="true"
               v-video-player:player="{
                 ...playerOptions,
-                sources: [...data.videos],
+                sources: [...dataVideo],
               }"
-            >
-            </div>
+            />
             <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.heading" />
           </template>
 
           <template>
             <v-img
-              v-bind:src="data.image"
-              :lazy-src="data.image"
+              v-bind:src="$store.state.storage + data.image"
+              :lazy-src="$store.state.storage + data.image"
               class="_hero--img justify-center hidden hidden-sm-and-up"
               transition="fade-transition"
             >
@@ -40,9 +38,9 @@
 
         <template v-else>
           <v-img
-            :class="{'hidden-xs-only': data.mobile_image}"
-            v-bind:src="data.image"
-            :lazy-src="data.image"
+            :class="{'hidden-xs-only': $store.state.storage + data.mobile_image}"
+            v-bind:src="$store.state.storage + data.image"
+            :lazy-src="$store.state.storage + data.image"
             class="_hero--img justify-center"
           >
             <!-- :aspect-ratio="16/9" -->
@@ -54,10 +52,10 @@
           </v-img>
             <!-- class="hidden-sm-and-up" -->
           <v-img
-            v-if="data.mobile_image"
+            v-if="$store.state.storage + data.mobile_image"
             class="hidden-sm-and-up"
-            :src="data.mobile_image"
-            :lazy-src="data.mobile_image"
+            :src="$store.state.storage + data.mobile_image"
+            :lazy-src="$store.state.storage + data.mobile_image"
             >
               <v-row no-gutters align="center" justify="center" class="fill-height">
                 <v-spacer />
@@ -72,6 +70,7 @@
 </template>
 
 <script>
+import _ from 'lodash'
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 
 const components = { Swiper, SwiperSlide };
@@ -79,9 +78,7 @@ export default {
   props: {
     data: { type: [Array, Object] },
   },
-
-  components,
-
+  // components,
   data () {
     return {
       swiperOptions: {
@@ -97,6 +94,21 @@ export default {
         loop: true,
         muted: true,
       }
+    }
+  },
+  computed: {
+    dataVideo () {
+      if (!_.size(this.data.videos)) {
+        return false
+      }
+      const newval = _.map(this.data.videos, (item) => {
+        const storage = this.$store.state.storage
+        return {
+          ...item,
+          src: storage + item.src
+        }
+      })
+      return newval
     }
   }
 }

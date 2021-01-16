@@ -7,29 +7,29 @@
           <swiper ref="swiperMobile" class="swiper" :options="swiperOptionsMobile">
             <swiper-slide v-for="(obj, index) in data" :key="index" class="text-center">
               <img
-                :src="obj.image"
+                :src="$store.state.storage + obj.image"
                 class="testimonal--img"
               />
             </swiper-slide>
-            <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+            <div class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
           </swiper>
         </div>
 
         <div class="testimonal--content-mobile mr-6 mr-sm-0 hidden-sm-and-up">
           <template>
-            <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph"></v-skeleton-loader>
-            <div v-else class="testimonal--description text--primary" v-html="dataActive.comment"></div>
+            <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph" />
+            <div v-else class="testimonal--description text--primary" v-html="dataActive.comment" />
           </template>
 
           <template>
-            <v-skeleton-loader v-if="!dataActive.name" loading type="text"></v-skeleton-loader>
+            <v-skeleton-loader v-if="!dataActive.name" loading type="text" />
             <strong v-else>
               {{ dataActive.name }}
             </strong>
           </template>
 
           <template>
-            <v-skeleton-loader v-if="!dataActive.instagram" loading type="text"></v-skeleton-loader>
+            <v-skeleton-loader v-if="!dataActive.instagram" loading type="text" />
             <a v-else :href="dataActive.instagram.link" target="blank">
               <div class="font-weight-medium">(@{{ dataActive.instagram.username }})</div>
             </a>
@@ -45,23 +45,23 @@
             <swiper ref="swiper" class="swiper" :options="swiperOptions">
               <swiper-slide v-for="(obj, index) in data" :key="index">
                 <v-img
-                  :src="obj.image"
-                  :lazy-src="obj.image"
+                  :src="$store.state.storage + obj.image"
+                  :lazy-src="$store.state.storage + obj.image"
                   class="testimonal--img"
                 ></v-img>
               </swiper-slide>
-              <div class="swiper-pagination swiper-pagination-bullets hidden-md-and-up" slot="pagination"></div>
+              <div class="swiper-pagination swiper-pagination-bullets hidden-md-and-up" slot="pagination" />
             </swiper>
           </v-col>
 
           <v-col cols="12" sm="5">
             <template>
-              <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph"></v-skeleton-loader>
-              <div v-else class="testimonal--description text--primary" v-html="dataActive.comment"></div>
+              <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph" />
+              <div v-else class="testimonal--description text--primary" v-html="dataActive.comment" />
             </template>
 
             <template>
-              <v-skeleton-loader v-if="!dataActive.instagram" loading type="text@2"></v-skeleton-loader>
+              <v-skeleton-loader v-if="!dataActive.instagram" loading type="text@2" />
               <a v-else :href="dataActive.instagram.link" target="blank">
                 <strong>{{ dataActive.name }}</strong>
                 <span class="font-weight-medium">(@{{ dataActive.instagram.username }})</span>

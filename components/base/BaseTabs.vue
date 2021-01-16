@@ -22,8 +22,8 @@
         <v-card flat>
           <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
             <v-img class="__tab--img mx-auto mx-md-0"
-              v-bind:src="item.image"
-              v-bind:lazy-src="item.image"
+              v-bind:src="$store.state.storage + item.image"
+              v-bind:lazy-src="$store.state.storage + item.image"
             >
               <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">

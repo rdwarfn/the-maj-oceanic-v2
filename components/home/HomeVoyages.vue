@@ -6,14 +6,13 @@
           class="text-h4 text-sm-h3 mb-8"
           v-text="data.heading"
         />
-        <div v-html="data.description"></div>
+        <div v-html="data.description" />
       </v-row>
       <base-tabs
         button-text="learn more"
         v-bind:data="data.tabs_data"
         class="hidden-xs-only"
-      >
-      </base-tabs>
+      />
 
       <v-sheet color="transparent" class="hidden-sm-and-up" style="position: relative;">
         <v-row class="tabs-mobile--container container mx-auto px-0">
@@ -33,11 +32,12 @@
               v-if="!item.image"
               class="tabs-mobile--image"
               type="image"
-            ></v-skeleton-loader>
+            />
             <v-img
-              v-bind:src="item.image"
-              v-bind:lazy-src="item.image"
-              class="tabs-mobile--image"></v-img>
+              :src="$store.state.storage + item.image"
+              :lazy-src="$store.state.storage + item.image"
+              class="tabs-mobile--image"
+            />
           </swiper-slide>
         </swiper>
 

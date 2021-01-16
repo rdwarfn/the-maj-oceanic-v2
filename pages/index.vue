@@ -4,7 +4,7 @@
       <home-intro
         class="home--intro"
         v-bind:data="data.intro"
-      ></home-intro>
+      />
     </template>
 
     <v-container class="home--the-vessel px-6 px-md-0" tag="section">
@@ -16,7 +16,7 @@
           v-else
           :data="[...data.the_vessel]"
           button-text="discover"
-        ></home-vessel>
+        />
       </template>
     </v-container>
 
@@ -38,7 +38,7 @@
           button-text="learn more"
           content-right
           reverse
-        ></home-dining-occasions>
+        />
       </template>
     </v-container>
 
@@ -51,7 +51,7 @@
           v-else
           v-bind:data="data.occasions"
           button-text="learn more"
-        ></home-dining-occasions>
+        />
       </template>
     </v-container>
   </div>

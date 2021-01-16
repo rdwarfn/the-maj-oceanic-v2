@@ -16,18 +16,19 @@
     <swiper ref="swiper" class="swiper static" v-bind:options="swiperOptions">
       <swiper-slide v-for="(item, index) in data" v-bind:key="index">
         <v-img
-          v-bind:src="item.image"
-          v-bind:lazy-src="item.image"
-          class="hidden-xs-only deck-spesification--item-img mx-auto"></v-img>
+          v-bind:src="$store.state.storage + item.image"
+          v-bind:lazy-src="$store.state.storage + item.image"
+          class="hidden-xs-only deck-spesification--item-img mx-auto"
+        />
         <v-img
-          :src="item.mobile_image"
-          :lazy-src="item.mobile_image"
+          :src="$store.state.storage + item.mobile_image"
+          :lazy-src="$store.state.storage + item.mobile_image"
           class="hidden-sm-and-up mx-auto"
           max-width="150"
           height="502px"
-        ></v-img>
+        />
       </swiper-slide>
-      <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+      <div class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
     </swiper>
 
     <div class="navigation container hidden-xs-only">

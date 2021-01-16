@@ -1,15 +1,13 @@
 <template>
   <v-container tag="section" class="pa-0 d-flex flex-column">
-    <v-skeleton-loader type="text@2" class="intro--head" v-if="!data.heading">
-    </v-skeleton-loader>
-    <div v-else class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move" v-html="data.heading">
-    </div>
+    <v-skeleton-loader type="text@2" class="intro--head" v-if="!data.heading" />
+    <div v-else class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move" v-html="data.heading" />
 
     <base-large-image
       v-if="data.image"
       class="intro--image"
       v-bind:class="imageClass"
-      :data="data.image"
+      :data="$store.state.storage + data.image"
     />
 
     <v-skeleton-loader type="text@4" class="text-center" v-if="!data.description">

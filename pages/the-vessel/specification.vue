@@ -10,9 +10,6 @@
     <deck-spesification v-bind:data="data.deck_previews" />
 
     <v-container class="pa-0">
-      <!-- <pre>
-        {{ data.table_spesification }}
-      </pre> -->
       <base-tables :data="data.table_spesification" />
     </v-container>
   </div>
@@ -154,7 +151,7 @@ export default {
   components,
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/spesification/')
+    const data = await $axios.$get('/api/pages/specification/')
     console.log(data.table_specification)
     return {
       data

@@ -28,11 +28,11 @@
             v-if="!item.image"
             class="__carousel--img mx-auto mx-sm-0"
             type="image"
-          ></v-skeleton-loader>
+          />
           <v-img
             v-else mx-auto
-            :src="item.image"
-            :lazy-src="item.image"
+            :src="$store.state.storage + item.image"
+            :lazy-src="$store.state.storage + item.image"
             class="__carousel--img mx-auto mx-sm-0"
             :class="cardImageClass"
           >

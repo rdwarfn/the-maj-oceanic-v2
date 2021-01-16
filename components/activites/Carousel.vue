@@ -10,8 +10,8 @@
       <swiper-slide v-for="(item, index2) in data.gallery" :key="index2">
         <template>
           <v-img
-            :src="item.image"
-            :lazy-src="item.image"
+            :src="$store.state.storage + item.image"
+            :lazy-src="$store.state.storage + item.image"
             class="activites-image"
           >
             <template #placeholder>
@@ -27,8 +27,7 @@
     <div
       class="activites-description-mobile hidden-sm-and-up px-6 px-md-0 text-center"
       v-html="data.description"
-    >
-    </div>
+    />
 
 
     <div class="hidden-xs-only">
@@ -41,8 +40,8 @@
         <swiper-slide v-for="(item, index2) in data.gallery" :key="index2">
           <template>
             <v-img
-              :src="item.image"
-              :lazy-src="item.image"
+              :src="$store.state.storage + item.image"
+              :lazy-src="$store.state.storage + item.image"
               class="activites-image"
             >
               <template #placeholder>
@@ -53,14 +52,14 @@
             </v-img>
           </template>
         </swiper-slide>
-        <div class="swiper-pagination activites-pagination" :class="{reversed: data.reverse}" slot="pagination"></div>
+        <div class="swiper-pagination activites-pagination" :class="{reversed: data.reverse}" slot="pagination" />
       </swiper>
       <v-card flat rounded class="activites-card" :class="{reversed: data.reverse}">
         <div class="text-h6 activites-caption">{{ data.caption }}</div>
         <div class="activites-heading font-weight-bold text-h4">
           {{ data.heading }}
         </div>
-        <div v-html="data.description"></div>
+        <div v-html="data.description" />
       </v-card>
       <v-row no-gutters align="center" justify="space-between" class="activites-actions" :class="{reversed: data.reverse}">
         <v-col cols="auto">

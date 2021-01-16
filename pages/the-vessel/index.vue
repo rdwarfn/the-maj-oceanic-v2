@@ -6,7 +6,7 @@
         v-bind:data="data.intro"
         image-class="order-last px-6 px-md-0"
         description-class="text-center"
-      ></vessel-intro>
+      />
     </template>
 
     <template>
@@ -41,7 +41,7 @@
           button-text="Learn More"
           content-right
           reverse
-        ></vessel-sustainability>
+        />
       </template>
     </v-container>
   </div>
@@ -186,7 +186,6 @@ export default {
 
   async asyncData ({ $axios }) {
     const data = await $axios.$get('/api/pages/the-vessel/')
-    _.reverse(data.the_decks)
     _.reverse(data.teams.data)
     return {
       data
@@ -217,9 +216,6 @@ export default {
     },
     ready (event) {
       this.player = event.target
-    },
-    playing (event) {
-      console.log(event)
     }
   }
 }

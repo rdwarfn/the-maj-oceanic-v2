@@ -1,7 +1,7 @@
 export const state = () => ({
-  counter: 0,
   breadcrumbs: [],
   drawer: false,
+  storage: process.env.BASE_STORAGE || 'https://backend.themajoceanic.com/media/'
 })
 
 export const mutations = {
@@ -10,24 +10,5 @@ export const mutations = {
   },
   toggleDrawer (state) {
     state.drawer = !state.drawer
-  },
-  increment(state) {
-    state.counter++
-  },
-  icrementAmount (state, payload) {
-    state.counter += payload
-  }
-}
-
-export const actions = {
-  increment ({ commit }) {
-    setTimeout(() => {
-      commit('increment')
-    }, 1000)
-  },
-  incrementAmount ({ commit }, payload) {
-    setTimeout(() => {
-      commit('icrementAmount', payload);
-    }, 1000)
   }
 }

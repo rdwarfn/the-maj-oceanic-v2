@@ -19,6 +19,7 @@ export default {
   /*
   ** Nuxt target
   */
+  ssr: false,
   target: 'static',
   /*
   ** Headers of the page
@@ -114,7 +115,7 @@ export default {
   ** Axios module configuration
   */
   axios: {
-    baseURL: 'http://193.168.195.1:8000'
+    baseURL: process.env.BASE_URL
   },
   /*
   ** Content module configuration

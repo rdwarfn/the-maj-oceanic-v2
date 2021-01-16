@@ -4,35 +4,36 @@
       <div
         class="intro--head font-weight-bold text-center mx-auto"
         v-html="data.intro.heading"
-      >
-      </div>
+      />
       <div
         class="intro--paragraph text-center mx-auto"
         v-html="data.intro.description"
-      ></div>
+      />
     </v-container>
 
-    <component :is="asyncComponent" class="admiral-suite" v-bind:data="data.admiral_suite">
+    <component :is="asyncComponent" class="admiral-suite" :data="data.admiral_suite">
       <template #icon>
         <v-img
           v-if="data.admiral_suite.icon"
           class="spesification--icon"
-          v-bind:src="data.admiral_suite.icon"
-          v-bind:lazy-src="data.admiral_suite.icon"></v-img>
+          :src="$store.state.storage + data.admiral_suite.icon"
+          :lazy-src="$store.state.storage + data.admiral_suite.icon"
+        />
       </template>
     </component>
 
-    <component :is="asyncComponent" class="columbus" reverse v-bind:data="data.commodore_suite">
+    <component :is="asyncComponent" class="columbus" reverse :data="data.commodore_suite">
       <template #icon>
         <v-img
           v-if="data.commodore_suite.icon"
           class="spesification--icon"
-          v-bind:src="data.commodore_suite.icon"
-          v-bind:lazy-src="data.commodore_suite.icon"></v-img>
+          :src="$store.state.storage + data.commodore_suite.icon"
+          :lazy-src="$store.state.storage + data.commodore_suite.icon"
+        />
       </template>
     </component>
 
-    <component :is="asyncComponent" class="deluxe" v-bind:data="data.deluxe_stateroom" no-wrap>
+    <component :is="asyncComponent" class="deluxe" :data="data.deluxe_stateroom" no-wrap>
       <template #icon>
         <div v-if="data.deluxe_stateroom.icons" class="d-inline-flex">
           <v-img
@@ -40,17 +41,17 @@
             :key="index"
             class="spesification--icon spesification--icon-delux"
             :class="{'mr-0': data.deluxe_stateroom.icons.length - 1 == index}"
-            v-bind:src="d.icon"
-            v-bind:lazy-src="d.icon"
-          ></v-img>
+            :src="$store.state.storage + d.icon"
+            :lazy-src="$store.state.storage + d.icon"
+          />
         </div>
       </template>
     </component>
 
     <v-sheet color="#EFE1DC">
       <v-container class="ig--container text-center px-6 px-md-0">
-        <div class="ig--heading" v-html="data.instagram.heading"></div>
-        <v-row id="instafeed"></v-row>
+        <div class="ig--heading" v-html="data.instagram.heading" />
+        <v-row id="instafeed" />
 
         <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
           View more

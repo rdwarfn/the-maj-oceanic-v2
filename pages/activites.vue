@@ -7,7 +7,7 @@
       <p
         class="intro--paragraph text-center mx-auto"
         v-html="data.intro.description"
-      ></p>
+      />
     </v-container>
 
     <!-- watersports -->
@@ -49,7 +49,6 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 import activitesCarousel from '@/components/activites/Carousel.vue';
 import baseTestimonal from '@/components/base/BaseTestimonal.vue';
 
