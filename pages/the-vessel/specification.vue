@@ -152,7 +152,6 @@ export default {
 
   async asyncData ({ $axios }) {
     const data = await $axios.$get('/api/pages/specification/')
-    console.log(data.table_specification)
     return {
       data
     }
