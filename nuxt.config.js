@@ -31,28 +31,15 @@ export default {
     },
     meta: [
       { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'robots', name: 'robots', content: 'follow, index' },
       { hid: 'googlebot', name: 'googlebot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
       { hid: 'bingbot', name: 'bingbot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
       { hid: 'og:locale', property: 'og:locale', content: 'en_US' },
-      { hid: 'msapplication-TileColor', name: 'msapplication-TileColor', content: '#ffffff' },
-      { hid: 'msapplication-TileImage', name: 'msapplication-TileImage', content: '/the-maj-oceanic--ico/ms-icon-144x144.png' }
     ],
     link: [
       { rel: 'canonical', href: 'https://themajoceanic.com' },
-      { rel: 'icon', type: 'image/x-icon', href: '/the-maj-oceanic--ico/favicon.ico' },
-      { rel: 'icon', type: 'image/png', sizes: '192x192', href: '/the-maj-oceanic--ico/android-icon-192x192.png' },
-      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/the-maj-oceanic--ico/favicon-32x32.png' },
-      { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/the-maj-oceanic--ico/favicon-16x16.png' },
-      { rel: 'apple-touch-icon', sizes: '57x57', href: '/the-maj-oceanic--ico/apple-icon-57x57.png' },
-      { rel: 'apple-touch-icon', sizes: '60x60', href: '/the-maj-oceanic--ico/apple-icon-60x60.png' },
-      { rel: 'apple-touch-icon', sizes: '72x72', href: '/the-maj-oceanic--ico/apple-icon-72x72.png' },
-      { rel: 'apple-touch-icon', sizes: '76x76', href: '/the-maj-oceanic--ico/apple-icon-76x76.png' },
-      { rel: 'apple-touch-icon', sizes: '114x114', href: '/the-maj-oceanic--ico/apple-icon-114x114.png' },
-      { rel: 'apple-touch-icon', sizes: '120x120', href: '/the-maj-oceanic--ico/apple-icon-120x120.png' },
-      { rel: 'apple-touch-icon', sizes: '144x144', href: '/the-maj-oceanic--ico/apple-icon-144x144.png' },
-      { rel: 'apple-touch-icon', sizes: '152x152', href: '/the-maj-oceanic--ico/apple-icon-152x152.png' },
-      { rel: 'apple-touch-icon', sizes: '180x180', href: '/the-maj-oceanic--ico/apple-icon-180x180.png' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
     ],
     script: [
       { type: 'text/javascript', src: '/js/instafeed.min.js' }
