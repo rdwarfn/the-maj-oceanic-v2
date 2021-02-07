@@ -1,13 +1,13 @@
 <template>
   <v-app>
     <tmo-navigation-mobile
-      v-bind:isIntersecting="isIntersecting"
-      v-bind:elevate-on-scroll="getHerosByRouteName != undefined"
-      v-bind:class="{
+      :is-intersecting="isIntersecting"
+      :elevate-on-scroll="getHerosByRouteName != undefined"
+      :class="{
         'v-app-bar--is-scrolled': !getHerosByRouteName
       }"
     >
-      <template v-slot:button-nav-icon>
+      <template #button-nav-icon>
         <v-app-bar-nav-icon @click.stop="toggleDrawer" />
       </template>
     </tmo-navigation-mobile>
@@ -16,36 +16,37 @@
 
     <tmo-navigation :is-intersecting="isIntersecting" :loading="false" />
 
-      <!-- v-if="!routeNameContactUs" -->
+    <!-- v-if="!routeNameContactUs" -->
     <tmo-hero-banner
       v-if="getHerosByRouteName"
-      v-bind:data="getHerosByRouteName"
       v-intersect.quiet="{
         handler: heroIntersec,
         options: { rootMargin: '0px', threshold: [0.5, 1.0] }
       }"
+      :data="getHerosByRouteName"
     />
 
-    <v-main id="main"
+    <v-main
+      id="main"
       v-intersect="{
         handler: onIntersect,
         options: {
           rootMargin: '0px 0px -600px 0px'
         }
       }"
-      v-bind:class="{'pt-0': getHerosByRouteName}"
+      :class="{'pt-0': getHerosByRouteName}"
       :style="getHerosByRouteName ? 'padding-top: 0' : 'padding-top: 78px'"
     >
       <breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-4 py-sm-6'" />
-        <nuxt />
+      <nuxt />
       <v-fab-transition>
         <v-btn
+          v-show="showBtnScroll"
           fab
           fixed
           bottom
           right
           :large="$vuetify.breakpoint.smAndUp"
-          v-show="showBtnScroll"
           color="primary"
           @click="$vuetify.goTo(scrollTarget, scrollOptions)"
         >
@@ -59,14 +60,14 @@
 </template>
 
 <script>
-import { mdiClose, mdiCheckboxBlankCircleOutline, mdiChevronUp } from '@mdi/js';
-import tmoNavigation from '@/components/navigations/index.vue';
-import navigationDrawer from '@/components/navigations/NavbarDrawer.vue';
-import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue';
-import tmoHeroBanner from '@/components/containers/HeroBanner.vue';
-import tmoFooter from '@/components/containers/Footer.vue';
-import tmoBtn from '@/components/base/BaseButton.vue';
-import Breadcrumbs from '@/components/Breadcrumbs.vue';
+import { mdiClose, mdiCheckboxBlankCircleOutline, mdiChevronUp } from '@mdi/js'
+import tmoNavigation from '@/components/navigations/index.vue'
+import navigationDrawer from '@/components/navigations/NavbarDrawer.vue'
+import tmoNavigationMobile from '@/components/navigations/NavbarMobile.vue'
+import tmoHeroBanner from '@/components/containers/HeroBanner.vue'
+import tmoFooter from '@/components/containers/Footer.vue'
+import tmoBtn from '@/components/base/BaseButton.vue'
+import Breadcrumbs from '@/components/Breadcrumbs.vue'
 
 const components = {
   navigationDrawer,
@@ -79,13 +80,14 @@ const components = {
 }
 
 export default {
+
+  components,
   layout: 'empty',
   data () {
     return {
       isIntersecting: false,
       mini_variant: false,
       drawer: false,
-      isLoadedHeros: false,
       intersec: null,
       showHero: true,
       svgClose: mdiClose,
@@ -102,44 +104,33 @@ export default {
     }
   },
 
-  components,
-
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-
-      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
-    });
-  },
-
   computed: {
     getHerosByRouteName () {
       const res = this.$store.state.heros.list.find(v => v.page_key === this.$route.name)
-      this.isLoadedHeros = true;
       return res && res.data
     },
     getBreadcrumb () {
       return this.$store.state.breadcrumbs
     },
     listenIntersecting () {
-      return this.isIntersecting;
+      return this.isIntersecting
     },
     computedRoute () {
       return JSON.stringify(this.$route)
-    },
+    }
   },
 
   methods: {
-    onIntersect: function (entries, observer) {
-      this.isIntersecting = entries[0].isIntersecting;
+    onIntersect (entries, observer) {
+      this.isIntersecting = entries[0].isIntersecting
     },
     heroIntersec (entries, observer) {
       this.showBtnScroll = !entries[0].isIntersecting
     },
     toggleDrawer () {
-      this.$store.commit('toggleDrawer');
+      this.$store.commit('toggleDrawer')
     }
-  },
+  }
 
 }
 </script>

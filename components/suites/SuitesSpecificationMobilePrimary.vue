@@ -1,30 +1,61 @@
 <template>
-  <v-container class="suites-and-staterooms px-0 px-sm-6 px-md-0 hidden-sm-and-up" v-bind:class="{reversed: reverse}">
+  <v-container
+    class="suites-and-staterooms px-0 px-sm-6 px-md-0 hidden-sm-and-up"
+    :class="{reversed: reverse}"
+  >
     <center>
-      <slot name="icon"></slot>
+      <slot name="icon" />
     </center>
-    <div class="data--caption text-h6 text-center"> {{data.caption}} </div>
-    <div class="data--heading px-6 px-md-0 font-weight-bold text-center" v-html="data.heading"></div>
+    <div class="data--caption text-h6 text-center">
+      {{ data.caption }}
+    </div>
+    <div
+      class="data--heading px-6 px-md-0 font-weight-bold text-center"
+      v-html="data.heading"
+    />
     <div class="data--sqm text-center">
       <em class="data--sqm-em">{{ data.sqm }} sqm</em>
     </div>
-    <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
-      <swiper-slide v-for="(item, index) in data.gallery" v-bind:key="index">
+    <swiper
+      ref="swiper"
+      class="swiper"
+      :class="{reversed: reverse}"
+      :options="swiperOptions"
+    >
+      <swiper-slide
+        v-for="(item, index) in data.gallery"
+        :key="index"
+      >
         <v-img
-          v-bind:src="item.image"
-          v-bind:lazy-src="item.image"
-          class="image--item"></v-img>
+          :src="item.image"
+          :lazy-src="item.image"
+          class="image--item"
+        />
       </swiper-slide>
     </swiper>
-    <v-card class="data--card" color="transparent" v-bind:class="{reversed: reverse}" flat tile>
-      <div class="text--primary align-center px-6 px-sm-0 text-center text-sm-left" v-html="data.description"></div>
+    <v-card
+      class="data--card"
+      color="transparent"
+      :class="{reversed: reverse}"
+      flat
+      tile
+    >
+      <div
+        class="text--primary align-center px-6 px-sm-0 text-center text-sm-left"
+        v-html="data.description"
+      />
     </v-card>
   </v-container>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 export default {
+
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   props: {
     data: { type: Object },
     reverse: { type: Boolean }
@@ -40,11 +71,6 @@ export default {
         spaceBetween: 25
       }
     }
-  },
-
-  components: {
-    Swiper,
-    SwiperSlide
   }
 }
 </script>

@@ -5,13 +5,11 @@
         <div
           class="heading mx-auto text-h4 text-sm-h3 text-center font-weight-bold mb-10"
           v-html="data.intro.heading"
-        >
-        </div>
+        />
         <div
           class="text-center text-sm-justify mb-10"
           v-html="data.intro.description"
-        >
-        </div>
+        />
 
         <v-data-table
           :items-per-page="$vuetify.breakpoint.mobile ? itemsPerPage : -1"
@@ -25,39 +23,70 @@
             itemsPerPageOptions: [5, 7, 10, -1]
           }"
         >
-          <template v-slot:header>
+          <template #header>
             <thead>
               <tr>
-                <td colspan="3" class="bg-none"></td>
-                <td colspan="2" class="font-weight-bold px-0 px-sm-5 px-md-8 py-sm-2">Full Charter Rates per Night (USD)</td>
+                <td colspan="3" class="bg-none" />
+                <td colspan="2" class="font-weight-bold px-0 px-sm-5 px-md-8 py-sm-2">
+                  Full Charter Rates per Night (USD)
+                </td>
               </tr>
               <tr>
-                <td class="hidden-sm-and-up bg-none" colspan="2"></td>
-                <td class="hidden-xs-only bg-none"></td>
-                <td class="hidden-xs-only font-weight-bold">Sailing Area</td>
-                <td class="font-weight-bold py-sm-2" style="width: 15%">Minimum Nights</td>
-                <td class="font-weight-bold" style="width: 15%">2020</td>
-                <td class="font-weight-bold" style="width: 15%">2021</td>
+                <td class="hidden-sm-and-up bg-none" colspan="2" />
+                <td class="hidden-xs-only bg-none" />
+                <td class="hidden-xs-only font-weight-bold">
+                  Sailing Area
+                </td>
+                <td class="font-weight-bold py-sm-2" style="width: 15%">
+                  Minimum Nights
+                </td>
+                <td class="font-weight-bold" style="width: 15%">
+                  2020
+                </td>
+                <td class="font-weight-bold" style="width: 15%">
+                  2021
+                </td>
               </tr>
             </thead>
           </template>
-          <template v-slot:body="{ items }">
+          <template #body="{ items }">
             <tbody>
               <tr v-for="item in items" :key="item.name">
                 <td colspan="2" class="px-0 hidden-sm-and-up">
-                  <div class="text-no-wrap text-left">{{ item.headline }}</div>
-                  <div class="text-no-wrap text-left">({{ item.sailing_area }})</div>
+                  <div class="text-no-wrap text-left">
+                    {{ item.headline }}
+                  </div>
+                  <div class="text-no-wrap text-left">
+                    ({{ item.sailing_area }})
+                  </div>
                 </td>
-                <td class="hidden-xs-only text-left"> {{ item.headline }} </td>
-                <td class="hidden-xs-only text-left"> {{ item.sailing_area }} </td>
-                <td class="px-0"> {{ item.minimum_nights }} </td>
-                <td class="font-price"> {{ formatPrice(item.rates_per_night[0].price) }} </td>
-                <td class="font-price"> {{ formatPrice(item.rates_per_night[1].price) }} </td>
+                <td class="hidden-xs-only text-left">
+                  {{ item.headline }}
+                </td>
+                <td class="hidden-xs-only text-left">
+                  {{ item.sailing_area }}
+                </td>
+                <td class="px-0">
+                  {{ item.minimum_nights }}
+                </td>
+                <td class="font-price">
+                  {{ formatPrice(item.rates_per_night[0].price) }}
+                </td>
+                <td class="font-price">
+                  {{ formatPrice(item.rates_per_night[1].price) }}
+                </td>
               </tr>
             </tbody>
           </template>
-          <template v-if="$vuetify.breakpoint.mobile" v-slot:footer="{ props }">
-            <v-btn class="mt-7" tile depressed outlined color="primary" @click="togglePage($event, props)">
+          <template v-if="$vuetify.breakpoint.mobile" #footer="{ props }">
+            <v-btn
+              class="mt-7"
+              tile
+              depressed
+              outlined
+              color="primary"
+              @click="togglePage($event, props)"
+            >
               {{ footerButton }}
             </v-btn>
           </template>
@@ -65,22 +94,33 @@
 
         <div class="my-10 font-weight-regular">
           <v-row no-gutters>
-            <v-col cols="5" sm="3">Full Ship Capacity</v-col>
-            <v-col cols="auto" class="px-5">:</v-col>
+            <v-col cols="5" sm="3">
+              Full Ship Capacity
+            </v-col>
+            <v-col cols="auto" class="px-5">
+              :
+            </v-col>
             <v-col>{{ data.table_full_chapter.ship_capacity }}</v-col>
           </v-row>
           <v-row no-gutters>
-            <v-col cols="5" sm="3">Extra Guest</v-col>
-            <v-col cols="auto" class="px-5">:</v-col>
+            <v-col cols="5" sm="3">
+              Extra Guest
+            </v-col>
+            <v-col cols="auto" class="px-5">
+              :
+            </v-col>
             <v-col>{{ data.table_full_chapter.extra_guest }}</v-col>
           </v-row>
           <v-row no-gutters>
-            <v-col cols="5" sm="3">Relocation Fee</v-col>
-            <v-col cols="auto" class="px-5">:</v-col>
+            <v-col cols="5" sm="3">
+              Relocation Fee
+            </v-col>
+            <v-col cols="auto" class="px-5">
+              :
+            </v-col>
             <v-col>{{ data.table_full_chapter.relocation_fee }}</v-col>
           </v-row>
         </div>
-
 
         <div>
           <template v-for="(item, idx) in data.charter_rate_includes">
@@ -115,6 +155,13 @@ export default {
         text: 'Rates & Schedule'
       }
     ]
+  },
+
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/rates-and-schedule')
+    return {
+      data
+    }
   },
 
   // head() {
@@ -227,21 +274,14 @@ export default {
     }
   },
 
-  async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/rates-and-schedule')
-    return {
-      data
-    }
-  },
-
   computed: {
-    meta_primary() {
+    meta_primary () {
       return this.data.header && this.data.header.seo_meta_tag.meta_primary
     },
-    meta_facebook() {
+    meta_facebook () {
       return this.data.header && this.data.header.seo_meta_tag.meta_facebook
     },
-    meta_twitter() {
+    meta_twitter () {
       return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
@@ -249,9 +289,9 @@ export default {
   methods: {
     formatPrice (params) {
       if (!params) { return null }
-      const price = new Intl.NumberFormat ('en', {
+      const price = new Intl.NumberFormat('en', {
         maximumSignificantDigits: 3
-      }).format (params);
+      }).format(params)
       return price
     },
     togglePage (event, params) {

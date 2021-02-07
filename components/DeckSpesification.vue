@@ -1,7 +1,15 @@
 <template>
   <v-sheet class="deck-spesification text-center">
-    <v-row no-gutters align="center" justify="center" class="container mx-auto py-0 px-6 px-md-0">
-      <v-col cols="12" class="pb-0">
+    <v-row
+      no-gutters
+      align="center"
+      justify="center"
+      class="container mx-auto py-0 px-6 px-md-0"
+    >
+      <v-col
+        cols="12"
+        class="pb-0"
+      >
         <div class="deck-spesification--item-heading">
           {{ dataActive.name }}
         </div>
@@ -13,46 +21,103 @@
       </v-col>
     </v-row>
 
-    <swiper ref="swiper" class="swiper static" v-bind:options="swiperOptions">
-      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
+    <swiper
+      ref="swiper"
+      class="swiper"
+      :options="swiperOptions"
+    >
+      <swiper-slide
+        v-for="(item, index) in data"
+        :key="index"
+      >
         <v-img
-          v-bind:src="$store.state.storage + item.image"
-          v-bind:lazy-src="$store.state.storage + item.image"
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
           class="hidden-xs-only deck-spesification--item-img mx-auto"
-        />
+        >
+          <template #placeholder>
+            <v-row
+              align="center"
+              justify="center"
+              class="fill-height ma-0"
+            >
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              />
+            </v-row>
+          </template>
+        </v-img>
+
         <v-img
           :src="$store.state.storage + item.mobile_image"
           :lazy-src="$store.state.storage + item.mobile_image"
           class="hidden-sm-and-up mx-auto"
           max-width="150"
-          height="502px"
-        />
+          height="auto"
+        >
+          <template #placeholder>
+            <v-row
+              align="center"
+              justify="center"
+              class="fill-height ma-0"
+            >
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              />
+            </v-row>
+          </template>
+        </v-img>
       </swiper-slide>
-      <div class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
+      <div
+        slot="pagination"
+        class="swiper-pagination swiper-pagination-bullets"
+      />
     </swiper>
 
     <div class="navigation container hidden-xs-only">
-      <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
-        <v-icon color="white"> {{icon.left}} </v-icon>
+      <v-btn
+        depressed
+        absolute
+        fab
+        x-small
+        class="button--left"
+        color="primary"
+        @click="prev"
+      >
+        <v-icon color="white">
+          {{ icon.left }}
+        </v-icon>
       </v-btn>
-      <v-btn depressed absolute fab x-small class="button--right" color="primary" @click="next">
-        <v-icon color="white"> {{icon.right}} </v-icon>
+      <v-btn
+        depressed
+        absolute
+        fab
+        x-small
+        class="button--right"
+        color="primary"
+        @click="next"
+      >
+        <v-icon color="white">
+          {{ icon.right }}
+        </v-icon>
       </v-btn>
     </div>
   </v-sheet>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js'
 export default {
-  props: {
-    data: { type: Array }
-  },
 
   components: {
     Swiper,
     SwiperSlide
+  },
+  props: {
+    data: { type: Array }
   },
 
   data () {
@@ -76,48 +141,48 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className} swiper-pagination-bullet-custom"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className} swiper-pagination-bullet-custom"></span>`
           }
         }
       }
     }
   },
 
-  mounted () {
-    this.init();
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.init()
   },
 
   methods: {
     init () {
       this.$nextTick(() => {
         if (!this.data.length) { return }
-        this.store = this.data;
-        this.dataActive = this.data[this.swiper.activeIndex];
+        this.store = this.data
+        this.dataActive = this.data[this.swiper.activeIndex]
       })
     },
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
-      this.$refs.swiper.$swiper.slidePrev();
+      this.$refs.swiper.$swiper.slidePrev()
     },
     next () {
       if (this.$refs.swiper.$swiper.isEnd) { return }
-      this.$refs.swiper.$swiper.slideNext();
+      this.$refs.swiper.$swiper.slideNext()
     }
-  },
+  }
 }
 </script>
 

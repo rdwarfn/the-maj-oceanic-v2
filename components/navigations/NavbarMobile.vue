@@ -1,48 +1,58 @@
 <template>
   <v-app-bar
-    fixed app
+    fixed
+    app
     v-bind="$attrs"
     max-width="100vw"
     class="hidden-lg-and-up flex-nowrap"
     hide-on-scroll
   >
-    <v-row no-gutters align="center" justify="space-between" class="flex-nowrap">
+    <v-row
+      no-gutters
+      align="center"
+      justify="space-between"
+      class="flex-nowrap"
+    >
       <v-col>
-      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
-      <slot name="button-nav-icon"></slot>
+        <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer" /> -->
+        <slot name="button-nav-icon" />
       </v-col>
       <v-col class="text-center align-self-start">
         <v-btn
-          to="/"
           v-ripple
+          to="/"
           :draggable="false"
           class="text-center align-center"
-          depressed text nuxt
+          depressed
+          text
+          nuxt
         >
           <img
             class="mx-auto _img--white"
             :draggable="false"
-            v-bind:src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
+            :src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
             alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
             width="156px"
             height="auto"
-          />
+          >
           <img
             class="mx-auto _img--black"
             :draggable="false"
-            v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+            :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
             alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
             width="156px"
             height="auto"
-          />
+          >
         </v-btn>
       </v-col>
       <v-col class="text-center">
         <v-btn
           class="_inquire--primary-black"
           color="primary"
+          tile
+          depressed
+          dark
           @click="() => $router.push({ path: '/contact-us'})"
-          tile depressed dark
         >
           inquire
         </v-btn>
@@ -52,7 +62,6 @@
 </template>
 
 <script>
-import tBtn from '@/components/base/BaseButton.vue';
 export default {
   inheritAttrs: false,
   props: {
@@ -63,13 +72,9 @@ export default {
     isIntersecting: { type: Boolean }
   },
 
-  components: {
-    tBtn,
-  },
-
   data () {
     return {
-      drawer: this.isDrawerOpen,
+      drawer: this.isDrawerOpen
     }
   }
 }

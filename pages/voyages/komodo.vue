@@ -25,15 +25,13 @@
 </template>
 
 <script>
-import _ from 'lodash';
-import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue';
-import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue';
-import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue';
-import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue';
-import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue';
+import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue'
+import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue'
+import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue'
+import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue'
+import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue'
 
 export default {
-  layout: 'main',
 
   components: {
     SwiperKomodoMobile,
@@ -42,6 +40,7 @@ export default {
     KomodoDesThree,
     KomodoDesFour
   },
+  layout: 'main',
 
   meta: {
     breadcrumbs: [
@@ -169,7 +168,7 @@ export default {
   //   }
   // },
 
-  async asyncData({ $axios }) {
+  async asyncData ({ $axios }) {
     const data = await $axios.$get('/api/pages/voyages-komodo')
 
     return {
@@ -177,29 +176,30 @@ export default {
     }
   },
 
-  mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      }
-    })
-  },
-
   computed: {
-    meta_primary() {
+    meta_primary () {
       return this.data.header && this.data.header.seo_meta_tag.meta_primary
     },
-    meta_facebook() {
+    meta_facebook () {
       return this.data.header && this.data.header.seo_meta_tag.meta_facebook
     },
-    meta_twitter() {
+    meta_twitter () {
       return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 
+  mounted () {
+    this.$nextTick(() => {
+      if (this.$data.data && this.$data.data.hero) {
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
+      }
+    })
+  },
+
   methods: {
+    // eslint-disable-next-line
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     }
   }
 }

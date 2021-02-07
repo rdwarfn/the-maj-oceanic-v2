@@ -11,26 +11,35 @@
     <v-container class="py-0 px-6 px-md-0">
       <v-row no-gutters>
         <v-col cols="12" sm="6" class="text-center text-sm-left">
-          <v-card flat tile class="komodo--des-one_card">
-
+          <v-card
+            flat
+            tile
+            class="komodo--des-one_card"
+          >
             <v-img
               :src="$store.state.storage + data.gallery[0].image"
               :lazy-src="$store.state.storage + data.gallery[0].image"
               class="komodo--des-one_img"
             >
-              <template v-slot:placeholder>
+              <template #placeholder>
                 <v-row
                   class="fill-height ma-0"
                   align="center"
                   justify="center"
                 >
-                  <v-progress-circular indeterminate color="grey lighten-5" />
+                  <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                  />
                 </v-row>
               </template>
             </v-img>
 
             <div class="komodo--des-one__content">
-              <v-card-text class="komodo--des-one_text px-0 text--primary text-body-1" v-html="data.description" />
+              <v-card-text
+                class="komodo--des-one_text px-0 text--primary text-body-1"
+                v-html="data.description"
+              />
 
               <v-card-actions class="pa-0">
                 <v-btn
@@ -42,7 +51,9 @@
                   color="primary"
                   class="btn-l mx-auto mx-sm-0"
                   width="152px"
-                >{{ buttonText }}</v-btn>
+                >
+                  {{ buttonText }}
+                </v-btn>
               </v-card-actions>
             </div>
           </v-card>
@@ -60,7 +71,7 @@ export default {
       description: { type: String, required: true },
       to: { type: String, required: true }
     },
-    buttonText: { type: String, default: 'Book a trip'},
+    buttonText: { type: String, default: 'Book a trip' }
   }
 }
 </script>

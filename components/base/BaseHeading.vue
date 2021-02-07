@@ -1,6 +1,11 @@
 <template>
   <v-container class="mx-auto justify-center">
-    <v-row v-if="data.caption" align="center" :justify="captionJustify" class="mb-3">
+    <v-row
+      v-if="data.caption"
+      align="center"
+      :justify="captionJustify"
+      class="mb-3"
+    >
       <div
         class="text-h5 static"
         :class="captionClass"
@@ -8,11 +13,14 @@
       />
     </v-row>
     <div
-      v-text="data.heading"
       class="v-heading font-weight-bold text-center"
-      v-bind:class="headingClass"
+      :class="headingClass"
+      v-text="data.heading"
     />
-    <p class="text--primary v-paragraph text-center" :class="textClass">
+    <p
+      class="text--primary v-paragraph text-center"
+      :class="textClass"
+    >
       {{ data.text }}
     </p>
   </v-container>
@@ -23,7 +31,7 @@ export default {
   props: {
     data: {
       type: Object,
-      default: function () {
+      default () {
         return { heading: 'Default' }
       },
       required: true
@@ -57,7 +65,7 @@ export default {
 
   data () {
     return {
-      transition: 'fade-transition',
+      transition: 'fade-transition'
     }
   }
 }

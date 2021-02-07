@@ -9,38 +9,72 @@
     temporary
     app
   >
-    <v-list flat tile class="_img-logo--mobile text-center px-0">
-      <v-list-item dense class="px-0">
-        <v-row no-gutters class="flex-nowrap" align="center" justify="space-between">
-        <v-spacer />
-        <v-col sm="4">
-        <v-list-item-avatar tile width="auto" min-height="67" height="auto" class="mr-0">
-          <v-btn nuxt text tile depressed to="/">
-            <v-img
-              v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-              v-bind:lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-              width="192"
-              height="33.72"
-              class="mx-auto"
-            ></v-img>
-          </v-btn>
-        </v-list-item-avatar>
-        </v-col>
-        <v-spacer class="hidden-xs-only" />
-        <v-col sm="auto">
-        <v-list-item-action class="mx-0">
-          <v-btn color="transparent" fab depressed @click.prevent="toggleDrawer">
-            <v-icon color="rgba(0,0,0,0.54)">{{svgClose}}</v-icon>
-          </v-btn>
-        </v-list-item-action>
-        </v-col>
+    <v-list
+      flat
+      tile
+      class="_img-logo--mobile text-center px-0"
+    >
+      <v-list-item
+        dense
+        class="px-0"
+      >
+        <v-row
+          no-gutters
+          class="flex-nowrap"
+          align="center"
+          justify="space-between"
+        >
+          <v-spacer />
+          <v-col sm="4">
+            <v-list-item-avatar
+              tile
+              width="auto"
+              min-height="67"
+              height="auto"
+              class="mr-0"
+            >
+              <v-btn
+                nuxt
+                text
+                tile
+                depressed
+                to="/"
+              >
+                <v-img
+                  :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+                  :lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+                  width="192"
+                  height="33.72"
+                  class="mx-auto"
+                />
+              </v-btn>
+            </v-list-item-avatar>
+          </v-col>
+          <v-spacer class="hidden-xs-only" />
+          <v-col sm="auto">
+            <v-list-item-action class="mx-0">
+              <v-btn
+                color="transparent"
+                fab
+                depressed
+                @click.prevent="toggleDrawer"
+              >
+                <v-icon color="rgba(0,0,0,0.54)">
+                  {{ svgClose }}
+                </v-icon>
+              </v-btn>
+            </v-list-item-action>
+          </v-col>
         </v-row>
       </v-list-item>
     </v-list>
 
     <v-divider />
 
-    <v-list-item class="px-0" dense>
+    <v-list-item
+      class="px-0"
+      dense
+    >
       <v-list-item-content>
         <v-text-field
           class="search-mobile--drawer"
@@ -48,51 +82,73 @@
           label="SEARCH"
           clearable
           flat
-        ></v-text-field>
+        />
       </v-list-item-content>
     </v-list-item>
 
     <v-divider />
 
     <v-list>
-      <v-sheet class="wrapper" color="transparent">
+      <v-sheet
+        class="wrapper"
+        color="transparent"
+      >
         <template v-for="(item, key) in menu">
           <v-list-item
-            class="_nav--item"
-            v-bind:key="key"
             v-if="!item.children.length"
-            nuxt :to="item.to" exact
-            v-on:click.prevent="toggleDrawer">
+            :key="key"
+            class="_nav--item"
+            nuxt
+            :to="item.to"
+            exact
+            @click.prevent="toggleDrawer"
+          >
             <v-list-item-content>
-              <v-list-item-title>{{item.title}}</v-list-item-title>
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
 
-          <v-list-group class="_nav--item" v-else :key="key">
+          <v-list-group
+            v-else
+            :key="key"
+            class="_nav--item"
+          >
             <template #activator>
               <v-list-item-content>
-                <v-btn v-on:click.prevent="toggleDrawer" :ripple="false" class="px-0" text nuxt tile :to="item.to" exact>
-                  <v-list-item-title>{{item.title}}</v-list-item-title>
+                <v-btn
+                  :ripple="false"
+                  class="px-0"
+                  text
+                  nuxt
+                  tile
+                  :to="item.to"
+                  exact
+                  @click.prevent="toggleDrawer"
+                >
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-btn>
               </v-list-item-content>
             </template>
-            <template v-if="item.children.length">
+            <template
+              v-if="item.children.length"
+            >
               <v-list-item
                 v-for="(child, k) in item.children"
-                v-bind:key="k"
-                v-on:click.prevent="toggleDrawer"
-                nuxt :to="child.to" exact>
-                  <template>
-                    <v-list-item-action>
-                      <v-icon x-small v-text="svgCheckboxMenu"></v-icon>
-                    </v-list-item-action>
-                    <v-list-item-title> {{child.title}} </v-list-item-title>
-                  </template>
+                :key="k"
+                nuxt
+                :to="child.to"
+                exact
+                @click.prevent="toggleDrawer"
+              >
+                <v-list-item-action>
+                  <v-icon x-small v-text="svgCheckboxMenu" />
+                </v-list-item-action>
+                <v-list-item-title> {{ child.title }} </v-list-item-title>
               </v-list-item>
             </template>
           </v-list-group>
         </template>
-      <!-- <v-list-item-group color="primary">
+        <!-- <v-list-item-group color="primary">
         <v-list-item
           v-for="(data, i) in menu"
           v-bind:key="i"
@@ -109,20 +165,27 @@
         </v-list-item>
       </v-list-item-group> -->
 
-      <v-list-item class="action-inquire">
-        <v-list-item-action>
-          <v-btn class="btn-l" tile depressed nuxt color="primary" to='/contact-us'>
-            Inquire Now
-          </v-btn>
-        </v-list-item-action>
-      </v-list-item>
+        <v-list-item class="action-inquire">
+          <v-list-item-action>
+            <v-btn
+              class="btn-l"
+              tile
+              depressed
+              nuxt
+              color="primary"
+              to="/contact-us"
+            >
+              Inquire Now
+            </v-btn>
+          </v-list-item-action>
+        </v-list-item>
       </v-sheet>
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
-import { mdiClose, mdiCheckboxBlankCircleOutline, mdiChevronUp } from '@mdi/js';
+import { mdiClose, mdiCheckboxBlankCircleOutline, mdiChevronUp } from '@mdi/js'
 
 export default {
   data () {

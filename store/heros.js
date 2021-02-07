@@ -4,6 +4,6 @@ export const state = () => ({
 
 export const mutations = {
   add (state, obj) {
-    state.list.push (obj)
+    state.list.push(obj)
   }
 }

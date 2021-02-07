@@ -1,6 +1,6 @@
 <template>
   <div id="voyages">
-    <voyages-item v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
+    <voyages-item v-for="(item, index) in data.voyages_items" :key="index" :heading-class="!index? 'heading-komodo' : null" class="voyages__item" :data="item" />
 
     <section class="voyages__testimonal">
       <base-testimonal :data="data.testimonies" />
@@ -9,7 +9,7 @@
     <v-container tag="section" class="container__carousel px-6 px-md-0">
       <base-carousel
         card-mobile-class="mt-2 transparent"
-        v-bind:data="[...data.itinerary]"
+        :data="[...data.itinerary]"
         button-text="Rates & Schedule"
       />
     </v-container>
@@ -23,21 +23,6 @@ const components = {
   baseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
 }
 export default {
-  layout: 'main',
-
-  meta: {
-    breadcrumbs: [
-      {
-        to: '/',
-        replace: true,
-        text: 'Home'
-      },
-      {
-        to: '/voyages',
-        text: 'Voyages'
-      }
-    ]
-  },
 
   // head() {
   //   return {
@@ -143,33 +128,49 @@ export default {
   // },
 
   components,
+  layout: 'main',
+
+  meta: {
+    breadcrumbs: [
+      {
+        to: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        to: '/voyages',
+        text: 'Voyages'
+      }
+    ]
+  },
 
   async asyncData ({ $axios }) {
     const data = await $axios.$get('/api/pages/voyages/')
     return { data }
   },
 
-  mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      }
-    })
-  },
-
   computed: {
-    meta_primary() {
+    meta_primary () {
       return this.data.header && this.data.header.seo_meta_tag.meta_primary
     },
-    meta_facebook() {
+    meta_facebook () {
       return this.data.header && this.data.header.seo_meta_tag.meta_facebook
     },
-    meta_twitter() {
+    meta_twitter () {
       return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 
+  mounted () {
+    this.$nextTick(() => {
+      if (this.$data.data && this.$data.data.hero) {
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
+      }
+    })
+  },
+
   methods: {
+    // eslint-disable-next-line
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', {
         page_key, data

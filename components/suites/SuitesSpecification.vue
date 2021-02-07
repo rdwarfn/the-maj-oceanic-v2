@@ -1,54 +1,114 @@
 <template>
-  <v-container class="suites-and-staterooms px-0 px-sm-6 px-md-0" v-bind:class="{reversed: reverse}">
+  <v-container
+    class="suites-and-staterooms px-0 px-sm-6 px-md-0"
+    :class="{reversed: reverse}"
+  >
     <center class="hidden-sm-and-up">
-      <slot name="icon"></slot>
+      <slot name="icon" />
     </center>
-    <div class="data--caption text-h6 text-center hidden-sm-and-up"> {{dataActive.caption}} </div>
-    <div class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up" v-html="dataActive.heading"></div>
+    <div class="data--caption text-h6 text-center hidden-sm-and-up">
+      {{ dataActive.caption }}
+    </div>
+    <div
+      class="data--heading px-6 px-md-0 font-weight-bold text-center hidden-sm-and-up"
+      v-html="dataActive.heading"
+    />
     <div class="data--sqm hidden-sm-and-up">
       <em class="data--sqm-em">{{ dataActive.sqm }} sqm</em>
     </div>
-    <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
-      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
+    <swiper
+      ref="swiper"
+      class="swiper"
+      :class="{reversed: reverse}"
+      :options="swiperOptions"
+    >
+      <swiper-slide
+        v-for="(item, index) in data"
+        :key="index"
+      >
         <v-img
-          v-bind:src="staticImage
+          :src="staticImage
             ? require('~/assets/images/' + item.image)
             : item.image"
-          v-bind:lazy-src="staticImage
-          ? require('~/assets/images/' + item.image)
-          : item.image"
-          class="image--item"></v-img>
+          :lazy-src="staticImage
+            ? require('~/assets/images/' + item.image)
+            : item.image"
+          class="image--item"
+        />
       </swiper-slide>
-      <div v-if="data && data.length > 1" class="hidden-xs-only swiper-pagination swiper-pagination-bullets"  v-bind:class="{reversed: reverse}" slot="pagination"></div>
+      <div
+        v-if="data && data.length > 1"
+        slot="pagination"
+        class="hidden-xs-only swiper-pagination swiper-pagination-bullets"
+        :class="{reversed: reverse}"
+      />
       <template v-if="data && data.length > 1">
-        <v-btn depressed fab absolute x-small class="button--left swiper-button-prev" v-bind:class="{reversed: reverse}" color="white" slot="button-prev">
-          <v-icon color="primary">{{iconLeft}}</v-icon>
+        <v-btn
+          slot="button-prev"
+          depressed
+          fab
+          absolute
+          x-small
+          class="button--left swiper-button-prev"
+          :class="{reversed: reverse}"
+          color="white"
+        >
+          <v-icon color="primary">
+            {{ iconLeft }}
+          </v-icon>
         </v-btn>
 
-        <v-btn depressed fab absolute x-small class="button--right swiper-button-next" v-bind:class="{reversed: reverse}" color="white" slot="button-next">
-          <v-icon color="primary">{{iconRight}}</v-icon>
+        <v-btn
+          slot="button-next"
+          depressed
+          fab
+          absolute
+          x-small
+          class="button--right swiper-button-next"
+          :class="{reversed: reverse}"
+          color="white"
+        >
+          <v-icon color="primary">
+            {{ iconRight }}
+          </v-icon>
         </v-btn>
       </template>
     </swiper>
-    <v-card class="data--card" v-bind:class="{reversed: reverse}" flat tile>
+    <v-card
+      class="data--card"
+      :class="{reversed: reverse}"
+      flat
+      tile
+    >
       <div class="hidden-xs-only">
-        <slot name="icon"></slot>
-        <v-card-subtitle class="pa-0 text-h6 data--caption"> {{dataActive.caption}} </v-card-subtitle>
-        <v-card-title class="pa-0 ml-lg-0 font-weight-bold data--heading" v-html="dataActive.heading"></v-card-title>
+        <slot name="icon" />
+        <v-card-subtitle class="pa-0 text-h6 data--caption">
+          {{ dataActive.caption }}
+        </v-card-subtitle>
+        <v-card-title
+          class="pa-0 ml-lg-0 font-weight-bold data--heading"
+          v-html="dataActive.heading"
+        />
         <div class="data--sqm">
           <em class="data--sqm-em">{{ dataActive.sqm }} sqm</em>
         </div>
       </div>
-      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">{{dataActive.text}}</p>
+      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">
+        {{ dataActive.text }}
+      </p>
     </v-card>
   </v-container>
 </template>
 
 <script>
-import BaseCarousel from '@/components/base/BaseCarousel.vue';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 export default {
+
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   props: {
     data: { type: Array },
     staticImage: { type: Boolean, default: true },
@@ -80,8 +140,8 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className} swiper-pagination-bullet-custom"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className} swiper-pagination-bullet-custom"></span>`
           }
         },
         navigation: {
@@ -103,44 +163,38 @@ export default {
           },
           768: {
             slidesPerView: 1,
-            spaceBetween: 25,
+            spaceBetween: 25
           }
         }
       }
     }
   },
 
-  mounted () {
-    this.init();
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.init()
   },
 
   methods: {
     init () {
       this.$nextTick(() => {
         if (!this.data.length) { return }
-        this.store = this.data;
-        this.dataActive = this.data[this.swiper.activeIndex];
+        this.store = this.data
+        this.dataActive = this.data[this.swiper.activeIndex]
       })
     }
-  },
-
-  components: {
-    BaseCarousel,
-    Swiper,
-    SwiperSlide
   }
 }
 </script>
@@ -263,7 +317,6 @@ $white: #ffffff;
     }
   }
 }
-
 
 ::v-deep .swiper-container-horizontal > .swiper-pagination-bullets.reversed {
   left: auto !important;

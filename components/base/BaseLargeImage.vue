@@ -1,7 +1,10 @@
 <template>
   <v-sheet class="slide-y-transition">
-    <v-skeleton-loader tile type="image" v-if="!data">
-    </v-skeleton-loader>
+    <v-skeleton-loader
+      v-if="!data"
+      tile
+      type="image"
+    />
     <v-img
       v-else
       :src="data"
@@ -9,7 +12,7 @@
       :aspect-ratio="16/9"
       max-height="460"
     >
-      <template v-slot:placeholder>
+      <template #placeholder>
         <v-row
           align="center"
           justify="center"
@@ -29,7 +32,7 @@
 export default {
   props: {
     data: {
-      type: String,
+      type: String
     },
     staticImage: {
       type: Boolean,

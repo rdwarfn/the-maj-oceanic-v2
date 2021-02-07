@@ -1,31 +1,62 @@
 <template>
-  <v-row no-gutters align="center" justify="space-between" class="swiper-komodo-mobile-1224">
-    <v-col cols="12" sm="6" order-sm="12">
-      <swiper v-if="data.gallery.length" ref="swiper" class="swiper" :options="swiperOptions">
-        <swiper-slide v-for="(d, index) in data.gallery" :key="index">
+  <v-row
+    no-gutters
+    align="center"
+    justify="space-between"
+    class="swiper-komodo-mobile-1224"
+  >
+    <v-col
+      cols="12"
+      sm="6"
+      order-sm="12"
+    >
+      <swiper
+        v-if="data.gallery.length"
+        ref="swiper"
+        class="swiper"
+        :options="swiperOptions"
+      >
+        <swiper-slide
+          v-for="(d, index) in data.gallery"
+          :key="index"
+        >
           <v-img
             :src="$store.state.storage + d.mobile_image"
             :lazy-src="$store.state.storage + d.mobile_image"
             class="swiper-komodo-mobile-1224--image-mobile"
           >
-            <template v-slot:placeholder>
+            <template #placeholder>
               <v-row
                 class="fill-height ma-0"
                 align="center"
                 justify="center"
               >
-                <v-progress-circular indeterminate color="grey lighten-5" />
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                />
               </v-row>
             </template>
           </v-img>
         </swiper-slide>
       </swiper>
-      <v-skeleton-loader v-else :loading="!data.gallery.length" type="image" />
+      <v-skeleton-loader
+        v-else
+        :loading="!data.gallery.length"
+        type="image"
+      />
     </v-col>
 
-    <v-col cols="12" sm="6">
+    <v-col
+      cols="12"
+      sm="6"
+    >
       <v-container class="swiper-komodo-mobile-1224--content px-6 px-md-0 text-center text-sm-left">
-        <div v-if="data.description" class="text--primary text-body-1" v-html="data.description" />
+        <div
+          v-if="data.description"
+          class="text--primary text-body-1"
+          v-html="data.description"
+        />
         <v-skeleton-loader v-else class="my-6 mx-6 mx-md-0" type="paragraph@2" loading />
       </v-container>
     </v-col>
@@ -33,7 +64,7 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 export default {
   components: { Swiper, SwiperSlide },
 
@@ -42,13 +73,13 @@ export default {
     staticImage: { Boolean, default: true }
   },
 
-  data() {
+  data () {
     return {
       swiperOptions: {
         lazy: true,
         slidesPerView: 'auto',
         spaceBetween: 25,
-        centeredSlides: true,
+        centeredSlides: true
       }
     }
   }

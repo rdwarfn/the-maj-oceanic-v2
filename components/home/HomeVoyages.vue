@@ -1,7 +1,14 @@
 <template>
-  <v-sheet class="voyages" tag="section">
+  <v-sheet
+    class="voyages"
+    tag="section"
+  >
     <v-container class="py-0 px-6 px-md-0">
-      <v-row align="center" justify="center" class="voyages--headline mx-auto text-center mb-10">
+      <v-row
+        align="center"
+        justify="center"
+        class="voyages--headline mx-auto text-center mb-10"
+      >
         <div
           class="text-h4 text-sm-h3 mb-8"
           v-text="data.heading"
@@ -10,24 +17,55 @@
       </v-row>
       <base-tabs
         button-text="learn more"
-        v-bind:data="data.tabs_data"
+        :data="data.tabs_data"
         class="hidden-xs-only"
       />
 
-      <v-sheet color="transparent" class="hidden-sm-and-up" style="position: relative;">
-        <v-row class="tabs-mobile--container container mx-auto px-0">
-          <v-btn depressed x-small class="button--left" color="transparent" @click="prev">
-            <v-icon color="black"> {{icon.left}} </v-icon>
+      <v-sheet
+        color="transparent"
+        class="hidden-sm-and-up"
+        style="position: relative;"
+      >
+        <v-row
+          class="tabs-mobile--container container mx-auto px-0"
+        >
+          <v-btn
+            depressed
+            x-small
+            class="button--left"
+            color="transparent"
+            @click="prev"
+          >
+            <v-icon
+              color="black"
+            >
+              {{ icon.left }}
+            </v-icon>
           </v-btn>
           <div class="tabs-mobile--label text-uppercase text-center mx-auto">
-            {{dataActive.name}}
+            {{ dataActive.name }}
           </div>
-          <v-btn depressed x-small class="button--right" color="transparent" @click="next">
-            <v-icon color="black"> {{icon.right}} </v-icon>
+          <v-btn
+            depressed
+            x-small
+            class="button--right"
+            color="transparent"
+            @click="next"
+          >
+            <v-icon color="black">
+              {{ icon.right }}
+            </v-icon>
           </v-btn>
         </v-row>
-        <swiper ref="swiper" class="swiper" :options="swiperOption">
-          <swiper-slide v-for="(item, index) in data.tabs_data" :key="index">
+        <swiper
+          ref="swiper"
+          class="swiper"
+          :options="swiperOption"
+        >
+          <swiper-slide
+            v-for="(item, index) in data.tabs_data"
+            :key="index"
+          >
             <v-skeleton-loader
               v-if="!item.image"
               class="tabs-mobile--image"
@@ -42,14 +80,24 @@
         </swiper>
 
         <div class="tabs-mobile--content text-center">
-          <div class="tabs-mobile--heading">{{dataActive && dataActive.heading}}</div>
-          <div class="tabs-mobile--text">{{dataActive && dataActive.description }}</div>
+          <div
+            class="tabs-mobile--heading"
+          >
+            {{ dataActive && dataActive.heading }}
+          </div>
+          <div
+            class="tabs-mobile--text"
+          >
+            {{ dataActive && dataActive.description }}
+          </div>
           <v-btn
-            tile nuxt
+            tile
+            nuxt
             outlined
             :to="dataActive && dataActive.to"
             class="tabs-mobile--btn btn-l"
-            color="primary">
+            color="primary"
+          >
             learn more
           </v-btn>
         </div>
@@ -59,9 +107,9 @@
 </template>
 
 <script>
-import baseTabs from '@/components/base/BaseTabs.vue';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
+import baseTabs from '@/components/base/BaseTabs.vue'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
 export default {
   components: {
     baseTabs,
@@ -99,36 +147,36 @@ export default {
     }
   },
 
-  mounted () {
-    this.initStore();
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.initStore()
   },
 
   methods: {
     initStore () {
-      if (!this.data.tabs_data.length) return
-      this.store = this.data.tabs_data;
-      this.dataActive = this.data.tabs_data[0];
+      if (!this.data.tabs_data.length) { return }
+      this.store = this.data.tabs_data
+      this.dataActive = this.data.tabs_data[0]
     },
     prev () {
       if (this.swiper.isBeginning) { return }
-      this.swiper.slidePrev();
+      this.swiper.slidePrev()
     },
     next () {
       if (this.swiper.isEnd) { return }
-      this.swiper.slideNext();
+      this.swiper.slideNext()
     }
   }
 }

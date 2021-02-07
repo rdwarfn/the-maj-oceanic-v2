@@ -1,7 +1,7 @@
 <template>
   <v-layout
     class="__nav_bar align-self-center"
-    v-bind:class="{
+    :class="{
       animated: isIntersecting
     }"
     app
@@ -12,9 +12,9 @@
         align="center"
         justify="space-between"
         class="nav_row mx-auto static"
-        v-bind:class="[{
-            animated: isIntersecting
-          }
+        :class="[{
+          animated: isIntersecting
+        }
         ]"
       >
         <v-col cols="4">
@@ -23,26 +23,30 @@
             align="end"
             justify="start"
           >
-              <v-col cols="4" class="mr-md-3">
-                <v-skeleton-loader
-                  type="image"
-                  width="102"
-                  height="36"
-                  :loading="loading"
-                >
+            <v-col cols="4" class="mr-md-3">
+              <v-skeleton-loader
+                type="image"
+                width="102"
+                height="36"
+                :loading="loading"
+              >
                 <form style="max-width: 150px">
                   <v-container class="px-0 py-0">
                     <v-text-field
+                      v-model="search_input"
                       background-color="transparent"
                       class="text-uppercase"
                       label="search"
                       placeholder="SEARCH"
                       prepend-icon="$search"
-                      v-model="search_input"
                       hide-details
-                      dark dense clearable flat single-line solo
-                    >
-                    </v-text-field>
+                      dark
+                      dense
+                      clearable
+                      flat
+                      single-line
+                      solo
+                    />
                   </v-container>
                 </form>
               </v-skeleton-loader>
@@ -51,7 +55,9 @@
             <v-col cols="auto">
               <v-btn
                 color="white"
-                depressed text tile
+                depressed
+                text
+                tile
                 class="btn-s font-md-12"
               >
                 the maj group
@@ -61,10 +67,10 @@
         </v-col>
 
         <v-col
+          v-ripple
           cols="4"
           md="3"
           class="text-center rounded py-2 px-3 mx-2"
-          v-ripple
         >
           <nuxt-link class="mx-auto" to="/" replace>
             <v-img
@@ -74,18 +80,18 @@
               max-height="56"
               class="mx-auto"
             >
-            <template v-slot:placeholder>
-              <v-row
-                class="fill-height ma-0"
-                align="center"
-                justify="center"
-              >
-                <v-progress-circular
-                  indeterminate
-                  color="grey lighten-5"
-                ></v-progress-circular>
-              </v-row>
-            </template>
+              <template #placeholder>
+                <v-row
+                  class="fill-height ma-0"
+                  align="center"
+                  justify="center"
+                >
+                  <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                  />
+                </v-row>
+              </template>
             </v-img>
           </nuxt-link>
         </v-col>
@@ -99,7 +105,8 @@
             <v-col cols="auto">
               <v-btn
                 to="#"
-                text nuxt
+                text
+                nuxt
                 color="white"
                 class="btn-s __btn font-md-12"
               >
@@ -112,7 +119,9 @@
                 to="/contact-us"
                 color="primary"
                 class="btn-s font-md-12"
-                depressed tile nuxt
+                depressed
+                tile
+                nuxt
               >
                 inquire now
               </v-btn>
@@ -121,7 +130,7 @@
         </v-col>
       </v-row>
 
-    <!-- row list  -->
+      <!-- row list  -->
 
       <v-flex
         class="nav_row--list d-flex mx-auto static"
@@ -134,8 +143,7 @@
           align="center"
           justify="space-around"
         >
-
-          <navigation-menu :isIntersecting="!isIntersecting" />
+          <navigation-menu :is-intersecting="!isIntersecting" />
 
           <!-- <v-col cols="auto" class="rounded mr-lg-10" v-if="isIntersecting">
             <v-row align="center">
@@ -165,12 +173,16 @@
           <v-col
             v-show="isIntersecting"
             cols="auto"
-            v-bind:class="{
+            :class="{
               intersec: !isIntersecting
-            }">
+            }"
+          >
             <v-btn
-              text tile nuxt
-              class="font-md-12">
+              text
+              tile
+              nuxt
+              class="font-md-12"
+            >
               login
             </v-btn>
           </v-col>
@@ -178,13 +190,17 @@
           <v-col
             v-show="isIntersecting"
             cols="auto"
-            v-bind:class="{
+            :class="{
               intersec: !isIntersecting
-            }">
+            }"
+          >
             <v-btn
               class="btn-s btn--inquire font-md-12"
               to="/contact-us"
-              depressed tile nuxt dark
+              depressed
+              tile
+              nuxt
+              dark
             >
               Inquire Now
             </v-btn>
@@ -196,8 +212,12 @@
 </template>
 
 <script>
-import navigationMenu from './Menu.vue';
+import navigationMenu from './Menu.vue'
 export default {
+
+  components: {
+    navigationMenu
+  },
   props: {
     isIntersecting: {
       type: Boolean,
@@ -207,10 +227,6 @@ export default {
       type: Boolean,
       default: true
     }
-  },
-
-  components: {
-    navigationMenu
   },
 
   data () {
@@ -283,7 +299,6 @@ $secondary: #232323;
 ::v-deep a.v-btn:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined).primary {
   color: #ffffff !important;
 }
-
 
 .__nav_bar {
   display: none;

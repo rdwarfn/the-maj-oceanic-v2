@@ -1,68 +1,133 @@
 <template>
   <div>
     <v-skeleton-loader
+      v-if="!data"
       type="image"
       class="_hero--img"
       transition="slide-y-reverse-transition"
-      v-if="!data"
     />
     <template v-else>
-      <v-sheet class="hero-wrapper text-center" style="relative">
+      <v-sheet
+        class="hero-wrapper text-center"
+        style="relative"
+      >
         <template v-if="dataVideo">
-          <template>
-            <div class="video-player-box mx-auto hidden-xs-only"
-              :playsinline="true"
-              v-video-player:player="{
-                ...playerOptions,
-                sources: [...dataVideo],
-              }"
-            />
-            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.heading" />
-          </template>
+          <div
+            v-video-player:player="{
+              ...playerOptions,
+              sources: [...dataVideo],
+            }"
+            class="video-player-box mx-auto hidden-xs-only"
+            :playsinline="true"
+          />
+          <div
+            class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only"
+            v-html="data.heading"
+          />
 
-          <template>
-            <v-img
-              v-bind:src="$store.state.storage + data.image"
-              :lazy-src="$store.state.storage + data.image"
-              class="_hero--img justify-center hidden hidden-sm-and-up"
-              transition="fade-transition"
-            >
-              <v-row no-gutters align="center" justify="center" class="fill-height">
-                <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
-                <v-spacer/>
+          <v-img
+            :src="$store.state.storage + data.image"
+            :lazy-src="$store.state.storage + data.image"
+            class="_hero--img justify-center hidden hidden-sm-and-up"
+            transition="fade-transition"
+          >
+            <template #placeholder>
+              <v-row
+                align="center"
+                justify="center"
+                class="fill-height ma-0"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                />
               </v-row>
-            </v-img>
-          </template>
+            </template>
+
+            <v-row
+              no-gutters
+              align="center"
+              justify="center"
+              class="fill-height"
+            >
+              <v-spacer />
+              <div
+                class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center"
+                v-html="data.heading"
+              />
+              <v-spacer />
+            </v-row>
+          </v-img>
         </template>
 
         <template v-else>
           <v-img
-            :class="{'hidden-xs-only': $store.state.storage + data.mobile_image}"
-            v-bind:src="$store.state.storage + data.image"
+            :class="{'hidden-xs-only': data.mobile_image}"
+            :src="$store.state.storage + data.image"
             :lazy-src="$store.state.storage + data.image"
             class="_hero--img justify-center"
           >
-            <!-- :aspect-ratio="16/9" -->
-            <v-row no-gutters align="center" justify="center" class="fill-height">
+            <template #placeholder>
+              <v-row
+                align="center"
+                justify="center"
+                class="fill-height ma-0"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                />
+              </v-row>
+            </template>
+
+            <v-row
+              no-gutters
+              align="center"
+              justify="center"
+              class="fill-height"
+            >
               <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
-              <v-spacer/>
+              <div
+                class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center"
+                v-html="data.heading"
+              />
+              <v-spacer />
             </v-row>
           </v-img>
-            <!-- class="hidden-sm-and-up" -->
+          <!-- class="hidden-sm-and-up" -->
           <v-img
             v-if="$store.state.storage + data.mobile_image"
             class="hidden-sm-and-up"
             :src="$store.state.storage + data.mobile_image"
             :lazy-src="$store.state.storage + data.mobile_image"
-            >
-              <v-row no-gutters align="center" justify="center" class="fill-height">
-                <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
-                <v-spacer/>
+          >
+            <template #placeholder>
+              <v-row
+                align="center"
+                justify="center"
+                class="fill-height ma-0"
+              >
+                <v-progress-circular
+                  indeterminate
+                  color="grey lighten-5"
+                />
               </v-row>
-            </v-img>
+            </template>
+
+            <v-row
+              no-gutters
+              align="center"
+              justify="center"
+              class="fill-height"
+            >
+              <v-spacer />
+              <div
+                class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center"
+                v-html="data.heading"
+              />
+              <v-spacer />
+            </v-row>
+          </v-img>
         </template>
       </v-sheet>
     </template>
@@ -71,19 +136,19 @@
 
 <script>
 import _ from 'lodash'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-
-const components = { Swiper, SwiperSlide };
 export default {
   props: {
-    data: { type: [Array, Object] },
+    data: {
+      type: [Array, Object],
+      required: true
+    }
   },
   // components,
   data () {
     return {
       swiperOptions: {
         lazy: true,
-        slidesPerView: 1,
+        slidesPerView: 1
       },
       // videojs options
       playerOptions: {
@@ -92,13 +157,13 @@ export default {
         control: false,
         controls: false,
         loop: true,
-        muted: true,
+        muted: true
       }
     }
   },
   computed: {
     dataVideo () {
-      if (!_.size(this.data.videos)) {
+      if (_.isEmpty(this.data.videos)) {
         return false
       }
       const newval = _.map(this.data.videos, (item) => {

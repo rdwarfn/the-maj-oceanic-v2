@@ -1,80 +1,69 @@
 <template>
   <div id="home">
-    <template>
-      <home-intro
-        class="home--intro"
-        v-bind:data="data.intro"
-      />
-    </template>
+    <home-intro
+      class="home--intro"
+      :data="data.intro"
+    />
 
     <v-container class="home--the-vessel px-6 px-md-0" tag="section">
-      <template>
-        <div v-if="!data.the_vessel" class="text-center">
-          <v-skeleton-loader type="image" :loading="!data.the_vessel" />
-        </div>
-        <home-vessel
-          v-else
-          :data="[...data.the_vessel]"
-          button-text="discover"
-        />
-      </template>
+      <div v-if="!data.the_vessel" class="text-center">
+        <v-skeleton-loader type="image" :loading="!data.the_vessel" />
+      </div>
+
+      <home-vessel
+        v-else
+        :data="[...data.the_vessel]"
+        button-text="discover"
+      />
     </v-container>
 
-    <template>
-      <div v-if="!data.voyages" class="text-center container">
-        <v-skeleton-loader type="card" :loading="!data.voyages" />
-      </div>
-      <home-voyages v-else v-bind:data="data.voyages" />
-    </template>
+    <div v-if="!data.voyages" class="text-center container">
+      <v-skeleton-loader type="card" :loading="!data.voyages" />
+    </div>
+    <home-voyages v-else :data="data.voyages" />
 
     <v-container class="home--dining px-6 px-md-0 py-0" tag="section">
-      <template>
-        <div v-if="!data.dining" class="text-center">
-          <v-skeleton-loader type="card" :loading="!data.dining" />
-        </div>
-        <home-dining-occasions
-          v-else
-          v-bind:data="data.dining"
-          button-text="learn more"
-          content-right
-          reverse
-        />
-      </template>
+      <div v-if="!data.dining" class="text-center">
+        <v-skeleton-loader type="card" :loading="!data.dining" />
+      </div>
+      <home-dining-occasions
+        v-else
+        :data="data.dining"
+        button-text="learn more"
+        content-right
+        reverse
+      />
     </v-container>
 
     <v-container class="home--occasions px-6 px-md-0 py-0" tag="section">
-      <template>
-        <div v-if="!data.occasions" class="text-center">
-          <v-skeleton-loader type="card" :loading="!data.occasions" />
-        </div>
-        <home-dining-occasions
-          v-else
-          v-bind:data="data.occasions"
-          button-text="learn more"
-        />
-      </template>
+      <div v-if="!data.occasions" class="text-center">
+        <v-skeleton-loader type="card" :loading="!data.occasions" />
+      </div>
+      <home-dining-occasions
+        v-else
+        :data="data.occasions"
+        button-text="learn more"
+      />
     </v-container>
   </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import homeIntro from '@/components/Intro.vue';
-import homeVessel from '@/components/base/BaseCarousel.vue';
-import homeDiningOccasions from '@/components/base/BaseCardTextImage.vue'
-import homeVoyages from '@/components/home/HomeVoyages'
+import HomeIntro from '@/components/Intro.vue'
+import HomeVessel from '@/components/base/BaseCarousel.vue'
+import HomeVoyages from '@/components/home/HomeVoyages'
+import HomeDiningOccasions from '@/components/base/BaseCardTextImage.vue'
 
 const components = {
-  homeIntro,
-  homeVessel,
-  homeVoyages,
-  homeDiningOccasions,
+  HomeIntro,
+  HomeVessel,
+  HomeVoyages,
+  HomeDiningOccasions
 }
 
 export default {
-  layout: 'main',
-
   components,
+  layout: 'main',
 
   // head () {
   //   return {
@@ -180,10 +169,22 @@ export default {
   //   }
   // },
 
-  async asyncData ({ $content, $axios }) {
+  async asyncData ({ $axios }) {
     const data = await $axios.$get('/api/pages/home/')
     return {
       data
+    }
+  },
+
+  computed: {
+    meta_primary () {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook () {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter () {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 
@@ -193,19 +194,8 @@ export default {
     }
   },
 
-  computed: {
-    meta_primary() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_primary
-    },
-    meta_facebook() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
-    },
-    meta_twitter() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
-    }
-  },
-
   methods: {
+    // eslint-disable-next-line
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', {
         page_key, data

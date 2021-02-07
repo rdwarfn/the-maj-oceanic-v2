@@ -3,54 +3,58 @@
     <v-row
       justify="center"
       class="row align-center d-flex relative static"
-      v-bind:class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
+      :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
     >
       <div class="col-sm-6 col-md-6 col-12">
         <client-only>
-        <v-card
-          v-if="Object.keys(dataActive).length"
-          class="__carousel_text_img--card static"
-          v-bind:class="cardClass"
-          v-bind:rounded="false"
-          v-bind:height="cardHeight"
-          v-bind:width="cardWidth"
-          v-bind:max-height="cardMaxHeight"
-          v-bind:max-width="cardMaxWidth"
-          flat
-        >
-          <v-card-subtitle
-            v-if="dataActive.caption"
-            class="text-h6 pb-0 static"
-            :class="captionClass"
+          <v-card
+            v-if="Object.keys(dataActive).length"
+            class="__carousel_text_img--card static"
+            :class="cardClass"
+            :rounded="false"
+            :height="cardHeight"
+            :width="cardWidth"
+            :max-height="cardMaxHeight"
+            :max-width="cardMaxWidth"
+            flat
           >
-            {{ dataActive.caption }}
-          </v-card-subtitle>
+            <v-card-subtitle
+              v-if="dataActive.caption"
+              class="text-h6 pb-0 static"
+              :class="captionClass"
+            >
+              {{ dataActive.caption }}
+            </v-card-subtitle>
 
-          <v-card-title
-            class="text-h4 text-md-h3 font-weight-bold text-truncate static"
-            v-bind:class="headingClass"
-            v-text="dataActive.heading"
-          />
+            <v-card-title
+              class="text-h4 text-md-h3 font-weight-bold text-truncate static"
+              :class="headingClass"
+              v-text="dataActive.heading"
+            />
 
-          <v-card-text class="text--primary static" :class="textClass">
-            {{ dataActive.text }}
+            <v-card-text class="text--primary static" :class="textClass">
+              {{ dataActive.text }}
 
-            <ul v-bind:class="listClass" v-if="dataActive.list">
-              <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
-                {{i}}
-              </li>
-            </ul>
-          </v-card-text>
+              <ul v-if="dataActive.list" :class="listClass">
+                <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
+                  {{ i }}
+                </li>
+              </ul>
+            </v-card-text>
 
-          <v-card-actions v-if="buttonText" :class="buttonClass">
-            <v-btn
-              class="btn-l"
-              color="primary"
-              tile depressed outlined :to="dataActive.to">
-            {{buttonText}}
-            </v-btn>
-          </v-card-actions>
-        </v-card>
+            <v-card-actions v-if="buttonText" :class="buttonClass">
+              <v-btn
+                class="btn-l"
+                color="primary"
+                tile
+                depressed
+                outlined
+                :to="dataActive.to"
+              >
+                {{ buttonText }}
+              </v-btn>
+            </v-card-actions>
+          </v-card>
         </client-only>
       </div>
 
@@ -58,12 +62,12 @@
         <swiper
           ref="swiper"
           class="swiper"
-          v-bind:options="swiperOption"
+          :options="swiperOption"
           style="max-width: 445px"
         >
           <swiper-slide
             v-for="item in data"
-            v-bind:key="item.id"
+            :key="item.id"
           >
             <img
               :src="staticImage
@@ -72,28 +76,32 @@
               :alt="item.image"
               class="mx-auto"
               :class="cardImageClass"
-            />
+            >
           </swiper-slide>
-          <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+          <div slot="pagination" class="swiper-pagination swiper-pagination-bullets" />
           <v-btn
+            slot="button-prev"
             fab
             absolute
             x-small
             class="button--left swiper-button-prev"
             color="white"
-            slot="button-prev"
           >
-            <v-icon color="primary">mdi-chevron-left</v-icon>
+            <v-icon color="primary">
+              mdi-chevron-left
+            </v-icon>
           </v-btn>
           <v-btn
+            slot="button-next"
             fab
             absolute
             x-small
             class="button--right swiper-button-next"
             color="white"
-            slot="button-next"
           >
-            <v-icon color="primary">mdi-chevron-right</v-icon>
+            <v-icon color="primary">
+              mdi-chevron-right
+            </v-icon>
           </v-btn>
         </swiper>
       </div>
@@ -102,12 +110,14 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 const components = {
   Swiper,
   SwiperSlide
 }
 export default {
+
+  components,
   props: {
     data: { type: Array },
     cardClass: { type: String },
@@ -127,8 +137,6 @@ export default {
     reverse: { type: Boolean }
   },
 
-  components,
-
   data () {
     return {
       store: [],
@@ -145,8 +153,8 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className} swiper-pagination-bullet-custom"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className} swiper-pagination-bullet-custom"></span>`
           }
         },
         navigation: {
@@ -157,31 +165,31 @@ export default {
     }
   },
 
-  mounted () {
-    this.initStore();
-  },
-
-  watch: {
-    activeIndex: function (val) {
-      this.dataActive = this.store[val];
-    }
-  },
-
   computed: {
     swiper () {
-      return this.$refs.swiper.$swiper;
+      return this.$refs.swiper.$swiper
     },
 
     debug () {
-      return this.$vuetify.breakpoint.name;
+      return this.$vuetify.breakpoint.name
     }
+  },
+
+  watch: {
+    activeIndex (val) {
+      this.dataActive = this.store[val]
+    }
+  },
+
+  mounted () {
+    this.initStore()
   },
 
   methods: {
     initStore () {
-      if (!this.data.length) return
-      this.store = this.data;
-      this.dataActive = this.data[0];
+      if (!this.data.length) { return }
+      this.store = this.data
+      this.dataActive = this.data[0]
     }
   }
 }

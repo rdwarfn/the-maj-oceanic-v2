@@ -1,9 +1,23 @@
 <template>
-  <v-container tag="section" class="px-0 px-sm-6 px-md-0 the-teams">
-    <div class="__caption text-no-wrap text-center text-h5 mb-3 px-6 px-sm-0">{{ data.caption }}</div>
-    <div class="__heading text-center px-6 px-sm-0">{{ data.heading }}</div>
-    <swiper ref="swiper" class="swiper" v-bind:options="swiperOption">
-      <swiper-slide v-for="item in data.data" v-bind:key="item.id">
+  <v-container
+    tag="section"
+    class="px-0 px-sm-6 px-md-0 the-teams"
+  >
+    <div class="__caption text-no-wrap text-center text-h5 mb-3 px-6 px-sm-0">
+      {{ data.caption }}
+    </div>
+    <div class="__heading text-center px-6 px-sm-0">
+      {{ data.heading }}
+    </div>
+    <swiper
+      ref="swiper"
+      class="swiper"
+      :options="swiperOption"
+    >
+      <swiper-slide
+        v-for="item in data.data"
+        :key="item.id"
+      >
         <div class="text-center swiper__item">
           <v-skeleton-loader
             v-if="!item.image"
@@ -11,51 +25,91 @@
             type="image"
           />
           <v-img
-            v-bind:src="$store.state.storage + item.image"
-            v-bind:lazy-src="$store.state.storage + item.image"
+            :src="$store.state.storage + item.image"
+            :lazy-src="$store.state.storage + item.image"
             class="swiper__item--img"
           >
-            <template v-slot:placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
+            <template #placeholder>
+              <v-row
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
                 <v-progress-circular indeterminate color="grey lighten-5" />
               </v-row>
             </template>
           </v-img>
-          <div v-if="item.name" class="swiper__item--heading font-weight-bold hidden-xs-only" style="font-family: Domine">{{ item.name }}</div>
-          <div v-if="item.title" class="swiper__item--text hidden-xs-only">{{ item.title }}</div>
+          <div
+            v-if="item.name"
+            class="swiper__item--heading font-weight-bold hidden-xs-only"
+            style="font-family: Domine"
+          >
+            {{ item.name }}
+          </div>
+          <div v-if="item.title" class="swiper__item--text hidden-xs-only">
+            {{ item.title }}
+          </div>
         </div>
       </swiper-slide>
     </swiper>
     <div class="mx-auto text-center hidden-sm-and-up">
-      <div v-if="dataActive.heading" class="swiper__item--heading font-weight-bold">{{ dataActive.name }}</div>
-      <div v-if="dataActive.title" class="swiper__item--text">{{ dataActive.title }}</div>
+      <div
+        v-if="dataActive.heading"
+        class="swiper__item--heading font-weight-bold"
+      >
+        {{ dataActive.name }}
+      </div>
+      <div
+        v-if="dataActive.title"
+        class="swiper__item--text"
+      >
+        {{ dataActive.title }}
+      </div>
     </div>
-    <v-btn depressed absolute fab x-small class="button--left hidden-xs-only" color="primary" @click="prev">
-      <v-icon color="white">{{ icon.left }}</v-icon>
+    <v-btn
+      depressed
+      absolute
+      fab
+      x-small
+      class="button--left hidden-xs-only"
+      color="primary"
+      @click="prev"
+    >
+      <v-icon color="white">
+        {{ icon.left }}
+      </v-icon>
     </v-btn>
-    <v-btn depressed absolute fab x-small class="button--right hidden-xs-only" color="primary" @click="next">
-      <v-icon color="white">{{ icon.right }}</v-icon>
+    <v-btn
+      depressed
+      absolute
+      fab
+      x-small
+      class="button--right hidden-xs-only"
+      color="primary"
+      @click="next"
+    >
+      <v-icon color="white">
+        {{ icon.right }}
+      </v-icon>
     </v-btn>
   </v-container>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
-import BaseCarouselThree from '@/components/base/BaseCarouselThree.vue';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js'
 export default {
+
+  components: {
+    Swiper,
+    SwiperSlide
+  },
   props: {
     data: {
       caption: { type: String },
       heading: { type: String },
       data: { type: Array }
     }
-  },
-
-  components: {
-    BaseCarouselThree,
-    Swiper,
-    SwiperSlide
   },
 
   data () {
@@ -81,8 +135,8 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className}"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className}"></span>`
           }
         },
         breakpoints: {
@@ -103,36 +157,36 @@ export default {
     }
   },
 
-  mounted () {
-    this.initStore();
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.initStore()
   },
 
   methods: {
     initStore () {
-      if (!this.data.data.length) return
-      this.store = this.data.data;
-      this.dataActive = this.data.data[0];
+      if (!this.data.data.length) { return }
+      this.store = this.data.data
+      this.dataActive = this.data.data[0]
     },
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
-      this.$refs.swiper.$swiper.slidePrev();
+      this.$refs.swiper.$swiper.slidePrev()
     },
     next () {
       if (this.$refs.swiper.$swiper.isEnd) { return }
-      this.$refs.swiper.$swiper.slideNext();
+      this.$refs.swiper.$swiper.slideNext()
     }
   }
 }

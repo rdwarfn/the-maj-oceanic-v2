@@ -1,14 +1,17 @@
-import webpack from 'webpack';
+require('dotenv').config()
+
 export default {
   loading: {
     color: '#208CB2',
-    height: '10px'
+    height: '8px'
   },
+
   rootDir: __dirname,
+
   router: {
     // trailingSlash: false,
     middleware: ['breadcrumbs'],
-    extendRoutes(routes, resolve) {
+    extendRoutes (routes, resolve) {
       routes.push({
         name: '404',
         path: '*',
@@ -35,11 +38,11 @@ export default {
       { hid: 'robots', name: 'robots', content: 'follow, index' },
       { hid: 'googlebot', name: 'googlebot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
       { hid: 'bingbot', name: 'bingbot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
-      { hid: 'og:locale', property: 'og:locale', content: 'en_US' },
+      { hid: 'og:locale', property: 'og:locale', content: 'en_US' }
     ],
     link: [
       { rel: 'canonical', href: 'https://themajoceanic.com' },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
       { type: 'text/javascript', src: '/js/instafeed.min.js' }
@@ -56,47 +59,48 @@ export default {
     ]
   },
   css: [
-    '@/assets/styles/css/_fonts.css',
-    '@/assets/styles/css/main.css',
+    '~/assets/styles/css/_fonts.css',
+    '~/assets/styles/css/main.css',
     'video.js/dist/video-js.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
-    { src: '~/plugins/vue-video-player', mode: 'client' },
-    { src: '~/plugins/vue-instagram', mode: 'client' },
-    { src: '~/plugins/vue-youtube-embed', mode: 'client' }
+    '~/plugins/injects.js',
+    '~/plugins/vue-awesome-swiper.client.js',
+    '~/plugins/vue-video-player.client.js',
+    '~/plugins/vue-instagram.client.js',
+    '~/plugins/vue-youtube-embed.client.js'
   ],
   /*
   ** Auto import components
   */
-  components: [
-    '~/components',
-    { path: '~/components/base', prefix: 'Base' },
-    '~/components/containers',
-    '~/components/navigations',
-    { path: '~/components/skeletons', prefix: 's' },
-  ],
+  components: true,
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    // https://go.nuxtjs.dev/eslint
+    '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv',
     '@nuxtjs/style-resources'
   ],
   /*
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/vendor',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
     // Doc: https://github.com/nuxt-community/svg-module
-    '@nuxtjs/svg',
+    '@nuxtjs/svg'
   ],
   /*
   ** Axios module configuration
@@ -104,6 +108,14 @@ export default {
   axios: {
     baseURL: process.env.BASE_URL
   },
+
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  pwa: {
+    manifest: {
+      lang: 'en'
+    }
+  },
+
   /*
   ** Content module configuration
   */
@@ -124,28 +136,39 @@ export default {
     },
     treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
-    optionsPath: './vuetify.options.js',
+    optionsPath: './vuetify.options.js'
   },
   /*
   ** Build configuration
   */
   build: {
-    plugins: [
-      new webpack.ProvidePlugin({
-        _: 'lodash'
-      })
-    ],
-    postcss: {
-      plugins: {
-        // Add some plugins
-        'postcss-import': {},
-        'postcss-nesting': {},
-      },
-      preset: {
-        autoprefixer: {
-          // grid: true
-        }
-      }
-    }
-  }
+    transpile: [
+      'vee-validate/dist/rules'
+    ]
+  },
+
+  sitemap: {
+    hostname: 'https://themajoceanic.com',
+    gzip: true
+  },
+
+  vendor: [
+    '@mdi/js',
+    '@nuxtjs/axios',
+    '@nuxtjs/dotenv',
+    '@nuxtjs/pwa',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/style-resources',
+    'lodash',
+    'swiper',
+    'vue-awesome-swiper',
+    'vue-content-loader',
+    'vue-instagram',
+    'vue-youtube-embed',
+    '@nuxtjs/svg',
+    '@nuxtjs/vendor',
+    '@nuxtjs/vuetify',
+    'vue-video-player'
+  ]
 }

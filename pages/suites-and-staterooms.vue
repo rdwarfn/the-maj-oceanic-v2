@@ -53,7 +53,17 @@
         <div class="ig--heading" v-html="data.instagram.heading" />
         <v-row id="instafeed" />
 
-        <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
+        <v-btn
+          width="141"
+          height="38"
+          :loading="loading"
+          class="btn-l ig--btn"
+          color="primary"
+          tile
+          outlined
+          depressed
+          @click.prevent="() => loadMore(6)"
+        >
           View more
         </v-btn>
       </v-container>
@@ -62,31 +72,15 @@
 </template>
 
 <script>
-import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
-import suitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue';
-import suitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue';
+import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline'
+import suitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue'
+import suitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue'
 const components = {
   tmgIconDivider,
   suitesSpecification,
-  suitesSpecificationMobile,
+  suitesSpecificationMobile
 }
 export default {
-  layout: 'main',
-
-  meta: {
-    breadcrumbs: [
-      {
-        to: '/',
-        replace: true,
-        text: 'Home'
-      },
-      {
-        to: '/suites-and-staterooms',
-        replace: true,
-        text: 'Suites & Staterooms'
-      }
-    ]
-  },
 
   // head() {
   //   return {
@@ -192,6 +186,27 @@ export default {
   // },
 
   components,
+  layout: 'main',
+
+  meta: {
+    breadcrumbs: [
+      {
+        to: '/',
+        replace: true,
+        text: 'Home'
+      },
+      {
+        to: '/suites-and-staterooms',
+        replace: true,
+        text: 'Suites & Staterooms'
+      }
+    ]
+  },
+
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/suites-and-staterooms')
+    return { data }
+  },
 
   data () {
     return {
@@ -201,60 +216,56 @@ export default {
     }
   },
 
-  async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/suites-and-staterooms')
-    return { data }
-  },
-
-  mounted () {
-    this.instafeed();
-    if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-    }
-  },
-
   computed: {
     asyncComponent () {
-      if (!this.$vuetify.breakpoint.xs)
-        return 'suites-specification'
+      if (!this.$vuetify.breakpoint.xs) { return 'suites-specification' }
       return 'suites-specification-mobile'
     },
-    meta_primary() {
+    meta_primary () {
       return this.data.header && this.data.header.seo_meta_tag.meta_primary
     },
-    meta_facebook() {
+    meta_facebook () {
       return this.data.header && this.data.header.seo_meta_tag.meta_facebook
     },
-    meta_twitter() {
+    meta_twitter () {
       return this.data.header && this.data.header.seo_meta_tag.meta_twitter
     }
   },
 
+  mounted () {
+    this.instafeed()
+    if (this.$data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
+    }
+  },
+
   methods: {
+    // eslint-disable-next-line
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     },
-    instafeed (limit=this.showed) {
-      var feed = new Instafeed({
-        limit: limit,
+    instafeed (limit = this.showed) {
+      // eslint-disable-next-line
+      const feed = new Instafeed({
+        limit,
         accessToken: this.data && this.data.instagram && this.data.instagram.access_token,
-        transform: function(item) {
-          var d = new Date(item.timestamp);
-          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/');
-          return item;
+        transform (item) {
+          const d = new Date(item.timestamp)
+          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/')
+          return item
         },
         template: `<div class="col-4">
             <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
-        </div>`,
-      });
-      feed.run();
+        </div>`
+      })
+      feed.run()
       this.loading = false
     },
-    loadMore (params=null) {
+    loadMore (params = null) {
       this.loading = true
       const n = this.showed + params
       this.showed = n
-      this.instafeed(n);
+      this.instafeed(n)
     }
   }
 }

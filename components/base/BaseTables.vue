@@ -1,8 +1,8 @@
 <template>
   <v-data-table
     class="text--primary justify-space-between px-6 px-md-0"
-    v-bind:headers="data.headers"
-    v-bind:items="data.data"
+    :headers="data.headers"
+    :items="data.data"
     item-key="name"
     :items-per-page="12"
     hide-default-footer
@@ -11,23 +11,43 @@
     <template #header>
       <thead>
         <tr>
-          <td class="text-center text-sm-left" colspan="2">TABLE of SPECIFICATION</td>
+          <td
+            class="text-center text-sm-left"
+            colspan="2"
+          >
+            TABLE of SPECIFICATION
+          </td>
         </tr>
       </thead>
     </template>
     <template #body="{ items }">
       <tbody>
-        <tr class="hidden-xs-only" v-for="(item, index) in items" :key="index">
+        <tr
+          v-for="(item, index) in items"
+          :key="index"
+          class="hidden-xs-only"
+        >
           <td class="px-0 montserrat text-uppercase font-weight-bold py-5">
-            {{item.name}}
+            {{ item.name }}
           </td>
-          <td class="px-0 pt-sans py-5" v-html="item.value">
-          </td>
+          <td class="px-0 pt-sans py-5" v-html="item.value" />
         </tr>
-        <tr class="hidden-sm-and-up" v-for="(item, index) in items" :key="('children-' + index)">
-          <td colspan="2" class="px-0 py-5">
-            <div class="montserrat text-uppercase font-weight-bold pb-5"> {{item.name}} </div>
-            <div class="pt-sans" v-html="item.value"></div>
+        <tr
+          v-for="(item, index) in items"
+          :key="('children-' + index)"
+          class="hidden-sm-and-up"
+        >
+          <td
+            colspan="2"
+            class="px-0 py-5"
+          >
+            <div class="montserrat text-uppercase font-weight-bold pb-5">
+              {{ item.name }}
+            </div>
+            <div
+              class="pt-sans"
+              v-html="item.value"
+            />
           </td>
         </tr>
       </tbody>

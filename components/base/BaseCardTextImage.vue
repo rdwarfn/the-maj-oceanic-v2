@@ -1,11 +1,11 @@
 <template>
   <v-row no-gutters align="center" justify="center" class="card-text-image mx-auto">
     <v-card flat tile color="transparent">
-      <div class="__card d-sm-flex align-center" v-bind:class="{reversed: reverse}">
+      <div class="__card d-sm-flex align-center" :class="{reversed: reverse}">
         <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
           {{ data.caption }}
         </v-card-subtitle>
-        <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
+        <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5">
           {{ data.heading }}
         </v-card-title>
         <v-skeleton-loader
@@ -14,12 +14,12 @@
           type="image"
         />
         <v-img
-          v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
-          v-bind:src="$store.state.storage + data.image"
-          v-bind:lazy-src="$store.state.storage + data.image"
-          v-bind:aspect-ratio="imgAspectRatio"
+          :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
+          :src="$store.state.storage + data.image"
+          :lazy-src="$store.state.storage + data.image"
+          :aspect-ratio="imgAspectRatio"
         >
-          <template v-slot:placeholder>
+          <template #placeholder>
             <v-row
               class="fill-height ma-0"
               align="center"
@@ -38,50 +38,63 @@
         >
           <v-btn
             class="mx-auto __card--btn"
-            v-bind:class="buttonClass"
+            :class="buttonClass"
             color="primary"
-            tile depressed
-            outlined :to="data.to"
+            tile
+            depressed
+            outlined
+            :to="data.to"
             height="38"
           >
-            {{buttonText}}
+            {{ buttonText }}
           </v-btn>
         </v-card-actions>
 
-        <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
-          <v-card-subtitle v-if="data.caption" class="text-h6 font-weight-bold pb-0 px-0 static"
-            v-bind:class="contentRight ? 'text-right' : null"
+        <div class="__card--content hidden-xs-only" :class="cardContentClass">
+          <v-card-subtitle
+            v-if="data.caption"
+            class="text-h6 font-weight-bold pb-0 px-0 static"
+            :class="contentRight ? 'text-right' : null"
             v-text="data.caption"
           />
-          <v-card-title class="px-0 text-break"
-            v-bind:class="contentRight ? 'justify-end' : null"
+          <v-card-title
+            class="px-0 text-break"
+            :class="contentRight ? 'justify-end' : null"
             v-text="data.heading"
           />
 
-          <v-card-text class="px-0"
-            v-bind:class="contentRight ? 'text-right' : null">
+          <v-card-text
+            class="px-0"
+            :class="contentRight ? 'text-right' : null"
+          >
             {{ data.description }}
             <ul v-if="data.list">
-              <li v-for="(item, index) in data.list.split('\n')"
-                v-bind:key="index"
+              <li
+                v-for="(item, index) in data.list.split('\n')"
+                :key="index"
                 v-text="item"
               />
             </ul>
           </v-card-text>
 
-          <v-card-actions v-if="buttonText"
+          <v-card-actions
+            v-if="buttonText"
             class="px-0 mt-6"
-            v-bind:class="[
+            :class="[
               buttonContainerClass,
               contentRight ? 'justify-end' : null
-            ]">
+            ]"
+          >
             <v-btn
               :class="buttonClass"
               color="primary"
-              tile depressed outlined :to="data.to"
+              tile
+              depressed
+              outlined
+              :to="data.to"
               height="38"
             >
-              {{buttonText}}
+              {{ buttonText }}
             </v-btn>
           </v-card-actions>
         </div>
@@ -91,11 +104,15 @@
 </template>
 
 <script>
-import tButton from '@/components/base/BaseButton.vue';
+import tButton from '@/components/base/BaseButton.vue'
 const components = {
   tButton
 }
 export default {
+
+  components,
+
+  inheritAttrs: false,
   props: {
     data: { type: Object },
     cardImgClass: { type: String },
@@ -110,11 +127,7 @@ export default {
     imgAspectRatio: {
       type: [String, Number]
     }
-  },
-
-  components,
-
-  inheritAttrs: false
+  }
 }
 </script>
 
