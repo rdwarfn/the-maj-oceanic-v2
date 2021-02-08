@@ -1,48 +1,38 @@
 <template>
   <div id="the-vessel">
-    <template>
-      <vessel-intro
-        class="the-veseel--intro px-0"
-        :data="data.intro"
-        image-class="order-last px-6 px-md-0"
-        description-class="text-center"
-      />
-    </template>
+    <vessel-intro
+      class="the-veseel--intro px-0"
+      :data="data.intro"
+      image-class="order-last px-6 px-md-0"
+      description-class="text-center"
+    />
 
-    <template>
-      <div v-if="!data.suites_and_staterooms" class="text-center container">
-        <v-skeleton-loader type="card" :loading="!data.suites_and_staterooms" />
-      </div>
-      <vessel-suites v-else :data="data.suites_and_staterooms" />
-    </template>
+    <div v-if="!data.suites_and_staterooms" class="text-center container">
+      <v-skeleton-loader type="card" :loading="!data.suites_and_staterooms" />
+    </div>
+    <vessel-suites v-else :data="data.suites_and_staterooms" />
 
-    <template>
-      <div v-if="!data.the_decks" class="text-center container">
-        <v-skeleton-loader type="card" :loading="!data.the_decks" />
-      </div>
-      <vessel-decks v-else :data="data.the_decks" />
-    </template>
+    <div v-if="!data.the_decks" class="text-center container">
+      <v-skeleton-loader type="card" :loading="!data.the_decks" />
+    </div>
+    <vessel-decks v-else :data="data.the_decks" />
 
-    <template>
-      <div v-if="!data.teams" class="text-center container">
-        <v-skeleton-loader type="card" :loading="!data.teams" />
-      </div>
-      <vessel-teams v-else :data="data.teams" />
-    </template>
+    <div v-if="!data.teams" class="text-center container">
+      <v-skeleton-loader type="card" :loading="!data.teams" />
+    </div>
+    <vessel-teams v-else :data="data.teams" />
 
     <v-container class="sustainability py-0 px-6 px-md-0" tag="section">
-      <template>
-        <div v-if="!data.sustainability" class="text-center container">
-          <v-skeleton-loader type="card" :loading="!data.sustainability" />
-        </div>
-        <vessel-sustainability
-          v-else
-          :data="data.sustainability"
-          button-text="Learn More"
-          content-right
-          reverse
-        />
-      </template>
+      <div v-if="!data.sustainability" class="text-center container">
+        <v-skeleton-loader type="card" :loading="!data.sustainability" />
+      </div>
+      <vessel-sustainability
+        v-else
+        :data="data.sustainability"
+        button-text="Learn More"
+        content-right
+        reverse
+      />
     </v-container>
   </div>
 </template>

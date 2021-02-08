@@ -42,7 +42,6 @@
           :video-id="data.youtube_id"
           :player-vars="{ autoplay: 1 }"
           @ready="ready"
-          @playing="playing"
         />
       </v-container>
     </client-only>
@@ -95,9 +94,6 @@ export default {
   methods: {
     ready (event) {
       this.player = event.target
-    },
-    playing (event) {
-      console.log(event)
     }
   }
 }

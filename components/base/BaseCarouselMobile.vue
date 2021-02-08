@@ -53,12 +53,8 @@
         <v-img
           v-else
           mx-auto
-          :src="staticImage
-            ? require(`~/assets/images/${item.image}`)
-            : item.image"
-          :lazy-src="staticImage
-            ? require(`~/assets/images/${item.image}`)
-            : item.image"
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
           class="__carousel--img mx-auto mx-sm-0"
           :class="cardImageClass"
         >
