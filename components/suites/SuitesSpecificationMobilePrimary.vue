@@ -27,8 +27,8 @@
         :key="index"
       >
         <v-img
-          :src="item.image"
-          :lazy-src="item.image"
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
           class="image--item"
         />
       </swiper-slide>

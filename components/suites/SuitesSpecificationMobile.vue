@@ -29,12 +29,8 @@
         :key="index"
       >
         <v-img
-          :src="staticImage
-            ? require('~/assets/images/' + item.image)
-            : item.image"
-          :lazy-src="staticImage
-            ? require('~/assets/images/' + item.image)
-            : item.image"
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
           class="image--item"
         />
       </swiper-slide>
