@@ -1,27 +1,17 @@
 {
-  "name": "the-maj-oceanic",
+  "name": "oceanic",
   "version": "1.0.0",
   "description": "Official The Maj Oceanic",
   "author": {
     "name": "Clevara ID",
     "url": "https://clevara.id"
   },
-  "contributors": [
-    {
-      "name": "Ridwan Arifin",
-      "email": "ridwanarifin@pm.me"
-    }
-  ],
   "homepage": "https://themajoceanic.com",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ridwanarifin/the-maj-oceanic-v2.git"
-  },
   "private": true,
   "scripts": {
     "dev": "nuxt",
+    "dev:host": "nuxt --hostname 0",
     "build": "nuxt build",
-    "host": "HOST=0.0.0.0 yarn dev",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "now-build": "nuxt generate"
