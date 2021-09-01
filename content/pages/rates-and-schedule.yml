@@ -91,10 +91,10 @@ tables:
       value: minimum_nights
       width: 125
       align: center
-    - text: "2020"
+    - text: "2021"
       value: rates_per_night[0].price
       align: center
-    - text: "2021"
+    - text: "2022"
       value: rates_per_night[1].price
       align: center
   data:

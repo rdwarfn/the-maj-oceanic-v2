@@ -41,10 +41,10 @@
                   Minimum Nights
                 </td>
                 <td class="font-weight-bold" style="width: 15%">
-                  2020
+                  2021
                 </td>
                 <td class="font-weight-bold" style="width: 15%">
-                  2021
+                  2022
                 </td>
               </tr>
             </thead>
