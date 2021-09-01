@@ -1,15 +1,16 @@
 <template>
   <div id="voyages">
-    <voyages-item v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
+    <VoyagesItem
+      v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
 
     <section class="voyages__testimonal">
-      <base-testimonal :data="data.testimonies" />
+      <BaseTestimonal :data="data.testimonies" />
     </section>
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
-      <base-carousel
+      <BaseCarousel
         card-mobile-class="mt-2 transparent"
-        v-bind:data="[...data.itinerary]"
+        :data="[...data.itinerary]"
         button-text="Rates & Schedule"
       />
     </v-container>
@@ -17,11 +18,10 @@
 </template>
 
 <script>
-const components = {
-  voyagesItem: () => import('@/components/voyages/VoyagesItem'),
-  baseCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  baseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
-}
+import VoyagesItem from '~/components/voyages/VoyagesItem'
+import BaseTestimonal from '~/components/base/BaseTestimonal.vue'
+import BaseCarousel from '~/components/base/BaseCarousel.vue'
+
 export default {
   layout: 'main',
 
@@ -37,6 +37,45 @@ export default {
         text: 'Voyages'
       }
     ]
+  },
+
+  components: {
+    VoyagesItem,
+    BaseTestimonal,
+    BaseCarousel
+  },
+
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/voyages/')
+    return { data }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      if (this.$data.data && this.$data.data.hero) {
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      }
+    })
+  },
+
+  computed: {
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
+    }
+  },
+
+  methods: {
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', {
+        page_key, data
+      })
+    }
   },
 
   // head() {
@@ -140,42 +179,7 @@ export default {
   //       }
   //     ],
   //   }
-  // },
-
-  components,
-
-  async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/voyages/')
-    return { data }
-  },
-
-  mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      }
-    })
-  },
-
-  computed: {
-    meta_primary() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_primary
-    },
-    meta_facebook() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
-    },
-    meta_twitter() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
-    }
-  },
-
-  methods: {
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', {
-        page_key, data
-      })
-    }
-  }
+  // }
 }
 </script>
 

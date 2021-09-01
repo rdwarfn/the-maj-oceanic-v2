@@ -1,10 +1,17 @@
 import webpack from 'webpack';
+import https from 'https';
+
 export default {
-  loading: {
-    color: '#208CB2',
-    height: '10px'
+  env: {
+    BASE_URL: process.env.BASE_URL
   },
+
+  loading: {
+    color: '#208CB2'
+  },
+
   rootDir: __dirname,
+
   router: {
     // trailingSlash: false,
     middleware: ['breadcrumbs'],
@@ -19,8 +26,8 @@ export default {
   /*
   ** Nuxt target
   */
-  ssr: false,
-  target: 'static',
+  // ssr: false,
+  // target: 'static',
   /*
   ** Headers of the page
   */
@@ -72,13 +79,7 @@ export default {
   /*
   ** Auto import components
   */
-  components: [
-    '~/components',
-    { path: '~/components/base', prefix: 'Base' },
-    '~/components/containers',
-    '~/components/navigations',
-    { path: '~/components/skeletons', prefix: 's' },
-  ],
+  components: true,
   /*
   ** Nuxt.js dev-modules
   */
@@ -93,8 +94,6 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt/content
-    '@nuxt/content',
     // Doc: https://github.com/nuxt-community/svg-module
     '@nuxtjs/svg',
   ],
@@ -105,23 +104,10 @@ export default {
     baseURL: process.env.BASE_URL
   },
   /*
-  ** Content module configuration
-  */
-  content: {
-    markdown: {
-      remarkPlugins: [
-        ['remark-emoji', { emoticon: true }]
-      ]
-    }
-  },
-  /*
   ** vuetify module configuration
   */
   vuetify: {
     defaultAssets: false,
-    options: {
-      customProperties: true
-    },
     treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js',
@@ -130,22 +116,17 @@ export default {
   ** Build configuration
   */
   build: {
+    extend (config) {
+      config.module.rules.unshift({
+        test: /\.mjs/,
+        type: 'javascript/auto',
+        include: /node_modules/
+      });
+    },
     plugins: [
       new webpack.ProvidePlugin({
         _: 'lodash'
       })
-    ],
-    postcss: {
-      plugins: {
-        // Add some plugins
-        'postcss-import': {},
-        'postcss-nesting': {},
-      },
-      preset: {
-        autoprefixer: {
-          // grid: true
-        }
-      }
-    }
+    ]
   }
 }

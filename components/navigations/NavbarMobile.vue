@@ -4,7 +4,6 @@
     v-bind="$attrs"
     max-width="100vw"
     class="hidden-lg-and-up flex-nowrap"
-    hide-on-scroll
   >
     <v-row no-gutters align="center" justify="space-between" class="flex-nowrap">
       <v-col>
@@ -31,7 +30,6 @@
             class="mx-auto _img--black"
             :draggable="false"
             v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-            alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
             width="156px"
             height="auto"
           />
@@ -41,7 +39,7 @@
         <v-btn
           class="_inquire--primary-black"
           color="primary"
-          @click="() => $router.push({ path: '/contact-us'})"
+          @click="() => $router.push('/contact-us')"
           tile depressed dark
         >
           inquire
@@ -52,19 +50,15 @@
 </template>
 
 <script>
-import tBtn from '@/components/base/BaseButton.vue';
 export default {
   inheritAttrs: false,
+
   props: {
     isDrawerOpen: {
       type: Boolean,
       default: false
     },
     isIntersecting: { type: Boolean }
-  },
-
-  components: {
-    tBtn,
   },
 
   data () {

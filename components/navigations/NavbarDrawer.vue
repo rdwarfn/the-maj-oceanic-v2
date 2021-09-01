@@ -17,8 +17,8 @@
         <v-list-item-avatar tile width="auto" min-height="67" height="auto" class="mr-0">
           <v-btn nuxt text tile depressed to="/">
             <v-img
-              v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-              v-bind:lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+              :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+              :lazy-src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
               width="192"
               height="33.72"
               class="mx-auto"
@@ -54,12 +54,12 @@
 
     <v-divider />
 
-    <v-list>
+    <v-list v-if="menu">
       <v-sheet class="wrapper" color="transparent">
         <template v-for="(item, key) in menu">
           <v-list-item
             class="_nav--item"
-            v-bind:key="key"
+            :key="key"
             v-if="!item.children.length"
             nuxt :to="item.to" exact
             v-on:click.prevent="toggleDrawer">
@@ -79,7 +79,7 @@
             <template v-if="item.children.length">
               <v-list-item
                 v-for="(child, k) in item.children"
-                v-bind:key="k"
+                :key="k"
                 v-on:click.prevent="toggleDrawer"
                 nuxt :to="child.to" exact>
                   <template>
@@ -95,7 +95,7 @@
       <!-- <v-list-item-group color="primary">
         <v-list-item
           v-for="(data, i) in menu"
-          v-bind:key="i"
+          :key="i"
           v-on:click.prevent="drawer = false"
           :to="data.to" exact
           color="primary"
@@ -122,7 +122,12 @@
 </template>
 
 <script>
-import { mdiClose, mdiCheckboxBlankCircleOutline, mdiChevronUp } from '@mdi/js';
+import {
+  mdiClose,
+  mdiCheckboxBlankCircleOutline,
+  mdiChevronUp
+} from '@mdi/js';
+import { getNav } from '~/services/api' 
 
 export default {
   data () {
@@ -134,21 +139,30 @@ export default {
     }
   },
 
-  async fetch () {
-    const { menu } = await this.$content('navigation/menu').fetch()
-    this.menu = menu
+  mounted () {
+    this.getNav()
+      .then(ress => {
+        this.menu = ress
+      })
   },
 
   computed: {
-    drawer () {
-      return this.$store.state.drawer
+    drawer: {
+      get () {
+        return this.$store.state.drawer
+      },
+      set (v) {
+        this.$store.commit('setDrawer', v)
+      }
     }
   },
 
   methods: {
     toggleDrawer () {
       this.$store.commit('toggleDrawer')
-    }
+    },
+
+    getNav
   }
 }
 </script>

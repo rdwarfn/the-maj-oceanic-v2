@@ -1,26 +1,34 @@
 <template>
   <div id="voyages-komodo">
-    <template>
-      <!-- section des 1 -->
-      <komodo-des-one :data="data.destinations[0]" />
-      <!-- end section des 1 -->
+    <!-- section des 1 -->
+    <KomodoDesOne
+      v-if="data.destinations[0]"
+      :data="data.destinations[0]"
+    />
+    <!-- section des 2 -->
+    <KomodoDesTwo
+      v-if="data.destinations[1]"
+      :data="data.destinations[1]"
+    />
+    <!-- section des 3 -->
+    <v-sheet
+      v-if="data.destinations[2]"
+      color="transparent"
+      tag="section"
+      class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up">
+      <SwiperKomodoMobile :data="data.destinations[2]" />
+    </v-sheet>
 
-      <!-- section des 2 -->
-      <komodo-des-two :data="data.destinations[1]" />
-      <!-- end section des 2 -->
-
-      <!-- section des 3 -->
-      <v-sheet color="transparent" tag="section" class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up">
-        <swiper-komodo-mobile :data="data.destinations[2]" />
-      </v-sheet>
-
-      <komodo-des-three class="hidden-xs-only" :data="data.destinations[2]" />
-      <!-- end section des 3 -->
-
-      <!-- section des 4 -->
-      <komodo-des-four v-if="data.destinations[3]" :data="data.destinations[3]" />
-      <!-- end section des 4 -->
-    </template>
+    <KomodoDesThree
+      v-if="data.destinations[2]"
+      class="hidden-xs-only"
+      :data="data.destinations[2]"
+    />
+    <!-- section des 4 -->
+    <KomodoDesFour
+      v-if="data.destinations[3]"
+      :data="data.destinations[3]"
+    />
   </div>
 </template>
 
@@ -43,6 +51,40 @@ export default {
     KomodoDesFour
   },
 
+  async asyncData({ $axios }) {
+    const data = await $axios.$get('/api/pages/voyages-komodo')
+
+    return {
+      data
+    }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      if (this.$data.data && this.$data.data.hero) {
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      }
+    })
+  },
+
+  computed: {
+    meta_primary() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_primary
+    },
+    meta_facebook() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
+    },
+    meta_twitter() {
+      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
+    }
+  },
+
+  methods: {
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', { page_key, data });
+    }
+  },
+
   meta: {
     breadcrumbs: [
       {
@@ -60,10 +102,6 @@ export default {
         text: 'Komodo'
       }
     ]
-  },
-
-  props: {
-    staticImage: { type: Boolean, default: true }
   },
 
   // head() {
@@ -168,40 +206,6 @@ export default {
   //     ],
   //   }
   // },
-
-  async asyncData({ $axios }) {
-    const data = await $axios.$get('/api/pages/voyages-komodo')
-
-    return {
-      data
-    }
-  },
-
-  mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      }
-    })
-  },
-
-  computed: {
-    meta_primary() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_primary
-    },
-    meta_facebook() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
-    },
-    meta_twitter() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
-    }
-  },
-
-  methods: {
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
-    }
-  }
 }
 </script>
 

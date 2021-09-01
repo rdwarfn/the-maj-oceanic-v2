@@ -3,7 +3,7 @@
     <v-skeleton-loader type="text@2" class="intro--head" v-if="!data.heading" />
     <div v-else class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move" v-html="data.heading" />
 
-    <base-large-image
+    <BaseLargeImage
       v-if="data.image"
       class="intro--image"
       v-bind:class="imageClass"
@@ -29,12 +29,12 @@
 </template>
 
 <script>
-import baseLargeImage from '@/components/base/BaseLargeImage.vue';
+import BaseLargeImage from '@/components/base/BaseLargeImage.vue';
 export default {
   name: 'Intro',
 
   components: {
-    baseLargeImage
+    BaseLargeImage
   },
 
   props: {

@@ -1,7 +1,7 @@
 <template>
   <v-sheet
     class="__carousel align-center px-0 mx-auto"
-    v-bind:class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
+    :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
     max-width="1440"
     color="transparent"
   >
@@ -17,20 +17,16 @@
     <swiper
       ref="swiper"
       class="swiper"
-      v-bind:options="swiperOption"
+      :options="swiperOption"
     >
       <swiper-slide
         v-for="(item, index) in data"
-        v-bind:key="index"
+        :key="index"
       >
         <template>
-          <v-skeleton-loader
-            v-if="!item.image"
-            class="__carousel--img mx-auto mx-sm-0"
-            type="image"
-          />
           <v-img
-            v-else mx-auto
+            v-if="item.image"
+            mx-auto
             :src="$store.state.storage + item.image"
             :lazy-src="$store.state.storage + item.image"
             class="__carousel--img mx-auto mx-sm-0"
@@ -42,13 +38,13 @@
               align="center"
               justify="center"
             >
-              <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+              <v-progress-circular indeterminate color="grey lighten-5" />
             </v-row>
           </template>
           </v-img>
         </template>
       </swiper-slide>
-      <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+      <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
       <template v-if="data && data.length > 1">
         <v-btn
           fab
@@ -75,8 +71,8 @@
       </template>
     </swiper>
 
-    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.description"> test
+    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" :class="cardMobileClass ? cardMobileClass : '_card--relative'">
+      <v-card-text class="text--primary px-0 pt-5" :class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.description"> test
       </v-card-text>
       <v-card-actions v-if="buttonText" class="pa-0 mt-4">
         <v-btn
@@ -92,11 +88,11 @@
     <v-card
       v-if="Object.keys(dataActive).length"
       class="__carousel--card hidden-xs-only"
-      v-bind:class="cardClass"
-      v-bind:rounded="false"
-      v-bind:height="cardHeight"
-      v-bind:width="cardWidth"
-      v-bind:max-height="cardMaxHeight"
+      :class="cardClass"
+      :rounded="false"
+      :height="cardHeight"
+      :width="cardWidth"
+      :max-height="cardMaxHeight"
       flat tile
     >
       <slot v-if="!isXs" name="image-extra"></slot>
@@ -118,10 +114,10 @@
       >
       </v-card-text>
 
-      <v-card-actions v-if="buttonText" v-bind:class="buttonClass" class="px-0 mt-4">
+      <v-card-actions v-if="buttonText" :class="buttonClass" class="px-0 mt-4">
         <v-btn
           class="btn-l"
-          v-bind:class="buttonProps"
+          :class="buttonProps"
           color="primary"
           tile depressed outlined :to="dataActive.to"
           height="38"
@@ -218,10 +214,6 @@ export default {
 
     isXs () {
       return this.$vuetify.breakpoint.xs;
-    },
-
-    debug () {
-      return this.$vuetify.breakpoint.name;
     }
   },
 

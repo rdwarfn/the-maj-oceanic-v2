@@ -3,19 +3,19 @@
     <v-row
       justify="center"
       class="row align-center d-flex relative static"
-      v-bind:class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
+      :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
     >
       <div class="col-sm-6 col-md-6 col-12">
         <client-only>
         <v-card
           v-if="Object.keys(dataActive).length"
           class="__carousel_text_img--card static"
-          v-bind:class="cardClass"
-          v-bind:rounded="false"
-          v-bind:height="cardHeight"
-          v-bind:width="cardWidth"
-          v-bind:max-height="cardMaxHeight"
-          v-bind:max-width="cardMaxWidth"
+          :class="cardClass"
+          :rounded="false"
+          :height="cardHeight"
+          :width="cardWidth"
+          :max-height="cardMaxHeight"
+          :max-width="cardMaxWidth"
           flat
         >
           <v-card-subtitle
@@ -28,14 +28,14 @@
 
           <v-card-title
             class="text-h4 text-md-h3 font-weight-bold text-truncate static"
-            v-bind:class="headingClass"
+            :class="headingClass"
             v-text="dataActive.heading"
           />
 
           <v-card-text class="text--primary static" :class="textClass">
             {{ dataActive.text }}
 
-            <ul v-bind:class="listClass" v-if="dataActive.list">
+            <ul :class="listClass" v-if="dataActive.list">
               <li v-for="(i, index) in dataActive.list.split('\n')" :key="index">
                 {{i}}
               </li>
@@ -58,23 +58,21 @@
         <swiper
           ref="swiper"
           class="swiper"
-          v-bind:options="swiperOption"
+          :options="swiperOption"
           style="max-width: 445px"
         >
           <swiper-slide
             v-for="item in data"
-            v-bind:key="item.id"
+            :key="item.id"
           >
             <img
-              :src="staticImage
-                ? require(`~/assets/images/${item.image}`)
-                : item.image"
+              :src="$store.state.storage + item.image"
               :alt="item.image"
-              class="mx-auto"
               :class="cardImageClass"
+              class="mx-auto"
             />
           </swiper-slide>
-          <div class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div>
+          <div class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
           <v-btn
             fab
             absolute

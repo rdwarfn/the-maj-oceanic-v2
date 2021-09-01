@@ -11,24 +11,20 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <template
-        v-for="(item, index) in data.data"
-      >
+      <template v-for="(item, index) in data.data">
         <v-col
           cols="12"
           sm="4"
           md="4"
-          v-bind:key="index"
+          :key="index"
           class="text-center __card-three--col"
         >
           <v-card color="transparent" tile flat>
             <v-img
               class="__card-three--img mx-auto"
-              v-bind:src="staticImage
-                ? require(`~/assets/images/${item.image}`) : item.image"
-              v-bind:lazy-src="staticImage
-                ? require(`~/assets/images/${item.image}`) : item.image"
-                width="100%"
+              :src="$store.state.storage + item.image"
+              :lazy-src="$store.state.storage + item.image"
+              width="100%"
             ></v-img>
             <v-card-actions class="__card-three--heading px-3 text-break text-capitalize mx-auto text-h4 text--primary">
               <div class="mx-auto ">

@@ -37,16 +37,7 @@
         <div class="mb-6 mx-auto">
           <h1 class="text-h4 text-md-h3">We're sorry, but something went wrong.</h1>
         </div>
-        <div class="mb-15 mb-sm-6 text-break mx-auto">
-          {{ otherError }}
-          <div>
-            <!-- <p class="mb-n6 mt-6">Errors</p> -->
-            <code>
-              <v-treeview class="pl-n7 error--text" :items="items"
-              ></v-treeview>
-            </code>
-          </div>
-        </div>
+
         <v-row no-gutters align="start" justify="start" class="ml-n2 ml-sm-0 flex-sm-nowrap">
           <v-col cols="12" sm="auto" class="mb-6 mb-sm-0">
             <v-btn

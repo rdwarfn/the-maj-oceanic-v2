@@ -1,7 +1,7 @@
 <template>
   <v-sheet
     class="__carousel align-center px-0 mx-auto"
-    v-bind:class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
+    :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
     max-width="1440"
     color="transparent"
   >
@@ -23,26 +23,18 @@
     <swiper
       ref="swiper"
       class="swiper"
-      v-bind:options="swiperOption"
+      :options="swiperOption"
     >
       <swiper-slide
         v-for="item in data"
-        v-bind:key="item.id"
+        :key="item.id"
       >
         <template>
-          <v-skeleton-loader
-            v-if="!item.image"
-            class="__carousel--img mx-auto mx-sm-0"
-            type="image"
-          ></v-skeleton-loader>
           <v-img
-            v-else mx-auto
-            :src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            :lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
+            v-if="item.image"
+            mx-auto
+            :src="$store.state.storage + item.image"
+            :lazy-src="$store.state.storage + item.image"
             class="__carousel--img mx-auto mx-sm-0"
             :class="cardImageClass"
           >
@@ -57,15 +49,10 @@
           </template>
           </v-img>
         </template>
-        <!-- <client-only> -->
-        <!-- </client-only> -->
       </swiper-slide>
-      <!-- <div v-if="data && data.length > 1" class="swiper-pagination swiper-pagination-bullets" slot="pagination"></div> -->
     </swiper>
-    <!-- </client-only> -->
-    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive[returnTextData]">
-      </v-card-text>
+    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" :class="cardMobileClass ? cardMobileClass : '_card--relative'">
+      <v-card-text class="text--primary px-0 pt-5" :class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive[returnTextData]" />
       <v-card-actions v-if="buttonText" class="pa-0 mt-4">
         <v-btn
           class="btn-l mx-auto"
@@ -90,7 +77,6 @@ const components = {
 export default {
   props: {
     data: { type: Array },
-    staticImage: { type: Boolean, default: false },
     maxHeight: { type: String},
     cardClass: { type: String },
     cardHeight: { type: String },

@@ -1,23 +1,19 @@
 <template>
   <v-row no-gutters align="center" justify="center" class="card-text-image mx-auto">
     <v-card flat tile color="transparent">
-      <div class="__card d-sm-flex align-center" v-bind:class="{reversed: reverse}">
+      <div class="__card d-sm-flex align-center" :class="{reversed: reverse}">
         <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
           {{ data.caption }}
         </v-card-subtitle>
         <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
           {{ data.heading }}
         </v-card-title>
-        <v-skeleton-loader
-          v-if="!data.image"
-          :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
-          type="image"
-        />
         <v-img
-          v-bind:class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
-          v-bind:src="$store.state.storage + data.image"
-          v-bind:lazy-src="$store.state.storage + data.image"
-          v-bind:aspect-ratio="imgAspectRatio"
+          v-if="data.image"
+          :class="cardImgClass ? cardImgClass : '__card--image mx-auto'"
+          :src="$store.state.storage + data.image"
+          :lazy-src="$store.state.storage + data.image"
+          :aspect-ratio="imgAspectRatio"
         >
           <template v-slot:placeholder>
             <v-row
@@ -38,7 +34,7 @@
         >
           <v-btn
             class="mx-auto __card--btn"
-            v-bind:class="buttonClass"
+            :class="buttonClass"
             color="primary"
             tile depressed
             outlined :to="data.to"
@@ -48,22 +44,22 @@
           </v-btn>
         </v-card-actions>
 
-        <div class="__card--content hidden-xs-only" v-bind:class="cardContentClass">
+        <div class="__card--content hidden-xs-only" :class="cardContentClass">
           <v-card-subtitle v-if="data.caption" class="text-h6 font-weight-bold pb-0 px-0 static"
-            v-bind:class="contentRight ? 'text-right' : null"
+            :class="contentRight ? 'text-right' : null"
             v-text="data.caption"
           />
           <v-card-title class="px-0 text-break"
-            v-bind:class="contentRight ? 'justify-end' : null"
+            :class="contentRight ? 'justify-end' : null"
             v-text="data.heading"
           />
 
           <v-card-text class="px-0"
-            v-bind:class="contentRight ? 'text-right' : null">
+            :class="contentRight ? 'text-right' : null">
             {{ data.description }}
             <ul v-if="data.list">
               <li v-for="(item, index) in data.list.split('\n')"
-                v-bind:key="index"
+                :key="index"
                 v-text="item"
               />
             </ul>
@@ -71,7 +67,7 @@
 
           <v-card-actions v-if="buttonText"
             class="px-0 mt-6"
-            v-bind:class="[
+            :class="[
               buttonContainerClass,
               contentRight ? 'justify-end' : null
             ]">

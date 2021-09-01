@@ -1,202 +1,169 @@
 <template>
-  <v-layout
-    class="__nav_bar align-self-center"
-    v-bind:class="{
-      animated: isIntersecting
-    }"
-    app
+  <div
+    class="navbar align-self-center"
+    :class="{ animated: isIntersecting }"
   >
-    <client-only>
-      <v-row
-        no-gutters
-        align="center"
-        justify="space-between"
-        class="nav_row mx-auto static"
-        v-bind:class="[{
-            animated: isIntersecting
-          }
-        ]"
-      >
-        <v-col cols="4">
-          <v-row
-            no-gutters
-            align="end"
-            justify="start"
-          >
-              <v-col cols="4" class="mr-md-3">
-                <v-skeleton-loader
-                  type="image"
-                  width="102"
-                  height="36"
-                  :loading="loading"
-                >
-                <form style="max-width: 150px">
-                  <v-container class="px-0 py-0">
-                    <v-text-field
-                      background-color="transparent"
-                      class="text-uppercase"
-                      label="search"
-                      placeholder="SEARCH"
-                      prepend-icon="$search"
-                      v-model="search_input"
-                      hide-details
-                      dark dense clearable flat single-line solo
-                    >
-                    </v-text-field>
-                  </v-container>
-                </form>
-              </v-skeleton-loader>
-            </v-col>
-
-            <v-col cols="auto">
-              <v-btn
-                color="white"
-                depressed text tile
-                class="btn-s font-md-12"
-              >
-                the maj group
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-col>
-
-        <v-col
-          cols="4"
-          md="3"
-          class="text-center rounded py-2 px-3 mx-2"
-          v-ripple
-        >
-          <nuxt-link class="mx-auto" to="/" replace>
-            <v-img
-              :lazy-src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
-              :src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
-              max-width="319"
-              max-height="56"
-              class="mx-auto"
-            >
-            <template v-slot:placeholder>
-              <v-row
-                class="fill-height ma-0"
-                align="center"
-                justify="center"
-              >
-                <v-progress-circular
-                  indeterminate
-                  color="grey lighten-5"
-                ></v-progress-circular>
-              </v-row>
-            </template>
-            </v-img>
-          </nuxt-link>
-        </v-col>
-
-        <v-col cols="3" offset="1">
-          <v-row
-            no-gutters
-            align="end"
-            justify="space-around"
-          >
-            <v-col cols="auto">
-              <v-btn
-                to="#"
-                text nuxt
-                color="white"
-                class="btn-s __btn font-md-12"
-              >
-                login
-              </v-btn>
-            </v-col>
-
-            <v-col cols="auto">
-              <v-btn
-                to="/contact-us"
-                color="primary"
-                class="btn-s font-md-12"
-                depressed tile nuxt
-              >
-                inquire now
-              </v-btn>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
-
-    <!-- row list  -->
-
-      <v-flex
-        class="nav_row--list d-flex mx-auto static"
-        :class="{
-          animated: isIntersecting
-        }"
-      >
-        <v-row
+    <VRow
+      no-gutters
+      align="center"
+      justify="space-between"
+      class="nav_row mx-auto static"
+      :class="{ animated: isIntersecting }"
+    >
+      <VCol cols="4">
+        <VRow
           no-gutters
-          align="center"
-          justify="space-around"
+          align="end"
+          justify="start"
         >
-
-          <navigation-menu :isIntersecting="!isIntersecting" />
-
-          <!-- <v-col cols="auto" class="rounded mr-lg-10" v-if="isIntersecting">
-            <v-row align="center">
-              <v-col>
-                <v-btn
-                  to="#"
-                  text x-small nuxt
-                  class="px-0 font-md-12"
+          <VCol cols="4" class="mr-md-3">
+            <form style="max-width: 150px">
+              <v-container class="px-0 py-0">
+                <v-text-field
+                  background-color="transparent"
+                  class="text-uppercase"
+                  label="search"
+                  placeholder="SEARCH"
+                  prepend-icon="$search"
+                  v-model="search_input"
+                  hide-details
+                  single-line
+                  clearable
+                  dense
+                  flat
+                  dark
+                  solo
                 >
-                  login
-                </v-btn>
+                </v-text-field>
+              </v-container>
+            </form>
+          </VCol>
 
-              </v-col>
-
-              <v-col cols="auto">
-                <v-btn
-                  class="btn-s ml-1 font-md-12"
-                  depressed tile nuxt dark
-                  to="/contact-us"
-                >
-                  Inquire Now
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-col> -->
-
-          <v-col
-            v-show="isIntersecting"
-            cols="auto"
-            v-bind:class="{
-              intersec: !isIntersecting
-            }">
+          <VCol cols="auto">
             <v-btn
-              text tile nuxt
-              class="font-md-12">
+              v-show="false"
+              color="white"
+              class="btn-s font-md-12"
+              depressed
+              text
+              tile
+            >
+              the maj group
+            </v-btn>
+          </VCol>
+        </VRow>
+      </VCol>
+
+      <VCol
+        cols="4"
+        md="3"
+        class="text-center rounded py-2 px-3 mx-2"
+        v-ripple
+      >
+        <nuxt-link class="mx-auto" to="/" replace>
+          <v-img
+            :lazy-src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
+            :src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
+            max-width="319"
+            max-height="56"
+            class="mx-auto"
+          >
+          <template #placeholder>
+            <VRow
+              class="fill-height ma-0"
+              align="center"
+              justify="center"
+            >
+              <v-progress-circular
+                indeterminate
+                color="grey lighten-5"
+              />
+            </VRow>
+          </template>
+          </v-img>
+        </nuxt-link>
+      </VCol>
+
+      <VCol cols="3" offset="1">
+        <VRow
+          no-gutters
+          align="end"
+          justify="end"
+        >
+          <VCol cols="auto">
+            <v-btn
+              v-show="false"
+              to="#"
+              text nuxt
+              color="white"
+              class="btn-s __btn font-md-12"
+            >
               login
             </v-btn>
-          </v-col>
+          </VCol>
 
-          <v-col
-            v-show="isIntersecting"
-            cols="auto"
-            v-bind:class="{
-              intersec: !isIntersecting
-            }">
+          <VCol cols="auto">
             <v-btn
-              class="btn-s btn--inquire font-md-12"
               to="/contact-us"
-              depressed tile nuxt dark
+              color="primary"
+              class="btn-s font-md-12"
+              depressed
+              tile
+              nuxt
             >
-              Inquire Now
+              inquire now
             </v-btn>
-          </v-col>
-        </v-row>
-      </v-flex>
-    </client-only>
-  </v-layout>
+          </VCol>
+        </VRow>
+      </VCol>
+    </VRow>
+
+  <!-- row list  -->
+
+    <v-flex
+      class="nav_row--list d-flex mx-auto static"
+      :class="{ animated: isIntersecting }">
+      <VRow
+        no-gutters
+        align="center"
+        justify="space-around">
+
+        <NavMenu :isIntersecting="!isIntersecting" />
+
+        <VCol
+          v-show="isIntersecting"
+          cols="auto"
+          :class="{ intersec: !isIntersecting }">
+          <v-btn
+            text tile nuxt
+            class="font-md-12">
+            login
+          </v-btn>
+        </VCol>
+
+        <VCol
+          v-show="isIntersecting"
+          cols="auto"
+          :class="{ intersec: !isIntersecting }">
+          <v-btn
+            class="btn-s btn--inquire font-md-12"
+            to="/contact-us"
+            depressed
+            tile
+            nuxt
+            dark
+          >
+            Inquire Now
+          </v-btn>
+        </VCol>
+      </VRow>
+    </v-flex>
+  </div>
 </template>
 
 <script>
-import navigationMenu from './Menu.vue';
+import NavMenu from './Menu.vue';
+
 export default {
   props: {
     isIntersecting: {
@@ -205,12 +172,12 @@ export default {
     },
     loading: {
       type: Boolean,
-      default: true
+      default: false
     }
   },
 
   components: {
-    navigationMenu
+    NavMenu
   },
 
   data () {
@@ -223,7 +190,7 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/scss/variables.scss';
-$cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$fifo: #{map-get($transition, 'fast-in-fast-out')};
 $primary: #208CB2;
 $secondary: #232323;
 
@@ -285,21 +252,18 @@ $secondary: #232323;
 }
 
 
-.__nav_bar {
+.navbar {
   display: none;
+  height: 30%;
+  width: 100vw;
   @media #{map-get($display-breakpoints, 'lg-and-up')} {
     z-index: 10 !important;
-    display: grid;
+    display: grid !important;
     position: fixed !important;
     align-items: flex-end;
     max-height: 192px;
     background: rgba(47, 46, 46, 0.4) !important;
-    height: 30%;
-    width: 100vw;
-    z-index: 2;
-    transition:
-      transform .8s ease-in-out,
-      box-shadow .8s ease-in-out;
+    transition: transform .3s $fifo, box-shadow .3s $fifo;
     &.animated {
       transform: translateY(-115px); //1204
       box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);
@@ -311,9 +275,7 @@ $secondary: #232323;
       opacity: 1;
       width: 90%;
       transform: scale(1);
-      transition:
-        opacity .3s ease-in-out,
-        transform 1s ease-in-out;
+      transition: opacity .3s $fifo, transform .3s $fifo;
       &.animated {
         opacity: 0;
         transform: scale(0.9, 0.9);
@@ -328,20 +290,17 @@ $secondary: #232323;
         color: white;
         height: 44px;
         top: unset;
-        // padding: 0 10rem;
         transition:
-          background-color .8s ease-in-out,
-          color .8s linear,
-          height .8s linear,
-          width .8s $cubic;
+          background-color .8s $fifo,
+          color .3s $fifo,
+          height .3s $fifo,
+          width .3s $fifo;
         &.animated {
           background-color: white;
           color: #232323;
           height: 78px;
           width: 100%;
-          // padding: 0 48px !important;
           padding-left: 20px;
-          // @include poly-fluid-sizing ('padding-left', (960px:20px, 1440px:48px));
           @include poly-fluid-sizing ('padding-right', (960px:20px, 1440px:48px));
         }
       }

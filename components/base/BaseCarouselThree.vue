@@ -1,37 +1,33 @@
 <template>
   <v-container class="pa-0 __carousel-three">
-    <swiper ref="swiper" class="swiper" v-bind:options="swiperOption">
-      <swiper-slide v-for="item in data" v-bind:key="item.id">
+    <swiper ref="swiper" class="swiper" :options="swiperOption">
+      <swiper-slide v-for="item in data" :key="item.id">
         <div class="text-center __carousel-three--item">
           <v-skeleton-loader v-if="!item.image" type="image" class="__carousel-three--item-img"></v-skeleton-loader>
           <v-img v-else
-            v-bind:src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            v-bind:lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
+            :src="$store.state.storage + item.image"
+            :lazy-src="$store.state.storage + item.image"
+            :class="imageClass"
             class="__carousel-three--item-img"
-            v-bind:class="imageClass"
           >
             <template v-slot:placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                <v-progress-circular indeterminate color="grey lighten-5" />
               </v-row>
             </template>
           </v-img>
-          <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
+          <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" :class="headingClass">
             {{item.heading}}
           </h1>
-          <p v-if="item[textData]" v-bind:class="textClass">
+          <p v-if="item[textData]" :class="textClass">
             {{item[textData]}}
           </p>
           <client-only>
           <t-button
             v-if="buttonText"
-            v-bind:class="buttonClass"
+            :class="buttonClass"
             v-text="buttonText"
-            v-bind:props="{
+            :props="{
               to: item.to,
               ...buttonProps
             }"
@@ -42,8 +38,9 @@
       <div
         v-if="!hidePagination"
         class="swiper-pagination swiper-pagination-bullets"
-        v-bind:class="paginationClass"
-        slot="pagination"></div>
+        :class="paginationClass"
+        slot="pagination"
+      />
     </swiper>
     <div class="navigation container hidden-xs-only">
       <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">

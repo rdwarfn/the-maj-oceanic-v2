@@ -70,8 +70,9 @@
           </div>
         </v-col>
 
+        <!-- TODO: dihide dulu -->
         <!-- join our family & explore our worl -->
-        <v-col class="col--2 px-0" sm="6" md="6" lg="4">
+        <!-- <v-col class="col--2 px-0" sm="6" md="6" lg="4">
           <v-row no-gutters align="start" justify-sm="space-between">
             <v-col class="col--2a px-sm-1" cols="12" sm="6">
               <div class="text-caption mb-4 text-uppercase font-weight-bold">
@@ -115,7 +116,7 @@
               </v-list>
             </v-col>
           </v-row>
-        </v-col>
+        </v-col> -->
 
         <!-- signup for exlusive news & offers -->
         <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">

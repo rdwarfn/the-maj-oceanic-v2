@@ -2,13 +2,20 @@
   <v-container class="px-6 px-md-0 komodo--des-three__wrap">
     <v-row no-gutters align="center" justify="space-between">
       <v-col cols="6" sm="5">
-        <div v-if="data.description" class="text--primary text-body-1" v-html="data.description" />
-        <v-skeleton-loader v-else class="my-6 mx-6 mx-md-0" type="paragraph@2" loading />
+        <div
+          v-if="data.description"
+          class="text--primary text-body-1"
+          v-html="data.description"
+        />
       </v-col>
 
       <v-col cols="6">
         <v-row align="center">
-          <v-col :cols="!index ? 12 : 6" v-for="(d, index) in data.gallery" :key="index">
+          <!-- <v-col
+            v-for="(d, i) in data.gallery"
+            :key="i"
+            :cols="!i ? 12 : 6"
+          >
             <v-img
               :src="$store.state.storage + d.image"
               :lazy-src="$store.state.storage + d.image"
@@ -24,6 +31,39 @@
                 </v-row>
               </template>
             </v-img>
+          </v-col> -->
+
+          <v-col
+            v-if="data.gallery[2]"
+            cols="12"
+          >
+            <v-img
+              :src="$store.state.storage + data.gallery[2].image"
+              :lazy-src="$store.state.storage + data.gallery[2].image"
+              class="komodo--des-three_image"
+            />
+          </v-col>
+
+          <v-col
+            v-if="data.gallery[1]"
+            cols="6"
+          >
+            <v-img
+              :src="$store.state.storage + data.gallery[1].image"
+              :lazy-src="$store.state.storage + data.gallery[1].image"
+              class="komodo--des-three_image"
+            />
+          </v-col>
+
+          <v-col
+            v-if="data.gallery[0]"
+            cols="6"
+          >
+            <v-img
+              :src="$store.state.storage + data.gallery[0].image"
+              :lazy-src="$store.state.storage + data.gallery[0].image"
+              class="komodo--des-three_image"
+            />
           </v-col>
         </v-row>
       </v-col>
@@ -35,9 +75,8 @@
 export default {
   props: {
     data: {
-      images: { type: Array },
-      mobile_images: { type: Array },
-      description: { type: String, required: true }
+      type: Object,
+      required: true
     }
   }
 }

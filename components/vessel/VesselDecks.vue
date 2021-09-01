@@ -1,31 +1,29 @@
 <template>
   <v-container tag="section" class="the-decks mx-auto px-6 px-md-0">
-  <base-carousel-mobile v-if="isxs"
-    class="hidden-sm-and-up"
-    v-bind:data="data"
-    card-class="__carousel_card"
-    button-class="px-0"
-    button-text="discover"
-    heading-class="mb-1"
-    text-class="mb-3 pr-lg-6"
-    card-mobile-class="__carousel_card transparent"
-    return-text-data="description"
-  >
-    <!-- card-text-mobile-class="text-justify" -->
-  </base-carousel-mobile>
-  <base-carousel
-    class="hidden-xs-only"
-    v-else
-    v-bind:data="data"
-    card-class="__carousel_card"
-    button-class="px-0"
-    button-text="discover"
-    heading-class="mb-1"
-    text-class="mb-3 pr-lg-6"
-    card-text-mobile-class="text-justify"
-    return-text-data="description"
-  >
-  </base-carousel>
+    <BaseCarouselMobile v-if="isxs"
+      class="hidden-sm-and-up"
+      v-bind:data="data"
+      card-class="__carousel_card"
+      button-class="px-0"
+      button-text="discover"
+      heading-class="mb-1"
+      text-class="mb-3 pr-lg-6"
+      card-mobile-class="__carousel_card transparent"
+      return-text-data="description"
+    />
+      <!-- card-text-mobile-class="text-justify" -->
+    <BaseCarousel
+      class="hidden-xs-only"
+      v-else
+      v-bind:data="data"
+      card-class="__carousel_card"
+      button-class="px-0"
+      button-text="discover"
+      heading-class="mb-1"
+      text-class="mb-3 pr-lg-6"
+      card-text-mobile-class="text-justify"
+      return-text-data="description"
+    />
   </v-container>
 </template>
 

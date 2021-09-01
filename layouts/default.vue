@@ -4,15 +4,16 @@
       <nuxt />
     </v-main>
 
-    <tmo-footer app/>
+    <Footer app/>
   </v-app>
 </template>
 
 <script>
+import Footer from '~/components/containers/Footer.vue'
+
 export default {
   components: {
-    TmoFooter: () =>
-      import('@/components/containers/Footer.vue')
+    Footer
   },
 
   mounted() {
