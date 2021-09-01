@@ -8,7 +8,8 @@
     <VContainer
       v-if="data.the_vessel"
       class="home--the-vessel px-6 px-md-0"
-      tag="section">
+      tag="section"
+    >
       <BaseCarousel
         :data="[...data.the_vessel]"
         button-text="discover"
@@ -20,7 +21,8 @@
     <VContainer
       v-if="data.dining"
       class="home--dining px-6 px-md-0 py-0"
-      tag="section">
+      tag="section"
+    >
       <BaseCardTextImage
         :data="data.dining"
         button-text="learn more"
@@ -32,7 +34,8 @@
     <VContainer
       v-if="data.occasions"
       class="home--occasions px-6 px-md-0 py-0"
-      tag="section">
+      tag="section"
+    >
       <BaseCardTextImage
         :data="data.occasions"
         button-text="learn more"
@@ -42,21 +45,20 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import Intro from '~/components/Intro.vue';
-import BaseCarousel from '~/components/base/BaseCarousel.vue';
+import Intro from '~/components/Intro.vue'
+import BaseCarousel from '~/components/base/BaseCarousel.vue'
 import HomeVoyages from '~/components/home/HomeVoyages.vue'
 import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
 
 export default {
-  layout: 'main',
 
   components: {
     Intro,
     BaseCarousel,
     HomeVoyages,
-    BaseCardTextImage,
+    BaseCardTextImage
   },
+  layout: 'main',
 
   async asyncData ({ $axios }) {
     const data = await $axios.$get('/api/pages/home/')
@@ -72,6 +74,7 @@ export default {
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', {
         page_key, data

@@ -1,79 +1,81 @@
 <template>
   <v-row no-gutters class="__tab">
     <client-only>
-    <v-tabs
-      ref="tabs"
-      background-color="transparent"
-      :light="false"
-      show-arrows
-      :center-active="isSmAndDown"
-      :hide-slider="isXs"
-      v-bind:centered="tabsCenter ? tabsCenter : isSmAndDown"
-      v-model="name"
-    >
-      <v-tabs-slider color="primary"></v-tabs-slider>
-      <v-tab v-for="item in data" v-bind:key="item.name" :href="`#${item.name.replace(/\s/g, '-').toLowerCase()}`">
-        <div class="__tab--label font-weight-bold text-uppercase" v-text="item.name" />
-      </v-tab>
-    </v-tabs>
-    <v-tabs-items class="mt-16" v-model="name">
-    <v-tab-item v-for="item in data" v-bind:key="item.name" :value="item.name.replace(/\s/g, '-').toLowerCase()">
-      <slot v-bind:data-tab="item">
-        <v-card flat>
-          <div class="d-flex justify-space-between align-center __tab-item static" v-bind:class="{reversed: reverse}">
-            <v-img class="__tab--img mx-auto mx-md-0"
-              v-bind:src="$store.state.storage + item.image"
-              v-bind:lazy-src="$store.state.storage + item.image"
-            >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
-                </v-row>
-              </template>
-            </v-img>
-            <div class="__tab--content">
-              <v-card-title class="px-0 pt-0">
-                <div class="text-h4 mx-auto mx-md-0">
-                  {{ item.heading }}
+      <v-tabs
+        ref="tabs"
+        v-model="name"
+        background-color="transparent"
+        :light="false"
+        show-arrows
+        :center-active="isSmAndDown"
+        :hide-slider="isXs"
+        :centered="tabsCenter ? tabsCenter : isSmAndDown"
+      >
+        <v-tabs-slider color="primary" />
+        <v-tab v-for="item in data" :key="item.name" :href="`#${item.name.replace(/\s/g, '-').toLowerCase()}`">
+          <div class="__tab--label font-weight-bold text-uppercase" v-text="item.name" />
+        </v-tab>
+      </v-tabs>
+      <v-tabs-items v-model="name" class="mt-16">
+        <v-tab-item v-for="item in data" :key="item.name" :value="item.name.replace(/\s/g, '-').toLowerCase()">
+          <slot :data-tab="item">
+            <v-card flat>
+              <div class="d-flex justify-space-between align-center __tab-item static" :class="{reversed: reverse}">
+                <v-img
+                  class="__tab--img mx-auto mx-md-0"
+                  :src="$store.state.storage + item.image"
+                  :lazy-src="$store.state.storage + item.image"
+                >
+                  <template #placeholder>
+                    <v-row class="fill-height ma-0" align="center" justify="center">
+                      <v-progress-circular indeterminate color="grey lighten-5" />
+                    </v-row>
+                  </template>
+                </v-img>
+                <div class="__tab--content">
+                  <v-card-title class="px-0 pt-0">
+                    <div class="text-h4 mx-auto mx-md-0">
+                      {{ item.heading }}
+                    </div>
+                  </v-card-title>
+
+                  <v-card-text class="__tab--content-text text--primary px-0 mb-3">
+                    <p class="text-center text-md-left">
+                      {{ item.description }}
+                    </p>
+                  </v-card-text>
+
+                  <v-card-actions class="px-0" :class="buttonClass">
+                    <v-btn
+                      class="btn-l mx-auto mx-md-0 __tab--btn"
+                      :class="buttonProps"
+                      color="primary"
+                      tile
+                      depressed
+                      outlined
+                      :to="item.to"
+                    >
+                      {{ buttonText }}
+                    </v-btn>
+                  </v-card-actions>
                 </div>
-              </v-card-title>
-
-              <v-card-text class="__tab--content-text text--primary px-0 mb-3">
-                <p class="text-center text-md-left">
-                  {{ item.description }}
-                </p>
-              </v-card-text>
-
-              <v-card-actions class="px-0" v-bind:class="buttonClass">
-                <v-btn
-                  class="btn-l mx-auto mx-md-0 __tab--btn"
-                  v-bind:class="buttonProps"
-                  color="primary"
-                  tile depressed outlined :to="item.to"
-                >{{buttonText}}</v-btn>
-              </v-card-actions>
-            </div>
-          </div>
-        </v-card>
-      </slot>
-    </v-tab-item>
-    </v-tabs-items>
+              </div>
+            </v-card>
+          </slot>
+        </v-tab-item>
+      </v-tabs-items>
     </client-only>
   </v-row>
 </template>
 
 <script>
-const primary = "#208CB2";
-const components = {
-  tButton: () => import('@/components/base/BaseButton.vue')
-};
 export default {
   props: {
     data: { type: Array },
     buttonClass: { type: String },
     buttonText: { type: String },
     buttonProps: { type: Object },
-    tabsCenter: { type: Boolean, defult: false  },
+    tabsCenter: { type: Boolean, defult: false },
     reverse: { type: Boolean, default: false }
   },
 
@@ -83,11 +85,9 @@ export default {
     }
   },
 
-  components,
-
   computed: {
     isSmAndDown () {
-      return this.$vuetify.breakpoint.smAndDown;
+      return this.$vuetify.breakpoint.smAndDown
     },
     isXs () {
       return this.$vuetify.breakpoint.xsOnly

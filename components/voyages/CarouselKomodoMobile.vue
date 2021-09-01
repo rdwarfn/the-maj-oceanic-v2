@@ -8,7 +8,7 @@
             :lazy-src="$store.state.storage + d.mobile_image"
             class="swiper-komodo-mobile-1224--image-mobile"
           >
-            <template v-slot:placeholder>
+            <template #placeholder>
               <v-row
                 class="fill-height ma-0"
                 align="center"
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 export default {
   components: { Swiper, SwiperSlide },
 
@@ -42,13 +42,13 @@ export default {
     staticImage: { Boolean, default: true }
   },
 
-  data() {
+  data () {
     return {
       swiperOptions: {
         lazy: true,
         slidesPerView: 'auto',
         spaceBetween: 25,
-        centeredSlides: true,
+        centeredSlides: true
       }
     }
   }

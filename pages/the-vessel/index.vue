@@ -36,14 +36,22 @@
 </template>
 
 <script>
-import _ from 'lodash';
-import Intro from '@/components/Intro.vue';
-import VesselSuites from '@/components/vessel/VesselSuites';
-import VesselDecks from '@/components/vessel/VesselDecks.vue';
-import VesselTeams from '@/components/vessel/VesselTeams.vue';
-import BaseCardTextImage from '@/components/base/BaseCardTextImage.vue';
+import _ from 'lodash'
+import Intro from '@/components/Intro.vue'
+import VesselSuites from '@/components/vessel/VesselSuites'
+import VesselDecks from '@/components/vessel/VesselDecks.vue'
+import VesselTeams from '@/components/vessel/VesselTeams.vue'
+import BaseCardTextImage from '@/components/base/BaseCardTextImage.vue'
 
 export default {
+
+  components: {
+    Intro,
+    VesselSuites,
+    VesselDecks,
+    VesselTeams,
+    BaseCardTextImage
+  },
   layout: 'main',
 
   meta: {
@@ -60,14 +68,6 @@ export default {
     ]
   },
 
-  components: {
-    Intro,
-    VesselSuites,
-    VesselDecks,
-    VesselTeams,
-    BaseCardTextImage,
-  },
-
   async asyncData ({ $axios }) {
     const items = await $axios.$get('/api/pages/the-vessel/')
     _.reverse(items.teams.data)
@@ -78,13 +78,14 @@ export default {
 
   mounted () {
     if (this.$data && this.$data.items.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.items.hero });
+      this.addHeros({ page_key: this.$route.name, data: this.$data.items.hero })
     }
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     },
     ready (event) {
       this.player = event.target

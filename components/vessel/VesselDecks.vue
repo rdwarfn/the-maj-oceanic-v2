@@ -1,8 +1,9 @@
 <template>
   <v-container tag="section" class="the-decks mx-auto px-6 px-md-0">
-    <BaseCarouselMobile v-if="isxs"
+    <BaseCarouselMobile
+      v-if="isxs"
       class="hidden-sm-and-up"
-      v-bind:data="data"
+      :data="data"
       card-class="__carousel_card"
       button-class="px-0"
       button-text="discover"
@@ -11,11 +12,11 @@
       card-mobile-class="__carousel_card transparent"
       return-text-data="description"
     />
-      <!-- card-text-mobile-class="text-justify" -->
+    <!-- card-text-mobile-class="text-justify" -->
     <BaseCarousel
-      class="hidden-xs-only"
       v-else
-      v-bind:data="data"
+      class="hidden-xs-only"
+      :data="data"
       card-class="__carousel_card"
       button-class="px-0"
       button-text="discover"
@@ -28,8 +29,8 @@
 </template>
 
 <script>
-import BaseCarousel from '@/components/base/BaseCarousel.vue';
-import BaseCarouselMobile from '@/components/base/BaseCarouselMobile.vue';
+import BaseCarousel from '@/components/base/BaseCarousel.vue'
+import BaseCarouselMobile from '@/components/base/BaseCarouselMobile.vue'
 export default {
   components: {
     BaseCarousel,

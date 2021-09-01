@@ -1,35 +1,41 @@
 <template>
   <v-container tag="section" class="pa-0 d-flex flex-column">
-    <v-skeleton-loader type="text@2" class="intro--head" v-if="!data.heading" />
-    <div v-else class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move" v-html="data.heading" />
+    <div
+      v-if="data.heading"
+      class="px-6 px-sm-0 intro--head font-weight-bold text-center mx-auto slide-y-transition-move"
+      v-html="data.heading"
+    />
 
     <BaseLargeImage
       v-if="data.image"
       class="intro--image"
-      v-bind:class="imageClass"
+      :class="imageClass"
       :data="$store.state.storage + data.image"
     />
 
-    <v-skeleton-loader type="text@4" class="text-center" v-if="!data.description">
-    </v-skeleton-loader>
-    <div v-else class="intro--paragraph text-break px-6 px-sm-0 mx-auto" v-bind:class="descriptionClass ? descriptionClass : 'text-center'" v-html="data.description">
-    </div>
+    <div
+      v-if="data.description"
+      class="intro--paragraph text-break px-6 px-sm-0 mx-auto"
+      :class="descriptionClass ? descriptionClass : 'text-center'"
+      v-html="data.description"
+    />
+
     <client-only>
-      <v-container class="mx-auto pa-0" v-if="data.youtube_id">
+      <v-container v-if="data.youtube_id" class="mx-auto pa-0">
         <youtube
           class="d-flex justify-center"
           :video-id="data.youtube_id"
           :player-vars="{ autoplay: 1 }"
           @ready="ready"
           @playing="playing"
-        ></youtube>
+        />
       </v-container>
     </client-only>
   </v-container>
 </template>
 
 <script>
-import BaseLargeImage from '@/components/base/BaseLargeImage.vue';
+import BaseLargeImage from '@/components/base/BaseLargeImage.vue'
 export default {
   name: 'Intro',
 
@@ -52,31 +58,9 @@ export default {
     ready (event) {
       this.player = event.target
     },
+
     playing (event) {
       console.log(event)
-    }
-  },
-
-  computed: {
-    youtubeWidth () {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return '100%'
-        case 'sm': return 768
-        case 'md': return 966
-        case 'lg': return 966
-        case 'xl': return 966
-      }
-      // return 375
-    },
-    youtubeHeight () {
-      switch (this.$vuetify.breakpoint.name) {
-        case 'xs': return 210
-        case 'sm': return 432
-        case 'md': return 543
-        case 'lg': return 543
-        case 'xl': return 543
-      }
-      // return 210.933
     }
   }
 }

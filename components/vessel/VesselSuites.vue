@@ -2,72 +2,86 @@
   <v-container tag="section" class="suites-and-staterooms px-0 text-center">
     <v-row no-gutters class="text-center">
       <v-col cols="12" class="pa-0">
-        <div class="__caption text-h5 mb-3 px-6 px-md-0">{{ data.caption }}</div>
-        <div class="__heading px-6 px-sm-0 px-6 px-md-0">{{ data.heading }}</div>
+        <div class="__caption text-h5 mb-3 px-6 px-md-0">
+          {{ data.caption }}
+        </div>
+        <div class="__heading px-6 px-sm-0 px-6 px-md-0">
+          {{ data.heading }}
+        </div>
 
-        <swiper ref="swiper" class="swiper container py-0 px-0 px-sm-6 px-md-0" v-bind:options="swiperOption">
+        <swiper ref="swiper" class="swiper container py-0 px-0 px-sm-6 px-md-0" :options="swiperOption">
           <template v-for="(item, index) in data.data">
-            <swiper-slide v-bind:key="index">
+            <swiper-slide :key="index">
               <div class="text-center swiper__item">
-                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.admiral.gallery" />
+                <v-skeleton-loader v-if="!item.admiral.gallery" class="swiper__item--img" type="image" />
                 <v-img
                   v-else
-                  v-bind:src="$store.state.storage + item.admiral.gallery[0].image"
-                  v-bind:lazy-src="$store.state.storage + item.admiral.gallery[0].image"
+                  :src="$store.state.storage + item.admiral.gallery[0].image"
+                  :lazy-src="$store.state.storage + item.admiral.gallery[0].image"
                   class="swiper__item--img"
                 >
-                  <template v-slot:placeholder>
+                  <template #placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
                       <v-progress-circular indeterminate color="grey lighten-5" />
                     </v-row>
                   </template>
                 </v-img>
                 <div class="hidden-xs-only">
-                  <div class="swiper__item--heading font-weight-bold text-capitalize">{{ item.admiral.caption }}</div>
+                  <div class="swiper__item--heading font-weight-bold text-capitalize">
+                    {{ item.admiral.caption }}
+                  </div>
                   <div class="swiper__item--text">
                     <em>{{ item.admiral.sqm }} sqm</em>
                   </div>
                 </div>
               </div>
-            </swiper-slide><swiper-slide v-bind:key="index + 1">
+            </swiper-slide>
+
+            <swiper-slide :key="index + 1">
               <div class="text-center swiper__item">
-                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.commodore.gallery" />
+                <v-skeleton-loader v-if="!item.commodore.gallery" class="swiper__item--img" type="image" />
                 <v-img
                   v-else
-                  v-bind:src="$store.state.storage + item.commodore.gallery[0].image"
-                  v-bind:lazy-src="$store.state.storage + item.commodore.gallery[0].image"
+                  :src="$store.state.storage + item.commodore.gallery[0].image"
+                  :lazy-src="$store.state.storage + item.commodore.gallery[0].image"
                   class="swiper__item--img"
                 >
-                  <template v-slot:placeholder>
+                  <template #placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
                       <v-progress-circular indeterminate color="grey lighten-5" />
                     </v-row>
                   </template>
                 </v-img>
                 <div class="hidden-xs-only">
-                  <div class="swiper__item--heading font-weight-bold text-capitalize">{{ item.commodore.caption }}</div>
+                  <div class="swiper__item--heading font-weight-bold text-capitalize">
+                    {{ item.commodore.caption }}
+                  </div>
                   <div class="swiper__item--text">
                     <em>{{ item.commodore.sqm }} sqm</em>
                   </div>
                 </div>
               </div>
-            </swiper-slide><swiper-slide v-bind:key="index + 2">
+            </swiper-slide>
+
+            <swiper-slide :key="index + 2">
               <div class="text-center swiper__item">
-                <v-skeleton-loader class="swiper__item--img" type="image" v-if="!item.deluxe.gallery" />
+                <v-skeleton-loader v-if="!item.deluxe.gallery" class="swiper__item--img" type="image" />
                 <v-img
                   v-else
-                  v-bind:src="$store.state.storage + item.deluxe.gallery[0].image"
-                  v-bind:lazy-src="$store.state.storage + item.deluxe.gallery[0].image"
+                  :src="$store.state.storage + item.deluxe.gallery[0].image"
+                  :lazy-src="$store.state.storage + item.deluxe.gallery[0].image"
                   class="swiper__item--img"
                 >
-                  <template v-slot:placeholder>
+                  <template #placeholder>
                     <v-row class="fill-height ma-0" align="center" justify="center">
                       <v-progress-circular indeterminate color="grey lighten-5" />
                     </v-row>
                   </template>
                 </v-img>
                 <div class="hidden-xs-only">
-                  <div class="swiper__item--heading font-weight-bold text-capitalize">{{ item.deluxe.caption }}</div>
+                  <div class="swiper__item--heading font-weight-bold text-capitalize">
+                    {{ item.deluxe.caption }}
+                  </div>
                   <div class="swiper__item--text">
                     <em>{{ item.deluxe.sqm }} sqm</em>
                   </div>
@@ -75,11 +89,14 @@
               </div>
             </swiper-slide>
           </template>
-          <div class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" slot="pagination" />
+
+          <div slot="pagination" class="swiper-pagination swiper-pagination-bullets hidden-sm-and-up" />
         </swiper>
 
         <div class="swiper__content">
-          <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">{{ dataActive.heading }}</div>
+          <div class="swiper__item--heading hidden-sm-and-up font-weight-bold">
+            {{ dataActive.heading }}
+          </div>
           <div v-if="dataActive.description" class="swiper__item--text hidden-sm-and-up" v-html="dataActive.description" />
           <v-btn
             tile
@@ -89,7 +106,10 @@
             height="38"
             nuxt
             :to="data.to"
-            class="swiper__item--button btn-l mx-auto">suites and staterooms</v-btn>
+            class="swiper__item--button btn-l mx-auto"
+          >
+            suites and staterooms
+          </v-btn>
         </div>
       </v-col>
     </v-row>
@@ -97,15 +117,18 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
-import BaseCardThree from '@/components/base/BaseCardThreeImage.vue';
-import BaseCarouselThree from '@/components/base/BaseCarouselThree.vue';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js'
+import BaseCardThree from '@/components/base/BaseCardThreeImage.vue'
+import BaseCarouselThree from '@/components/base/BaseCarouselThree.vue'
 export default {
   components: {
+    // eslint-disable-next-line vue/no-unused-components
     BaseCarouselThree,
+    // eslint-disable-next-line vue/no-unused-components
     BaseCardThree,
-    Swiper, SwiperSlide,
+    Swiper,
+    SwiperSlide
   },
 
   props: {
@@ -141,8 +164,8 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className}"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className}"></span>`
           }
         },
         breakpoints: {
@@ -163,36 +186,36 @@ export default {
     }
   },
 
-  mounted () {
-    this.initStore();
-  },
-
   computed: {
     swiper () {
-      return this.$refs.swiper.$swiper;
+      return this.$refs.swiper.$swiper
     }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
+  },
+
+  mounted () {
+    this.initStore()
   },
 
   methods: {
     initStore () {
-      if (!this.data.data.length) return
-      this.store = this.data.data;
-      this.dataActive = this.data.data[0];
+      if (!this.data.data.length) { return }
+      this.store = this.data.data
+      this.dataActive = this.data.data[0]
     },
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
-      this.$refs.swiper.$swiper.slidePrev();
+      this.$refs.swiper.$swiper.slidePrev()
     },
     next () {
       if (this.$refs.swiper.$swiper.isEnd) { return }
-      this.$refs.swiper.$swiper.slideNext();
+      this.$refs.swiper.$swiper.slideNext()
     }
   }
 }

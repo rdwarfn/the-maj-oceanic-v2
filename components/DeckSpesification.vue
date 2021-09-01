@@ -13,11 +13,11 @@
       </v-col>
     </v-row>
 
-    <swiper ref="swiper" class="swiper static" v-bind:options="swiperOptions">
-      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
+    <swiper ref="swiper" class="swiper static" :options="swiperOptions">
+      <swiper-slide v-for="(item, index) in data" :key="index">
         <v-img
-          v-bind:src="$store.state.storage + item.image"
-          v-bind:lazy-src="$store.state.storage + item.image"
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
           class="hidden-xs-only deck-spesification--item-img mx-auto"
         />
         <v-img
@@ -28,31 +28,51 @@
           height="502px"
         />
       </swiper-slide>
-      <div class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
+      <div slot="pagination" class="swiper-pagination swiper-pagination-bullets" />
     </swiper>
 
     <div class="navigation container hidden-xs-only">
-      <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
-        <v-icon color="white"> {{icon.left}} </v-icon>
+      <v-btn
+        depressed
+        absolute
+        fab
+        x-small
+        class="button--left"
+        color="primary"
+        @click="prev"
+      >
+        <v-icon color="white">
+          {{ icon.left }}
+        </v-icon>
       </v-btn>
-      <v-btn depressed absolute fab x-small class="button--right" color="primary" @click="next">
-        <v-icon color="white"> {{icon.right}} </v-icon>
+      <v-btn
+        depressed
+        absolute
+        fab
+        x-small
+        class="button--right"
+        color="primary"
+        @click="next"
+      >
+        <v-icon color="white">
+          {{ icon.right }}
+        </v-icon>
       </v-btn>
     </div>
   </v-sheet>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js'
 export default {
-  props: {
-    data: { type: Array }
-  },
-
   components: {
     Swiper,
     SwiperSlide
+  },
+
+  props: {
+    data: { type: Array }
   },
 
   data () {
@@ -76,48 +96,48 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className} swiper-pagination-bullet-custom"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className} swiper-pagination-bullet-custom"></span>`
           }
         }
       }
     }
   },
 
-  mounted () {
-    this.init();
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.init()
   },
 
   methods: {
     init () {
       this.$nextTick(() => {
         if (!this.data.length) { return }
-        this.store = this.data;
-        this.dataActive = this.data[this.swiper.activeIndex];
+        this.store = this.data
+        this.dataActive = this.data[this.swiper.activeIndex]
       })
     },
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
-      this.$refs.swiper.$swiper.slidePrev();
+      this.$refs.swiper.$swiper.slidePrev()
     },
     next () {
       if (this.$refs.swiper.$swiper.isEnd) { return }
-      this.$refs.swiper.$swiper.slideNext();
+      this.$refs.swiper.$swiper.slideNext()
     }
-  },
+  }
 }
 </script>
 

@@ -3,11 +3,8 @@
     <NavbarMobile
       :is-intersecting="isIntersecting"
       :elevate-on-scroll="getHerosByRouteName != undefined"
-      :class="{
-        'v-app-bar--is-scrolled': !getHerosByRouteName
-      }"
     >
-      <template v-slot:button-nav-icon>
+      <template #button-nav-icon>
         <v-app-bar-nav-icon @click.stop="toggleDrawer" />
       </template>
     </NavbarMobile>
@@ -18,29 +15,33 @@
 
     <HeroBanner
       v-if="getHerosByRouteName"
-      :data="getHerosByRouteName"
       v-intersect="{ handler: heroIntersec, options: {
         rootMargin: '20px 0px -20px 0px',
         threshold: [0.5, 1.0]
       }}"
+      :data="getHerosByRouteName"
     />
 
-    <v-main id="main"
+    <v-main
+      id="main"
       v-intersect="{ handler: onIntersect, opacity: { threshold: threshold() } }"
       :class="{'pt-0': getHerosByRouteName}"
       :style="getHerosByRouteName ? 'padding-top: 0' : 'padding-top: 78px'"
     >
       <Breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-4 py-sm-6'" />
-    
+
       <nuxt />
 
       <v-fab-transition>
         <v-btn
           v-show="showBtnScroll"
-          @click="$vuetify.goTo(scrollTarget, scrollOptions)"
           :large="$vuetify.breakpoint.smAndUp"
           color="primary"
-          bottom fixed right fab
+          bottom
+          fixed
+          right
+          fab
+          @click="$vuetify.goTo(scrollTarget, scrollOptions)"
         >
           <v-icon>{{ iconUp }}</v-icon>
         </v-btn>
@@ -51,31 +52,28 @@
 </template>
 
 <script>
-import { mdiChevronUp } from '@mdi/js';
-import Navbar from '@/components/navigations/index.vue';
-import NavbarDrawer from '@/components/navigations/NavbarDrawer.vue';
-import NavbarMobile from '@/components/navigations/NavbarMobile.vue';
-import HeroBanner from '@/components/containers/HeroBanner.vue';
-import Footer from '@/components/containers/Footer.vue';
-import Breadcrumbs from '@/components/Breadcrumbs.vue';
+import { mdiChevronUp } from '@mdi/js'
+import Navbar from '@/components/navigations/index.vue'
+import NavbarDrawer from '@/components/navigations/NavbarDrawer.vue'
+import NavbarMobile from '@/components/navigations/NavbarMobile.vue'
+import HeroBanner from '@/components/containers/HeroBanner.vue'
+import Footer from '@/components/containers/Footer.vue'
+import Breadcrumbs from '@/components/Breadcrumbs.vue'
 
 import { threshold } from '@/mixins/Functions'
-
-const components = {
-  Navbar,
-  NavbarDrawer,
-  NavbarMobile,
-  HeroBanner,
-  Footer,
-  Breadcrumbs
-}
-
 export default {
-  components,
-
-  layout: 'empty',
+  components: {
+    Navbar,
+    NavbarDrawer,
+    NavbarMobile,
+    HeroBanner,
+    Footer,
+    Breadcrumbs
+  },
 
   mixins: [threshold],
+
+  layout: 'empty',
 
   data () {
     return {
@@ -96,8 +94,6 @@ export default {
     }
   },
 
-  components,
-
   computed: {
     getHerosByRouteName () {
       const res = this.$store.state.heros.list.find(v => v.page_key === this.$route.name)
@@ -108,12 +104,12 @@ export default {
     },
     computedRoute () {
       return JSON.stringify(this.$route)
-    },
+    }
   },
 
   methods: {
     onIntersect (entries, observer) {
-      this.isIntersecting = entries[0].isIntersecting;
+      this.isIntersecting = entries[0].isIntersecting
     },
 
     heroIntersec (entries, observer) {
@@ -121,9 +117,9 @@ export default {
     },
 
     toggleDrawer () {
-      this.$store.commit('toggleDrawer');
+      this.$store.commit('toggleDrawer')
     }
-  },
+  }
 
 }
 </script>

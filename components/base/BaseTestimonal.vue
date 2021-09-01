@@ -2,74 +2,75 @@
   <v-sheet class="testimonal" color="#EFE1DC">
     <v-container class="py-0 px-6 px-md-0 mx-auto text-center text-sm-left" style="position: relative">
       <!-- mobile -->
-      <template>
-        <div class="hidden-sm-and-up">
-          <swiper ref="swiperMobile" class="swiper" :options="swiperOptionsMobile">
-            <swiper-slide v-for="(obj, index) in data" :key="index" class="text-center">
-              <img
-                :src="$store.state.storage + obj.image"
-                class="testimonal--img"
-              />
-            </swiper-slide>
-            <div class="swiper-pagination swiper-pagination-bullets" slot="pagination" />
-          </swiper>
-        </div>
+      <div class="hidden-sm-and-up">
+        <swiper ref="swiperMobile" class="swiper" :options="swiperOptionsMobile">
+          <swiper-slide v-for="(obj, index) in data" :key="index" class="text-center">
+            <img
+              :src="$store.state.storage + obj.image"
+              class="testimonal--img"
+            >
+          </swiper-slide>
+          <div slot="pagination" class="swiper-pagination swiper-pagination-bullets" />
+        </swiper>
+      </div>
 
-        <div class="testimonal--content-mobile mr-6 mr-sm-0 hidden-sm-and-up">
-          <template>
-            <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph" />
-            <div v-else class="testimonal--description text--primary" v-html="dataActive.comment" />
-          </template>
+      <div class="testimonal--content-mobile mr-6 mr-sm-0 hidden-sm-and-up">
+        <div
+          v-if="dataActive.comment"
+          class="testimonal--description text--primary"
+          v-html="dataActive.comment"
+        />
 
-          <template>
-            <v-skeleton-loader v-if="!dataActive.name" loading type="text" />
-            <strong v-else>
-              {{ dataActive.name }}
-            </strong>
-          </template>
+        <strong v-if="dataActive.name">
+          {{ dataActive.name }}
+        </strong>
 
-          <template>
-            <v-skeleton-loader v-if="!dataActive.instagram" loading type="text" />
-            <a v-else :href="dataActive.instagram.link" target="blank">
-              <div class="font-weight-medium">(@{{ dataActive.instagram.username }})</div>
-            </a>
-          </template>
-        </div>
-      </template>
+        <a
+          v-if="dataActive.instagram"
+          :href="dataActive.instagram.link"
+          target="blank"
+        >
+          <div class="font-weight-medium">(@{{ dataActive.instagram.username }})</div>
+        </a>
+      </div>
       <!-- end mobile -->
 
       <!-- desktop -->
-      <template>
-        <v-row no-gutters class="testimonal--content-desktop hidden-xs-only" align="center" justify="space-between">
-          <v-col cols="12" sm="6" md="auto">
-            <swiper ref="swiper" class="swiper" :options="swiperOptions">
-              <swiper-slide v-for="(obj, index) in data" :key="index">
-                <v-img
-                  :src="$store.state.storage + obj.image"
-                  :lazy-src="$store.state.storage + obj.image"
-                  class="testimonal--img"
-                ></v-img>
-              </swiper-slide>
-              <div class="swiper-pagination swiper-pagination-bullets hidden-md-and-up" slot="pagination" />
-            </swiper>
-          </v-col>
+      <v-row no-gutters class="testimonal--content-desktop hidden-xs-only" align="center" justify="space-between">
+        <v-col cols="12" sm="6" md="auto">
+          <swiper ref="swiper" class="swiper" :options="swiperOptions">
+            <swiper-slide v-for="(obj, index) in data" :key="index">
+              <v-img
+                :src="$store.state.storage + obj.image"
+                :lazy-src="$store.state.storage + obj.image"
+                class="testimonal--img"
+              />
+            </swiper-slide>
+            <div slot="pagination" class="swiper-pagination swiper-pagination-bullets hidden-md-and-up" />
+          </swiper>
+        </v-col>
 
-          <v-col cols="12" sm="5">
-            <template>
-              <v-skeleton-loader v-if="!dataActive.comment" class="mb-8" loading type="paragraph" />
-              <div v-else class="testimonal--description text--primary" v-html="dataActive.comment" />
-            </template>
+        <v-col
+          v-if="dataActive"
+          cols="12"
+          sm="5"
+        >
+          <div
+            v-if="dataActive.comment"
+            class="testimonal--description text--primary"
+            v-html="dataActive.comment"
+          />
 
-            <template>
-              <v-skeleton-loader v-if="!dataActive.instagram" loading type="text@2" />
-              <a v-else :href="dataActive.instagram.link" target="blank">
-                <strong>{{ dataActive.name }}</strong>
-                <span class="font-weight-medium">(@{{ dataActive.instagram.username }})</span>
-              </a>
-            </template>
-          </v-col>
-        </v-row>
-      </template>
+          <a
+            v-if="dataActive.instagram"
+            :href="dataActive.instagram.link"
+            target="blank"
+          >
+            <strong>{{ dataActive.name }}</strong>
+            <span class="font-weight-medium">(@{{ dataActive.instagram.username }})</span>
+          </a>
+        </v-col>
+      </v-row>
       <!-- end desktop -->
 
       <v-btn
@@ -79,10 +80,12 @@
         depressed
         color="primary"
         class="hidden-sm-and-down button--left"
-        @click.prevent="slidePrev"
         style="z-index: 4; cursor: pointer"
+        @click.prevent="slidePrev"
       >
-        <v-icon color="white"> {{icon.left}} </v-icon>
+        <v-icon color="white">
+          {{ icon.left }}
+        </v-icon>
       </v-btn>
 
       <v-btn
@@ -92,19 +95,22 @@
         depressed
         color="primary"
         class="hidden-sm-and-down button--right"
-        @click.prevent="slideNext"
         style="z-index: 4; cursor: pointer"
+        @click.prevent="slideNext"
       >
-        <v-icon color="white"> {{icon.right}} </v-icon>
+        <v-icon color="white">
+          {{ icon.right }}
+        </v-icon>
       </v-btn>
     </v-container>
   </v-sheet>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
-import _ from 'lodash';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js'
+import _ from 'lodash'
+
 export default {
   components: { Swiper, SwiperSlide },
 
@@ -136,10 +142,10 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className}"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className}"></span>`
           }
-        },
+        }
       },
       swiperOptionsMobile: {
         lazy: true,
@@ -155,16 +161,12 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className}"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className}"></span>`
           }
-        },
+        }
       }
     }
-  },
-
-  created () {
-    this.init();
   },
 
   computed: {
@@ -172,18 +174,22 @@ export default {
     swiperMobile () { return this.$refs.swiperMobile.$swiper }
   },
 
+  created () {
+    this.init()
+  },
+
   methods: {
     init () {
       this.$nextTick(() => {
         if (!this.data.length) { return }
-        this.store = this.data;
-        this.dataActive =  _.assign({}, _.first(this.data));
+        this.store = this.data
+        this.dataActive = _.assign({}, _.first(this.data))
       })
     },
 
     slidePrev (e) { this.swiper && this.swiper.slidePrev() },
     slideNext (e) { this.swiper && this.swiper.slideNext() }
-  },
+  }
 }
 </script>
 

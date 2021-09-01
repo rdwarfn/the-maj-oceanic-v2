@@ -3,12 +3,13 @@
     <v-sheet class="hero-wrapper text-center">
       <!-- video -->
       <template v-if="dataVideo">
-        <div class="video-player-box mx-auto hidden-xs-only"
-          :playsinline="true"
+        <div
           v-video-player:player="{
             ...playerOptions,
             sources: [...dataVideo],
           }"
+          class="video-player-box mx-auto hidden-xs-only"
+          :playsinline="true"
         />
 
         <div
@@ -25,7 +26,7 @@
           <v-row no-gutters align="center" justify="center" class="fill-height">
             <v-spacer />
             <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
-            <v-spacer/>
+            <v-spacer />
           </v-row>
         </v-img>
       </template>
@@ -33,7 +34,7 @@
       <!-- img -->
       <template v-else>
         <v-img
-          :class="{'hidden-xs-only': $store.state.storage + data.mobile_image}"
+          :class="{'hidden-xs-only': data.mobile_image}"
           :src="$store.state.storage + data.image"
           :lazy-src="$store.state.storage + data.image"
           class="_hero--img justify-center"
@@ -41,22 +42,22 @@
           <v-row no-gutters align="center" justify="center" class="fill-height">
             <v-spacer />
             <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
-            <v-spacer/>
+            <v-spacer />
           </v-row>
         </v-img>
 
         <v-img
-          v-if="$store.state.storage + data.mobile_image"
+          v-if="data.mobile_image"
           class="hidden-sm-and-up"
           :src="$store.state.storage + data.mobile_image"
           :lazy-src="$store.state.storage + data.mobile_image"
-          >
-            <v-row no-gutters align="center" justify="center" class="fill-height">
-              <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
-              <v-spacer/>
-            </v-row>
-          </v-img>
+        >
+          <v-row no-gutters align="center" justify="center" class="fill-height">
+            <v-spacer />
+            <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
+            <v-spacer />
+          </v-row>
+        </v-img>
       </template>
     </v-sheet>
   </div>
@@ -64,19 +65,15 @@
 
 <script>
 import _ from 'lodash'
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-
-const components = { Swiper, SwiperSlide };
 export default {
   props: {
-    data: { type: [Array, Object] },
+    data: { type: [Array, Object] }
   },
-  // components,
   data () {
     return {
       swiperOptions: {
         lazy: true,
-        slidesPerView: 1,
+        slidesPerView: 1
       },
       // videojs options
       playerOptions: {
@@ -85,7 +82,7 @@ export default {
         control: false,
         controls: false,
         loop: true,
-        muted: true,
+        muted: true
       }
     }
   },

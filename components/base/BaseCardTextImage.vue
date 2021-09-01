@@ -5,7 +5,7 @@
         <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
           {{ data.caption }}
         </v-card-subtitle>
-        <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5" >
+        <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5">
           {{ data.heading }}
         </v-card-title>
         <v-img
@@ -15,7 +15,7 @@
           :lazy-src="$store.state.storage + data.image"
           :aspect-ratio="imgAspectRatio"
         >
-          <template v-slot:placeholder>
+          <template #placeholder>
             <v-row
               class="fill-height ma-0"
               align="center"
@@ -36,48 +36,61 @@
             class="mx-auto __card--btn"
             :class="buttonClass"
             color="primary"
-            tile depressed
-            outlined :to="data.to"
+            tile
+            depressed
+            outlined
+            :to="data.to"
             height="38"
           >
-            {{buttonText}}
+            {{ buttonText }}
           </v-btn>
         </v-card-actions>
 
         <div class="__card--content hidden-xs-only" :class="cardContentClass">
-          <v-card-subtitle v-if="data.caption" class="text-h6 font-weight-bold pb-0 px-0 static"
+          <v-card-subtitle
+            v-if="data.caption"
+            class="text-h6 font-weight-bold pb-0 px-0 static"
             :class="contentRight ? 'text-right' : null"
             v-text="data.caption"
           />
-          <v-card-title class="px-0 text-break"
+          <v-card-title
+            class="px-0 text-break"
             :class="contentRight ? 'justify-end' : null"
             v-text="data.heading"
           />
 
-          <v-card-text class="px-0"
-            :class="contentRight ? 'text-right' : null">
+          <v-card-text
+            class="px-0"
+            :class="contentRight ? 'text-right' : null"
+          >
             {{ data.description }}
             <ul v-if="data.list">
-              <li v-for="(item, index) in data.list.split('\n')"
+              <li
+                v-for="(item, index) in data.list.split('\n')"
                 :key="index"
                 v-text="item"
               />
             </ul>
           </v-card-text>
 
-          <v-card-actions v-if="buttonText"
+          <v-card-actions
+            v-if="buttonText"
             class="px-0 mt-6"
             :class="[
               buttonContainerClass,
               contentRight ? 'justify-end' : null
-            ]">
+            ]"
+          >
             <v-btn
               :class="buttonClass"
               color="primary"
-              tile depressed outlined :to="data.to"
+              tile
+              depressed
+              outlined
+              :to="data.to"
               height="38"
             >
-              {{buttonText}}
+              {{ buttonText }}
             </v-btn>
           </v-card-actions>
         </div>
@@ -87,11 +100,9 @@
 </template>
 
 <script>
-import tButton from '@/components/base/BaseButton.vue';
-const components = {
-  tButton
-}
+
 export default {
+  inheritAttrs: false,
   props: {
     data: { type: Object },
     cardImgClass: { type: String },
@@ -106,11 +117,7 @@ export default {
     imgAspectRatio: {
       type: [String, Number]
     }
-  },
-
-  components,
-
-  inheritAttrs: false
+  }
 }
 </script>
 

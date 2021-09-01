@@ -6,7 +6,9 @@
           Contact Us
         </div>
         <div class="mb-89 mb-sm-60 mb-md-10">
-          <p class="_contact-desc mx-auto mx-sm-0">Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!</p>
+          <p class="_contact-desc mx-auto mx-sm-0">
+            Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!
+          </p>
         </div>
 
         <div class="mb-8">
@@ -35,20 +37,20 @@
           make an inquiry
         </div>
         <v-form
-          class="mt-5 py-8 px-5 _form hidden-xs-only"
           ref="form2"
           v-model="valid"
+          class="mt-5 py-8 px-5 _form hidden-xs-only"
+          lazy-validation
           @submit.prevent="validate"
           @keyup.enter.prevent="validate"
-          lazy-validation
         >
           <v-row align="center" justify="space-between">
             <v-col cols="6" class="py-0" style="height: 102px">
               <v-text-field
                 ref="name"
-                label="Name"
                 v-model="name"
-                v-bind:rules="[
+                label="Name"
+                :rules="[
                   rules.required,
                   rules.countMin4
                 ]"
@@ -56,23 +58,30 @@
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
-                filled clearable flat dense required
-              ></v-text-field>
+                filled
+                clearable
+                flat
+                dense
+                required
+              />
             </v-col>
             <v-col cols="6" class="py-0" style="height: 102px">
               <v-select
                 ref="destination"
-                label="Destination"
                 v-model="destination"
-                v-bind:items="destinationData"
-                v-bind:rules="[
+                label="Destination"
+                :items="destinationData"
+                :rules="[
                   rules.required
                 ]"
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
-                filled dense flat required
-              ></v-select>
+                filled
+                dense
+                flat
+                required
+              />
             </v-col>
           </v-row>
           <v-row>
@@ -81,9 +90,9 @@
                 <v-col cols="12" align-self="start" class="py-0" style="height: 102px">
                   <v-text-field
                     ref="email"
-                    label="Email"
                     v-model="email"
-                    v-bind:rules="[
+                    label="Email"
+                    :rules="[
                       rules.required,
                       rules.email
                     ]"
@@ -91,16 +100,20 @@
                     validate-on-blur
                     hide-details="auto"
                     background-color="#fafafa"
-                    filled clearable flat dense required
-                  ></v-text-field>
+                    filled
+                    clearable
+                    flat
+                    dense
+                    required
+                  />
                 </v-col>
                 <!-- <v-spacer /> -->
                 <v-col cols="12" align-self="end" class="py-0">
                   <v-text-field
                     ref="phone"
-                    label="Phone"
                     v-model="phone"
-                    v-bind:rules="[
+                    label="Phone"
+                    :rules="[
                       rules.required,
                       rules.countMax16,
                       rules.isNumber
@@ -109,18 +122,21 @@
                     validate-on-blur
                     hide-details="auto"
                     background-color="#fafafa"
-                    filled clearable flat dense
-                  ></v-text-field>
+                    filled
+                    clearable
+                    flat
+                    dense
+                  />
                 </v-col>
               </v-row>
             </v-col>
-            <v-col cols="6" align-self="start"  class="py-0">
+            <v-col cols="6" align-self="start" class="py-0">
               <v-textarea
                 ref="message"
+                v-model="message"
                 class="_message align-self-end"
                 label="Messages"
-                v-model="message"
-                v-bind:rules="[
+                :rules="[
                   rules.required,
                   rules.countMin30
                 ]"
@@ -129,8 +145,12 @@
                 hide-details="auto"
                 background-color="#fafafa"
                 rows="4"
-                filled clearable flat dense required
-              ></v-textarea>
+                filled
+                clearable
+                flat
+                dense
+                required
+              />
             </v-col>
           </v-row>
 
@@ -141,7 +161,7 @@
                   v-if="!valid"
                   left
                 >
-                  <template v-slot:activator="{ on, attrs }">
+                  <template #activator="{ on, attrs }">
                     <v-btn
                       icon
                       class="my-0 d-inline"
@@ -149,7 +169,7 @@
                       @click.prevent="reset2"
                       v-on="on"
                     >
-                      <v-icon>{{icon.refresh}}</v-icon>
+                      <v-icon>{{ icon.refresh }}</v-icon>
                     </v-btn>
                   </template>
                   <span>Refresh form</span>
@@ -157,7 +177,8 @@
               </v-slide-x-reverse-transition>
 
               <v-btn
-                tile depressed
+                tile
+                depressed
                 color="primary"
                 class="_btn--submit ml-auto"
                 @click="validate"
@@ -169,20 +190,20 @@
         </v-form>
 
         <v-form
-          class="hidden-sm-and-up text-left"
           ref="form"
           v-model="valid"
+          class="hidden-sm-and-up text-left"
+          lazy-validation
           @submit.prevent="validate"
           @keyup.enter.prevent="validate"
-          lazy-validation
         >
           <v-row no-gutters align="center">
             <v-col cols="12" style="min-height: 78px">
               <v-text-field
                 ref="name"
-                label="Name"
                 v-model="name"
-                v-bind:rules="[
+                label="Name"
+                :rules="[
                   rules.required,
                   rules.countMin4
                 ]"
@@ -190,15 +211,19 @@
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
-                filled clearable flat dense required
-              ></v-text-field>
+                filled
+                clearable
+                flat
+                dense
+                required
+              />
             </v-col>
             <v-col cols="12" align-self="end" style="min-height: 78px">
               <v-text-field
                 ref="email"
-                label="Email"
                 v-model="email"
-                v-bind:rules="[
+                label="Email"
+                :rules="[
                   rules.required,
                   rules.email
                 ]"
@@ -206,15 +231,19 @@
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
-                filled clearable flat dense required
-              ></v-text-field>
+                filled
+                clearable
+                flat
+                dense
+                required
+              />
             </v-col>
             <v-col cols="12" style="min-height: 78px">
               <v-text-field
                 ref="phone"
-                label="Phone"
                 v-model="phone"
-                v-bind:rules="[
+                label="Phone"
+                :rules="[
                   rules.required,
                   rules.countMax16,
                   rules.isNumber
@@ -223,29 +252,35 @@
                 validate-on-blur
                 hide-details="auto"
                 background-color="#fafafa"
-                filled clearable flat dense required
-              ></v-text-field>
+                filled
+                clearable
+                flat
+                dense
+                required
+              />
             </v-col>
             <v-col cols="12" style="min-height: 78px">
               <v-select
                 ref="destination"
-                label="Destination"
                 v-model="destination"
-                v-bind:items="destinationData"
-                v-bind:rules="[
+                label="Destination"
+                :items="destinationData"
+                :rules="[
                   rules.required
                 ]"
                 background-color="#fafafa"
-                filled dense required
-              ></v-select>
+                filled
+                dense
+                required
+              />
             </v-col>
             <v-col cols="12">
               <v-textarea
                 ref="message"
+                v-model="message"
                 class="_message align-self-end"
                 label="Messages"
-                v-model="message"
-                v-bind:rules="[
+                :rules="[
                   rules.required,
                   rules.countMin30
                 ]"
@@ -254,13 +289,16 @@
                 hide-details="auto"
                 background-color="#fafafa"
                 rows="4"
-                filled clearable flat dense
-              ></v-textarea>
+                filled
+                clearable
+                flat
+                dense
+              />
             </v-col>
             <v-col cols="12" class="text-center">
               <v-slide-x-reverse-transition>
                 <v-tooltip v-if="!valid" left>
-                  <template v-slot:activator="{ on, attrs }">
+                  <template #activator="{ on, attrs }">
                     <v-btn
                       icon
                       class="my-0"
@@ -268,7 +306,7 @@
                       @click.prevent="reset"
                       v-on="on"
                     >
-                      <v-icon>{{icon.refresh}}</v-icon>
+                      <v-icon>{{ icon.refresh }}</v-icon>
                     </v-btn>
                   </template>
                   <span>Refresh form</span>
@@ -276,7 +314,8 @@
               </v-slide-x-reverse-transition>
 
               <v-btn
-                tile depressed
+                tile
+                depressed
                 color="primary"
                 class="_btn--submit mx-auto"
                 @click="validate"
@@ -304,21 +343,26 @@
         >
           <v-btn
             v-show="dialog.success"
-            right top icon absolute
-            class="v-dialog--card-close-btn" @click="dialog.show = false">
-            <v-icon>{{icon.close}}</v-icon>
+            right
+            top
+            icon
+            absolute
+            class="v-dialog--card-close-btn"
+            @click="dialog.show = false"
+          >
+            <v-icon>{{ icon.close }}</v-icon>
           </v-btn>
 
           <v-card-title>
             <div class="v-dialog--card-heading mx-auto text-center text-break pa-0">
-              {{dialog.text}}
+              {{ dialog.text }}
             </div>
           </v-card-title>
 
           <v-card-actions class="v-dialog--card-actions">
-          <v-btn text class="px-2 mx-auto v-dialog--card-link" @click="dialog.click">
-            <a class="text-decoration-underline">{{dialog.text_link}}</a>
-          </v-btn>
+            <v-btn text class="px-2 mx-auto v-dialog--card-link" @click="dialog.click">
+              <a class="text-decoration-underline">{{ dialog.text_link }}</a>
+            </v-btn>
           </v-card-actions>
 
           <v-img
@@ -338,7 +382,7 @@
 </template>
 
 <script>
-import { mdiClose, mdiRefresh } from '@mdi/js';
+import { mdiClose, mdiRefresh } from '@mdi/js'
 export default {
   layout: 'main',
 
@@ -352,17 +396,6 @@ export default {
       {
         to: '/contact-us',
         text: 'Contact Us'
-      }
-    ]
-  },
-
-  head: {
-    title: 'Make an inquiry - The MAJ Oceanic',
-    meta: [
-      {
-        hid: 'description',
-        name: 'description',
-        content: 'Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!'
       }
     ]
   },
@@ -390,11 +423,11 @@ export default {
         countMin4: v => (v && v.length >= 4) || 'Min 4 characters.',
         countMin30: v => (v && v.length >= 30) || 'Min 30 characters.',
         countMax16: v => (v && v.length <= 16) || 'Max 16 digit numbers.',
-        email: v => {
+        email: (v) => {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           return pattern.test(v) || 'Please enter a valid e-mail.'
         },
-        isNumber: v => (v && !isNaN(v)) || 'This field must be number.',
+        isNumber: v => (v && !isNaN(v)) || 'This field must be number.'
       },
       formHasErrors: false,
       dialog: {
@@ -403,9 +436,20 @@ export default {
         img: '',
         text_link: '',
         success: false,
-        click: () => { return }
-      },
+        click: () => { }
+      }
     }
+  },
+
+  head: {
+    title: 'Make an inquiry - The MAJ Oceanic',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Send your inquiry now by contacting the addresses below or by filling in the inquiry form. Sail you later!'
+      }
+    ]
   },
 
   computed: {
@@ -415,9 +459,9 @@ export default {
         email: this.email,
         phone: this.phone,
         destination: this.destination,
-        message: this.message,
+        message: this.message
       }
-    },
+    }
   },
 
   methods: {
@@ -426,8 +470,8 @@ export default {
       const res2 = this.$refs.form2.validate()
       if (res && res2) {
         this.storeContact(this.form)
-        this.reset();
-        this.reset2();
+        this.reset()
+        this.reset2()
       }
     },
     reset () {
@@ -451,7 +495,7 @@ export default {
             click: () => {
               this.$router.replace('/')
             },
-            show: true,
+            show: true
           }
         }
       } catch (err) {
@@ -601,7 +645,6 @@ export default {
     letter-spacing: 2px !important;
     line-height: 18px !important;
   }
-
 
   ::v-deep ._form {
     background: #FFFFFF !important;

@@ -7,7 +7,7 @@
           :lazy-src="$store.state.storage + data.gallery[0].image"
           class="komodo--des-four_image"
         >
-          <template v-slot:placeholder>
+          <template #placeholder>
             <v-row
               class="fill-height ma-0"
               align="center"

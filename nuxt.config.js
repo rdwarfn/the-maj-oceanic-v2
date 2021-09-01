@@ -1,5 +1,4 @@
-import webpack from 'webpack';
-import https from 'https';
+import webpack from 'webpack'
 
 export default {
   env: {
@@ -15,7 +14,7 @@ export default {
   router: {
     // trailingSlash: false,
     middleware: ['breadcrumbs'],
-    extendRoutes(routes, resolve) {
+    extendRoutes (routes, resolve) {
       routes.push({
         name: '404',
         path: '*',
@@ -42,11 +41,11 @@ export default {
       { hid: 'robots', name: 'robots', content: 'follow, index' },
       { hid: 'googlebot', name: 'googlebot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
       { hid: 'bingbot', name: 'bingbot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
-      { hid: 'og:locale', property: 'og:locale', content: 'en_US' },
+      { hid: 'og:locale', property: 'og:locale', content: 'en_US' }
     ],
     link: [
       { rel: 'canonical', href: 'https://themajoceanic.com' },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ],
     script: [
       { type: 'text/javascript', src: '/js/instafeed.min.js' }
@@ -57,14 +56,11 @@ export default {
   */
   styleResources: {
     scss: [
-      './assets/styles/scss/_poly-fluid-sizing.scss',
-      './assets/styles/scss/variables.scss',
-      './assets/styles/scss/main.scss'
+      './assets/styles/scss/_poly-fluid-sizing.scss'
     ]
   },
   css: [
-    '@/assets/styles/css/_fonts.css',
-    '@/assets/styles/css/main.css',
+    './assets/styles/scss/main.scss',
     'video.js/dist/video-js.css'
   ],
   /*
@@ -95,7 +91,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/svg-module
-    '@nuxtjs/svg',
+    '@nuxtjs/svg'
   ],
   /*
   ** Axios module configuration
@@ -108,9 +104,8 @@ export default {
   */
   vuetify: {
     defaultAssets: false,
-    treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
-    optionsPath: './vuetify.options.js',
+    optionsPath: './vuetify.options.js'
   },
   /*
   ** Build configuration
@@ -121,7 +116,7 @@ export default {
         test: /\.mjs/,
         type: 'javascript/auto',
         include: /node_modules/
-      });
+      })
     },
     plugins: [
       new webpack.ProvidePlugin({

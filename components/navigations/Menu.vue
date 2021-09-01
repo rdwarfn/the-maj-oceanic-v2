@@ -6,27 +6,34 @@
     no-gutters
   >
     <template v-for="(data, idx) in menu">
-      <v-col cols="auto"
-        class="text-center"
+      <v-col
         v-if="idx < 4"
         :key="idx"
+        cols="auto"
+        class="text-center"
       >
         <v-menu
           background-color="transparent"
           close-on-click
-          bottom offset-y open-on-hover
-          tile v-bind:rounded="false"
-          auto min-width="190">
-
+          bottom
+          offset-y
+          open-on-hover
+          tile
+          :rounded="false"
+          auto
+          min-width="190"
+        >
           <template #activator="{ on, attrs }">
             <v-btn
               v-bind="attrs"
-              v-on="on"
-              v-bind:to="data.to"
-              text tile nuxt
+              :to="data.to"
+              text
+              tile
+              nuxt
               draggable="false"
-              v-bind:dark="isIntersecting"
+              :dark="isIntersecting"
               class="btn-s font-md-12"
+              v-on="on"
             >
               {{ data.title }}
             </v-btn>
@@ -34,17 +41,19 @@
 
           <v-list
             v-if="data.children.length"
-            v-bind:dark="isIntersecting"
+            :dark="isIntersecting"
             class="py-0"
           >
-
             <template v-for="(item, index) in data.children">
               <v-list-item
-                :to="item.to"
                 :key="index"
+                :to="item.to"
                 :exact="item.exact"
                 :disabled="item.disabled"
-                dense nuxt tile style="letter-spacing: 2px"
+                dense
+                nuxt
+                tile
+                style="letter-spacing: 2px"
               >
                 <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
                   {{ item.title }}
@@ -71,12 +80,13 @@
       :class="{ intersec: !isIntersecting }"
     >
       <v-btn
-          class="mx-auto"
-          to="/"
-          replace
-          text
-          tile
-          nuxt>
+        class="mx-auto"
+        to="/"
+        replace
+        text
+        tile
+        nuxt
+      >
         <img
           class="mx-auto _img--black"
           draggable="false"
@@ -84,16 +94,17 @@
           alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
           width="auto"
           height="auto"
-        />
+        >
       </v-btn>
     </v-col>
 
     <v-spacer v-show="!isIntersecting" />
 
     <template v-for="(data, idx) in menu">
-      <v-col cols="auto"
+      <v-col
         v-if="idx >= 4"
         :key="idx"
+        cols="auto"
         class="text-center"
       >
         <v-row
@@ -115,13 +126,13 @@
               <template #activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
-                  v-on="{on}"
                   :to="data.to"
                   :dark="isIntersecting"
                   class="font-md-12"
                   text
                   tile
                   nuxt
+                  v-on="{on}"
                 >
                   {{ data.title }}
                 </v-btn>
@@ -140,8 +151,8 @@
               >
                 <template v-for="(item, index) in data.children">
                   <v-list-item
-                    :to="item.to"
                     :key="index"
+                    :to="item.to"
                     :exact="item.exact"
                     :disabled="item.disabled"
                     style="letter-spacing: 2px"
@@ -154,7 +165,7 @@
                     </v-list-item-title>
                   </v-list-item>
 
-                  <v-divider inset :key="index" />
+                  <v-divider :key="index" inset />
                 </template>
               </v-list>
             </v-menu>
@@ -166,7 +177,7 @@
 </template>
 
 <script>
-import { getNav } from '~/services/api' 
+import { getNav } from '~/services/api'
 
 export default {
   props: {
@@ -184,7 +195,7 @@ export default {
 
   mounted () {
     this.getNav()
-      .then(ress => {
+      .then((ress) => {
         this.menu = ress
       })
   },

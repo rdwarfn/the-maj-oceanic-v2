@@ -8,22 +8,26 @@
         />
         <div v-html="data.description" />
       </v-row>
-      <base-tabs
+      <BaseTabs
         button-text="learn more"
-        v-bind:data="data.tabs_data"
+        :data="data.tabs_data"
         class="hidden-xs-only"
       />
 
       <v-sheet color="transparent" class="hidden-sm-and-up" style="position: relative;">
         <v-row class="tabs-mobile--container container mx-auto px-0">
           <v-btn depressed x-small class="button--left" color="transparent" @click="prev">
-            <v-icon color="black"> {{icon.left}} </v-icon>
+            <v-icon color="black">
+              {{ icon.left }}
+            </v-icon>
           </v-btn>
           <div class="tabs-mobile--label text-uppercase text-center mx-auto">
-            {{dataActive.name}}
+            {{ dataActive.name }}
           </div>
           <v-btn depressed x-small class="button--right" color="transparent" @click="next">
-            <v-icon color="black"> {{icon.right}} </v-icon>
+            <v-icon color="black">
+              {{ icon.right }}
+            </v-icon>
           </v-btn>
         </v-row>
         <swiper ref="swiper" class="swiper" :options="swiperOption">
@@ -42,14 +46,20 @@
         </swiper>
 
         <div class="tabs-mobile--content text-center">
-          <div class="tabs-mobile--heading">{{dataActive && dataActive.heading}}</div>
-          <div class="tabs-mobile--text">{{dataActive && dataActive.description }}</div>
+          <div class="tabs-mobile--heading">
+            {{ dataActive && dataActive.heading }}
+          </div>
+          <div class="tabs-mobile--text">
+            {{ dataActive && dataActive.description }}
+          </div>
           <v-btn
-            tile nuxt
+            tile
+            nuxt
             outlined
             :to="dataActive && dataActive.to"
             class="tabs-mobile--btn btn-l"
-            color="primary">
+            color="primary"
+          >
             learn more
           </v-btn>
         </div>
@@ -59,12 +69,13 @@
 </template>
 
 <script>
-import baseTabs from '@/components/base/BaseTabs.vue';
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
+import BaseTabs from '@/components/base/BaseTabs.vue'
+
 export default {
   components: {
-    baseTabs,
+    BaseTabs,
     Swiper,
     SwiperSlide
   },
@@ -99,36 +110,36 @@ export default {
     }
   },
 
-  mounted () {
-    this.initStore();
+  computed: {
+    swiper () {
+      return this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.initStore()
   },
 
   methods: {
     initStore () {
-      if (!this.data.tabs_data.length) return
-      this.store = this.data.tabs_data;
-      this.dataActive = this.data.tabs_data[0];
+      if (!this.data.tabs_data.length) { return }
+      this.store = this.data.tabs_data
+      this.dataActive = this.data.tabs_data[0]
     },
     prev () {
       if (this.swiper.isBeginning) { return }
-      this.swiper.slidePrev();
+      this.swiper.slidePrev()
     },
     next () {
       if (this.swiper.isEnd) { return }
-      this.swiper.slideNext();
+      this.swiper.slideNext()
     }
   }
 }

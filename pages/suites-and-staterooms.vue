@@ -53,7 +53,17 @@
         <div class="ig--heading" v-html="data.instagram.heading" />
         <v-row id="instafeed" />
 
-        <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
+        <v-btn
+          width="141"
+          height="38"
+          :loading="loading"
+          class="btn-l ig--btn"
+          color="primary"
+          tile
+          outlined
+          depressed
+          @click.prevent="() => loadMore(6)"
+        >
           View more
         </v-btn>
       </v-container>
@@ -62,15 +72,17 @@
 </template>
 
 <script>
-import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
-import suitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue';
-import suitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue';
-const components = {
-  tmgIconDivider,
-  suitesSpecification,
-  suitesSpecificationMobile,
-}
+import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline'
+import SuitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue'
+import SuitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue'
+
 export default {
+  components: {
+    tmgIconDivider,
+    SuitesSpecification,
+    SuitesSpecificationMobile
+  },
+
   layout: 'main',
 
   meta: {
@@ -88,110 +100,10 @@ export default {
     ]
   },
 
-  // head() {
-  //   return {
-  //     title: this.data.header && this.data.header.title || 'Suites & Staterooms - The MAJ Oceanic',
-  //     meta: [
-  //       // meta primary
-  //       {
-  //         hid: this.meta_primary.title.hid,
-  //         name: this.meta_primary.title.name,
-  //         content: this.meta_primary.title.content
-  //       },
-  //       {
-  //         hid: this.meta_primary.description.hid,
-  //         name: this.meta_primary.description.name,
-  //         content: this.meta_primary.description.content
-  //       },
-  //       {
-  //         hid: this.meta_primary.keywords.hid,
-  //         name: this.meta_primary.keywords.name,
-  //         content: this.meta_primary.keywords.content
-  //       },
-  //       // meta faceboook
-  //       {
-  //         hid: 'article:publisher',
-  //         name: 'article:publisher',
-  //         property: 'article:publisher',
-  //         content: 'https://www.facebook.com/themajoceanic/',
-  //       },
-  //       {
-  //         hid: 'article:modified_time',
-  //         property: 'article:modified_time',
-  //         content: this.data.updatedAt
-  //       },
-  //       {
-  //         hid: this.meta_facebook.url.hid,
-  //         name: this.meta_facebook.url.name,
-  //         property: this.meta_facebook.url.property,
-  //         content: this.meta_facebook.url.content
-  //       },
-  //       {
-  //         hid: this.meta_facebook.title.hid,
-  //         name: this.meta_facebook.title.name,
-  //         property: this.meta_facebook.title.property,
-  //         content: this.meta_facebook.title.content
-  //       },
-  //       {
-  //         hid: this.meta_facebook.description.hid,
-  //         name: this.meta_facebook.description.name,
-  //         property: this.meta_facebook.description.property,
-  //         content: this.meta_facebook.description.content
-  //       },
-  //       {
-  //         hid: this.meta_facebook.image.hid,
-  //         name: this.meta_facebook.image.name,
-  //         property: this.meta_facebook.image.property,
-  //         content: this.meta_facebook.image.content
-  //       },
-  //       // meta twitter
-  //       {
-  //         hid: 'twitter:card',
-  //         name: 'twitter:card',
-  //         property: 'twitter:card',
-  //         content: 'summary_large_image'
-  //       },
-  //       {
-  //         hid: 'twitter:creator',
-  //         name: 'twitter:creator',
-  //         property: 'twitter:creator',
-  //         content: '@themajoceanic'
-  //       },
-  //       {
-  //         hid: 'twitter:site',
-  //         name: 'twitter:site',
-  //         property: 'twitter:site',
-  //         content: '@themajoceanic'
-  //       },
-  //       {
-  //         hid: this.meta_twitter.url.hid,
-  //         name: this.meta_twitter.url.name,
-  //         property: this.meta_twitter.url.property,
-  //         content: this.meta_twitter.url.content
-  //       },
-  //       {
-  //         hid: this.meta_twitter.title.hid,
-  //         name: this.meta_twitter.title.name,
-  //         property: this.meta_twitter.title.property,
-  //         content: this.meta_twitter.title.content
-  //       },
-  //       {
-  //         hid: this.meta_twitter.description.hid,
-  //         name: this.meta_twitter.description.name,
-  //         property: this.meta_twitter.description.property,
-  //         content: this.meta_twitter.description.content
-  //       },
-  //       {
-  //         hid: this.meta_twitter.image.hid,
-  //         name: this.meta_twitter.image.name,
-  //         property: this.meta_twitter.image.property,
-  //         content: this.meta_twitter.image.content
-  //       }
-  //     ],
-  //   }
-  // },
-
-  components,
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/suites-and-staterooms')
+    return { data }
+  },
 
   data () {
     return {
@@ -201,60 +113,48 @@ export default {
     }
   },
 
-  async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/suites-and-staterooms')
-    return { data }
-  },
-
-  mounted () {
-    this.instafeed();
-    if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+  computed: {
+    asyncComponent () {
+      if (!this.$vuetify.breakpoint.xs) { return 'suites-specification' }
+      return 'suites-specification-mobile'
     }
   },
 
-  computed: {
-    asyncComponent () {
-      if (!this.$vuetify.breakpoint.xs)
-        return 'suites-specification'
-      return 'suites-specification-mobile'
-    },
-    meta_primary() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_primary
-    },
-    meta_facebook() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_facebook
-    },
-    meta_twitter() {
-      return this.data.header && this.data.header.seo_meta_tag.meta_twitter
+  mounted () {
+    this.instafeed()
+    if (this.$data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
     }
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     },
-    instafeed (limit=this.showed) {
-      var feed = new Instafeed({
-        limit: limit,
+
+    instafeed (limit = this.showed) {
+      // eslint-disable-next-line no-undef
+      const feed = new Instafeed({
+        limit,
         accessToken: this.data && this.data.instagram && this.data.instagram.access_token,
-        transform: function(item) {
-          var d = new Date(item.timestamp);
-          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/');
-          return item;
+        transform (item) {
+          const d = new Date(item.timestamp)
+          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/')
+          return item
         },
         template: `<div class="col-4">
-            <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
-        </div>`,
-      });
-      feed.run();
+          <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
+        </div>`
+      })
+      feed.run()
       this.loading = false
     },
-    loadMore (params=null) {
+    loadMore (params = null) {
       this.loading = true
       const n = this.showed + params
       this.showed = n
-      this.instafeed(n);
+      this.instafeed(n)
     }
   }
 }

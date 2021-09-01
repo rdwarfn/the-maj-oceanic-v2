@@ -1,36 +1,49 @@
 <template>
   <v-container tag="section" class="px-6 px-md-0">
-    <div v-if="data.caption" class="hidden-sm-and-up text-h5 text-center"> {{data.caption}} </div>
-    <base-large-image
-      v-bind:data="$store.state.storage + data.image"
+    <div v-if="data.caption" class="hidden-sm-and-up text-h5 text-center">
+      {{ data.caption }}
+    </div>
+    <BaseLargeImage
+      :data="$store.state.storage + data.image"
     />
-    <div v-bind:class="headingClass" class="heading mx-auto text-h4 text-sm-h3 text-center" v-html="data.heading" />
+    <div :class="headingClass" class="heading mx-auto text-h4 text-sm-h3 text-center" v-html="data.heading" />
     <div
       class="text mx-auto text-center"
       v-html="data.description"
     />
     <div class="text-center">
-    <v-btn class="mx-auto" width="143" height="38" color="primary" outlined nuxt tile :to="data.to">read more</v-btn>
+      <v-btn
+        class="mx-auto"
+        width="143"
+        height="38"
+        color="primary"
+        outlined
+        nuxt
+        tile
+        :to="data.to"
+      >
+        read more
+      </v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
-import BaseLargeImage from '@/components/base/BaseLargeImage.vue';
+import BaseLargeImage from '@/components/base/BaseLargeImage.vue'
 export default {
+  components: {
+    BaseLargeImage
+  },
+
   props: {
     data: {
       caption: { type: String },
       image: { type: String },
       heading: { type: String },
-      description: { type: String },
+      description: { type: String }
     },
 
     headingClass: { type: String }
-  },
-
-  components: {
-    BaseLargeImage
   }
 }
 </script>

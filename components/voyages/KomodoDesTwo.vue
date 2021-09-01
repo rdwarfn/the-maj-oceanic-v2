@@ -1,6 +1,8 @@
 <template>
   <v-container tag="section" class="komodo--des-two__wrap py-0 px-6 px-md-0">
-    <div class="text-h4 text-md-h3 text-center mb-10 mb-sm-5">{{ data.heading }}</div>
+    <div class="text-h4 text-md-h3 text-center mb-10 mb-sm-5">
+      {{ data.heading }}
+    </div>
     <v-row no-gutters align="center" justify-sm="space-between" class="komodo--des-two_content">
       <v-col cols="12" sm="5" class="mb-8 mb-sm-0">
         <v-img
@@ -8,7 +10,7 @@
           :lazy-src="$store.state.storage + data.gallery[0].image"
           class="komodo--des-two_image"
         >
-          <template v-slot:placeholder>
+          <template #placeholder>
             <v-row
               class="fill-height ma-0"
               align="center"

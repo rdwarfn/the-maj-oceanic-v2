@@ -4,7 +4,7 @@
       <nuxt />
     </v-main>
 
-    <Footer app/>
+    <Footer app />
   </v-app>
 </template>
 
@@ -14,15 +14,7 @@ import Footer from '~/components/containers/Footer.vue'
 export default {
   components: {
     Footer
-  },
-
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-
-      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
-    })
-  },
+  }
 }
 </script>
 
