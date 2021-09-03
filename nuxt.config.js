@@ -5,6 +5,10 @@ export default {
     BASE_URL: process.env.BASE_URL
   },
 
+  serverMiddleware: {
+    '/': '~/api/swr.js'
+  },
+
   loading: {
     color: '#208CB2'
   },
@@ -103,6 +107,7 @@ export default {
   */
   vuetify: {
     defaultAssets: false,
+    treeShake: true,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js'
   },

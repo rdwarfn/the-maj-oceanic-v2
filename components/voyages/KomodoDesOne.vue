@@ -3,15 +3,9 @@
     tag="section"
     class="komodo--des-one__wrap"
     :class="{
-<<<<<<< HEAD
-      komodo: this.$route.name.includes('komodo'),
-      'spice-islands': this.$route.name.includes('spice-islands'),
-      'raja-ampat': this.$route.name.includes('raja-ampat'),
-=======
       komodo: $route.name.includes('komodo'),
       'spice-islands': $route.name.includes('spice-islands'),
       'raja-ampat': $route.name.includes('raja-ampat'),
->>>>>>> origin/revisi
     }"
   >
     <v-container class="py-0 px-6 px-md-0">

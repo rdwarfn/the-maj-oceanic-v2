@@ -1,5 +1,4 @@
 <template>
-  <!-- class="navbar align-self-center" -->
   <div
     class="navbar"
     :class="{ animated: isIntersecting }"
