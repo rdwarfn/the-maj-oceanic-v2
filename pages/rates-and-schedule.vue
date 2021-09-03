@@ -17,35 +17,36 @@
           :items="data.table_full_chapter.data"
           style="background: transparent"
           class="elevation-0 mt-5 text--primary text-center"
-          hide-default-header
-          hide-default-footer
           :footer-props="{
             itemsPerPageOptions: [5, 7, 10, -1]
           }"
+          item-key="headline"
+          hide-default-footer
+          hide-default-header
         >
-          <template #header>
+          <template #header="{props: {headers}}">
             <thead>
               <tr>
-                <td colspan="3" class="bg-none" />
-                <td colspan="2" class="font-weight-bold px-0 px-sm-5 px-md-8 py-sm-2">
-                  Full Charter Rates per Night (USD)
-                </td>
+                <th colspan="3" class="bg-none" />
+                <th colspan="2" class="font-weight-bold px-0 px-sm-5 px-md-8 py-sm-2">
+                  {{ headers[0].text }}
+                </th>
               </tr>
               <tr>
-                <td class="hidden-sm-and-up bg-none" colspan="2" />
-                <td class="hidden-xs-only bg-none" />
-                <td class="hidden-xs-only font-weight-bold">
-                  Sailing Area
-                </td>
-                <td class="font-weight-bold py-sm-2" style="width: 15%">
-                  Minimum Nights
-                </td>
-                <td class="font-weight-bold" style="width: 15%">
-                  2020
-                </td>
-                <td class="font-weight-bold" style="width: 15%">
-                  2021
-                </td>
+                <th class="hidden-sm-and-up bg-none" colspan="2" />
+                <th class="hidden-xs-only bg-none" />
+                <th class="hidden-xs-only font-weight-bold">
+                  {{ headers[1].text }}
+                </th>
+                <th class="font-weight-bold py-sm-2" style="width: 15%">
+                  {{ headers[2].text }}
+                </th>
+                <th class="font-weight-bold" style="width: 15%">
+                  {{ headers[3].text }}
+                </th>
+                <th class="font-weight-bold" style="width: 15%">
+                  {{ headers[4].text }}
+                </th>
               </tr>
             </thead>
           </template>
@@ -85,7 +86,7 @@
               depressed
               outlined
               color="primary"
-              @click="togglePage($event, props)"
+              @click.prevent="togglePage(props)"
             >
               {{ footerButton }}
             </v-btn>
@@ -294,7 +295,7 @@ export default {
       }).format(params)
       return price
     },
-    togglePage (event, params) {
+    togglePage (params) {
       if (this.itemsPerPage === params.itemsPerPageOptions[3]) {
         this.itemsPerPage = params.itemsPerPageOptions[1]
         this.footerButton = 'View More'
@@ -302,7 +303,6 @@ export default {
         this.itemsPerPage = params.itemsPerPageOptions[3]
         this.footerButton = 'View Less'
       }
-      // console.log(params);
     }
   }
 }
@@ -336,7 +336,7 @@ export default {
 }
 ::v-deep .v-data-table {
   @media #{map-get($display-breakpoints, 'sm-and-up')} {
-    .v-data-table__wrapper > table > thead > tr > td:not(.bg-none) {
+    .v-data-table__wrapper > table > thead > tr > th:not(.bg-none) {
       font-size: 16px !important;
       background: #208CB2;
       color: white;
@@ -346,7 +346,7 @@ export default {
     }
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    .v-data-table__wrapper > table > thead > tr > td:not(.bg-none) {
+    .v-data-table__wrapper > table > thead > tr > th:not(.bg-none) {
       font-size: 12px !important;
       background: #208CB2;
       color: white;
