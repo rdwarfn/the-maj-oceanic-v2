@@ -383,7 +383,7 @@ export default {
         }
       } catch (err) {
         this.snackbar = {
-          text: 'My apologize, there is error ' + err,
+          text: 'We\'re sorry, but something went wrong.',
           color: 'red',
           show: true
         }

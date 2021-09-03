@@ -1,16 +1,4 @@
 <template>
-  <!-- <v-container>
-    <h1 v-if="error.statusCode === 404">
-      {{ pageNotFound }}
-    </h1>
-    <h1 v-else>
-      {{ error }}
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
-  </v-container> -->
   <v-sheet v-if="error.statusCode !== 404" color="#F3E9E5" class="other-error d-flex flex-row">
     <v-container>
       <v-row no-gutters align="center" justify="space-between" class="container mx-auto px-8 px-md-0">
