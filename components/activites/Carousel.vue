@@ -1,35 +1,35 @@
 <template>
   <v-container tag="section" class="activites-container px-0 px-sm-6 px-md-0" style="position: relative">
-    <div class="activites-caption-mobile hidden-sm-and-up text-h5 text-center">{{ data.caption }}</div>
-    <div class="activites-heading-mobile hidden-sm-and-up font-weight-bold text-h4 text-center">{{ data.heading }}</div>
+    <div class="activites-caption-mobile hidden-sm-and-up text-h5 text-center">
+      {{ data.caption }}
+    </div>
+    <div class="activites-heading-mobile hidden-sm-and-up font-weight-bold text-h4 text-center">
+      {{ data.heading }}
+    </div>
     <swiper
       ref="swiper"
       class="swiper activites-swiper-mobile hidden-sm-and-up"
       :options="swiperMobileOptions"
     >
       <swiper-slide v-for="(item, index2) in data.gallery" :key="index2">
-        <template>
-          <v-img
-            :src="item.image"
-            :lazy-src="item.image"
-            class="activites-image"
-          >
-            <template #placeholder>
-              <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular indeterminate color="grey lighten-5" />
-              </v-row>
-            </template>
-          </v-img>
-        </template>
+        <v-img
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
+          class="activites-image"
+        >
+          <template #placeholder>
+            <v-row class="fill-height ma-0" align="center" justify="center">
+              <v-progress-circular indeterminate color="grey lighten-5" />
+            </v-row>
+          </template>
+        </v-img>
       </swiper-slide>
     </swiper>
 
     <div
       class="activites-description-mobile hidden-sm-and-up px-6 px-md-0 text-center"
       v-html="data.description"
-    >
-    </div>
-
+    />
 
     <div class="hidden-xs-only">
       <swiper
@@ -41,8 +41,8 @@
         <swiper-slide v-for="(item, index2) in data.gallery" :key="index2">
           <template>
             <v-img
-              :src="item.image"
-              :lazy-src="item.image"
+              :src="$store.state.storage + item.image"
+              :lazy-src="$store.state.storage + item.image"
               class="activites-image"
             >
               <template #placeholder>
@@ -53,35 +53,41 @@
             </v-img>
           </template>
         </swiper-slide>
-        <div class="swiper-pagination activites-pagination" :class="{reversed: data.reverse}" slot="pagination"></div>
+        <div slot="pagination" class="swiper-pagination activites-pagination" :class="{reversed: data.reverse}" />
       </swiper>
       <v-card flat rounded class="activites-card" :class="{reversed: data.reverse}">
-        <div class="text-h6 activites-caption">{{ data.caption }}</div>
+        <div class="text-h6 activites-caption">
+          {{ data.caption }}
+        </div>
         <div class="activites-heading font-weight-bold text-h4">
           {{ data.heading }}
         </div>
-        <div v-html="data.description"></div>
+        <div v-html="data.description" />
       </v-card>
       <v-row no-gutters align="center" justify="space-between" class="activites-actions" :class="{reversed: data.reverse}">
         <v-col cols="auto">
           <v-btn depressed fab x-small @click.prevent="prev">
-            <v-icon color="primary">{{ icon.prev }}</v-icon>
+            <v-icon color="primary">
+              {{ icon.prev }}
+            </v-icon>
           </v-btn>
         </v-col>
         <v-col cols="auto">
           <v-btn depressed fab x-small @click.prevent="next">
-            <v-icon color="primary">{{ icon.next }}</v-icon>
+            <v-icon color="primary">
+              {{ icon.next }}
+            </v-icon>
           </v-btn>
         </v-col>
       </v-row>
     </div>
-
   </v-container>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronLeft, mdiChevronRight } from '@mdi/js';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronLeft, mdiChevronRight } from '@mdi/js'
+
 export default {
   components: { Swiper, SwiperSlide },
   props: {
@@ -99,7 +105,7 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
+          renderBullet (index, className) {
             return `<span class="${className}"></span>`
           }
         }
@@ -108,7 +114,7 @@ export default {
         lazy: true,
         centeredSlides: true,
         slidesPerView: 'auto',
-        spaceBetween: 25,
+        spaceBetween: 25
       },
 
       icon: {
@@ -125,12 +131,12 @@ export default {
   methods: {
     prev () {
       if (this.swiper.isBeginning) { return }
-      this.swiper.slidePrev();
+      this.swiper.slidePrev()
     },
 
     next () {
       if (this.swiper.isEnd) { return }
-      this.swiper.slideNext();
+      this.swiper.slideNext()
     }
   }
 }

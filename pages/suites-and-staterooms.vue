@@ -4,55 +4,66 @@
       <div
         class="intro--head font-weight-bold text-center mx-auto"
         v-html="data.intro.heading"
-      >
-      </div>
+      />
       <div
         class="intro--paragraph text-center mx-auto"
         v-html="data.intro.description"
-      ></div>
+      />
     </v-container>
 
-    <component :is="asyncComponent" class="admiral-suite" v-bind:data="data.admiral_suite">
+    <component :is="asyncComponent" class="admiral-suite" :data="data.admiral_suite">
       <template #icon>
         <v-img
           v-if="data.admiral_suite.icon"
           class="spesification--icon"
-          v-bind:src="data.admiral_suite.icon"
-          v-bind:lazy-src="data.admiral_suite.icon"></v-img>
+          :src="$store.state.storage + data.admiral_suite.icon"
+          :lazy-src="$store.state.storage + data.admiral_suite.icon"
+        />
       </template>
     </component>
 
-    <component :is="asyncComponent" class="columbus" reverse v-bind:data="data.commodore_suite">
+    <component :is="asyncComponent" class="columbus" reverse :data="data.commodore_suite">
       <template #icon>
         <v-img
           v-if="data.commodore_suite.icon"
           class="spesification--icon"
-          v-bind:src="data.commodore_suite.icon"
-          v-bind:lazy-src="data.commodore_suite.icon"></v-img>
+          :src="$store.state.storage + data.commodore_suite.icon"
+          :lazy-src="$store.state.storage + data.commodore_suite.icon"
+        />
       </template>
     </component>
 
-    <component :is="asyncComponent" class="deluxe" v-bind:data="data.deluxe_staterooms" no-wrap>
+    <component :is="asyncComponent" class="deluxe" :data="data.deluxe_stateroom" no-wrap>
       <template #icon>
-        <div v-if="data.deluxe_staterooms.icons" class="d-inline-flex">
+        <div v-if="data.deluxe_stateroom.icons" class="d-inline-flex">
           <v-img
-            v-for="(d, index) in data.deluxe_staterooms.icons"
+            v-for="(d, index) in data.deluxe_stateroom.icons"
             :key="index"
             class="spesification--icon spesification--icon-delux"
-            :class="{'mr-0': data.deluxe_staterooms.icons.length - 1 == index}"
-            v-bind:src="d.icon"
-            v-bind:lazy-src="d.icon"
-          ></v-img>
+            :class="{'mr-0': data.deluxe_stateroom.icons.length - 1 == index}"
+            :src="$store.state.storage + d.icon"
+            :lazy-src="$store.state.storage + d.icon"
+          />
         </div>
       </template>
     </component>
 
     <v-sheet color="#EFE1DC">
       <v-container class="ig--container text-center px-6 px-md-0">
-        <div class="ig--heading" v-html="data.instagram.heading"></div>
-        <v-row id="instafeed"></v-row>
+        <div class="ig--heading" v-html="data.instagram.heading" />
+        <v-row id="instafeed" />
 
-        <v-btn width="141" height="38" :loading="loading" @click.prevent="() => loadMore(6)" class="btn-l ig--btn" color="primary" tile outlined depressed>
+        <v-btn
+          width="141"
+          height="38"
+          :loading="loading"
+          class="btn-l ig--btn"
+          color="primary"
+          tile
+          outlined
+          depressed
+          @click.prevent="() => loadMore(6)"
+        >
           View more
         </v-btn>
       </v-container>
@@ -61,15 +72,17 @@
 </template>
 
 <script>
-import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline';
-import suitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue';
-import suitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue';
-const components = {
-  tmgIconDivider,
-  suitesSpecification,
-  suitesSpecificationMobile,
-}
+import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline'
+import SuitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue'
+import SuitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue'
+
 export default {
+  components: {
+    tmgIconDivider,
+    SuitesSpecification,
+    SuitesSpecificationMobile
+  },
+
   layout: 'main',
 
   meta: {
@@ -87,7 +100,10 @@ export default {
     ]
   },
 
-  components,
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/suites-and-staterooms')
+    return { data }
+  },
 
   data () {
     return {
@@ -97,51 +113,48 @@ export default {
     }
   },
 
-  async asyncData ({ $content }) {
-    const data = await $content ('pages/suites-and-staterooms').fetch();
-    return { data }
-  },
-
-  mounted () {
-    this.instafeed();
-    if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-    }
-  },
-
   computed: {
     asyncComponent () {
-      if (!this.$vuetify.breakpoint.xs)
-        return 'suites-specification'
+      if (!this.$vuetify.breakpoint.xs) { return 'suites-specification' }
       return 'suites-specification-mobile'
     }
   },
 
+  mounted () {
+    this.instafeed()
+    if (this.$data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
+    }
+  },
+
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     },
-    instafeed (limit=this.showed) {
-      var feed = new Instafeed({
-        limit: limit,
+
+    instafeed (limit = this.showed) {
+      // eslint-disable-next-line no-undef
+      const feed = new Instafeed({
+        limit,
         accessToken: this.data && this.data.instagram && this.data.instagram.access_token,
-        transform: function(item) {
-          var d = new Date(item.timestamp);
-          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/');
-          return item;
+        transform (item) {
+          const d = new Date(item.timestamp)
+          item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/')
+          return item
         },
         template: `<div class="col-4">
-            <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
-        </div>`,
-      });
-      feed.run();
+          <a target="blank" href="{{link}}"><img class="ig--img" title="{{caption}}" src="{{image}}" /></a>
+        </div>`
+      })
+      feed.run()
       this.loading = false
     },
-    loadMore (params=null) {
+    loadMore (params = null) {
       this.loading = true
       const n = this.showed + params
       this.showed = n
-      this.instafeed(n);
+      this.instafeed(n)
     }
   }
 }

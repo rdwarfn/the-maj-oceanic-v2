@@ -1,74 +1,91 @@
 <template>
   <v-container class="pa-0 __carousel-three">
-    <swiper ref="swiper" class="swiper" v-bind:options="swiperOption">
-      <swiper-slide v-for="item in data" v-bind:key="item.id">
+    <swiper ref="swiper" class="swiper" :options="swiperOption">
+      <swiper-slide v-for="item in data" :key="item.id">
         <div class="text-center __carousel-three--item">
-          <v-skeleton-loader v-if="!item.image" type="image" class="__carousel-three--item-img"></v-skeleton-loader>
-          <v-img v-else
-            v-bind:src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
-            v-bind:lazy-src="staticImage
-              ? require(`~/assets/images/${item.image}`)
-              : item.image"
+          <v-skeleton-loader v-if="!item.image" type="image" class="__carousel-three--item-img" />
+          <v-img
+            v-else
+            :src="$store.state.storage + item.image"
+            :lazy-src="$store.state.storage + item.image"
+            :class="imageClass"
             class="__carousel-three--item-img"
-            v-bind:class="imageClass"
           >
-            <template v-slot:placeholder>
+            <template #placeholder>
               <v-row class="fill-height ma-0" align="center" justify="center">
-                <v-progress-circular indeterminate color="grey lighten-5"></v-progress-circular>
+                <v-progress-circular indeterminate color="grey lighten-5" />
               </v-row>
             </template>
           </v-img>
-          <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" v-bind:class="headingClass">
-            {{item.heading}}
+          <h1 v-if="item.heading" class="__carousel-three--item-heading mx-auto" :class="headingClass">
+            {{ item.heading }}
           </h1>
-          <p v-if="item[textData]" v-bind:class="textClass">
-            {{item[textData]}}
+          <p v-if="item[textData]" :class="textClass">
+            {{ item[textData] }}
           </p>
           <client-only>
-          <t-button
-            v-if="buttonText"
-            v-bind:class="buttonClass"
-            v-text="buttonText"
-            v-bind:props="{
-              to: item.to,
+            <t-button
+              v-if="buttonText"
+              :class="buttonClass"
+              :props="{
+                to: item.to,
               ...buttonProps
-            }"
-          />
+              }"
+              v-text="buttonText"
+            />
           </client-only>
         </div>
       </swiper-slide>
       <div
         v-if="!hidePagination"
+        slot="pagination"
         class="swiper-pagination swiper-pagination-bullets"
-        v-bind:class="paginationClass"
-        slot="pagination"></div>
+        :class="paginationClass"
+      />
     </swiper>
     <div class="navigation container hidden-xs-only">
-      <v-btn depressed absolute fab x-small class="button--left" color="primary" @click="prev">
-        <v-icon color="white"> {{icon.left}} </v-icon>
+      <v-btn
+        depressed
+        absolute
+        fab
+        x-small
+        class="button--left"
+        color="primary"
+        @click="prev"
+      >
+        <v-icon color="white">
+          {{ icon.left }}
+        </v-icon>
       </v-btn>
-      <v-btn depressed absolute fab x-small class="button--right" color="primary" @click="next">
-        <v-icon color="white"> {{icon.right}} </v-icon>
+      <v-btn
+        depressed
+        absolute
+        fab
+        x-small
+        class="button--right"
+        color="primary"
+        @click="next"
+      >
+        <v-icon color="white">
+          {{ icon.right }}
+        </v-icon>
       </v-btn>
     </div>
   </v-container>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import { mdiChevronRight, mdiChevronLeft } from '@mdi/js';
-const components = {
-  Swiper,
-  SwiperSlide
-}
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { mdiChevronRight, mdiChevronLeft } from '@mdi/js'
 export default {
-  components,
+  components: {
+    Swiper,
+    SwiperSlide
+  },
 
   props: {
     headingClass: { type: String },
-    textClass: { type: String } ,
+    textClass: { type: String },
     textData: { type: String, default: 'text' },
     buttonText: { type: String },
     buttonClass: { type: String },
@@ -94,8 +111,8 @@ export default {
         pagination: {
           el: '.swiper-pagination',
           clickable: true,
-          renderBullet(index, className) {
-            return `<span title="${index+1}" class="${className} swiper-pagination-bullet-custom"></span>`
+          renderBullet (index, className) {
+            return `<span title="${index + 1}" class="${className} swiper-pagination-bullet-custom"></span>`
           }
         },
         breakpoints: {
@@ -115,7 +132,7 @@ export default {
           768: {
             slidesPerView: 3,
             spaceBetween: 15,
-            initialSlide: 0,
+            initialSlide: 0
           }
         }
       }
@@ -125,11 +142,11 @@ export default {
   methods: {
     prev () {
       if (this.$refs.swiper.$swiper.isBeginning) { return }
-      this.$refs.swiper.$swiper.slidePrev();
+      this.$refs.swiper.$swiper.slidePrev()
     },
     next () {
       if (this.$refs.swiper.$swiper.isEnd) { return }
-      this.$refs.swiper.$swiper.slideNext();
+      this.$refs.swiper.$swiper.slideNext()
     }
   }
 }

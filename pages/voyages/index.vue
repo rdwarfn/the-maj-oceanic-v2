@@ -1,15 +1,21 @@
 <template>
   <div id="voyages">
-    <voyages-item v-for="(item, index) in data.voyages_items" v-bind:heading-class="!index? 'heading-komodo' : null" class="voyages__item" v-bind:key="index" v-bind:data="item" />
+    <VoyagesItem
+      v-for="(item, index) in data.voyages_items"
+      :key="index"
+      :heading-class="!index? 'heading-komodo' : null"
+      class="voyages__item"
+      :data="item"
+    />
 
     <section class="voyages__testimonal">
-      <base-testimonal :data="data.testimonies" />
+      <BaseTestimonal :data="data.testimonies" />
     </section>
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
-      <base-carousel
+      <BaseCarousel
         card-mobile-class="mt-2 transparent"
-        v-bind:data="[...data.itineraries]"
+        :data="[...data.itinerary]"
         button-text="Rates & Schedule"
       />
     </v-container>
@@ -17,12 +23,17 @@
 </template>
 
 <script>
-const components = {
-  voyagesItem: () => import('@/components/voyages/VoyagesItem'),
-  baseCarousel: () => import('@/components/base/BaseCarousel.vue'),
-  baseTestimonal: () => import('@/components/base/BaseTestimonal.vue')
-}
+import VoyagesItem from '~/components/voyages/VoyagesItem'
+import BaseTestimonal from '~/components/base/BaseTestimonal.vue'
+import BaseCarousel from '~/components/base/BaseCarousel.vue'
+
 export default {
+  components: {
+    VoyagesItem,
+    BaseTestimonal,
+    BaseCarousel
+  },
+
   layout: 'main',
 
   meta: {
@@ -39,22 +50,21 @@ export default {
     ]
   },
 
-  components,
-
-  async asyncData ({ $content }) {
-    const data = await $content('pages/voyages/index').fetch();
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/voyages/')
     return { data }
   },
 
   mounted () {
     this.$nextTick(() => {
       if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
       }
     })
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', {
         page_key, data

@@ -1,29 +1,32 @@
 <template>
   <div id="spesification">
     <v-container tag="section" class="spesific--master py-0 px-6 px-md-0">
-      <base-card-text-image
-        v-bind:data="data.decks_technical_detail"
+      <BaseCardTextImage
+        :data="data.deck_technical"
         static-image
       />
     </v-container>
 
-    <deck-spesification v-bind:data="data.deck_previews" />
+    <DeckSpesification :data="data.deck_previews" />
 
     <v-container class="pa-0">
-      <base-tables :data="data.table_specification" />
+      <BaseTables :data="data.table_spesification" />
     </v-container>
   </div>
 </template>
 
 <script>
-const components = {
-  baseTabs: () => import('@/components/base/BaseTabs.vue'),
-  baseTables: () => import('@/components/base/BaseTables.vue'),
-  baseCardTextImage: () => import('@/components/base/BaseCardTextImage.vue'),
-  deckSpesification: () => import('@/components/DeckSpesification.vue')
-}
+import BaseTables from '~/components/base/BaseTables.vue'
+import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
+import DeckSpesification from '~/components/DeckSpesification.vue'
 
 export default {
+  components: {
+    BaseTables,
+    BaseCardTextImage,
+    DeckSpesification
+  },
+
   layout: 'main',
 
   meta: {
@@ -45,11 +48,8 @@ export default {
     ]
   },
 
-  components,
-
-  async asyncData ({ $content }) {
-    const data = await $content ('pages/specification').fetch();
-
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/specification/')
     return {
       data
     }
@@ -57,13 +57,14 @@ export default {
 
   mounted () {
     if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
     }
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     }
   }
 }

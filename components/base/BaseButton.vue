@@ -1,6 +1,9 @@
 <template>
   <v-btn
-    nuxt tile depressed dark
+    nuxt
+    tile
+    depressed
+    dark
     v-bind="props"
     height="38"
   >
@@ -12,11 +15,11 @@
 export default {
   name: 'Button',
 
+  inheritAttrs: false,
+
   props: {
     props: Object
-  },
-
-  inheritAttrs: false
+  }
 }
 </script>
 

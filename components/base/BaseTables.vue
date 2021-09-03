@@ -1,8 +1,8 @@
 <template>
   <v-data-table
     class="text--primary justify-space-between px-6 px-md-0"
-    v-bind:headers="data.headers"
-    v-bind:items="data.data"
+    :headers="data.headers"
+    :items="data.data"
     item-key="name"
     :items-per-page="12"
     hide-default-footer
@@ -11,23 +11,26 @@
     <template #header>
       <thead>
         <tr>
-          <td class="text-center text-sm-left" colspan="2">TABLE of SPECIFICATION</td>
+          <td class="text-center text-sm-left" colspan="2">
+            TABLE of SPECIFICATION
+          </td>
         </tr>
       </thead>
     </template>
     <template #body="{ items }">
       <tbody>
-        <tr class="hidden-xs-only" v-for="(item, index) in items" :key="index">
+        <tr v-for="(item, index) in items" :key="index" class="hidden-xs-only">
           <td class="px-0 montserrat text-uppercase font-weight-bold py-5">
-            {{item.name}}
+            {{ item.name }}
           </td>
-          <td class="px-0 pt-sans py-5" v-html="item.value">
-          </td>
+          <td class="px-0 pt-sans py-5" v-html="item.value" />
         </tr>
-        <tr class="hidden-sm-and-up" v-for="(item, index) in items" :key="('children-' + index)">
+        <tr v-for="(item, index) in items" :key="('children-' + index)" class="hidden-sm-and-up">
           <td colspan="2" class="px-0 py-5">
-            <div class="montserrat text-uppercase font-weight-bold pb-5"> {{item.name}} </div>
-            <div class="pt-sans" v-html="item.value"></div>
+            <div class="montserrat text-uppercase font-weight-bold pb-5">
+              {{ item.name }}
+            </div>
+            <div class="pt-sans" v-html="item.value" />
           </td>
         </tr>
       </tbody>
@@ -40,70 +43,6 @@ export default {
   props: {
     data: { type: Object, required: true }
   }
-  // data () {
-  //   return {
-  //     data: {
-  //       "headers": [
-  //         {
-  //           text: "Table Of Specification",
-  //           align: "start",
-  //           value: "name",
-  //         },
-  //         {
-  //           text: "",
-  //           value: "value",
-  //           sortable: false
-  //         }
-  //       ],
-  //       "data": [
-  //         {
-  //           name: "Build",
-  //           value: "Bira, Sulawesi, Indonesia in 2019"
-  //         },
-  //         {
-  //           name: "Type",
-  //           value: "Traditional gaft-rigged timber phinisi (teak wood)"
-  //         },
-  //         {
-  //           name: "Length (Total)",
-  //           value: "47 m /154 ft"
-  //         },
-  //         {
-  //           name: "Beam",
-  //           value: "10.5 m / 34 ft"
-  //         },
-  //         {
-  //           name: "Draft",
-  //           value: "3.52 m / 11.5 ft"
-  //         },
-  //         {
-  //           name: "no. of cabinS | GUESTS | crew",
-  //           value: "6+1 | 14 | 12"
-  //         },
-  //         {
-  //           name: "cruising speed",
-  //           value: "17 knot (max.) / 12 knot (avg.) / 9 knot (min.)"
-  //         },
-  //         {
-  //           name: "Engine model",
-  //           value: "Yanmar marine diesel 6AYM-WST 659HP/1900RPM (sea water cooling) 5 blade bronze propellers"
-  //         },
-  //         {
-  //           name: "Navigation",
-  //           value: "Garmin Aquamap 1252"
-  //         },
-  //         {
-  //           name: "life raft",
-  //           value: "type YZF-A capacity of 25 persons"
-  //         },
-  //         {
-  //           name: "Watersports Equipment",
-  //           value: "6 Paddle board,<br/>6 Sea Kayaks,<br/>Fishing Gear,<br/>Complete diving equipment,<br/>Complete Snorkeling equipment"
-  //         }
-  //       ]
-  //     }
-  //   }
-  // }
 }
 </script>
 

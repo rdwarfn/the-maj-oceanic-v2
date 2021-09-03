@@ -1,44 +1,38 @@
 {
-  "name": "oceanic",
-  "version": "1.0.0",
-  "description": "Official The Maj Oceanic",
-  "author": {
-    "name": "Clevara ID",
-    "url": "https://clevara.id"
-  },
-  "homepage": "https://themajoceanic.com",
+  "name": "TMO",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "dev:host": "nuxt --hostname 0",
+    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && nuxt --env.NODE_TLS_REJECT_UNAUTHORIZED=0",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "start": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && nuxt start --env.NODE_TLS_REJECT_UNAUTHORIZED=0",
     "generate": "nuxt generate",
     "now-build": "nuxt generate"
   },
   "dependencies": {
     "@mdi/js": "^5.5.55",
-    "@nuxt/content": "^1.5.0",
     "@nuxtjs/axios": "^5.12.0",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/style-resources": "^1.0.0",
-    "consola": "^2.15.0",
     "lodash": "^4.17.20",
-    "nuxt": "^2.14.0",
-    "postcss-uncss": "^0.17.0",
-    "remark-emoji": "^2.1.0",
-    "ress": "^3.0.0",
+    "nuxt": "^2.15.7",
     "swiper": "^5",
-    "uncss": "^0.17.3",
     "vue-awesome-swiper": "4.1.0",
     "vue-content-loader": "^0.2.3",
     "vue-instagram": "^3.0.0",
     "vue-youtube-embed": "^2.2.2"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config": "^6.0.1",
+    "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/svg": "^0.1.11",
     "@nuxtjs/vuetify": "^1.11.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-nuxt": "^2.0.0",
+    "eslint-plugin-vue": "^7.17.0",
     "glob-all": "^3.2.1",
+    "ohmyfetch": "^0.2.0",
     "vue-smooth-reflow": "^0.1.12",
     "vue-video-player": "^5.0.2"
   }

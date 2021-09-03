@@ -7,47 +7,57 @@
       <p
         class="intro--paragraph text-center mx-auto"
         v-html="data.intro.description"
-      ></p>
+      />
     </v-container>
 
     <!-- watersports -->
-    <activites-carousel
+    <template v-for="(item, index) in data.facilities">
+      <Carousel
+        :key="index"
+        :data="item"
+        :class="{
+          'watersports-section': item.caption.includes('watersports'),
+          'fitness_wellness-section': item.caption.includes('fitness & wellness'),
+          'exploration-section': item.caption.includes('exploration')
+        }"
+      />
+    </template>
+    <!-- <Carousel
       :data="data.watersports"
       class="watersports-section"
-    ></activites-carousel>
+    ></Carousel> -->
     <!-- end watersports -->
 
     <!-- fitness_wellness -->
-    <activites-carousel
+    <!-- <Carousel
       :data="data.fitness_wellness"
       class="fitness_wellness-section"
-    ></activites-carousel>
+    ></Carousel> -->
     <!-- end fitness_wellness -->
 
     <!-- exploration -->
-    <activites-carousel
+    <!-- <Carousel
       :data="data.exploration"
       class="exploration-section"
-    ></activites-carousel>
+    ></Carousel> -->
     <!-- end exploration -->
 
     <section class="activites__testimonal">
-      <base-testimonal :data="data.testimonies" />
+      <BaseTestimonal :data="data.testimonies" />
     </section>
   </article>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import activitesCarousel from '@/components/activites/Carousel.vue';
-import baseTestimonal from '@/components/base/BaseTestimonal.vue';
-
-const components = {
-  activitesCarousel,
-  baseTestimonal
-};
+import Carousel from '@/components/activites/Carousel.vue'
+import BaseTestimonal from '@/components/base/BaseTestimonal.vue'
 
 export default {
+  components: {
+    Carousel,
+    BaseTestimonal
+  },
+
   layout: 'main',
 
   meta: {
@@ -64,11 +74,8 @@ export default {
     ]
   },
 
-  components,
-
-  async asyncData ({ $content }) {
-    const data = await $content ('pages/activites').fetch();
-
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/activites/')
     return {
       data
     }
@@ -76,13 +83,14 @@ export default {
 
   mounted () {
     if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
     }
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     }
   }
 }

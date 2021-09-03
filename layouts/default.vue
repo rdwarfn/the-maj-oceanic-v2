@@ -4,24 +4,17 @@
       <nuxt />
     </v-main>
 
-    <tmo-footer app/>
+    <Footer app />
   </v-app>
 </template>
 
 <script>
+import Footer from '~/components/containers/Footer.vue'
+
 export default {
   components: {
-    TmoFooter: () =>
-      import('@/components/containers/Footer.vue')
-  },
-
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start()
-
-      setTimeout(() => this.$nuxt.$loading.finish(), 1000)
-    })
-  },
+    Footer
+  }
 }
 </script>
 

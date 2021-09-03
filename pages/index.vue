@@ -1,97 +1,67 @@
 <template>
-  <div id="home">
-    <template>
-      <home-intro
-        class="home--intro"
-        v-bind:data="data.intro"
-      ></home-intro>
-    </template>
+  <VSheet id="home">
+    <Intro
+      class="home--intro"
+      :data="data.intro"
+    />
 
-    <v-container class="home--the-vessel px-6 px-md-0" tag="section">
-      <template>
-        <div v-if="!data.the_vessel" class="text-center">
-          <v-skeleton-loader type="image" :loading="!data.the_vessel" />
-        </div>
-        <home-vessel
-          v-else
-          :data="[...data.the_vessel]"
-          button-text="discover"
-        ></home-vessel>
-      </template>
-    </v-container>
+    <VContainer
+      v-if="data.the_vessel"
+      class="home--the-vessel px-6 px-md-0"
+      tag="section"
+    >
+      <BaseCarousel
+        :data="[...data.the_vessel]"
+        button-text="discover"
+      />
+    </VContainer>
 
-    <template>
-      <div v-if="!data.voyages" class="text-center container">
-        <v-skeleton-loader type="card" :loading="!data.voyages" />
-      </div>
-      <home-voyages v-else v-bind:data="data.voyages" />
-    </template>
+    <HomeVoyages v-if="data.voyages" :data="data.voyages" />
 
-    <v-container class="home--dining px-6 px-md-0 py-0" tag="section">
-      <template>
-        <div v-if="!data.dining" class="text-center">
-          <v-skeleton-loader type="card" :loading="!data.dining" />
-        </div>
-        <home-dining-occasions
-          v-else
-          v-bind:data="data.dining"
-          button-text="learn more"
-          content-right
-          reverse
-        ></home-dining-occasions>
-      </template>
-    </v-container>
+    <VContainer
+      v-if="data.dining"
+      class="home--dining px-6 px-md-0 py-0"
+      tag="section"
+    >
+      <BaseCardTextImage
+        :data="data.dining"
+        button-text="learn more"
+        content-right
+        reverse
+      />
+    </VContainer>
 
-    <v-container class="home--occasions px-6 px-md-0 py-0" tag="section">
-      <template>
-        <div v-if="!data.occasions" class="text-center">
-          <v-skeleton-loader type="card" :loading="!data.occasions" />
-        </div>
-        <home-dining-occasions
-          v-else
-          v-bind:data="data.occasions"
-          button-text="learn more"
-        ></home-dining-occasions>
-      </template>
-    </v-container>
-  </div>
+    <VContainer
+      v-if="data.occasions"
+      class="home--occasions px-6 px-md-0 py-0"
+      tag="section"
+    >
+      <BaseCardTextImage
+        :data="data.occasions"
+        button-text="learn more"
+      />
+    </VContainer>
+  </VSheet>
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
-import homeIntro from '@/components/Intro.vue';
-import homeVessel from '@/components/base/BaseCarousel.vue';
-import homeDiningOccasions from '@/components/base/BaseCardTextImage.vue'
-import homeVoyages from '@/components/home/HomeVoyages'
-
-const components = {
-  homeIntro,
-  homeVessel,
-  homeVoyages,
-  homeDiningOccasions,
-}
+import Intro from '~/components/Intro.vue'
+import BaseCarousel from '~/components/base/BaseCarousel.vue'
+import HomeVoyages from '~/components/home/HomeVoyages.vue'
+import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
 
 export default {
+
+  components: {
+    Intro,
+    BaseCarousel,
+    HomeVoyages,
+    BaseCardTextImage
+  },
   layout: 'main',
 
-  components,
-
-  head () {
-    return {
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: JSON.stringify(this.data.intro.description)
-        }
-      ],
-      script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }],
-    }
-  },
-
-  async asyncData ({ $content }) {
-    const data = await $content('pages/home').fetch();
-
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/home/')
     return {
       data
     }
@@ -99,17 +69,12 @@ export default {
 
   mounted () {
     if (this.$data.data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
-    }
-  },
-
-  computed: {
-    heros () {
-      return this.$store.state.heros;
+      this.addHeros({ page_key: this.$route.name || 'title', data: this.$data.data.hero })
     }
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
       this.$store.commit('heros/add', {
         page_key, data

@@ -11,62 +11,66 @@
       Home page
     </NuxtLink>
   </v-container> -->
-  <v-sheet color="#F3E9E5" class="other-error d-flex flex-row" v-if="error.statusCode !== 404">
+  <v-sheet v-if="error.statusCode !== 404" color="#F3E9E5" class="other-error d-flex flex-row">
     <v-container>
       <v-row no-gutters align="center" justify="space-between" class="container mx-auto px-8 px-md-0">
-      <v-col cols="12" sm="6" class="mb-12 mx-auto mx-sm-0">
-        <v-img
-          v-ripple
-          ref="refImg"
-          v-bind:src="require('~/assets/images/sailing-soons.png')"
-          v-bind:lazy-src="require('~/assets/images/sailing-soons.png')"
-          class="_sailing-img mx-auto"
-        >
+        <v-col cols="12" sm="6" class="mb-12 mx-auto mx-sm-0">
           <v-img
-            v-bind:src="require('~/assets/images/sailing-soons-stamp.png')"
-            v-bind:lazy-src="require('~/assets/images/sailing-soons-stamp.png')"
-            max-width="319.17"
-            max-height="217.69px"
-            class="_sailing-img-stamp"
+            ref="refImg"
+            v-ripple
+            :src="require('~/assets/images/sailing-soons.png')"
+            :lazy-src="require('~/assets/images/sailing-soons.png')"
+            class="_sailing-img mx-auto"
           >
+            <v-img
+              :src="require('~/assets/images/sailing-soons-stamp.png')"
+              :lazy-src="require('~/assets/images/sailing-soons-stamp.png')"
+              max-width="319.17"
+              max-height="217.69px"
+              class="_sailing-img-stamp"
+            />
           </v-img>
-        </v-img>
-      </v-col>
+        </v-col>
 
-      <v-col cols="12" sm="5" class="mx-auto mx-sm-0 px-sm-0 _text-width">
-        <div class="mb-6 mx-auto">
-          <h1 class="text-h4 text-md-h3">We're sorry, but something went wrong.</h1>
-        </div>
-        <div class="mb-15 mb-sm-6 text-break mx-auto">
-          {{ otherError }}
-          <div>
-            <!-- <p class="mb-n6 mt-6">Errors</p> -->
-            <code>
-              <v-treeview class="pl-n7 error--text" :items="items"
-              ></v-treeview>
-            </code>
+        <v-col cols="12" sm="5" class="mx-auto mx-sm-0 px-sm-0 _text-width">
+          <div class="mb-6 mx-auto">
+            <h1 class="text-h4 text-md-h3">
+              We're sorry, but something went wrong.
+            </h1>
           </div>
-        </div>
-        <v-row no-gutters align="start" justify="start" class="ml-n2 ml-sm-0 flex-sm-nowrap">
-          <v-col cols="12" sm="auto" class="mb-6 mb-sm-0">
-            <v-btn
-              text x-small depressed nuxt replace
-              color="#5A5A5A"
-              to="/contact-us"
-              class="text-body-1 text-capitalize pl-sm-0"
-            >Contact Us</v-btn>
-          </v-col>
-          <v-divider vertical class="hidden-xs-only mt-1" style="background: #5A5A5A; height: 15px" />
-          <v-col cols="12" sm="auto">
-            <v-btn
-              text x-small depressed nuxt replace
-              color="#5A5A5A"
-              to="/"
-              class="text-body-1 text-capitalize pr-sm-0 ml-sm-0"
-            >Return to the Homepage</v-btn>
-          </v-col>
-        </v-row>
-      </v-col>
+
+          <v-row no-gutters align="start" justify="start" class="ml-n2 ml-sm-0 flex-sm-nowrap">
+            <v-col cols="12" sm="auto" class="mb-6 mb-sm-0">
+              <v-btn
+                text
+                x-small
+                depressed
+                nuxt
+                replace
+                color="#5A5A5A"
+                to="/contact-us"
+                class="text-body-1 text-capitalize pl-sm-0"
+              >
+                Contact Us
+              </v-btn>
+            </v-col>
+            <v-divider vertical class="hidden-xs-only mt-1" style="background: #5A5A5A; height: 15px" />
+            <v-col cols="12" sm="auto">
+              <v-btn
+                text
+                x-small
+                depressed
+                nuxt
+                replace
+                color="#5A5A5A"
+                to="/"
+                class="text-body-1 text-capitalize pr-sm-0 ml-sm-0"
+              >
+                Return to the Homepage
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
       </v-row>
     </v-container>
   </v-sheet>

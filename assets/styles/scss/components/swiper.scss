@@ -1,0 +1,31 @@
+@import "../variables.scss";
+$primary: #208CB2;
+
+// carousel button next & prev
+::v-deep .swiper {
+  .v-btn--absolute.v-btn--fab.v-btn--round.theme--light.v-size--x-small.white:hover {
+    background-color: $primary !important;
+    border-color: $primary !important;
+    color: white !important;
+    .v-icon {
+      color: white !important;
+      caret-color: white !important;
+    }
+  }
+
+  .swiper-button-disabled {
+    box-shadow: none;
+    color: rgba(0,0,0,.90) !important;
+    background-color: #E0E0E0 !important;
+    .v-icon {
+      // color: rgba(0,0,0,.26) !important;
+      background-color: transparent !important;
+    }
+  }
+}
+
+@media #{map-get($display-breakpoints, 'xs-only')} {
+  tr:hover {
+    background-color: transparent !important;
+  }
+}

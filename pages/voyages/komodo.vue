@@ -1,39 +1,46 @@
 <template>
   <div id="voyages-komodo">
-    <template>
-      <!-- section des 1 -->
-      <komodo-des-one :data="data.des_1" />
-      <!-- end section des 1 -->
+    <!-- section des 1 -->
+    <KomodoDesOne
+      v-if="data.destinations[0]"
+      :data="data.destinations[0]"
+    />
+    <!-- section des 2 -->
+    <KomodoDesTwo
+      v-if="data.destinations[1]"
+      :data="data.destinations[1]"
+    />
+    <!-- section des 3 -->
+    <v-sheet
+      v-if="data.destinations[2]"
+      color="transparent"
+      tag="section"
+      class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up"
+    >
+      <SwiperKomodoMobile :data="data.destinations[2]" />
+    </v-sheet>
 
-      <!-- section des 2 -->
-      <komodo-des-two :data="data.des_2" />
-      <!-- end section des 2 -->
-
-      <!-- section des 3 -->
-      <v-sheet color="transparent" tag="section" class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up">
-        <swiper-komodo-mobile :data="data.des_3" />
-      </v-sheet>
-
-      <komodo-des-three class="hidden-xs-only" :data="data.des_3" />
-      <!-- end section des 3 -->
-
-      <!-- section des 4 -->
-      <komodo-des-four v-if="data.des_4" :data="data.des_4" />
-      <!-- end section des 4 -->
-    </template>
+    <KomodoDesThree
+      v-if="data.destinations[2]"
+      class="hidden-xs-only"
+      :data="data.destinations[2]"
+    />
+    <!-- section des 4 -->
+    <KomodoDesFour
+      v-if="data.destinations[3]"
+      :data="data.destinations[3]"
+    />
   </div>
 </template>
 
 <script>
-import _ from 'lodash';
-import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue';
-import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue';
-import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue';
-import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue';
-import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue';
+import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue'
+import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue'
+import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue'
+import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue'
+import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue'
 
 export default {
-  layout: 'main',
 
   components: {
     SwiperKomodoMobile,
@@ -41,6 +48,30 @@ export default {
     KomodoDesTwo,
     KomodoDesThree,
     KomodoDesFour
+  },
+  layout: 'main',
+
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/voyages-komodo')
+
+    return {
+      data
+    }
+  },
+
+  mounted () {
+    this.$nextTick(() => {
+      if (this.$data.data && this.$data.data.hero) {
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
+      }
+    })
+  },
+
+  methods: {
+    // eslint-disable-next-line camelcase
+    addHeros ({ page_key, data }) {
+      this.$store.commit('heros/add', { page_key, data })
+    }
   },
 
   meta: {
@@ -60,32 +91,6 @@ export default {
         text: 'Komodo'
       }
     ]
-  },
-
-  props: {
-    staticImage: { type: Boolean, default: true }
-  },
-
-  async asyncData({ $content }) {
-    const data = await $content(`pages/voyages/komodo`).fetch();
-
-    return {
-      data
-    }
-  },
-
-  mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
-      }
-    })
-  },
-
-  methods: {
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
-    }
   }
 }
 </script>

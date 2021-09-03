@@ -11,25 +11,21 @@
       </v-col>
     </v-row>
     <v-row justify="center">
-      <template
-        v-for="(item, index) in data.data"
-      >
+      <template v-for="(item, index) in data.data">
         <v-col
+          :key="index"
           cols="12"
           sm="4"
           md="4"
-          v-bind:key="index"
           class="text-center __card-three--col"
         >
           <v-card color="transparent" tile flat>
             <v-img
               class="__card-three--img mx-auto"
-              v-bind:src="staticImage
-                ? require(`~/assets/images/${item.image}`) : item.image"
-              v-bind:lazy-src="staticImage
-                ? require(`~/assets/images/${item.image}`) : item.image"
-                width="100%"
-            ></v-img>
+              :src="$store.state.storage + item.image"
+              :lazy-src="$store.state.storage + item.image"
+              width="100%"
+            />
             <v-card-actions class="__card-three--heading px-3 text-break text-capitalize mx-auto text-h4 text--primary">
               <div class="mx-auto ">
                 {{ item.heading }}
@@ -43,20 +39,23 @@
 </template>
 
 <script>
-import tHeading from '@/components/base/BaseHeading.vue';
 export default {
   props: {
     data: {
-      type: Object
-    },
-    staticImage: {
-      type: Boolean
+      type: Object,
+      required: true
     }
   },
 
   data () {
     return {
-      loading: true,
+      loading: true
+    }
+  },
+
+  computed: {
+    isXs () {
+      return this.$vuetify.breakpoint.xs
     }
   },
 
@@ -64,16 +63,6 @@ export default {
     setTimeout(() => {
       this.loading = false
     }, 2500)
-  },
-
-  components: {
-    tHeading
-  },
-
-  computed: {
-    isXs() {
-      return this.$vuetify.breakpoint.xs
-    }
   }
 }
 </script>

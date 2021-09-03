@@ -1,43 +1,41 @@
 <template>
   <div id="voyages-komodo">
-    <template>
-      <!-- section des 1 -->
-      <komodo-des-one :data="data.des_1" />
-      <!-- end section des 1 -->
+    <!-- section des 1 -->
+    <KomodoDesOne :data="data.destinations[0]" />
+    <!-- end section des 1 -->
 
-      <!-- section des 2 -->
-      <komodo-des-two :data="data.des_2" />
-      <!-- end section des 2 -->
+    <!-- section des 2 -->
+    <KomodoDesTwo :data="data.destinations[1]" />
+    <!-- end section des 2 -->
 
-      <!-- section des 3 -->
-      <v-sheet color="transparent" tag="section" class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up">
-        <swiper-komodo-mobile :data="data.des_3" />
-      </v-sheet>
+    <!-- section des 3 -->
+    <v-sheet color="transparent" tag="section" class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up">
+      <SwiperKomodoMobile :data="data.destinations[2]" />
+    </v-sheet>
 
-      <komodo-des-three class="hidden-xs-only" :data="data.des_3" />
-      <!-- end section des 3 -->
-    </template>
+    <KomodoDesThree class="hidden-xs-only" :data="data.destinations[2]" />
+    <!-- end section des 3 -->
   </div>
 </template>
 
 <script>
-import _ from 'lodash';
-import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue';
-import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue';
-import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue';
-import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue';
-import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue';
+import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue'
+import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue'
+import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue'
+import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue'
+import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue'
 
 export default {
-  layout: 'main',
-
   components: {
     SwiperKomodoMobile,
     KomodoDesOne,
     KomodoDesTwo,
     KomodoDesThree,
+    // eslint-disable-next-line vue/no-unused-components
     KomodoDesFour
   },
+
+  layout: 'main',
 
   meta: {
     breadcrumbs: [
@@ -58,9 +56,8 @@ export default {
     ]
   },
 
-  async asyncData({ $content }) {
-    const data = await $content(`pages/voyages/spice-islands`).fetch();
-
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/voyages-spice-islands/')
     return {
       data
     }
@@ -69,14 +66,15 @@ export default {
   mounted () {
     this.$nextTick(() => {
       if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero });
+        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
       }
     })
   },
 
   methods: {
+    // eslint-disable-next-line camelcase
     addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data });
+      this.$store.commit('heros/add', { page_key, data })
     }
   }
 }

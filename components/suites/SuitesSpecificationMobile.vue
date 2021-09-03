@@ -1,34 +1,45 @@
 <template>
-  <v-container class="suites-and-staterooms px-0 px-sm-6 px-md-0 hidden-sm-and-up" v-bind:class="{reversed: reverse}">
+  <v-container class="suites-and-staterooms px-0 px-sm-6 px-md-0 hidden-sm-and-up" :class="{reversed: reverse}">
     <center>
-      <slot name="icon"></slot>
+      <slot name="icon" />
     </center>
-    <div class="data--caption text-h6 text-center"> {{dataActive.caption}} </div>
-    <div class="data--heading px-6 px-md-0 font-weight-bold text-center" v-html="dataActive.heading"></div>
+
+    <div class="data--caption text-h6 text-center">
+      {{ dataActive.caption }}
+    </div>
+
+    <div class="data--heading px-6 px-md-0 font-weight-bold text-center" v-html="dataActive.heading" />
+
     <div class="data--sqm text-center">
       <em class="data--sqm-em">{{ dataActive.sqm }} sqm</em>
     </div>
-    <swiper ref="swiper" class="swiper" v-bind:class="{reversed: reverse}" v-bind:options="swiperOptions">
-      <swiper-slide v-for="(item, index) in data" v-bind:key="index">
+
+    <swiper ref="swiper" class="swiper" :class="{reversed: reverse}" :options="swiperOptions">
+      <swiper-slide v-for="(item, index) in data" :key="index">
         <v-img
-          v-bind:src="staticImage
-            ? require('~/assets/images/' + item.image)
-            : item.image"
-          v-bind:lazy-src="staticImage
-          ? require('~/assets/images/' + item.image)
-          : item.image"
-          class="image--item"></v-img>
+          :src="$store.state.storage + item.image"
+          :lazy-src="$store.state.storage + item.image"
+          class="image--item"
+        />
       </swiper-slide>
     </swiper>
-    <v-card class="data--card" color="transparent" v-bind:class="{reversed: reverse}" flat tile>
-      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">{{dataActive.text}}</p>
+
+    <v-card class="data--card" color="transparent" :class="{reversed: reverse}" flat tile>
+      <p class="text--primary align-center px-6 px-sm-0 text-center text-sm-left">
+        {{ dataActive.text }}
+      </p>
     </v-card>
   </v-container>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
 export default {
+  components: {
+    Swiper,
+    SwiperSlide
+  },
+
   props: {
     data: { type: Array },
     staticImage: { type: Boolean, default: true },
@@ -55,36 +66,31 @@ export default {
     }
   },
 
-  mounted () {
-    this.init();
+  computed: {
+    swiper () {
+      return this.$refs.swiper && this.$refs.swiper.$swiper
+    }
   },
 
   watch: {
-    activeIndex: function (val) {
-      if (!this.store && !this.store.length) return
-      this.dataActive = this.store[val];
+    activeIndex (val) {
+      if (!this.store && !this.store.length) { return }
+      this.dataActive = this.store[val]
     }
   },
 
-  computed: {
-    swiper () {
-      return this.$refs.swiper && this.$refs.swiper.$swiper;
-    }
+  mounted () {
+    this.init()
   },
 
   methods: {
     init () {
       this.$nextTick(() => {
         if (!this.data.length) { return }
-        this.store = this.data;
-        this.dataActive = this.data[0];
+        this.store = this.data
+        this.dataActive = this.data[0]
       })
     }
-  },
-
-  components: {
-    Swiper,
-    SwiperSlide
   }
 }
 </script>

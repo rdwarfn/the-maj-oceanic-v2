@@ -1,94 +1,79 @@
 <template>
   <div>
-    <v-skeleton-loader
-      type="image"
-      class="_hero--img"
-      transition="slide-y-reverse-transition"
-      v-if="!data"
-    >
-    </v-skeleton-loader>
-    <template v-else>
-      <v-sheet class="hero-wrapper text-center" style="relative">
-        <template v-if="data.videos">
-          <template>
-            <div class="video-player-box mx-auto hidden-xs-only"
-              :playsinline="true"
-              v-video-player:player="{
-                ...playerOptions,
-                sources: [...data.videos],
-              }"
-            >
-            </div>
-            <div class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only" v-html="data.heading">
-            </div>
-          </template>
+    <v-sheet class="hero-wrapper text-center">
+      <!-- video -->
+      <template v-if="dataVideo">
+        <div
+          v-video-player:player="{
+            ...playerOptions,
+            sources: [...dataVideo],
+          }"
+          class="video-player-box mx-auto hidden-xs-only"
+          :playsinline="true"
+        />
 
-          <template>
-            <v-img
-              v-bind:src="data.image"
-              :lazy-src="data.image"
-              class="_hero--img justify-center hidden hidden-sm-and-up"
-              transition="fade-transition"
-            >
-              <v-row no-gutters align="center" justify="center" class="fill-height">
-                <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading"></div>
-                <v-spacer/>
-              </v-row>
-            </v-img>
-          </template>
-        </template>
+        <div
+          class="_head--text font-weight-bold text-sm-h2 text-md-h1 text-center hidden-xs-only"
+          v-html="data.heading"
+        />
 
-        <template v-else>
-          <v-img
-            :class="{'hidden-xs-only': data.mobile_image}"
-            v-bind:src="data.image"
-            :lazy-src="data.image"
-            class="_hero--img justify-center"
-          >
-            <!-- :aspect-ratio="16/9" -->
-            <v-row no-gutters align="center" justify="center" class="fill-height">
-              <v-spacer />
-              <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading"></div>
-              <v-spacer/>
-            </v-row>
-          </v-img>
-            <!-- class="hidden-sm-and-up" -->
-          <v-img
-            v-if="data.mobile_image"
-            class="hidden-sm-and-up"
-            :src="data.mobile_image"
-            :lazy-src="data.mobile_image"
-            >
-              <v-row no-gutters align="center" justify="center" class="fill-height">
-                <v-spacer />
-                <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading">
-                </div>
-                <v-spacer/>
-              </v-row>
-            </v-img>
-        </template>
-      </v-sheet>
-    </template>
+        <v-img
+          :src="$store.state.storage + data.image"
+          :lazy-src="$store.state.storage + data.image"
+          class="_hero--img justify-center hidden hidden-sm-and-up"
+          transition="fade-transition"
+        >
+          <v-row no-gutters align="center" justify="center" class="fill-height">
+            <v-spacer />
+            <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
+            <v-spacer />
+          </v-row>
+        </v-img>
+      </template>
+
+      <!-- img -->
+      <template v-else>
+        <v-img
+          :class="{'hidden-xs-only': data.mobile_image}"
+          :src="$store.state.storage + data.image"
+          :lazy-src="$store.state.storage + data.image"
+          class="_hero--img justify-center"
+        >
+          <v-row no-gutters align="center" justify="center" class="fill-height">
+            <v-spacer />
+            <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
+            <v-spacer />
+          </v-row>
+        </v-img>
+
+        <v-img
+          v-if="data.mobile_image"
+          class="hidden-sm-and-up"
+          :src="$store.state.storage + data.mobile_image"
+          :lazy-src="$store.state.storage + data.mobile_image"
+        >
+          <v-row no-gutters align="center" justify="center" class="fill-height">
+            <v-spacer />
+            <div class="_head--text font-weight-bold text-break text-sm-h2 text-md-h1 text-center" v-html="data.heading" />
+            <v-spacer />
+          </v-row>
+        </v-img>
+      </template>
+    </v-sheet>
   </div>
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-
-const components = { Swiper, SwiperSlide };
+import _ from 'lodash'
 export default {
   props: {
-    data: { type: [Array, Object] },
+    data: { type: [Array, Object] }
   },
-
-  components,
-
   data () {
     return {
       swiperOptions: {
         lazy: true,
-        slidesPerView: 1,
+        slidesPerView: 1
       },
       // videojs options
       playerOptions: {
@@ -97,8 +82,23 @@ export default {
         control: false,
         controls: false,
         loop: true,
-        muted: true,
+        muted: true
       }
+    }
+  },
+  computed: {
+    dataVideo () {
+      if (!_.size(this.data.videos)) {
+        return false
+      }
+      const newval = _.map(this.data.videos, (item) => {
+        const storage = this.$store.state.storage
+        return {
+          ...item,
+          src: storage + item.src
+        }
+      })
+      return newval
     }
   }
 }

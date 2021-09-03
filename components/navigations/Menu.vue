@@ -1,61 +1,73 @@
 <template>
-  <v-row no-gutters align="center" justify="space-around" class="flex-nowrap">
+  <v-row
+    justify="space-around"
+    class="flex-nowrap"
+    align="center"
+    no-gutters
+  >
     <template v-for="(data, idx) in menu">
-      <v-col cols="auto"
-        class="text-center"
+      <v-col
         v-if="idx < 4"
         :key="idx"
+        cols="auto"
+        class="text-center"
       >
-        <!-- <div class="d-flex align-start justify-center text-center"> -->
-          <v-menu
-            background-color="transparent"
-            close-on-click
-            bottom offset-y open-on-hover
-            tile v-bind:rounded="false"
-            auto min-width="190">
-            <!-- open-on-hover -->
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                v-bind="attrs"
-                v-on="on"
-                v-bind:to="data.to"
-                text tile nuxt
-                draggable="false"
-                v-bind:dark="isIntersecting"
-                class="btn-s font-md-12"
-              >
-                {{ data.title }}
-              </v-btn>
-            </template>
-            <v-list
-              v-if="data.children.length"
-              v-bind:dark="isIntersecting"
-              class="py-0"
+        <v-menu
+          background-color="transparent"
+          close-on-click
+          bottom
+          offset-y
+          open-on-hover
+          tile
+          :rounded="false"
+          auto
+          min-width="190"
+        >
+          <template #activator="{ on, attrs }">
+            <v-btn
+              v-bind="attrs"
+              :to="data.to"
+              text
+              tile
+              nuxt
+              draggable="false"
+              :dark="isIntersecting"
+              class="btn-s font-md-12"
+              v-on="on"
             >
-              <!-- min-width="190"
-              max-width="190" -->
+              {{ data.title }}
+            </v-btn>
+          </template>
 
-              <template v-for="(item, index) in data.children">
-                <v-list-item
-                  :to="item.to"
-                  :key="index"
-                  :exact="item.exact"
-                  :disabled="item.disabled"
-                  dense nuxt tile style="letter-spacing: 2px"
-                >
-                  <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
-                    {{ item.title }}
-                  </v-list-item-title>
-                </v-list-item>
-                <v-divider
-                  :key="index + '-divider'"
-                  v-if="index !== data.children.length -1"
-                  class="mx-3"
-                ></v-divider>
-              </template>
-            </v-list>
-          </v-menu>
-        <!-- </div> -->
+          <v-list
+            v-if="data.children.length"
+            :dark="isIntersecting"
+            class="py-0"
+          >
+            <template v-for="(item, index) in data.children">
+              <v-list-item
+                :key="index"
+                :to="item.to"
+                :exact="item.exact"
+                :disabled="item.disabled"
+                dense
+                nuxt
+                tile
+                style="letter-spacing: 2px"
+              >
+                <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
+                  {{ item.title }}
+                </v-list-item-title>
+              </v-list-item>
+
+              <v-divider
+                v-if="index !== data.children.length -1"
+                :key="index + '-divider'"
+                class="mx-3"
+              />
+            </template>
+          </v-list>
+        </v-menu>
       </v-col>
     </template>
 
@@ -65,73 +77,95 @@
       v-show="!isIntersecting"
       cols="auto"
       class="text-center ml-lg-n16"
-      v-bind:class="{
-        intersec: !isIntersecting
-      }"
+      :class="{ intersec: !isIntersecting }"
     >
       <v-btn
-          class="mx-auto"
-          to="/"
-          text tile nuxt replace>
+        class="mx-auto"
+        to="/"
+        replace
+        text
+        tile
+        nuxt
+      >
         <img
           class="mx-auto _img--black"
           draggable="false"
-          v-bind:src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
+          :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
           alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
           width="auto"
           height="auto"
-        />
+        >
       </v-btn>
     </v-col>
+
     <v-spacer v-show="!isIntersecting" />
+
     <template v-for="(data, idx) in menu">
-      <v-col cols="auto"
+      <v-col
         v-if="idx >= 4"
-        v-bind:key="idx"
-        v-bind:class="[
-          'text-center',
-        ]"
+        :key="idx"
+        cols="auto"
+        class="text-center"
       >
-        <v-row no-gutters align="center">
+        <v-row
+          no-gutters
+          align="center"
+        >
           <v-col cols="auto">
             <v-menu
               background-color="transparent"
               close-on-click
-              bottom offset-y open-on-hover
-              tile v-bind:rounded="false"
-              auto min-width="190">
-              <template v-slot:activator="{ on, attrs }">
-                  <!-- v-bind:to="data.to" -->
+              :rounded="false"
+              open-on-hover
+              min-width="190"
+              offset-y
+              bottom
+              tile
+              auto
+            >
+              <template #activator="{ on, attrs }">
                 <v-btn
                   v-bind="attrs"
+                  :to="data.to"
+                  :dark="isIntersecting"
+                  class="font-md-12"
+                  text
+                  tile
+                  nuxt
                   v-on="{on}"
-                  v-bind:to="data.to"
-                  text tile nuxt
-                  v-bind:dark="isIntersecting"
-                  class="font-md-12">
+                >
                   {{ data.title }}
                 </v-btn>
               </template>
+
               <v-list
                 v-if="data.children.length"
-                min-width="190"
+                :dark="isIntersecting"
                 color="transparent"
-                flat subheader dense tile auto
-                v-bind:dark="isIntersecting"
+                min-width="190"
+                subheader
+                dense
+                flat
+                tile
+                auto
               >
                 <template v-for="(item, index) in data.children">
                   <v-list-item
-                    :to="item.to"
                     :key="index"
+                    :to="item.to"
                     :exact="item.exact"
                     :disabled="item.disabled"
-                    dense nuxt tile style="letter-spacing: 2px"
+                    style="letter-spacing: 2px"
+                    dense
+                    nuxt
+                    tile
                   >
                     <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
                       {{ item.title }}
                     </v-list-item-title>
                   </v-list-item>
-                  <v-divider inset :key="index"></v-divider>
+
+                  <v-divider :key="index" inset />
                 </template>
               </v-list>
             </v-menu>
@@ -143,10 +177,11 @@
 </template>
 
 <script>
+import { getNav } from '~/services/api'
 
 export default {
   props: {
-    'is-intersecting': {
+    isIntersecting: {
       type: Boolean,
       default: false
     }
@@ -158,23 +193,15 @@ export default {
     }
   },
 
-  async fetch () {
-    const { menu } = await this.$content('navigation/menu').only(['menu']).fetch()
-    this.menu = menu
+  mounted () {
+    this.getNav()
+      .then((ress) => {
+        this.menu = ress
+      })
   },
 
   methods: {
-    goTo (path, query=null, replace=false) {
-      const ctx = Object.prototype.toString(path);
-      if (ctx === '[object Object]') {
-        const dest = Object.assign(path, query);
-        this.$router.push(dest)
-        return null;
-      } else if (replace) {
-        this.$router.replace(path)
-      }
-      this.$router.push(path)
-    }
+    getNav
   }
 }
 </script>
