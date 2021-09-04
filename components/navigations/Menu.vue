@@ -1,183 +1,174 @@
 <template>
-  <v-row
+  <VRow
+    v-if="items && items.length"
     justify="space-around"
     class="flex-nowrap"
     align="center"
     no-gutters
   >
-    <template v-for="(data, idx) in menu">
-      <v-col
-        v-if="idx < 4"
-        :key="idx"
-        cols="auto"
-        class="text-center"
+    <VCol
+      v-for="item in items.slice(0, 3)"
+      :key="item.id"
+      cols="auto"
+      class="text-center"
+    >
+      <VMenu
+        background-color="transparent"
+        close-on-click
+        bottom
+        offset-y
+        open-on-hover
+        tile
+        :rounded="false"
+        auto
+        min-width="190"
       >
-        <v-menu
-          background-color="transparent"
-          close-on-click
-          bottom
-          offset-y
-          open-on-hover
-          tile
-          :rounded="false"
-          auto
-          min-width="190"
-        >
-          <template #activator="{ on, attrs }">
-            <v-btn
-              v-bind="attrs"
-              :to="data.to"
-              text
-              tile
-              nuxt
-              draggable="false"
-              :dark="isIntersecting"
-              class="btn-s font-md-12"
-              v-on="on"
-            >
-              {{ data.title }}
-            </v-btn>
-          </template>
-
-          <v-list
-            v-if="data.children.length"
+        <template #activator="{ on, attrs }">
+          <VBtn
+            text
+            tile
+            nuxt
+            :to="item.to"
             :dark="isIntersecting"
-            class="py-0"
+            draggable="false"
+            class="btn-s font-md-12"
+            v-bind="attrs"
+            v-on="on"
           >
-            <template v-for="(item, index) in data.children">
-              <v-list-item
-                :key="index"
-                :to="item.to"
-                :exact="item.exact"
-                :disabled="item.disabled"
-                dense
-                nuxt
-                tile
-                style="letter-spacing: 2px"
-              >
-                <v-list-item-title class="text-center text-uppercase font-weight-bold font-md-12">
-                  {{ item.title }}
-                </v-list-item-title>
-              </v-list-item>
+            {{ item.title }}
+          </VBtn>
+        </template>
 
-              <v-divider
-                v-if="index !== data.children.length -1"
-                :key="index + '-divider'"
-                class="mx-3"
-              />
-            </template>
-          </v-list>
-        </v-menu>
-      </v-col>
-    </template>
+        <VList
+          v-if="item.children.length"
+          :dark="isIntersecting"
+          class="py-0"
+        >
+          <template v-for="(child, j) in item.children">
+            <VListItem
+              :key="child.id"
+              :to="child.to"
+              dense
+              nuxt
+              tile
+              style="letter-spacing: 2px"
+            >
+              <VListItemTitle class="text-center text-uppercase font-weight-bold font-md-12">
+                {{ child.title }}
+              </VListItemTitle>
+            </VListItem>
 
-    <v-spacer v-show="!isIntersecting" />
+            <VDivider
+              v-if="j !== item.children.length -1"
+              :key="'divider'+j"
+              class="mx-3"
+            />
+          </template>
+        </VList>
+      </VMenu>
+    </VCol>
 
-    <v-col
+    <VSpacer v-show="!isIntersecting" />
+
+    <VCol
       v-show="!isIntersecting"
       cols="auto"
-      class="text-center ml-lg-n16"
+      class="text-center"
       :class="{ intersec: !isIntersecting }"
     >
-      <v-btn
+      <VBtn
         class="mx-auto"
         to="/"
         replace
+        exact
         text
         tile
         nuxt
       >
         <img
-          class="mx-auto _img--black"
+          class="mx-auto img-black"
           draggable="false"
           :src="require('~/assets/images/svg/tmo_main_logo_black.svg?data')"
-          alt="~/assets/images/svg/tmo_main_logo_black.svg?data"
+          alt="logo-black"
           width="auto"
           height="auto"
         >
-      </v-btn>
-    </v-col>
+      </VBtn>
+    </VCol>
 
-    <v-spacer v-show="!isIntersecting" />
+    <VSpacer v-show="!isIntersecting" />
 
-    <template v-for="(data, idx) in menu">
-      <v-col
-        v-if="idx >= 4"
-        :key="idx"
-        cols="auto"
-        class="text-center"
+    <VCol
+      v-for="item in items.slice(3,)"
+      :key="item.id"
+      cols="auto"
+      class="text-center"
+    >
+      <VMenu
+        background-color="transparent"
+        close-on-click
+        :rounded="false"
+        open-on-hover
+        min-width="190"
+        offset-y
+        bottom
+        tile
+        auto
       >
-        <v-row
-          no-gutters
-          align="center"
+        <template #activator="{ on, attrs }">
+          <VBtn
+            text
+            tile
+            nuxt
+            :to="item.to"
+            :dark="isIntersecting"
+            class="font-md-12"
+            v-bind="attrs"
+            v-on="{on}"
+          >
+            {{ item.title }}
+          </VBtn>
+        </template>
+
+        <VList
+          v-if="item.children.length"
+          :dark="isIntersecting"
+          color="transparent"
+          min-width="190"
+          subheader
+          dense
+          flat
+          tile
+          auto
         >
-          <v-col cols="auto">
-            <v-menu
-              background-color="transparent"
-              close-on-click
-              :rounded="false"
-              open-on-hover
-              min-width="190"
-              offset-y
-              bottom
+          <template v-for="(child, j) in item.children">
+            <VListItem
+              :key="child.id"
+              :to="child.to"
+              style="letter-spacing: 2px"
+              dense
+              nuxt
               tile
-              auto
             >
-              <template #activator="{ on, attrs }">
-                <v-btn
-                  v-bind="attrs"
-                  :to="data.to"
-                  :dark="isIntersecting"
-                  class="font-md-12"
-                  text
-                  tile
-                  nuxt
-                  v-on="{on}"
-                >
-                  {{ data.title }}
-                </v-btn>
-              </template>
+              <VListItemTitle class="text-uppercase font-weight-bold font-md-12">
+                {{ child.title }}
+              </VListItemTitle>
+            </VListItem>
 
-              <v-list
-                v-if="data.children.length"
-                :dark="isIntersecting"
-                color="transparent"
-                min-width="190"
-                subheader
-                dense
-                flat
-                tile
-                auto
-              >
-                <template v-for="(item, index) in data.children">
-                  <v-list-item
-                    :key="index"
-                    :to="item.to"
-                    :exact="item.exact"
-                    :disabled="item.disabled"
-                    style="letter-spacing: 2px"
-                    dense
-                    nuxt
-                    tile
-                  >
-                    <v-list-item-title class="text-uppercase font-weight-bold font-md-12">
-                      {{ item.title }}
-                    </v-list-item-title>
-                  </v-list-item>
-
-                  <v-divider :key="index" inset />
-                </template>
-              </v-list>
-            </v-menu>
-          </v-col>
-        </v-row>
-      </v-col>
-    </template>
-  </v-row>
+            <VDivider
+              v-if="j !== item.children.length -1"
+              :key="'divider'+j"
+              class="mx-3"
+            />
+          </template>
+        </VList>
+      </VMenu>
+    </VCol>
+  </VRow>
 </template>
 
 <script>
-import { getNav } from '~/services/api'
+import { getNavigation } from '~/services/api'
 
 export default {
   props: {
@@ -189,58 +180,54 @@ export default {
 
   data () {
     return {
-      menu: []
+      items: []
     }
   },
 
   mounted () {
-    this.getNav()
+    getNavigation()
       .then((ress) => {
-        this.menu = ress
+        this.items = ress
       })
-  },
-
-  methods: {
-    getNav
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  ::v-deep.v-btn:not(.v-btn--round).v-size--default.btn--inquire {
-    @include poly-fluid-sizing ('max-width', (960px:120px, 1440px:141px));
+::v-deep.v-btn:not(.v-btn--round).v-size--default.btn--inquire {
+  @include poly-fluid-sizing ('max-width', (960px:120px, 1440px:141px));
+}
+
+@media (max-width: 1362px) {
+  .font-md-12 {
+    font-size: .75rem !important;
   }
-  ._img--black {
-    min-width: 170.19px !important;
-    max-width: 170.19px !important;
-    // @include poly-fluid-sizing ('margin-left', (960px:2px, ))
+}
+
+img.img-black {
+  min-width: 10.636875rem !important;
+  max-width: 10.636875rem !important;
+}
+
+.v-menu__content {
+  box-shadow: unset !important;
+  transform: translateX(-25px) !important;
+}
+
+.v-list {
+  &.theme--dark {
+    margin-top: .25rem !important;
+    background: rgba(47, 46, 46, 0.6) !important;
   }
-  .v-menu__content {
-    box-shadow: unset !important;
-    transform: translateX(-25px) !important;
+  &.theme--light {
+    margin-top: 1.25rem !important;
+    background: rgba(212, 212, 212, 0.6) !important;
   }
-  ::v-deep .v-list {
-    &.theme--dark {
-      margin-top: 4px !important;
-      background: rgba(47, 46, 46, 0.6) !important;
-    }
-    &.theme--light {
-      margin-top: 20px !important;
-      background: rgba(212, 212, 212, 0.6) !important;
-    }
-  }
-  ::v-deep .v-list-item__title, .v-list-group__items {
-    font-family: 'Montserrat', sans-serif !important;
-    font-weight: 600 !important;
-    font-size: 13px !important;
-  }
-  @media (max-width: 1362px) {
-    .font-md-12 {
-      font-size: 12px !important;
-    }
-  }
-  ::v-deep ._img--main-center {
-    width: 300px !important; height: auto !important;
-  }
+}
+
+::v-deep .v-list-item__title, .v-list-group__items {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: .8125rem !important;
+}
 </style>

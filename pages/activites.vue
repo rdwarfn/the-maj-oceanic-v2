@@ -10,7 +10,6 @@
       />
     </v-container>
 
-    <!-- watersports -->
     <template v-for="(item, index) in data.facilities">
       <Carousel
         :key="index"
@@ -22,25 +21,6 @@
         }"
       />
     </template>
-    <!-- <Carousel
-      :data="data.watersports"
-      class="watersports-section"
-    ></Carousel> -->
-    <!-- end watersports -->
-
-    <!-- fitness_wellness -->
-    <!-- <Carousel
-      :data="data.fitness_wellness"
-      class="fitness_wellness-section"
-    ></Carousel> -->
-    <!-- end fitness_wellness -->
-
-    <!-- exploration -->
-    <!-- <Carousel
-      :data="data.exploration"
-      class="exploration-section"
-    ></Carousel> -->
-    <!-- end exploration -->
 
     <section class="activites__testimonal">
       <BaseTestimonal :data="data.testimonies" />

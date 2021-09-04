@@ -1,5 +1,5 @@
 <template>
-  <VSheet id="home">
+  <div id="home">
     <Intro
       class="home--intro"
       :data="data.intro"
@@ -41,7 +41,7 @@
         button-text="learn more"
       />
     </VContainer>
-  </VSheet>
+  </div>
 </template>
 
 <script>
