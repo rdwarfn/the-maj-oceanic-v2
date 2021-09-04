@@ -1,11 +1,11 @@
 <template>
-  <v-app>
+  <VApp>
     <NavbarMobile
       :is-intersecting="isIntersecting"
       :elevate-on-scroll="getHerosByRouteName != undefined"
     >
       <template #button-nav-icon>
-        <v-app-bar-nav-icon @click.stop="toggleDrawer" />
+        <VAppBarNavIcon @click.stop="toggleDrawer" />
       </template>
     </NavbarMobile>
 
@@ -22,18 +22,18 @@
       :data="getHerosByRouteName"
     />
 
-    <v-main
+    <VMain
       id="main"
       v-intersect="{ handler: onIntersect, opacity: { threshold: threshold() } }"
       :class="{'pt-0': getHerosByRouteName}"
       :style="getHerosByRouteName ? 'padding-top: 0' : 'padding-top: 78px'"
     >
-      <Breadcrumbs :class="!getHerosByRouteName ? 'py-0' : 'py-4 py-sm-6'" />
+      <Breadcrumbs class="py-sm-6'" />
 
-      <nuxt />
+      <Nuxt />
 
-      <v-fab-transition>
-        <v-btn
+      <VFabTransition>
+        <VBtn
           v-show="showBtnScroll"
           :large="$vuetify.breakpoint.smAndUp"
           color="primary"
@@ -43,12 +43,12 @@
           fab
           @click="$vuetify.goTo(scrollTarget, scrollOptions)"
         >
-          <v-icon>{{ iconUp }}</v-icon>
-        </v-btn>
-      </v-fab-transition>
-    </v-main>
+          <VIcon>{{ iconUp }}</VIcon>
+        </VBtn>
+      </VFabTransition>
+    </VMain>
     <Footer />
-  </v-app>
+  </VApp>
 </template>
 
 <script>

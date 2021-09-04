@@ -68,6 +68,8 @@
       </VMenu>
     </VCol>
 
+    <VSpacer v-show="!isIntersecting" />
+
     <VCol
       v-show="!isIntersecting"
       cols="auto"
@@ -93,6 +95,8 @@
         >
       </VBtn>
     </VCol>
+
+    <VSpacer v-show="!isIntersecting" />
 
     <VCol
       v-for="item in items.slice(3,)"

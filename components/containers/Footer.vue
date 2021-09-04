@@ -3,7 +3,11 @@
     <v-container class="px-6 px-md-0">
       <v-row no-gutters class="mb-1 mb-sm-12 mb-lg-6" align="start" justify="space-between">
         <!-- the maj oceanic -->
-        <v-col class="col--1" cols="12" sm="6" md="5" lg="3">
+        <!--
+          TODO: dihide dulu
+          lg="3"
+        -->
+        <v-col class="col--1" cols="12" sm="6" md="5">
           <div class="mb-7 mb-sm-6">
             <div class="text-caption mb-2 text-uppercase font-weight-bold">
               the maj oceanic
@@ -25,7 +29,7 @@
             </div>
           </div>
           <div class="mb-6">
-            <div class="text-uppercase mb-3 __part-of">
+            <div class="text-uppercase mb-3 part-of">
               part of
             </div>
             <v-row no-gutters align="center" justify="start">
@@ -51,7 +55,7 @@
           <div>
             <v-row no-gutters>
               <v-col cols="4" sm="12" class="mb-sm-6">
-                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">
+                <div class="text-uppercase part-of mb-3" style="line-height: 12px !important">
                   CRUISE<br class="hidden-sm-and-up"> OPERATOR
                 </div>
                 <v-btn
@@ -73,7 +77,7 @@
                 </v-btn>
               </v-col>
               <v-col cols="5" sm="12">
-                <div class="text-uppercase __part-of mb-3" style="line-height: 12px !important">
+                <div class="text-uppercase part-of mb-3" style="line-height: 12px !important">
                   PROUD COMFORT<br class="hidden-sm-and-up"> PARTNER
                 </div>
                 <v-btn
@@ -106,7 +110,7 @@
               <div class="text-caption mb-4 text-uppercase font-weight-bold">
                 join our family
               </div>
-              <v-list class="__list" color="transparent" dense flat tile>
+              <v-list class="list" color="transparent" dense flat tile>
                 <v-list-item-group no-action>
                   <v-list-item
                     v-for="(data, index) in joins"
@@ -127,7 +131,7 @@
               <div class="text-caption mb-4 text-uppercase font-weight-bold">
                 explore our World
               </div>
-              <v-list class="__list" color="transparent" dense flat tile>
+              <v-list class="list" color="transparent" dense flat tile>
                 <v-list-item-group no-action>
                   <v-list-item
                     v-for="(data, index) in explore"
@@ -147,7 +151,12 @@
         </v-col> -->
 
         <!-- signup for exlusive news & offers -->
-        <v-col class="col--3 px-0" cols="12" lg="4" offset-lg="1">
+        <!--
+          TODO: dihide dulu
+          lg="4"
+          offset-lg="1"
+        -->
+        <v-col class="col--3 px-0" cols="12" lg="7">
           <div class="text-caption mb-4 text-uppercase font-weight-bold">
             Sign up for Exclusive news & Offers
           </div>
@@ -394,104 +403,102 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '@/assets/styles/scss/variables.scss';
-  #footer {
-    @include poly-fluid-sizing ('padding-top', (375px:38px, 768px:55px, 1440px:90px));
-    @include poly-fluid-sizing ('padding-bottom', (375px:58, 768px:38px, 1440px:38px));
+@import '@/assets/styles/scss/variables.scss';
+#footer {
+  @include poly-fluid-sizing ('padding-top', (375px:38px, 768px:55px, 1440px:90px));
+  @include poly-fluid-sizing ('padding-bottom', (375px:58, 768px:38px, 1440px:38px));
+}
+
+span {
+  display: inline-block;
+  font-size: 13px !important;
+  font-weight: normal !important;
+  font-family: 'PT Sans', sans-serif !important;
+
+  &.detail-offers {
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      font-size: 12px !important;
+      line-height: 18px !important;
+      text-align: justify !important;
+      text-justify: inter-word !important;
+    }
+  }
+}
+
+.v-application .text-caption {
+  font-family: 'PT Sans', sans-serif !important;
+  letter-spacing: 3px !important;
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    font-size: 11px !important;
+  }
+}
+
+.col {
+  &--1 {
+    @media (max-width: 599px) {
+      border-bottom: thin solid white !important;
+      padding-bottom: 40px !important;
+      margin-bottom: 41px !important;
+    }
   }
 
-  span {
-    display: inline-block;
-    font-size: 13px !important;
+  &--2 {
+    @media (max-width: 599px) {
+      margin-bottom: 36px !important;
+    }
+  }
+
+  &--2a {
+    @media (max-width: 599px) {
+      margin-bottom: 36px !important;
+    }
+  }
+
+  &--3 {
+    @media (min-width: 600px) and (max-width: 1263px) {
+      border-top: thin solid #ffffff !important;
+      padding-top: 34px !important;
+      margin-top: 37px !important;
+    }
+  }
+}
+
+.part-of {
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 7px !important;
+  line-height: 36px;
+  letter-spacing: 3px !important;
+  font-weight: bold !important;
+}
+
+.list {
+  ::v-deep .v-list-item {
+    min-height: 26px !important;
+    font-family: 'PT Sans', sans-serif !important;
+    font-size: 16px !important;
+  }
+}
+
+::v-deep .v-input {
+  border-radius: unset !important;
+  .v-label {
+    font-family: 'PT Sans', sans-serif !important;
+    color: #B5B5B5 !important;
+    font-size: 14px !important;
     font-weight: normal !important;
-    font-family: 'PT Sans', sans-serif !important;
-
-    &.detail-offers {
-      @media #{map-get($display-breakpoints, 'xs-only')} {
-        font-size: 12px !important;
-        line-height: 18px !important;
-        text-align: justify !important;
-        text-justify: inter-word !important;
+  }
+  .v-select__slot {
+    .v-label { left: 10px !important;}
+    .v-select__selections {
+      .v-select__selection--comma {
+        margin-left: 10px;
       }
     }
   }
-
-  .v-application .text-caption {
-    font-family: 'PT Sans', sans-serif !important;
-    letter-spacing: 3px !important;
-    @media #{map-get($display-breakpoints, 'sm-and-down')} {
-      font-size: 11px !important;
+  .v-input__slot {
+    .v-text-field__slot {
+      left: 10px !important;
     }
   }
-
-  .col {
-    &--1 {
-      @media (max-width: 599px) {
-        border-bottom: thin solid white !important;
-        padding-bottom: 40px !important;
-        margin-bottom: 41px !important;
-      }
-    }
-
-    &--2 {
-      @media (max-width: 599px) {
-        margin-bottom: 36px !important;
-      }
-    }
-
-    &--2a {
-      @media (max-width: 599px) {
-        margin-bottom: 36px !important;
-      }
-    }
-
-    &--3 {
-      @media (min-width: 600px) and (max-width: 1263px) {
-        border-top: thin solid #ffffff !important;
-        padding-top: 34px !important;
-        margin-top: 37px !important;
-      }
-    }
-  }
-
-  .__part-of {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 7px !important;
-    line-height: 36px;
-    letter-spacing: 3px !important;
-    font-weight: bold !important;
-  }
-
-  .__list {
-    ::v-deep .v-list-item {
-      min-height: 26px !important;
-      font-family: 'PT Sans', sans-serif !important;
-      font-size: 16px !important;
-      // .v-list-item__title {
-      // }
-    }
-  }
-
-  ::v-deep .v-input {
-    border-radius: unset !important;
-    .v-label {
-      font-family: 'PT Sans', sans-serif !important;
-      color: #B5B5B5 !important;
-      font-size: 14px !important;
-      font-weight: normal !important;
-    }
-    .v-select__slot {
-      .v-label { left: 10px !important;}
-      .v-select__selections {
-        .v-select__selection--comma {
-          margin-left: 10px;
-        }
-      }
-    }
-    .v-input__slot {
-      .v-text-field__slot {
-        left: 10px !important;
-      }
-    }
-  }
+}
 </style>

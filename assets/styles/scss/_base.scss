@@ -46,8 +46,15 @@ a::before {
 a.v-btn {
   font-size: 13px !important;
   line-height: 18px !important;
-  /* font-family: 'Verlag Bold', sans-serif !important; */
   font-family: 'Montserrat', sans-serif !important;
+
+  &--outlined.primary--text {
+    &:hover {
+      color: white !important;
+      background-color: $primary !important;
+      border: thin solid $primary !important;
+    }
+  }
 }
 a.btn-s {
   font-size: 13px !important;
