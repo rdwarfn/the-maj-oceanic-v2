@@ -76,11 +76,6 @@
       </template>
     </swiper>
 
-<<<<<<< HEAD
-    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" v-bind:class="cardMobileClass ? cardMobileClass : '_card--relative'">
-      <v-card-text class="text--primary px-0 pt-5" v-bind:class="cardTextMobileClass ? cardTextMobileClass : 'text-center'" v-html="dataActive.description"> test
-      </v-card-text>
-=======
     <v-card
       flat
       tile
@@ -92,7 +87,6 @@
         :class="cardTextMobileClass ? cardTextMobileClass : 'text-center'"
         v-html="dataActive.description"
       />
->>>>>>> origin/revisi
       <v-card-actions v-if="buttonText" class="pa-0 mt-4">
         <v-btn
           class="btn-l mx-auto"
