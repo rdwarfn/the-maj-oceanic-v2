@@ -77,9 +77,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
-$primary: #208cb2;
-$secondary: #EFE1DC;
+@import '~/assets/styles/utilities/_variables.scss';
 
 .intro {
   &--head {

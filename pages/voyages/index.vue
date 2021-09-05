@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
+@import '~/assets/styles/utilities/_variables.scss';
 
 #voyages {
   @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));

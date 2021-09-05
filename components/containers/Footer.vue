@@ -403,7 +403,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/scss/variables.scss';
+@import '~/assets/styles/utilities/_variables.scss';
+
 #footer {
   @include poly-fluid-sizing ('padding-top', (375px:38px, 768px:55px, 1440px:90px));
   @include poly-fluid-sizing ('padding-bottom', (375px:58, 768px:38px, 1440px:38px));

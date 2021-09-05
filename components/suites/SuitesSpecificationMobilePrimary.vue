@@ -53,8 +53,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
-$primary:#208CB2;
+@import '~/assets/styles/utilities/_variables.scss';
 
 .text-h6 {
   color: $primary !important;

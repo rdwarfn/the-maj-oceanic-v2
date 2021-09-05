@@ -194,7 +194,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/styles/scss/variables.scss";
+@import '~/assets/styles/utilities/_variables.scss';
+
 .testimonal {
   position: relative !important;
   padding: 50px 0 !important;

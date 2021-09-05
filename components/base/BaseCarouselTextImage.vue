@@ -193,123 +193,124 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $primary:#208CB2;
-  $size: 12px;
-  $secondary: #4E5E79;
-  $white: #ffffff;
+@import '~/assets/styles/utilities/_variables.scss';
 
-  .__carousel_text_img {
-    &--card {
-      ::v-deep .v-card__subtitle {
-        color: $primary !important;
-      }
+$size: 12px;
+$secondary: #4E5E79;
+$white: #ffffff;
 
-      ul {
-        padding-left: inherit !important;
-        margin-top: 30px !important;
-        li {
-          margin-bottom: 11px !important;
-        }
-      }
+.__carousel_text_img {
+  &--card {
+    ::v-deep .v-card__subtitle {
+      color: $primary !important;
     }
 
-    ::v-deep a.v-btn {
-      font-weight: bold !important;
-      &.primary {
-        color: white !important;
-        caret-color: white !important;
-        &:hover {
-          color: $primary !important;
-          caret-color: $primary !important;
-          border: thin solid $primary !important;
-          background-color: white !important;
-        }
+    ul {
+      padding-left: inherit !important;
+      margin-top: 30px !important;
+      li {
+        margin-bottom: 11px !important;
       }
-
-      &--outlined {
-        &.primary--text {
-          &:hover {
-            color: white !important;
-            background-color: $primary !important;
-            border-color: $primary !important;
-          }
-        }
-      }
-    }
-
-    .swiper {
-        padding-bottom: 30px !important;
-
-        .swiper-pagination-bullets {
-          bottom: -5px;
-        }
-
-        ::v-deep .swiper-pagination-bullet-custom {
-          width: $size !important;
-          height: $size !important;
-          line-height: $size !important;
-          text-align: center;
-          color: $secondary;
-          opacity: 0.25;
-          background: $secondary;
-
-          &:hover {
-            opacity: 1;
-          }
-
-          &.swiper-pagination-bullet-active {
-            opacity: 1;
-            color: $white;
-            background: $primary;
-          }
-        }
-
-        ::v-deep .v-btn {
-          &:hover {
-            background-color: $primary !important;
-            border-color: $primary !important;
-            .v-icon {
-              color: $white !important;
-              caret-color: $white !important;
-            }
-          }
-
-          &.swiper-button-disabled {
-            box-shadow: none;
-            pointer-events: none;
-            color: rgba(0,0,0,.26) !important;
-            background-color: #E0E0E0 !important;
-            .v-icon {
-              color: rgba(0,0,0,.26) !important;
-              background-color: transparent !important;
-            }
-          }
-        }
-
-        .button--left, .button--right {
-          display: none !important;
-          top: 91% !important;
-          @media (min-width: 960px) {
-            display: flex !important;
-          }
-        }
-
-        .swiper-button-next, .swiper-button-prev {
-          opacity: 1 !important;
-          &::after {
-            content: none !important;
-          }
-        }
-
-        .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-          left: 24px !important;
-          right: auto;
-        }
-
-        .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-          left: 80px !important;
-          right: auto;
-        }
     }
   }
+
+  ::v-deep a.v-btn {
+    font-weight: bold !important;
+    &.primary {
+      color: white !important;
+      caret-color: white !important;
+      &:hover {
+        color: $primary !important;
+        caret-color: $primary !important;
+        border: thin solid $primary !important;
+        background-color: white !important;
+      }
+    }
+
+    &--outlined {
+      &.primary--text {
+        &:hover {
+          color: white !important;
+          background-color: $primary !important;
+          border-color: $primary !important;
+        }
+      }
+    }
+  }
+
+  .swiper {
+    padding-bottom: 30px !important;
+
+    .swiper-pagination-bullets {
+      bottom: -5px;
+    }
+
+    ::v-deep .swiper-pagination-bullet-custom {
+      width: $size !important;
+      height: $size !important;
+      line-height: $size !important;
+      text-align: center;
+      color: $secondary;
+      opacity: 0.25;
+      background: $secondary;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        color: $white;
+        background: $primary;
+      }
+    }
+
+    ::v-deep .v-btn {
+      &:hover {
+        background-color: $primary !important;
+        border-color: $primary !important;
+        .v-icon {
+          color: $white !important;
+          caret-color: $white !important;
+        }
+      }
+
+      &.swiper-button-disabled {
+        box-shadow: none;
+        pointer-events: none;
+        color: rgba(0,0,0,.26) !important;
+        background-color: #E0E0E0 !important;
+        .v-icon {
+          color: rgba(0,0,0,.26) !important;
+          background-color: transparent !important;
+        }
+      }
+    }
+
+    .button--left, .button--right {
+      display: none !important;
+      top: 91% !important;
+      @media (min-width: 960px) {
+        display: flex !important;
+      }
+    }
+
+    .swiper-button-next, .swiper-button-prev {
+      opacity: 1 !important;
+      &::after {
+        content: none !important;
+      }
+    }
+
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+      left: 24px !important;
+      right: auto;
+    }
+
+    .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+      left: 80px !important;
+      right: auto;
+    }
+  }
+}
 </style>

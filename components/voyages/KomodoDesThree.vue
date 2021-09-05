@@ -83,12 +83,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/styles/scss/variables.scss";
+@import '~/assets/styles/utilities/_variables.scss';
+
 .komodo--des-three__wrap {
   @media #{map-get($display-breakpoints, 'sm-and-up')} {
     padding: 100px 0 !important;
-    // &__wrap {
-    // }
   }
 }
 

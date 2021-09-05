@@ -1,37 +1,36 @@
 <template>
   <VRow
     v-if="items && items.length"
-    justify="space-around"
-    class="flex-nowrap"
-    align="center"
     no-gutters
+    align="center"
+    justify="space-around"
   >
     <VCol
-      v-for="item in items.slice(0, 3)"
+      v-for="item in items.slice(0, 4)"
       :key="item.id"
-      cols="auto"
       class="text-center"
+      cols="auto"
     >
       <VMenu
         background-color="transparent"
-        close-on-click
-        bottom
-        offset-y
-        open-on-hover
-        tile
-        :rounded="false"
-        auto
         min-width="190"
+        close-on-click
+        open-on-hover
+        offset-y
+        bottom
+        tile
+        auto
       >
         <template #activator="{ on, attrs }">
           <VBtn
             text
             tile
             nuxt
+            depressed
             :to="item.to"
-            :dark="isIntersecting"
-            draggable="false"
-            class="btn-s font-md-12"
+            :dark="!isIntersecting"
+            :x-small="isIntersecting"
+            class="font-md-12"
             v-bind="attrs"
             v-on="on"
           >
@@ -39,43 +38,30 @@
           </VBtn>
         </template>
 
-        <VList
-          v-if="item.children.length"
-          :dark="isIntersecting"
-          class="py-0"
-        >
+        <VList v-if="item.children.length" :dark="isIntersecting" class="py-0">
           <template v-for="(child, j) in item.children">
             <VListItem
               :key="child.id"
               :to="child.to"
+              style="letter-spacing: 2px"
               dense
               nuxt
               tile
-              style="letter-spacing: 2px"
             >
               <VListItemTitle class="text-center text-uppercase font-weight-bold font-md-12">
                 {{ child.title }}
               </VListItemTitle>
             </VListItem>
 
-            <VDivider
-              v-if="j !== item.children.length -1"
-              :key="'divider'+j"
-              class="mx-3"
-            />
+            <VDivider v-if="j !== item.children.length -1" :key="'divider'+j" class="mx-3" />
           </template>
         </VList>
       </VMenu>
     </VCol>
 
-    <VSpacer v-show="!isIntersecting" />
+    <VSpacer v-show="isIntersecting" />
 
-    <VCol
-      v-show="!isIntersecting"
-      cols="auto"
-      class="text-center"
-      :class="{ intersec: !isIntersecting }"
-    >
+    <VCol v-show="isIntersecting" cols="auto" class="text-center">
       <VBtn
         class="mx-auto"
         to="/"
@@ -96,18 +82,12 @@
       </VBtn>
     </VCol>
 
-    <VSpacer v-show="!isIntersecting" />
+    <VSpacer v-show="isIntersecting" />
 
-    <VCol
-      v-for="item in items.slice(3,)"
-      :key="item.id"
-      cols="auto"
-      class="text-center"
-    >
+    <VCol v-for="item in items.slice(4,)" :key="item.id" cols="auto" class="text-center">
       <VMenu
         background-color="transparent"
         close-on-click
-        :rounded="false"
         open-on-hover
         min-width="190"
         offset-y
@@ -120,8 +100,10 @@
             text
             tile
             nuxt
+            depressed
             :to="item.to"
             :dark="isIntersecting"
+            :x-small="isIntersecting"
             class="font-md-12"
             v-bind="attrs"
             v-on="{on}"
@@ -155,14 +137,37 @@
               </VListItemTitle>
             </VListItem>
 
-            <VDivider
-              v-if="j !== item.children.length -1"
-              :key="'divider'+j"
-              class="mx-3"
-            />
+            <VDivider v-if="j !== item.children.length -1" :key="'divider'+j" class="mx-3" />
           </template>
         </VList>
       </VMenu>
+    </VCol>
+
+    <VCol v-show="isIntersecting" cols="auto">
+      <VBtn
+        text
+        tile
+        link
+        x-small
+        depressed
+        href="#"
+        class="font-md-12 mr-3"
+      >
+        Login
+      </VBtn>
+    </VCol>
+
+    <VCol v-show="isIntersecting" cols="auto">
+      <VBtn
+        tile
+        dark
+        nuxt
+        depressed
+        to="/contact-us"
+        class="btn--inquire font-md-12"
+      >
+        Inquire Now
+      </VBtn>
     </VCol>
   </VRow>
 </template>
@@ -198,10 +203,8 @@ export default {
   @include poly-fluid-sizing ('max-width', (960px:120px, 1440px:141px));
 }
 
-@media (max-width: 1362px) {
-  .font-md-12 {
-    font-size: .75rem !important;
-  }
+.font-md-12 {
+  font-size: .75rem !important;
 }
 
 img.img-black {
@@ -228,6 +231,5 @@ img.img-black {
 ::v-deep .v-list-item__title, .v-list-group__items {
   font-family: 'Montserrat', sans-serif !important;
   font-weight: 600 !important;
-  font-size: .8125rem !important;
 }
 </style>

@@ -71,29 +71,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $primary: #208cb2;
-  $secondary: #EFE1DC;
+@import '~/assets/styles/utilities/_variables.scss';
 
-  #spesification {
-    @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
-  }
+$secondary: #EFE1DC;
 
-  ::v-deep .card-text-image {
-    padding-top: 0 !important;
-  }
-  .__tab {
-    min-height: 527px !important;
-  }
+#spesification {
+  @include poly-fluid-sizing ('padding-top', (375px:35px, 768px:39px, 1440px:51px));
+}
 
-  .__bg--secondary {
-    background: $secondary !important;
-  }
+::v-deep .card-text-image {
+  padding-top: 0 !important;
+}
+.__tab {
+  min-height: 527px !important;
+}
 
-  ::v-deep .__bg--transparent {
-    background: transparent !important;
-  }
+.__bg--secondary {
+  background: $secondary !important;
+}
 
-  // ::v-deep .__tabs--img {
-    // @include poly-fluid-sizing('max-width', (375px:323px, 600px:580px, 1024px: 800px, 1440px: 920px));
-  // }
+::v-deep .__bg--transparent {
+  background: transparent !important;
+}
+
+// ::v-deep .__tabs--img {
+  // @include poly-fluid-sizing('max-width', (375px:323px, 600px:580px, 1024px: 800px, 1440px: 920px));
+// }
 </style>

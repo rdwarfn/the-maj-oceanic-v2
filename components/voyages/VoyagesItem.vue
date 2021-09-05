@@ -49,6 +49,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '~/assets/styles/utilities/_variables.scss';
+
 .heading {
   margin-top: 40px;
   @include poly-fluid-sizing ('margin-bottom', (375px:25px, 768px:40px));

@@ -129,12 +129,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
-$primary:#208CB2;
-$size: 12px;
-$secondary: #4E5E79;
-$transition-time-normal: .5s;
-$white: #ffffff;
+@import '~/assets/styles/utilities/_variables.scss';
 
 .text-h6 {
   color: $primary !important;

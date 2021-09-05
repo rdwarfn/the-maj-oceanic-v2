@@ -153,127 +153,127 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~assets/styles/scss/variables.scss';
-  $primary:#208CB2;
-  $size: 12px;
-  $secondary: #4E5E79;
-  $white: #ffffff;
+@import '~/assets/styles/utilities/_variables.scss';
 
-  ::v-deep .v-skeleton-loader__image {
-    @include poly-fluid-sizing ('max-width', (375px:300px, 768px:233px, 1204px:350px));
-    @include poly-fluid-sizing ('height', (375px:300px, 768px:197px, 1204px:350px));
-  }
+$size: 12px;
+$white: #ffffff;
+$secondary: #4E5E79;
 
-  @media #{map-get($display-breakpoints, ('md-and-up'))} {
-    .button--left {
-      top: 180px;
-      right: auto;
-      left: -62px;
-    }
-    .button--right {
-      top: 180px;
-      left: auto;
-      right: -62px;
-    }
+::v-deep .v-skeleton-loader__image {
+  @include poly-fluid-sizing ('max-width', (375px:300px, 768px:233px, 1204px:350px));
+  @include poly-fluid-sizing ('height', (375px:300px, 768px:197px, 1204px:350px));
+}
+
+@media #{map-get($display-breakpoints, ('md-and-up'))} {
+  .button--left {
+    top: 180px;
+    right: auto;
+    left: -62px;
   }
+  .button--right {
+    top: 180px;
+    left: auto;
+    right: -62px;
+  }
+}
+@media #{map-get($display-breakpoints, ('sm-only'))} {
+  .button--left, .button--right {
+    top: 100px;
+  }
+  .button--left {
+    left: 0;
+  }
+  .button--right {
+    right: 0;
+  }
+}
+.__carousel-three {
+  position: relative !important;
+  &--item {
+    &-heading {
+      @include poly-fluid-sizing('max-width', (600px:233px, 1204px:350px));
+      @include poly-fluid-sizing ('font-size', (768px:18px,1440px:22px));
+      margin-top: 24px !important;
+      font-family: 'Domine', serif;
+      font-weight: 600;
+    }
+
+    // &-img {
+    //   @media #{map-get($display-breakpoints, 'xs-only')} {
+    //     height: 300px !important;
+    //   }
+    // }
+  }
+}
+
+::v-deep .swiper {
   @media #{map-get($display-breakpoints, ('sm-only'))} {
-    .button--left, .button--right {
-      top: 100px;
-    }
-    .button--left {
-      left: 0;
-    }
-    .button--right {
-      right: 0;
+    width: 88%;
+  }
+  padding-bottom: 50px !important;
+
+  &-slide-active { z-index: 3 !important; }
+  &-slide {
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      width: 300px !important;
     }
   }
-  .__carousel-three {
-    position: relative !important;
-    &--item {
-      &-heading {
-        @include poly-fluid-sizing('max-width', (600px:233px, 1204px:350px));
-        @include poly-fluid-sizing ('font-size', (768px:18px,1440px:22px));
-        margin-top: 24px !important;
-        font-family: 'Domine', serif;
-        font-weight: 600;
-      }
+  .swiper-pagination-bullets {
+    bottom: -5px;
+  }
+  .swiper-pagination-bullet-custom {
+    width: $size !important;
+    height: $size !important;
+    line-height: $size !important;
+    text-align: center;
+    color: $secondary;
+    opacity: 0.25;
+    background: $secondary;
 
-      // &-img {
-      //   @media #{map-get($display-breakpoints, 'xs-only')} {
-      //     height: 300px !important;
-      //   }
-      // }
+    &:hover {
+      opacity: 1;
+    }
+
+    &.swiper-pagination-bullet-active {
+      opacity: 1;
+      color: $white;
+      background: $primary;
     }
   }
 
-  ::v-deep .swiper {
-    @media #{map-get($display-breakpoints, ('sm-only'))} {
-      width: 88%;
-    }
-    padding-bottom: 50px !important;
-
-    &-slide-active { z-index: 3 !important; }
-    &-slide {
-      @media #{map-get($display-breakpoints, 'xs-only')} {
-        width: 300px !important;
+  ::v-deep .v-btn {
+    &:hover {
+      background-color: $white !important;
+      border-color: $white !important;
+      .v-icon {
+        color: $primary !important;
+        caret-color: $primary !important;
       }
     }
-    .swiper-pagination-bullets {
-      bottom: -5px;
-    }
-    .swiper-pagination-bullet-custom {
-      width: $size !important;
-      height: $size !important;
-      line-height: $size !important;
-      text-align: center;
-      color: $secondary;
-      opacity: 0.25;
-      background: $secondary;
+  }
 
+  ::v-deep a.v-btn {
+    font-weight: bold !important;
+    &.primary {
+      color: white !important;
+      caret-color: white !important;
       &:hover {
-        opacity: 1;
-      }
-
-      &.swiper-pagination-bullet-active {
-        opacity: 1;
-        color: $white;
-        background: $primary;
+        color: $primary !important;
+        caret-color: $primary !important;
+        border: thin solid $primary !important;
+        background-color: white !important;
       }
     }
 
-    ::v-deep .v-btn {
-      &:hover {
-        background-color: $white !important;
-        border-color: $white !important;
-        .v-icon {
-          color: $primary !important;
-          caret-color: $primary !important;
-        }
-      }
-    }
-
-    ::v-deep a.v-btn {
-      font-weight: bold !important;
-      &.primary {
-        color: white !important;
-        caret-color: white !important;
+    &--outlined {
+      &.primary--text {
         &:hover {
-          color: $primary !important;
-          caret-color: $primary !important;
-          border: thin solid $primary !important;
-          background-color: white !important;
-        }
-      }
-
-      &--outlined {
-        &.primary--text {
-          &:hover {
-            color: white !important;
-            background-color: $primary !important;
-            border-color: $primary !important;
-          }
+          color: white !important;
+          background-color: $primary !important;
+          border-color: $primary !important;
         }
       }
     }
   }
+}
 </style>

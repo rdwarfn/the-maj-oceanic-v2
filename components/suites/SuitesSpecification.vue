@@ -181,12 +181,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
-$primary:#208CB2;
-$size: 12px;
-$secondary: #4E5E79;
-$transition-time-normal: .5s;
-$white: #ffffff;
+@import '~/assets/styles/utilities/_variables.scss';
 
 .text-h6 {
   color: $primary !important;
@@ -312,14 +307,6 @@ $white: #ffffff;
 }
 
 .swiper {
-  // height: 300px;
-  // width: 100%;
-  // @media #{map-get($display-breakpoints, 'md-and-up')} {
-  //   max-width: 730px;
-  // }
-  // @media #{map-get($display-breakpoints, 'sm-only')} {
-  //   max-width: 414px;
-  // }
   padding-bottom: 30px !important;
   .swiper-pagination-bullets {
     bottom: -5px;
@@ -360,8 +347,6 @@ $white: #ffffff;
     }
 
     .image--item {
-      // width: 100%;
-      // height: 100%;
       @include poly-fluid-sizing ('max-width', (375px:300px, 600px:414px, 768px:412px, 1440px:730px));
       @include poly-fluid-sizing ('height', (375px:181px, 600px:349px, 768px:347px, 1440px:445px));
     }

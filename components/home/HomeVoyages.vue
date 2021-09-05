@@ -146,7 +146,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/scss/variables.scss';
+@import '~/assets/styles/utilities/_variables.scss';
+
 .voyages {
   background-color: #EFE1DC !important;
   padding-top: 50px;

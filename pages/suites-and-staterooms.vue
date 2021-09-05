@@ -161,8 +161,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
-$primary: #208cb2;
+@import '~/assets/styles/utilities/_variables.scss';
+
 $secondary: #EFE1DC;
 
 #the-cabin {

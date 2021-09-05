@@ -102,8 +102,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/scss/variables.scss';
- .other-error {
+@import '~/assets/styles/utilities/_variables.scss';
+
+.other-error {
   height: 100%;
   display: flex !important;
   flex-direction: row !important;

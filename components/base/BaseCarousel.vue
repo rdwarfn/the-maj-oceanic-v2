@@ -1,5 +1,5 @@
 <template>
-  <v-sheet
+  <VSheet
     class="__carousel align-center px-0 mx-auto"
     :class="!reverse ? 'flex-wrap' : 'flex-wrap-reverse reversed'"
     max-width="1440"
@@ -152,7 +152,7 @@
         </v-btn>
       </v-card-actions>
     </v-card>
-  </v-sheet>
+  </VSheet>
 </template>
 
 <script>
@@ -251,187 +251,185 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/styles/scss/variables.scss";
-  $primary:#208CB2;
-  $size: 10px;
-  $secondary: #C4C4C4;
-  $transition-time-normal: .5s;
-  $white: #ffffff;
+@import '~/assets/styles/utilities/_variables.scss';
 
-  ._card--relative {
-    @media #{map-get($display-breakpoints, 'xs-only')} {
-      max-width: 290px !important;
-      height: 320px !important;
-    }
-    @media only screen and (max-width: 374px) {
-      max-width: 90% !important;
-    }
-    position: relative !important;
-    top: -25px !important;
-    z-index: 3 !important;
+$size: 10px;
+$secondary: #C4C4C4;
+
+._card--relative {
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    max-width: 290px !important;
+    height: 320px !important;
   }
-
-  ::v-deep {
-    .v-card__subtitle {
-      color: $primary !important;
-      font-weight: bold !important;
-    }
-
-    .v-card__text {
-      p {
-        font-size: 15px !important;
-      }
-    }
+  @media only screen and (max-width: 374px) {
+    max-width: 90% !important;
   }
+  position: relative !important;
+  top: -25px !important;
+  z-index: 3 !important;
+}
 
-  .__txt_primary {
+::v-deep {
+  .v-card__subtitle {
     color: $primary !important;
+    font-weight: bold !important;
   }
 
-  .__carousel {
-    width: auto;
-    position: relative;
-    height: 100%;
-    z-index: 1;
-    transition-property: transform;
-    margin: {
-      top: auto !important;
-      bottom: auto !important;
+  .v-card__text {
+    p {
+      font-size: 15px !important;
+    }
+  }
+}
+
+.__txt_primary {
+  color: $primary !important;
+}
+
+.__carousel {
+  width: auto;
+  position: relative;
+  height: 100%;
+  z-index: 1;
+  transition-property: transform;
+  margin: {
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  &--card {
+    z-index: 10 !important;
+    box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.03) !important;
+    border-radius: 2px;
+    @include poly-fluid-sizing ('max-width', (768px:352px, 1440px:445px));
+    // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
+    @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
+    @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
+    @include poly-fluid-sizing ('padding-left', (375px:19px, 768px:25px, 1440px:50px));
+    @include poly-fluid-sizing ('padding-right', (375px:19px, 768px:25px, 1440px:50px));
+    @include poly-fluid-sizing ('left', (600px:198px, 768px:366px, 1440px:665px));
+
+      // @include poly-fluid-sizing ('left', (600px:220px, 768px:390px, 1440px:665px));
+    // right: auto;
+    // top: 10% !important;
+    // margin: {
+    //   // top: 40px !important;
+    //   right: auto !important;
+    //   left: auto !important;
+    //   bottom: 0 !important;
+    // }
+    // position: absolute;
+
+    .reversed & {
+      margin: {
+        top: 0 !important;
+        right: auto !important;
+        left: auto !important;
+        bottom: 40px !important;
+      }
     }
 
-    &--card {
-      z-index: 10 !important;
-      box-shadow: 0px 7px 64px rgba(0, 0, 0, 0.03) !important;
-      border-radius: 2px;
-      @include poly-fluid-sizing ('max-width', (768px:352px, 1440px:445px));
-      // @include poly-fluid-sizing ('height', (375px:320px, 1440px:445px));
-      @include poly-fluid-sizing ('padding-top', (375px:20px, 768px:25px, 1440px:73px));
-      @include poly-fluid-sizing ('padding-bottom', (375px:50px, 768px:32px, 1440px:73px));
-      @include poly-fluid-sizing ('padding-left', (375px:19px, 768px:25px, 1440px:50px));
-      @include poly-fluid-sizing ('padding-right', (375px:19px, 768px:25px, 1440px:50px));
-      @include poly-fluid-sizing ('left', (600px:198px, 768px:366px, 1440px:665px));
-
-        // @include poly-fluid-sizing ('left', (600px:220px, 768px:390px, 1440px:665px));
-      // right: auto;
-      // top: 10% !important;
-      // margin: {
-      //   // top: 40px !important;
-      //   right: auto !important;
-      //   left: auto !important;
-      //   bottom: 0 !important;
-      // }
-      // position: absolute;
-
-      .reversed & {
-        margin: {
-          top: 0 !important;
-          right: auto !important;
-          left: auto !important;
-          bottom: 40px !important;
-        }
+    @media (min-width: 600px)  {
+      right: auto;
+      top: 10% !important;
+      position: absolute;
+      margin: {
+        top: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        bottom: 0 !important;
       }
+    };
 
-      @media (min-width: 600px)  {
-        right: auto;
-        top: 10% !important;
-        position: absolute;
-        margin: {
-          top: 0 !important;
-          right: 0 !important;
-          left: 0 !important;
-          bottom: 0 !important;
-        }
-      };
+    @media (min-width: 960px) {
+      margin: {
+        top: 0 !important;
+        right: 0 !important;
+        left: 0 !important;
+        bottom: 0 !important;
+      }
+    }
+
+    &-list {
+      padding-left: inherit !important;
+      margin-top: 30px !important;
+      li {
+        margin-bottom: 11px !important;
+      }
+    }
+  }
+
+  &--img {
+    width: 100%;
+    @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
+    @include poly-fluid-sizing ('height', (375px:181px, 768px:347px, 1440px:445px));
+  }
+
+  .swiper {
+    padding-bottom: 30px !important;
+    .swiper-zoom-container {
+      height: 664px !important;
+      justify-content: flex-start;
+    }
+    .swiper-pagination-bullets {
+      bottom: -5px;
+      width: 100%;
+
+      @media (min-width: 600px) {
+        max-width: 71.354166667%;
+      }
 
       @media (min-width: 960px) {
-        margin: {
-          top: 0 !important;
-          right: 0 !important;
-          left: 0 !important;
-          bottom: 0 !important;
-        }
-      }
-
-      &-list {
-        padding-left: inherit !important;
-        margin-top: 30px !important;
-        li {
-          margin-bottom: 11px !important;
-        }
+        max-width: 65.765765766%;
       }
     }
+    ::v-deep .swiper-pagination-bullet-custom {
+      width: $size !important;
+      height: $size !important;
+      line-height: $size !important;
+      text-align: center;
+      color: $secondary;
+      opacity: 1;
+      background: $secondary;
 
-    &--img {
-      width: 100%;
-      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:412px, 1440px:730px));
-      @include poly-fluid-sizing ('height', (375px:181px, 768px:347px, 1440px:445px));
-    }
-
-    .swiper {
-      padding-bottom: 30px !important;
-      .swiper-zoom-container {
-        height: 664px !important;
-        justify-content: flex-start;
-      }
-      .swiper-pagination-bullets {
-        bottom: -5px;
-        width: 100%;
-
-        @media (min-width: 600px) {
-          max-width: 71.354166667%;
-        }
-
-        @media (min-width: 960px) {
-          max-width: 65.765765766%;
-        }
-      }
-      ::v-deep .swiper-pagination-bullet-custom {
-        width: $size !important;
-        height: $size !important;
-        line-height: $size !important;
-        text-align: center;
-        color: $secondary;
+      &:hover {
         opacity: 1;
-        background: $secondary;
-
-        &:hover {
-          opacity: 1;
-          background: $primary !important;
-        }
-
-        &.swiper-pagination-bullet-active {
-          opacity: 1;
-          color: $white;
-          background: $primary;
-        }
+        background: $primary !important;
       }
 
-      .button--left, .button--right {
-        z-index: 5 !important;
-        display: none !important;
-        top: auto;
-        bottom: 42px;
-        @media (min-width: 600px) {
-          display: inline-block !important;
-        }
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        color: #ffffff;
+        background: $primary;
       }
+    }
 
-      .swiper-button-next, .swiper-button-prev {
-        opacity: 1 !important;
-        &::after {
-          content: none !important;
-        }
+    .button--left, .button--right {
+      z-index: 5 !important;
+      display: none !important;
+      top: auto;
+      bottom: 42px;
+      @media (min-width: 600px) {
+        display: inline-block !important;
       }
+    }
 
-      .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
-        left: 15px !important;
-        right: auto;
+    .swiper-button-next, .swiper-button-prev {
+      opacity: 1 !important;
+      &::after {
+        content: none !important;
       }
+    }
 
-      .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
-        left: 57px !important;
-        right: auto;
-      }
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+      left: 15px !important;
+      right: auto;
+    }
+
+    .swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+      left: 57px !important;
+      right: auto;
     }
   }
+}
 </style>

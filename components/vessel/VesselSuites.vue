@@ -222,10 +222,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
-$pagination-size: 10px;
-$primary: #208cb2;
-$secondary: #EFE1DC;
+@import '~/assets/styles/utilities/_variables.scss';
+
+$size: 10px;
 
 ::v-deep .v-btn--outlined {
   &:hover {
@@ -235,8 +234,8 @@ $secondary: #EFE1DC;
   }
 }
 ::v-deep .swiper-pagination-bullet {
-  width: $pagination-size;
-  height: $pagination-size;
+  width: $size;
+  height: $size;
   background: #C4C4C4;
   opacity: 1;
   &:hover { background: $primary }

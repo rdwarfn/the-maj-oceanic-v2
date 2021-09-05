@@ -105,63 +105,58 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  ._head--text {
-    color: #FFFFFF !important;
-    position: absolute;
-    white-space: pre-line !important;
-    width: 100%;
+._head--text {
+  color: #FFFFFF !important;
+  position: absolute;
+  white-space: pre-line !important;
+  width: 100%;
+  left: 50%;
+  // bottom: 20px;
+  transform: translate(-50%, 0);
+  @include poly-fluid-sizing ('top', (375px:301px, 768px:174.02px, 1440px:350px));
+  font-family: "Domine", serif !important;
+  @media (max-width: 600px) {
+    font-size: 24px !important;
+  }
+}
+::v-deep ._hero--img {
+  width: 100vw;
+  @include poly-fluid-sizing ('height', (375px:670px, 768px:347px, 1440px:700px));
+
+  .v-skeleton-loader__image {
+    @include poly-fluid-sizing ('height', (375px:670px, 768px:347px, 1440px:700px));
+  }
+}
+::v-deep .video-player-box {
+  position: relative !important;
+  object-position: center !important;
+  object-fit: cover !important;
+  .video-js, .vjs-tech {
+    object-fit: cover !important;
+    width: 100vw !important;
+    @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
+  }
+  .video-js .vjs-big-play-button {
+    @include poly-fluid-sizing ('top', (376px:311px, 768px:149.5px, 1440px:324px));
     left: 50%;
     // bottom: 20px;
     transform: translate(-50%, 0);
-    @include poly-fluid-sizing ('top', (375px:301px, 768px:174.02px, 1440px:350px));
-    font-family: "Domine", serif !important;
-    @media (max-width: 600px) {
-      font-size: 24px !important;
-    }
-  }
-  ::v-deep ._hero--img {
-    width: 100vw;
-    @include poly-fluid-sizing ('height', (375px:670px, 768px:347px, 1440px:700px));
-
-    .v-skeleton-loader__image {
-      @include poly-fluid-sizing ('height', (375px:670px, 768px:347px, 1440px:700px));
-    }
-  }
-  ::v-deep .video-player-box {
-    position: relative !important;
-    object-position: center !important;
-    object-fit: cover !important;
-    .video-js, .vjs-tech {
-      object-fit: cover !important;
-      width: 100vw !important;
-      @include poly-fluid-sizing ('height', (376px:670px, 768px:347px, 1440px:700px));
-    }
-
-    // .video-js .vjs-big-play-button {
-    //   top: 50% !important;
-    //   left: 40%;
-    // }
-    .video-js .vjs-big-play-button {
-      @include poly-fluid-sizing ('top', (376px:311px, 768px:149.5px, 1440px:324px));
-      left: 50%;
-      // bottom: 20px;
-      transform: translate(-50%, 0);
-      border-radius: 50%;
-      width: 48px !important;
-      height: 48px !important;
-      border-color: transparent !important;
-      z-index: 2;
-    }
-
-    .video-js .vjs-play-control:before {
-      top:20% !important;
-      content: '\f101';
-      font-size: 48px;
-    }
+    border-radius: 50%;
+    width: 48px !important;
+    height: 48px !important;
+    border-color: transparent !important;
+    z-index: 2;
   }
 
-  .hero-wrapper {
-    position: relative !important;
-    @include poly-fluid-sizing ('max-height', (376px:670px, 768px:347px, 1440px:700px));
+  .video-js .vjs-play-control:before {
+    top:20% !important;
+    content: '\f101';
+    font-size: 48px;
   }
+}
+
+.hero-wrapper {
+  position: relative !important;
+  @include poly-fluid-sizing ('max-height', (376px:670px, 768px:347px, 1440px:700px));
+}
 </style>

@@ -64,12 +64,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
- .v-heading {
-   font-family: 'Domine', serif;
-   @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
- }
+.v-heading {
+  font-family: 'Domine', serif;
+  @include poly-fluid-sizing ('font-size', (375px:22px, 768px:34px));
+}
 
- .v-paragraph {
-   margin-top: 40px;
- }
+.v-paragraph {
+  margin-top: 40px;
+}
 </style>

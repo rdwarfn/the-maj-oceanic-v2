@@ -67,7 +67,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/styles/scss/variables.scss";
+@import '~/assets/styles/utilities/_variables.scss';
+
 .komodo--des-one {
   &__wrap {
     @include poly-fluid-sizing ('padding-top', (

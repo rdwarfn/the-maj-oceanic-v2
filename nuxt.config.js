@@ -1,5 +1,3 @@
-import webpack from 'webpack'
-
 export default {
   env: {
     BASE_URL: process.env.BASE_URL
@@ -9,14 +7,8 @@ export default {
     '/': '~/api/swr.js'
   },
 
-  loading: {
-    color: '#208CB2'
-  },
-
   rootDir: __dirname,
-
   router: {
-    // trailingSlash: false,
     middleware: ['breadcrumbs'],
     extendRoutes (routes, resolve) {
       routes.push({
@@ -27,44 +19,16 @@ export default {
     }
   },
   /*
-  ** Nuxt target
-  */
-  // ssr: false,
-  // target: 'static',
-  /*
-  ** Headers of the page
-  */
-  head: {
-    title: 'The MAJ Oceanic',
-    htmlAttrs: {
-      lang: 'en-US'
-    },
-    meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'robots', name: 'robots', content: 'follow, index' },
-      { hid: 'googlebot', name: 'googlebot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
-      { hid: 'bingbot', name: 'bingbot', content: 'follow, index, max-snippet: -1, max-video-preview:-1, max-image-preview:large' },
-      { hid: 'og:locale', property: 'og:locale', content: 'en_US' }
-    ],
-    link: [
-      { rel: 'canonical', href: 'https://themajoceanic.com' },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ],
-    script: [
-      { type: 'text/javascript', src: '/js/instafeed.min.js' }
-    ]
-  },
-  /*
   ** Global CSS
   */
   styleResources: {
     scss: [
-      './assets/styles/scss/_poly-fluid-sizing.scss'
+      './assets/styles/utilities/sizing/_poly-fluid-sizing.scss'
     ]
   },
+
   css: [
-    './assets/styles/scss/main.scss'
+    './assets/styles/main.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -83,6 +47,8 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/svg',
+    '@nuxtjs/pwa',
     '@nuxtjs/vuetify',
     '@nuxtjs/style-resources'
   ],
@@ -92,9 +58,8 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa',
-    // Doc: https://github.com/nuxt-community/svg-module
-    '@nuxtjs/svg'
+    // '@nuxtjs/pwa',
+    '@nuxt/image'
   ],
   /*
   ** Axios module configuration
@@ -108,7 +73,7 @@ export default {
   vuetify: {
     defaultAssets: false,
     treeShake: true,
-    customVariables: ['~/assets/styles/scss/variables.scss'],
+    customVariables: ['~/assets/styles/utilities/_vuetify-variables.scss'],
     optionsPath: './vuetify.options.js'
   },
   /*
@@ -121,11 +86,55 @@ export default {
         type: 'javascript/auto',
         include: /node_modules/
       })
+    }
+  },
+
+  image: {
+    provider: 'ipx',
+    screens: {
+      // _variables.scss
+      sm: 600,
+      md: 960,
+      lg: 1264,
+      xl: 1904
     },
-    plugins: [
-      new webpack.ProvidePlugin({
-        _: 'lodash'
-      })
+    ipx: {}
+  },
+  /*
+  ** Headers of the page
+  */
+  head: {
+    title: 'The MAJ Oceanic',
+    htmlAttrs: {
+      lang: 'en-US'
+    },
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
+    ],
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      { type: 'text/javascript', src: '/js/instafeed.min.js' }
     ]
+  },
+
+  loading: {
+    color: '#208CB2'
+  },
+
+  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  pwa: {
+    manifest: {
+      // lang: 'en'
+      name: 'TMO',
+      short_name: 'TMO',
+      description: 'The MAJ Oceanic Official Site',
+      theme_color: '#208CB2',
+      background_color: '#000000'
+    }
   }
 }

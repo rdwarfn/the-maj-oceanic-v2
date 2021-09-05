@@ -142,11 +142,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/scss/variables.scss';
-$primary:#208CB2;
+@import '~/assets/styles/utilities/_variables.scss';
+
 $size: 12px;
-$secondary: #4E5E79;
 $white: #ffffff;
+$secondary: #4E5E79;
 
 @media #{map-get($display-breakpoints, ('md-and-up'))} {
   .button--left {

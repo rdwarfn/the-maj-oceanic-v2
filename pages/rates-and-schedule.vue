@@ -309,7 +309,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
+@import '~/assets/styles/utilities/_variables.scss';
+
 .heading {
   margin-top: 34px;
   margin-bottom: 25px;

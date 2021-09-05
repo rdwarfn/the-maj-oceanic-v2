@@ -1,15 +1,12 @@
 <template>
-  <div
-    class="navbar"
-    :class="{ animated: isIntersecting }"
-  >
+  <div class="navbar" :class="{'is-intersect': isIntersecting}">
     <div>
       <VRow
         no-gutters
         align="center"
         justify="space-between"
-        class="navrow mx-auto"
-        :class="{ animated: isIntersecting }"
+        class="navrow"
+        :class="{'is-intersect': isIntersecting}"
       >
         <VCol cols="4">
           <VRow
@@ -39,9 +36,9 @@
               </form>
             </VCol>
 
-            <VCol cols="auto">
-              <v-btn
-                v-show="false"
+            <!-- TODO: dihide dulu -->
+            <VCol v-show="false" cols="auto">
+              <VBtn
                 color="white"
                 class="btn-s font-md-12"
                 depressed
@@ -49,17 +46,12 @@
                 tile
               >
                 the maj group
-              </v-btn>
+              </VBtn>
             </VCol>
           </VRow>
         </VCol>
 
-        <VCol
-          v-ripple
-          cols="4"
-          md="3"
-          class="text-center rounded py-2 px-3 mx-2"
-        >
+        <VCol v-ripple cols="4" md="3" class="text-center rounded py-2 px-3 mx-2">
           <nuxt-link class="mx-auto" to="/" replace>
             <VImg
               :lazy-src="require('~/assets/images/svg/tmo_main_logo_white.svg?data')"
@@ -74,10 +66,7 @@
                   align="center"
                   justify="center"
                 >
-                  <VProgressCircular
-                    indeterminate
-                    color="grey lighten-5"
-                  />
+                  <VProgressCircular indeterminate color="grey lighten-5" />
                 </VRow>
               </template>
             </VImg>
@@ -85,26 +74,21 @@
         </VCol>
 
         <VCol cols="3" offset="1">
-          <VRow
-            no-gutters
-            align="end"
-            justify="end"
-          >
-            <VCol cols="auto">
-              <v-btn
-                v-show="false"
-                to="#"
+          <VRow no-gutters align="end" justify="end">
+            <!-- TODO: dihide dulu -->
+            <VCol v-show="false" cols="auto">
+              <VBtn
+                tile
                 text
-                nuxt
                 color="white"
                 class="btn-s __btn font-md-12"
               >
                 login
-              </v-btn>
+              </VBtn>
             </VCol>
 
             <VCol cols="auto">
-              <v-btn
+              <VBtn
                 to="/contact-us"
                 color="primary"
                 class="btn-s font-md-12"
@@ -113,7 +97,7 @@
                 nuxt
               >
                 inquire now
-              </v-btn>
+              </VBtn>
             </VCol>
           </VRow>
         </VCol>
@@ -121,50 +105,9 @@
 
       <!-- row list  -->
 
-      <VFlex
-        class="navlist d-flex mx-auto static"
-        :class="{ animated: isIntersecting }"
-      >
-        <VRow
-          no-gutters
-          align="center"
-          justify="space-around"
-        >
-          <NavMenu :is-intersecting="!isIntersecting" />
-
-          <VCol
-            v-show="isIntersecting"
-            cols="auto"
-            :class="{ intersec: !isIntersecting }"
-          >
-            <v-btn
-              text
-              tile
-              nuxt
-              class="font-md-12"
-            >
-              login
-            </v-btn>
-          </VCol>
-
-          <VCol
-            v-show="isIntersecting"
-            cols="auto"
-            :class="{ intersec: !isIntersecting }"
-          >
-            <v-btn
-              class="btn-s btn--inquire font-md-12"
-              to="/contact-us"
-              depressed
-              tile
-              nuxt
-              dark
-            >
-              Inquire Now
-            </v-btn>
-          </VCol>
-        </VRow>
-      </VFlex>
+      <div class="navlist" :class="{'is-intersect': isIntersecting}">
+        <NavMenu :is-intersecting="isIntersecting" />
+      </div>
     </div>
   </div>
 </template>
@@ -198,26 +141,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/scss/variables.scss';
+@import '~/assets/styles/utilities/_variables.scss';
+
 $fifo: #{map-get($transition, 'fast-in-fast-out')};
-$primary: #208CB2;
 $secondary: #232323;
+$second: .3s;
 
 .navbar {
   display: none;
   height: 30%;
   width: 100vw;
-  position: fixed !important;
+  position: fixed;
   max-height: 192px;
-  background: rgba(47, 46, 46, 0.4) !important;
-  transition: transform .3s $fifo, box-shadow .3s $fifo;
+  background: rgba(47, 46, 46, 0.4);
+  transition: all $second $fifo;
 
   @media #{map-get($display-breakpoints, 'lg-and-up')} {
-    z-index: 10 !important;
-    display: block !important;
-
-    &.animated {
-      transform: translateY(-115px); //1204
+    z-index: 10;
+    display: block;
+    &.is-intersect {
+      transform: translateY(-6.71875rem);
       box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);
     }
   }
@@ -230,54 +173,37 @@ $secondary: #232323;
 }
 
 .navrow {
-  margin-top: 2rem;
+  margin: 2rem auto 0px;
   place-self: baseline;
   opacity: 1;
   width: 90%;
   transform: scale(1);
-  transition: opacity .3s $fifo, transform .3s $fifo;
-  &.animated {
+  transition: all $second $fifo;
+  &.is-intersect {
     opacity: 0;
     transform: scale(0.9, 0.9);
   }
 }
 
 .navlist {
-  align-self: flex-end !important;
+  display: flex;
+  align-self: flex-end;
   justify-self: center;
   width: 90%;
   background-color: transparent;
-  border-top: 1px solid white;
+  border-top: 1.5px solid white;
   color: white;
-  height: 44px;
+  height: 2.8125rem;
   top: unset;
-  transition:
-    background-color .8s $fifo,
-    color .3s $fifo,
-    height .3s $fifo,
-    width .3s $fifo;
-  &.animated {
+  transition: all $second $fifo;
+  &.is-intersect {
     background-color: white;
     color: #232323;
-    height: 78px;
+    height: 4.875rem;
     width: 100%;
     padding-left: 20px;
-    @include poly-fluid-sizing ('padding-right', (960px:20px, 1440px:48px));
+    @include poly-fluid-sizing ('padding-right', (960px:20px, 1440px:75px));
   }
-}
-
-.navinput {
-  place-self: center;
-  max-height: 42px !important;
-  text-transform: uppercase;
-}
-
-.navlink {
-  font-family: 'Montserrat', sans-serif;
-  padding: 0 4px;
-  font-size: 13px;
-  font-weight: bold;
-  text-transform: uppercase;
 }
 
 @media (max-width: 1362px) {
@@ -291,9 +217,9 @@ $secondary: #232323;
     padding: 0 !important;
   }
   ::placeholder {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 13px;
-    font-weight: bold;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
     opacity: 1 !important;
     letter-spacing: 2px !important;
     text-transform: uppercase !important;
@@ -311,7 +237,7 @@ $secondary: #232323;
       color: #FFFFFF  !important;
     }
     ::-ms-input-placeholder { /* Microsoft Edge */
-      color: #FFFFFF ;
+      color: #FFFFFF !important;
     }
   }
 

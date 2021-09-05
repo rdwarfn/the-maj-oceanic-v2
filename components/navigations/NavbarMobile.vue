@@ -74,90 +74,90 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  $primary: #208CB2;
-  $secondary: #232323;
-  $cubic: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+@import '~/assets/styles/utilities/_variables.scss';
 
-  ::v-deep .v-btn:not(.v-btn--round).v-size--default {
-    &._inquire--primary-black {
-      letter-spacing: 2px;
-      @include poly-fluid-sizing ('width', (375px:59px, 768px:133px));
-      @include poly-fluid-sizing ('height', (375px:22px, 768px:30px));
-      @include poly-fluid-sizing ('font-size', (375px:8px, 768px:13px));
-      @include poly-fluid-sizing ('font-size', (375px:8px, 768px:13px));
+$secondary: #232323;
+
+::v-deep .v-btn:not(.v-btn--round).v-size--default {
+  &._inquire--primary-black {
+    letter-spacing: 2px;
+    @include poly-fluid-sizing ('width', (375px:59px, 768px:133px));
+    @include poly-fluid-sizing ('height', (375px:22px, 768px:30px));
+    @include poly-fluid-sizing ('font-size', (375px:8px, 768px:13px));
+    @include poly-fluid-sizing ('font-size', (375px:8px, 768px:13px));
+  }
+}
+
+.v-app-bar {
+  -webkit-transition:
+    background-color .8s ease-out,
+    display .8s ease-out,
+    color .8s ease-out !important;
+  -moz-transition:
+    background-color .8s ease-out,
+    display .8s ease-out,
+    color .8s ease-out !important;
+  transition:
+    background-color .8s ease-out,
+    display .8s ease-out,
+    color .8s ease-out !important;
+
+  ._img--white { display: none !important; }
+  ._img--black { display: $secondary !important; }
+
+  a._inquire {
+    text-transform: uppercase !important;
+    font-family: 'Montserrat', sans-serif !important;
+    text-align: center !important;
+    white-space: normal !important;
+    @include poly-fluid-sizing('font-size', (367px:7px, 768px:13px));
+    @include poly-fluid-sizing('width', (367px:56px, 599px:98px));
+    letter-spacing: 2px !important;
+    height: auto;
+    padding: {
+      top: 3px !important;
+      left: 4px !important;
+      right: 4px !important;
+    }
+    color: white !important;
+  }
+
+  &--is-scrolled {
+    background-color: #ffffff !important;
+    a._inquire {
+      color: $secondary !important;
+      @media (max-width: 599px) {
+        color: white !important;
+        background-color: $secondary !important;
+        &:hover {
+          color: $secondary !important;
+          background-color: transparent !important;
+          border: thin solid $secondary !important;
+        }
+      }
+    }
+
+    ._inquire--primary-black {
+      background-color: $secondary !important;
+      border-color: $secondary !important;
     }
   }
 
-  .v-app-bar {
-    -webkit-transition:
-      background-color .8s ease-out,
-      display .8s ease-out,
-      color .8s ease-out !important;
-    -moz-transition:
-      background-color .8s ease-out,
-      display .8s ease-out,
-      color .8s ease-out !important;
-    transition:
-      background-color .8s ease-out,
-      display .8s ease-out,
-      color .8s ease-out !important;
-
-    ._img--white { display: none !important; }
-    ._img--black { display: $secondary !important; }
+  &--hide-shadow {
+    background-color: rgba(35, 35, 35, 0.3) !important;
+    ._img--white { display: block !important; }
+    ._img--black { display: none !important; }
 
     a._inquire {
-      text-transform: uppercase !important;
-      font-family: 'Montserrat', sans-serif !important;
-      text-align: center !important;
-      white-space: normal !important;
-      @include poly-fluid-sizing('font-size', (367px:7px, 768px:13px));
-      @include poly-fluid-sizing('width', (367px:56px, 599px:98px));
-      letter-spacing: 2px !important;
-      height: auto;
-      padding: {
-        top: 3px !important;
-        left: 4px !important;
-        right: 4px !important;
-      }
-      color: white !important;
-    }
-
-    &--is-scrolled {
-      background-color: #ffffff !important;
-      a._inquire {
-        color: $secondary !important;
-        @media (max-width: 599px) {
-          color: white !important;
-          background-color: $secondary !important;
-          &:hover {
-            color: $secondary !important;
-            background-color: transparent !important;
-            border: thin solid $secondary !important;
-          }
-        }
-      }
-
-      ._inquire--primary-black {
-        background-color: $secondary !important;
-        border-color: $secondary !important;
-      }
-    }
-
-    &--hide-shadow {
-      background-color: rgba(35, 35, 35, 0.3) !important;
-      ._img--white { display: block !important; }
-      ._img--black { display: none !important; }
-
-      a._inquire {
-        @media (max-width: 599px) {
-          background-color: $primary !important;
-          color: white !important;
-          &:hover {
-            background-color: transparent !important;
-            border: thin solid $primary !important;
-          }
+      @media (max-width: 599px) {
+        background-color: $primary !important;
+        color: white !important;
+        &:hover {
+          background-color: transparent !important;
+          border: thin solid $primary !important;
         }
       }
     }
   }
+}
 </style>

@@ -13,10 +13,10 @@ export function getNavigation () {
   return instance('api/navigations/')
 }
 
-function getNav () {
-  return this.$axios.$get('/api/navigations')
+export function getPage (url) {
+  return instance(`api/pages/${url}/`)
 }
 
-export {
-  getNav
+export function getNav () {
+  return this.$axios.$get('/api/navigations')
 }

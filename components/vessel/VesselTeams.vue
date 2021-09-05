@@ -177,79 +177,77 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "@/assets/styles/scss/variables.scss";
-  $primary: #208cb2;
-  $secondary: #EFE1DC;
+@import '~/assets/styles/utilities/_variables.scss';
 
-  .the-teams {
-    position: relative !important;
-    padding-top: 50px !important;
-    .__caption {
-      color: $primary !important;
+.the-teams {
+  position: relative !important;
+  padding-top: 50px !important;
+  .__caption {
+    color: $primary !important;
+  }
+  .__heading {
+    font-family: 'Domine', serif !important;
+    font-weight: 600;
+    line-height: 41px;
+    @include poly-fluid-sizing ('font-size', (375px:20px, 768px:34px));
+    @include poly-fluid-sizing ('margin-bottom', (375px:35px, 768px:40px, 1440px:85px));
+  }
+  .swiper__item--heading {
+    line-height: 28px !important;
+    @include poly-fluid-sizing ('font-size', (375px:22px, 768px:18px, 960px:22px));
+    @include poly-fluid-sizing ('margin-top', (375px:30px, 768px:20px, 960px:35px));
+    margin-bottom: 5.5px;
+  }
+  @media #{map-get($display-breakpoints, 'xs-only')} {
+    padding-bottom: 61px !important;
+    .swiper-slide {
+      width: 100% !important;
+      max-width: 300px !important;
     }
-    .__heading {
-      font-family: 'Domine', serif !important;
-      font-weight: 600;
-      line-height: 41px;
-      @include poly-fluid-sizing ('font-size', (375px:20px, 768px:34px));
-      @include poly-fluid-sizing ('margin-bottom', (375px:35px, 768px:40px, 1440px:85px));
+    .swiper-pagination-bullets {
+      bottom: 0 !important;
     }
-    .swiper__item--heading {
-      line-height: 28px !important;
-      @include poly-fluid-sizing ('font-size', (375px:22px, 768px:18px, 960px:22px));
-      @include poly-fluid-sizing ('margin-top', (375px:30px, 768px:20px, 960px:35px));
-      margin-bottom: 5.5px;
-    }
-    @media #{map-get($display-breakpoints, 'xs-only')} {
-      padding-bottom: 61px !important;
-      .swiper-slide {
-        width: 100% !important;
-        max-width: 300px !important;
-      }
-      .swiper-pagination-bullets {
-        bottom: 0 !important;
-      }
-      .swiper__item--img {
-        max-width: 300px !important;
-        max-height: 300px !important;
-      }
-    }
-    @media #{map-get($display-breakpoints, ('sm-only'))} {
-      padding-bottom: 24px !important;
-      .button--left, .button--right {
-        top: 254.5px;
-      }
-      .button--left {
-        left: 24px;
-      }
-      .button--right {
-        right: 24px;
-      }
-      .swiper-container {
-        max-width: 625px !important;
-      }
-      .swiper__item--text {
-        line-height: 21px !important;
-        font-size: 14px !important;
-      }
-    }
-    @media #{map-get($display-breakpoints, ('md-and-up'))} {
-      padding-bottom: 55px !important;
-      .swiper__item--img {
-        width: 350px !important;
-        height: 350px !important;
-      }
-      .button--left, .button--right {
-        top: 380px;
-      }
-      .button--left {
-        right: auto;
-        left: -62px;
-      }
-      .button--right {
-        left: auto;
-        right: -62px;
-      }
+    .swiper__item--img {
+      max-width: 300px !important;
+      max-height: 300px !important;
     }
   }
+  @media #{map-get($display-breakpoints, ('sm-only'))} {
+    padding-bottom: 24px !important;
+    .button--left, .button--right {
+      top: 254.5px;
+    }
+    .button--left {
+      left: 24px;
+    }
+    .button--right {
+      right: 24px;
+    }
+    .swiper-container {
+      max-width: 625px !important;
+    }
+    .swiper__item--text {
+      line-height: 21px !important;
+      font-size: 14px !important;
+    }
+  }
+  @media #{map-get($display-breakpoints, ('md-and-up'))} {
+    padding-bottom: 55px !important;
+    .swiper__item--img {
+      width: 350px !important;
+      height: 350px !important;
+    }
+    .button--left, .button--right {
+      top: 380px;
+    }
+    .button--left {
+      right: auto;
+      left: -62px;
+    }
+    .button--right {
+      left: auto;
+      right: -62px;
+    }
+  }
+}
 </style>

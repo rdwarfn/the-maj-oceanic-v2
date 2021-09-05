@@ -125,8 +125,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/styles/scss/variables.scss";
-
 ::v-deep .v-sheet.v-app-bar.v-toolbar:not(.v-sheet--outlined) {
   box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);;
 }

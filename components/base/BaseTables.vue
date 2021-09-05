@@ -47,17 +47,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/scss/variables.scss";
+@import '~/assets/styles/utilities/_variables.scss';
+
 .theme--light.v-data-table {
   background-color: transparent !important;
-  // @media #{map-get($display-breakpoints, ('xs-and-up'))} {
-  // }
   padding-top: 113px !important;
   padding-bottom: 68px !important;
 }
 
 .theme--light.v-data-table > .v-data-table__wrapper > table > tbody > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) {
-    background: unset !important;
+  background: unset !important;
 }
 
 ::v-deep .v-data-table__wrapper > table > thead > tr > td  {

@@ -1,0 +1,47 @@
+@import '~/assets/styles/utilities/_variables.scss';
+
+body {
+  font-size: 16px;
+  background: #FAFAFA !important;
+}
+
+label {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 13px !important;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+  -webkit-user-drag: none !important;
+}
+
+a::before {
+  background-color: unset !important;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  -ms-interpolation-mode: bicubic;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+ul {
+  padding-left: inherit !important;
+  list-style: none !important;
+}
+
+@media #{map-get($display-breakpoints, 'xs-only')} {
+  tr:hover {
+    background-color: transparent !important;
+  }
+}

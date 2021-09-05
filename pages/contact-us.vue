@@ -516,138 +516,137 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import '~/assets/styles/scss/variables.scss';
+@import '~/assets/styles/utilities/_variables.scss';
 
-  section {
-    @media #{map-get($display-breakpoints, 'sm-and-down')} {
-      padding-left: 25px !important;
-      padding-right: 25px !important;
-    }
+section {
+  @media #{map-get($display-breakpoints, 'sm-and-down')} {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
   }
+}
 
-  .mb-89 {
-    margin-bottom: 89px !important;
+.mb-89 {
+  margin-bottom: 89px !important;
+}
+
+.mb-sm-60 {
+  @media (min-width: 600px) and (max-width: 960px) {
+    margin-bottom: 60px !important;
   }
+}
 
-  .mb-sm-60 {
-    @media (min-width: 600px) and (max-width: 960px) {
-      margin-bottom: 60px !important;
-    }
-  }
+._wa {
+  font-variant: small-caps;
+  letter-spacing: 2px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  line-height: 21px;
+}
 
-  ._wa {
-    font-variant: small-caps;
-    letter-spacing: 2px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    line-height: 21px;
-  }
+._wa--name {
+  letter-spacing: 2px;
+}
 
-  ._wa--name {
-    letter-spacing: 2px;
-  }
+._contact-row {
+  @include poly-fluid-sizing ('margin-top', (375px:102px, 768px:199px, 1440px:197px));
+}
 
-  ._contact-row {
-    @include poly-fluid-sizing ('margin-top', (375px:102px, 768px:199px, 1440px:197px));
-  }
+._contact-desc {
+  @include poly-fluid-sizing ('width', (375px:293.58px, 768px:220px, 1440px:293.58px));
+}
 
-  ._contact-desc {
-    @include poly-fluid-sizing ('width', (375px:293.58px, 768px:220px, 1440px:293.58px));
-  }
-
-  ._form {
-    box-shadow:  0px 7px 64px rgba(0, 0, 0, 0.03);;
-    &--headline {
-      font-family: 'Montserrat', sans-serif !important;
-      font-size: 14px !important;
-      font-weight: bold !important;
-      line-height: 16px !important;
-      text-transform: uppercase !important;
-      letter-spacing: 3px !important;
-
-      @media #{map-get($display-breakpoints, 'xs-only')} {
-        margin-bottom: 52px !important;
-      }
-    }
-
-    ::v-deep .v-textarea textarea {
-      min-height: 129px !important;
-    }
-  }
-
-  ::v-deep .v-dialog {
-    width: 100%;
-    @include poly-fluid-sizing ('max-width', (375px:315px, 1440px:850px));
-    @include poly-fluid-sizing ('max-height', (375px:580px, 1440px:300px));
-    padding: 10px;
-    background-color: white;
-
-    &--card {
-      @include poly-fluid-sizing ('height', (375px:560px, 1440px:280px));
-      background-color: #EFE1DC !important;
-      display: flex;
-      flex-flow: column wrap;
-      place-content: space-around;
-      width: 100%;
-      position: relative;
-      background-position: top left;
-      @media #{map-get($display-breakpoints, 'xs-only')} {
-        background-position: top center;
-      }
-
-      &-close-btn {
-        background-color: white;
-        z-index: 2;
-      }
-      &-row {
-        position: relative !important;
-      }
-      &-img-water {
-        position: absolute;
-        @include poly-fluid-sizing ('bottom', (375px:80px, 1440px:60px));
-        right: 0;
-      }
-      .v-card__title {
-        @include poly-fluid-sizing ('margin-top', (375px:215px, 1440px:20px));
-      }
-      &-heading {
-        letter-spacing: normal;
-        font-family: 'Domine', sans-serif !important;
-        @include poly-fluid-sizing ('width', (375px:254px, 1440px:500px));
-        @include poly-fluid-sizing ('font-size', (375px:22px, 1440px:32px));
-        @include poly-fluid-sizing ('line-height', (375px:32px, 1440px:40px));
-      }
-      // &-actions {
-      // }
-      &-link.v-btn {
-        font-weight: 300 !important;
-        color: #5A5A5A !important;
-        font-size: 16px !important;
-        font-weight: 300 !important;
-        margin-bottom: 15px !important;
-        text-transform: unset !important;
-        font-family: 'PT Sans', sans-serif !important;
-      }
-    }
-  }
-
-  ::v-deep .v-label {
-    font-family: 'PT Sans', sans-serif !important;
-    font-size: 16px !important;
-    line-height: 21px !important;
-    font-weight: normal !important;
-    color: #000000 !important;
-  }
-
-  ::v-deep .v-btn._btn--submit {
-    min-width: 111.39px !important;
+._form {
+  box-shadow:  0px 7px 64px rgba(0, 0, 0, 0.03);;
+  &--headline {
     font-family: 'Montserrat', sans-serif !important;
-    font-size: 13px !important;
-    letter-spacing: 2px !important;
-    line-height: 18px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    line-height: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 3px !important;
+
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      margin-bottom: 52px !important;
+    }
   }
 
-  ::v-deep ._form {
-    background: #FFFFFF !important;
+  ::v-deep .v-textarea textarea {
+    min-height: 129px !important;
   }
+}
 
+::v-deep .v-dialog {
+  width: 100%;
+  @include poly-fluid-sizing ('max-width', (375px:315px, 1440px:850px));
+  @include poly-fluid-sizing ('max-height', (375px:580px, 1440px:300px));
+  padding: 10px;
+  background-color: white;
+
+  &--card {
+    @include poly-fluid-sizing ('height', (375px:560px, 1440px:280px));
+    background-color: #EFE1DC !important;
+    display: flex;
+    flex-flow: column wrap;
+    place-content: space-around;
+    width: 100%;
+    position: relative;
+    background-position: top left;
+    @media #{map-get($display-breakpoints, 'xs-only')} {
+      background-position: top center;
+    }
+
+    &-close-btn {
+      background-color: white;
+      z-index: 2;
+    }
+    &-row {
+      position: relative !important;
+    }
+    &-img-water {
+      position: absolute;
+      @include poly-fluid-sizing ('bottom', (375px:80px, 1440px:60px));
+      right: 0;
+    }
+    .v-card__title {
+      @include poly-fluid-sizing ('margin-top', (375px:215px, 1440px:20px));
+    }
+    &-heading {
+      letter-spacing: normal;
+      font-family: 'Domine', sans-serif !important;
+      @include poly-fluid-sizing ('width', (375px:254px, 1440px:500px));
+      @include poly-fluid-sizing ('font-size', (375px:22px, 1440px:32px));
+      @include poly-fluid-sizing ('line-height', (375px:32px, 1440px:40px));
+    }
+    // &-actions {
+    // }
+    &-link.v-btn {
+      font-weight: 300 !important;
+      color: #5A5A5A !important;
+      font-size: 16px !important;
+      font-weight: 300 !important;
+      margin-bottom: 15px !important;
+      text-transform: unset !important;
+      font-family: 'PT Sans', sans-serif !important;
+    }
+  }
+}
+
+::v-deep .v-label {
+  font-family: 'PT Sans', sans-serif !important;
+  font-size: 16px !important;
+  line-height: 21px !important;
+  font-weight: normal !important;
+  color: #000000 !important;
+}
+
+::v-deep .v-btn._btn--submit {
+  min-width: 111.39px !important;
+  font-family: 'Montserrat', sans-serif !important;
+  font-size: 13px !important;
+  letter-spacing: 2px !important;
+  line-height: 18px !important;
+}
+
+::v-deep ._form {
+  background: #FFFFFF !important;
+}
 </style>
