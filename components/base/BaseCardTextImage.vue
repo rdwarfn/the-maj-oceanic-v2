@@ -3,19 +3,19 @@
     no-gutters
     align="center"
     justify="center"
-    :class="$style.card_wrap"
+    class="card-wrap"
   >
     <div
-      class="d-sm-flex align-center"
-      :class="{ 'flex-sm-row-reverse' : reverse, 'flex-sm-row': !reverse }"
+      class="card d-sm-flex align-center"
+      :class="{ 'reversed' : reverse }"
     >
-      <!-- <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
+      <v-card-subtitle class="hidden-sm-and-up text-h6 text-center font-weight-bold py-0">
         {{ data.caption }}
       </v-card-subtitle>
 
       <v-card-title class="hidden-sm-and-up text-h4 justify-center text-center text-break px-0 mb-5">
         {{ data.heading }}
-      </v-card-title> -->
+      </v-card-title>
 
       <VImg
         v-if="data.image"
@@ -35,11 +35,11 @@
         </template>
       </VImg>
 
-      <!-- <v-card-text class="hidden-sm-and-up px-0 mt-5 text-center">
+      <v-card-text class="hidden-sm-and-up px-0 mt-5 text-center">
         {{ data.description }}
-      </v-card-text> -->
+      </v-card-text>
 
-      <!-- <v-card-actions
+      <v-card-actions
         v-if="buttonText"
         class="hidden-sm-and-up pa-0 mt-9"
       >
@@ -55,7 +55,7 @@
         >
           {{ buttonText }}
         </v-btn>
-      </v-card-actions> -->
+      </v-card-actions>
 
       <div class="card--content hidden-xs-only" :class="cardContentClass">
         <v-card-subtitle
@@ -74,16 +74,8 @@
         <v-card-text
           class="px-0"
           :class="contentRight ? 'text-right' : null"
-        >
-          {{ data.description }}
-          <ul v-if="data.list">
-            <li
-              v-for="(item, index) in data.list.split('\n')"
-              :key="index"
-              v-text="item"
-            />
-          </ul>
-        </v-card-text>
+          v-text="data.description"
+        />
 
         <v-card-actions
           v-if="buttonText"
@@ -135,73 +127,73 @@ export default {
 }
 </script>
 
-<style lang="scss" module>
-.card_wrap {
+<style lang="scss" scoped>
+.bdr {
+  border: 1px solid black;
+}
+
+.v-card__text {
+  font-size: 16px !important;
+}
+
+.card-wrap {
   padding-top: 50px;
   padding-bottom: 50px;
 }
-</style>
 
-<style lang="scss" scoped>
-  $primary: #208cb2;
-  .bdr {
-    border: 1px solid black;
+.card {
+  flex-wrap: wrap !important;
+  flex-direction: row !important;
+
+  .v-btn {
+    width: 151px !important;
   }
 
-  .v-card__text {
-    font-size: 16px !important;
+  .text-h6 {
+    color: #208cb2 !important;
   }
 
-  .card {
-    .v-btn {
-      width: 151px !important;
-    }
+  @media (min-width: 600px) {
+    flex-wrap: unset !important;
+  }
 
-    .text-h6 {
-      color: $primary !important;
-    }
+  &.reversed {
+    // flex-wrap: wrap-reverse !important;
+    flex-direction: row-reverse !important;
 
     @media (min-width: 600px) {
       flex-wrap: unset !important;
     }
+  }
+}
 
-    &.reversed {
-      flex-wrap: wrap-reverse !important;
-      flex-direction: row-reverse !important;
+.card--image {
+  @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
+  @include poly-fluid-sizing ('height', (374px:181px, 768px:350px));
+}
 
-      @media (min-width: 600px) {
-        flex-wrap: unset !important;
-      }
-    }
+.card--content {
+  .v-card__title {
+    font-family: 'Domine', serif !important;
+    font-size: 21px !important;
+    font-weight: 600;
+    letter-spacing: normal !important;
+    line-height: 28px;
+  }
+  @include poly-fluid-sizing ('margin-left', (375px:0px, 768px:30px, 1440px:65px));
+  margin-right: 0;
 
-    &--image {
-      @include poly-fluid-sizing ('max-width', (374px:325px, 768px:367px, 1440px:570px));
-      @include poly-fluid-sizing ('height', (374px:181px, 768px:350px));
-    }
+  .reversed & {
+    @include poly-fluid-sizing ('margin-right', (375px:0px, 768px:30px, 1440px:65px));
+    margin-left: 0;
+  }
 
-    &--content {
-      .v-card__title {
-        font-family: 'Domine', serif !important;
-        font-size: 21px !important;
-        font-weight: 600;
-        letter-spacing: normal !important;
-        line-height: 28px;
-      }
-      @include poly-fluid-sizing ('margin-left', (375px:0px, 768px:30px, 1440px:65px));
-      margin-right: 0;
-
-      .reversed & {
-        @include poly-fluid-sizing ('margin-right', (375px:0px, 768px:30px, 1440px:65px));
-        margin-left: 0;
-      }
-
-      ul {
-        padding-left: inherit !important;
-        padding-top: 30px !important;
-        li {
-          margin-bottom: 11px !important;
-        }
-      }
+  ul {
+    padding-left: inherit !important;
+    padding-top: 30px !important;
+    li {
+      margin-bottom: 11px !important;
     }
   }
+}
 </style>

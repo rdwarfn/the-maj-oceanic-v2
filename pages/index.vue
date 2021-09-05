@@ -1,31 +1,30 @@
 <template>
   <div id="home">
     <Intro
-      v-if="item.intro"
-      :data="item.intro"
       class="home--intro"
+      :data="data.intro"
     />
 
     <VContainer
-      v-if="item.the_vessel"
+      v-if="data.the_vessel"
       class="home--the-vessel px-6 px-md-0"
       tag="section"
     >
       <BaseCarousel
-        :data="[...item.the_vessel]"
+        :data="[...data.the_vessel]"
         button-text="discover"
       />
     </VContainer>
 
-    <HomeVoyages v-if="item.voyages" :data="item.voyages" />
+    <HomeVoyages v-if="data.voyages" :data="data.voyages" />
 
     <VContainer
-      v-if="item.dining"
+      v-if="data.dining"
       class="home--dining px-6 px-md-0 py-0"
       tag="section"
     >
       <BaseCardTextImage
-        :data="item.dining"
+        :data="data.dining"
         button-text="learn more"
         content-right
         reverse
@@ -33,12 +32,12 @@
     </VContainer>
 
     <VContainer
-      v-if="item.occasions"
+      v-if="data.occasions"
       class="home--occasions px-6 px-md-0 py-0"
       tag="section"
     >
       <BaseCardTextImage
-        :data="item.occasions"
+        :data="data.occasions"
         button-text="learn more"
       />
     </VContainer>
@@ -46,36 +45,32 @@
 </template>
 
 <script>
-import { getPage } from '~/services/api'
 import Intro from '~/components/Intro.vue'
 import BaseCarousel from '~/components/base/BaseCarousel.vue'
 import HomeVoyages from '~/components/home/HomeVoyages.vue'
 import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
 
 export default {
+
   components: {
     Intro,
     BaseCarousel,
     HomeVoyages,
     BaseCardTextImage
   },
-
   layout: 'main',
 
-  data () {
+  async asyncData ({ $axios }) {
+    const data = await $axios.$get('/api/pages/home/')
     return {
-      item: null
+      data
     }
   },
 
-  async fetch () {
-    await getPage('home')
-      .then((ress) => {
-        this.item = ress
-        // eslint-disable-next-line camelcase
-        const page_key = this.$route.name
-        this.addHeros({ page_key, data: this.item.hero })
-      })
+  mounted () {
+    if (this.$data.data && this.$data.data.hero) {
+      this.addHeros({ page_key: this.$route.name || 'title', data: this.$data.data.hero })
+    }
   },
 
   methods: {
