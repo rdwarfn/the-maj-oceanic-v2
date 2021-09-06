@@ -7,7 +7,7 @@
     no-gutters
   >
     <VCol
-      v-for="item in items.slice(0, 3)"
+      v-for="item in items.slice(0, 4)"
       :key="item.id"
       cols="auto"
       class="text-center"
@@ -19,7 +19,6 @@
         offset-y
         open-on-hover
         tile
-        :rounded="false"
         auto
         min-width="190"
       >
@@ -28,8 +27,9 @@
             text
             tile
             nuxt
+            depressed
             :to="item.to"
-            :dark="isIntersecting"
+            :dark="!isIntersecting"
             draggable="false"
             class="btn-s font-md-12"
             v-bind="attrs"
@@ -41,7 +41,7 @@
 
         <VList
           v-if="item.children.length"
-          :dark="isIntersecting"
+          :dark="!isIntersecting"
           class="py-0"
         >
           <template v-for="(child, j) in item.children">
@@ -68,13 +68,13 @@
       </VMenu>
     </VCol>
 
-    <VSpacer v-show="!isIntersecting" />
+    <VSpacer v-show="isIntersecting" />
 
     <VCol
-      v-show="!isIntersecting"
+      v-show="isIntersecting"
       cols="auto"
       class="text-center"
-      :class="{ intersec: !isIntersecting }"
+      :class="{ intersec: isIntersecting }"
     >
       <VBtn
         class="mx-auto"
@@ -96,10 +96,10 @@
       </VBtn>
     </VCol>
 
-    <VSpacer v-show="!isIntersecting" />
+    <VSpacer v-show="isIntersecting" />
 
     <VCol
-      v-for="item in items.slice(3,)"
+      v-for="item in items.slice(4,)"
       :key="item.id"
       cols="auto"
       class="text-center"
@@ -107,7 +107,6 @@
       <VMenu
         background-color="transparent"
         close-on-click
-        :rounded="false"
         open-on-hover
         min-width="190"
         offset-y
@@ -120,8 +119,9 @@
             text
             tile
             nuxt
+            depressed
             :to="item.to"
-            :dark="isIntersecting"
+            :dark="!isIntersecting"
             class="font-md-12"
             v-bind="attrs"
             v-on="{on}"
@@ -132,7 +132,7 @@
 
         <VList
           v-if="item.children.length"
-          :dark="isIntersecting"
+          :dark="!isIntersecting"
           color="transparent"
           min-width="190"
           subheader

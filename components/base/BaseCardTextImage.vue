@@ -194,22 +194,12 @@ export default {
         &--contained {
           &.primary {
             color: white !important;
-            caret-color: white !important;
+            caret-color: rgb(163, 160, 160) !important;
             &:hover {
               color: $primary !important;
               caret-color: $primary !important;
               border: thin solid $primary !important;
               background-color: white !important;
-            }
-          }
-        }
-
-        &--outlined {
-          &.primary--text {
-            &:hover {
-              color: white !important;
-              background-color: $primary !important;
-              border-color: $primary !important;
             }
           }
         }

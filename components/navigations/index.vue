@@ -2,7 +2,7 @@
   <!-- class="navbar align-self-center" -->
   <div
     class="navbar"
-    :class="{ animated: isIntersecting }"
+    :class="{ intersecting: isIntersecting }"
   >
     <div>
       <VRow
@@ -10,7 +10,7 @@
         align="center"
         justify="space-between"
         class="navrow mx-auto"
-        :class="{ animated: isIntersecting }"
+        :class="{ intersecting: isIntersecting }"
       >
         <VCol cols="4">
           <VRow
@@ -40,9 +40,8 @@
               </form>
             </VCol>
 
-            <VCol cols="auto">
-              <v-btn
-                v-show="false"
+            <VCol v-show="false" cols="auto">
+              <VBtn
                 color="white"
                 class="btn-s font-md-12"
                 depressed
@@ -50,7 +49,7 @@
                 tile
               >
                 the maj group
-              </v-btn>
+              </VBtn>
             </VCol>
           </VRow>
         </VCol>
@@ -91,9 +90,8 @@
             align="end"
             justify="end"
           >
-            <VCol cols="auto">
-              <v-btn
-                v-show="false"
+            <VCol v-show="false" cols="auto">
+              <VBtn
                 to="#"
                 text
                 nuxt
@@ -101,11 +99,11 @@
                 class="btn-s __btn font-md-12"
               >
                 login
-              </v-btn>
+              </VBtn>
             </VCol>
 
             <VCol cols="auto">
-              <v-btn
+              <VBtn
                 to="/contact-us"
                 color="primary"
                 class="btn-s font-md-12"
@@ -114,7 +112,7 @@
                 nuxt
               >
                 inquire now
-              </v-btn>
+              </VBtn>
             </VCol>
           </VRow>
         </VCol>
@@ -124,36 +122,34 @@
 
       <VFlex
         class="navlist d-flex mx-auto static"
-        :class="{ animated: isIntersecting }"
+        :class="{ intersecting: isIntersecting }"
       >
         <VRow
           no-gutters
           align="center"
           justify="space-around"
         >
-          <NavMenu :is-intersecting="!isIntersecting" />
+          <NavMenu :is-intersecting="isIntersecting" />
 
           <VCol
             v-show="isIntersecting"
             cols="auto"
-            :class="{ intersec: !isIntersecting }"
           >
-            <v-btn
+            <VBtn
               text
               tile
-              nuxt
-              class="font-md-12"
+              depressed
+              class="font-md-12 mr-3"
             >
               login
-            </v-btn>
+            </VBtn>
           </VCol>
 
           <VCol
             v-show="isIntersecting"
             cols="auto"
-            :class="{ intersec: !isIntersecting }"
           >
-            <v-btn
+            <VBtn
               class="btn-s btn--inquire font-md-12"
               to="/contact-us"
               depressed
@@ -162,7 +158,7 @@
               dark
             >
               Inquire Now
-            </v-btn>
+            </VBtn>
           </VCol>
         </VRow>
       </VFlex>
@@ -211,13 +207,13 @@ $secondary: #232323;
   position: fixed !important;
   max-height: 192px;
   background: rgba(47, 46, 46, 0.4) !important;
-  transition: transform .3s $fifo, box-shadow .3s $fifo;
+  transition: all .3s $fifo;
 
   @media #{map-get($display-breakpoints, 'lg-and-up')} {
     z-index: 10 !important;
     display: block !important;
 
-    &.animated {
+    &.intersecting {
       transform: translateY(-115px); //1204
       box-shadow: 0px 20px 60px rgba(138, 149, 158, 0.2);
     }
@@ -236,8 +232,8 @@ $secondary: #232323;
   opacity: 1;
   width: 90%;
   transform: scale(1);
-  transition: opacity .3s $fifo, transform .3s $fifo;
-  &.animated {
+  transition: all .3s $fifo;
+  &.intersecting {
     opacity: 0;
     transform: scale(0.9, 0.9);
   }
@@ -252,12 +248,8 @@ $secondary: #232323;
   color: white;
   height: 44px;
   top: unset;
-  transition:
-    background-color .8s $fifo,
-    color .3s $fifo,
-    height .3s $fifo,
-    width .3s $fifo;
-  &.animated {
+  transition: all .3s $fifo;
+  &.intersecting {
     background-color: white;
     color: #232323;
     height: 78px;

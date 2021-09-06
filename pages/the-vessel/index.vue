@@ -11,6 +11,7 @@
     <VesselSuites
       v-if="items.suites_and_staterooms"
       :data="items.suites_and_staterooms"
+      :item="items.suites_and_staterooms"
     />
 
     <VesselDecks

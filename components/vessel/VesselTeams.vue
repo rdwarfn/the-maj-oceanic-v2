@@ -213,8 +213,12 @@ export default {
         max-width: 300px !important;
         max-height: 300px !important;
       }
+      .swiper__item--text {
+        font-size: 18px;
+        margin-top: 25px;
+      }
     }
-    @media #{map-get($display-breakpoints, ('sm-only'))} {
+    @media #{map-get($display-breakpoints, 'sm-only')} {
       padding-bottom: 24px !important;
       .button--left, .button--right {
         top: 254.5px;
