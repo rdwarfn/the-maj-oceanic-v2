@@ -1,30 +1,31 @@
 <template>
-  <VSheet id="home">
+  <div id="home">
     <Intro
+      v-if="item.intro"
       class="home--intro"
-      :data="data.intro"
+      :data="item.intro"
     />
 
     <VContainer
-      v-if="data.the_vessel"
+      v-if="item.the_vessel"
       class="home--the-vessel px-6 px-md-0"
       tag="section"
     >
       <BaseCarousel
-        :data="[...data.the_vessel]"
+        :data="[...item.the_vessel]"
         button-text="discover"
       />
     </VContainer>
 
-    <HomeVoyages v-if="data.voyages" :data="data.voyages" />
+    <HomeVoyages v-if="item.voyages" :data="item.voyages" />
 
     <VContainer
-      v-if="data.dining"
+      v-if="item.dining"
       class="home--dining px-6 px-md-0 py-0"
       tag="section"
     >
       <BaseCardTextImage
-        :data="data.dining"
+        :data="item.dining"
         button-text="learn more"
         content-right
         reverse
@@ -32,53 +33,78 @@
     </VContainer>
 
     <VContainer
-      v-if="data.occasions"
+      v-if="item.occasions"
       class="home--occasions px-6 px-md-0 py-0"
       tag="section"
     >
       <BaseCardTextImage
-        :data="data.occasions"
+        :data="item.occasions"
         button-text="learn more"
       />
     </VContainer>
-  </VSheet>
+  </div>
 </template>
 
 <script>
+import { metaTitle, metaDescription, addHero } from '~/mixins/Page'
 import Intro from '~/components/Intro.vue'
 import BaseCarousel from '~/components/base/BaseCarousel.vue'
 import HomeVoyages from '~/components/home/HomeVoyages.vue'
 import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
 
 export default {
-
   components: {
     Intro,
     BaseCarousel,
     HomeVoyages,
     BaseCardTextImage
   },
+
+  mixins: [
+    metaTitle,
+    metaDescription,
+    addHero
+  ],
+
   layout: 'main',
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/home/')
+    const item = await $axios.$get('/api/pages/home/')
     return {
-      data
+      item
+    }
+  },
+
+  /**
+   * TODO:
+   * add meta og:image & og:url
+   */
+  head () {
+    return {
+      title: this.metaTitle,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        }
+      ]
     }
   },
 
   mounted () {
-    if (this.$data.data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name || 'title', data: this.$data.data.hero })
-    }
-  },
-
-  methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', {
-        page_key, data
-      })
+    if (this.$data.item && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name || 'title', data: this.$data.item.hero })
     }
   }
 }

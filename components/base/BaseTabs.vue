@@ -39,11 +39,11 @@
                     </div>
                   </v-card-title>
 
-                  <v-card-text class="__tab--content-text text--primary px-0 mb-3">
-                    <p class="text-center text-md-left">
-                      {{ item.description }}
-                    </p>
-                  </v-card-text>
+                  <v-card-text
+                    v-if="item.description"
+                    class="__tab--content-text text--primary text-center text-md-left px-0 mb-3"
+                    v-html="item.description"
+                  />
 
                   <v-card-actions class="px-0" :class="buttonClass">
                     <v-btn
@@ -152,6 +152,8 @@ export default {
       @include poly-fluid-sizing ('margin-left', (960px:33px, 1440px:65px));
 
       &-text {
+        font-size: 16px !important;
+        line-height: inherit !important;
         @media (max-width: 768px) {
           width: auto !important;
         };

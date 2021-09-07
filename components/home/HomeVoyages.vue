@@ -46,12 +46,16 @@
         </swiper>
 
         <div class="tabs-mobile--content text-center">
-          <div class="tabs-mobile--heading">
-            {{ dataActive && dataActive.heading }}
+          <div v-if="dataActive.heading" class="tabs-mobile--heading">
+            {{ dataActive.heading }}
           </div>
-          <div class="tabs-mobile--text">
-            {{ dataActive && dataActive.description }}
-          </div>
+
+          <div
+            v-if="dataActive.description"
+            class="text--primary"
+            v-html="dataActive.description"
+          />
+
           <v-btn
             tile
             nuxt
@@ -194,11 +198,6 @@ export default {
     font-weight: 600 !important;
     margin-bottom: 30px !important;
     letter-spacing: normal !important;
-  }
-  &--text {
-    font-family: 'PT Sans', sans-serif !important;
-    font-size: 16px !important;
-    line-height: 21px !important;
   }
   &--btn {
     margin-top: 50px !important;

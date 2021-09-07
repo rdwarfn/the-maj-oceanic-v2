@@ -3,44 +3,44 @@
     <v-container tag="section" class="mx-auto py-0 px-6 px-md-0">
       <div
         class="intro--head font-weight-bold text-center mx-auto"
-        v-html="data.intro.heading"
+        v-html="item.intro.heading"
       />
       <div
         class="intro--paragraph text-center mx-auto"
-        v-html="data.intro.description"
+        v-html="item.intro.description"
       />
     </v-container>
 
-    <component :is="asyncComponent" class="admiral-suite" :data="data.admiral_suite">
+    <component :is="asyncComponent" class="admiral-suite" :data="item.admiral_suite">
       <template #icon>
         <v-img
-          v-if="data.admiral_suite.icon"
+          v-if="item.admiral_suite.icon"
           class="spesification--icon"
-          :src="$store.state.storage + data.admiral_suite.icon"
-          :lazy-src="$store.state.storage + data.admiral_suite.icon"
+          :src="$store.state.storage + item.admiral_suite.icon"
+          :lazy-src="$store.state.storage + item.admiral_suite.icon"
         />
       </template>
     </component>
 
-    <component :is="asyncComponent" class="columbus" reverse :data="data.commodore_suite">
+    <component :is="asyncComponent" class="columbus" reverse :data="item.commodore_suite">
       <template #icon>
         <v-img
-          v-if="data.commodore_suite.icon"
+          v-if="item.commodore_suite.icon"
           class="spesification--icon"
-          :src="$store.state.storage + data.commodore_suite.icon"
-          :lazy-src="$store.state.storage + data.commodore_suite.icon"
+          :src="$store.state.storage + item.commodore_suite.icon"
+          :lazy-src="$store.state.storage + item.commodore_suite.icon"
         />
       </template>
     </component>
 
-    <component :is="asyncComponent" class="deluxe" :data="data.deluxe_stateroom" no-wrap>
+    <component :is="asyncComponent" class="deluxe" :data="item.deluxe_stateroom" no-wrap>
       <template #icon>
-        <div v-if="data.deluxe_stateroom.icons" class="d-inline-flex">
+        <div v-if="item.deluxe_stateroom.icons" class="d-inline-flex">
           <v-img
-            v-for="(d, index) in data.deluxe_stateroom.icons"
+            v-for="(d, index) in item.deluxe_stateroom.icons"
             :key="index"
             class="spesification--icon spesification--icon-delux"
-            :class="{'mr-0': data.deluxe_stateroom.icons.length - 1 == index}"
+            :class="{'mr-0': item.deluxe_stateroom.icons.length - 1 == index}"
             :src="$store.state.storage + d.icon"
             :lazy-src="$store.state.storage + d.icon"
           />
@@ -50,7 +50,7 @@
 
     <v-sheet color="#EFE1DC">
       <v-container class="ig--container text-center px-6 px-md-0">
-        <div class="ig--heading" v-html="data.instagram.heading" />
+        <div class="ig--heading" v-html="item.instagram.heading" />
         <v-row id="instafeed" />
 
         <v-btn
@@ -72,9 +72,10 @@
 </template>
 
 <script>
-import tmgIconDivider from '@/assets/images/svg/divider_tmg.svg?inline'
-import SuitesSpecification from '@/components/suites/SuitesSpecificationPrimary.vue'
-import SuitesSpecificationMobile from '@/components/suites/SuitesSpecificationMobilePrimary.vue'
+import tmgIconDivider from '~/assets/images/svg/divider_tmg.svg?inline'
+import SuitesSpecification from '~/components/suites/SuitesSpecificationPrimary.vue'
+import SuitesSpecificationMobile from '~/components/suites/SuitesSpecificationMobilePrimary.vue'
+import { addHero, metaDescription, metaTitle } from '~/mixins/Page'
 
 export default {
   components: {
@@ -82,6 +83,12 @@ export default {
     SuitesSpecification,
     SuitesSpecificationMobile
   },
+
+  mixins: [
+    addHero,
+    metaTitle,
+    metaDescription
+  ],
 
   layout: 'main',
 
@@ -101,8 +108,8 @@ export default {
   },
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/suites-and-staterooms')
-    return { data }
+    const item = await $axios.$get('/api/pages/suites-and-staterooms')
+    return { item }
   },
 
   data () {
@@ -122,22 +129,17 @@ export default {
 
   mounted () {
     this.instafeed()
-    if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
+    if (this.$data && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name, data: this.$data.item.hero })
     }
   },
 
   methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data })
-    },
-
     instafeed (limit = this.showed) {
       // eslint-disable-next-line no-undef
       const feed = new Instafeed({
         limit,
-        accessToken: this.data && this.data.instagram && this.data.instagram.access_token,
+        accessToken: this.item && this.item.instagram && this.item.instagram.access_token,
         transform (item) {
           const d = new Date(item.timestamp)
           item.date = [d.getDate(), d.getMonth(), d.getYear()].join('/')

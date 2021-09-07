@@ -1,21 +1,21 @@
 <template>
   <div id="voyages">
     <VoyagesItem
-      v-for="(item, index) in data.voyages_items"
-      :key="index"
-      :heading-class="!index? 'heading-komodo' : null"
+      v-for="(d, i) in item.voyages_items"
+      :key="i"
+      :heading-class="!i? 'heading-komodo' : null"
       class="voyages__item"
-      :data="item"
+      :data="d"
     />
 
     <section class="voyages__testimonal">
-      <BaseTestimonal :data="data.testimonies" />
+      <BaseTestimonal :data="item.testimonies" />
     </section>
 
     <v-container tag="section" class="container__carousel px-6 px-md-0">
       <BaseCarousel
         card-mobile-class="mt-2 transparent"
-        :data="[...data.itinerary]"
+        :data="[...item.itinerary]"
         button-text="Rates & Schedule"
       />
     </v-container>
@@ -26,6 +26,7 @@
 import VoyagesItem from '~/components/voyages/VoyagesItem'
 import BaseTestimonal from '~/components/base/BaseTestimonal.vue'
 import BaseCarousel from '~/components/base/BaseCarousel.vue'
+import { addHero, metaDescription, metaTitle } from '~/mixins/Page'
 
 export default {
   components: {
@@ -33,6 +34,12 @@ export default {
     BaseTestimonal,
     BaseCarousel
   },
+
+  mixins: [
+    addHero,
+    metaTitle,
+    metaDescription
+  ],
 
   layout: 'main',
 
@@ -51,24 +58,40 @@ export default {
   },
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/voyages/')
-    return { data }
+    const item = await $axios.$get('/api/pages/voyages/')
+    return { item }
+  },
+
+  /**
+   * TODO:
+   * add meta og:image & og:url
+   */
+  head () {
+    return {
+      title: this.metaTitle,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        }
+      ]
+    }
   },
 
   mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
-      }
-    })
-  },
-
-  methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', {
-        page_key, data
-      })
+    if (this.$data && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name, data: this.$data.item.hero })
     }
   }
 }

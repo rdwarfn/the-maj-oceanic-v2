@@ -1,16 +1,13 @@
 <template>
   <div id="spesification">
     <v-container tag="section" class="spesific--master py-0 px-6 px-md-0">
-      <BaseCardTextImage
-        :data="data.deck_technical"
-        static-image
-      />
+      <BaseCardTextImage :data="item.deck_technical" />
     </v-container>
 
-    <DeckSpesification :data="data.deck_previews" />
+    <DeckSpesification :data="item.deck_previews" />
 
     <v-container class="pa-0">
-      <BaseTables :data="data.table_spesification" />
+      <BaseTables :data="item.table_spesification" />
     </v-container>
   </div>
 </template>
@@ -19,6 +16,7 @@
 import BaseTables from '~/components/base/BaseTables.vue'
 import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
 import DeckSpesification from '~/components/DeckSpesification.vue'
+import { addHero, metaDescription, metaTitle } from '~/mixins/Page'
 
 export default {
   components: {
@@ -27,14 +25,21 @@ export default {
     DeckSpesification
   },
 
+  mixins: [
+    addHero,
+    metaTitle,
+    metaDescription
+  ],
+
   layout: 'main',
 
   meta: {
     breadcrumbs: [
       {
         href: '/',
-        replace: true,
-        text: 'Home'
+        text: 'Home',
+        exact: true,
+        replace: true
       },
       {
         href: '/the-vessel',
@@ -49,22 +54,42 @@ export default {
   },
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/specification/')
+    const item = await $axios.$get('/api/pages/specification/')
     return {
-      data
+      item
+    }
+  },
+
+  /**
+   * TODO:
+   * add meta og:image & og:url
+   */
+  head () {
+    return {
+      title: this.metaTitle,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        }
+      ]
     }
   },
 
   mounted () {
-    if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
-    }
-  },
-
-  methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data })
+    if (this.$data && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name, data: this.$data.item.hero })
     }
   }
 }

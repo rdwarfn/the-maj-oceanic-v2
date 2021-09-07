@@ -282,7 +282,7 @@ $secondary: #EFE1DC;
   .swiper__item--heading {
     @include poly-fluid-sizing ('font-size', (768px:18px, 960px:22px));
     @include poly-fluid-sizing ('margin-top', (375px:30px, 768px:20px, 960px:35px));
-    font-family: 'Sentinel';
+    font-family: 'Domine', serif !important;
     margin-bottom: 5.5px;
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {

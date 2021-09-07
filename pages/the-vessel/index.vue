@@ -1,33 +1,33 @@
 <template>
   <div id="the-vessel">
     <Intro
-      v-if="items.intro"
-      :data="items.intro"
+      v-if="item.intro"
+      :data="item.intro"
       class="the-veseel--intro px-0"
       image-class="order-last px-6 px-md-0"
       description-class="text-center"
     />
 
     <VesselSuites
-      v-if="items.suites_and_staterooms"
-      :data="items.suites_and_staterooms"
-      :item="items.suites_and_staterooms"
+      v-if="item.suites_and_staterooms"
+      :data="item.suites_and_staterooms"
+      :item="item.suites_and_staterooms"
     />
 
     <VesselDecks
-      v-if="items.the_decks"
-      :data="items.the_decks"
+      v-if="item.the_decks"
+      :data="item.the_decks"
     />
 
     <VesselTeams
-      v-if="items.teams"
-      :data="items.teams"
+      v-if="item.teams"
+      :data="item.teams"
     />
 
     <v-container class="sustainability py-0 px-6 px-md-0" tag="section">
       <BaseCardTextImage
-        v-if="items.sustainability"
-        :data="items.sustainability"
+        v-if="item.sustainability"
+        :data="item.sustainability"
         button-text="Learn More"
         content-right
         reverse
@@ -38,14 +38,14 @@
 
 <script>
 import _ from 'lodash'
-import Intro from '@/components/Intro.vue'
-import VesselSuites from '@/components/vessel/VesselSuites'
-import VesselDecks from '@/components/vessel/VesselDecks.vue'
-import VesselTeams from '@/components/vessel/VesselTeams.vue'
-import BaseCardTextImage from '@/components/base/BaseCardTextImage.vue'
+import { addHero, metaTitle, metaDescription } from '~/mixins/Page'
+import Intro from '~/components/Intro.vue'
+import VesselSuites from '~/components/vessel/VesselSuites'
+import VesselDecks from '~/components/vessel/VesselDecks.vue'
+import VesselTeams from '~/components/vessel/VesselTeams.vue'
+import BaseCardTextImage from '~/components/base/BaseCardTextImage.vue'
 
 export default {
-
   components: {
     Intro,
     VesselSuites,
@@ -53,14 +53,22 @@ export default {
     VesselTeams,
     BaseCardTextImage
   },
+
+  mixins: [
+    addHero,
+    metaTitle,
+    metaDescription
+  ],
+
   layout: 'main',
 
   meta: {
     breadcrumbs: [
       {
         to: '/',
-        replace: true,
-        text: 'Home'
+        text: 'Home',
+        exact: true,
+        replace: true
       },
       {
         to: '/the-vessel',
@@ -70,24 +78,47 @@ export default {
   },
 
   async asyncData ({ $axios }) {
-    const items = await $axios.$get('/api/pages/the-vessel/')
-    _.reverse(items.teams.data)
+    const item = await $axios.$get('/api/pages/the-vessel/')
+    _.reverse(item.teams.data)
     return {
-      items
+      item
+    }
+  },
+
+  /**
+   * TODO:
+   * add meta og:image & og:url
+   */
+  head () {
+    return {
+      title: this.metaTitle,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        }
+      ]
     }
   },
 
   mounted () {
-    if (this.$data && this.$data.items.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.items.hero })
+    if (this.$data && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name, data: this.$data.item.hero })
     }
   },
 
   methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data })
-    },
     ready (event) {
       this.player = event.target
     }

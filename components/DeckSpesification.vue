@@ -2,14 +2,17 @@
   <v-sheet class="deck-spesification text-center">
     <v-row no-gutters align="center" justify="center" class="container mx-auto py-0 px-6 px-md-0">
       <v-col cols="12" class="pb-0">
-        <div class="deck-spesification--item-heading">
+        <div v-if="dataActive.name" class="deck-spesification--item-heading">
           {{ dataActive.name }}
         </div>
       </v-col>
+
       <v-col cols="12">
-        <div class="deck-spesification--item-paragraph">
-          {{ dataActive.description }}
-        </div>
+        <div
+          v-if="dataActive.description"
+          class="deck-spesification--item-paragraph"
+          v-text="dataActive.description"
+        />
       </v-col>
     </v-row>
 
@@ -25,7 +28,6 @@
           :lazy-src="$store.state.storage + item.mobile_image"
           class="hidden-sm-and-up mx-auto"
           max-width="150"
-          height="502px"
         />
       </swiper-slide>
       <div slot="pagination" class="swiper-pagination swiper-pagination-bullets" />
@@ -187,7 +189,7 @@ $white: #ffffff;
 
     &-paragraph {
       @include poly-fluid-sizing ('margin-top', (378px:18px, 768px:15px, 960px:25px));
-      @media #{map-get($display-breakpoints, 'sm-only')} {
+      @media #{map-get($display-breakpoints, 'sm-and-down')} {
         margin-bottom: 30px;
       }
       @media #{map-get($display-breakpoints, 'md-and-up')} {
@@ -210,7 +212,7 @@ $white: #ffffff;
   @media #{map-get($display-breakpoints, ('sm-only'))} {
     width: 88%;
   }
-  @include poly-fluid-sizing ('padding-bottom', (375px:32.61px, 768px:56.53px, 1440px:148.4px));
+  @include poly-fluid-sizing ('padding-bottom', (375px:40px, 768px:56.53px, 1440px:148.4px));
 
   &-slide-active { z-index: 3 !important; }
   &-slide {

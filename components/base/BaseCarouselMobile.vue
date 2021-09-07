@@ -54,7 +54,12 @@
       </swiper-slide>
     </swiper>
 
-    <v-card flat tile class="hidden-sm-and-up mx-auto pb-8" :class="cardMobileClass ? cardMobileClass : '_card--relative'">
+    <v-card
+      flat
+      tile
+      class="hidden-sm-and-up mx-auto pb-8"
+      :class="cardMobileClass ? cardMobileClass : '_card--relative'"
+    >
       <v-card-text
         class="text--primary px-0 pt-5"
         :class="cardTextMobileClass ? cardTextMobileClass : 'text-center'"
@@ -201,9 +206,7 @@ export default {
     }
 
     .v-card__text {
-      p {
-        font-size: 15px !important;
-      }
+      font-size: 16px !important;
     }
   }
 

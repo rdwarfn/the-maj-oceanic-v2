@@ -85,11 +85,8 @@ export default {
 
   ::v-deep .__carousel_card {
     margin: 0 auto;
-    // @include poly-fluid-sizing('padding-top', (375px:39px, 768px:25px, 1204px:73px));
-    // @include poly-fluid-sizing('padding-bottom', (375px:33px, 768px:32px, 1204px: 73px));
-    // @include poly-fluid-sizing('width', (375px:323px, 600px:352px, 1204px: 445px));
-    // @include poly-fluid-sizing('height', (375px:482px, 600px:347px, 1204px: 445px));
     @media #{map-get($display-breakpoints, 'xs-only')} {
+      z-index: 2;
       &.v-card.hidden-sm-and-up {
         bottom: 70px !important;
         padding-bottom: 0 !important;

@@ -2,61 +2,68 @@
   <article id="activites">
     <v-container tag="section" class="mx-auto px-6 px-md-0 mb-15">
       <div class="intro--head font-weight-bold text-center mx-auto">
-        {{ data.intro.heading }}
+        {{ item.intro.heading }}
       </div>
       <p
         class="intro--paragraph text-center mx-auto"
-        v-html="data.intro.description"
+        v-html="item.intro.description"
       />
     </v-container>
 
     <!-- watersports -->
-    <template v-for="(item, index) in data.facilities">
+    <template v-for="(d, i) in item.facilities">
       <Carousel
-        :key="index"
-        :data="item"
+        :key="i"
+        :data="d"
         :class="{
-          'watersports-section': item.caption.includes('watersports'),
-          'fitness_wellness-section': item.caption.includes('fitness & wellness'),
-          'exploration-section': item.caption.includes('exploration')
+          'watersports-section': d.caption.includes('watersports'),
+          'fitness_wellness-section': d.caption.includes('fitness & wellness'),
+          'exploration-section': d.caption.includes('exploration')
         }"
       />
     </template>
     <!-- <Carousel
-      :data="data.watersports"
+      :data="item.watersports"
       class="watersports-section"
     ></Carousel> -->
     <!-- end watersports -->
 
     <!-- fitness_wellness -->
     <!-- <Carousel
-      :data="data.fitness_wellness"
+      :data="item.fitness_wellness"
       class="fitness_wellness-section"
     ></Carousel> -->
     <!-- end fitness_wellness -->
 
     <!-- exploration -->
     <!-- <Carousel
-      :data="data.exploration"
+      :data="item.exploration"
       class="exploration-section"
     ></Carousel> -->
     <!-- end exploration -->
 
     <section class="activites__testimonal">
-      <BaseTestimonal :data="data.testimonies" />
+      <BaseTestimonal :data="item.testimonies" />
     </section>
   </article>
 </template>
 
 <script>
-import Carousel from '@/components/activites/Carousel.vue'
-import BaseTestimonal from '@/components/base/BaseTestimonal.vue'
+import Carousel from '~/components/activites/Carousel.vue'
+import BaseTestimonal from '~/components/base/BaseTestimonal.vue'
+import { addHero, metaDescription, metaTitle } from '~/mixins/Page'
 
 export default {
   components: {
     Carousel,
     BaseTestimonal
   },
+
+  mixins: [
+    addHero,
+    metaTitle,
+    metaDescription
+  ],
 
   layout: 'main',
 
@@ -75,22 +82,15 @@ export default {
   },
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/activites/')
+    const item = await $axios.$get('/api/pages/activites/')
     return {
-      data
+      item
     }
   },
 
   mounted () {
-    if (this.$data && this.$data.data.hero) {
-      this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
-    }
-  },
-
-  methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data })
+    if (this.$data && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name, data: this.$data.item.hero })
     }
   }
 }

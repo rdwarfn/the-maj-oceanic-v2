@@ -346,10 +346,17 @@ export default {
     }
   }
   @media #{map-get($display-breakpoints, 'xs-only')} {
-    .v-data-table__wrapper > table > thead > tr > th:not(.bg-none) {
-      font-size: 12px !important;
-      background: #208CB2;
-      color: white;
+    .v-data-table__wrapper {
+      thead {
+        tr > th:not(.bg-none) {
+          font-size: 12px !important;
+          background: #208CB2;
+          color: white;
+        }
+      }
+      tbody {
+        display: contents;
+      }
     }
     .v-data-footer {
       padding: 0 !important;

@@ -2,46 +2,46 @@
   <div id="voyages-komodo">
     <!-- section des 1 -->
     <KomodoDesOne
-      v-if="data.destinations[0]"
-      :data="data.destinations[0]"
+      v-if="item.destinations[0]"
+      :data="item.destinations[0]"
     />
     <!-- section des 2 -->
     <KomodoDesTwo
-      v-if="data.destinations[1]"
-      :data="data.destinations[1]"
+      v-if="item.destinations[1]"
+      :data="item.destinations[1]"
     />
     <!-- section des 3 -->
     <v-sheet
-      v-if="data.destinations[2]"
+      v-if="item.destinations[2]"
       color="transparent"
       tag="section"
       class="voyages-komodo--des3-mobile__wrap hidden-sm-and-up"
     >
-      <SwiperKomodoMobile :data="data.destinations[2]" />
+      <SwiperKomodoMobile :data="item.destinations[2]" />
     </v-sheet>
 
     <KomodoDesThree
-      v-if="data.destinations[2]"
+      v-if="item.destinations[2]"
       class="hidden-xs-only"
-      :data="data.destinations[2]"
+      :data="item.destinations[2]"
     />
     <!-- section des 4 -->
     <KomodoDesFour
-      v-if="data.destinations[3]"
-      :data="data.destinations[3]"
+      v-if="item.destinations[3]"
+      :data="item.destinations[3]"
     />
   </div>
 </template>
 
 <script>
-import SwiperKomodoMobile from '@/components/voyages/CarouselKomodoMobile.vue'
-import KomodoDesOne from '@/components/voyages/KomodoDesOne.vue'
-import KomodoDesTwo from '@/components/voyages/KomodoDesTwo.vue'
-import KomodoDesThree from '@/components/voyages/KomodoDesThree.vue'
-import KomodoDesFour from '@/components/voyages/KomodoDesFour.vue'
+import SwiperKomodoMobile from '~/components/voyages/CarouselKomodoMobile.vue'
+import KomodoDesOne from '~/components/voyages/KomodoDesOne.vue'
+import KomodoDesTwo from '~/components/voyages/KomodoDesTwo.vue'
+import KomodoDesThree from '~/components/voyages/KomodoDesThree.vue'
+import KomodoDesFour from '~/components/voyages/KomodoDesFour.vue'
+import { addHero, metaDescription, metaTitle } from '~/mixins/Page'
 
 export default {
-
   components: {
     SwiperKomodoMobile,
     KomodoDesOne,
@@ -49,28 +49,53 @@ export default {
     KomodoDesThree,
     KomodoDesFour
   },
+
+  mixins: [
+    addHero,
+    metaTitle,
+    metaDescription
+  ],
+
   layout: 'main',
 
   async asyncData ({ $axios }) {
-    const data = await $axios.$get('/api/pages/voyages-komodo')
+    const item = await $axios.$get('/api/pages/voyages-komodo')
 
     return {
-      data
+      item
+    }
+  },
+
+  /**
+   * TODO:
+   * add meta og:image & og:url
+   */
+  head () {
+    return {
+      title: this.metaTitle,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: this.metaTitle
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content: this.metaDescription
+        },
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.metaDescription
+        }
+      ]
     }
   },
 
   mounted () {
-    this.$nextTick(() => {
-      if (this.$data.data && this.$data.data.hero) {
-        this.addHeros({ page_key: this.$route.name, data: this.$data.data.hero })
-      }
-    })
-  },
-
-  methods: {
-    // eslint-disable-next-line camelcase
-    addHeros ({ page_key, data }) {
-      this.$store.commit('heros/add', { page_key, data })
+    if (this.$data.item && this.$data.item.hero) {
+      this.addHero({ page_key: this.$route.name, data: this.$data.item.hero })
     }
   },
 
@@ -96,7 +121,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "~assets/styles/scss/variables.scss";
+@import "~/assets/styles/scss/variables.scss";
 // ::v-deep .voyages-komodo {
 
 //   &--des3 {

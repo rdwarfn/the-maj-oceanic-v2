@@ -251,7 +251,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "~assets/styles/scss/variables.scss";
+  @import "~/assets/styles/scss/variables.scss";
   $primary:#208CB2;
   $size: 10px;
   $secondary: #C4C4C4;
@@ -278,9 +278,7 @@ export default {
     }
 
     .v-card__text {
-      p {
-        font-size: 15px !important;
-      }
+      font-size: 16px !important;
     }
   }
 

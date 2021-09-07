@@ -1,5 +1,3 @@
-import webpack from 'webpack'
-
 export default {
   env: {
     BASE_URL: process.env.BASE_URL
@@ -67,6 +65,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/filters',
     { src: '~/plugins/vue-awesome-swiper', mode: 'client' },
     { src: '~/plugins/vue-video-player', mode: 'client' },
     { src: '~/plugins/vue-instagram', mode: 'client' },
@@ -118,11 +117,6 @@ export default {
         type: 'javascript/auto',
         include: /node_modules/
       })
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        _: 'lodash'
-      })
-    ]
+    }
   }
 }
