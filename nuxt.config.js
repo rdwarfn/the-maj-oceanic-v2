@@ -103,7 +103,7 @@ export default {
   */
   vuetify: {
     defaultAssets: false,
-    treeShake: true,
+    treeShake: false,
     customVariables: ['~/assets/styles/scss/variables.scss'],
     optionsPath: './vuetify.options.js'
   },
